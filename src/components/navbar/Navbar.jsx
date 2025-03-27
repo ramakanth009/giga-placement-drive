@@ -20,6 +20,7 @@ const useStyles = makeStyles({
     backgroundColor: 'transparent !important',
     boxShadow: 'none !important',
     backgroundImage: 'none !important',
+    '--AppBar-background': 'transparent !important',
   },
   logo: {
     width: 40,
