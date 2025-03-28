@@ -12,7 +12,6 @@ const Homepage = () => {
       width: '100%', 
       minHeight: '100vh',
       isolation: 'isolate', // Creates a new stacking context
-      perspective: '1px', // Helps with backdrop-filter in some browsers
     }}>
       {/* Include the Background component */}
       <Background />

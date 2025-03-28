@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography, Button, Container, Grid } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import Heroguy from "../../assets/heroguy.png"
+import Heroguy from "../../assets/heroguy.png"; // Adjust the path as necessary
 
 const useStyles = makeStyles({
   heroContainer: {
@@ -9,7 +9,6 @@ const useStyles = makeStyles({
     minHeight: "90vh",
     display: "flex",
     alignItems: "center",
-    background: "linear-gradient(to right, #ffffff, #e6f2ff)",
     padding: "20px 0",
     overflow: "hidden",
   },
@@ -78,18 +77,7 @@ const useStyles = makeStyles({
     maxWidth: "100%",
     height: "auto",
   },
-  backgroundBlur: {
-    position: "absolute",
-    width: "767px",
-    height: "566px",
-    top: "-114px",
-    right: "-92px",
-    background: "#BCE1FF",
-    zIndex: 0,
-    borderRadius: "50%",
-    opacity: 0.5,
-    filter: "blur(100px)",
-  },
+  // Removed background blur as it's now handled by Background component
 });
 
 const Hero = () => {
@@ -97,8 +85,7 @@ const Hero = () => {
   
   return (
     <Box className={classes.heroContainer}>
-      {/* Background blur element */}
-      <Box className={classes.backgroundBlur} />
+      {/* Background is now handled by the Background component */}
       
       <Container maxWidth="lg">
         <Grid container spacing={4} alignItems="center">
@@ -184,7 +171,7 @@ const Hero = () => {
             {/* Student image - you would replace this with your actual image import */}
             <Box sx={{ position: "relative", textAlign: "center", zIndex: 1 }}>
               <img 
-                src={Heroguy}
+                src={Heroguy} 
                 alt="Student with laptop" 
                 className={classes.heroImage}
               />
