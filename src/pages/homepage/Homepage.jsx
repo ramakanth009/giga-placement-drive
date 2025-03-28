@@ -20,9 +20,13 @@ const Homepage = () => {
       {/* Content with higher z-index */}
       <Box sx={{ position: 'relative', zIndex: 1 }}>
         <Navbar />
-        <Hero />
-        
-        {/* Add the Hiring Partners section */}
+        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+          <Hero />
+          {/* Add the Hiring Partners section with no top margin/padding */}
+          <Box sx={{ mt: -0.45 }}> {/* Negative margin to pull up */}
+            <HiringPartners />
+          </Box>
+        </Box>
         
         {/* Your other homepage content will go here */}
       </Box>

@@ -5,7 +5,8 @@ import Heroguy from "../../assets/heroguy.png";
 import { ReactComponent as AIbook } from "../../assets/ai-book.svg";
 import { ReactComponent as Simplecal } from "../../assets/simple-claender.svg";
 import { textAlign } from "@mui/system";
-import HiringPartners from "../hiringpartners/HiringPartners";
+// Remove the HiringPartners import since we'll handle it in Homepage.jsx instead
+// import HiringPartners from "../hiringpartners/HiringPartners";
 
 const useStyles = makeStyles({
   heroContainer: {
@@ -13,18 +14,17 @@ const useStyles = makeStyles({
     minHeight: "70vh",
     display: "flex",
     alignItems: "center",
-    padding: "20px 0",
+    padding: "20px 0 0 0", // Remove bottom padding
     overflow: "hidden",
+    marginBottom: 0, // Ensure no margin at bottom
   },
   contentContainer: {
     width: "50%",
     position: "relative",
     zIndex: 1,
-    // padding: "0 20px 0 0",
     padding: "8px 16px",
   },
   titleBox: {
-    // border: "1px solid #3498db",
     borderRadius: "4px",
     display: "inline-block",
     marginBottom: "16px",
@@ -82,7 +82,7 @@ const useStyles = makeStyles({
     display: "inline-flex",
     alignItems: "center",
     margin: "4px",
-    maxWidth: "90%" /* Ensure card doesn't overflow container */,
+    maxWidth: "90%",
   },
   featureIcon1: {
     marginRight: "12px",
@@ -100,7 +100,6 @@ const useStyles = makeStyles({
     zIndex: 2,
   },
   featureText: {
-    // fontFamily:"Montserrat', sans-serif !important",
     color: "#2F2E51",
     opacity: "100%",
     fontWeight: "bold !important",
@@ -152,8 +151,8 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "right",
     alignItems: "center",
-    position: "relative" /* Added to establish positioning context */,
-    minHeight: "500px" /* Added minimum height to ensure proper card display */,
+    position: "relative",
+    minHeight: "500px",
   },
 });
 
@@ -246,7 +245,6 @@ const Hero = () => {
               />
             </Box>
           </Grid>
-        <HiringPartners />
         </Grid>
       </Container>
     </Box>

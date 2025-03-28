@@ -25,11 +25,10 @@ import { ReactComponent as ZohoLogo } from '../../assets/hiringpartners/zoho.svg
 
 const useStyles = makeStyles({
   partnersSection: {
-    // padding: '60px 0',
     backgroundColor: '#ffffff',
     borderRadius: '20px',
     boxShadow: '0 4px 20px rgba(0, 0, 0, 0.05)',
-    margin: '40px auto',
+    margin: '0 auto', // Removed top/bottom margin
     overflow: 'hidden',
     position: 'relative',
     display: 'flex',
@@ -159,7 +158,7 @@ const HiringPartners = () => {
   };
 
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" sx={{ pt: 0, mt: 0 }}> {/* Remove padding/margin */}
       <Box className={classes.partnersSection}>
         {/* Title on the left */}
         <Box className={classes.titleContainer}>
