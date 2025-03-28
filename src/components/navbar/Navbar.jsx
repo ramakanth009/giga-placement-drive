@@ -27,8 +27,8 @@ const useStyles = makeStyles({
     padding: "16px 24px",
   },
   logo: {
-    width: 40,
-    height: 40,
+    width: 60,
+    height: 60,
     marginRight: 16,
     display: "flex",
     alignItems: "center",
@@ -68,7 +68,7 @@ const useStyles = makeStyles({
   },
   signUpButton: {
     marginLeft: 16,
-    backgroundColor: "#0a192f !important",
+    backgroundColor: "#001021 !important",
     color: "white !important",
     padding: "8px 24px !important",
     borderRadius: "4px !important",

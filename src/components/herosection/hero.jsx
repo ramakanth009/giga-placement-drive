@@ -1,41 +1,47 @@
 import React from "react";
 import { Box, Typography, Button, Container, Grid } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import Heroguy from "../../assets/heroguy.png"; // Adjust the path as necessary
+import Heroguy from "../../assets/heroguy.png";
+import { ReactComponent as AIbook } from "../../assets/ai-book.svg";
+import { ReactComponent as Simplecal } from "../../assets/simple-claender.svg";
+import { textAlign } from "@mui/system";
 
 const useStyles = makeStyles({
   heroContainer: {
     position: "relative",
-    minHeight: "90vh",
+    minHeight: "70vh",
     display: "flex",
     alignItems: "center",
     padding: "20px 0",
     overflow: "hidden",
   },
   contentContainer: {
+    width: "50%",
     position: "relative",
     zIndex: 1,
+    // padding: "0 20px 0 0",
     padding: "8px 16px",
   },
   titleBox: {
     // border: "1px solid #3498db",
     borderRadius: "4px",
     display: "inline-block",
-    // padding: "8px 16px",
     marginBottom: "16px",
   },
   heroHeading: {
+    fontSize: "2.9rem !important",
     fontWeight: "bold !important",
     marginBottom: "16px !important",
-    color: "#0a192f !important",
+    color: "#2A2B6A !important",
     "& span": {
-      color: "#ffb703 !important",
+      color: "#FFC614 !important",
     },
   },
   subHeading: {
-    color: "#4a4a4a !important",
+    color: "#6A6B6C !important",
     marginBottom: "24px !important",
-    maxWidth: "450px",
+    maxWidth: "90%",
+    fontWeight: "bold",
   },
   pricingSection: {
     marginTop: "32px",
@@ -44,6 +50,7 @@ const useStyles = makeStyles({
     textDecoration: "line-through !important",
     color: "#666 !important",
     marginBottom: "8px !important",
+    fontStyle: "italic !important",
   },
   specialPrice: {
     fontWeight: "bold !important",
@@ -56,30 +63,51 @@ const useStyles = makeStyles({
     color: "#0a192f !important",
   },
   joinButton: {
-    backgroundColor: "#0a192f !important",
+    backgroundColor: "#001021 !important",
     color: "white !important",
     padding: "12px 32px !important",
     borderRadius: "4px !important",
     fontWeight: "bold !important",
-    marginBottom: "32px !important",
+    marginBottom: "12px !important",
     "&:hover": {
       backgroundColor: "#142640 !important",
     },
   },
   featureCard: {
-    backgroundColor: "white",
-    padding: "12px 16px",
+    backgroundColor: "#FFFFFFB3",
+    padding: "4px 14px",
     borderRadius: "8px",
-    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+    boxShadow: "0px 4px 60.4px 0px #2A2B6A0F",
     display: "inline-flex",
     alignItems: "center",
-    margin: "8px",
+    margin: "4px",
+    maxWidth: "90%" /* Ensure card doesn't overflow container */,
   },
-  featureIcon: {
+  featureIcon1: {
     marginRight: "12px",
   },
+  featureIcon2: {
+    backgroundColor: "#000000",
+    background: "linear-gradient(180deg, #FAFAFA 0%, #D6EBFF 100%)",
+    padding: "15px",
+    fontWeight: "bold !important",
+    fontSize: "1rem !important",
+    borderRadius: "50%",
+    position: "absolute",
+    bottom: "70px",
+    left: "55px",
+    zIndex: 2,
+  },
   featureText: {
-    fontWeight: "600 !important",
+    // fontFamily:"Montserrat', sans-serif !important",
+    color: "#2F2E51",
+    opacity: "100%",
+    fontWeight: "bold !important",
+    fontSize: "1.1rem !important",
+    "&.MuiTypography-root": {
+      fontFamily: "Montserrat, sans-serif",
+      textAlign: "center",
+    },
   },
   heroImage: {
     maxWidth: "100%",
@@ -87,126 +115,132 @@ const useStyles = makeStyles({
   },
   featureCardTopLeft: {
     position: "absolute",
-    top: "80px",
-    left: "40px",
+    top: "115px",
+    left: "11px",
     zIndex: 2,
   },
   featureCardTopRight: {
-    position: "absolute", 
-    top: "140px", 
-    right: "60px", 
+    position: "absolute",
+    top: "175px",
+    right: "-105px",
     zIndex: 2,
   },
   featureCardBottomLeft: {
-    position: "absolute", 
-    bottom: "140px", 
-    left: "20px", 
+    width: "40%",
+    position: "absolute",
+    bottom: "90px",
+    left: "0",
     zIndex: 2,
   },
   featureCardBottomRight: {
-    position: "absolute", 
-    bottom: "80px", 
-    right: "40px", 
+    width: "40%",
+    position: "absolute",
+    bottom: "60px",
+    right: "-68px",
     zIndex: 2,
   },
   imageContainer: {
-    position: "relative", 
-    textAlign: "center", 
+    position: "relative",
+    textAlign: "center",
     zIndex: 1,
-  }
+    maxWidth: "100%",
+    height: "auto",
+  },
+  imageCol: {
+    width: "40%",
+    display: "flex",
+    justifyContent: "right",
+    alignItems: "center",
+    position: "relative" /* Added to establish positioning context */,
+    minHeight: "500px" /* Added minimum height to ensure proper card display */,
+  },
 });
 
 const Hero = () => {
   const classes = useStyles();
-  
+
   return (
     <Box className={classes.heroContainer}>
       <Container maxWidth="lg">
         <Grid container spacing={4} alignItems="center">
-          <Grid item xs={12} md={6} className={classes.contentContainer}>
+          <Grid item xs={12} md={7} lg={8} className={classes.contentContainer}>
             {/* Title with highlight */}
             <Box className={classes.titleBox}>
               <Typography variant="h4" className={classes.heroHeading}>
-                Gigaversity's <span>Virtual</span><br />
+                Gigaversity's <span>Virtual</span>
+                <br />
                 <span>Placement Drive</span>
               </Typography>
             </Box>
-            
+
             {/* Subheading */}
             <Typography variant="h6" className={classes.subHeading}>
               India's Biggest Virtual Hiring & Learning Experience
             </Typography>
-            
+
             {/* Join Now Button */}
             <Button variant="contained" className={classes.joinButton}>
               Join Us Now
             </Button>
-            
+
             {/* Pricing Section */}
             <Box className={classes.pricingSection}>
               <Typography variant="body1" className={classes.regularPrice}>
                 Regular price: ₹499
               </Typography>
               <Typography variant="h6" className={classes.specialPrice}>
-                Limited time price - INR <span className={classes.priceHighlight}>199</span> only
+                Limited time price - INR{" "}
+                <span className={classes.priceHighlight}>199</span> only
               </Typography>
             </Box>
           </Grid>
-          
-          <Grid item xs={12} md={6} sx={{ position: "relative" }}>
+
+          <Grid item xs={12} md={5} lg={4} className={classes.imageCol}>
             {/* Feature Cards */}
             <Box className={classes.featureCardTopLeft}>
               <Box className={classes.featureCard}>
-                <Box className={classes.featureIcon}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" fill="#3498db"/>
-                  </svg>
+                <Box className={classes.featureIcon1}>
+                  <AIbook />
                 </Box>
-                <Typography className={classes.featureText}>Code with AI</Typography>
+                <Typography className={classes.featureText}>
+                  Code with AI
+                </Typography>
               </Box>
             </Box>
-            
+
             <Box className={classes.featureCardTopRight}>
               <Box className={classes.featureCard}>
-                <Box className={classes.featureIcon}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M19 4H5C3.89543 4 3 4.89543 3 6V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V6C21 4.89543 20.1046 4 19 4Z" stroke="#3498db" strokeWidth="2"/>
-                    <path d="M16 2V6M8 2V6M3 10H21" stroke="#3498db" strokeWidth="2"/>
-                  </svg>
+                <Box className={classes.featureIcon1}>
+                  <Simplecal />
                 </Box>
-                <Typography className={classes.featureText}>30-Day Intensive Training</Typography>
+                <Typography className={classes.featureText}>
+                  30-Day Intensive Training
+                </Typography>
               </Box>
             </Box>
-            
+
             <Box className={classes.featureCardBottomLeft}>
               <Box className={classes.featureCard}>
-                <Box className={classes.featureIcon}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#3498db" strokeWidth="2"/>
-                    <path d="M12 6V12L16 14" stroke="#3498db" strokeWidth="2"/>
-                  </svg>
-                </Box>
-                <Typography className={classes.featureText}>400+ Placement Opportunities</Typography>
+                <Box className={classes.featureIcon2}>400+ </Box>
+                <Typography className={classes.featureText} sx={{ mt: 2 }}>
+                  Placement Opportunities
+                </Typography>
               </Box>
             </Box>
-            
+
             <Box className={classes.featureCardBottomRight}>
               <Box className={classes.featureCard}>
-                <Box className={classes.featureIcon}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M9 11L12 14L22 4" stroke="#3498db" strokeWidth="2"/>
-                    <path d="M21 12V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H16" stroke="#3498db" strokeWidth="2"/>
-                  </svg>
-                </Box>
-                <Typography className={classes.featureText}>Weekly 40+ Opportunities</Typography>
+                <Typography className={classes.featureText}>
+                  Weekly 40+ Opportunities
+                </Typography>
               </Box>
             </Box>
-            
+
             {/* Student image */}
             <Box className={classes.imageContainer}>
-              <img 
-                src={Heroguy} 
-                alt="Student with laptop" 
+              <img
+                src={Heroguy}
+                alt="Student with laptop"
                 className={classes.heroImage}
               />
             </Box>
