@@ -28,7 +28,7 @@ const useStyles = makeStyles({
     backgroundColor: '#ffffff',
     borderRadius: '20px',
     boxShadow: '0 4px 20px rgba(0, 0, 0, 0.05)',
-    margin: '0 auto', // Removed top/bottom margin
+    margin: '0px 0px 0px 110px',
     overflow: 'hidden',
     position: 'relative',
     display: 'flex',
@@ -158,7 +158,7 @@ const HiringPartners = () => {
   };
 
   return (
-    <Container maxWidth="lg" sx={{ pt: 0, mt: 0 }}> {/* Remove padding/margin */}
+    // <Container maxWidth="lg" sx={{ pt: 0, mt: 0 }}> {/* Remove padding/margin */}
       <Box className={classes.partnersSection}>
         {/* Title on the left */}
         <Box className={classes.titleContainer}>
@@ -194,9 +194,9 @@ const HiringPartners = () => {
         
         {/* White fade overlays */}
         <Box className={classes.whiteFadeLeft} />
-        <Box className={classes.whiteFadeRight} />
+        {/* <Box className={classes.whiteFadeRight} /> */}
       </Box>
-    </Container>
+    // </Container>
   );
 };
 
