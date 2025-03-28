@@ -57,24 +57,18 @@ const useStyles = makeStyles({
     color: '#2A2B6A !important',
   },
   rolesContainer: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    gap: '20px',
     width: '100%',
+    maxWidth: '1000px',
   },
   roleCard: {
     backgroundColor: 'white',
     borderRadius: '12px',
-    padding: '8px 6px',
+    padding: '8px 10px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '100%',
-    maxWidth: '320px',
-    // minHeight: '100px',
+    height: '35px',
     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-    // gap:"30px",
     cursor: 'pointer',
     '&:hover': {
       transform: 'translateY(-5px)',
@@ -82,14 +76,14 @@ const useStyles = makeStyles({
     },
   },
   roleIcon: {
-    marginRight: '12px',
+    marginRight: '10px',
     color: '#2A2B6A',
-    fontSize: '28px !important',
+    fontSize: '24px !important',
   },
   roleText: {
     color: '#2A2B6A !important',
     fontWeight: '600 !important',
-    fontSize: '1.3rem !important',
+    fontSize: '1.1rem !important',
   },
   actionsContainer: {
     display: 'flex',
@@ -119,6 +113,22 @@ const useStyles = makeStyles({
       backgroundColor: '#e6e6e6 !important',
     },
   },
+  firstRow: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    marginBottom: '16px',
+  },
+  secondRow: {
+    display: 'flex',
+    justifyContent: 'center',
+    gap: '20px',
+  },
+  roleWrapper: {
+    width: '32%',
+  },
+  roleWrapperSecondRow: {
+    width: '32%',
+  },
 });
 
 const InDemandRoles = () => {
@@ -130,21 +140,30 @@ const InDemandRoles = () => {
     { id: 'datascience', label: 'Data Science Roles' },
   ];
 
+  // Restructured roles data to handle the new layout
   const roles = {
-    fullstack: [
-      { id: 'uiux', title: 'UI/UX Developer' },
-      { id: 'frontend', title: 'Frontend Developer' },
-      { id: 'mern', title: 'MERN Stack Developer' },
-      { id: 'backend', title: 'Backend Engineer' },
-      { id: 'fullstack', title: 'Full Stack Developer' },
-    ],
-    datascience: [
-      { id: 'dataanalyst', title: 'Data Analyst' },
-      { id: 'datascientist', title: 'Data Scientist' },
-      { id: 'mleng', title: 'ML Engineer' },
-      { id: 'dataeng', title: 'Data Engineer' },
-      { id: 'aispecialist', title: 'AI Specialist' },
-    ],
+    fullstack: {
+      firstRow: [
+        { id: 'uiux', title: 'UI/UX Developer' },
+        { id: 'frontend', title: 'Frontend Developer' },
+        { id: 'mern', title: 'MERN Stack Developer' },
+      ],
+      secondRow: [
+        { id: 'backend', title: 'Backend Engineer' },
+        { id: 'fullstack', title: 'Full Stack Developer' },
+      ]
+    },
+    datascience: {
+      firstRow: [
+        { id: 'dataanalyst', title: 'Data Analyst' },
+        { id: 'datascientist', title: 'Data Scientist' },
+        { id: 'mleng', title: 'ML Engineer' },
+      ],
+      secondRow: [
+        { id: 'dataeng', title: 'Data Engineer' },
+        { id: 'aispecialist', title: 'AI Specialist' },
+      ]
+    },
   };
 
   return (
@@ -175,20 +194,35 @@ const InDemandRoles = () => {
           ))}
         </Box>
 
-        {/* Roles Grid */}
+        {/* Roles in custom layout */}
         <Box className={classes.rolesContainer}>
-          <Grid container spacing={3} justifyContent="center">
-            {roles[activeTab].map((role) => (
-              <Grid item xs={12} sm={6} md={4} key={role.id}>
+          {/* First row - 3 roles */}
+          <Box className={classes.firstRow}>
+            {roles[activeTab].firstRow.map((role) => (
+              <Box key={role.id} className={classes.roleWrapper}>
                 <Box className={classes.roleCard}>
                   <CodeIcon className={classes.roleIcon} />
                   <Typography className={classes.roleText}>
                     {role.title}
                   </Typography>
                 </Box>
-              </Grid>
+              </Box>
             ))}
-          </Grid>
+          </Box>
+
+          {/* Second row - 2 roles */}
+          <Box className={classes.secondRow}>
+            {roles[activeTab].secondRow.map((role) => (
+              <Box key={role.id} className={classes.roleWrapperSecondRow}>
+                <Box className={classes.roleCard}>
+                  <CodeIcon className={classes.roleIcon} />
+                  <Typography className={classes.roleText}>
+                    {role.title}
+                  </Typography>
+                </Box>
+              </Box>
+            ))}
+          </Box>
         </Box>
 
         {/* Action Buttons */}
