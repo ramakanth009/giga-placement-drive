@@ -15,37 +15,45 @@ const useStyles = makeStyles({
   contentContainer: {
     position: "relative",
     zIndex: 1,
+    padding: "8px 16px",
+  },
+  titleBox: {
+    // border: "1px solid #3498db",
+    borderRadius: "4px",
+    display: "inline-block",
+    // padding: "8px 16px",
+    marginBottom: "16px",
   },
   heroHeading: {
-    fontWeight: "bold",
-    marginBottom: "16px",
-    color: "#0a192f",
+    fontWeight: "bold !important",
+    marginBottom: "16px !important",
+    color: "#0a192f !important",
     "& span": {
-      color: "#ffb703",
+      color: "#ffb703 !important",
     },
   },
   subHeading: {
-    color: "#4a4a4a",
-    marginBottom: "24px",
-    maxWidth: "550px",
+    color: "#4a4a4a !important",
+    marginBottom: "24px !important",
+    maxWidth: "450px",
   },
   pricingSection: {
     marginTop: "32px",
   },
   regularPrice: {
-    textDecoration: "line-through",
-    color: "#666",
-    marginBottom: "8px",
+    textDecoration: "line-through !important",
+    color: "#666 !important",
+    marginBottom: "8px !important",
   },
   specialPrice: {
-    fontWeight: "bold",
-    fontSize: "1.5rem",
-    marginBottom: "32px",
+    fontWeight: "bold !important",
+    fontSize: "1.5rem !important",
+    marginBottom: "32px !important",
   },
   priceHighlight: {
-    fontSize: "2rem",
-    fontWeight: "bold",
-    color: "#0a192f",
+    fontSize: "2rem !important",
+    fontWeight: "bold !important",
+    color: "#0a192f !important",
   },
   joinButton: {
     backgroundColor: "#0a192f !important",
@@ -71,13 +79,41 @@ const useStyles = makeStyles({
     marginRight: "12px",
   },
   featureText: {
-    fontWeight: "600",
+    fontWeight: "600 !important",
   },
   heroImage: {
     maxWidth: "100%",
     height: "auto",
   },
-  // Removed background blur as it's now handled by Background component
+  featureCardTopLeft: {
+    position: "absolute",
+    top: "80px",
+    left: "40px",
+    zIndex: 2,
+  },
+  featureCardTopRight: {
+    position: "absolute", 
+    top: "140px", 
+    right: "60px", 
+    zIndex: 2,
+  },
+  featureCardBottomLeft: {
+    position: "absolute", 
+    bottom: "140px", 
+    left: "20px", 
+    zIndex: 2,
+  },
+  featureCardBottomRight: {
+    position: "absolute", 
+    bottom: "80px", 
+    right: "40px", 
+    zIndex: 2,
+  },
+  imageContainer: {
+    position: "relative", 
+    textAlign: "center", 
+    zIndex: 1,
+  }
 });
 
 const Hero = () => {
@@ -85,13 +121,11 @@ const Hero = () => {
   
   return (
     <Box className={classes.heroContainer}>
-      {/* Background is now handled by the Background component */}
-      
       <Container maxWidth="lg">
         <Grid container spacing={4} alignItems="center">
           <Grid item xs={12} md={6} className={classes.contentContainer}>
             {/* Title with highlight */}
-            <Box sx={{ border: "1px solid #3498db", borderRadius: "4px", display: "inline-block", padding: "8px 16px", marginBottom: "16px" }}>
+            <Box className={classes.titleBox}>
               <Typography variant="h4" className={classes.heroHeading}>
                 Gigaversity's <span>Virtual</span><br />
                 <span>Placement Drive</span>
@@ -121,7 +155,7 @@ const Hero = () => {
           
           <Grid item xs={12} md={6} sx={{ position: "relative" }}>
             {/* Feature Cards */}
-            <Box sx={{ position: "absolute", top: "80px", left: "40px", zIndex: 2 }}>
+            <Box className={classes.featureCardTopLeft}>
               <Box className={classes.featureCard}>
                 <Box className={classes.featureIcon}>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -132,7 +166,7 @@ const Hero = () => {
               </Box>
             </Box>
             
-            <Box sx={{ position: "absolute", top: "140px", right: "60px", zIndex: 2 }}>
+            <Box className={classes.featureCardTopRight}>
               <Box className={classes.featureCard}>
                 <Box className={classes.featureIcon}>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -144,7 +178,7 @@ const Hero = () => {
               </Box>
             </Box>
             
-            <Box sx={{ position: "absolute", bottom: "140px", left: "20px", zIndex: 2 }}>
+            <Box className={classes.featureCardBottomLeft}>
               <Box className={classes.featureCard}>
                 <Box className={classes.featureIcon}>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -156,7 +190,7 @@ const Hero = () => {
               </Box>
             </Box>
             
-            <Box sx={{ position: "absolute", bottom: "80px", right: "40px", zIndex: 2 }}>
+            <Box className={classes.featureCardBottomRight}>
               <Box className={classes.featureCard}>
                 <Box className={classes.featureIcon}>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -168,8 +202,8 @@ const Hero = () => {
               </Box>
             </Box>
             
-            {/* Student image - you would replace this with your actual image import */}
-            <Box sx={{ position: "relative", textAlign: "center", zIndex: 1 }}>
+            {/* Student image */}
+            <Box className={classes.imageContainer}>
               <img 
                 src={Heroguy} 
                 alt="Student with laptop" 

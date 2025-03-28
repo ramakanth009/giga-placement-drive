@@ -20,7 +20,11 @@ const useStyles = makeStyles({
     backgroundColor: "transparent !important",
     boxShadow: "none !important",
     backgroundImage: "none !important",
-    "--AppBar-background": "transparent !important",
+  },
+  toolbar: {
+    display: "flex",
+    justifyContent: "space-between",
+    padding: "16px 24px",
   },
   logo: {
     width: 40,
@@ -44,6 +48,11 @@ const useStyles = makeStyles({
   navLink: {
     margin: "0 8px",
     color: "#2A2B6A !important",
+    fontWeight: "500 !important",
+    padding: "8px 16px !important",
+    "&:hover": {
+      backgroundColor: "rgba(42, 43, 106, 0.05) !important",
+    },
   },
   authContainer: {
     display: "flex",
@@ -51,7 +60,8 @@ const useStyles = makeStyles({
   },
   loginButton: {
     color: "#4A4A4A !important",
-    fontWeight:"bold",
+    fontWeight: "bold !important",
+    padding: "8px 16px !important",
     "&:hover": {
       textDecoration: "underline",
     },
@@ -59,19 +69,35 @@ const useStyles = makeStyles({
   signUpButton: {
     marginLeft: 16,
     backgroundColor: "#0a192f !important",
-    color: "white",
+    color: "white !important",
+    padding: "8px 24px !important",
+    borderRadius: "4px !important",
+    fontWeight: "bold !important",
     "&:hover": {
       backgroundColor: "#142640 !important",
     },
   },
   menuButton: {
     marginLeft: "auto",
+    color: "#0a192f !important",
   },
-  activeMenuItem: {
-    color: "#f6c230",
+  mobileMenu: {
+    "& .MuiPaper-root": {
+      borderRadius: "8px",
+      marginTop: "8px",
+      boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
+    },
+  },
+  menuItem: {
+    padding: "12px 24px",
+    "&:hover": {
+      backgroundColor: "rgba(42, 43, 106, 0.05)",
+    },
   },
   signUpMenuItem: {
     backgroundColor: "#f5f5f5",
+    color: "#0a192f",
+    fontWeight: "bold",
   },
 });
 
@@ -90,22 +116,9 @@ const Navbar = () => {
     setAnchorEl(null);
   };
 
-  const overrideStyles = {
-    "--AppBar-background": "transparent",
-    backgroundImage: "none",
-    backgroundColor: "transparent",
-    boxShadow: "none",
-  };
-
   return (
-    <AppBar
-      position="static"
-      color="transparent"
-      elevation={0}
-      className={classes.appBar}
-      sx={overrideStyles}
-    >
-      <Toolbar>
+    <AppBar position="static" className={classes.appBar}>
+      <Toolbar className={classes.toolbar}>
         {/* Logo */}
         <Box className={classes.logo}>
           <GigaLogo className={classes.logoSvg} />
@@ -116,18 +129,22 @@ const Navbar = () => {
           <>
             {/* Navigation links - centered */}
             <Box className={classes.navContainer}>
-              <Button color="inherit" className={classes.navLink}>
+              <Button className={classes.navLink}>
                 Home
               </Button>
-              <Button className={classes.navLink}>Courses</Button>
-              <Button color="inherit" className={classes.navLink}>
+              <Button className={classes.navLink}>
+                Courses
+              </Button>
+              <Button className={classes.navLink}>
                 About Us
               </Button>
             </Box>
 
             {/* Login and Sign Up buttons */}
             <Box className={classes.authContainer}>
-              <Button className={classes.loginButton}>Login</Button>
+              <Button className={classes.loginButton}>
+                Login
+              </Button>
               <Button variant="contained" className={classes.signUpButton}>
                 Sign Up
               </Button>
@@ -138,7 +155,6 @@ const Navbar = () => {
           <IconButton
             size="large"
             edge="end"
-            color="inherit"
             aria-label="menu"
             onClick={handleClick}
             className={classes.menuButton}
@@ -148,12 +164,17 @@ const Navbar = () => {
         )}
 
         {/* Mobile Menu */}
-        <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
-          <MenuItem onClick={handleClose}>Home</MenuItem>
-          <MenuItem onClick={handleClose}>Courses</MenuItem>
-          <MenuItem onClick={handleClose}>About Us</MenuItem>
-          <MenuItem onClick={handleClose}>Login</MenuItem>
-          <MenuItem onClick={handleClose} className={classes.signUpMenuItem}>
+        <Menu 
+          anchorEl={anchorEl} 
+          open={open} 
+          onClose={handleClose}
+          className={classes.mobileMenu}
+        >
+          <MenuItem onClick={handleClose} className={classes.menuItem}>Home</MenuItem>
+          <MenuItem onClick={handleClose} className={classes.menuItem}>Courses</MenuItem>
+          <MenuItem onClick={handleClose} className={classes.menuItem}>About Us</MenuItem>
+          <MenuItem onClick={handleClose} className={classes.menuItem}>Login</MenuItem>
+          <MenuItem onClick={handleClose} className={`${classes.menuItem} ${classes.signUpMenuItem}`}>
             Sign Up
           </MenuItem>
         </Menu>
