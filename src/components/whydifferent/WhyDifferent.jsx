@@ -48,12 +48,13 @@ const useStyles = makeStyles({
     overflow: 'hidden',
     cursor: 'pointer',
     justifyContent: 'flex-start',
+    '& svg path': {
+      fill: '#2A2B6A',
+      transition: 'fill 0.3s ease',
+    }
   },
   activeFeatureBox: {
     backgroundColor: '#2A2B6A',
-    '& $icon': {
-      color: '#ffffff !important',
-    },
     '& $featureTitle': {
       color: '#ffffff !important',
     },
@@ -63,10 +64,12 @@ const useStyles = makeStyles({
     '& $arrowIcon': {
       color: '#ffffff !important',
     },
+    '& svg path': {
+      fill: '#ffffff',
+    }
   },
   icon: {
     fontSize: '50px !important',
-    color: '#2A2B6A',
     marginBottom: '20px',
     transition: 'all 0.3s ease',
     minHeight: '60px',
@@ -80,7 +83,7 @@ const useStyles = makeStyles({
     color: '#2A2B6A !important',
     marginBottom: '15px !important',
     transition: 'all 0.3s ease',
-    minHeight: '60px',
+    // minHeight: '48px',
     display: 'flex',
     alignItems: 'flex-start',
     justifyContent: 'center',
