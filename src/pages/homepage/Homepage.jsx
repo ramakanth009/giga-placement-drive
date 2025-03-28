@@ -1,9 +1,10 @@
 // src/pages/homepage/Homepage.jsx
 import React from "react";
 import Navbar from "../../components/navbar/Navbar";
-import Hero from "../../components/herosection/hero";
+import Hero from "../../components/herosection/Hero";
 import Background from "../../components/background/Background";
 import HiringPartners from "../../components/hiringpartners/HiringPartners";
+import JobKickstart from "../../components/jobkickstart/JobKickstart";
 import { Box } from "@mui/material";
 
 const Homepage = () => {
@@ -27,6 +28,7 @@ const Homepage = () => {
             <HiringPartners />
           </Box>
         </Box>
+        <JobKickstart />
         
         {/* Your other homepage content will go here */}
       </Box>
