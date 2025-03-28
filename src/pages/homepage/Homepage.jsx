@@ -5,6 +5,7 @@ import Hero from "../../components/herosection/Hero";
 import Background from "../../components/background/Background";
 import HiringPartners from "../../components/hiringpartners/HiringPartners";
 import JobKickstart from "../../components/jobkickstart/JobKickstart";
+import WhyDifferent from "../../components/whydifferent/WhyDifferent"; // Import the new component
 import { Box } from "@mui/material";
 
 const Homepage = () => {
@@ -29,6 +30,9 @@ const Homepage = () => {
           </Box>
         </Box>
         <JobKickstart />
+        
+        {/* Add the new WhyDifferent component */}
+        <WhyDifferent />
         
         {/* Your other homepage content will go here */}
       </Box>
