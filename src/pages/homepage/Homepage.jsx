@@ -2,7 +2,7 @@
 import React from "react";
 import Navbar from "../../components/navbar/Navbar";
 import Hero from "../../components/herosection/hero";
-// import Background from "../../components/background/Background";
+import Background from "../../components/background/Background";
 import { Box } from "@mui/material";
 
 const Homepage = () => {
@@ -15,7 +15,7 @@ const Homepage = () => {
       perspective: '1px', // Helps with backdrop-filter in some browsers
     }}>
       {/* Include the Background component */}
-      {/* <Background /> */}
+      <Background />
       
       {/* Content with higher z-index */}
       <Box sx={{ position: 'relative', zIndex: 1 }}>
