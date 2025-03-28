@@ -3,16 +3,29 @@ import React, { useRef, useState } from 'react';
 import { Box, Typography, Container } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
-// Import company logos 
-// Note: You'll need to add these logo files to your assets folder
-import accentureLogo from '../../assets/logos/accenture.png';
-import adobeLogo from '../../assets/logos/adobe.png';
-import amazonLogo from '../../assets/logos/amazon.png';
-import deloitteLogo from '../../assets/logos/deloitte.png';
-import byjusLogo from '../../assets/logos/byjus.png';
+// Import SVG logos as React components
+import { ReactComponent as AccentureLogo } from '../../assets/hiringpartners/Accenture.svg';
+import { ReactComponent as AdobeLogo } from '../../assets/hiringpartners/Adobe.svg';
+import { ReactComponent as AdpLogo } from '../../assets/hiringpartners/adp.svg';
+import { ReactComponent as AmazonLogo } from '../../assets/hiringpartners/Amazon.svg';
+import { ReactComponent as BharatPeLogo } from '../../assets/hiringpartners/BharatPe.svg';
+import { ReactComponent as CapgeminiLogo } from '../../assets/hiringpartners/capgemini.svg';
+import { ReactComponent as CredLogo } from '../../assets/hiringpartners/Cred.svg';
+import { ReactComponent as DellLogo } from '../../assets/hiringpartners/Dell.svg';
+import { ReactComponent as DeloitteLogo } from '../../assets/hiringpartners/deloitte.svg';
+import { ReactComponent as FlipkartLogo } from '../../assets/hiringpartners/Flipkart.svg';
+import { ReactComponent as InfosysLogo } from '../../assets/hiringpartners/Infosys.svg';
+import { ReactComponent as MuSigmaLogo } from '../../assets/hiringpartners/Mu-Sigma.svg';
+import { ReactComponent as PharmEasyLogo } from '../../assets/hiringpartners/pharmeasy.svg';
+import { ReactComponent as PhonePeLogo } from '../../assets/hiringpartners/PhonePe.svg';
+import { ReactComponent as TcsLogo } from '../../assets/hiringpartners/tcs.svg';
+import { ReactComponent as TechMahindraLogo } from '../../assets/hiringpartners/Tech_Mahindra.svg';
+import { ReactComponent as WiproLogo } from '../../assets/hiringpartners/Wipro.svg';
+import { ReactComponent as ZohoLogo } from '../../assets/hiringpartners/zoho.svg';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   partnersSection: {
+    // padding: '60px 0',
     backgroundColor: '#ffffff',
     borderRadius: '20px',
     boxShadow: '0 4px 20px rgba(0, 0, 0, 0.05)',
@@ -21,15 +34,14 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     display: 'flex',
     alignItems: 'center',
+    height: '180px',
   },
   titleContainer: {
     position: 'relative',
     zIndex: 2,
     width: '30%',
     paddingLeft: '40px',
-    backgroundColor: "#ffffff", // Remove !important
   },
-  
   sectionTitle: {
     color: '#0a192f !important',
     fontWeight: 'bold !important',
@@ -62,9 +74,9 @@ const useStyles = makeStyles((theme) => ({
     padding: '0 30px',
     flexShrink: 0,
   },
-  logo: {
+  logoSvg: {
+    width: '120px',
     height: '60px',
-    objectFit: 'contain',
     opacity: 0.9,
     transition: 'all 0.3s ease',
     '&:hover': {
@@ -87,6 +99,7 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     background: 'linear-gradient(to right, #ffffff 70%, rgba(255, 255, 255, 0))',
     zIndex: 1,
+    pointerEvents: 'none', // Ensures click events pass through to elements below
   },
   whiteFadeRight: {
     position: 'absolute',
@@ -96,26 +109,39 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     background: 'linear-gradient(to left, #ffffff 70%, rgba(255, 255, 255, 0))',
     zIndex: 1,
+    pointerEvents: 'none', // Ensures click events pass through to elements below
   },
-}));
+});
 
 const HiringPartners = () => {
   const classes = useStyles();
   const sliderRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
 
-  // Define the logos array
+  // Define the logos array with their React components
   const logos = [
-    { src: accentureLogo, alt: 'Accenture' },
-    { src: adobeLogo, alt: 'Adobe' },
-    { src: amazonLogo, alt: 'Amazon' },
-    { src: deloitteLogo, alt: 'Deloitte' },
-    { src: byjusLogo, alt: 'Byjus' },
-    // Add more logos as needed
+    { Logo: AccentureLogo, alt: 'Accenture' },
+    { Logo: AdobeLogo, alt: 'Adobe' },
+    { Logo: AdpLogo, alt: 'ADP' },
+    { Logo: AmazonLogo, alt: 'Amazon' },
+    { Logo: BharatPeLogo, alt: 'BharatPe' },
+    { Logo: CapgeminiLogo, alt: 'Capgemini' },
+    { Logo: CredLogo, alt: 'Cred' },
+    { Logo: DellLogo, alt: 'Dell' },
+    { Logo: DeloitteLogo, alt: 'Deloitte' },
+    { Logo: FlipkartLogo, alt: 'Flipkart' },
+    { Logo: InfosysLogo, alt: 'Infosys' },
+    { Logo: MuSigmaLogo, alt: 'Mu Sigma' },
+    { Logo: PharmEasyLogo, alt: 'PharmEasy' },
+    { Logo: PhonePeLogo, alt: 'PhonePe' },
+    { Logo: TcsLogo, alt: 'TCS' },
+    { Logo: TechMahindraLogo, alt: 'Tech Mahindra' },
+    { Logo: WiproLogo, alt: 'Wipro' },
+    { Logo: ZohoLogo, alt: 'Zoho' },
   ];
 
   // Duplicate logos for seamless infinite scrolling
-  const allLogos = [...logos, ...logos, ...logos, ...logos];
+  const allLogos = [...logos, ...logos];
 
   // Pause animation on hover
   const handleMouseEnter = () => {
@@ -142,9 +168,6 @@ const HiringPartners = () => {
           </Typography>
         </Box>
         
-        {/* White fade on the left to cover logos behind text */}
-        <Box className={classes.whiteFadeLeft} />
-        
         {/* Logo slider */}
         <Box 
           className={classes.logoContainer}
@@ -158,19 +181,20 @@ const HiringPartners = () => {
               animationPlayState: isHovered ? 'paused' : 'running',
             }}
           >
-            {allLogos.map((logo, index) => (
+            {allLogos.map(({ Logo, alt }, index) => (
               <Box key={index} className={classes.logoWrapper}>
-                <img 
-                  src={logo.src} 
-                  alt={logo.alt} 
-                  className={classes.logo} 
+                <Logo 
+                  className={classes.logoSvg} 
+                  title={alt}
+                  aria-label={alt}
                 />
               </Box>
             ))}
           </Box>
         </Box>
         
-        {/* White fade on the right */}
+        {/* White fade overlays */}
+        <Box className={classes.whiteFadeLeft} />
         <Box className={classes.whiteFadeRight} />
       </Box>
     </Container>

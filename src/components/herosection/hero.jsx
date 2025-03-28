@@ -5,6 +5,7 @@ import Heroguy from "../../assets/heroguy.png";
 import { ReactComponent as AIbook } from "../../assets/ai-book.svg";
 import { ReactComponent as Simplecal } from "../../assets/simple-claender.svg";
 import { textAlign } from "@mui/system";
+import HiringPartners from "../hiringpartners/HiringPartners";
 
 const useStyles = makeStyles({
   heroContainer: {
@@ -245,6 +246,7 @@ const Hero = () => {
               />
             </Box>
           </Grid>
+        <HiringPartners />
         </Grid>
       </Container>
     </Box>

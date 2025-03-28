@@ -6,6 +6,8 @@ body {
     "Helvetica Neue", "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100vw;
+  overflow: 'hidden',
 }
 
 code {
