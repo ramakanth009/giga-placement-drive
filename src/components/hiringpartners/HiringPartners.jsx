@@ -13,7 +13,6 @@ import byjusLogo from '../../assets/logos/byjus.png';
 
 const useStyles = makeStyles((theme) => ({
   partnersSection: {
-    padding: '60px 0',
     backgroundColor: '#ffffff',
     borderRadius: '20px',
     boxShadow: '0 4px 20px rgba(0, 0, 0, 0.05)',
