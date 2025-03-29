@@ -14,6 +14,7 @@ import WhoShouldJoin from "../../components/whoshouldjoin/WhoShouldJoin";
 import LimitedTimeOffer from "../../components/limitedtimeoffer/LimitedTimeOffer";
 import OtherPrograms from "../../components/otherprograms/OtherPrograms";
 import Faq from "../../components/faq/Faq";
+import Footer from "../../components/footer/Footer";
 
 const Homepage = () => {
   return (
@@ -58,6 +59,7 @@ const Homepage = () => {
 
         <OtherPrograms />
         <Faq />
+        <Footer />
       </Box>
     </Box>
   );
