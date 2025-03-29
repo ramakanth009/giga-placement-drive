@@ -1,4 +1,3 @@
-// src/pages/contactus/ContactUs.jsx
 import React, { useState } from 'react';
 import { 
   Box, 
@@ -8,7 +7,8 @@ import {
   Paper,
   Link,
   InputLabel,
-  TextareaAutosize
+  TextareaAutosize,
+  Grid
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import Navbar from '../../components/navbar/Navbar';
@@ -138,7 +138,7 @@ const useStyles = makeStyles({
       position: 'absolute',
       left: '0',
       bottom: '0',
-      width: '40px',
+      width: '45px',
       height: '3px',
       backgroundColor: '#FFC614',
     },
@@ -341,9 +341,9 @@ const ContactUs = () => {
                 </Typography>
 
                 <form onSubmit={handleSubmit}>
-                  <Box sx={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                    {/* Name Field */}
-                    <Box>
+                  <Box sx={{ display: 'flex', flexDirection: 'row', mb: 3 }}>
+                    {/* Name field */}
+                    <Box sx={{ flex: 1, mr: 2 }}>
                       <InputLabel htmlFor="name" className={classes.label}>
                         Name
                       </InputLabel>
@@ -364,9 +364,9 @@ const ContactUs = () => {
                         }}
                       />
                     </Box>
-
-                    {/* Company Field */}
-                    <Box>
+                    
+                    {/* Company field */}
+                    <Box sx={{ flex: 1 }}>
                       <InputLabel htmlFor="company" className={classes.label}>
                         Company
                       </InputLabel>
@@ -387,9 +387,12 @@ const ContactUs = () => {
                         }}
                       />
                     </Box>
+                  </Box>
 
-                    {/* Phone Field */}
-                    <Box>
+                  {/* Phone and Email row */}
+                  <Box sx={{ display: 'flex', flexDirection: 'row', mb: 3 }}>
+                    {/* Phone field */}
+                    <Box sx={{ flex: 1, mr: 2 }}>
                       <InputLabel htmlFor="phone" className={classes.label}>
                         Phone
                       </InputLabel>
@@ -410,9 +413,9 @@ const ContactUs = () => {
                         }}
                       />
                     </Box>
-
-                    {/* Email Field */}
-                    <Box>
+                    
+                    {/* Email field */}
+                    <Box sx={{ flex: 1 }}>
                       <InputLabel htmlFor="email" className={classes.label}>
                         E-mail
                       </InputLabel>
@@ -433,68 +436,70 @@ const ContactUs = () => {
                         }}
                       />
                     </Box>
+                  </Box>
 
-                    {/* Subject Field */}
-                    <Box>
-                      <InputLabel htmlFor="subject" className={classes.label}>
-                        Subject
-                      </InputLabel>
-                      <TextField
-                        id="subject"
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleChange}
-                        variant="outlined"
-                        fullWidth
-                        placeholder="What is this regarding?"
-                        InputProps={{
-                          sx: {
-                            borderRadius: '8px',
-                            backgroundColor: '#f9fafc',
-                            height: '50px',
-                          },
-                        }}
-                      />
-                    </Box>
-
-                    {/* Message Field */}
-                    <Box>
-                      <InputLabel htmlFor="message" className={classes.label}>
-                        Message
-                      </InputLabel>
-                      <TextareaAutosize 
-                        id="message"
-                        name="message"
-                        value={formData.message} 
-                        onChange={handleChange} 
-                        className={classes.messageField}  
-                        placeholder="How can we help you?"
-                        minRows={3}
-                        style={{
-                          width: '100%',
-                          padding: '12px',
+                  {/* Subject in its own row */}
+                  <Box sx={{ mb: 3 }}>
+                    <InputLabel htmlFor="subject" className={classes.label}>
+                      Subject
+                    </InputLabel>
+                    <TextField
+                      id="subject"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      variant="outlined"
+                      fullWidth
+                      placeholder="What is this regarding?"
+                      InputProps={{
+                        sx: {
                           borderRadius: '8px',
-                          border: '1px solid #e0e0e0',
                           backgroundColor: '#f9fafc',
-                          fontSize: '14px',
-                          fontFamily: 'inherit',
-                          maxHeight: '100px',
-                        }} 
-                      />
-                    </Box>
+                          height: '50px',
+                        },
+                      }}
+                    />
+                  </Box>
 
-                    {/* Submit Button */}
-                    <Box sx={{ mt: 2 }}>
-                      <Button
-                        type="submit"
-                        variant="contained"
-                        className={classes.submitButton}
-                        fullWidth
-                        sx={{ height: '50px' }}
-                      >
-                        Send
-                      </Button>
-                    </Box>
+                  {/* Message in its own row */}
+                  <Box sx={{ mt: 3 }}>
+                    <InputLabel htmlFor="message" className={classes.label}>
+                      Message
+                    </InputLabel>
+                    <TextareaAutosize 
+                      id="message"
+                      name="message"
+                      value={formData.message} 
+                      onChange={handleChange} 
+                      className={classes.messageField}  
+                      placeholder="How can we help you?"
+                      minRows={3}
+                      maxRows={6}
+                      style={{
+                        width: '100%',
+                        padding: '12px',
+                        borderRadius: '8px',
+                        border: '1px solid #e0e0e0',
+                        backgroundColor: '#f9fafc',
+                        fontSize: '14px',
+                        fontFamily: 'inherit',
+                        height: '10px',
+                        boxSizing: 'border-box', // This ensures padding is included in width calculation
+                      }} 
+                    />
+                  </Box>
+
+                  {/* Submit Button in its own row */}
+                  <Box sx={{ mt: 4 }}>
+                    <Button
+                      type="submit"
+                      variant="contained"
+                      className={classes.submitButton}
+                      fullWidth
+                      sx={{ height: '50px' }}
+                    >
+                      Send
+                    </Button>
                   </Box>
                 </form>
               </Box>

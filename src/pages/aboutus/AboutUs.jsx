@@ -1,18 +1,10 @@
 // src/pages/aboutus/AboutUs.jsx
 import React from "react";
-import { Box, Typography, Container, Grid, Divider, Avatar } from "@mui/material";
+import { Box, Typography, Container, Divider, Avatar } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import Navbar from "../../components/navbar/Navbar";
 import Background from "../../components/background/Background";
 import Footer from "../../components/footer/Footer";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import PhoneIcon from "@mui/icons-material/Phone";
-import EmailIcon from "@mui/icons-material/Email";
-import LanguageIcon from "@mui/icons-material/Language";
 
 const useStyles = makeStyles({
   pageContainer: {
@@ -319,17 +311,14 @@ const AboutUs = () => {
               What Sets Us <span>Apart</span>
             </Typography>
             
-            <Grid 
-              container 
-              spacing={4} 
-              sx={{ 
-                mt: 4,
-                display: 'flex',
-                flexDirection: { xs: 'column', md: 'row' },
-                alignItems: 'stretch'
-              }}
-            >
-              <Grid item xs={12} md={4}>
+            <Box sx={{ 
+              display: 'flex',
+              flexDirection: { xs: 'column', md: 'row' },
+              gap: '30px',
+              mt: 4,
+              alignItems: 'stretch'
+            }}>
+              <Box sx={{ flex: '1 1 calc(33% - 20px)' }}>
                 <Box className={classes.programCard}>
                   <Typography className={classes.programTitle}>
                     Virtual Placement Drive
@@ -338,9 +327,9 @@ const AboutUs = () => {
                     A 30-day hiring & learning program with 100+ job opportunities, tailored training, and AI-powered learning.
                   </Typography>
                 </Box>
-              </Grid>
+              </Box>
               
-              <Grid item xs={12} md={4}>
+              <Box sx={{ flex: '1 1 calc(33% - 20px)' }}>
                 <Box className={classes.programCard}>
                   <Typography className={classes.programTitle}>
                     Master Internship Program
@@ -349,9 +338,9 @@ const AboutUs = () => {
                     A 3-month intensive internship where students develop one full-fledged product and receive 15 guaranteed interview opportunities.
                   </Typography>
                 </Box>
-              </Grid>
+              </Box>
               
-              <Grid item xs={12} md={4}>
+              <Box sx={{ flex: '1 1 calc(33% - 20px)' }}>
                 <Box className={classes.programCard}>
                   <Typography className={classes.programTitle}>
                     Advanced Full-Stack & Data Science Program
@@ -360,8 +349,8 @@ const AboutUs = () => {
                     A 9-month deep-dive training with three major projects, mini-projects, and 30 job opportunities for each student.
                   </Typography>
                 </Box>
-              </Grid>
-            </Grid>
+              </Box>
+            </Box>
           </Box>
 
           <Divider className={classes.divider} />
@@ -371,8 +360,12 @@ const AboutUs = () => {
             <Typography variant="h2" className={classes.sectionTitle} sx={{ mb: 4 }}>
               Our <span>Values</span>
             </Typography>
-            <Grid container spacing={5}>
-              <Grid item xs={12} md={6}>
+            <Box sx={{ 
+              display: 'flex', 
+              flexDirection: { xs: 'column', md: 'row' },
+              gap: '40px'
+            }}>
+              <Box sx={{ flex: 1 }}>
                 <Box className={classes.valueBox}>
                   <Typography className={classes.valueTitle}>
                     Our Vision
@@ -381,9 +374,9 @@ const AboutUs = () => {
                     At Gigaversity, we envision a future where education is not just about acquiring knowledge but about building real-world expertise. Our goal is to create a product-based learning ecosystem where students don't just learn concepts but develop industry-grade projects, making them job-ready from day one. We aspire to bridge the gap between academic learning and real-world job demands, ensuring every learner gets hands-on experience, professional mentorship, and direct career opportunities in top companies.
                   </Typography>
                 </Box>
-              </Grid>
+              </Box>
               
-              <Grid item xs={12} md={6}>
+              <Box sx={{ flex: 1 }}>
                 <Box className={classes.valueBox}>
                   <Typography className={classes.valueTitle}>
                     Our Mission
@@ -392,8 +385,8 @@ const AboutUs = () => {
                     Our mission at Gigaversity is to revolutionize technical and business education by providing job-specific, structured training programs that seamlessly blend theoretical learning with hands-on application. We emphasize real-world project development, ensuring students gain practical experience and build portfolio-worthy work. Through our Virtual Placement Drive and specialized Internship Programs, we create direct hiring opportunities by connecting skilled candidates with top recruiters.
                   </Typography>
                 </Box>
-              </Grid>
-            </Grid>
+              </Box>
+            </Box>
           </Box>
         </Container>
 

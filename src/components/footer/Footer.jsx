@@ -192,23 +192,39 @@ const Footer = () => {
                 </MuiLink>
               </li>
               <li className={classes.linkItem}>
-                <MuiLink component={Link} to="/about" className={classes.linkText}>
+                <MuiLink
+                  component={Link}
+                  to="/about"
+                  className={classes.linkText}
+                >
                   About Us
                 </MuiLink>
               </li>
               <li className={classes.linkItem}>
-                <MuiLink component={Link} to="/contact" className={classes.linkText}>
+                <MuiLink
+                  component={Link}
+                  to="/contact"
+                  className={classes.linkText}
+                >
                   Contact Us
                 </MuiLink>
               </li>
               <li className={classes.linkItem}>
-                <MuiLink component={Link} to="/privacy-policy" className={classes.linkText}>
+                <MuiLink
+                  component={Link}
+                  to="/privacy-policy"
+                  className={classes.linkText}
+                >
                   Privacy Policy
                 </MuiLink>
               </li>
               <li className={classes.linkItem}>
-                <MuiLink component={Link} to="/terms-of-use" className={classes.linkText}>
-                  Terms of Use
+                <MuiLink
+                  component={Link}
+                  to="/terms-and-conditions"
+                  className={classes.linkText}
+                >
+                  Terms & Conditions
                 </MuiLink>
               </li>
             </ul>
@@ -219,22 +235,38 @@ const Footer = () => {
             <Typography className={classes.sectionTitle}>Programs</Typography>
             <ul className={classes.linksList}>
               <li className={classes.linkItem}>
-                <MuiLink component={Link} to="/programs/full-stack" className={classes.programLink}>
+                <MuiLink
+                  component={Link}
+                  to="/programs/full-stack"
+                  className={classes.programLink}
+                >
                   Full Stack Development
                 </MuiLink>
               </li>
               <li className={classes.linkItem}>
-                <MuiLink component={Link} to="/programs/data-science" className={classes.programLink}>
+                <MuiLink
+                  component={Link}
+                  to="/programs/data-science"
+                  className={classes.programLink}
+                >
                   Data Science
                 </MuiLink>
               </li>
               <li className={classes.linkItem}>
-                <MuiLink component={Link} to="/programs/placement-drive" className={classes.programLink}>
+                <MuiLink
+                  component={Link}
+                  to="/programs/placement-drive"
+                  className={classes.programLink}
+                >
                   Placement Drive
                 </MuiLink>
               </li>
               <li className={classes.linkItem}>
-                <MuiLink component={Link} to="/programs/internship" className={classes.programLink}>
+                <MuiLink
+                  component={Link}
+                  to="/programs/internship"
+                  className={classes.programLink}
+                >
                   Master Internship
                 </MuiLink>
               </li>
@@ -247,7 +279,8 @@ const Footer = () => {
             <Box className={classes.contactItem}>
               <LocationOnIcon className={classes.contactIcon} />
               <Typography className={classes.contactText}>
-                The Headquarters, Dwaraka Pride, Hitech City, 500018, Hyderabad, Telangana, India
+                The Headquarters, Dwaraka Pride, Hitech City, 500018, Hyderabad,
+                Telangana, India
               </Typography>
             </Box>
             <Box className={classes.contactItem}>
