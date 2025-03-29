@@ -13,6 +13,7 @@ import HowItWorks from "../../components/howitworks/HowItWorks";
 import WhoShouldJoin from "../../components/whoshouldjoin/WhoShouldJoin";
 import LimitedTimeOffer from "../../components/limitedtimeoffer/LimitedTimeOffer";
 import OtherPrograms from "../../components/otherprograms/OtherPrograms";
+import Faq from "../../components/faq/Faq";
 
 const Homepage = () => {
   return (
@@ -56,6 +57,7 @@ const Homepage = () => {
         <LimitedTimeOffer />
 
         <OtherPrograms />
+        <Faq />
       </Box>
     </Box>
   );

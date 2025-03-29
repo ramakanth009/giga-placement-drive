@@ -45,7 +45,7 @@ const Background = () => {
   return (
     <Box className={classes.backgroundContainer}>
       <Box className={classes.backgroundElement} />
-      {/* <Box className={classes.backgroundElementSecondary} /> */}
+      <Box className={classes.backgroundElementSecondary} />
     </Box>
   );
 };
