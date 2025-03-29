@@ -9,6 +9,7 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { ReactComponent as GigaLogo } from "../../assets/GIGAVERSITY_LOGO.svg";
+import { Link as RouterLink } from "react-router-dom";
 
 const useStyles = makeStyles({
   footer: {
@@ -186,22 +187,22 @@ const Footer = () => {
             </Typography>
             <ul className={classes.linksList}>
               <li className={classes.linkItem}>
-                <Link href="/about-us" className={classes.linkText}>
+                <Link component={RouterLink} to="/about-us" className={classes.linkText}>
                   About Us
                 </Link>
               </li>
               <li className={classes.linkItem}>
-                <Link href="/terms-of-use" className={classes.linkText}>
+                <Link component={RouterLink} to="/terms-of-use" className={classes.linkText}>
                   Terms of Use
                 </Link>
               </li>
               <li className={classes.linkItem}>
-                <Link href="/privacy-policy" className={classes.linkText}>
+                <Link component={RouterLink} to="/privacy-policy" className={classes.linkText}>
                   Privacy Policy
                 </Link>
               </li>
               <li className={classes.linkItem}>
-                <Link href="/contact-us" className={classes.linkText}>
+                <Link component={RouterLink} to="/contact-us" className={classes.linkText}>
                   Contact Us
                 </Link>
               </li>
@@ -213,22 +214,22 @@ const Footer = () => {
             <Typography className={classes.sectionTitle}>Programs</Typography>
             <ul className={classes.linksList}>
               <li className={classes.linkItem}>
-                <Link href="#" className={classes.programLink}>
+                <Link component={RouterLink} to="/programs/full-stack" className={classes.programLink}>
                   Full Stack Development
                 </Link>
               </li>
               <li className={classes.linkItem}>
-                <Link href="#" className={classes.programLink}>
+                <Link component={RouterLink} to="/programs/data-science" className={classes.programLink}>
                   Data Science
                 </Link>
               </li>
               <li className={classes.linkItem}>
-                <Link href="#" className={classes.programLink}>
+                <Link component={RouterLink} to="/programs/placement-drive" className={classes.programLink}>
                   Placement Drive
                 </Link>
               </li>
               <li className={classes.linkItem}>
-                <Link href="#" className={classes.programLink}>
+                <Link component={RouterLink} to="/programs/master-internship" className={classes.programLink}>
                   Master Internship
                 </Link>
               </li>

@@ -23,6 +23,8 @@ import SchoolIcon from '@mui/icons-material/School';
 import CodeIcon from '@mui/icons-material/Code';
 import DataUsageIcon from '@mui/icons-material/DataUsage';
 
+// No need to import images as we're using Unsplash URLs directly
+
 const useStyles = makeStyles({
   section: {
     padding: '80px 0',
@@ -156,6 +158,8 @@ const useStyles = makeStyles({
   cardMedia: {
     height: '200px',
     transition: 'transform 0.6s',
+    objectFit: 'cover',
+    objectPosition: 'center',
   },
   hoverOverlay: {
     position: 'absolute',
@@ -341,7 +345,6 @@ const useStyles = makeStyles({
     top: '-200px',
     right: '-100px',
   },
-  // Removed bottom yellow glow
   // Responsive styles
   '@media (max-width: 960px)': {
     cardsContainer: {
@@ -367,6 +370,7 @@ const OtherPrograms = () => {
     setTabValue(newValue);
   };
 
+  // Using Unsplash images that represent student opportunity in respective fields
   const programs = [
     {
       id: 1,
@@ -381,7 +385,8 @@ const OtherPrograms = () => {
       rating: 4.8,
       students: 2854,
       tag: 'Full Stack',
-      image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80',
+      // Image showing collaboration and coding - represents opportunity in full stack
+      image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
       level: 'Intermediate',
       category: 'development'
     },
@@ -398,6 +403,7 @@ const OtherPrograms = () => {
       rating: 4.7,
       students: 2960,
       tag: 'Data Science',
+      // Image showing data visualization and analytics - represents opportunity in data science
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
       level: 'Advanced',
       category: 'datascience'
@@ -456,96 +462,96 @@ const OtherPrograms = () => {
             .map((program) => (
               <Box key={program.id} className={classes.cardWrapper}>
                 <Card key={program.id} className={classes.card} sx={{ height: '100%' }}>
-                {/* Tags */}
-                <Chip label={program.tag} className={classes.programTag} />
-                <Chip 
-                  icon={<AccessTimeIcon />} 
-                  label={program.duration}
-                  className={classes.durationTag} 
-                />
-                
-                {/* Media */}
-                <Box sx={{ position: 'relative' }}>
-                  <CardMedia
-                    component="img"
-                    className={classes.cardMedia}
-                    image={program.image}
-                    alt={program.title}
+                  {/* Tags */}
+                  <Chip label={program.tag} className={classes.programTag} />
+                  <Chip 
+                    icon={<AccessTimeIcon />} 
+                    label={program.duration}
+                    className={classes.durationTag} 
                   />
                   
-                  {/* Hover overlay with button */}
-                  <Box className={classes.hoverOverlay}>
-                    <Button 
-                      variant="contained" 
-                      className={classes.viewButton}
-                      endIcon={<LaunchIcon />}
-                    >
-                      Explore Program
-                    </Button>
-                  </Box>
-                </Box>
-                
-                {/* Content */}
-                <Box className={classes.cardContent}>
-                  <Typography className={classes.programTitle}>
-                    {program.title}
-                  </Typography>
-                  
-                  <Divider className={classes.divider} />
-                  
-                  {/* Features list */}
-                  <Box className={classes.featureList}>
-                    {program.features.map((feature, index) => (
-                      <Box key={index} className={classes.featureItem}>
-                        <Box 
-                          component="span" 
-                          sx={{ 
-                            width: '6px', 
-                            height: '6px', 
-                            borderRadius: '50%', 
-                            backgroundColor: '#FFC614',
-                            display: 'inline-block',
-                            marginRight: '12px',
-                          }} 
-                        />
-                        <Typography className={classes.featureText}>
-                          {feature}
-                        </Typography>
-                      </Box>
-                    ))}
+                  {/* Media */}
+                  <Box sx={{ position: 'relative' }}>
+                    <CardMedia
+                      component="img"
+                      className={classes.cardMedia}
+                      image={program.image}
+                      alt={program.title}
+                    />
+                    
+                    {/* Hover overlay with button */}
+                    <Box className={classes.hoverOverlay}>
+                      <Button 
+                        variant="contained" 
+                        className={classes.viewButton}
+                        endIcon={<LaunchIcon />}
+                      >
+                        Explore Program
+                      </Button>
+                    </Box>
                   </Box>
                   
-                  {/* Stats */}
-                  <Box className={classes.statsContainer}>
-                    <Box className={classes.stats}>
-                      <Box className={classes.statItem}>
-                        <StarIcon className={classes.statIcon} />
-                        <Typography className={classes.statText}>
-                          {program.rating}
-                        </Typography>
-                      </Box>
-                      
-                      <Box className={classes.statItem}>
-                        <PeopleAltOutlinedIcon className={classes.statIcon} />
-                        <Typography className={classes.statText}>
-                          {program.students}+ students
-                        </Typography>
-                      </Box>
+                  {/* Content */}
+                  <Box className={classes.cardContent}>
+                    <Typography className={classes.programTitle}>
+                      {program.title}
+                    </Typography>
+                    
+                    <Divider className={classes.divider} />
+                    
+                    {/* Features list */}
+                    <Box className={classes.featureList}>
+                      {program.features.map((feature, index) => (
+                        <Box key={index} className={classes.featureItem}>
+                          <Box 
+                            component="span" 
+                            sx={{ 
+                              width: '6px', 
+                              height: '6px', 
+                              borderRadius: '50%', 
+                              backgroundColor: '#FFC614',
+                              display: 'inline-block',
+                              marginRight: '12px',
+                            }} 
+                          />
+                          <Typography className={classes.featureText}>
+                            {feature}
+                          </Typography>
+                        </Box>
+                      ))}
                     </Box>
                     
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                      <Box className={classes.pulseDot} />
-                      <Typography sx={{ 
-                        fontSize: '0.85rem', 
-                        fontWeight: 500, 
-                        color: '#2ecc71' 
-                      }}>
-                        Enrolling Now
-                      </Typography>
+                    {/* Stats */}
+                    <Box className={classes.statsContainer}>
+                      <Box className={classes.stats}>
+                        <Box className={classes.statItem}>
+                          <StarIcon className={classes.statIcon} />
+                          <Typography className={classes.statText}>
+                            {program.rating}
+                          </Typography>
+                        </Box>
+                        
+                        <Box className={classes.statItem}>
+                          <PeopleAltOutlinedIcon className={classes.statIcon} />
+                          <Typography className={classes.statText}>
+                            {program.students}+ students
+                          </Typography>
+                        </Box>
+                      </Box>
+                      
+                      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                        <Box className={classes.pulseDot} />
+                        <Typography sx={{ 
+                          fontSize: '0.85rem', 
+                          fontWeight: 500, 
+                          color: '#2ecc71' 
+                        }}>
+                          Enrolling Now
+                        </Typography>
+                      </Box>
                     </Box>
                   </Box>
-                </Box>
-                              </Card>
+                </Card>
               </Box>
             ))}
         </Box>
