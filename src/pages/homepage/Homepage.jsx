@@ -12,6 +12,7 @@ import GigaversityAdvantage from "../../components/gigaversityadvantage/Gigavers
 import HowItWorks from "../../components/howitworks/HowItWorks";
 import WhoShouldJoin from "../../components/whoshouldjoin/WhoShouldJoin";
 import LimitedTimeOffer from "../../components/limitedtimeoffer/LimitedTimeOffer";
+import OtherPrograms from "../../components/otherprograms/OtherPrograms";
 
 const Homepage = () => {
   return (
@@ -53,6 +54,8 @@ const Homepage = () => {
         <WhoShouldJoin />
 
         <LimitedTimeOffer />
+
+        <OtherPrograms />
       </Box>
     </Box>
   );
