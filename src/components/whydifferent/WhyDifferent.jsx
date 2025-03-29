@@ -96,14 +96,11 @@ const useStyles = makeStyles({
     transition: 'all 0.3s ease',
     padding: '0 10px',
     minHeight: '120px',
-    display:"none",
+    display: 'flex',
     alignItems: 'flex-start',
     justifyContent: 'center',
     textAlign: 'center',
-    '&:hover': {
-      display: 'flex',
-
-    }
+    
   },
   arrowContainer: {
     position: 'absolute',
