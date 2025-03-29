@@ -7,7 +7,7 @@ const useStyles = makeStyles({
   wrapper: {
     position: 'relative',
     width: '100%',
-    padding: '32px 0',
+    padding: '32px 0 60px 0',
     overflow: 'hidden',
   },
   // Custom background element
@@ -23,6 +23,14 @@ const useStyles = makeStyles({
     filter: 'blur(100px)',
     zIndex: '-1',
   },
+  titleSection: {
+    position: 'relative',
+    backgroundColor: 'transparent',
+    padding: '20px',
+    maxWidth: '90%',
+    margin: '0 auto 30px auto',
+    zIndex: '2',
+  },
   title: {
     fontSize: '24px !important',
     fontWeight: 'bold !important',
@@ -37,14 +45,21 @@ const useStyles = makeStyles({
     fontSize: '14px !important',
     textAlign: 'center',
     color: '#555 !important',
-    marginBottom: '32px !important',
     maxWidth: '90%',
-    margin: '0 auto 32px auto !important',
+    margin: '0 auto !important',
   },
-  weekTitle: {
-    fontSize: '14px !important',
-    fontWeight: '500 !important',
-    marginBottom: '4px !important',
+  sectionTitle: {
+    textAlign: 'center', 
+    fontSize: '18px !important', 
+    fontWeight: 'bold !important', 
+    color: '#333 !important',
+    marginBottom: '32px !important',
+    position: 'relative',
+    zIndex: 1,
+    backgroundColor: 'transparent',
+    padding: '10px 20px',
+    width: 'fit-content',
+    margin: '0 auto 32px auto !important',
   },
   roleName: {
     fontSize: '15px !important',
@@ -77,6 +92,8 @@ const useStyles = makeStyles({
     padding: '0 24px',
     gap: '60px',
     boxSizing: 'border-box',
+    position: 'relative',
+    zIndex: '1',
   },
   cardWrapper: {
     width: '18%',
@@ -119,8 +136,8 @@ const useStyles = makeStyles({
     backgroundColor: '#f9a826',
     borderRadius: '50%',
     position: 'absolute',
-    top: '32px',
-    left: '32px',
+    top: '20px',
+    left: '20px',
   },
   pinkDot: {
     position: 'absolute',
@@ -130,12 +147,12 @@ const useStyles = makeStyles({
     backgroundColor: 'rgba(237, 30, 121, 0.7)',
     zIndex: '0',
   },
-  blueDot: {
+  tealDot: {
     position: 'absolute',
     width: '22px',
     height: '22px',
     borderRadius: '50%',
-    backgroundColor: 'rgba(0, 114, 255, 0.5)',
+    backgroundColor: 'rgba(0, 186, 188, 0.5)',
     zIndex: '0',
   },
   weekLabel: {
@@ -144,31 +161,40 @@ const useStyles = makeStyles({
     marginBottom: '8px !important',
     color: '#555 !important',
   },
-  headerContainer: {
-    position: 'relative',
-    marginBottom: '40px',
-    zIndex: '1',
-  },
-});
-
-// Function to generate random dots
-const generateDots = (count, type) => {
-  const dots = [];
-  for (let i = 0; i < count; i++) {
-    dots.push({
-      top: `${Math.random() * 100}%`,
-      left: `${Math.random() * 100}%`,
-      size: `${Math.random() * 18 + 10}px`,
-      opacity: Math.random() * 0.2 + 0.7,
-    });
+  dotsContainer: {
+    position: 'absolute',
+    top: '120px',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: 0,
+    pointerEvents: 'none',
   }
-  return dots;
-};
+});
 
 const DataScienceTrainingPlan = () => {
   const classes = useStyles();
-  const pinkDots = generateDots(15);
-  const blueDots = generateDots(12);
+
+  // Fixed position decorative dots with different positions than the Full Stack component
+  const pinkDots = [
+    { top: '20%', left: '15%', size: '15px', opacity: 0.7 },
+    { top: '45%', left: '8%', size: '22px', opacity: 0.6 },
+    { top: '75%', left: '12%', size: '18px', opacity: 0.8 },
+    { top: '60%', left: '22%', size: '12px', opacity: 0.7 },
+    { top: '35%', left: '78%', size: '22px', opacity: 0.6 },
+    { top: '55%', left: '88%', size: '16px', opacity: 0.7 },
+    { top: '85%', left: '92%', size: '14px', opacity: 0.8 },
+    { top: '50%', left: '72%', size: '18px', opacity: 0.6 },
+  ];
+  
+  const tealDots = [
+    { top: '25%', left: '88%', size: '24px', opacity: 0.5 },
+    { top: '30%', left: '25%', size: '20px', opacity: 0.6 },
+    { top: '65%', left: '60%', size: '22px', opacity: 0.5 },
+    { top: '80%', left: '40%', size: '26px', opacity: 0.4 },
+    { top: '20%', left: '50%', size: '18px', opacity: 0.6 },
+    { top: '55%', left: '45%', size: '16px', opacity: 0.5 },
+  ];
 
   const weeks = [
     {
@@ -202,37 +228,8 @@ const DataScienceTrainingPlan = () => {
       {/* Custom background gradient on left side */}
       <Box className={classes.backgroundGradient} />
       
-      {/* Random pink dots */}
-      {pinkDots.map((dot, index) => (
-        <Box 
-          key={`pink-${index}`}
-          className={classes.pinkDot}
-          sx={{
-            top: dot.top,
-            left: dot.left,
-            width: dot.size,
-            height: dot.size,
-            opacity: dot.opacity,
-          }}
-        />
-      ))}
-      
-      {/* Random blue dots */}
-      {blueDots.map((dot, index) => (
-        <Box 
-          key={`blue-${index}`}
-          className={classes.blueDot}
-          sx={{
-            top: dot.top,
-            left: dot.left,
-            width: dot.size,
-            height: dot.size,
-            opacity: dot.opacity,
-          }}
-        />
-      ))}
-
-      <Box className={classes.headerContainer}>
+      {/* Title and subtitle in a protected white box */}
+      <Box className={classes.titleSection}>
         <Box className={classes.orangeDot}></Box>
         <Typography variant="h4" className={classes.title}>
           1-Month Job-Specific Training Plan <span>In Data Science</span>
@@ -240,18 +237,43 @@ const DataScienceTrainingPlan = () => {
         <Typography variant="body1" className={classes.subtitle}>
           Each students selects one job role and receives both technical training and placement preparation
         </Typography>
+      </Box>
 
-        <Typography variant="h6" sx={{ 
-          textAlign: 'center', 
-          fontSize: '18px', 
-          fontWeight: 'bold', 
-          color: '#333',
-          marginBottom: '24px',
-          position: 'relative',
-          zIndex: 1,
-        }}>
-          Weekly Job Role Training Breakdown
-        </Typography>
+      <Typography variant="h6" className={classes.sectionTitle}>
+        Weekly Job Role Training Breakdown
+      </Typography>
+
+      {/* Dots container with fixed positions - different from Full Stack */}
+      <Box className={classes.dotsContainer}>
+        {/* Pink dots */}
+        {pinkDots.map((dot, index) => (
+          <Box 
+            key={`pink-${index}`}
+            className={classes.pinkDot}
+            sx={{
+              top: dot.top,
+              left: dot.left,
+              width: dot.size,
+              height: dot.size,
+              opacity: dot.opacity,
+            }}
+          />
+        ))}
+        
+        {/* Teal dots - using a different color than Full Stack */}
+        {tealDots.map((dot, index) => (
+          <Box 
+            key={`teal-${index}`}
+            className={classes.tealDot}
+            sx={{
+              top: dot.top,
+              left: dot.left,
+              width: dot.size,
+              height: dot.size,
+              opacity: dot.opacity,
+            }}
+          />
+        ))}
       </Box>
 
       <Box className={classes.cardsContainer}>

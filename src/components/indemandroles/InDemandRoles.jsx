@@ -1,6 +1,6 @@
 // src/components/indemandroles/InDemandRoles.jsx
 import React, { useState } from 'react';
-import { Box, Typography, Button, Container, Grid } from '@mui/material';
+import { Box, Typography, Button, Container } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import CodeIcon from '@mui/icons-material/Code';
 
@@ -40,10 +40,12 @@ const useStyles = makeStyles({
     padding: '4px',
     marginBottom: '40px',
     width: '100%',
-    maxWidth: '800px',
+    maxWidth: '750px',
+    justifyContent: 'space-between',
+    gap: '20px',
   },
   tabButton: {
-    flex: 1,
+    flex: '0 0 48%',
     padding: '16px !important',
     color: 'white !important',
     fontWeight: '600 !important',
@@ -166,6 +168,11 @@ const InDemandRoles = () => {
     },
   };
 
+  // Handle tab hover instead of click
+  const handleTabHover = (tabId) => {
+    setActiveTab(tabId);
+  };
+
   return (
     <Box className={classes.section}>
       <Container maxWidth="lg" className={classes.container}>
@@ -179,7 +186,7 @@ const InDemandRoles = () => {
           </Typography>
         </Box>
 
-        {/* Tabs */}
+        {/* Tabs - now with onMouseEnter for hover effect */}
         <Box className={classes.tabsContainer}>
           {tabs.map((tab) => (
             <Button
@@ -187,7 +194,7 @@ const InDemandRoles = () => {
               className={`${classes.tabButton} ${
                 activeTab === tab.id ? classes.activeTabButton : ''
               }`}
-              onClick={() => setActiveTab(tab.id)}
+              onMouseEnter={() => handleTabHover(tab.id)}
             >
               {tab.label}
             </Button>

@@ -8,6 +8,7 @@ import HiringPartners from "../../components/hiringpartners/HiringPartners";
 import JobKickstart from "../../components/jobkickstart/JobKickstart";
 import WhyDifferent from "../../components/whydifferent/WhyDifferent";
 import InDemandRoles from "../../components/indemandroles/InDemandRoles";
+import TrainingPlanComponent from "../../components/trainingplancomponent/TrainingPlanComponent";
 import FullStackTrainingPlan from "../../components/trainingplancomponent/FullStackTrainingPlan";
 import DataScienceTrainingPlan from "../../components/trainingplancomponent/DataScienceTrainingPlan";
 import GigaversityAdvantage from "../../components/gigaversityadvantage/GigaversityAdvantage";
@@ -50,6 +51,8 @@ const Homepage = () => {
 
         {/* Your other homepage content will go here */}
         <InDemandRoles />
+
+        {/* <TrainingPlanComponent /> */}
 
         <FullStackTrainingPlan />
 
