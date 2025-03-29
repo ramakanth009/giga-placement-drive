@@ -35,7 +35,7 @@ const useStyles = makeStyles({
   featureBox: {
     width: '25%',
     backgroundColor: '#ffffff',
-    borderRadius: '12px',
+    borderRadius: '12',
     padding: '30px 20px',
     display: 'flex',
     flexDirection: 'column',
@@ -51,7 +51,8 @@ const useStyles = makeStyles({
     '& svg path': {
       fill: '#2A2B6A',
       transition: 'fill 0.3s ease',
-    }
+    },
+    
   },
   activeFeatureBox: {
     backgroundColor: '#2A2B6A',
@@ -95,10 +96,14 @@ const useStyles = makeStyles({
     transition: 'all 0.3s ease',
     padding: '0 10px',
     minHeight: '120px',
-    display: 'flex',
+    display:"none",
     alignItems: 'flex-start',
     justifyContent: 'center',
     textAlign: 'center',
+    '&:hover': {
+      display: 'flex',
+
+    }
   },
   arrowContainer: {
     position: 'absolute',

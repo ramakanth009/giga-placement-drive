@@ -11,6 +11,7 @@ import InDemandRoles from "../../components/indemandroles/InDemandRoles";
 import GigaversityAdvantage from "../../components/gigaversityadvantage/GigaversityAdvantage";
 import HowItWorks from "../../components/howitworks/HowItWorks";
 import WhoShouldJoin from "../../components/whoshouldjoin/WhoShouldJoin";
+import LimitedTimeOffer from "../../components/limitedtimeoffer/LimitedTimeOffer";
 
 const Homepage = () => {
   return (
@@ -50,6 +51,8 @@ const Homepage = () => {
         <HowItWorks />
 
         <WhoShouldJoin />
+
+        <LimitedTimeOffer />
       </Box>
     </Box>
   );
