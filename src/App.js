@@ -1,8 +1,7 @@
-// src/App.js
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Homepage from "./pages/homepage/Homepage";
-import PrivacyPolicy from "./pages/privacypolicy/PrivacyPolicy";
+import ContactUs from "./pages/contactus/ContactUs";
 
 function App() {
   return (
@@ -10,8 +9,8 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          {/* Add more routes as needed */}
+          <Route path="/contact" element={<ContactUs />} />
+          {/* Add other routes here as your application grows */}
         </Routes>
       </div>
     </Router>

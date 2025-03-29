@@ -1,6 +1,6 @@
 // src/components/footer/Footer.jsx
 import React from "react";
-import { Box, Container, Typography, Link } from "@mui/material";
+import { Box, Container, Typography, Link as MuiLink } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -9,7 +9,7 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { ReactComponent as GigaLogo } from "../../assets/GIGAVERSITY_LOGO.svg";
-import { Link as RouterLink } from "react-router-dom";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
 const useStyles = makeStyles({
   footer: {
@@ -187,24 +187,29 @@ const Footer = () => {
             </Typography>
             <ul className={classes.linksList}>
               <li className={classes.linkItem}>
-                <Link component={RouterLink} to="/about-us" className={classes.linkText}>
+                <MuiLink component={Link} to="/" className={classes.linkText}>
+                  Home
+                </MuiLink>
+              </li>
+              <li className={classes.linkItem}>
+                <MuiLink component={Link} to="/about" className={classes.linkText}>
                   About Us
-                </Link>
+                </MuiLink>
               </li>
               <li className={classes.linkItem}>
-                <Link component={RouterLink} to="/terms-of-use" className={classes.linkText}>
-                  Terms of Use
-                </Link>
-              </li>
-              <li className={classes.linkItem}>
-                <Link component={RouterLink} to="/privacy-policy" className={classes.linkText}>
-                  Privacy Policy
-                </Link>
-              </li>
-              <li className={classes.linkItem}>
-                <Link component={RouterLink} to="/contact-us" className={classes.linkText}>
+                <MuiLink component={Link} to="/contact" className={classes.linkText}>
                   Contact Us
-                </Link>
+                </MuiLink>
+              </li>
+              <li className={classes.linkItem}>
+                <MuiLink href="/terms-of-use" className={classes.linkText}>
+                  Terms of Use
+                </MuiLink>
+              </li>
+              <li className={classes.linkItem}>
+                <MuiLink href="/privacy-policy" className={classes.linkText}>
+                  Privacy Policy
+                </MuiLink>
               </li>
             </ul>
           </Box>
@@ -214,24 +219,24 @@ const Footer = () => {
             <Typography className={classes.sectionTitle}>Programs</Typography>
             <ul className={classes.linksList}>
               <li className={classes.linkItem}>
-                <Link component={RouterLink} to="/programs/full-stack" className={classes.programLink}>
+                <MuiLink component={Link} to="/programs/full-stack" className={classes.programLink}>
                   Full Stack Development
-                </Link>
+                </MuiLink>
               </li>
               <li className={classes.linkItem}>
-                <Link component={RouterLink} to="/programs/data-science" className={classes.programLink}>
+                <MuiLink component={Link} to="/programs/data-science" className={classes.programLink}>
                   Data Science
-                </Link>
+                </MuiLink>
               </li>
               <li className={classes.linkItem}>
-                <Link component={RouterLink} to="/programs/placement-drive" className={classes.programLink}>
+                <MuiLink component={Link} to="/programs/placement-drive" className={classes.programLink}>
                   Placement Drive
-                </Link>
+                </MuiLink>
               </li>
               <li className={classes.linkItem}>
-                <Link component={RouterLink} to="/programs/master-internship" className={classes.programLink}>
+                <MuiLink component={Link} to="/programs/internship" className={classes.programLink}>
                   Master Internship
-                </Link>
+                </MuiLink>
               </li>
             </ul>
           </Box>
@@ -242,19 +247,19 @@ const Footer = () => {
             <Box className={classes.contactItem}>
               <LocationOnIcon className={classes.contactIcon} />
               <Typography className={classes.contactText}>
-                123 Tech Park, Sector 15, Gurugram, Haryana 122001, India
+                The Headquarters, Dwaraka Pride, Hitech City, 500018, Hyderabad, Telangana, India
               </Typography>
             </Box>
             <Box className={classes.contactItem}>
               <PhoneIcon className={classes.contactIcon} />
               <Typography className={classes.contactText}>
-                0866-3520200
+                9849048999
               </Typography>
             </Box>
             <Box className={classes.contactItem}>
               <EmailIcon className={classes.contactIcon} />
               <Typography className={classes.contactText}>
-                support@gmail.com
+                Info@gigaversity.in
               </Typography>
             </Box>
 

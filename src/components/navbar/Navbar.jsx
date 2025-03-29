@@ -13,6 +13,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import { makeStyles } from "@mui/styles";
 import { ReactComponent as GigaLogo } from "../../assets/GIGAVERSITY_LOGO.svg";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
 // Define styles using makeStyles
 const useStyles = makeStyles({
@@ -99,6 +100,18 @@ const useStyles = makeStyles({
     color: "#0a192f",
     fontWeight: "bold",
   },
+  active: {
+    position: "relative",
+    "&::after": {
+      content: '""',
+      position: "absolute",
+      bottom: "5px",
+      left: "16px",
+      right: "16px",
+      height: "2px",
+      backgroundColor: "#FFC614",
+    }
+  }
 });
 
 const Navbar = () => {
@@ -107,6 +120,9 @@ const Navbar = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+
+  // Get current path to highlight active link
+  const currentPath = window.location.pathname;
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -119,8 +135,8 @@ const Navbar = () => {
   return (
     <AppBar position="static" className={classes.appBar}>
       <Toolbar className={classes.toolbar}>
-        {/* Logo */}
-        <Box className={classes.logo}>
+        {/* Logo with Link to home */}
+        <Box className={classes.logo} component={Link} to="/">
           <GigaLogo className={classes.logoSvg} />
         </Box>
 
@@ -129,23 +145,42 @@ const Navbar = () => {
           <>
             {/* Navigation links - centered */}
             <Box className={classes.navContainer}>
-              <Button className={classes.navLink}>
+              <Button 
+                className={`${classes.navLink} ${currentPath === "/" ? classes.active : ""}`}
+                component={Link}
+                to="/"
+              >
                 Home
               </Button>
-              <Button className={classes.navLink}>
+              <Button 
+                className={`${classes.navLink} ${currentPath.includes("/courses") ? classes.active : ""}`}
+                component={Link}
+                to="/courses"
+              >
                 Courses
               </Button>
-              <Button className={classes.navLink}>
+              <Button 
+                className={`${classes.navLink} ${currentPath.includes("/about") ? classes.active : ""}`}
+                component={Link}
+                to="/about"
+              >
                 About Us
+              </Button>
+              <Button 
+                className={`${classes.navLink} ${currentPath.includes("/contact") ? classes.active : ""}`}
+                component={Link}
+                to="/contact"
+              >
+                Contact
               </Button>
             </Box>
 
             {/* Login and Sign Up buttons */}
             <Box className={classes.authContainer}>
-              <Button className={classes.loginButton}>
+              <Button className={classes.loginButton} component={Link} to="/login">
                 Login
               </Button>
-              <Button variant="contained" className={classes.signUpButton}>
+              <Button variant="contained" className={classes.signUpButton} component={Link} to="/signup">
                 Sign Up
               </Button>
             </Box>
@@ -170,11 +205,12 @@ const Navbar = () => {
           onClose={handleClose}
           className={classes.mobileMenu}
         >
-          <MenuItem onClick={handleClose} className={classes.menuItem}>Home</MenuItem>
-          <MenuItem onClick={handleClose} className={classes.menuItem}>Courses</MenuItem>
-          <MenuItem onClick={handleClose} className={classes.menuItem}>About Us</MenuItem>
-          <MenuItem onClick={handleClose} className={classes.menuItem}>Login</MenuItem>
-          <MenuItem onClick={handleClose} className={`${classes.menuItem} ${classes.signUpMenuItem}`}>
+          <MenuItem onClick={handleClose} className={classes.menuItem} component={Link} to="/">Home</MenuItem>
+          <MenuItem onClick={handleClose} className={classes.menuItem} component={Link} to="/courses">Courses</MenuItem>
+          <MenuItem onClick={handleClose} className={classes.menuItem} component={Link} to="/about">About Us</MenuItem>
+          <MenuItem onClick={handleClose} className={classes.menuItem} component={Link} to="/contact">Contact</MenuItem>
+          <MenuItem onClick={handleClose} className={classes.menuItem} component={Link} to="/login">Login</MenuItem>
+          <MenuItem onClick={handleClose} className={`${classes.menuItem} ${classes.signUpMenuItem}`} component={Link} to="/signup">
             Sign Up
           </MenuItem>
         </Menu>
