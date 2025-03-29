@@ -32,23 +32,9 @@ const useStyles = makeStyles({
   heroSection: {
     background: 'linear-gradient(135deg, #0a192f 0%, #284b82 100%)',
     color: 'white',
-    padding: '80px 0 50px',
+    padding: '60px 0 60px',
     position: 'relative',
     textAlign: 'center',
-  },
-  waveShape: {
-    position: 'absolute',
-    bottom: '-1px',
-    left: 0,
-    width: '100%',
-    overflow: 'hidden',
-    lineHeight: 0,
-    '& svg': {
-      position: 'relative',
-      display: 'block',
-      width: 'calc(100% + 1.3px)',
-      height: '70px',
-    },
   },
   pageTitle: {
     fontSize: '3rem !important',
@@ -62,17 +48,19 @@ const useStyles = makeStyles({
     lineHeight: '1.6 !important',
   },
   contactSection: {
-    padding: '60px 0',
+    padding: '0',
     background: '#f9fafc',
   },
   contactCard: {
-    padding: '40px',
-    borderRadius: '20px !important',
-    boxShadow: '0 10px 40px rgba(0, 0, 0, 0.1) !important',
+    padding: '40px 20px',
+    borderRadius: '0 !important',
+    boxShadow: 'none !important',
     overflow: 'hidden',
     position: 'relative',
     background: 'white',
-    marginTop: '-80px',
+    marginTop: '0',
+    width: '100%',
+    maxWidth: '100%',
   },
   infoTitle: {
     fontSize: '1.5rem !important',
@@ -137,10 +125,21 @@ const useStyles = makeStyles({
     },
   },
   formTitle: {
-    fontSize: '1.5rem !important',
+    fontSize: '1.7rem !important',
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
-    marginBottom: '24px !important',
+    marginBottom: '28px !important',
+    position: 'relative',
+    paddingBottom: '12px',
+    '&:after': {
+      content: '""',
+      position: 'absolute',
+      left: '0',
+      bottom: '0',
+      width: '40px',
+      height: '3px',
+      backgroundColor: '#FFC614',
+    },
   },
   formField: {
     marginBottom: '20px !important',
@@ -170,25 +169,25 @@ const useStyles = makeStyles({
   submitButton: {
     backgroundColor: '#2A2B6A !important',
     color: 'white !important',
-    padding: '12px 30px !important',
-    borderRadius: '8px !important',
+    padding: '14px 30px !important',
+    borderRadius: '10px !important',
     fontWeight: 'bold !important',
-    fontSize: '1rem !important',
+    fontSize: '1.1rem !important',
     transition: 'all 0.3s ease !important',
-    marginTop: '10px !important',
+    marginTop: '15px !important',
+    boxShadow: '0 4px 10px rgba(42, 43, 106, 0.2) !important',
     '&:hover': {
       backgroundColor: '#1a1b4f !important',
       transform: 'translateY(-3px)',
-      boxShadow: '0 5px 15px rgba(42, 43, 106, 0.3) !important',
+      boxShadow: '0 8px 20px rgba(42, 43, 106, 0.4) !important',
     },
   },
   mapSection: {
-    height: '500px',
+    height: '450px',
     width: '100%',
-    marginTop: '50px',
-    borderRadius: '12px',
+    marginTop: '0',
+    borderRadius: '0',
     overflow: 'hidden',
-    boxShadow: '0 8px 30px rgba(0, 0, 0, 0.1)',
   },
   // Responsive styles
   '@media (max-width: 960px)': {
@@ -246,7 +245,6 @@ const ContactUs = () => {
 
         {/* Hero Section */}
         <Box className={classes.heroSection}>
-          <Container maxWidth="lg">
             <Typography variant="h1" className={classes.pageTitle}>
               Contact Us
             </Typography>
@@ -254,45 +252,19 @@ const ContactUs = () => {
               Whether you're looking to upskill, switch careers, or hire top talent, Gigaversity is here
               to support your journey!
             </Typography>
-          </Container>
-
-          {/* Wave Shape */}
-          <Box className={classes.waveShape}>
-            <svg
-              viewBox="0 0 1200 120"
-              preserveAspectRatio="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
-                opacity=".25"
-                fill="#ffffff"
-              />
-              <path
-                d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
-                opacity=".5"
-                fill="#ffffff"
-              />
-              <path
-                d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
-                fill="#ffffff"
-              />
-            </svg>
-          </Box>
         </Box>
 
         {/* Contact Section */}
         <Box className={classes.contactSection}>
-          <Container maxWidth="lg">
-            <Paper className={classes.contactCard} elevation={3}>
-              <Grid container spacing={4}>
+            <Paper className={classes.contactCard} elevation={0}>
+              <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: { xs: '30px', md: '40px' }, px: { xs: 2, sm: 4, md: 6 } }}>
                 {/* Left Side - Contact Information */}
-                <Grid item xs={12} md={5}>
+                <Box sx={{ flex: '1' }}>
                   <Typography variant="h5" className={classes.infoTitle}>
                     Get in touch
                   </Typography>
                   <Typography variant="body1" className={classes.infoText}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Reach out to our team for any questions about our programs, partnerships, or career opportunities.
                   </Typography>
 
                   {/* Contact Details */}
@@ -348,17 +320,18 @@ const ContactUs = () => {
                       </Link>
                     </Box>
                   </Box>
-                </Grid>
+                </Box>
 
                 {/* Right Side - Contact Form */}
-                <Grid item xs={12} md={7}>
+                <Box sx={{ flex: '1' }}>
                   <Typography variant="h5" className={classes.formTitle}>
                     Send us a message
                   </Typography>
 
                   <form onSubmit={handleSubmit}>
-                    <Grid container spacing={2}>
-                      <Grid item xs={12} sm={6}>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                      {/* Name Field */}
+                      <Box>
                         <InputLabel htmlFor="name" className={classes.label}>
                           Name
                         </InputLabel>
@@ -374,12 +347,14 @@ const ContactUs = () => {
                             sx: {
                               borderRadius: '8px',
                               backgroundColor: '#f9fafc',
+                              height: '50px',
                             },
                           }}
                         />
-                      </Grid>
+                      </Box>
 
-                      <Grid item xs={12} sm={6}>
+                      {/* Company Field */}
+                      <Box>
                         <InputLabel htmlFor="company" className={classes.label}>
                           Company
                         </InputLabel>
@@ -395,12 +370,14 @@ const ContactUs = () => {
                             sx: {
                               borderRadius: '8px',
                               backgroundColor: '#f9fafc',
+                              height: '50px',
                             },
                           }}
                         />
-                      </Grid>
+                      </Box>
 
-                      <Grid item xs={12} sm={6}>
+                      {/* Phone Field */}
+                      <Box>
                         <InputLabel htmlFor="phone" className={classes.label}>
                           Phone
                         </InputLabel>
@@ -416,12 +393,14 @@ const ContactUs = () => {
                             sx: {
                               borderRadius: '8px',
                               backgroundColor: '#f9fafc',
+                              height: '50px',
                             },
                           }}
                         />
-                      </Grid>
+                      </Box>
 
-                      <Grid item xs={12} sm={6}>
+                      {/* Email Field */}
+                      <Box>
                         <InputLabel htmlFor="email" className={classes.label}>
                           E-mail
                         </InputLabel>
@@ -437,12 +416,14 @@ const ContactUs = () => {
                             sx: {
                               borderRadius: '8px',
                               backgroundColor: '#f9fafc',
+                              height: '50px',
                             },
                           }}
                         />
-                      </Grid>
+                      </Box>
 
-                      <Grid item xs={12}>
+                      {/* Subject Field */}
+                      <Box>
                         <InputLabel htmlFor="subject" className={classes.label}>
                           Subject
                         </InputLabel>
@@ -458,12 +439,14 @@ const ContactUs = () => {
                             sx: {
                               borderRadius: '8px',
                               backgroundColor: '#f9fafc',
+                              height: '50px',
                             },
                           }}
                         />
-                      </Grid>
+                      </Box>
 
-                      <Grid item xs={12}>
+                      {/* Message Field */}
+                      <Box>
                         <InputLabel htmlFor="message" className={classes.label}>
                           Message
                         </InputLabel>
@@ -474,24 +457,38 @@ const ContactUs = () => {
                           onChange={handleChange}
                           className={classes.messageField}
                           placeholder="How can we help you?"
-                          minRows={5}
+                          minRows={3}
+                          maxRows={4}
+                          style={{
+                            width: '100%',
+                            padding: '12px',
+                            borderRadius: '8px',
+                            border: '1px solid #e0e0e0',
+                            backgroundColor: '#f9fafc',
+                            fontSize: '16px',
+                            fontFamily: 'inherit',
+                            height: 'auto',
+                            maxHeight: '120px',
+                          }}
                         />
-                      </Grid>
+                      </Box>
 
-                      <Grid item xs={12}>
+                      {/* Submit Button */}
+                      <Box sx={{ mt: 2 }}>
                         <Button
                           type="submit"
                           variant="contained"
                           className={classes.submitButton}
                           fullWidth
+                          sx={{ height: '50px' }}
                         >
                           Send
                         </Button>
-                      </Grid>
-                    </Grid>
+                      </Box>
+                    </Box>
                   </form>
-                </Grid>
-              </Grid>
+                </Box>
+              </Box>
             </Paper>
 
             {/* Map Section */}
@@ -507,7 +504,6 @@ const ContactUs = () => {
                 title="Gigaversity Location"
               ></iframe>
             </Box>
-          </Container>
         </Box>
 
         <Footer />
