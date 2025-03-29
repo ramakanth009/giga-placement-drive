@@ -13,7 +13,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import { makeStyles } from "@mui/styles";
 import { ReactComponent as GigaLogo } from "../../assets/GIGAVERSITY_LOGO.svg";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { Link, useLocation } from "react-router-dom"; // Added useLocation to detect current path
 
 // Define styles using makeStyles
 const useStyles = makeStyles({
@@ -120,9 +120,10 @@ const Navbar = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-
-  // Get current path to highlight active link
-  const currentPath = window.location.pathname;
+  
+  // Use location to highlight active link
+  const location = useLocation();
+  const currentPath = location.pathname;
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -160,14 +161,14 @@ const Navbar = () => {
                 Courses
               </Button>
               <Button 
-                className={`${classes.navLink} ${currentPath.includes("/about") ? classes.active : ""}`}
+                className={`${classes.navLink} ${currentPath === "/about" ? classes.active : ""}`}
                 component={Link}
                 to="/about"
               >
                 About Us
               </Button>
               <Button 
-                className={`${classes.navLink} ${currentPath.includes("/contact") ? classes.active : ""}`}
+                className={`${classes.navLink} ${currentPath === "/contact" ? classes.active : ""}`}
                 component={Link}
                 to="/contact"
               >

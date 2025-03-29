@@ -54,8 +54,8 @@ const useStyles = makeStyles({
     textAlign: "center",
   },
   sectionTitle: {
-    fontSize: "1.25rem",
-    fontWeight: "bold",
+    fontSize: "1.25rem !important",
+    fontWeight: "bold !important",
     marginBottom: "30px !important",
     position: "relative",
     paddingBottom: "10px",
@@ -202,13 +202,13 @@ const Footer = () => {
                 </MuiLink>
               </li>
               <li className={classes.linkItem}>
-                <MuiLink href="/terms-of-use" className={classes.linkText}>
-                  Terms of Use
+                <MuiLink component={Link} to="/privacy-policy" className={classes.linkText}>
+                  Privacy Policy
                 </MuiLink>
               </li>
               <li className={classes.linkItem}>
-                <MuiLink href="/privacy-policy" className={classes.linkText}>
-                  Privacy Policy
+                <MuiLink component={Link} to="/terms-of-use" className={classes.linkText}>
+                  Terms of Use
                 </MuiLink>
               </li>
             </ul>
@@ -280,7 +280,7 @@ const Footer = () => {
 
         <Box className={classes.divider} />
         <Typography className={classes.copyright}>
-          Copyright © 2024 All rights reserved. Gigaversity
+          Copyright © 2025 All rights reserved. Gigaversity
         </Typography>
       </Container>
     </Box>

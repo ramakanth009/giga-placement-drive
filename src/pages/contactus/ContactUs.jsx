@@ -1,13 +1,10 @@
 // src/pages/contactus/ContactUs.jsx
-// This file should be placed in src/pages/contactus/ContactUs.jsx
 import React, { useState } from 'react';
 import { 
   Box, 
   Typography, 
-  Container, 
   TextField, 
   Button, 
-  Grid, 
   Paper,
   Link,
   InputLabel,
@@ -30,37 +27,42 @@ import LanguageIcon from '@mui/icons-material/Language';
 
 const useStyles = makeStyles({
   heroSection: {
-    background: 'linear-gradient(135deg, #0a192f 0%, #284b82 100%)',
-    color: 'white',
-    padding: '60px 0 60px',
     position: 'relative',
+    background: 'none',
+    color: 'white',
+    padding: '80px 30px 400px', // Increased padding to match SVG height
     textAlign: 'center',
-  },
-  pageTitle: {
-    fontSize: '3rem !important',
-    fontWeight: 'bold !important',
-    marginBottom: '16px !important',
-  },
-  pageSubtitle: {
-    fontSize: '1.2rem !important',
-    maxWidth: '700px',
-    margin: '0 auto !important',
-    lineHeight: '1.6 !important',
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      background: 'rgba(9, 72, 141, 0.78)', // Exact color from SVG
+      clipPath: 'polygon(0 0, 100% 0, 100% 66%, 0 100%)', // Matches SVG path
+      zIndex: -1,
+      height: '598px', // Exact SVG height
+      width: '100%',
+    },
   },
   contactSection: {
-    padding: '0',
-    background: '#f9fafc',
+    padding: '0 30px 60px',
+    background: 'transparent',
+    minHeight: '600px',
+    marginTop: '-300px', // Adjusted to blend with hero section
+    position: 'relative',
+    zIndex: 1,
   },
   contactCard: {
-    padding: '40px 20px',
-    borderRadius: '0 !important',
-    boxShadow: 'none !important',
+    padding: '50px 40px',
+    borderRadius: '20px !important',
+    boxShadow: '0 20px 60px rgba(0, 0, 0, 0.15) !important', // Slightly increased shadow
     overflow: 'hidden',
     position: 'relative',
     background: 'white',
-    marginTop: '0',
-    width: '100%',
-    maxWidth: '100%',
+    maxWidth: '1280px',
+    margin: '0 auto',
   },
   infoTitle: {
     fontSize: '1.5rem !important',
@@ -183,28 +185,38 @@ const useStyles = makeStyles({
     },
   },
   mapSection: {
-    height: '450px',
+    height: '500px',
     width: '100%',
-    marginTop: '0',
-    borderRadius: '0',
+    marginTop: '50px',
+    borderRadius: '12px',
     overflow: 'hidden',
+    boxShadow: '0 8px 30px rgba(0, 0, 0, 0.1)',
+    maxWidth: '1280px',
+    margin: '0 auto',
+  },
+  mapContainer: {
+    height: '100%',
+    width: '100%',
   },
   // Responsive styles
   '@media (max-width: 960px)': {
     contactCard: {
-      padding: '30px',
+      padding: '40px 30px',
     },
   },
   '@media (max-width: 600px)': {
+    heroSection: {
+      padding: '60px 20px 300px', // Adjusted for mobile while maintaining shape
+    },
     pageTitle: {
       fontSize: '2.2rem !important',
     },
-    heroSection: {
-      padding: '60px 0 40px',
-    },
     contactCard: {
-      padding: '25px',
-      marginTop: '-60px',
+      padding: '30px 20px',
+      marginTop: '-120px', // Adjusted margin for mobile
+    },
+    contactSection: {
+      padding: '0 20px 60px',
     },
   },
 });
@@ -245,265 +257,263 @@ const ContactUs = () => {
 
         {/* Hero Section */}
         <Box className={classes.heroSection}>
-            <Typography variant="h1" className={classes.pageTitle}>
-              Contact Us
-            </Typography>
-            <Typography variant="h6" className={classes.pageSubtitle}>
-              Whether you're looking to upskill, switch careers, or hire top talent, Gigaversity is here
-              to support your journey!
-            </Typography>
+          <Typography variant="h1" className={classes.pageTitle}>
+            Contact Us
+          </Typography>
+          <Typography variant="h6" className={classes.pageSubtitle}>
+            Whether you're looking to upskill, switch careers, or hire top talent, Gigaversity is here
+            to support your journey!
+          </Typography>
         </Box>
 
         {/* Contact Section */}
         <Box className={classes.contactSection}>
-            <Paper className={classes.contactCard} elevation={0}>
-              <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: { xs: '30px', md: '40px' }, px: { xs: 2, sm: 4, md: 6 } }}>
-                {/* Left Side - Contact Information */}
-                <Box sx={{ flex: '1' }}>
-                  <Typography variant="h5" className={classes.infoTitle}>
-                    Get in touch
-                  </Typography>
-                  <Typography variant="body1" className={classes.infoText}>
-                    Reach out to our team for any questions about our programs, partnerships, or career opportunities.
-                  </Typography>
+          <Paper className={classes.contactCard} elevation={3}>
+            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: { xs: '40px', md: '60px' } }}>
+              {/* Left Side - Contact Information */}
+              <Box sx={{ flex: '1' }}>
+                <Typography variant="h5" className={classes.infoTitle}>
+                  Get in touch
+                </Typography>
+                <Typography variant="body1" className={classes.infoText}>
+                  Reach out to our team for any questions about our programs, partnerships, or career opportunities.
+                </Typography>
 
-                  {/* Contact Details */}
-                  <Box sx={{ mt: 4 }}>
-                    <Box className={classes.contactInfoItem}>
-                      <PhoneIcon className={classes.contactIcon} />
-                      <Typography className={classes.contactText}>
-                        <Link href="tel:+919849048999">9849048999</Link>
-                      </Typography>
-                    </Box>
-
-                    <Box className={classes.contactInfoItem}>
-                      <EmailIcon className={classes.contactIcon} />
-                      <Typography className={classes.contactText}>
-                        <Link href="mailto:Info@gigaversity.in">Info@gigaversity.in</Link>
-                      </Typography>
-                    </Box>
-
-                    <Box className={classes.contactInfoItem}>
-                      <LanguageIcon className={classes.contactIcon} />
-                      <Typography className={classes.contactText}>
-                        <Link href="https://www.gigaversity.in" target="_blank">
-                          www.gigaversity.in
-                        </Link>
-                      </Typography>
-                    </Box>
-
-                    <Box className={classes.contactInfoItem}>
-                      <LocationOnIcon className={classes.contactIcon} />
-                      <Typography className={classes.contactText}>
-                        The Headquarters, Dwaraka Pride, Hitech City, 500018, Hyderabad, Telangana, India
-                      </Typography>
-                    </Box>
+                {/* Contact Details */}
+                <Box sx={{ mt: 4 }}>
+                  <Box className={classes.contactInfoItem}>
+                    <PhoneIcon className={classes.contactIcon} />
+                    <Typography className={classes.contactText}>
+                      <Link href="tel:+919849048999">9849048999</Link>
+                    </Typography>
                   </Box>
 
-                  {/* Social Media */}
-                  <Box className={classes.socialContainer}>
-                    <Typography variant="h6" className={classes.socialTitle}>
-                      Connect with us on Social Media
+                  <Box className={classes.contactInfoItem}>
+                    <EmailIcon className={classes.contactIcon} />
+                    <Typography className={classes.contactText}>
+                      <Link href="mailto:Info@gigaversity.in">Info@gigaversity.in</Link>
                     </Typography>
-                    <Box className={classes.socialIconsWrapper}>
-                      <Link href="#" className={classes.socialIcon}>
-                        <FacebookIcon />
+                  </Box>
+
+                  <Box className={classes.contactInfoItem}>
+                    <LanguageIcon className={classes.contactIcon} />
+                    <Typography className={classes.contactText}>
+                      <Link href="https://www.gigaversity.in" target="_blank">
+                        www.gigaversity.in
                       </Link>
-                      <Link href="#" className={classes.socialIcon}>
-                        <LinkedInIcon />
-                      </Link>
-                      <Link href="#" className={classes.socialIcon}>
-                        <TwitterIcon />
-                      </Link>
-                      <Link href="#" className={classes.socialIcon}>
-                        <InstagramIcon />
-                      </Link>
-                    </Box>
+                    </Typography>
+                  </Box>
+
+                  <Box className={classes.contactInfoItem}>
+                    <LocationOnIcon className={classes.contactIcon} />
+                    <Typography className={classes.contactText}>
+                      The Headquarters, Dwaraka Pride, Hitech City, 500018, Hyderabad, Telangana, India
+                    </Typography>
                   </Box>
                 </Box>
 
-                {/* Right Side - Contact Form */}
-                <Box sx={{ flex: '1' }}>
-                  <Typography variant="h5" className={classes.formTitle}>
-                    Send us a message
+                {/* Social Media */}
+                <Box className={classes.socialContainer}>
+                  <Typography variant="h6" className={classes.socialTitle}>
+                    Connect with us on Social Media
                   </Typography>
-
-                  <form onSubmit={handleSubmit}>
-                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                      {/* Name Field */}
-                      <Box>
-                        <InputLabel htmlFor="name" className={classes.label}>
-                          Name
-                        </InputLabel>
-                        <TextField
-                          id="name"
-                          name="name"
-                          value={formData.name}
-                          onChange={handleChange}
-                          variant="outlined"
-                          fullWidth
-                          placeholder="Your Name"
-                          InputProps={{
-                            sx: {
-                              borderRadius: '8px',
-                              backgroundColor: '#f9fafc',
-                              height: '50px',
-                            },
-                          }}
-                        />
-                      </Box>
-
-                      {/* Company Field */}
-                      <Box>
-                        <InputLabel htmlFor="company" className={classes.label}>
-                          Company
-                        </InputLabel>
-                        <TextField
-                          id="company"
-                          name="company"
-                          value={formData.company}
-                          onChange={handleChange}
-                          variant="outlined"
-                          fullWidth
-                          placeholder="Your Company"
-                          InputProps={{
-                            sx: {
-                              borderRadius: '8px',
-                              backgroundColor: '#f9fafc',
-                              height: '50px',
-                            },
-                          }}
-                        />
-                      </Box>
-
-                      {/* Phone Field */}
-                      <Box>
-                        <InputLabel htmlFor="phone" className={classes.label}>
-                          Phone
-                        </InputLabel>
-                        <TextField
-                          id="phone"
-                          name="phone"
-                          value={formData.phone}
-                          onChange={handleChange}
-                          variant="outlined"
-                          fullWidth
-                          placeholder="Your Phone Number"
-                          InputProps={{
-                            sx: {
-                              borderRadius: '8px',
-                              backgroundColor: '#f9fafc',
-                              height: '50px',
-                            },
-                          }}
-                        />
-                      </Box>
-
-                      {/* Email Field */}
-                      <Box>
-                        <InputLabel htmlFor="email" className={classes.label}>
-                          E-mail
-                        </InputLabel>
-                        <TextField
-                          id="email"
-                          name="email"
-                          value={formData.email}
-                          onChange={handleChange}
-                          variant="outlined"
-                          fullWidth
-                          placeholder="Your Email Address"
-                          InputProps={{
-                            sx: {
-                              borderRadius: '8px',
-                              backgroundColor: '#f9fafc',
-                              height: '50px',
-                            },
-                          }}
-                        />
-                      </Box>
-
-                      {/* Subject Field */}
-                      <Box>
-                        <InputLabel htmlFor="subject" className={classes.label}>
-                          Subject
-                        </InputLabel>
-                        <TextField
-                          id="subject"
-                          name="subject"
-                          value={formData.subject}
-                          onChange={handleChange}
-                          variant="outlined"
-                          fullWidth
-                          placeholder="What is this regarding?"
-                          InputProps={{
-                            sx: {
-                              borderRadius: '8px',
-                              backgroundColor: '#f9fafc',
-                              height: '50px',
-                            },
-                          }}
-                        />
-                      </Box>
-
-                      {/* Message Field */}
-                      <Box>
-                        <InputLabel htmlFor="message" className={classes.label}>
-                          Message
-                        </InputLabel>
-                        <TextareaAutosize
-                          id="message"
-                          name="message"
-                          value={formData.message}
-                          onChange={handleChange}
-                          className={classes.messageField}
-                          placeholder="How can we help you?"
-                          minRows={3}
-                          maxRows={4}
-                          style={{
-                            width: '100%',
-                            padding: '12px',
-                            borderRadius: '8px',
-                            border: '1px solid #e0e0e0',
-                            backgroundColor: '#f9fafc',
-                            fontSize: '16px',
-                            fontFamily: 'inherit',
-                            height: 'auto',
-                            maxHeight: '120px',
-                          }}
-                        />
-                      </Box>
-
-                      {/* Submit Button */}
-                      <Box sx={{ mt: 2 }}>
-                        <Button
-                          type="submit"
-                          variant="contained"
-                          className={classes.submitButton}
-                          fullWidth
-                          sx={{ height: '50px' }}
-                        >
-                          Send
-                        </Button>
-                      </Box>
-                    </Box>
-                  </form>
+                  <Box className={classes.socialIconsWrapper}>
+                    <Link href="#" className={classes.socialIcon}>
+                      <FacebookIcon />
+                    </Link>
+                    <Link href="#" className={classes.socialIcon}>
+                      <LinkedInIcon />
+                    </Link>
+                    <Link href="#" className={classes.socialIcon}>
+                      <TwitterIcon />
+                    </Link>
+                    <Link href="#" className={classes.socialIcon}>
+                      <InstagramIcon />
+                    </Link>
+                  </Box>
                 </Box>
               </Box>
-            </Paper>
 
-            {/* Map Section */}
-            <Box className={classes.mapSection}>
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243647.34203577092!2d78.27304392320808!3d17.41262782538929!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99daeaebd2c7%3A0xae93b78392bafbc2!2sHyderabad%2C%20Telangana%2C%20India!5e0!3m2!1sen!2sus!4v1712704582025!5m2!1sen!2sus"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Gigaversity Location"
-              ></iframe>
+              {/* Right Side - Contact Form */}
+              <Box sx={{ flex: '1' }}>
+                <Typography variant="h5" className={classes.formTitle}>
+                  Send us a message
+                </Typography>
+
+                <form onSubmit={handleSubmit}>
+                  <Box sx={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                    {/* Name Field */}
+                    <Box>
+                      <InputLabel htmlFor="name" className={classes.label}>
+                        Name
+                      </InputLabel>
+                      <TextField
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        variant="outlined"
+                        fullWidth
+                        placeholder="Your Name"
+                        InputProps={{
+                          sx: {
+                            borderRadius: '8px',
+                            backgroundColor: '#f9fafc',
+                            height: '50px',
+                          },
+                        }}
+                      />
+                    </Box>
+
+                    {/* Company Field */}
+                    <Box>
+                      <InputLabel htmlFor="company" className={classes.label}>
+                        Company
+                      </InputLabel>
+                      <TextField
+                        id="company"
+                        name="company"
+                        value={formData.company}
+                        onChange={handleChange}
+                        variant="outlined"
+                        fullWidth
+                        placeholder="Your Company"
+                        InputProps={{
+                          sx: {
+                            borderRadius: '8px',
+                            backgroundColor: '#f9fafc',
+                            height: '50px',
+                          },
+                        }}
+                      />
+                    </Box>
+
+                    {/* Phone Field */}
+                    <Box>
+                      <InputLabel htmlFor="phone" className={classes.label}>
+                        Phone
+                      </InputLabel>
+                      <TextField
+                        id="phone"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        variant="outlined"
+                        fullWidth
+                        placeholder="Your Phone Number"
+                        InputProps={{
+                          sx: {
+                            borderRadius: '8px',
+                            backgroundColor: '#f9fafc',
+                            height: '50px',
+                          },
+                        }}
+                      />
+                    </Box>
+
+                    {/* Email Field */}
+                    <Box>
+                      <InputLabel htmlFor="email" className={classes.label}>
+                        E-mail
+                      </InputLabel>
+                      <TextField
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        variant="outlined"
+                        fullWidth
+                        placeholder="Your Email Address"
+                        InputProps={{
+                          sx: {
+                            borderRadius: '8px',
+                            backgroundColor: '#f9fafc',
+                            height: '50px',
+                          },
+                        }}
+                      />
+                    </Box>
+
+                    {/* Subject Field */}
+                    <Box>
+                      <InputLabel htmlFor="subject" className={classes.label}>
+                        Subject
+                      </InputLabel>
+                      <TextField
+                        id="subject"
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleChange}
+                        variant="outlined"
+                        fullWidth
+                        placeholder="What is this regarding?"
+                        InputProps={{
+                          sx: {
+                            borderRadius: '8px',
+                            backgroundColor: '#f9fafc',
+                            height: '50px',
+                          },
+                        }}
+                      />
+                    </Box>
+
+                    {/* Message Field */}
+                    <Box>
+                      <InputLabel htmlFor="message" className={classes.label}>
+                        Message
+                      </InputLabel>
+                      <TextareaAutosize 
+                        id="message"
+                        name="message"
+                        value={formData.message} 
+                        onChange={handleChange} 
+                        className={classes.messageField}  
+                        placeholder="How can we help you?"
+                        minRows={3}
+                        style={{
+                          width: '100%',
+                          padding: '12px',
+                          borderRadius: '8px',
+                          border: '1px solid #e0e0e0',
+                          backgroundColor: '#f9fafc',
+                          fontSize: '14px',
+                          fontFamily: 'inherit',
+                          maxHeight: '100px',
+                        }} 
+                      />
+                    </Box>
+
+                    {/* Submit Button */}
+                    <Box sx={{ mt: 2 }}>
+                      <Button
+                        type="submit"
+                        variant="contained"
+                        className={classes.submitButton}
+                        fullWidth
+                        sx={{ height: '50px' }}
+                      >
+                        Send
+                      </Button>
+                    </Box>
+                  </Box>
+                </form>
+              </Box>
             </Box>
+          </Paper>
+
+          {/* Map Section */}
+          <Box className={classes.mapSection}>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.309174296064!2d78.3854539!3d17.4449101!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91e182b67081%3A0x5a8c3fca53ad932b!2sDwaraka%20Pride%20-The%20Headquarters%20Coworking%20Space%20in%20Hyderabad!5e0!3m2!1sen!2sin!4v1743279092017!5m2!1sen!2sin"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Gigaversity Location"
+            ></iframe>
+          </Box>
         </Box>
 
         <Footer />
