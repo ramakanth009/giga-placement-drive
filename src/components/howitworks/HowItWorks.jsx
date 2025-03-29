@@ -2,7 +2,7 @@
 import React from 'react';
 import { Box, Typography, Container } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import StudentImage from '../../assets/little-boy-at-the-table.png'; // You'll need to add this image to your assets folder
+import StudentImage from '../../assets/little-boy-at-the-table.png'; // Using the image from your project
 
 const useStyles = makeStyles({
   section: {
@@ -54,11 +54,11 @@ const useStyles = makeStyles({
   },
   stepLine: {
     position: 'absolute',
-    left: '38px',
+    left: '66px',
     top: '50px',
     bottom: '50px',
-    width: '2px',
-    backgroundColor: '#E0E0E0',
+    width: '0px',
+    borderLeft: '2.5px dashed #6A6B6C',
     zIndex: 1,
   },
   step: {
@@ -67,6 +67,9 @@ const useStyles = makeStyles({
     marginBottom: '30px',
     position: 'relative',
     zIndex: 2,
+    "& .MuiTypography-root + .MuiTypography-root": {
+      marginLeft: '5px', // Adding gap between number and text
+    }
   },
   stepNumber: {
     width: '76px',
@@ -79,7 +82,10 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     fontSize: '1.8rem !important',
     fontWeight: 'bold !important',
-    marginRight: '20px',
+    position: 'relative', // This ensures the number is positioned properly
+    "&.MuiTypography-root": {
+      marginRight: '5px',
+    }
   },
   stepText: {
     fontSize: '1.4rem !important',
@@ -146,15 +152,16 @@ const HowItWorks = () => {
               ))}
               
               {/* Decorative dots (like in the image) */}
-              <svg className={classes.decorationDots} width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="132" cy="135" r="8" fill="#2A2B6A38" />
-                <circle cx="132" cy="100" r="5" fill="#2A2B6A38" />
-                <circle cx="100" cy="135" r="5" fill="#2A2B6A38" />
-                <circle cx="110" cy="115" r="3" fill="#2A2B6A38" />
-                <circle cx="90" cy="123" r="2" fill="#2A2B6A38" />
-                <circle cx="123" cy="85" r="2" fill="#2A2B6A38" />
-                <circle cx="143" cy="118" r="4" fill="#2A2B6A38" />
-              </svg>
+              <svg className={classes.decorationDots} width="108" height="74" viewBox="0 0 108 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx="92.3902" cy="4.28421" rx="4.33914" ry="4.28421" fill="#2A2B6A" fill-opacity="0.22"/>
+  <ellipse cx="59.979" cy="23.2894" rx="6.23158" ry="6.1527" fill="#2A2B6A" fill-opacity="0.22"/>
+  <ellipse cx="4.33914" cy="29.21" rx="4.33914" ry="4.28421" fill="#2A2B6A" fill-opacity="0.22"/>
+  <ellipse cx="98.6068" cy="37.7792" rx="9.07274" ry="8.95789" fill="#2A2B6A" fill-opacity="0.22"/>
+  <ellipse cx="35.557" cy="44.0107" rx="6.70594" ry="6.62105" fill="#2A2B6A" fill-opacity="0.22"/>
+  <ellipse cx="71.3438" cy="60.4715" rx="13.7016" ry="13.5281" fill="#2A2B6A" fill-opacity="0.22"/>
+</svg>
+
+
             </Box>
           </Box>
         </Box>
