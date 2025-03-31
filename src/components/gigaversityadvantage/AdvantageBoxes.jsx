@@ -1,5 +1,5 @@
 // src/components/gigaversityadvantage/AdvantageBoxes.jsx
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
@@ -27,30 +27,154 @@ const useStyles = makeStyles({
   },
   advantageBox: {
     backgroundColor: '#FFFFFF',
-    borderRadius: '16px',
     boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.05)',
+    borderRadius: '20px 20px 120px 20px',
     padding: '35px 30px',
     width: '100%',
     height: 'auto',
     boxSizing: 'border-box',
+    transition: 'transform 0.4s ease, box-shadow 0.4s ease',
+    position: 'relative',
+    overflow: 'hidden',
+    '&:hover': {
+      transform: 'translateY(-10px)',
+      boxShadow: '0px 15px 30px rgba(0, 0, 0, 0.1)',
+      borderRadius: '16px',
+    },
+  },
+  leftBorder: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '4px',
+    height: '0%',
+    backgroundColor: '#2A2B6A',
+    transition: 'height 0.5s ease',
+  },
+  activeBorder: {
+    height: '100%',
   },
   boxTitle: {
-    padding:"0px 20px",
+    padding: "0px 20px",
     fontSize: '1.5rem !important',
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
     marginBottom: '15px !important',
-},
-boxDescription: {
-      padding:"0px 20px",
+    position: 'relative',
+    transition: 'transform 0.3s ease',
+  },
+  titleLine: {
+    position: 'absolute',
+    bottom: '-5px',
+    left: '20px',
+    width: '0px',
+    height: '2px',
+    backgroundColor: '#FFC614',
+    transition: 'width 0.4s ease',
+  },
+  activeTitleLine: {
+    width: '50px',
+  },
+  boxDescription: {
+    padding: "0px 20px",
     fontSize: '1rem !important',
     color: '#666666 !important',
     lineHeight: '1.5 !important',
+    opacity: 0.9,
+    transition: 'opacity 0.4s ease',
   },
+  activeDescription: {
+    opacity: 1,
+  },
+  // Removed icon styles
+  shimmerEffect: {
+    position: 'absolute',
+    top: 0,
+    left: '-100%',
+    width: '100%',
+    height: '100%',
+    background: 'linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%)',
+    pointerEvents: 'none',
+    transition: 'transform 1.5s ease',
+  },
+  animateShimmer: {
+    transform: 'translateX(200%)',
+  },
+  fadeInBox: {
+    opacity: 0,
+    transform: 'translateY(20px)',
+    transition: 'opacity 0.5s ease, transform 0.5s ease',
+  },
+  fadeInVisible: {
+    opacity: 1,
+    transform: 'translateY(0)',
+  }
 });
 
 const AdvantageBoxes = () => {
   const classes = useStyles();
+  const [activeBox, setActiveBox] = useState(null);
+  const [animated, setAnimated] = useState([]);
+  const [shimmerStates, setShimmerStates] = useState({});
+
+  // Set up the entry animations
+  useEffect(() => {
+    const timer1 = setTimeout(() => {
+      setAnimated([1]);
+    }, 100);
+    
+    const timer2 = setTimeout(() => {
+      setAnimated(prev => [...prev, 2]);
+    }, 300);
+    
+    const timer3 = setTimeout(() => {
+      setAnimated(prev => [...prev, 3]);
+    }, 500);
+    
+    const timer4 = setTimeout(() => {
+      setAnimated(prev => [...prev, 4]);
+    }, 700);
+    
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      clearTimeout(timer3);
+      clearTimeout(timer4);
+    };
+  }, []);
+
+  // Set up shimmer animations
+  useEffect(() => {
+    // Function to create periodic shimmer effect
+    const createShimmerEffect = (id) => {
+      // Set shimmer state to true
+      setShimmerStates(prev => ({ ...prev, [id]: true }));
+      
+      // After animation duration, reset it
+      setTimeout(() => {
+        setShimmerStates(prev => ({ ...prev, [id]: false }));
+      }, 1500); // Duration of the shimmer animation
+    };
+    
+    // Initial shimmer for each box with staggered timing
+    const initialTimers = [1, 2, 3, 4].map((id, index) => {
+      return setTimeout(() => {
+        createShimmerEffect(id);
+      }, 2000 + (index * 1000)); // Start after initial animations
+    });
+    
+    // Periodic shimmer effect
+    const intervalIds = [1, 2, 3, 4].map((id) => {
+      return setInterval(() => {
+        createShimmerEffect(id);
+      }, 7000 + Math.random() * 5000); // Random interval between 7-12 seconds
+    });
+    
+    return () => {
+      initialTimers.forEach(timer => clearTimeout(timer));
+      intervalIds.forEach(interval => clearInterval(interval));
+    };
+  }, []);
 
   const leftBoxes = [
     {
@@ -78,6 +202,14 @@ const AdvantageBoxes = () => {
     },
   ];
 
+  const handleMouseEnter = (id) => {
+    setActiveBox(id);
+  };
+
+  const handleMouseLeave = () => {
+    setActiveBox(null);
+  };
+
   return (
     <Box className={classes.boxesContainer}>
       {/* Left side boxes (positioned slightly higher) */}
@@ -85,14 +217,29 @@ const AdvantageBoxes = () => {
         {leftBoxes.map((box) => (
           <Box 
             key={box.id} 
-            className={classes.advantageBox}
+            className={`${classes.advantageBox} ${classes.fadeInBox} ${animated.includes(box.id) ? classes.fadeInVisible : ''}`}
+            onMouseEnter={() => handleMouseEnter(box.id)}
+            onMouseLeave={handleMouseLeave}
+            style={{ transitionDelay: `${(box.id - 1) * 0.2}s` }}
           >
+            <Box 
+              className={`${classes.leftBorder} ${activeBox === box.id ? classes.activeBorder : ''}`}
+            />
             <Typography variant="h5" className={classes.boxTitle}>
               {box.title}
+              <Box 
+                className={`${classes.titleLine} ${activeBox === box.id ? classes.activeTitleLine : ''}`}
+              />
             </Typography>
-            <Typography variant="body2" className={classes.boxDescription}>
+            <Typography 
+              variant="body2" 
+              className={`${classes.boxDescription} ${activeBox === box.id ? classes.activeDescription : ''}`}
+            >
               {box.description}
             </Typography>
+            <Box 
+              className={`${classes.shimmerEffect} ${shimmerStates[box.id] ? classes.animateShimmer : ''}`}
+            />
           </Box>
         ))}
       </Box>
@@ -102,14 +249,29 @@ const AdvantageBoxes = () => {
         {rightBoxes.map((box) => (
           <Box 
             key={box.id} 
-            className={classes.advantageBox}
+            className={`${classes.advantageBox} ${classes.fadeInBox} ${animated.includes(box.id) ? classes.fadeInVisible : ''}`}
+            onMouseEnter={() => handleMouseEnter(box.id)}
+            onMouseLeave={handleMouseLeave}
+            style={{ transitionDelay: `${(box.id - 1) * 0.2}s` }}
           >
+            <Box 
+              className={`${classes.leftBorder} ${activeBox === box.id ? classes.activeBorder : ''}`}
+            />
             <Typography variant="h5" className={classes.boxTitle}>
               {box.title}
+              <Box 
+                className={`${classes.titleLine} ${activeBox === box.id ? classes.activeTitleLine : ''}`}
+              />
             </Typography>
-            <Typography variant="body2" className={classes.boxDescription}>
+            <Typography 
+              variant="body2" 
+              className={`${classes.boxDescription} ${activeBox === box.id ? classes.activeDescription : ''}`}
+            >
               {box.description}
             </Typography>
+            <Box 
+              className={`${classes.shimmerEffect} ${shimmerStates[box.id] ? classes.animateShimmer : ''}`}
+            />
           </Box>
         ))}
       </Box>
