@@ -1,6 +1,6 @@
 // src/components/hiringpartners/HiringPartners.jsx
 import React, { useRef, useState } from 'react';
-import { Box, Typography, Container } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
 // Import SVG logos as React components
@@ -24,29 +24,44 @@ import { ReactComponent as WiproLogo } from '../../assets/hiringpartners/Wipro.s
 import { ReactComponent as ZohoLogo } from '../../assets/hiringpartners/zoho.svg';
 
 const useStyles = makeStyles({
-  partnersSection: {
-    backgroundColor: '#ffffff',
-    borderRadius: '20px',
-    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.05)',
-    margin: '0px 0px 0px 110px',
-    overflow: 'hidden',
-    position: 'relative',
-    display: 'flex',
-    alignItems: 'center',
-    height: '180px',
+  partnersSectionWrapper: {
+    width: '100%',
+    backgroundColor: 'transparent',
+    padding: '30px 0',
+    margin: '30px 0',
   },
   titleContainer: {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    marginBottom: '30px',
     position: 'relative',
     zIndex: 2,
-    width: '30%',
-    paddingLeft: '40px',
   },
   sectionTitle: {
     color: '#0a192f !important',
     fontWeight: 'bold !important',
-    textAlign: 'left !important',
-    position: 'relative',
+    textAlign: 'center !important',
     fontSize: '2rem !important',
+    position: 'relative',
+    '&:after': {
+      content: '""',
+      position: 'absolute',
+      width: '60px',
+      height: '3px',
+      backgroundColor: '#FFC614',
+      bottom: '-8px',
+      left: '50%',
+      transform: 'translateX(-50%)',
+    }
+  },
+  partnersSection: {
+    width: '100%',
+    position: 'relative',
+    display: 'flex',
+    alignItems: 'center',
+    height: '150px',
+    overflow: 'hidden',
   },
   logoContainer: {
     position: 'absolute',
@@ -64,7 +79,8 @@ const useStyles = makeStyles({
     transition: 'transform 20s linear infinite',
     animation: '$slideAnimation 25s linear infinite',
     position: 'absolute',
-    left: '28%', // Start after the text area
+    left: '0',
+    width: 'auto',
   },
   logoWrapper: {
     display: 'flex',
@@ -94,9 +110,9 @@ const useStyles = makeStyles({
     position: 'absolute',
     left: 0,
     top: 0,
-    width: '28%', // Match the logoSlider left position
+    width: '15%',
     height: '100%',
-    background: 'linear-gradient(to right, #ffffff 70%, rgba(255, 255, 255, 0))',
+    background: 'linear-gradient(to right, rgba(246, 249, 252, 1) 0%, rgba(246, 249, 252, 0.8) 40%, rgba(246, 249, 252, 0.4) 80%, rgba(246, 249, 252, 0))',
     zIndex: 1,
     pointerEvents: 'none', // Ensures click events pass through to elements below
   },
@@ -104,9 +120,9 @@ const useStyles = makeStyles({
     position: 'absolute',
     right: 0,
     top: 0,
-    width: '10%',
+    width: '15%',
     height: '100%',
-    background: 'linear-gradient(to left, #ffffff 70%, rgba(255, 255, 255, 0))',
+    background: 'linear-gradient(to left, rgba(246, 249, 252, 1) 0%, rgba(246, 249, 252, 0.8) 40%, rgba(246, 249, 252, 0.4) 80%, rgba(246, 249, 252, 0))',
     zIndex: 1,
     pointerEvents: 'none', // Ensures click events pass through to elements below
   },
@@ -158,15 +174,15 @@ const HiringPartners = () => {
   };
 
   return (
-    // <Container maxWidth="lg" sx={{ pt: 0, mt: 0 }}> {/* Remove padding/margin */}
+    <Box className={classes.partnersSectionWrapper}>
+      {/* Title at the top and centered */}
+      <Box className={classes.titleContainer}>
+        <Typography variant="h4" className={classes.sectionTitle}>
+          Our Hiring Partners
+        </Typography>
+      </Box>
+      
       <Box className={classes.partnersSection}>
-        {/* Title on the left */}
-        <Box className={classes.titleContainer}>
-          <Typography variant="h4" className={classes.sectionTitle}>
-            Our Hiring<br />Partners
-          </Typography>
-        </Box>
-        
         {/* Logo slider */}
         <Box 
           className={classes.logoContainer}
@@ -194,9 +210,9 @@ const HiringPartners = () => {
         
         {/* White fade overlays */}
         <Box className={classes.whiteFadeLeft} />
-        {/* <Box className={classes.whiteFadeRight} /> */}
+        <Box className={classes.whiteFadeRight} />
       </Box>
-    // </Container>
+    </Box>
   );
 };
 

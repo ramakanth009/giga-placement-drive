@@ -37,7 +37,6 @@ const useStyles = makeStyles({
     height: "auto",
     display: "block",
     borderRadius: "8px",
-    border: "4px solid #fff",
     boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
   },
   backgroundBox: {

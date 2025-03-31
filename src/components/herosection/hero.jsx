@@ -4,9 +4,6 @@ import { makeStyles } from "@mui/styles";
 import Heroguy from "../../assets/heroguy.png";
 import { ReactComponent as AIbook } from "../../assets/ai-book.svg";
 import { ReactComponent as Simplecal } from "../../assets/simple-claender.svg";
-import { textAlign } from "@mui/system";
-// Remove the HiringPartners import since we'll handle it in Homepage.jsx instead
-// import HiringPartners from "../hiringpartners/HiringPartners";
 
 const useStyles = makeStyles({
   heroContainer: {
@@ -83,6 +80,52 @@ const useStyles = makeStyles({
     alignItems: "center",
     margin: "4px",
     maxWidth: "90%",
+    transition: "all 0.5s ease",
+  },
+  featureCardAnimated: {
+    animation: "$pulse 2s infinite alternate",
+    position: "relative",
+    "&::after": {
+      content: '""',
+      position: "absolute",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      borderRadius: "8px",
+      boxShadow: "0 0 15px 5px rgba(255, 198, 20, 0.5)",
+      opacity: 0,
+      animation: "$glow 2s infinite alternate",
+    },
+  },
+  "@keyframes pulse": {
+    "0%": {
+      transform: "scale(1)",
+    },
+    "100%": {
+      transform: "scale(1.05)",
+    },
+  },
+  "@keyframes glow": {
+    "0%": {
+      opacity: 0,
+    },
+    "100%": {
+      opacity: 0.7,
+    },
+  },
+  featureCounterAnimation: {
+    animation: "$countUp 2s forwards",
+  },
+  "@keyframes countUp": {
+    "0%": {
+      opacity: 0,
+      transform: "translateY(20px)",
+    },
+    "100%": {
+      opacity: 1,
+      transform: "translateY(0)",
+    },
   },
   featureIcon1: {
     marginRight: "12px",
@@ -98,6 +141,15 @@ const useStyles = makeStyles({
     bottom: "70px",
     left: "55px",
     zIndex: 2,
+    animation: "$bounce 3s infinite",
+  },
+  "@keyframes bounce": {
+    "0%, 100%": {
+      transform: "translateY(0)",
+    },
+    "50%": {
+      transform: "translateY(-10px)",
+    },
   },
   featureText: {
     color: "#2F2E51",
@@ -107,6 +159,15 @@ const useStyles = makeStyles({
     "&.MuiTypography-root": {
       fontFamily: "Montserrat, sans-serif",
       textAlign: "center",
+    },
+    animation: "$fadeIn 1s ease",
+  },
+  "@keyframes fadeIn": {
+    "0%": {
+      opacity: 0,
+    },
+    "100%": {
+      opacity: 1,
     },
   },
   heroImage: {
@@ -118,12 +179,35 @@ const useStyles = makeStyles({
     top: "115px",
     left: "11px",
     zIndex: 2,
+    animation: "$slideInLeft 1s ease",
+  },
+  "@keyframes slideInLeft": {
+    "0%": {
+      opacity: 0,
+      transform: "translateX(-50px)",
+    },
+    "100%": {
+      opacity: 1,
+      transform: "translateX(0)",
+    },
   },
   featureCardTopRight: {
     position: "absolute",
     top: "175px",
     right: "-105px",
     zIndex: 2,
+    animation: "$slideInRight 1s ease 0.3s",
+    animationFillMode: "backwards",
+  },
+  "@keyframes slideInRight": {
+    "0%": {
+      opacity: 0,
+      transform: "translateX(50px)",
+    },
+    "100%": {
+      opacity: 1,
+      transform: "translateX(0)",
+    },
   },
   featureCardBottomLeft: {
     width: "40%",
@@ -131,6 +215,18 @@ const useStyles = makeStyles({
     bottom: "90px",
     left: "0",
     zIndex: 2,
+    animation: "$slideInBottom 1s ease 0.6s",
+    animationFillMode: "backwards",
+  },
+  "@keyframes slideInBottom": {
+    "0%": {
+      opacity: 0,
+      transform: "translateY(50px)",
+    },
+    "100%": {
+      opacity: 1,
+      transform: "translateY(0)",
+    },
   },
   featureCardBottomRight: {
     width: "40%",
@@ -138,6 +234,8 @@ const useStyles = makeStyles({
     bottom: "60px",
     right: "-68px",
     zIndex: 2,
+    animation: "$slideInBottom 1s ease 0.9s",
+    animationFillMode: "backwards",
   },
   imageContainer: {
     position: "relative",
@@ -154,7 +252,41 @@ const useStyles = makeStyles({
     position: "relative",
     minHeight: "500px",
   },
+  numberCounter: {
+    animation: "$numberPulse 2s infinite alternate",
+    color: "#2F2E51 !important", // Changed from yellow to the original text color
+    fontWeight: "bold !important",
+  },
+  "@keyframes numberPulse": {
+    "0%": {
+      textShadow: "0 0 5px rgba(255, 198, 20, 0.3)",
+    },
+    "100%": {
+      textShadow: "0 0 15px rgba(255, 198, 20, 0.8)",
+    },
+  },
 });
+
+// Component for animated counter
+const AnimatedCounter = ({ end, duration = 2000, prefix = "", suffix = "" }) => {
+  const [count, setCount] = React.useState(0);
+  const classes = useStyles();
+  
+  React.useEffect(() => {
+    let startTimestamp = null;
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      setCount(Math.floor(progress * end));
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+    window.requestAnimationFrame(step);
+  }, [end, duration]);
+
+  return <span className={classes.numberCounter}>{prefix}{count}{suffix}</span>;
+};
 
 const Hero = () => {
   const classes = useStyles();
@@ -198,7 +330,7 @@ const Hero = () => {
           <Grid item xs={12} md={5} lg={4} className={classes.imageCol}>
             {/* Feature Cards */}
             <Box className={classes.featureCardTopLeft}>
-              <Box className={classes.featureCard}>
+              <Box className={`${classes.featureCard} ${classes.featureCardAnimated}`}>
                 <Box className={classes.featureIcon1}>
                   <AIbook />
                 </Box>
@@ -209,7 +341,7 @@ const Hero = () => {
             </Box>
 
             <Box className={classes.featureCardTopRight}>
-              <Box className={classes.featureCard}>
+              <Box className={`${classes.featureCard} ${classes.featureCardAnimated}`}>
                 <Box className={classes.featureIcon1}>
                   <Simplecal />
                 </Box>
@@ -220,8 +352,10 @@ const Hero = () => {
             </Box>
 
             <Box className={classes.featureCardBottomLeft}>
-              <Box className={classes.featureCard}>
-                <Box className={classes.featureIcon2}>400+ </Box>
+              <Box className={`${classes.featureCard} ${classes.featureCardAnimated}`}>
+                <Box className={classes.featureIcon2}>
+                  <AnimatedCounter end={400} suffix="+" />
+                </Box>
                 <Typography className={classes.featureText} sx={{ mt: 2 }}>
                   Placement Opportunities
                 </Typography>
@@ -229,9 +363,9 @@ const Hero = () => {
             </Box>
 
             <Box className={classes.featureCardBottomRight}>
-              <Box className={classes.featureCard}>
+              <Box className={`${classes.featureCard} ${classes.featureCardAnimated}`}>
                 <Typography className={classes.featureText}>
-                  Weekly 40+ Opportunities
+                  Weekly <AnimatedCounter end={40} suffix="+" /> Opportunities
                 </Typography>
               </Box>
             </Box>
