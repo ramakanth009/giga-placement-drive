@@ -268,7 +268,7 @@ const AboutUs = () => {
               We spoke to recruiters, hiring managers, and industry experts, and the message was clear:
             </Typography>
             <Typography className={classes.emphasis}>
-              Degrees don't get jobs—skills do.
+            Degrees can open doors, but skills get you the job.
             </Typography>
             <Typography className={classes.sectionText}>
               Yet, most education systems still focus on theory over practice, leaving students unprepared for real job roles. Even edtech platforms focus on generic courses but fail to bridge the learning-to-hiring gap.
@@ -279,7 +279,7 @@ const AboutUs = () => {
           </Box>
 
           {/* Founders Section */}
-          <Box className={classes.founderSection}>
+          {/* <Box className={classes.founderSection}>
             <Typography variant="h3" className={classes.founderTitle}>
               Our Leadership
             </Typography>
@@ -303,7 +303,7 @@ const AboutUs = () => {
                 </Typography>
               </Box>
             </Box>
-          </Box>
+          </Box> */}
 
           {/* What Sets Us Apart Section */}
           <Box className={classes.programsSection}>

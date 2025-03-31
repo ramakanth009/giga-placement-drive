@@ -62,15 +62,15 @@ const useStyles = makeStyles({
     color: '#0A192F !important',
   },
   applyButton: {
-    backgroundColor: '#001021 !important',
-    color: 'white !important',
-    padding: '12px 40px !important',
-    borderRadius: '4px !important',
-    fontWeight: 'bold !important',
-    fontSize: '1.2rem !important',
-    textTransform: 'none !important',
-    '&:hover': {
-      backgroundColor: '#142640 !important',
+    backgroundColor: "#232459 !important",
+    color: "white !important",
+    padding: "12px 40px !important",
+    borderRadius: "4px !important",
+    fontWeight: "bold !important",
+    fontSize: "1.2rem !important",
+    textTransform: "none !important",
+    "&:hover": {
+      backgroundColor: "#1a1b43 !important", // Slightly darker shade for hover
     },
   },
   includedTitle: {

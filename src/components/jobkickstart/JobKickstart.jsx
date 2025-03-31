@@ -23,7 +23,7 @@ const useStyles = makeStyles({
   leftContainer: {
     position: "relative",
     width: "40%",
-    height: "440px",
+    height: "415px",
     display: "flex",
     justifyContent: "flex-end",
   },

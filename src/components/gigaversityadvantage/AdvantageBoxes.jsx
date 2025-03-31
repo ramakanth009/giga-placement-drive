@@ -26,21 +26,26 @@ const useStyles = makeStyles({
     marginTop: '20px', // Positioning right boxes slightly lower
   },
   advantageBox: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#ffffff',
     boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.05)',
-    borderRadius: '20px 20px 120px 20px',
+    borderRadius: '20px 20px 60px 20px', /* Initial border-radius */
     padding: '35px 30px',
     width: '100%',
     height: 'auto',
     boxSizing: 'border-box',
-    transition: 'transform 0.4s ease, box-shadow 0.4s ease',
     position: 'relative',
     overflow: 'hidden',
+    transition: `
+      transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
+      box-shadow 0.8s ease,
+      border-radius 2s cubic-bezier(0.22, 1, 0.36, 1)
+    `,
+    willChange: 'border-radius, transform, box-shadow',
     '&:hover': {
       transform: 'translateY(-10px)',
       boxShadow: '0px 15px 30px rgba(0, 0, 0, 0.1)',
-      borderRadius: '16px',
-    },
+      borderRadius: '16px 16px 16px 16px'
+    }
   },
   leftBorder: {
     position: 'absolute',
@@ -49,7 +54,7 @@ const useStyles = makeStyles({
     width: '4px',
     height: '0%',
     backgroundColor: '#2A2B6A',
-    transition: 'height 0.5s ease',
+    transition: 'height 0.9s cubic-bezier(0.19, 1, 0.22, 1)',
   },
   activeBorder: {
     height: '100%',
@@ -61,7 +66,7 @@ const useStyles = makeStyles({
     color: '#2A2B6A !important',
     marginBottom: '15px !important',
     position: 'relative',
-    transition: 'transform 0.3s ease',
+    transition: 'transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1)',
   },
   titleLine: {
     position: 'absolute',
@@ -70,7 +75,7 @@ const useStyles = makeStyles({
     width: '0px',
     height: '2px',
     backgroundColor: '#FFC614',
-    transition: 'width 0.4s ease',
+    transition: 'width 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
   },
   activeTitleLine: {
     width: '50px',
@@ -81,7 +86,7 @@ const useStyles = makeStyles({
     color: '#666666 !important',
     lineHeight: '1.5 !important',
     opacity: 0.9,
-    transition: 'opacity 0.4s ease',
+    transition: 'opacity 0.7s ease',
   },
   activeDescription: {
     opacity: 1,
@@ -103,7 +108,7 @@ const useStyles = makeStyles({
   fadeInBox: {
     opacity: 0,
     transform: 'translateY(20px)',
-    transition: 'opacity 0.5s ease, transform 0.5s ease',
+    transition: 'opacity 0.8s ease, transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)',
   },
   fadeInVisible: {
     opacity: 1,
@@ -202,6 +207,8 @@ const AdvantageBoxes = () => {
     },
   ];
 
+  // Check icon removed
+
   const handleMouseEnter = (id) => {
     setActiveBox(id);
   };
@@ -237,6 +244,7 @@ const AdvantageBoxes = () => {
             >
               {box.description}
             </Typography>
+            {/* Removed check icon */}
             <Box 
               className={`${classes.shimmerEffect} ${shimmerStates[box.id] ? classes.animateShimmer : ''}`}
             />
@@ -269,6 +277,7 @@ const AdvantageBoxes = () => {
             >
               {box.description}
             </Typography>
+            {/* Removed check icon */}
             <Box 
               className={`${classes.shimmerEffect} ${shimmerStates[box.id] ? classes.animateShimmer : ''}`}
             />

@@ -61,14 +61,14 @@ const useStyles = makeStyles({
     color: "#0a192f !important",
   },
   joinButton: {
-    backgroundColor: "#001021 !important",
+    backgroundColor: "#232459 !important",
     color: "white !important",
     padding: "12px 32px !important",
     borderRadius: "4px !important",
     fontWeight: "bold !important",
     marginBottom: "12px !important",
     "&:hover": {
-      backgroundColor: "#142640 !important",
+      backgroundColor: "#1a1b43 !important", // Slightly darker shade for hover
     },
   },
   featureCard: {
@@ -93,7 +93,7 @@ const useStyles = makeStyles({
       right: 0,
       bottom: 0,
       borderRadius: "8px",
-      boxShadow: "0 0 15px 5px rgba(255, 198, 20, 0.5)",
+      boxShadow: "0 0 8px 3px rgba(255, 198, 20, 0.2)",
       opacity: 0,
       animation: "$glow 2s infinite alternate",
     },

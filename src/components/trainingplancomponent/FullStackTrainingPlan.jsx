@@ -24,11 +24,11 @@ const useStyles = makeStyles({
     zIndex: '-1',
   },
   title: {
-    fontSize: '24px !important',
+    fontSize: "2.5rem !important",
     fontWeight: 'bold !important',
     textAlign: 'center',
     marginBottom: '8px !important',
-    color: '#1a237e !important',
+    color: "#2A2B6A !important",
     position: 'relative',
     zIndex: '2',
     '& span': {
@@ -36,7 +36,7 @@ const useStyles = makeStyles({
     },
   },
   subtitle: {
-    fontSize: '14px !important',
+    fontSize: '1.2rem !important',
     textAlign: 'center',
     color: '#555 !important',
     marginBottom: '32px !important',
@@ -46,7 +46,7 @@ const useStyles = makeStyles({
     zIndex: '2',
   },
   weekTitle: {
-    fontSize: '14px !important',
+    fontSize: '1rem !important',
     fontWeight: '500 !important',
     marginBottom: '4px !important',
   },
@@ -209,26 +209,26 @@ const DataScienceTrainingPlan = () => {
   const weeks = [
     {
       week: 'Week 1',
-      role: 'Data Analyst',
-      description: 'Learn data cleaning, visualization, and analysis using Excel, SQL and Python, along with exploratory data analysis (EDA) and communication skills through GUI training.',
+      role: 'Frontend Developer',
+      description: 'Learn the basics of HTML, CSS, and JavaScript, explore UI/UX tools, and enhance communication with CRT training.',
       color: '#8a5cf7',
     },
     {
       week: 'Week 2',
-      role: 'Business Intelligence (BI) Analyst',
-      description: 'Gain hands-on experience with Power BI, Tableau, and SQL queries to create dashboards and reports for data-driven decision-making.',
+      role: 'Backend Developer',
+      description: 'Understand API development, databases, and server-side logic while gaining hands-on experience with industry tools.',
       color: '#4376eb',
     },
     {
       week: 'Week 3',
-      role: 'Data Engineer',
-      description: 'Understand ETL pipelines, database management (SQL & NoSQL), and cloud storage, along with data warehousing and workflow automation.',
+      role: 'Database Engineer & DevOps',
+      description: 'Get familiar with SQL, MongoDB, cloud technologies, and CI/CD workflows, along with analytical skill-building.',
       color: '#f07c3e',
     },
     {
       week: 'Week 4',
-      role: 'Data Science Associate',
-      description: 'Develop skills in statistics, feature engineering, and Python libraries (NumPy, Pandas, TensorFlow, and Seaborn) with a focus on technical interviews and real-world problem-solving.',
+      role: 'API Developer',
+      description: 'Explore RESTful & GraphQL APIs using Postman and Swagger, with a focus on tool proficiency and technical interview preparation.',
       color: '#e8518d',
     },
   ];
@@ -274,7 +274,7 @@ const DataScienceTrainingPlan = () => {
       <Box className={classes.headerContainer}>
         <Box className={classes.orangeDot}></Box>
         <Typography variant="h4" className={classes.title}>
-          1-Month Job-Specific Training Plan <span>In Data Science</span>
+          1-Month Job-Specific Training Plan <span>In Full Stack</span>
         </Typography>
         <Typography variant="body1" className={classes.subtitle}>
           Each students selects one job role and receives both technical training and placement preparation
@@ -282,7 +282,7 @@ const DataScienceTrainingPlan = () => {
 
         <Typography variant="h6" sx={{ 
           textAlign: 'center', 
-          fontSize: '18px', 
+          fontSize: '1.1rem', 
           fontWeight: 'bold', 
           color: '#333',
           marginBottom: '24px',

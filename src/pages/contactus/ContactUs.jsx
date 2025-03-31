@@ -39,7 +39,7 @@ const useStyles = makeStyles({
       left: 0,
       right: 0,
       bottom: 0,
-      background: 'rgba(9, 72, 141, 0.78)', // Exact color from SVG
+      background: 'rgb(42,43,106)', // Exact color from SVG
       clipPath: 'polygon(0 0, 100% 0, 100% 66%, 0 100%)', // Matches SVG path
       zIndex: -1,
       height: '598px', // Exact SVG height
@@ -161,7 +161,7 @@ const useStyles = makeStyles({
     fontFamily: 'inherit',
     fontSize: '1rem',
     backgroundColor: '#f9fafc',
-    minHeight: '120px',
+    minHeight: '30px !important',
     resize: 'vertical',
     '&:focus': {
       outline: 'none',

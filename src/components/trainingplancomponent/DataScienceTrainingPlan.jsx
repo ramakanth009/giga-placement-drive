@@ -32,17 +32,17 @@ const useStyles = makeStyles({
     zIndex: '2',
   },
   title: {
-    fontSize: '24px !important',
+    fontSize: "2.5rem !important",
     fontWeight: 'bold !important',
     textAlign: 'center',
     marginBottom: '8px !important',
-    color: '#1a237e !important',
+    color: "#2A2B6A !important",
     '& span': {
       color: '#f9c74f !important',
     },
   },
   subtitle: {
-    fontSize: '14px !important',
+    fontSize: '1.2rem !important',
     textAlign: 'center',
     color: '#555 !important',
     maxWidth: '90%',
@@ -50,7 +50,7 @@ const useStyles = makeStyles({
   },
   sectionTitle: {
     textAlign: 'center', 
-    fontSize: '18px !important', 
+    fontSize: '1.1rem !important', 
     fontWeight: 'bold !important', 
     color: '#333 !important',
     marginBottom: '32px !important',

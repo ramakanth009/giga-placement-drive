@@ -69,13 +69,13 @@ const useStyles = makeStyles({
   },
   signUpButton: {
     marginLeft: 16,
-    backgroundColor: "#001021 !important",
+    backgroundColor: "#232459 !important",
     color: "white !important",
     padding: "8px 24px !important",
     borderRadius: "4px !important",
     fontWeight: "bold !important",
     "&:hover": {
-      backgroundColor: "#142640 !important",
+      backgroundColor: "#1a1b43 !important", // Slightly darker shade for hover
     },
   },
   menuButton: {
@@ -153,13 +153,13 @@ const Navbar = () => {
               >
                 Home
               </Button>
-              <Button 
+              {/* <Button 
                 className={`${classes.navLink} ${currentPath.includes("/courses") ? classes.active : ""}`}
                 component={Link}
                 to="/courses"
               >
                 Courses
-              </Button>
+              </Button> */}
               <Button 
                 className={`${classes.navLink} ${currentPath === "/about" ? classes.active : ""}`}
                 component={Link}

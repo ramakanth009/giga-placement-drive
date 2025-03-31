@@ -5,11 +5,15 @@ import { makeStyles } from "@mui/styles";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import YouTubeIcon from "@mui/icons-material/YouTube";
+import InstagramIcon from "@mui/icons-material/Instagram";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { ReactComponent as GigaLogo } from "../../assets/GIGAVERSITY_LOGO.svg";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { scrollToTop } from '../../utils/scrollUtils';
 
 const useStyles = makeStyles({
   footer: {
@@ -50,7 +54,7 @@ const useStyles = makeStyles({
     fontSize: "0.95rem",
     lineHeight: 1.5,
     marginBottom: "25px",
-    maxWidth: "90%",
+    maxWidth: "93%",
     textAlign: "center",
   },
   sectionTitle: {
@@ -79,20 +83,22 @@ const useStyles = makeStyles({
   },
   linkText: {
     color: "#ffffff !important",
-    textDecoration: "none",
+    textDecoration: "none !important",
     fontSize: "1rem",
     transition: "color 0.3s ease",
     "&:hover": {
       color: "#FFC614 !important",
+      textDecoration: "underline !important",
     },
   },
   programLink: {
     color: "#ffffff !important",
-    textDecoration: "none",
+    textDecoration: "none !important",
     fontSize: "1rem",
     transition: "color 0.3s ease",
     "&:hover": {
       color: "#FFC614 !important",
+      textDecoration: "underline !important",
     },
   },
   contactItem: {
@@ -110,10 +116,21 @@ const useStyles = makeStyles({
     fontSize: "1rem",
     lineHeight: 1.5,
   },
+  contactLink: {
+    color: "#ffffff !important",
+    textDecoration: "none !important",
+    fontSize: "1rem",
+    transition: "color 0.3s ease",
+    "&:hover": {
+      color: "#FFC614 !important",
+      textDecoration: "underline !important",
+    },
+  },
   socialIcons: {
     display: "flex",
     gap: "15px",
     marginTop: "25px",
+    flexWrap: "wrap",
   },
   socialIcon: {
     width: "40px",
@@ -137,9 +154,15 @@ const useStyles = makeStyles({
   },
   copyright: {
     color: "#b0b0b0",
-    fontSize: "0.9rem",
+    fontSize: "0.9rem !important",
     textAlign: "center",
-    padding: "20px 0 0",
+    padding: "10px 0 0",
+  },
+  poweredBy: {
+    color: "#b0b0b0",
+    fontSize: "0.6rem !important",
+    textAlign: "center",
+    padding: "10px 0 0",
   },
   "@media (max-width: 1100px)": {
     footerContainer: {
@@ -187,7 +210,12 @@ const Footer = () => {
             </Typography>
             <ul className={classes.linksList}>
               <li className={classes.linkItem}>
-                <MuiLink component={Link} to="/" className={classes.linkText}>
+                <MuiLink 
+                  component={Link} 
+                  to="/" 
+                  className={classes.linkText}
+                  onClick={scrollToTop}
+                >
                   Home
                 </MuiLink>
               </li>
@@ -196,6 +224,7 @@ const Footer = () => {
                   component={Link}
                   to="/about"
                   className={classes.linkText}
+                  onClick={scrollToTop}
                 >
                   About Us
                 </MuiLink>
@@ -205,6 +234,7 @@ const Footer = () => {
                   component={Link}
                   to="/contact"
                   className={classes.linkText}
+                  onClick={scrollToTop}
                 >
                   Contact Us
                 </MuiLink>
@@ -214,6 +244,7 @@ const Footer = () => {
                   component={Link}
                   to="/privacy-policy"
                   className={classes.linkText}
+                  onClick={scrollToTop}
                 >
                   Privacy Policy
                 </MuiLink>
@@ -223,6 +254,7 @@ const Footer = () => {
                   component={Link}
                   to="/terms-and-conditions"
                   className={classes.linkText}
+                  onClick={scrollToTop}
                 >
                   Terms & Conditions
                 </MuiLink>
@@ -234,7 +266,7 @@ const Footer = () => {
           <Box className={classes.column}>
             <Typography className={classes.sectionTitle}>Programs</Typography>
             <ul className={classes.linksList}>
-              <li className={classes.linkItem}>
+              {/* <li className={classes.linkItem}>
                 <MuiLink
                   component={Link}
                   to="/programs/full-stack"
@@ -251,12 +283,13 @@ const Footer = () => {
                 >
                   Data Science
                 </MuiLink>
-              </li>
+              </li> */}
               <li className={classes.linkItem}>
                 <MuiLink
                   component={Link}
-                  to="/programs/placement-drive"
+                  // to="/programs/placement-drive"
                   className={classes.programLink}
+                  onClick={scrollToTop}
                 >
                   Placement Drive
                 </MuiLink>
@@ -264,8 +297,9 @@ const Footer = () => {
               <li className={classes.linkItem}>
                 <MuiLink
                   component={Link}
-                  to="/programs/internship"
+                  // to="/programs/internship"
                   className={classes.programLink}
+                  onClick={scrollToTop}
                 >
                   Master Internship
                 </MuiLink>
@@ -291,22 +325,46 @@ const Footer = () => {
             </Box>
             <Box className={classes.contactItem}>
               <EmailIcon className={classes.contactIcon} />
-              <Typography className={classes.contactText}>
+              <MuiLink 
+                href="mailto:Info@gigaversity.in" 
+                className={classes.contactLink}
+              >
                 Info@gigaversity.in
-              </Typography>
+              </MuiLink>
             </Box>
 
             {/* Social Media Icons moved to Contact section */}
             <Box className={classes.socialIcons}>
-              <Box className={classes.socialIcon}>
-                <FacebookIcon />
-              </Box>
-              <Box className={classes.socialIcon}>
-                <LinkedInIcon />
-              </Box>
-              <Box className={classes.socialIcon}>
-                <TwitterIcon />
-              </Box>
+              <MuiLink href="https://www.facebook.com/gigaversity" target="_blank" rel="noopener noreferrer">
+                <Box className={classes.socialIcon}>
+                  <FacebookIcon />
+                </Box>
+              </MuiLink>
+              <MuiLink href="https://www.linkedin.com/company/gigaversity" target="_blank" rel="noopener noreferrer">
+                <Box className={classes.socialIcon}>
+                  <LinkedInIcon />
+                </Box>
+              </MuiLink>
+              <MuiLink href="https://twitter.com/gigaversity" target="_blank" rel="noopener noreferrer">
+                <Box className={classes.socialIcon}>
+                  <TwitterIcon />
+                </Box>
+              </MuiLink>
+              <MuiLink href="https://wa.me/919849048999" target="_blank" rel="noopener noreferrer">
+                <Box className={classes.socialIcon}>
+                  <WhatsAppIcon />
+                </Box>
+              </MuiLink>
+              <MuiLink href="https://www.youtube.com/channel/gigaversity" target="_blank" rel="noopener noreferrer">
+                <Box className={classes.socialIcon}>
+                  <YouTubeIcon />
+                </Box>
+              </MuiLink>
+              <MuiLink href="https://www.instagram.com/gigaversity" target="_blank" rel="noopener noreferrer">
+                <Box className={classes.socialIcon}>
+                  <InstagramIcon />
+                </Box>
+              </MuiLink>
             </Box>
           </Box>
         </Box>
@@ -314,6 +372,9 @@ const Footer = () => {
         <Box className={classes.divider} />
         <Typography className={classes.copyright}>
           Copyright © 2025 All rights reserved. Gigaversity
+        </Typography>
+        <Typography className={classes.poweredBy}>
+          Powered by Sun E-Learning
         </Typography>
       </Container>
     </Box>
