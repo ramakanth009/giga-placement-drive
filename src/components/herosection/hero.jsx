@@ -233,6 +233,9 @@ const useStyles = makeStyles({
   heroImage: {
     maxWidth: "100%",
     height: "auto",
+    "@media (max-width: 600px)": {
+      display:"none",
+    },
   },
   featureCardTopLeft: {
     position: "absolute",

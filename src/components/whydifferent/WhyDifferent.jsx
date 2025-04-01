@@ -68,7 +68,7 @@ const useStyles = makeStyles({
     textAlign: 'center',
     boxShadow: '0 4px 20px rgba(0, 0, 0, 0.05)',
     transition: 'all 0.3s ease',
-    height: '280px',
+    height: '318px',
     position: 'relative',
     overflow: 'hidden',
     cursor: 'pointer',
@@ -158,7 +158,7 @@ const useStyles = makeStyles({
     textAlign: 'center',
     "@media (max-width: 1200px)": {
       fontSize: '0.9rem !important',
-      minHeight: '110px',
+      minHeight: '120px',
       padding: '0 5px',
     },
     "@media (max-width: 960px)": {

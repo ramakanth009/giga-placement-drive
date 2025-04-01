@@ -31,11 +31,11 @@ const useStyles = makeStyles({
       height: '400px',
     },
   },
-  topRightGlow: {
-    background: '#FFC614',
-    top: '-200px',
-    right: '-100px',
-  },
+  // topRightGlow: {
+  //   background: '#FFC614',
+  //   bottom: '-200px',
+  //   top: '-100px',
+  // },
   bottomLeftGlow: {
     background: '#4376eb',
     bottom: '-300px',
