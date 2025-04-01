@@ -1,10 +1,15 @@
-import React from "react";
-import { Box, Typography } from "@mui/material";
+import React, { useState, useEffect } from "react";
+import { Box, Typography, Card, CardContent } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import Heroguy from "../../assets/heroguy.png";
 import { ReactComponent as AIbook } from "../../assets/ai-book.svg";
 import { ReactComponent as Simplecal } from "../../assets/simple-claender.svg";
 import AnimatedCounter from "./AnimatedCounter";
+import CodeIcon from '@mui/icons-material/Code';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import StarIcon from '@mui/icons-material/Star';
 
 const useStyles = makeStyles({
   imageCol: {
@@ -20,7 +25,9 @@ const useStyles = makeStyles({
       minHeight: "400px",
     },
     "@media (max-width: 600px)": {
-      minHeight: "300px",
+      minHeight: "400px",
+      alignItems: "flex-start",
+      padding: "30px 0",
     },
   },
   featureCard: {
@@ -34,8 +41,7 @@ const useStyles = makeStyles({
     maxWidth: "90%",
     transition: "all 0.5s ease",
     "@media (max-width: 600px)": {
-      padding: "3px 10px",
-      margin: "3px",
+      display: "none", // Hide original cards on mobile
     },
   },
   featureCardAnimated: {
@@ -72,13 +78,6 @@ const useStyles = makeStyles({
   },
   featureIcon1: {
     marginRight: "12px",
-    "@media (max-width: 600px)": {
-      marginRight: "8px",
-      "& svg": {
-        width: "20px",
-        height: "20px",
-      },
-    },
   },
   featureIcon2: {
     backgroundColor: "#000000",
@@ -98,10 +97,7 @@ const useStyles = makeStyles({
       padding: "12px",
     },
     "@media (max-width: 600px)": {
-      bottom: "30px",
-      left: "20px",
-      padding: "8px",
-      fontSize: "0.8rem !important",
+      display: "none", // Hide on mobile
     },
   },
   "@keyframes bounce": {
@@ -122,9 +118,6 @@ const useStyles = makeStyles({
       textAlign: "center",
     },
     animation: "$fadeIn 1s ease",
-    "@media (max-width: 600px)": {
-      fontSize: "0.9rem !important",
-    },
   },
   "@keyframes fadeIn": {
     "0%": {
@@ -143,10 +136,6 @@ const useStyles = makeStyles({
     "@media (max-width: 960px)": {
       top: "85px",
       left: "5px",
-    },
-    "@media (max-width: 600px)": {
-      top: "60px",
-      left: "0",
     },
   },
   "@keyframes slideInLeft": {
@@ -173,10 +162,6 @@ const useStyles = makeStyles({
       top: "145px",
       right: "-60px",
     },
-    "@media (max-width: 600px)": {
-      top: "120px",
-      right: "-50px",
-    },
   },
   "@keyframes slideInRight": {
     "0%": {
@@ -198,10 +183,6 @@ const useStyles = makeStyles({
     animationFillMode: "backwards",
     "@media (max-width: 960px)": {
       bottom: "70px",
-      width: "45%",
-    },
-    "@media (max-width: 600px)": {
-      bottom: "50px",
       width: "45%",
     },
   },
@@ -231,11 +212,6 @@ const useStyles = makeStyles({
       right: "-40px",
       width: "45%",
     },
-    "@media (max-width: 600px)": {
-      bottom: "20px",
-      right: "-30px",
-      width: "45%",
-    },
   },
   imageContainer: {
     position: "relative",
@@ -254,14 +230,161 @@ const useStyles = makeStyles({
       display: "none"
     },
   },
+  // Mobile view specific styles
+  mobileContainer: {
+    display: "none",
+    "@media (max-width: 600px)": {
+      display: "flex",
+      flexDirection: "column",
+      width: "100%",
+      position: "relative",
+      zIndex: 5,
+    }
+  },
+  mobileFeatureGrid: {
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    gap: "12px",
+    width: "100%",
+    margin: "0 auto",
+    maxWidth: "320px",
+  },
+  featureGridItem: {
+    opacity: 0,
+    transform: "translateY(20px)",
+  },
+  mobileFeatureCard: {
+    backgroundColor: "white !important",
+    borderRadius: "12px !important",
+    boxShadow: "0 6px 15px rgba(0, 0, 0, 0.07) !important",
+    height: "100%",
+    transition: "transform 0.3s ease, box-shadow 0.3s ease",
+    position: "relative",
+    overflow: "hidden",
+    "&:hover": {
+      transform: "translateY(-5px)",
+      boxShadow: "0 8px 25px rgba(0, 0, 0, 0.1) !important",
+    },
+    "&::after": {
+      content: '""',
+      position: "absolute",
+      bottom: 0,
+      left: 0,
+      width: "100%",
+      height: "4px",
+      background: "linear-gradient(90deg, #FFC614, #2A2B6A)",
+      transformOrigin: "left",
+      transform: "scaleX(0)",
+      transition: "transform 0.3s ease",
+    },
+    "&:hover::after": {
+      transform: "scaleX(1)",
+    },
+  },
+  cardBadge: {
+    position: "absolute",
+    top: 0,
+    right: 0,
+    background: "#2A2B6A",
+    color: "white",
+    fontSize: "0.6rem !important",
+    padding: "2px 8px",
+    borderRadius: "0 8px 0 8px",
+    zIndex: 1,
+  },
+  iconCircle: {
+    width: "36px",
+    height: "36px",
+    borderRadius: "50%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: "8px",
+    background: "#F2F6FF",
+    color: "#2A2B6A",
+    "& svg": {
+      fontSize: "1.2rem",
+    },
+  },
+  featureTitle: {
+    fontSize: "0.95rem !important",
+    fontWeight: "600 !important",
+    color: "#2A2B6A !important",
+    marginBottom: "4px !important",
+  },
+  featureValue: {
+    fontSize: "1.4rem !important",
+    fontWeight: "bold !important",
+    color: "#FFC614 !important",
+    lineHeight: "1.1 !important",
+  },
+  mobileDecoration: {
+    position: "absolute",
+    width: "180px",
+    height: "180px",
+    borderRadius: "50%",
+    filter: "blur(40px)",
+    zIndex: -1,
+    opacity: 0.07,
+  },
+  topRightGlow: {
+    top: "-30px",
+    right: "-30px",
+    background: "#FFC614",
+  },
+  bottomLeftGlow: {
+    bottom: "-20px",
+    left: "-30px",
+    background: "#2A2B6A",
+  }
 });
 
 const HeroRightSection = () => {
   const classes = useStyles();
+  const [visibleItems, setVisibleItems] = useState([]);
+
+  // Features for mobile display
+  const features = [
+    { 
+      title: "Code with AI", 
+      value: "Simplified", 
+      icon: <CodeIcon />,
+      delay: 0.1,
+      badge: "NEW"
+    },
+    { 
+      title: "Training Program", 
+      value: "30 Days", 
+      icon: <CalendarMonthIcon />,
+      delay: 0.3
+    },
+    { 
+      title: "Placement Options", 
+      value: "400+", 
+      icon: <BusinessCenterIcon />,
+      delay: 0.5,
+      badge: "HOT"
+    },
+    { 
+      title: "Weekly Jobs", 
+      value: "40+", 
+      icon: <AccessTimeIcon />,
+      delay: 0.7
+    }
+  ];
+
+  // Animation for mobile cards
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setVisibleItems([0, 1, 2, 3]);
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <Box className={classes.imageCol}>
-      {/* Feature Cards */}
+      {/* Feature Cards - Desktop */}
       <Box className={classes.featureCardTopLeft}>
         <Box className={`${classes.featureCard} ${classes.featureCardAnimated}`}>
           <Box className={classes.featureIcon1}>
@@ -303,7 +426,7 @@ const HeroRightSection = () => {
         </Box>
       </Box>
 
-      {/* Student image */}
+      {/* Student image - Only visible on desktop */}
       <Box className={classes.imageContainer}>
         <img
           src={Heroguy}
@@ -311,8 +434,52 @@ const HeroRightSection = () => {
           className={classes.heroImage}
         />
       </Box>
+      
+      {/* Mobile view specific content - Shows in grid layout */}
+      <Box className={classes.mobileContainer}>
+        {/* Decorative elements */}
+        <Box className={`${classes.mobileDecoration} ${classes.topRightGlow}`} />
+        <Box className={`${classes.mobileDecoration} ${classes.bottomLeftGlow}`} />
+        
+        {/* Grid of feature cards */}
+        <Box className={classes.mobileFeatureGrid}>
+          {features.map((feature, index) => (
+            <Box 
+              key={index}
+              className={classes.featureGridItem}
+              sx={{
+                animation: visibleItems.includes(index) ? 
+                  `fadeIn 0.5s ease forwards, slideUp 0.7s ease forwards` : 'none',
+                animationDelay: `${feature.delay}s`,
+                '@keyframes slideUp': {
+                  '0%': { transform: 'translateY(20px)', opacity: 0 },
+                  '100%': { transform: 'translateY(0)', opacity: 1 }
+                }
+              }}
+            >
+              <Card className={classes.mobileFeatureCard}>
+                {feature.badge && (
+                  <Typography className={classes.cardBadge}>
+                    {feature.badge}
+                  </Typography>
+                )}
+                <CardContent sx={{ p: 2 }}>
+                  <Box className={classes.iconCircle}>
+                    {feature.icon}
+                  </Box>
+                  <Typography className={classes.featureTitle}>
+                    {feature.title}
+                  </Typography>
+                  <Typography className={classes.featureValue}>
+                    {feature.value}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Box>
+          ))}
+        </Box>
+      </Box>
     </Box>
   );
 };
-
 export default HeroRightSection;
