@@ -25,6 +25,18 @@ const useStyles = makeStyles({
     opacity: 0.7,
     filter: 'blur(100px)',
     animation: '$pulse 15s infinite alternate',
+    "@media (max-width: 960px)": {
+      width: 600,
+      height: 450,
+      top: -200,
+      right: 50,
+    },
+    "@media (max-width: 600px)": {
+      width: 400,
+      height: 300,
+      top: -150,
+      right: 30,
+    },
   },
   backgroundElementSecondary: {
     position: 'absolute',
@@ -37,6 +49,18 @@ const useStyles = makeStyles({
     opacity: 0.4,
     filter: 'blur(120px)',
     animation: '$pulse2 18s infinite alternate',
+    "@media (max-width: 960px)": {
+      width: 400,
+      height: 400,
+      bottom: -150,
+      left: 50,
+    },
+    "@media (max-width: 600px)": {
+      width: 300,
+      height: 300,
+      bottom: -100,
+      left: 30,
+    },
   },
   '@keyframes pulse': {
     '0%': {
@@ -88,6 +112,16 @@ const useStyles = makeStyles({
     opacity: 0.3,
     filter: 'blur(40px)',
     animation: '$heartbeat 4s infinite ease-in-out',
+    "@media (max-width: 960px)": {
+      width: '600px',
+      height: '600px',
+    },
+    "@media (max-width: 600px)": {
+      width: '400px',
+      height: '400px',
+      top: '10%',
+      left: '3%',
+    },
   },
   heartbeatGradient2: {
     position: 'absolute',
@@ -100,6 +134,16 @@ const useStyles = makeStyles({
     opacity: 0.4,
     filter: 'blur(30px)',
     animation: '$heartbeat 4s infinite ease-in-out 1s',
+    "@media (max-width: 960px)": {
+      width: '500px',
+      height: '500px',
+    },
+    "@media (max-width: 600px)": {
+      width: '350px',
+      height: '350px',
+      bottom: '5%',
+      right: '3%',
+    },
   },
   colorWave1: {
     position: 'absolute',
@@ -110,6 +154,12 @@ const useStyles = makeStyles({
     background: 'linear-gradient(90deg, rgba(42, 43, 106, 0) 0%, rgba(42, 43, 106, 0.05) 50%, rgba(42, 43, 106, 0) 100%)',
     transform: 'rotate(-5deg)',
     animation: '$waveMove 15s infinite linear',
+    "@media (max-width: 960px)": {
+      height: '150px',
+    },
+    "@media (max-width: 600px)": {
+      height: '100px',
+    },
   },
   colorWave2: {
     position: 'absolute',
@@ -120,6 +170,12 @@ const useStyles = makeStyles({
     background: 'linear-gradient(90deg, rgba(255, 198, 20, 0) 0%, rgba(255, 198, 20, 0.03) 50%, rgba(255, 198, 20, 0) 100%)',
     transform: 'rotate(3deg)',
     animation: '$waveMove 18s infinite linear reverse',
+    "@media (max-width: 960px)": {
+      height: '120px',
+    },
+    "@media (max-width: 600px)": {
+      height: '80px',
+    },
   },
   '@keyframes heartbeat': {
     '0%': {
@@ -162,14 +218,13 @@ const Background = () => {
       <Box className={classes.backgroundElement} />
       <Box className={classes.backgroundElementSecondary} />
       
-      {/* Pattern overlay */}
-      <Box className={classes.patternContainer} />
+      {/* Gradient pulses */}
+      <Box className={classes.heartbeatGradient1} />
+      <Box className={classes.heartbeatGradient2} />
       
-      {/* Floating elements */}
-      <Box className={classes.floatingDot1} />
-      <Box className={classes.floatingDot2} />
-      <Box className={classes.floatingDot3} />
-      <Box className={classes.floatingDot4} />
+      {/* Animated color waves */}
+      <Box className={classes.colorWave1} />
+      <Box className={classes.colorWave2} />
     </Box>
   );
 };

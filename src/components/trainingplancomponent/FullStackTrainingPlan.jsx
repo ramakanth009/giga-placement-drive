@@ -9,6 +9,9 @@ const useStyles = makeStyles({
     width: '100%',
     padding: '32px 0',
     overflow: 'hidden',
+    "@media (max-width: 960px)": {
+      padding: '25px 0',
+    },
   },
   // Custom background element
   backgroundGradient: {
@@ -22,6 +25,12 @@ const useStyles = makeStyles({
     opacity: '0.3',
     filter: 'blur(100px)',
     zIndex: '-1',
+    "@media (max-width: 768px)": {
+      width: '500px',
+      height: '400px',
+      top: '-50px',
+      left: '-100px',
+    },
   },
   title: {
     fontSize: "2.5rem !important",
@@ -34,6 +43,12 @@ const useStyles = makeStyles({
     '& span': {
       color: '#f9c74f !important',
     },
+    "@media (max-width: 960px)": {
+      fontSize: "2.2rem !important",
+    },
+    "@media (max-width: 600px)": {
+      fontSize: "1.8rem !important",
+    },
   },
   subtitle: {
     fontSize: '1.2rem !important',
@@ -44,6 +59,15 @@ const useStyles = makeStyles({
     margin: '0 auto 32px auto !important',
     position: 'relative',
     zIndex: '2',
+    "@media (max-width: 960px)": {
+      fontSize: '1.1rem !important',
+      marginBottom: '25px !important',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '1rem !important',
+      marginBottom: '20px !important',
+      maxWidth: '95%',
+    },
   },
   weekTitle: {
     fontSize: '1rem !important',
@@ -54,11 +78,17 @@ const useStyles = makeStyles({
     fontSize: '15px !important',
     fontWeight: 'bold !important',
     marginBottom: '8px !important',
+    "@media (max-width: 600px)": {
+      fontSize: '14px !important',
+    },
   },
   description: {
     fontSize: '12px !important',
     color: '#555 !important',
     lineHeight: '1.4 !important',
+    "@media (max-width: 600px)": {
+      fontSize: '11px !important',
+    },
   },
   card: {
     backgroundColor: '#fff',
@@ -71,6 +101,14 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     width: '100%',
     zIndex: '1',
+    "@media (max-width: 960px)": {
+      height: '220px',
+      padding: '14px',
+    },
+    "@media (max-width: 600px)": {
+      height: '210px',
+      padding: '12px',
+    },
   },
   cardsContainer: {
     display: 'flex',
@@ -83,6 +121,17 @@ const useStyles = makeStyles({
     boxSizing: 'border-box',
     position: 'relative',
     zIndex: '1',
+    "@media (max-width: 1200px)": {
+      gap: '40px',
+    },
+    "@media (max-width: 960px)": {
+      gap: '30px',
+      padding: '0 15px',
+    },
+    "@media (max-width: 600px)": {
+      gap: '20px',
+      padding: '0 10px',
+    },
   },
   cardWrapper: {
     width: '18%',
@@ -105,6 +154,11 @@ const useStyles = makeStyles({
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: '16px',
+    "@media (max-width: 600px)": {
+      width: '35px',
+      height: '35px',
+      marginBottom: '12px',
+    },
   },
   viewButton: {
     marginTop: '16px !important',
@@ -118,6 +172,11 @@ const useStyles = makeStyles({
     margin: '0 auto !important',
     zIndex: '1',
     position: 'relative',
+    "@media (max-width: 600px)": {
+      marginTop: '12px !important',
+      padding: '5px 14px !important',
+      fontSize: '0.9rem !important',
+    },
   },
   pinkDot: {
     position: 'absolute',
@@ -136,11 +195,21 @@ const useStyles = makeStyles({
     fontSize: '12px !important',
     marginBottom: '8px !important',
     color: '#555 !important',
+    "@media (max-width: 600px)": {
+      fontSize: '11px !important',
+      marginBottom: '6px !important',
+    },
   },
   headerContainer: {
     position: 'relative',
     marginBottom: '40px',
     zIndex: '1',
+    "@media (max-width: 960px)": {
+      marginBottom: '30px',
+    },
+    "@media (max-width: 600px)": {
+      marginBottom: '25px',
+    },
   },
   orangeDot: {
     height: '12px',
@@ -151,6 +220,18 @@ const useStyles = makeStyles({
     top: '32px',
     left: '32px',
     zIndex: '2',
+    "@media (max-width: 960px)": {
+      top: '25px',
+      left: '25px',
+      height: '10px',
+      width: '10px',
+    },
+    "@media (max-width: 600px)": {
+      top: '20px',
+      left: '20px',
+      height: '8px',
+      width: '8px',
+    },
   },
   // Protected area where no dots should appear
   titleProtectedArea: {
@@ -161,6 +242,13 @@ const useStyles = makeStyles({
     width: '80%',
     height: '130px',
     zIndex: '1',
+    "@media (max-width: 960px)": {
+      height: '110px',
+    },
+    "@media (max-width: 600px)": {
+      height: '90px',
+      width: '90%',
+    },
   },
 });
 
@@ -199,7 +287,7 @@ const generateSectionedDots = (count, type, avoidTop = false) => {
   return dots;
 };
 
-const DataScienceTrainingPlan = () => {
+const FullStackTrainingPlan = () => {
   const classes = useStyles();
   
   // Generate dots with a sectioned approach to avoid overlaps
@@ -252,6 +340,7 @@ const DataScienceTrainingPlan = () => {
             width: dot.size,
             height: dot.size,
             opacity: dot.opacity,
+            display: { xs: index % 2 === 0 ? 'none' : 'block', md: 'block' },
           }}
         />
       ))}
@@ -267,6 +356,7 @@ const DataScienceTrainingPlan = () => {
             width: dot.size,
             height: dot.size,
             opacity: dot.opacity,
+            display: { xs: index % 2 === 0 ? 'none' : 'block', md: 'block' },
           }}
         />
       ))}
@@ -277,15 +367,15 @@ const DataScienceTrainingPlan = () => {
           1-Month Job-Specific Training Plan <span>In Full Stack</span>
         </Typography>
         <Typography variant="body1" className={classes.subtitle}>
-          Each students selects one job role and receives both technical training and placement preparation
+          Each student selects one job role and receives both technical training and placement preparation
         </Typography>
 
         <Typography variant="h6" sx={{ 
           textAlign: 'center', 
-          fontSize: '1.1rem', 
+          fontSize: { xs: '0.95rem', sm: '1rem', md: '1.1rem' }, 
           fontWeight: 'bold', 
           color: '#333',
-          marginBottom: '24px',
+          marginBottom: { xs: '20px', sm: '22px', md: '24px' },
           position: 'relative',
           zIndex: 1,
         }}>
@@ -301,7 +391,7 @@ const DataScienceTrainingPlan = () => {
                 className={classes.iconContainer} 
                 sx={{ backgroundColor: `${weekData.color}20` }}
               >
-                <CalendarMonthIcon sx={{ color: weekData.color }} />
+                <CalendarMonthIcon sx={{ color: weekData.color, fontSize: { xs: '1.2rem', sm: '1.3rem', md: '1.5rem' } }} />
               </Box>
               <Typography className={classes.weekLabel}>
                 {weekData.week}
@@ -324,4 +414,4 @@ const DataScienceTrainingPlan = () => {
   );
 };
 
-export default DataScienceTrainingPlan;
+export default FullStackTrainingPlan;

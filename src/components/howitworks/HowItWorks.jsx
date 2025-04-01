@@ -9,19 +9,47 @@ const useStyles = makeStyles({
     padding: '80px 0',
     background: 'linear-gradient(180deg, #EAF4FF 0%, #F3F8FF 100%)',
     overflow: 'hidden',
+    "@media (max-width: 960px)": {
+      padding: '60px 0',
+    },
+    "@media (max-width: 600px)": {
+      padding: '40px 0',
+    },
   },
   container: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
+    "@media (max-width: 960px)": {
+      flexDirection: 'column',
+      gap: '40px',
+    },
   },
   leftContent: {
     width: '45%',
     position: 'relative',
+    "@media (max-width: 1200px)": {
+      width: '42%',
+    },
+    "@media (max-width: 960px)": {
+      width: '80%',
+      order: 2, // Move image below content on mobile
+    },
+    "@media (max-width: 600px)": {
+      width: '95%',
+    },
   },
   rightContent: {
     width: '50%',
     paddingLeft: '20px',
+    "@media (max-width: 1200px)": {
+      width: '52%',
+    },
+    "@media (max-width: 960px)": {
+      width: '90%',
+      paddingLeft: '0',
+      order: 1, // Move content above image on mobile
+    },
   },
   imageContainer: {
     width: '100%',
@@ -32,6 +60,11 @@ const useStyles = makeStyles({
   studentImage: {
     maxWidth: '100%',
     height: 'auto',
+    borderRadius: '10px',
+    boxShadow: '0 15px 30px rgba(0, 0, 0, 0.1)',
+    "@media (max-width: 960px)": {
+      maxWidth: '90%',
+    },
   },
   title: {
     fontSize: '3.5rem !important',
@@ -41,16 +74,47 @@ const useStyles = makeStyles({
     '& span': {
       color: '#FFC614 !important',
     },
+    "@media (max-width: 1200px)": {
+      fontSize: '3rem !important',
+    },
+    "@media (max-width: 960px)": {
+      fontSize: '2.8rem !important',
+      textAlign: 'center',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '2.3rem !important',
+      marginBottom: '15px !important',
+    },
   },
   subtitle: {
     fontSize: '1.25rem !important',
     color: '#666666 !important',
     marginBottom: '40px !important',
     lineHeight: '1.6 !important',
+    "@media (max-width: 1200px)": {
+      fontSize: '1.15rem !important',
+    },
+    "@media (max-width: 960px)": {
+      textAlign: 'center',
+      marginBottom: '30px !important',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '1rem !important',
+      marginBottom: '25px !important',
+      lineHeight: '1.5 !important',
+    },
   },
   stepsContainer: {
     position: 'relative',
     paddingLeft: '30px',
+    "@media (max-width: 960px)": {
+      paddingLeft: '20px',
+      maxWidth: '500px',
+      margin: '0 auto',
+    },
+    "@media (max-width: 600px)": {
+      paddingLeft: '15px',
+    },
   },
   stepLine: {
     position: 'absolute',
@@ -60,6 +124,10 @@ const useStyles = makeStyles({
     width: '0px',
     borderLeft: '2.5px dashed #6A6B6C',
     zIndex: 1,
+    "@media (max-width: 600px)": {
+      left: '52px',
+      borderLeft: '2px dashed #6A6B6C',
+    },
   },
   step: {
     display: 'flex',
@@ -69,7 +137,10 @@ const useStyles = makeStyles({
     zIndex: 2,
     "& .MuiTypography-root + .MuiTypography-root": {
       marginLeft: '5px', // Adding gap between number and text
-    }
+    },
+    "@media (max-width: 600px)": {
+      marginBottom: '20px',
+    },
   },
   stepNumber: {
     width: '76px',
@@ -85,18 +156,36 @@ const useStyles = makeStyles({
     position: 'relative', // This ensures the number is positioned properly
     "&.MuiTypography-root": {
       marginRight: '5px',
-    }
+    },
+    "@media (max-width: 600px)": {
+      width: '60px',
+      height: '60px',
+      fontSize: '1.5rem !important',
+    },
   },
   stepText: {
     fontSize: '1.4rem !important',
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
+    "@media (max-width: 1200px)": {
+      fontSize: '1.3rem !important',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '1.2rem !important',
+    },
   },
   decorationDots: {
     position: 'absolute',
     right: '0',
     bottom: '0',
     opacity: '0.5',
+    width: '108px',
+    height: '74px',
+    "@media (max-width: 600px)": {
+      width: '90px',
+      height: '60px',
+      bottom: '-15px',
+    },
   },
 });
 
@@ -153,12 +242,12 @@ const HowItWorks = () => {
               
               {/* Decorative dots (like in the image) */}
               <svg className={classes.decorationDots} width="108" height="74" viewBox="0 0 108 74" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <ellipse cx="92.3902" cy="4.28421" rx="4.33914" ry="4.28421" fill="#2A2B6A" fill-opacity="0.22"/>
-  <ellipse cx="59.979" cy="23.2894" rx="6.23158" ry="6.1527" fill="#2A2B6A" fill-opacity="0.22"/>
-  <ellipse cx="4.33914" cy="29.21" rx="4.33914" ry="4.28421" fill="#2A2B6A" fill-opacity="0.22"/>
-  <ellipse cx="98.6068" cy="37.7792" rx="9.07274" ry="8.95789" fill="#2A2B6A" fill-opacity="0.22"/>
-  <ellipse cx="35.557" cy="44.0107" rx="6.70594" ry="6.62105" fill="#2A2B6A" fill-opacity="0.22"/>
-  <ellipse cx="71.3438" cy="60.4715" rx="13.7016" ry="13.5281" fill="#2A2B6A" fill-opacity="0.22"/>
+  <ellipse cx="92.3902" cy="4.28421" rx="4.33914" ry="4.28421" fill="#2A2B6A" fillOpacity="0.22"/>
+  <ellipse cx="59.979" cy="23.2894" rx="6.23158" ry="6.1527" fill="#2A2B6A" fillOpacity="0.22"/>
+  <ellipse cx="4.33914" cy="29.21" rx="4.33914" ry="4.28421" fill="#2A2B6A" fillOpacity="0.22"/>
+  <ellipse cx="98.6068" cy="37.7792" rx="9.07274" ry="8.95789" fill="#2A2B6A" fillOpacity="0.22"/>
+  <ellipse cx="35.557" cy="44.0107" rx="6.70594" ry="6.62105" fill="#2A2B6A" fillOpacity="0.22"/>
+  <ellipse cx="71.3438" cy="60.4715" rx="13.7016" ry="13.5281" fill="#2A2B6A" fillOpacity="0.22"/>
 </svg>
 
 

@@ -9,6 +9,12 @@ const useStyles = makeStyles({
     width: '100%',
     padding: '32px 0 60px 0',
     overflow: 'hidden',
+    "@media (max-width: 960px)": {
+      padding: '25px 0 50px 0',
+    },
+    "@media (max-width: 600px)": {
+      padding: '20px 0 40px 0',
+    },
   },
   // Custom background element
   backgroundGradient: {
@@ -17,11 +23,17 @@ const useStyles = makeStyles({
     height: '566px',
     top: '-100px',
     left: '-150px',
-    background: '#FFE4F0',
+    background: '#BCE1FF',
     borderRadius: '50%',
     opacity: '0.3',
     filter: 'blur(100px)',
     zIndex: '-1',
+    "@media (max-width: 768px)": {
+      width: '500px',
+      height: '400px',
+      top: '-50px',
+      left: '-100px',
+    },
   },
   titleSection: {
     position: 'relative',
@@ -30,23 +42,43 @@ const useStyles = makeStyles({
     maxWidth: '90%',
     margin: '0 auto 30px auto',
     zIndex: '2',
+    "@media (max-width: 768px)": {
+      padding: '15px',
+      margin: '0 auto 25px auto',
+    },
+    "@media (max-width: 480px)": {
+      padding: '10px',
+      margin: '0 auto 20px auto',
+      maxWidth: '95%',
+    },
   },
   title: {
-    fontSize: "2.5rem !important",
+    fontSize: "24px !important",
     fontWeight: 'bold !important',
     textAlign: 'center',
     marginBottom: '8px !important',
-    color: "#2A2B6A !important",
+    color: "#1a237e !important",
     '& span': {
       color: '#f9c74f !important',
     },
+    "@media (max-width: 960px)": {
+      fontSize: "22px !important",
+    },
+    "@media (max-width: 600px)": {
+      fontSize: "20px !important",
+    },
   },
   subtitle: {
-    fontSize: '1.2rem !important',
+    fontSize: '14px !important',
     textAlign: 'center',
     color: '#555 !important',
+    marginBottom: '24px !important',
     maxWidth: '90%',
-    margin: '0 auto !important',
+    margin: '0 auto 24px auto !important',
+    "@media (max-width: 600px)": {
+      fontSize: '13px !important',
+      marginBottom: '20px !important',
+    },
   },
   sectionTitle: {
     textAlign: 'center', 
@@ -60,16 +92,40 @@ const useStyles = makeStyles({
     padding: '10px 20px',
     width: 'fit-content',
     margin: '0 auto 32px auto !important',
+    "@media (max-width: 768px)": {
+      fontSize: '1rem !important',
+      marginBottom: '25px !important',
+      padding: '8px 15px',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '0.9rem !important',
+      marginBottom: '20px !important',
+      padding: '6px 10px',
+    },
   },
   roleName: {
     fontSize: '15px !important',
     fontWeight: 'bold !important',
     marginBottom: '8px !important',
+    "@media (max-width: 768px)": {
+      fontSize: '14px !important',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '13px !important',
+      marginBottom: '6px !important',
+    },
   },
   description: {
     fontSize: '12px !important',
     color: '#555 !important',
     lineHeight: '1.4 !important',
+    "@media (max-width: 768px)": {
+      fontSize: '11px !important',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '10px !important',
+      lineHeight: '1.3 !important',
+    },
   },
   card: {
     backgroundColor: '#fff',
@@ -82,6 +138,18 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     width: '100%',
     zIndex: '1',
+    "@media (max-width: 1200px)": {
+      height: '220px',
+      padding: '14px',
+    },
+    "@media (max-width: 768px)": {
+      height: '210px',
+      padding: '12px',
+    },
+    "@media (max-width: 480px)": {
+      height: '200px',
+      padding: '10px',
+    },
   },
   cardsContainer: {
     display: 'flex',
@@ -94,6 +162,20 @@ const useStyles = makeStyles({
     boxSizing: 'border-box',
     position: 'relative',
     zIndex: '1',
+    "@media (max-width: 1200px)": {
+      gap: '40px',
+      padding: '0 20px',
+    },
+    "@media (max-width: 768px)": {
+      gap: '30px',
+      padding: '0 15px',
+      marginBottom: '25px',
+    },
+    "@media (max-width: 480px)": {
+      gap: '20px',
+      padding: '0 10px',
+      marginBottom: '20px',
+    },
   },
   cardWrapper: {
     width: '18%',
@@ -116,6 +198,16 @@ const useStyles = makeStyles({
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: '16px',
+    "@media (max-width: 768px)": {
+      width: '35px',
+      height: '35px',
+      marginBottom: '14px',
+    },
+    "@media (max-width: 480px)": {
+      width: '30px',
+      height: '30px',
+      marginBottom: '12px',
+    },
   },
   viewButton: {
     marginTop: '16px !important',
@@ -129,6 +221,16 @@ const useStyles = makeStyles({
     margin: '0 auto !important',
     zIndex: '1',
     position: 'relative',
+    "@media (max-width: 768px)": {
+      marginTop: '14px !important',
+      padding: '5px 14px !important',
+      fontSize: '0.9rem !important',
+    },
+    "@media (max-width: 480px)": {
+      marginTop: '12px !important',
+      padding: '4px 12px !important',
+      fontSize: '0.8rem !important',
+    },
   },
   orangeDot: {
     height: '12px',
@@ -138,6 +240,18 @@ const useStyles = makeStyles({
     position: 'absolute',
     top: '20px',
     left: '20px',
+    "@media (max-width: 768px)": {
+      height: '10px',
+      width: '10px',
+      top: '15px',
+      left: '15px',
+    },
+    "@media (max-width: 480px)": {
+      height: '8px',
+      width: '8px',
+      top: '10px',
+      left: '10px',
+    },
   },
   pinkDot: {
     position: 'absolute',
@@ -160,6 +274,14 @@ const useStyles = makeStyles({
     fontSize: '12px !important',
     marginBottom: '8px !important',
     color: '#555 !important',
+    "@media (max-width: 768px)": {
+      fontSize: '11px !important',
+      marginBottom: '7px !important',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '10px !important',
+      marginBottom: '6px !important',
+    },
   },
   dotsContainer: {
     position: 'absolute',
@@ -169,6 +291,9 @@ const useStyles = makeStyles({
     bottom: 0,
     zIndex: 0,
     pointerEvents: 'none',
+    "@media (max-width: 768px)": {
+      top: '100px',
+    },
   }
 });
 
@@ -235,7 +360,7 @@ const DataScienceTrainingPlan = () => {
           1-Month Job-Specific Training Plan <span>In Data Science</span>
         </Typography>
         <Typography variant="body1" className={classes.subtitle}>
-          Each students selects one job role and receives both technical training and placement preparation
+          Each student selects one job role and receives both technical training and placement preparation
         </Typography>
       </Box>
 
@@ -256,6 +381,7 @@ const DataScienceTrainingPlan = () => {
               width: dot.size,
               height: dot.size,
               opacity: dot.opacity,
+              display: { xs: index % 2 === 0 ? 'none' : 'block', md: 'block' },
             }}
           />
         ))}
@@ -271,6 +397,7 @@ const DataScienceTrainingPlan = () => {
               width: dot.size,
               height: dot.size,
               opacity: dot.opacity,
+              display: { xs: index % 2 === 0 ? 'none' : 'block', md: 'block' },
             }}
           />
         ))}
@@ -284,7 +411,7 @@ const DataScienceTrainingPlan = () => {
                 className={classes.iconContainer} 
                 sx={{ backgroundColor: `${weekData.color}20` }}
               >
-                <CalendarMonthIcon sx={{ color: weekData.color }} />
+                <CalendarMonthIcon sx={{ color: weekData.color, fontSize: { xs: '1.2rem', sm: '1.3rem', md: '1.5rem' } }} />
               </Box>
               <Typography className={classes.weekLabel}>
                 {weekData.week}

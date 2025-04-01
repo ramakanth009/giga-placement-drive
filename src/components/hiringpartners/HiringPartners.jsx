@@ -29,6 +29,10 @@ const useStyles = makeStyles({
     backgroundColor: 'transparent',
     padding: '30px 0',
     margin: '30px 0',
+    '@media (max-width: 768px)': {
+      padding: '20px 0',
+      margin: '20px 0',
+    },
   },
   titleContainer: {
     width: '100%',
@@ -37,6 +41,9 @@ const useStyles = makeStyles({
     marginBottom: '30px',
     position: 'relative',
     zIndex: 2,
+    '@media (max-width: 768px)': {
+      marginBottom: '20px',
+    },
   },
   sectionTitle: {
     color: "#2A2B6A !important",
@@ -53,7 +60,16 @@ const useStyles = makeStyles({
       bottom: '-8px',
       left: '50%',
       transform: 'translateX(-50%)',
-    }
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '2rem !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '1.8rem !important',
+      '&:after': {
+        width: '50px',
+      },
+    },
   },
   partnersSection: {
     width: '100%',
@@ -62,6 +78,12 @@ const useStyles = makeStyles({
     alignItems: 'center',
     height: '150px',
     overflow: 'hidden',
+    '@media (max-width: 768px)': {
+      height: '120px',
+    },
+    '@media (max-width: 480px)': {
+      height: '100px',
+    },
   },
   logoContainer: {
     position: 'absolute',
@@ -81,6 +103,12 @@ const useStyles = makeStyles({
     position: 'absolute',
     left: '0',
     width: 'auto',
+    '@media (max-width: 768px)': {
+      animation: '$slideAnimation 20s linear infinite',
+    },
+    '@media (max-width: 480px)': {
+      animation: '$slideAnimation 15s linear infinite',
+    },
   },
   logoWrapper: {
     display: 'flex',
@@ -88,6 +116,12 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     padding: '0 30px',
     flexShrink: 0,
+    '@media (max-width: 768px)': {
+      padding: '0 20px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '0 15px',
+    },
   },
   logoSvg: {
     width: '120px',
@@ -96,6 +130,18 @@ const useStyles = makeStyles({
     transition: 'all 0.3s ease',
     '&:hover': {
       transform: 'scale(1.05)',
+    },
+    '@media (max-width: 960px)': {
+      width: '100px',
+      height: '50px',
+    },
+    '@media (max-width: 768px)': {
+      width: '80px',
+      height: '40px',
+    },
+    '@media (max-width: 480px)': {
+      width: '70px',
+      height: '35px',
     },
   },
   '@keyframes slideAnimation': {
@@ -114,7 +160,10 @@ const useStyles = makeStyles({
     height: '100%',
     background: 'linear-gradient(to right, rgba(246, 249, 252, 1) 0%, rgba(246, 249, 252, 0.8) 40%, rgba(246, 249, 252, 0.4) 80%, rgba(246, 249, 252, 0))',
     zIndex: 1,
-    pointerEvents: 'none', // Ensures click events pass through to elements below
+    pointerEvents: 'none',
+    '@media (max-width: 768px)': {
+      width: '20%',
+    },
   },
   whiteFadeRight: {
     position: 'absolute',
@@ -126,7 +175,10 @@ const useStyles = makeStyles({
     maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 1) 15%, rgba(0, 0, 0, 1) 85%, transparent 100%)',
     WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 1) 15%, rgba(0, 0, 0, 1) 85%, transparent 100%)',
     zIndex: 1,
-    pointerEvents: 'none', // Ensures click events pass through to elements below
+    pointerEvents: 'none',
+    '@media (max-width: 768px)': {
+      width: '20%',
+    },
   },
 });
 
@@ -190,6 +242,8 @@ const HiringPartners = () => {
           className={classes.logoContainer}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
+          onTouchStart={handleMouseEnter}
+          onTouchEnd={handleMouseLeave}
         >
           <Box 
             className={classes.logoSlider} 

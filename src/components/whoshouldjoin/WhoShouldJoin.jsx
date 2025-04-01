@@ -12,6 +12,12 @@ const useStyles = makeStyles({
     padding: '80px 40px',
     backgroundColor: '#ffffff',
     overflow: 'hidden',
+    "@media (max-width: 960px)": {
+      padding: '60px 30px',
+    },
+    "@media (max-width: 600px)": {
+      padding: '40px 20px',
+    },
   },
   contentContainer: {
     width: '100%',
@@ -25,6 +31,12 @@ const useStyles = makeStyles({
     textAlign: 'center',
     marginBottom: '60px',
     width: '100%',
+    "@media (max-width: 960px)": {
+      marginBottom: '40px',
+    },
+    "@media (max-width: 600px)": {
+      marginBottom: '30px',
+    },
   },
   title: {
     fontSize: '2.8rem !important',
@@ -33,12 +45,26 @@ const useStyles = makeStyles({
     '& span': {
       color: '#FFC614 !important',
     },
+    "@media (max-width: 960px)": {
+      fontSize: '2.5rem !important',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '2rem !important',
+    },
   },
   boxesContainer: {
     width: '100%',
     display: 'flex',
     justifyContent: 'space-between',
     gap: '20px',
+    "@media (max-width: 960px)": {
+      flexWrap: 'wrap',
+      gap: '30px',
+    },
+    "@media (max-width: 600px)": {
+      flexDirection: 'column',
+      gap: '20px',
+    },
   },
   categoryBox: {
     width: '25%',
@@ -48,6 +74,13 @@ const useStyles = makeStyles({
     textAlign: 'center',
     padding: '10px',
     position: 'relative',
+    "@media (max-width: 960px)": {
+      width: '45%',
+    },
+    "@media (max-width: 600px)": {
+      width: '100%',
+      padding: '10px 0',
+    },
   },
   iconContainer: {
     width: '80px',
@@ -61,6 +94,15 @@ const useStyles = makeStyles({
       height: '60px',
       color: '#2A2B6A',
     },
+    "@media (max-width: 600px)": {
+      width: '70px',
+      height: '70px',
+      marginBottom: '15px',
+      '& svg': {
+        width: '50px',
+        height: '50px',
+      },
+    },
   },
   categoryTitle: {
     fontSize: '1.4rem !important',
@@ -71,6 +113,14 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    "@media (max-width: 960px)": {
+      fontSize: '1.3rem !important',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '1.2rem !important',
+      marginBottom: '12px !important',
+      minHeight: 'auto',
+    },
   },
   categoryDescription: {
     fontSize: '0.95rem !important',
@@ -80,6 +130,15 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'flex-start',
     justifyContent: 'center',
+    "@media (max-width: 960px)": {
+      fontSize: '0.9rem !important',
+      minHeight: '110px',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '0.85rem !important',
+      minHeight: 'auto',
+      marginBottom: '10px',
+    },
   },
   divider: {
     position: 'absolute',
@@ -88,6 +147,9 @@ const useStyles = makeStyles({
     width: '2.5px',
     height: '80%',
     background: 'repeating-linear-gradient(to bottom, #0B103F 0%, #0B103F 2%, transparent 2%, transparent 4%)',
+    "@media (max-width: 960px)": {
+      display: 'none', // Hide divider on tablet and mobile
+    },
   }
 });
 

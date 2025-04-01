@@ -20,17 +20,38 @@ const useStyles = makeStyles({
     backgroundColor: "#282880",
     color: "#ffffff",
     padding: "60px 0 20px 0",
+    "@media (max-width: 960px)": {
+      padding: "50px 0 20px 0",
+    },
+    "@media (max-width: 600px)": {
+      padding: "40px 0 20px 0",
+    },
   },
   footerContainer: {
     display: "flex",
     justifyContent: "space-between",
     flexWrap: "wrap",
+    "@media (max-width: 960px)": {
+      gap: "30px",
+    },
   },
   column: {
     flex: "1",
     minWidth: "230px",
     marginBottom: "30px",
     paddingRight: "15px",
+    "@media (max-width: 1200px)": {
+      minWidth: "200px",
+      paddingRight: "10px",
+    },
+    "@media (max-width: 960px)": {
+      flex: "0 0 45%",
+      paddingRight: "0px",
+    },
+    "@media (max-width: 600px)": {
+      flex: "0 0 100%",
+      marginBottom: "20px",
+    },
   },
   logoSection: {
     display: "flex",
@@ -43,11 +64,23 @@ const useStyles = makeStyles({
     width: "80px",
     height: "80px",
     marginBottom: "5px",
+    "@media (max-width: 960px)": {
+      width: "70px",
+      height: "70px",
+    },
+    "@media (max-width: 600px)": {
+      width: "60px",
+      height: "60px",
+    },
   },
   companyName: {
     fontSize: "1.5rem",
     fontWeight: "bold",
     marginBottom: "20px",
+    "@media (max-width: 600px)": {
+      fontSize: "1.3rem",
+      marginBottom: "15px",
+    },
   },
   description: {
     color: "#e0e0e0",
@@ -56,6 +89,10 @@ const useStyles = makeStyles({
     marginBottom: "25px",
     maxWidth: "93%",
     textAlign: "center",
+    "@media (max-width: 600px)": {
+      fontSize: "0.9rem",
+      marginBottom: "20px",
+    },
   },
   sectionTitle: {
     fontSize: "1.25rem !important",
@@ -72,6 +109,18 @@ const useStyles = makeStyles({
       height: "3px",
       backgroundColor: "#FFC614",
     },
+    "@media (max-width: 960px)": {
+      marginBottom: "25px !important",
+    },
+    "@media (max-width: 600px)": {
+      fontSize: "1.15rem !important",
+      marginBottom: "20px !important",
+      paddingBottom: "8px",
+      "&:after": {
+        width: "35px",
+        height: "2px",
+      },
+    },
   },
   linksList: {
     listStyle: "none",
@@ -80,6 +129,9 @@ const useStyles = makeStyles({
   },
   linkItem: {
     marginBottom: "15px",
+    "@media (max-width: 600px)": {
+      marginBottom: "12px",
+    },
   },
   linkText: {
     color: "#ffffff !important",
@@ -89,6 +141,9 @@ const useStyles = makeStyles({
     "&:hover": {
       color: "#FFC614 !important",
       textDecoration: "underline !important",
+    },
+    "@media (max-width: 600px)": {
+      fontSize: "0.95rem",
     },
   },
   programLink: {
@@ -100,21 +155,35 @@ const useStyles = makeStyles({
       color: "#FFC614 !important",
       textDecoration: "underline !important",
     },
+    "@media (max-width: 600px)": {
+      fontSize: "0.95rem",
+    },
   },
   contactItem: {
     display: "flex",
     alignItems: "flex-start",
     marginBottom: "20px",
+    "@media (max-width: 600px)": {
+      marginBottom: "15px",
+    },
   },
   contactIcon: {
     color: "#FFC614",
     marginRight: "15px",
     marginTop: "3px",
+    fontSize: "20px",
+    "@media (max-width: 600px)": {
+      marginRight: "12px",
+      fontSize: "18px",
+    },
   },
   contactText: {
     color: "#ffffff",
     fontSize: "1rem",
     lineHeight: 1.5,
+    "@media (max-width: 600px)": {
+      fontSize: "0.95rem",
+    },
   },
   contactLink: {
     color: "#ffffff !important",
@@ -125,12 +194,19 @@ const useStyles = makeStyles({
       color: "#FFC614 !important",
       textDecoration: "underline !important",
     },
+    "@media (max-width: 600px)": {
+      fontSize: "0.95rem",
+    },
   },
   socialIcons: {
     display: "flex",
     gap: "15px",
     marginTop: "25px",
     flexWrap: "wrap",
+    "@media (max-width: 600px)": {
+      gap: "12px",
+      marginTop: "20px",
+    },
   },
   socialIcon: {
     width: "40px",
@@ -144,6 +220,14 @@ const useStyles = makeStyles({
     transition: "all 0.3s ease",
     "&:hover": {
       backgroundColor: "rgba(255, 255, 255, 0.25)",
+      transform: "translateY(-3px)",
+    },
+    "@media (max-width: 600px)": {
+      width: "35px",
+      height: "35px",
+      "& svg": {
+        fontSize: "1.2rem",
+      },
     },
   },
   divider: {
@@ -157,26 +241,15 @@ const useStyles = makeStyles({
     fontSize: "0.9rem !important",
     textAlign: "center",
     padding: "10px 0 0",
+    "@media (max-width: 600px)": {
+      fontSize: "0.85rem !important",
+    },
   },
   poweredBy: {
     color: "#b0b0b0",
     fontSize: "0.6rem !important",
     textAlign: "center",
     padding: "10px 0 0",
-  },
-  "@media (max-width: 1100px)": {
-    footerContainer: {
-      justifyContent: "flex-start",
-      gap: "40px",
-    },
-    column: {
-      flex: "0 0 45%",
-    },
-  },
-  "@media (max-width: 768px)": {
-    column: {
-      flex: "0 0 100%",
-    },
   },
 });
 
@@ -266,24 +339,6 @@ const Footer = () => {
           <Box className={classes.column}>
             <Typography className={classes.sectionTitle}>Programs</Typography>
             <ul className={classes.linksList}>
-              {/* <li className={classes.linkItem}>
-                <MuiLink
-                  component={Link}
-                  to="/programs/full-stack"
-                  className={classes.programLink}
-                >
-                  Full Stack Development
-                </MuiLink>
-              </li>
-              <li className={classes.linkItem}>
-                <MuiLink
-                  component={Link}
-                  to="/programs/data-science"
-                  className={classes.programLink}
-                >
-                  Data Science
-                </MuiLink>
-              </li> */}
               <li className={classes.linkItem}>
                 <MuiLink
                   component={Link}

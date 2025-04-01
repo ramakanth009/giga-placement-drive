@@ -12,6 +12,12 @@ const useStyles = makeStyles({
     overflow: "hidden",
     position: "relative",
     background: "linear-gradient(180deg, #ffffff 0%, #f5f8ff 100%)",
+    "@media (max-width: 960px)": {
+      padding: "50px 0",
+    },
+    "@media (max-width: 600px)": {
+      padding: "40px 0",
+    },
   },
   contentContainer: {
     display: "flex",
@@ -19,6 +25,10 @@ const useStyles = makeStyles({
     alignItems: "center",
     justifyContent: "space-between",
     gap: "40px",
+    "@media (max-width: 960px)": {
+      flexDirection: "column",
+      gap: "30px",
+    },
   },
   leftContainer: {
     position: "relative",
@@ -26,10 +36,30 @@ const useStyles = makeStyles({
     height: "415px",
     display: "flex",
     justifyContent: "flex-end",
+    "@media (max-width: 1200px)": {
+      width: "45%",
+    },
+    "@media (max-width: 960px)": {
+      width: "80%",
+      height: "350px",
+      justifyContent: "center",
+      marginBottom: "20px",
+    },
+    "@media (max-width: 600px)": {
+      width: "90%",
+      height: "300px",
+    },
   },
   rightContainer: {
     width: "55%",
     padding: "20px 0",
+    "@media (max-width: 1200px)": {
+      width: "50%",
+    },
+    "@media (max-width: 960px)": {
+      width: "100%",
+      padding: "0",
+    },
   },
   imageBox: {
     position: "relative",
@@ -39,6 +69,9 @@ const useStyles = makeStyles({
     borderRadius: "12px",
     overflow: "hidden",
     boxShadow: "0 20px 40px rgba(0, 0, 0, 0.12)",
+    "@media (max-width: 960px)": {
+      width: "100%",
+    },
   },
   image: {
     width: "100%",
@@ -60,6 +93,11 @@ const useStyles = makeStyles({
     borderRight: "4px solid #2A2B6A",
     zIndex: 1,
     borderRadius: "12px",
+    "@media (max-width: 960px)": {
+      right: "-5px",
+      bottom: "-5px",
+      borderWidth: "3px",
+    },
   },
   highlightDot: {
     position: "absolute",
@@ -69,6 +107,10 @@ const useStyles = makeStyles({
     background: "rgba(255, 198, 20, 0.15)",
     filter: "blur(25px)",
     zIndex: 0,
+    "@media (max-width: 600px)": {
+      width: "80px",
+      height: "80px",
+    },
   },
   topLeftDot: {
     top: "10%",
@@ -94,10 +136,26 @@ const useStyles = makeStyles({
       height: "3px",
       backgroundColor: "#FFC614",
     },
+    "@media (max-width: 960px)": {
+      fontSize: "2.2rem !important",
+      marginBottom: "25px !important",
+      textAlign: "center",
+      "&:after": {
+        left: "50%",
+        transform: "translateX(-50%)",
+      },
+    },
+    "@media (max-width: 600px)": {
+      fontSize: "1.8rem !important",
+      marginBottom: "20px !important",
+    },
   },
   featureList: {
     marginBottom: "30px",
     width: "100%",
+    "@media (max-width: 960px)": {
+      marginBottom: "20px",
+    },
   },
   featureItem: {
     display: "flex",
@@ -107,6 +165,14 @@ const useStyles = makeStyles({
     opacity: 0,
     transition: "transform 0.5s ease, opacity 0.5s ease",
     width: "100%",
+    "@media (max-width: 960px)": {
+      marginBottom: "18px",
+      justifyContent: "center",
+    },
+    "@media (max-width: 600px)": {
+      marginBottom: "15px",
+      alignItems: "center",
+    },
   },
   featureItemVisible: {
     transform: "translateX(0)",
@@ -117,12 +183,25 @@ const useStyles = makeStyles({
     marginRight: "15px",
     fontSize: "24px !important",
     flexShrink: 0,
+    "@media (max-width: 600px)": {
+      fontSize: "20px !important",
+      marginRight: "10px",
+    },
   },
   featureText: {
     color: "#4A4A4A !important",
     fontSize: "1.15rem !important",
     fontWeight: "500 !important",
     lineHeight: "1.5 !important",
+    "@media (max-width: 960px)": {
+      textAlign: "center",
+      maxWidth: "80%",
+    },
+    "@media (max-width: 600px)": {
+      fontSize: "1rem !important",
+      lineHeight: "1.4 !important",
+      maxWidth: "100%",
+    },
   },
 
   actionButton: {
@@ -141,6 +220,14 @@ const useStyles = makeStyles({
       backgroundColor: "#212255 !important",
       transform: "translateY(-3px)",
       boxShadow: "0 6px 15px rgba(42, 43, 106, 0.3) !important",
+    },
+    "@media (max-width: 960px)": {
+      display: "block",
+      margin: "25px auto 15px auto !important",
+    },
+    "@media (max-width: 600px)": {
+      padding: "10px 20px !important",
+      fontSize: "0.9rem !important",
     },
   },
 
@@ -165,30 +252,9 @@ const useStyles = makeStyles({
     fontSize: "0.8rem",
     zIndex: 3,
     boxShadow: "0 3px 8px rgba(0, 0, 0, 0.1)",
-  },
-  // Responsive styles
-  "@media (max-width: 960px)": {
-    contentContainer: {
-      flexDirection: "column",
-      gap: "20px",
-    },
-    leftContainer: {
-      width: "100%",
-      marginBottom: "40px",
-      justifyContent: "center", // Center image on mobile
-    },
-    rightContainer: {
-      width: "100%",
-      padding: "0",
-    },
-    sectionTitle: {
-      fontSize: "2.2rem !important",
-    },
-    imageBox: {
-      width: "85%", // Adjust width on mobile
-    },
-    statContainer: {
-      gap: "15px", // Smaller gap on mobile
+    "@media (max-width: 600px)": {
+      fontSize: "0.7rem",
+      padding: "4px 8px",
     },
   },
 });

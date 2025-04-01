@@ -11,6 +11,12 @@ const useStyles = makeStyles({
     color: 'white',
     position: 'relative',
     overflow: 'hidden',
+    "@media (max-width: 960px)": {
+      padding: '50px 0',
+    },
+    "@media (max-width: 600px)": {
+      padding: '40px 0',
+    },
   },
   backgroundGlow: {
     position: 'absolute',
@@ -20,6 +26,10 @@ const useStyles = makeStyles({
     filter: 'blur(150px)',
     opacity: 0.15,
     zIndex: 0,
+    "@media (max-width: 768px)": {
+      width: '400px',
+      height: '400px',
+    },
   },
   topRightGlow: {
     background: '#FFC614',
@@ -41,6 +51,9 @@ const useStyles = makeStyles({
   titleContainer: {
     textAlign: 'center',
     marginBottom: '40px',
+    "@media (max-width: 768px)": {
+      marginBottom: '30px',
+    },
   },
   mainTitle: {
     fontSize: '2.8rem !important',
@@ -61,12 +74,33 @@ const useStyles = makeStyles({
     '& span': {
       color: '#FFC614 !important',
     },
+    "@media (max-width: 960px)": {
+      fontSize: '2.4rem !important',
+    },
+    "@media (max-width: 768px)": {
+      fontSize: '2rem !important',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '1.8rem !important',
+      '&:after': {
+        width: '50px',
+        bottom: '-10px',
+      },
+    },
   },
   subtitle: {
     fontSize: '1.5rem !important',
     fontWeight: '500 !important',
     color: 'rgba(255, 255, 255, 0.9) !important',
     marginTop: '25px !important',
+    "@media (max-width: 768px)": {
+      fontSize: '1.3rem !important',
+      marginTop: '20px !important',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '1.1rem !important',
+      marginTop: '15px !important',
+    },
   },
   tabsContainer: {
     display: 'flex',
@@ -79,6 +113,15 @@ const useStyles = makeStyles({
     justifyContent: 'space-between',
     gap: '20px',
     boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
+    "@media (max-width: 768px)": {
+      flexDirection: 'column',
+      gap: '10px',
+      marginBottom: '30px',
+    },
+    "@media (max-width: 480px)": {
+      borderRadius: '12px',
+      padding: '3px',
+    },
   },
   tabButton: {
     flex: '0 0 48%',
@@ -89,6 +132,17 @@ const useStyles = makeStyles({
     textTransform: 'none !important',
     fontSize: '1.1rem !important',
     transition: 'all 0.3s ease !important',
+    "@media (max-width: 768px)": {
+      flex: 'none',
+      width: '100%',
+      padding: '12px !important',
+      fontSize: '1rem !important',
+    },
+    "@media (max-width: 480px)": {
+      borderRadius: '10px !important',
+      padding: '10px !important',
+      fontSize: '0.9rem !important',
+    },
   },
   activeTabButton: {
     backgroundColor: 'white !important',
@@ -98,6 +152,9 @@ const useStyles = makeStyles({
   rolesContainer: {
     width: '100%',
     maxWidth: '1000px',
+    "@media (max-width: 768px)": {
+      maxWidth: '600px',
+    },
   },
   roleCard: {
     backgroundColor: 'white',
@@ -114,16 +171,39 @@ const useStyles = makeStyles({
       transform: 'translateY(-5px)',
       boxShadow: '0 10px 25px rgba(0, 0, 0, 0.2)',
     },
+    "@media (max-width: 600px)": {
+      height: '32px',
+      padding: '6px 8px',
+      borderRadius: '10px',
+    },
+    "@media (max-width: 480px)": {
+      height: '30px',
+      padding: '5px 7px',
+    },
   },
   roleIcon: {
     marginRight: '10px',
     color: '#2A2B6A',
     fontSize: '24px !important',
+    "@media (max-width: 600px)": {
+      fontSize: '20px !important',
+      marginRight: '8px',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '18px !important',
+      marginRight: '6px',
+    },
   },
   roleText: {
     color: '#2A2B6A !important',
     fontWeight: '600 !important',
     fontSize: '1.1rem !important',
+    "@media (max-width: 600px)": {
+      fontSize: '0.9rem !important',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '0.8rem !important',
+    },
   },
   actionsContainer: {
     display: 'flex',
@@ -132,6 +212,12 @@ const useStyles = makeStyles({
     marginTop: '40px',
     position: 'relative',
     zIndex: 2,
+    "@media (max-width: 768px)": {
+      flexDirection: 'column',
+      alignItems: 'center',
+      gap: '15px',
+      marginTop: '30px',
+    },
   },
   button: {
     padding: '12px 24px !important',
@@ -140,6 +226,12 @@ const useStyles = makeStyles({
     fontSize: '1rem !important',
     textTransform: 'none !important',
     transition: 'all 0.3s ease !important',
+    "@media (max-width: 600px)": {
+      padding: '10px 20px !important',
+      fontSize: '0.9rem !important',
+      width: '80%',
+      maxWidth: '300px',
+    },
   },
   checkButton: {
     backgroundColor: 'transparent !important',
@@ -165,17 +257,40 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'space-between',
     marginBottom: '16px',
+    "@media (max-width: 640px)": {
+      flexDirection: 'column',
+      alignItems: 'center',
+      gap: '10px',
+      marginBottom: '10px',
+    },
   },
   secondRow: {
     display: 'flex',
     justifyContent: 'center',
     gap: '20px',
+    "@media (max-width: 640px)": {
+      flexDirection: 'column',
+      alignItems: 'center',
+      gap: '10px',
+    },
   },
   roleWrapper: {
     width: '32%',
+    "@media (max-width: 768px)": {
+      width: '31%',
+    },
+    "@media (max-width: 640px)": {
+      width: '80%',
+    },
   },
   roleWrapperSecondRow: {
     width: '32%',
+    "@media (max-width: 768px)": {
+      width: '31%',
+    },
+    "@media (max-width: 640px)": {
+      width: '80%',
+    },
   },
   decorativeDot: {
     position: 'absolute',
@@ -239,6 +354,10 @@ const InDemandRoles = () => {
     setActiveTab(tabId);
   };
 
+  const handleTabClick = (tabId) => {
+    setActiveTab(tabId);
+  };
+
   return (
     <Box className={classes.section}>
       {/* Background glows */}
@@ -283,6 +402,7 @@ const InDemandRoles = () => {
                 activeTab === tab.id ? classes.activeTabButton : ''
               }`}
               onMouseEnter={() => handleTabHover(tab.id)}
+              onClick={() => handleTabClick(tab.id)}
             >
               {tab.label}
             </Button>

@@ -10,6 +10,16 @@ const useStyles = makeStyles({
     flexWrap: 'wrap',
     gap: '20px',
     position: 'relative',
+    "@media (max-width: 1200px)": {
+      width: '55%',
+    },
+    "@media (max-width: 960px)": {
+      width: '100%',
+      maxWidth: '750px',
+    },
+    "@media (max-width: 600px)": {
+      gap: '15px',
+    },
   },
   leftBoxesContainer: {
     width: 'calc(50% - 10px)',
@@ -17,6 +27,11 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     gap: '20px',
     marginTop: '-20px', // Positioning left boxes slightly higher
+    "@media (max-width: 600px)": {
+      width: '100%',
+      marginTop: '0',
+      gap: '15px',
+    },
   },
   rightBoxesContainer: {
     width: 'calc(50% - 10px)',
@@ -24,6 +39,11 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     gap: '20px',
     marginTop: '20px', // Positioning right boxes slightly lower
+    "@media (max-width: 600px)": {
+      width: '100%',
+      marginTop: '0',
+      gap: '15px',
+    },
   },
   advantageBox: {
     backgroundColor: '#ffffff',
@@ -45,7 +65,17 @@ const useStyles = makeStyles({
       transform: 'translateY(-10px)',
       boxShadow: '0px 15px 30px rgba(0, 0, 0, 0.1)',
       borderRadius: '16px 16px 16px 16px'
-    }
+    },
+    "@media (max-width: 1200px)": {
+      padding: '30px 25px',
+    },
+    "@media (max-width: 960px)": {
+      padding: '30px 25px',
+    },
+    "@media (max-width: 600px)": {
+      padding: '25px 20px',
+      borderRadius: '16px 16px 40px 16px',
+    },
   },
   leftBorder: {
     position: 'absolute',
@@ -55,6 +85,9 @@ const useStyles = makeStyles({
     height: '0%',
     backgroundColor: '#2A2B6A',
     transition: 'height 0.9s cubic-bezier(0.19, 1, 0.22, 1)',
+    "@media (max-width: 600px)": {
+      width: '3px',
+    },
   },
   activeBorder: {
     height: '100%',
@@ -67,6 +100,18 @@ const useStyles = makeStyles({
     marginBottom: '15px !important',
     position: 'relative',
     transition: 'transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1)',
+    "@media (max-width: 1200px)": {
+      fontSize: '1.4rem !important',
+      padding: "0px 15px",
+    },
+    "@media (max-width: 960px)": {
+      fontSize: '1.3rem !important',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '1.2rem !important',
+      padding: "0px 10px",
+      marginBottom: '12px !important',
+    },
   },
   titleLine: {
     position: 'absolute',
@@ -76,9 +121,16 @@ const useStyles = makeStyles({
     height: '2px',
     backgroundColor: '#FFC614',
     transition: 'width 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+    "@media (max-width: 600px)": {
+      bottom: '-4px',
+      left: '10px',
+    },
   },
   activeTitleLine: {
     width: '50px',
+    "@media (max-width: 600px)": {
+      width: '40px',
+    },
   },
   boxDescription: {
     padding: "0px 20px",
@@ -87,11 +139,22 @@ const useStyles = makeStyles({
     lineHeight: '1.5 !important',
     opacity: 0.9,
     transition: 'opacity 0.7s ease',
+    "@media (max-width: 1200px)": {
+      fontSize: '0.95rem !important',
+      padding: "0px 15px",
+    },
+    "@media (max-width: 960px)": {
+      fontSize: '0.9rem !important',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '0.85rem !important',
+      padding: "0px 10px",
+      lineHeight: '1.4 !important',
+    },
   },
   activeDescription: {
     opacity: 1,
   },
-  // Removed icon styles
   shimmerEffect: {
     position: 'absolute',
     top: 0,
@@ -207,14 +270,20 @@ const AdvantageBoxes = () => {
     },
   ];
 
-  // Check icon removed
-
   const handleMouseEnter = (id) => {
     setActiveBox(id);
   };
 
   const handleMouseLeave = () => {
     setActiveBox(null);
+  };
+
+  const handleTouch = (id) => {
+    if (activeBox === id) {
+      setActiveBox(null);
+    } else {
+      setActiveBox(id);
+    }
   };
 
   return (
@@ -227,6 +296,7 @@ const AdvantageBoxes = () => {
             className={`${classes.advantageBox} ${classes.fadeInBox} ${animated.includes(box.id) ? classes.fadeInVisible : ''}`}
             onMouseEnter={() => handleMouseEnter(box.id)}
             onMouseLeave={handleMouseLeave}
+            onTouchStart={() => handleTouch(box.id)}
             style={{ transitionDelay: `${(box.id - 1) * 0.2}s` }}
           >
             <Box 
@@ -244,7 +314,6 @@ const AdvantageBoxes = () => {
             >
               {box.description}
             </Typography>
-            {/* Removed check icon */}
             <Box 
               className={`${classes.shimmerEffect} ${shimmerStates[box.id] ? classes.animateShimmer : ''}`}
             />
@@ -260,6 +329,7 @@ const AdvantageBoxes = () => {
             className={`${classes.advantageBox} ${classes.fadeInBox} ${animated.includes(box.id) ? classes.fadeInVisible : ''}`}
             onMouseEnter={() => handleMouseEnter(box.id)}
             onMouseLeave={handleMouseLeave}
+            onTouchStart={() => handleTouch(box.id)}
             style={{ transitionDelay: `${(box.id - 1) * 0.2}s` }}
           >
             <Box 
@@ -277,7 +347,6 @@ const AdvantageBoxes = () => {
             >
               {box.description}
             </Typography>
-            {/* Removed check icon */}
             <Box 
               className={`${classes.shimmerEffect} ${shimmerStates[box.id] ? classes.animateShimmer : ''}`}
             />

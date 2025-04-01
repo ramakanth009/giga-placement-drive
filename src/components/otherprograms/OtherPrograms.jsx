@@ -43,7 +43,13 @@ const useStyles = makeStyles({
         'linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px)',
       backgroundSize: '30px 30px',
       zIndex: 1,
-    }
+    },
+    "@media (max-width: 960px)": {
+      padding: '60px 0',
+    },
+    "@media (max-width: 600px)": {
+      padding: '40px 0',
+    },
   },
   container: {
     position: 'relative',
@@ -61,6 +67,12 @@ const useStyles = makeStyles({
     marginBottom: '50px',
     position: 'relative',
     zIndex: 2,
+    "@media (max-width: 960px)": {
+      marginBottom: '40px',
+    },
+    "@media (max-width: 600px)": {
+      marginBottom: '30px',
+    },
   },
   title: {
     fontSize: '2.75rem !important',
@@ -68,6 +80,12 @@ const useStyles = makeStyles({
     color: 'white !important',
     position: 'relative',
     display: 'inline-block',
+    "@media (max-width: 960px)": {
+      fontSize: '2.4rem !important',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '2rem !important',
+    },
   },
   highlight: {
     color: '#FFC614 !important',
@@ -78,9 +96,20 @@ const useStyles = makeStyles({
     color: 'rgba(255, 255, 255, 0.7) !important',
     maxWidth: '700px',
     margin: '20px auto 0 !important',
+    "@media (max-width: 960px)": {
+      fontSize: '1rem !important',
+      maxWidth: '90%',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '0.9rem !important',
+      maxWidth: '95%',
+    },
   },
   tabsContainer: {
     marginBottom: '40px',
+    "@media (max-width: 600px)": {
+      marginBottom: '30px',
+    },
   },
   tabsRoot: {
     minHeight: '60px',
@@ -92,6 +121,11 @@ const useStyles = makeStyles({
     position: 'relative',
     '& .MuiTabs-indicator': {
       display: 'none',
+    },
+    "@media (max-width: 600px)": {
+      minHeight: '50px',
+      borderRadius: '25px',
+      padding: '3px',
     },
   },
   tab: {
@@ -114,6 +148,18 @@ const useStyles = makeStyles({
     '& svg': {
       marginRight: '10px',
     },
+    "@media (max-width: 960px)": {
+      padding: '0 20px !important',
+    },
+    "@media (max-width: 600px)": {
+      padding: '0 15px !important',
+      minHeight: '44px !important',
+      fontSize: '0.9rem !important',
+      '& svg': {
+        marginRight: '6px',
+        fontSize: '1.2rem',
+      },
+    },
   },
   cardsContainer: {
     display: 'flex',
@@ -121,11 +167,20 @@ const useStyles = makeStyles({
     gap: '30px',
     position: 'relative',
     zIndex: 2,
+    "@media (max-width: 960px)": {
+      flexDirection: 'column',
+      alignItems: 'center',
+      gap: '25px',
+    },
   },
   cardWrapper: {
     flex: '1 1 calc(50% - 15px)',
     maxWidth: 'calc(50% - 15px)',
     display: 'flex',
+    "@media (max-width: 960px)": {
+      flex: '1 1 100%',
+      maxWidth: '500px',
+    },
   },
   card: {
     width: '100%',
@@ -154,12 +209,18 @@ const useStyles = makeStyles({
         opacity: 1,
       },
     },
+    "@media (max-width: 600px)": {
+      borderRadius: '16px !important',
+    },
   },
   cardMedia: {
     height: '200px',
     transition: 'transform 0.6s',
     objectFit: 'cover',
     objectPosition: 'center',
+    "@media (max-width: 600px)": {
+      height: '180px',
+    },
   },
   hoverOverlay: {
     position: 'absolute',
@@ -167,7 +228,7 @@ const useStyles = makeStyles({
     left: 0,
     right: 0,
     height: '200px',
-    background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%)',
+    background: 'linear-gradient(0deg, rgba(42, 43, 106, 0.1) 0%, rgba(255, 255, 255, 0) 50%)',
     opacity: 0,
     transition: 'opacity 0.4s ease',
     zIndex: 2,
@@ -175,6 +236,9 @@ const useStyles = makeStyles({
     alignItems: 'flex-end',
     justifyContent: 'center',
     padding: '0 0 20px 0',
+    "@media (max-width: 600px)": {
+      height: '180px',
+    },
   },
   viewButton: {
     backgroundColor: '#FFC614 !important',
@@ -190,10 +254,18 @@ const useStyles = makeStyles({
     '&:hover': {
       backgroundColor: 'white !important',
     },
+    "@media (max-width: 600px)": {
+      padding: '8px 20px !important',
+      fontSize: '0.85rem !important',
+      borderRadius: '25px !important',
+    },
   },
   cardContent: {
     padding: '25px !important',
     color: 'white',
+    "@media (max-width: 600px)": {
+      padding: '20px !important',
+    },
   },
   programTag: {
     position: 'absolute',
@@ -207,6 +279,12 @@ const useStyles = makeStyles({
     borderRadius: '20px !important',
     fontSize: '0.75rem !important',
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.15) !important',
+    "@media (max-width: 600px)": {
+      top: '10px',
+      left: '10px',
+      fontSize: '0.7rem !important',
+      padding: '4px 10px !important',
+    },
   },
   durationTag: {
     position: 'absolute',
@@ -226,6 +304,16 @@ const useStyles = makeStyles({
       marginRight: '4px',
       fontSize: '0.9rem !important',
     },
+    "@media (max-width: 600px)": {
+      top: '10px',
+      right: '10px',
+      fontSize: '0.7rem !important',
+      padding: '4px 10px !important',
+      '& svg': {
+        fontSize: '0.8rem !important',
+        marginRight: '3px',
+      },
+    },
   },
   programTitle: {
     fontSize: '1.5rem !important',
@@ -233,39 +321,68 @@ const useStyles = makeStyles({
     color: 'white !important',
     marginBottom: '15px !important',
     lineHeight: '1.3 !important',
+    "@media (max-width: 960px)": {
+      fontSize: '1.4rem !important',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '1.3rem !important',
+      marginBottom: '12px !important',
+    },
   },
   divider: {
     backgroundColor: 'rgba(255, 255, 255, 0.1) !important',
     margin: '15px 0 20px !important',
+    "@media (max-width: 600px)": {
+      margin: '12px 0 16px !important',
+    },
   },
   featureList: {
     marginBottom: '20px',
+    "@media (max-width: 600px)": {
+      marginBottom: '15px',
+    },
   },
   featureItem: {
     display: 'flex',
     alignItems: 'center',
     marginBottom: '12px',
+    "@media (max-width: 600px)": {
+      marginBottom: '10px',
+    },
   },
   featureIcon: {
     color: '#FFC614 !important',
     fontSize: '0.8rem !important',
     marginRight: '12px !important',
+    "@media (max-width: 600px)": {
+      fontSize: '0.7rem !important',
+      marginRight: '10px !important',
+    },
   },
   featureText: {
     fontSize: '0.95rem !important',
     color: 'rgba(255, 255, 255, 0.8) !important',
     fontWeight: '400 !important',
+    "@media (max-width: 600px)": {
+      fontSize: '0.85rem !important',
+    },
   },
   statsContainer: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     marginTop: '20px',
+    "@media (max-width: 600px)": {
+      marginTop: '15px',
+    },
   },
   stats: {
     display: 'flex',
     alignItems: 'center',
     gap: '15px',
+    "@media (max-width: 600px)": {
+      gap: '10px',
+    },
   },
   statItem: {
     display: 'flex',
@@ -275,10 +392,17 @@ const useStyles = makeStyles({
     color: 'rgba(255, 255, 255, 0.7) !important',
     fontSize: '1.1rem !important',
     marginRight: '8px !important',
+    "@media (max-width: 600px)": {
+      fontSize: '1rem !important',
+      marginRight: '6px !important',
+    },
   },
   statText: {
     fontSize: '0.9rem !important',
     color: 'rgba(255, 255, 255, 0.8) !important',
+    "@media (max-width: 600px)": {
+      fontSize: '0.8rem !important',
+    },
   },
   pulseDot: {
     display: 'inline-block',
@@ -298,7 +422,12 @@ const useStyles = makeStyles({
       backgroundColor: 'inherit',
       opacity: 0.7,
       animation: '$pulse 1.5s infinite',
-    }
+    },
+    "@media (max-width: 600px)": {
+      width: '8px',
+      height: '8px',
+      marginRight: '6px',
+    },
   },
   '@keyframes pulse': {
     '0%': {
@@ -330,6 +459,15 @@ const useStyles = makeStyles({
       backgroundColor: 'rgba(255, 198, 20, 0.1) !important',
       borderColor: '#FFC614 !important',
     },
+    "@media (max-width: 960px)": {
+      marginTop: '40px !important',
+    },
+    "@media (max-width: 600px)": {
+      marginTop: '30px !important',
+      padding: '10px 25px !important',
+      fontSize: '0.9rem !important',
+      borderRadius: '25px !important',
+    },
   },
   glowEffect: {
     position: 'absolute',
@@ -339,26 +477,15 @@ const useStyles = makeStyles({
     zIndex: 1,
     opacity: 0.3,
     filter: 'blur(150px)',
+    "@media (max-width: 600px)": {
+      width: '300px',
+      height: '300px',
+    },
   },
   purpleGlow: {
     background: '#8a5cf7',
     top: '-200px',
     right: '-100px',
-  },
-  // Responsive styles
-  '@media (max-width: 960px)': {
-    cardsContainer: {
-      flexDirection: 'column',
-      alignItems: 'center',
-    },
-    cardWrapper: {
-      flex: '0 0 100%',
-      maxWidth: '500px',
-      marginBottom: '20px',
-    },
-    title: {
-      fontSize: '2.2rem !important',
-    },
   },
 });
 
@@ -432,6 +559,8 @@ const OtherPrograms = () => {
             onChange={handleTabChange}
             classes={{ root: classes.tabsRoot }}
             centered
+            variant="scrollable"
+            scrollButtons="auto"
           >
             <Tab 
               label="All Programs" 
@@ -542,7 +671,7 @@ const OtherPrograms = () => {
                       <Box sx={{ display: 'flex', alignItems: 'center' }}>
                         <Box className={classes.pulseDot} />
                         <Typography sx={{ 
-                          fontSize: '0.85rem', 
+                          fontSize: { xs: '0.8rem', sm: '0.85rem' }, 
                           fontWeight: 500, 
                           color: '#2ecc71' 
                         }}>

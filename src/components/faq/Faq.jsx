@@ -10,12 +10,24 @@ const useStyles = makeStyles({
     maxWidth: '100%',
     margin: '0 auto',
     boxSizing: 'border-box',
+    "@media (max-width: 960px)": {
+      padding: '50px 30px',
+    },
+    "@media (max-width: 600px)": {
+      padding: '40px 20px',
+    },
   },
   titleBox: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     marginBottom: '40px',
+    "@media (max-width: 960px)": {
+      marginBottom: '30px',
+    },
+    "@media (max-width: 600px)": {
+      marginBottom: '25px',
+    },
   },
   title: {
     fontSize: '2.5rem !important',
@@ -27,10 +39,19 @@ const useStyles = makeStyles({
     '& span': {
       color: '#FFC614 !important',
     },
+    "@media (max-width: 960px)": {
+      fontSize: '2.2rem !important',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '1.8rem !important',
+    },
   },
   accordionContainer: {
     maxWidth: '900px',
     margin: '0 auto',
+    "@media (max-width: 960px)": {
+      maxWidth: '100%',
+    },
   },
   accordion: {
     boxShadow: 'none !important',
@@ -43,6 +64,10 @@ const useStyles = makeStyles({
     '&.Mui-expanded': {
       margin: '0 0 16px 0 !important',
     },
+    "@media (max-width: 600px)": {
+      borderRadius: '8px !important',
+      marginBottom: '12px !important',
+    },
   },
   accordionSummary: {
     padding: '0 24px !important',
@@ -50,11 +75,24 @@ const useStyles = makeStyles({
     '&.Mui-expanded': {
       minHeight: '64px !important',
     },
+    "@media (max-width: 600px)": {
+      padding: '0 16px !important',
+      minHeight: '56px !important',
+      '&.Mui-expanded': {
+        minHeight: '56px !important',
+      },
+    },
   },
   summaryContent: {
     margin: '12px 0 !important',
     '&.Mui-expanded': {
       margin: '12px 0 !important',
+    },
+    "@media (max-width: 600px)": {
+      margin: '10px 0 !important',
+      '&.Mui-expanded': {
+        margin: '10px 0 !important',
+      },
     },
   },
   question: {
@@ -62,24 +100,46 @@ const useStyles = makeStyles({
     fontWeight: '600 !important',
     color: '#2A2B6A !important',
     flexGrow: 1,
+    "@media (max-width: 960px)": {
+      fontSize: '1rem !important',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '0.9rem !important',
+    },
   },
   questionNumber: {
     color: '#FFC614 !important',
     fontWeight: 'bold !important',
     marginRight: '10px !important',
+    "@media (max-width: 600px)": {
+      marginRight: '8px !important',
+    },
   },
   expandIcon: {
     color: '#2A2B6A !important',
     fontSize: '1.5rem !important',
+    "@media (max-width: 600px)": {
+      fontSize: '1.3rem !important',
+    },
   },
   accordionDetails: {
     padding: '0 24px 24px !important',
     borderTop: '1px solid #EAF0F6',
+    "@media (max-width: 600px)": {
+      padding: '0 16px 16px !important',
+    },
   },
   answer: {
     color: '#4A4A4A !important',
     fontSize: '1rem !important',
     lineHeight: '1.6 !important',
+    "@media (max-width: 960px)": {
+      fontSize: '0.95rem !important',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '0.9rem !important',
+      lineHeight: '1.5 !important',
+    },
   },
 });
 
@@ -158,6 +218,8 @@ const Faq = () => {
               classes={{
                 content: classes.summaryContent,
               }}
+              aria-controls={`${faq.id}-content`}
+              id={`${faq.id}-header`}
             >
               <Box display="flex" alignItems="center" width="100%">
                 <Typography className={classes.question}>

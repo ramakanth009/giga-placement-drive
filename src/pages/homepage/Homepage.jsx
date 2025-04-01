@@ -41,7 +41,7 @@ const Homepage = () => {
         {/* Hiring Partners as separate section */}
         <HiringPartners />
         
-        <JobKickstart />
+        <JobKickstart /> 
 
         {/* Add the WhyDifferent component */}
         <WhyDifferent />

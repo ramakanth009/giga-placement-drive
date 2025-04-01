@@ -8,6 +8,12 @@ const useStyles = makeStyles({
   section: {
     padding: '80px 0',
     background: '#FFFFFF',
+    "@media (max-width: 960px)": {
+      padding: '60px 0',
+    },
+    "@media (max-width: 600px)": {
+      padding: '40px 0',
+    },
   },
   offerContainer: {
     background: '#F8F9FA',
@@ -16,6 +22,14 @@ const useStyles = makeStyles({
     boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.05)',
     display: 'flex',
     flexDirection: 'row',
+    "@media (max-width: 960px)": {
+      flexDirection: 'column',
+      padding: '30px',
+    },
+    "@media (max-width: 600px)": {
+      padding: '25px 20px',
+      borderRadius: '12px',
+    },
   },
   title: {
     fontSize: '3rem !important',
@@ -25,6 +39,14 @@ const useStyles = makeStyles({
     '& span': {
       color: '#FFC614 !important',
     },
+    "@media (max-width: 960px)": {
+      fontSize: '2.5rem !important',
+      marginBottom: '30px !important',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '2rem !important',
+      marginBottom: '25px !important',
+    },
   },
   leftColumn: {
     width: '50%',
@@ -32,16 +54,30 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     justifyContent: 'flex-start',
     paddingRight: '20px',
+    "@media (max-width: 960px)": {
+      width: '100%',
+      paddingRight: '0',
+      marginBottom: '30px',
+    },
   },
   rightColumn: {
     width: '50%',
     paddingLeft: '20px',
+    "@media (max-width: 960px)": {
+      width: '100%',
+      paddingLeft: '0',
+    },
   },
   priceBox: {
     background: '#F2F3F5',
     borderRadius: '12px',
     padding: '30px',
     marginBottom: '30px',
+    "@media (max-width: 600px)": {
+      padding: '20px 15px',
+      borderRadius: '10px',
+      marginBottom: '25px',
+    },
   },
   regularPrice: {
     fontSize: '1.3rem !important',
@@ -49,17 +85,26 @@ const useStyles = makeStyles({
     color: '#6A6B6C !important',
     textDecoration: 'line-through !important',
     marginBottom: '10px !important',
+    "@media (max-width: 600px)": {
+      fontSize: '1.1rem !important',
+    },
   },
   limitedPrice: {
     fontSize: '1.5rem !important',
     fontWeight: 'bold !important',
     color: '#0A192F !important',
     marginBottom: '0 !important',
+    "@media (max-width: 600px)": {
+      fontSize: '1.3rem !important',
+    },
   },
   priceHighlight: {
     fontSize: '2.5rem !important',
     fontWeight: 'bold !important',
     color: '#0A192F !important',
+    "@media (max-width: 600px)": {
+      fontSize: '2rem !important',
+    },
   },
   applyButton: {
     backgroundColor: "#232459 !important",
@@ -72,41 +117,44 @@ const useStyles = makeStyles({
     "&:hover": {
       backgroundColor: "#1a1b43 !important", // Slightly darker shade for hover
     },
+    "@media (max-width: 600px)": {
+      padding: "10px 30px !important",
+      fontSize: "1rem !important",
+    },
   },
   includedTitle: {
     fontSize: '1.8rem !important',
     fontWeight: 'bold !important',
     color: '#0A192F !important',
     marginBottom: '25px !important',
+    "@media (max-width: 600px)": {
+      fontSize: '1.5rem !important',
+      marginBottom: '20px !important',
+    },
   },
   featureItem: {
     display: 'flex',
     alignItems: 'flex-start',
     marginBottom: '20px',
+    "@media (max-width: 600px)": {
+      marginBottom: '15px',
+    },
   },
   checkIcon: {
     color: '#FFC614 !important',
     marginRight: '15px',
     marginTop: '2px',
+    "@media (max-width: 600px)": {
+      marginRight: '10px',
+      fontSize: '1.2rem !important',
+    },
   },
   featureText: {
     fontSize: '1.1rem !important',
     color: '#4A4A4A !important',
     fontWeight: '500 !important',
-  },
-  // Responsive styles
-  '@media (max-width: 960px)': {
-    offerContainer: {
-      flexDirection: 'column',
-    },
-    leftColumn: {
-      width: '100%',
-      paddingRight: '0',
-      marginBottom: '30px',
-    },
-    rightColumn: {
-      width: '100%',
-      paddingLeft: '0',
+    "@media (max-width: 600px)": {
+      fontSize: '1rem !important',
     },
   },
 });
