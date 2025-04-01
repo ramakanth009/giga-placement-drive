@@ -4,6 +4,7 @@ import { makeStyles } from "@mui/styles";
 import Heroguy from "../../assets/heroguy.png";
 import { ReactComponent as AIbook } from "../../assets/ai-book.svg";
 import { ReactComponent as Simplecal } from "../../assets/simple-claender.svg";
+import { display } from "@mui/system";
 
 const useStyles = makeStyles({
   heroContainer: {
@@ -234,7 +235,7 @@ const useStyles = makeStyles({
     maxWidth: "100%",
     height: "auto",
     "@media (max-width: 600px)": {
-      display:"none",
+      display:"none"
     },
   },
   featureCardTopLeft: {

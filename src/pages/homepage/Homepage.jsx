@@ -3,7 +3,7 @@ import React from "react";
 import { Box } from "@mui/material";
 import Navbar from "../../components/navbar/Navbar";
 import Hero from "../../components/herosection/Hero";
-import Background from "../../components/background/Background";
+// import Background from "../../components/background/Background";
 import HiringPartners from "../../components/hiringpartners/HiringPartners";
 import JobKickstart from "../../components/jobkickstart/JobKickstart";
 import WhyDifferent from "../../components/whydifferent/WhyDifferent";
@@ -29,7 +29,7 @@ const Homepage = () => {
       }}
     >
       {/* Include the Background component */}
-      <Background />
+      {/* <Background /> */}
 
       {/* Content with higher z-index */}
       <Box sx={{ position: "relative", zIndex: 1 }}>

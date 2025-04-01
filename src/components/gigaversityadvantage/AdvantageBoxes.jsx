@@ -58,8 +58,8 @@ const useStyles = makeStyles({
     transition: `
       transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
       box-shadow 0.8s ease,
-      border-radius 2s cubic-bezier(0.22, 1, 0.36, 1)
-    `,
+      border-radius 10s cubic-bezier(0.22, 1, 0.36, 1)
+    `, // Made border-radius transition very slow and smooth
     willChange: 'border-radius, transform, box-shadow',
     '&:hover': {
       transform: 'translateY(-10px)',
