@@ -236,7 +236,7 @@ const useStyles = makeStyles({
     "@media (max-width: 600px)": {
       display: "flex",
       flexDirection: "column",
-      width: "100%",
+      width: "100vw",
       position: "relative",
       zIndex: 5,
     }
