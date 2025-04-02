@@ -7,10 +7,10 @@ const useStyles = makeStyles({
   wrapper: {
     position: 'relative',
     width: '100%',
-    padding: '32px 0',
+    padding: '40px 0',
     overflow: 'hidden',
     "@media (max-width: 960px)": {
-      padding: '25px 0',
+      padding: '30px 0',
     },
   },
   // Custom background element
@@ -33,10 +33,10 @@ const useStyles = makeStyles({
     },
   },
   title: {
-    fontSize: "2.5rem !important",
+    fontSize: "2.8rem !important",
     fontWeight: 'bold !important',
     textAlign: 'center',
-    marginBottom: '8px !important',
+    marginBottom: '12px !important',
     color: "#2A2B6A !important",
     position: 'relative',
     zIndex: '2',
@@ -44,77 +44,96 @@ const useStyles = makeStyles({
       color: '#f9c74f !important',
     },
     "@media (max-width: 960px)": {
-      fontSize: "2.2rem !important",
+      fontSize: "2.4rem !important",
     },
     "@media (max-width: 600px)": {
-      fontSize: "1.8rem !important",
+      fontSize: "2rem !important",
     },
   },
   subtitle: {
-    fontSize: '1.2rem !important',
+    fontSize: '1.4rem !important',
     textAlign: 'center',
     color: '#555 !important',
-    marginBottom: '32px !important',
+    marginBottom: '36px !important',
     maxWidth: '90%',
-    margin: '0 auto 32px auto !important',
+    margin: '0 auto 36px auto !important',
     position: 'relative',
     zIndex: '2',
     "@media (max-width: 960px)": {
-      fontSize: '1.1rem !important',
-      marginBottom: '25px !important',
+      fontSize: '1.2rem !important',
+      marginBottom: '30px !important',
     },
     "@media (max-width: 600px)": {
-      fontSize: '1rem !important',
-      marginBottom: '20px !important',
+      fontSize: '1.1rem !important',
+      marginBottom: '24px !important',
       maxWidth: '95%',
     },
   },
   weekTitle: {
-    fontSize: '1rem !important',
+    fontSize: '1.1rem !important',
     fontWeight: '500 !important',
-    marginBottom: '4px !important',
+    marginBottom: '6px !important',
+    minHeight: '20px !important',
+    transition: 'all 0.3s ease',
+    "@media (max-width: 600px)": {
+      fontSize: '1rem !important',
+    },
   },
   roleName: {
-    fontSize: '15px !important',
+    fontSize: '18px !important',
     fontWeight: 'bold !important',
-    marginBottom: '8px !important',
+    marginBottom: '10px !important',
+    minHeight: '44px !important',
+    transition: 'all 0.3s ease',
     "@media (max-width: 600px)": {
-      fontSize: '14px !important',
+      fontSize: '16px !important',
+      minHeight: '40px !important',
     },
   },
   description: {
-    fontSize: '12px !important',
+    fontSize: '14px !important',
     color: '#555 !important',
-    lineHeight: '1.4 !important',
+    lineHeight: '1.5 !important',
+    minHeight: '84px !important',
+    transition: 'all 0.3s ease',
     "@media (max-width: 600px)": {
-      fontSize: '11px !important',
+      fontSize: '13px !important',
+      minHeight: '78px !important',
     },
   },
   card: {
     backgroundColor: '#fff',
-    borderRadius: '8px',
-    padding: '16px',
-    height: '230px',
+    borderRadius: '12px',
+    padding: '24px 20px',
+    height: '340px',
     position: 'relative',
-    boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+    boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
     display: 'flex',
     flexDirection: 'column',
     width: '100%',
     zIndex: '1',
+    transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+    '&:hover': {
+      transform: 'translateY(-15px)',
+      boxShadow: '0 12px 24px rgba(0,0,0,0.15)',
+      '& $iconContainer': {
+        transform: 'scale(1.1)',
+      }
+    },
     "@media (max-width: 960px)": {
-      height: '220px',
-      padding: '14px',
+      height: '290px',
+      padding: '20px 16px',
     },
     "@media (max-width: 600px)": {
-      height: '210px',
-      padding: '12px',
+      height: '280px',
+      padding: '18px 14px',
     },
   },
   cardsContainer: {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    marginBottom: '32px',
+    marginBottom: '40px',
     width: '100%',
     padding: '0 24px',
     gap: '60px',
@@ -129,7 +148,7 @@ const useStyles = makeStyles({
       padding: '0 15px',
     },
     "@media (max-width: 600px)": {
-      gap: '20px',
+      gap: '25px',
       padding: '0 10px',
     },
   },
@@ -147,35 +166,43 @@ const useStyles = makeStyles({
     }
   },
   iconContainer: {
-    width: '40px',
-    height: '40px',
-    borderRadius: '8px',
+    width: '50px',
+    height: '50px',
+    borderRadius: '10px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: '16px',
+    marginBottom: '18px',
+    transition: 'transform 0.4s ease',
     "@media (max-width: 600px)": {
-      width: '35px',
-      height: '35px',
-      marginBottom: '12px',
+      width: '45px',
+      height: '45px',
+      marginBottom: '14px',
     },
   },
   viewButton: {
-    marginTop: '16px !important',
+    marginTop: '24px !important',
     textTransform: 'none !important',
-    backgroundColor: 'rgba(255, 255, 255, 0.8) !important',
-    color: '#333 !important',
-    border: '1px solid #ddd !important',
-    borderRadius: '5px !important',
-    padding: '6px 16px !important',
+    backgroundColor: '#2A2B6A !important',
+    color: 'white !important',
+    border: 'none !important',
+    borderRadius: '8px !important',
+    padding: '10px 24px !important',
+    fontSize: '1rem !important',
     display: 'block !important',
     margin: '0 auto !important',
     zIndex: '1',
     position: 'relative',
+    transition: 'all 0.3s ease !important',
+    '&:hover': {
+      backgroundColor: '#1A1B4A !important',
+      transform: 'translateY(-3px)',
+      boxShadow: '0 6px 12px rgba(42, 43, 106, 0.2) !important',
+    },
     "@media (max-width: 600px)": {
-      marginTop: '12px !important',
-      padding: '5px 14px !important',
-      fontSize: '0.9rem !important',
+      marginTop: '20px !important',
+      padding: '8px 20px !important',
+      fontSize: '0.95rem !important',
     },
   },
   pinkDot: {
@@ -183,37 +210,39 @@ const useStyles = makeStyles({
     borderRadius: '50%',
     backgroundColor: 'rgba(237, 30, 121, 0.6)',
     zIndex: '0',
+    transition: 'transform 0.8s ease, opacity 0.8s ease',
   },
   purpleDot: {
     position: 'absolute',
     borderRadius: '50%',
     backgroundColor: 'rgba(111, 66, 193, 0.5)',
     zIndex: '0',
+    transition: 'transform 0.8s ease, opacity 0.8s ease',
   },
   weekLabel: {
     textTransform: 'uppercase',
-    fontSize: '12px !important',
+    fontSize: '13px !important',
     marginBottom: '8px !important',
     color: '#555 !important',
     "@media (max-width: 600px)": {
-      fontSize: '11px !important',
+      fontSize: '12px !important',
       marginBottom: '6px !important',
     },
   },
   headerContainer: {
     position: 'relative',
-    marginBottom: '40px',
+    marginBottom: '50px',
     zIndex: '1',
     "@media (max-width: 960px)": {
-      marginBottom: '30px',
+      marginBottom: '40px',
     },
     "@media (max-width: 600px)": {
-      marginBottom: '25px',
+      marginBottom: '30px',
     },
   },
   orangeDot: {
-    height: '12px',
-    width: '12px',
+    height: '15px',
+    width: '15px',
     backgroundColor: '#f9a826',
     borderRadius: '50%',
     position: 'absolute',
@@ -223,14 +252,14 @@ const useStyles = makeStyles({
     "@media (max-width: 960px)": {
       top: '25px',
       left: '25px',
-      height: '10px',
-      width: '10px',
+      height: '12px',
+      width: '12px',
     },
     "@media (max-width: 600px)": {
       top: '20px',
       left: '20px',
-      height: '8px',
-      width: '8px',
+      height: '10px',
+      width: '10px',
     },
   },
   // Protected area where no dots should appear
@@ -240,16 +269,20 @@ const useStyles = makeStyles({
     left: '50%',
     transform: 'translateX(-50%)',
     width: '80%',
-    height: '130px',
+    height: '150px',
     zIndex: '1',
     "@media (max-width: 960px)": {
-      height: '110px',
+      height: '130px',
     },
     "@media (max-width: 600px)": {
-      height: '90px',
+      height: '110px',
       width: '90%',
     },
   },
+  activeDot: {
+    transform: 'scale(1.3) translateY(-10px)',
+    opacity: 0.9,
+  }
 });
 
 // Function to generate positioned dots with different regions to prevent overlap
@@ -278,7 +311,7 @@ const generateSectionedDots = (count, type, avoidTop = false) => {
       dots.push({
         top: `${y * 100}%`,
         left: `${x * 100}%`,
-        size: `${Math.random() * 15 + 8}px`,
+        size: `${Math.random() * 20 + 10}px`,
         opacity: Math.random() * 0.3 + 0.5,
       });
     }
@@ -341,11 +374,15 @@ const FullStackTrainingPlan = () => {
             height: dot.size,
             opacity: dot.opacity,
             display: { xs: index % 2 === 0 ? 'none' : 'block', md: 'block' },
+            '&:hover': {
+              transform: 'scale(1.3) translateY(-10px)',
+              opacity: '0.9',
+            },
           }}
         />
       ))}
       
-      {/* Purple dots - using a different color than the Full Stack component */}
+      {/* Purple dots - using a different color than the full stack component */}
       {purpleDots.map((dot, index) => (
         <Box 
           key={`purple-${index}`}
@@ -357,6 +394,10 @@ const FullStackTrainingPlan = () => {
             height: dot.size,
             opacity: dot.opacity,
             display: { xs: index % 2 === 0 ? 'none' : 'block', md: 'block' },
+            '&:hover': {
+              transform: 'scale(1.3) translateY(-10px)',
+              opacity: '0.9',
+            },
           }}
         />
       ))}
@@ -372,10 +413,10 @@ const FullStackTrainingPlan = () => {
 
         <Typography variant="h6" sx={{ 
           textAlign: 'center', 
-          fontSize: { xs: '0.95rem', sm: '1rem', md: '1.1rem' }, 
+          fontSize: { xs: '1.1rem', sm: '1.2rem', md: '1.3rem' }, 
           fontWeight: 'bold', 
           color: '#333',
-          marginBottom: { xs: '20px', sm: '22px', md: '24px' },
+          marginBottom: { xs: '24px', sm: '28px', md: '32px' },
           position: 'relative',
           zIndex: 1,
         }}>
@@ -391,7 +432,7 @@ const FullStackTrainingPlan = () => {
                 className={classes.iconContainer} 
                 sx={{ backgroundColor: `${weekData.color}20` }}
               >
-                <CalendarMonthIcon sx={{ color: weekData.color, fontSize: { xs: '1.2rem', sm: '1.3rem', md: '1.5rem' } }} />
+                <CalendarMonthIcon sx={{ color: weekData.color, fontSize: { xs: '1.6rem', sm: '1.8rem', md: '2rem' } }} />
               </Box>
               <Typography className={classes.weekLabel}>
                 {weekData.week}
@@ -407,7 +448,7 @@ const FullStackTrainingPlan = () => {
         ))}
       </Box>
 
-      <Button variant="outlined" className={classes.viewButton}>
+      <Button variant="contained" className={classes.viewButton}>
         View full program details
       </Button>
     </Box>
