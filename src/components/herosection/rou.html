@@ -1,0 +1,987 @@
+
+            
+            <div class="section">
+                <h1 id="testing-methodologies">6. Security Testing Methodologies</h1>
+                
+                <div class="learning-objectives">
+                    <h4>Learning Objectives</h4>
+                    <ul>
+                        <li>Learn techniques for systematically testing browser internal page security</li>
+                        <li>Understand how to evaluate the effectiveness of enterprise policies</li>
+                        <li>Develop approaches for testing network-level controls for internal page access</li>
+                        <li>Create a structured methodology for comprehensive browser security assessment</li>
+                        <li>Implement reporting frameworks that drive effective remediation</li>
+                    </ul>
+                </div>
+                
+                <p>This section provides structured testing methodologies for evaluating the security of browser internal pages and associated controls. These methodologies help organizations verify the effectiveness of their security measures and identify potential gaps or vulnerabilities.</p>
+                
+                <h2 id="enumeration-techniques">6.1 Internal Page Enumeration</h2>
+                
+                <p>The first step in testing browser internal page security is to comprehensively identify and catalog the internal pages available in the target browser. This enumeration process provides the foundation for subsequent security testing and analysis.</p>
+                
+                <h3 id="manual-techniques">6.1.1 Manual Techniques</h3>
+                
+                <div class="side-by-side">
+                    <div>
+                        <p>Manual enumeration techniques rely on direct browser interaction to discover and document available internal pages. These techniques are valuable for initial exploration and for discovering pages that might not be documented or widely known.</p>
+                        
+                        <p>Key manual enumeration approaches include:</p>
+                        
+                        <ul>
+                            <li><strong>Documentation Review:</strong> Examining official browser documentation, developer resources, and source code repositories to identify documented internal pages.</li>
+                            
+                            <li><strong>Progressive Discovery:</strong> Using known internal pages (like <span class="url">edge://about</span>) that list other internal pages as a starting point for discovery.</li>
+                            
+                            <li><strong>Source Code Examination:</strong> For open-source browsers like Chromium, examining the source code to identify internal page registrations.</li>
+                            
+                            <li><strong>Browser History Analysis:</strong> Examining a browser's history after extensive use to identify automatically loaded internal resources.</li>
+                            
+                            <li><strong>Command Line Parameter Testing:</strong> Testing various command line parameters that might reveal or enable additional internal pages.</li>
+                        </ul>
+                        
+                        <p>Manual enumeration provides a deep understanding of available internal pages and their relationships, though it can be time-consuming for comprehensive coverage.</p>
+                    </div>
+                    
+                    <div>
+                        <div class="example-box">
+                            <span class="box-title">Progressive Discovery Approach</span>
+                            <ol>
+                                <li>Start with the browser's "about" page (e.g., <span class="url">edge://about</span> or <span class="url">chrome://about</span>)</li>
+                                <li>Document all listed internal pages</li>
+                                <li>Visit each identified page and look for links to other internal pages</li>
+                                <li>For diagnostic pages, examine all tabs, sections, and UI elements that might link to other internal resources</li>
+                                <li>Document page hierarchy and relationships</li>
+                                <li>Test variations of discovered URL patterns (e.g., if <span class="url">edge://flags</span> exists, try <span class="url">edge://flags-internals</span>)</li>
+                            </ol>
+                        </div>
+                        
+                        <div class="info-box">
+                            <span class="box-title">Documentation Resources</span>
+                            <p>Useful resources for manual enumeration include:</p>
+                            <ul>
+                                <li>Chromium source code repository - especially <code>/chrome/browser/ui/webui/</code> directory</li>
+                                <li>Browser developer documentation and forums</li>
+                                <li>Enterprise policy documentation, which often references internal pages</li>
+                                <li>Release notes and changelogs, which may mention new internal pages</li>
+                                <li>Browser bug trackers, which often discuss internal diagnostic pages</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 id="automated-techniques">6.1.2 Automated Techniques</h3>
+                
+                <div class="side-by-side">
+                    <div>
+                        <p>Automated enumeration techniques use scripts and tools to systematically discover internal pages, allowing for more comprehensive coverage and regular re-testing as browsers evolve. These approaches are particularly valuable for ongoing security monitoring and testing.</p>
+                        
+                        <p>Key automated enumeration approaches include:</p>
+                        
+                        <ul>
+                            <li><strong>Source Code Parsing:</strong> Automated scripts that parse browser source code to extract internal page registrations.</li>
+                            
+                            <li><strong>URL Pattern Testing:</strong> Scripts that test variations of internal URL patterns to identify unlinked or undocumented pages.</li>
+                            
+                            <li><strong>Browser Automation:</strong> Using tools like Selenium or Puppeteer to automatically navigate and catalog internal pages.</li>
+                            
+                            <li><strong>Command Line Generation:</strong> Scripts that test various command line parameters to discover pages accessible only through direct launch.</li>
+                            
+                            <li><strong>Version Differential Analysis:</strong> Comparing internal pages across browser versions to identify new additions or changes.</li>
+                        </ul>
+                        
+                        <p>Automated techniques are essential for comprehensive enumeration and for maintaining up-to-date internal page inventories as browsers evolve.</p>
+                    </div>
+                    
+                    <div>
+                        <div class="code-example">
+                            <span class="box-title">Python Script for Internal Page Discovery</span>
+                            <pre>
+#!/usr/bin/env python3
+# Internal Page Discovery Script
+
+import subprocess
+import re
+import json
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+
+def extract_urls_from_source():
+    """Extract internal URLs from Chromium source code."""
+    urls = []
+    # Clone repository if needed:
+    # subprocess.run(['git', 'clone', 'https://github.com/chromium/chromium.git'])
+    
+    # Parse WebUI registration files
+    webui_files = subprocess.run(
+        ['find', 'chromium/src', '-name', '*webui*', '-type', 'f'],
+        capture_output=True, text=True
+    ).stdout.splitlines()
+    
+    for file in webui_files:
+        with open(file, 'r', errors='ignore') as f:
+            content = f.read()
+            # Look for URL registrations
+            matches = re.findall(r'RegisterWebUIController\([\'"]([^\'"]+)', content)
+            urls.extend(matches)
+    
+    return urls
+
+def test_url_patterns(base_urls):
+    """Test variations of known URL patterns."""
+    variations = []
+    suffixes = ['-internals', '-dev', '-debug', '-settings', '-config']
+    
+    for url in base_urls:
+        # Test base URL
+        variations.append(f"edge://{url}")
+        
+        # Test with suffixes
+        for suffix in suffixes:
+            variations.append(f"edge://{url}{suffix}")
+    
+    return variations
+
+def browser_automation_discovery():
+    """Use browser automation to discover internal pages."""
+    discovered_urls = []
+    options = Options()
+    options.add_argument("--headless")  # Run headless for automation
+    
+    driver = webdriver.Chrome(options=options)
+    
+    # Start with the about page
+    driver.get("edge://about")
+    
+    # Extract links to other internal pages
+    links = driver.find_elements_by_tag_name("a")
+    for link in links:
+        href = link.get_attribute("href")
+        if href and (href.startswith("edge://") or href.startswith("chrome://")):
+            discovered_urls.append(href)
+    
+    driver.quit()
+    return discovered_urls
+
+def main():
+    # Collect URLs from multiple sources
+    source_urls = extract_urls_from_source()
+    pattern_urls = test_url_patterns(['flags', 'settings', 'extensions', 'history'])
+    automation_urls = browser_automation_discovery()
+    
+    # Combine all discovered URLs
+    all_urls = list(set(source_urls + pattern_urls + automation_urls))
+    
+    # Save results
+    with open('internal_pages_inventory.json', 'w') as f:
+        json.dump({
+            'internal_pages': all_urls,
+            'count': len(all_urls)
+        }, f, indent=2)
+    
+    print(f"Discovered {len(all_urls)} internal pages.")
+
+if __name__ == "__main__":
+    main()</pre>
+                        </div>
+                        
+                        <div class="warning-box">
+                            <span class="box-title">Security Considerations</span>
+                            <p>When performing automated enumeration:</p>
+                            <ul>
+                                <li>Be cautious with internal pages that might crash the browser or cause data loss</li>
+                                <li>Use isolated testing environments to prevent unintended impacts</li>
+                                <li>Be aware that some internal pages may trigger security alerts or monitoring</li>
+                                <li>Consider legal and ethical implications when testing browsers in production environments</li>
+                                <li>Document all discovered pages and their potential security implications</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <h2 id="policy-testing">6.2 Policy Effectiveness Testing</h2>
+                
+                <p>After identifying internal pages of interest, the next step is to evaluate the effectiveness of enterprise policies and other controls designed to restrict access to these pages. This testing verifies that security measures function as intended and cannot be easily bypassed.</p>
+                
+                <h3 id="bypass-testing">6.2.1 Bypass Testing Techniques</h3>
+                
+                <div class="side-by-side">
+                    <div>
+                        <p>Bypass testing attempts to circumvent implemented security controls to access restricted internal pages. These tests help identify weaknesses in policy implementations or security control gaps that could be exploited by attackers.</p>
+                        
+                        <p>Key bypass testing approaches include:</p>
+                        
+                        <ul>
+                            <li><strong>URL Scheme Variations:</strong> Testing alternative URL schemes (e.g., <code>chrome://</code> instead of <code>edge://</code>) to bypass scheme-specific restrictions.</li>
+                            
+                            <li><strong>Command Line Arguments:</strong> Testing whether browser command line arguments can bypass policy restrictions on internal pages.</li>
+                            
+                            <li><strong>Alternative Entry Points:</strong> Identifying indirect ways to access restricted functionality, such as through linked pages or features.</li>
+                            
+                            <li><strong>Extension-Based Access:</strong> Testing whether installed extensions can access restricted internal pages or functionality.</li>
+                            
+                            <li><strong>Policy Override Techniques:</strong> Testing for methods to override or disable policy enforcement mechanisms.</li>
+                        </ul>
+                        
+                        <p>Comprehensive bypass testing helps identify the true security posture by revealing potential weaknesses in otherwise well-designed security controls.</p>
+                    </div>
+                    
+                    <div>
+                        <div class="example-box">
+                            <span class="box-title">Bypass Testing Methodology</span>
+                            <ol>
+                                <li><strong>Baseline Verification:</strong> Confirm that direct access to the restricted page is blocked</li>
+                                <li><strong>URL Scheme Testing:</strong> Try alternative schemes:
+                                    <ul>
+                                        <li>If <span class="url">edge://flags</span> is blocked, try <span class="url">chrome://flags</span></li>
+                                        <li>Try lowercase/uppercase variations</li>
+                                        <li>Test URL encoding variations</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Command Line Testing:</strong> Try launching the browser with arguments:
+                                    <ul>
+                                        <li><code>edge.exe --app=edge://flags</code></li>
+                                        <li><code>edge.exe --enable-features=...</code></li>
+                                    </ul>
+                                </li>
+                                <li><strong>Indirect Access Testing:</strong> Try accessing through related pages:
+                                    <ul>
+                                        <li>If <span class="url">edge://settings</span> is allowed but <span class="url">edge://settings/passwords</span> is blocked, test navigation from settings to the passwords section</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Extension Access Testing:</strong> Install legitimate extensions and test if they can access restricted pages</li>
+                                <li><strong>Policy Override Testing:</strong> Test experimental flags or settings that might disable policy enforcement</li>
+                            </ol>
+                        </div>
+                        
+                        <div class="code-example">
+                            <span class="box-title">PowerShell Bypass Testing Script</span>
+                            <pre>
+# PowerShell script for testing policy bypass methods
+# IMPORTANT: Use only in controlled test environments
+
+function Test-InternalPageAccess {
+    param(
+        [string]$BaseUrl,
+        [string]$BrowserPath = "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
+    )
+    
+    Write-Host "Testing access to $BaseUrl"
+    
+    # Test 1: Direct navigation
+    Write-Host "Test 1: Direct navigation" -ForegroundColor Cyan
+    & $BrowserPath $BaseUrl
+    Read-Host "Was access blocked? (Press Enter to continue)"
+    
+    # Test 2: URL scheme variation
+    Write-Host "Test 2: URL scheme variation" -ForegroundColor Cyan
+    $ChromeUrl = $BaseUrl -replace "edge://", "chrome://"
+    & $BrowserPath $ChromeUrl
+    Read-Host "Was access blocked? (Press Enter to continue)"
+    
+    # Test 3: Command line app mode
+    Write-Host "Test 3: Command line app mode" -ForegroundColor Cyan
+    & $BrowserPath "--app=$BaseUrl"
+    Read-Host "Was access blocked? (Press Enter to continue)"
+    
+    # Test 4: Debug port method
+    Write-Host "Test 4: Debug port method" -ForegroundColor Cyan
+    $DebugPort = 9222
+    & $BrowserPath "--remote-debugging-port=$DebugPort"
+    
+    # Wait for browser to start
+    Start-Sleep -Seconds 3
+    
+    # Use WebSocket connection to navigate
+    $Session = Invoke-WebRequest "http://localhost:$DebugPort/json/list" | ConvertFrom-Json
+    $TargetId = $Session[0].id
+    
+    # Use Chrome DevTools Protocol to navigate
+    $WebSocket = New-Object System.Net.WebSockets.ClientWebSocket
+    $CancellationToken = New-Object System.Threading.CancellationToken
+    $WebSocket.ConnectAsync("ws://localhost:$DebugPort/devtools/page/$TargetId", $CancellationToken).Wait()
+    
+    $NavigateCommand = '{"id": 1, "method": "Page.navigate", "params": {"url": "' + $BaseUrl + '"}}'
+    $Buffer = [System.Text.Encoding]::UTF8.GetBytes($NavigateCommand)
+    $WebSocket.SendAsync($Buffer, [System.Net.WebSockets.WebSocketMessageType]::Text, $true, $CancellationToken).Wait()
+    
+    Read-Host "Was access blocked through debug protocol? (Press Enter to continue)"
+    
+    # Cleanup
+    $WebSocket.CloseAsync([System.Net.WebSockets.WebSocketCloseStatus]::NormalClosure, "Testing complete", $CancellationToken).Wait()
+}
+
+# Test high-risk internal pages
+$PagesToTest = @(
+    "edge://flags",
+    "edge://extensions",
+    "edge://settings/passwords",
+    "edge://net-internals"
+)
+
+foreach ($Page in $PagesToTest) {
+    Test-InternalPageAccess -BaseUrl $Page
+    Write-Host "------------------------------" -ForegroundColor Yellow
+}</pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 id="profile-testing">6.2.2 Secondary Profile Testing</h3>
+                
+                <div class="side-by-side">
+                    <div>
+                        <p>Secondary profile testing evaluates whether policy restrictions apply consistently across different browser profiles and contexts. This testing helps identify policy enforcement gaps that could be exploited through alternative profiles or user contexts.</p>
+                        
+                        <p>Key secondary profile testing approaches include:</p>
+                        
+                        <ul>
+                            <li><strong>Multiple Profile Testing:</strong> Testing access to restricted internal pages across different browser profiles on the same system.</li>
+                            
+                            <li><strong>Incognito/InPrivate Mode Testing:</strong> Evaluating whether private browsing modes properly enforce internal page restrictions.</li>
+                            
+                            <li><strong>Guest Mode Testing:</strong> Testing internal page access through guest browsing mode, if available.</li>
+                            
+                            <li><strong>Portable Browser Testing:</strong> Testing whether portable or secondary browser installations are subject to the same restrictions.</li>
+                            
+                            <li><strong>Cross-User Testing:</strong> Testing internal page access across different operating system user accounts with varying privilege levels.</li>
+                        </ul>
+                        
+                        <p>Secondary profile testing is crucial for identifying inconsistencies in policy enforcement that could create security gaps in otherwise well-protected environments.</p>
+                    </div>
+                    
+                    <div>
+                        <div class="table-container">
+                            <table>
+                                <tr>
+                                    <th>Profile Type</th>
+                                    <th>Testing Approach</th>
+                                    <th>Common Gaps</th>
+                                </tr>
+                                <tr>
+                                    <td>Secondary Profile</td>
+                                    <td>Create new browser profile and test access to restricted pages</td>
+                                    <td>Policy application only to primary/default profile</td>
+                                </tr>
+                                <tr>
+                                    <td>Incognito/InPrivate Mode</td>
+                                    <td>Launch private browsing mode and attempt to access restricted pages</td>
+                                    <td>Inconsistent policy enforcement in private mode</td>
+                                </tr>
+                                <tr>
+                                    <td>Guest Mode</td>
+                                    <td>Launch browser guest mode and test restricted page access</td>
+                                    <td>Separate policy treatment for guest sessions</td>
+                                </tr>
+                                <tr>
+                                    <td>Portable Installation</td>
+                                    <td>Install browser to non-standard location or USB drive and test restrictions</td>
+                                    <td>Policy application only to standard installations</td>
+                                </tr>
+                                <tr>
+                                    <td>Different User Account</td>
+                                    <td>Test access under different OS user accounts (standard, admin)</td>
+                                    <td>Policy application inconsistency across user types</td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+                        <div class="info-box">
+                            <span class="box-title">Profile Testing Checklist</span>
+                            <p>A comprehensive secondary profile test should verify:</p>
+                            <ul>
+                                <li>Consistent policy application across all browser profiles</li>
+                                <li>Proper policy enforcement in Incognito/InPrivate modes</li>
+                                <li>Consistent enforcement between default installation and secondary installations</li>
+                                <li>Policy application to portable browser versions</li>
+                                <li>Propagation of restrictions across user accounts with different privilege levels</li>
+                                <li>Inheritance of enterprise policies by new profiles created after policy application</li>
+                                <li>Persistence of policies after browser updates</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <h2 id="extension-testing">6.3 Extension Security Assessment</h2>
+                
+                <p>Browser extensions can potentially access or influence internal pages, making extension security assessment a critical component of comprehensive browser security testing. This testing evaluates how extensions interact with internal pages and whether they can bypass security controls.</p>
+                
+                <h3 id="permission-analysis">6.3.1 Permission Analysis</h3>
+                
+                <div class="side-by-side">
+                    <div>
+                        <p>Permission analysis examines what capabilities browser extensions have for accessing or manipulating internal pages. This analysis helps identify extensions that could potentially bypass security controls or access sensitive internal functionality.</p>
+                        
+                        <p>Key permission analysis approaches include:</p>
+                        
+                        <ul>
+                            <li><strong>Manifest Examination:</strong> Analyzing extension manifest files to identify requested permissions and capabilities.</li>
+                            
+                            <li><strong>API Usage Analysis:</strong> Examining extension code to identify usage of browser APIs that could interact with internal pages.</li>
+                            
+                            <li><strong>Content Script Inspection:</strong> Reviewing extension content scripts for attempts to access or manipulate internal page content.</li>
+                            
+                            <li><strong>Background Script Analysis:</strong> Analyzing extension background scripts for privileged operations or communication with internal pages.</li>
+                            
+                            <li><strong>Permission Testing:</strong> Testing the actual capabilities of extensions with different permission sets to identify access to internal pages.</li>
+                        </ul>
+                        
+                        <p>Thorough permission analysis helps identify extensions that might have excessive privileges or could potentially be used as vectors for accessing restricted internal pages.</p>
+                    </div>
+                    
+                    <div>
+                        <div class="code-example">
+                            <span class="box-title">Extension Permission Analysis Script</span>
+                            <pre>
+#!/usr/bin/env python3
+# Extension Permission Analyzer
+
+import os
+import json
+import glob
+import re
+
+# High-risk permissions that could affect internal pages
+HIGH_RISK_PERMISSIONS = [
+    "tabs",
+    "webNavigation",
+    "debugger",
+    "management",
+    "proxy",
+    "webRequest",
+    "webRequestBlocking",
+    "browsingData",
+    "<all_urls>"
+]
+
+# APIs that might interact with internal pages
+SENSITIVE_APIS = [
+    "chrome.tabs.update",
+    "chrome.tabs.create",
+    "browser.tabs.create",
+    "chrome.windows.create",
+    "chrome.webRequest.onBeforeRequest",
+    "chrome.debugger",
+    "browser.runtime.getBrowserInfo"
+]
+
+def analyze_manifest(extension_path):
+    """Analyze the manifest.json file for permissions"""
+    manifest_path = os.path.join(extension_path, "manifest.json")
+    if not os.path.exists(manifest_path):
+        return {"error": "No manifest.json found"}
+    
+    with open(manifest_path, 'r', encoding='utf-8') as f:
+        try:
+            manifest = json.load(f)
+        except json.JSONDecodeError:
+            return {"error": "Invalid manifest.json"}
+    
+    permissions = manifest.get("permissions", [])
+    host_permissions = manifest.get("host_permissions", [])
+    content_scripts = manifest.get("content_scripts", [])
+    
+    # Check for high-risk permissions
+    risk_level = "Low"
+    found_high_risk = []
+    
+    for perm in permissions + host_permissions:
+        if perm in HIGH_RISK_PERMISSIONS:
+            found_high_risk.append(perm)
+            risk_level = "High"
+        elif perm == "<all_urls>" or perm == "*://*/*":
+            found_high_risk.append(perm)
+            risk_level = "High"
+    
+    # Check for internal page matches in content scripts
+    internal_page_matches = []
+    for script in content_scripts:
+        matches = script.get("matches", [])
+        for match in matches:
+            if "chrome://" in match or "edge://" in match or "about:" in match:
+                internal_page_matches.append(match)
+    
+    return {
+        "name": manifest.get("name", "Unknown"),
+        "permissions": permissions,
+        "host_permissions": host_permissions,
+        "high_risk_permissions": found_high_risk,
+        "internal_page_matches": internal_page_matches,
+        "risk_level": risk_level
+    }
+
+def analyze_code(extension_path):
+    """Analyze extension JavaScript for sensitive API usage"""
+    sensitive_api_usage = []
+    internal_page_references = []
+    
+    # Find all JS files
+    js_files = glob.glob(os.path.join(extension_path, "**/*.js"), recursive=True)
+    
+    for js_file in js_files:
+        with open(js_file, 'r', encoding='utf-8', errors='ignore') as f:
+            content = f.read()
+            
+            # Check for sensitive API usage
+            for api in SENSITIVE_APIS:
+                if api in content:
+                    sensitive_api_usage.append({
+                        "file": os.path.relpath(js_file, extension_path),
+                        "api": api
+                    })
+            
+            # Check for internal page references
+            chrome_urls = re.findall(r'chrome://[a-zA-Z0-9\-_/]+', content)
+            edge_urls = re.findall(r'edge://[a-zA-Z0-9\-_/]+', content)
+            about_urls = re.findall(r'about:[a-zA-Z0-9\-_/]+', content)
+            
+            for url in chrome_urls + edge_urls + about_urls:
+                internal_page_references.append({
+                    "file": os.path.relpath(js_file, extension_path),
+                    "url": url
+                })
+    
+    return {
+        "sensitive_api_usage": sensitive_api_usage,
+        "internal_page_references": internal_page_references
+    }
+
+def main():
+    # Path to browser extensions directory
+    # Windows: %LOCALAPPDATA%\Microsoft\Edge\User Data\Default\Extensions
+    # macOS: ~/Library/Application Support/Microsoft Edge/Default/Extensions
+    extensions_dir = os.path.expanduser("~/Library/Application Support/Microsoft Edge/Default/Extensions")
+    
+    results = []
+    
+    for ext_id in os.listdir(extensions_dir):
+        ext_path = os.path.join(extensions_dir, ext_id)
+        if os.path.isdir(ext_path):
+            # Handle versioned subdirectories
+            versions = [d for d in os.listdir(ext_path) if os.path.isdir(os.path.join(ext_path, d))]
+            if versions:
+                # Use latest version
+                latest = sorted(versions)[-1]
+                ext_path = os.path.join(ext_path, latest)
+            
+            manifest_analysis = analyze_manifest(ext_path)
+            code_analysis = analyze_code(ext_path)
+            
+            results.append({
+                "extension_id": ext_id,
+                "manifest_analysis": manifest_analysis,
+                "code_analysis": code_analysis
+            })
+    
+    # Output results
+    with open("extension_security_analysis.json", "w") as f:
+        json.dump(results, f, indent=2)
+    
+    # Summary
+    high_risk_count = sum(1 for r in results if r["manifest_analysis"].get("risk_level") == "High")
+    internal_page_ref_count = sum(1 for r in results if r["code_analysis"]["internal_page_references"])
+    
+    print(f"Analyzed {len(results)} extensions")
+    print(f"High risk permission extensions: {high_risk_count}")
+    print(f"Extensions with internal page references: {internal_page_ref_count}")
+
+if __name__ == "__main__":
+    main()</pre>
+                        </div>
+                        
+                        <div class="warning-box">
+                            <span class="box-title">High-Risk Extension Permissions</span>
+                            <p>When analyzing extensions, pay special attention to these high-risk permissions that could affect internal page security:</p>
+                            <ul>
+                                <li><code>&lt;all_urls&gt;</code> - Can run on any URL, potentially including internal pages</li>
+                                <li><code>tabs</code> - Can create and modify tabs, potentially navigating to internal pages</li>
+                                <li><code>webRequest</code> and <code>webRequestBlocking</code> - Can intercept and modify network requests</li>
+                                <li><code>debugger</code> - Can attach to and debug browser tabs</li>
+                                <li><code>management</code> - Can manage other extensions and their settings</li>
+                                <li><code>proxy</code> - Can control proxy settings, potentially redirecting internal page requests</li>
+                                <li><code>browsingData</code> - Can clear browsing data, potentially bypassing restrictions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 id="developer-mode">6.3.2 Developer Mode Testing</h3>
+                
+                <div class="side-by-side">
+                    <div>
+                        <p>Developer mode testing evaluates the security implications of enabling browser extension developer mode and tests the effectiveness of controls designed to prevent its misuse. This testing is crucial because developer mode can significantly expand the attack surface through unpacked extension installation.</p>
+                        
+                        <p>Key developer mode testing approaches include:</p>
+                        
+                        <ul>
+                            <li><strong>Developer Mode Restriction Testing:</strong> Verifying that enterprise policies effectively prevent enabling developer mode.</li>
+                            
+                            <li><strong>Unpacked Extension Loading:</strong> Testing the ability to load unpacked extensions and their capabilities for accessing internal pages.</li>
+                            
+                            <li><strong>Developer Tools Access:</strong> Evaluating whether developer tools can be used to interact with or manipulate internal pages.</li>
+                            
+                            <li><strong>Privilege Escalation Testing:</strong> Testing whether developer mode extensions can elevate privileges or bypass security controls.</li>
+                            
+                            <li><strong>Persistence Testing:</strong> Evaluating whether developer mode settings persist across browser restarts or updates.</li>
+                        </ul>
+                        
+                        <p>Comprehensive developer mode testing helps identify potential security bypasses that could be exploited to install malicious extensions or access restricted internal pages.</p>
+                    </div>
+                    
+                    <div>
+                        <div class="example-box">
+                            <span class="box-title">Developer Mode Testing Methodology</span>
+                            <ol>
+                                <li><strong>Baseline Verification:</strong>
+                                    <ul>
+                                        <li>Attempt to access <span class="url">edge://extensions</span> and enable developer mode</li>
+                                        <li>Verify that policy restrictions prevent developer mode enablement</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Restriction Bypass Testing:</strong>
+                                    <ul>
+                                        <li>Test alternative access paths to extension settings</li>
+                                        <li>Test command-line flags that might enable developer features</li>
+                                        <li>Test secondary profiles for developer mode restrictions</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Unpacked Extension Testing:</strong>
+                                    <ul>
+                                        <li>If developer mode can be enabled, create and load a test extension</li>
+                                        <li>Test the extension's ability to access internal pages</li>
+                                        <li>Test for persistence across browser restarts</li>
+                                    </ul>
+                                </li>
+                                <li><strong>DevTools Access Testing:</strong>
+                                    <ul>
+                                        <li>Test access to developer tools through keyboard shortcuts</li>
+                                        <li>Test ability to debug internal pages if developer tools are accessible</li>
+                                        <li>Test remote debugging capabilities</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </div>
+                        
+                        <div class="code-example">
+                            <span class="box-title">Test Extension for Internal Page Access</span>
+                            <pre>
+// manifest.json for test extension
+&#123;
+  "name": "Internal Page Access Tester",
+  "version": "1.0",
+  "manifest_version": 3,
+  "description": "Tests access to internal browser pages",
+  "permissions": [
+    "tabs",
+    "webNavigation"
+  ],
+  "background": &#123;
+    "service_worker": "background.js"
+  &#125;,
+  "action": &#123;
+    "default_popup": "popup.html",
+    "default_title": "Test Internal Page Access"
+  &#125;
+&#125;
+
+// background.js
+chrome.action.onClicked.addListener(() => &#123;
+  // Try to open various internal pages and log results
+  const testUrls = [
+    "edge://settings",
+    "edge://flags",
+    "edge://extensions",
+    "edge://gpu",
+    "edge://memory"
+  ];
+  
+  testUrls.forEach((url, index) => &#123;
+    // Try to open in new tab
+    chrome.tabs.create(&#123;url&#125;, (tab) => &#123;
+      // Listen for potential errors
+      chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) &#123;
+        if (tabId === tab.id && changeInfo.status === 'complete') &#123;
+          // Try to execute script to detect successful access
+          chrome.tabs.executeScript(tab.id, &#123;
+            code: 'document.title'
+          &#125;, (results) => &#123;
+            const success = results && results[0];
+            console.log(`Access to ${url}: ${success ? "SUCCESS" : "BLOCKED"}`);
+            
+            // Store result
+            chrome.storage.local.set(&#123;
+              [`test_${index}`]: &#123;
+                url,
+                success,
+                title: success || "N/A"
+              &#125;
+            &#125;);
+            
+            chrome.tabs.onUpdated.removeListener(listener);
+          &#125;);
+        &#125;
+      &#125;);
+    &#125;);
+  &#125;);
+&#125;);
+
+// popup.html
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;style&gt;
+    body &#123; width: 300px; &#125;
+    .success &#123; color: green; &#125;
+    .failure &#123; color: red; &#125;
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;Internal Page Access Results&lt;/h2&gt;
+  &lt;div id="results"&gt;&lt;/div&gt;
+  &lt;script src="popup.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+// popup.js
+document.addEventListener('DOMContentLoaded', () => &#123;
+  const resultsDiv = document.getElementById('results');
+  
+  chrome.storage.local.get(null, (data) => &#123;
+    const testResults = Object.values(data)
+      .filter(item => item.url) // Only test results
+      .sort((a, b) => a.url.localeCompare(b.url));
+    
+    if (testResults.length === 0) &#123;
+      resultsDiv.textContent = 'No tests run yet. Click the extension icon to start.';
+      return;
+    &#125;
+    
+    const ul = document.createElement('ul');
+    
+    testResults.forEach(result => &#123;
+      const li = document.createElement('li');
+      li.classList.add(result.success ? 'success' : 'failure');
+      li.textContent = `${result.url}: ${result.success ? "ACCESSIBLE" : "BLOCKED"}`;
+      ul.appendChild(li);
+    &#125;);
+    
+    resultsDiv.appendChild(ul);
+  &#125;);
+&#125;);
+</pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <h2 id="network-testing">6.4 Network Control Testing</h2>
+                
+                <div class="side-by-side">
+                    <div>
+                        <p>Network control testing evaluates the effectiveness of network-level security measures designed to restrict access to internal browser pages. This testing verifies that proxy servers, firewalls, and content filtering systems properly block or control access to sensitive internal URLs.</p>
+                        
+                        <p>Key network control testing approaches include:</p>
+                        
+                        <ul>
+                            <li><strong>Proxy Bypass Testing:</strong> Testing for methods to bypass proxy controls for accessing internal pages.</li>
+                            
+                            <li><strong>URL Filtering Effectiveness:</strong> Evaluating whether URL filtering correctly identifies and blocks internal page URLs.</li>
+                            
+                            <li><strong>SSL Inspection Testing:</strong> Verifying that SSL/TLS inspection properly handles internal page requests.</li>
+                            
+                            <li><strong>Network Access Control:</strong> Testing whether network access controls restrict access to internal pages based on user or device identity.</li>
+                            
+                            <li><strong>Off-Network Testing:</strong> Evaluating how internal page restrictions function when devices are outside the corporate network.</li>
+                        </ul>
+                        
+                        <p>Comprehensive network control testing ensures that network-level defenses provide effective protection against unauthorized access to sensitive internal pages.</p>
+                    </div>
+                    
+                    <div>
+                        <div class="example-box">
+                            <span class="box-title">Network Control Testing Methodology</span>
+                            <ol>
+                                <li><strong>Baseline Testing:</strong>
+                                    <ul>
+                                        <li>Attempt to access restricted internal pages through normal browsing</li>
+                                        <li>Verify that network controls block access as expected</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Proxy Bypass Testing:</strong>
+                                    <ul>
+                                        <li>Test direct connections bypassing the proxy</li>
+                                        <li>Test alternative proxy configurations</li>
+                                        <li>Test VPN or tunneling technologies</li>
+                                    </ul>
+                                </li>
+                                <li><strong>URL Variation Testing:</strong>
+                                    <ul>
+                                        <li>Test case variations (e.g., edge:// vs. EDGE://)</li>
+                                        <li>Test URL encoding variations</li>
+                                        <li>Test URL scheme alternatives</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Network Location Testing:</strong>
+                                    <ul>
+                                        <li>Test access when connected to corporate network</li>
+                                        <li>Test access when connected via VPN</li>
+                                        <li>Test access from completely external networks</li>
+                                    </ul>
+                                </li>
+                                <li><strong>User Identity Testing:</strong>
+                                    <ul>
+                                        <li>Test access with different user authentication credentials</li>
+                                        <li>Test access with different device certificates</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </div>
+                        
+                        <div class="table-container">
+                            <table>
+                                <tr>
+                                    <th>Network Control</th>
+                                    <th>Testing Approach</th>
+                                    <th>Common Bypass Techniques</th>
+                                </tr>
+                                <tr>
+                                    <td>Proxy Server Filtering</td>
+                                    <td>Access internal pages through configured proxy</td>
+                                    <td>Direct connections, alternative proxies, PAC file manipulation</td>
+                                </tr>
+                                <tr>
+                                    <td>URL Filtering</td>
+                                    <td>Test variations of internal page URLs</td>
+                                    <td>URL encoding, case variations, alternative schemes</td>
+                                </tr>
+                                <tr>
+                                    <td>SSL Inspection</td>
+                                    <td>Test HTTPS connections to internal pages</td>
+                                    <td>Certificate pinning, proxy avoidance</td>
+                                </tr>
+                                <tr>
+                                    <td>Firewall Rules</td>
+                                    <td>Test access from different network zones</td>
+                                    <td>Tunneling, protocol encapsulation, port redirection</td>
+                                </tr>
+                                <tr>
+                                    <td>Remote Access Controls</td>
+                                    <td>Test access when outside corporate network</td>
+                                    <td>Split tunneling, local policy modification</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <h2 id="reporting">6.5 Reporting and Remediation</h2>
+                
+                <div class="side-by-side">
+                    <div>
+                        <p>Effective reporting and remediation processes are essential for translating security testing findings into concrete security improvements. This section outlines approaches for documenting, prioritizing, and addressing security issues identified during browser internal page testing.</p>
+                        
+                        <p>Key reporting and remediation approaches include:</p>
+                        
+                        <ul>
+                            <li><strong>Structured Reporting:</strong> Developing standardized reporting templates that clearly communicate security findings and their implications.</li>
+                            
+                            <li><strong>Risk-Based Prioritization:</strong> Prioritizing remediation efforts based on the security risk level and potential impact of identified issues.</li>
+                            
+                            <li><strong>Remediation Planning:</strong> Creating detailed remediation plans with specific actions, timelines, and responsibilities.</li>
+                            
+                            <li><strong>Verification Testing:</strong> Implementing follow-up testing to verify that remediation efforts effectively address identified issues.</li>
+                            
+                            <li><strong>Continuous Improvement:</strong> Establishing processes for ongoing testing and monitoring to maintain security as browsers and threats evolve.</li>
+                        </ul>
+                        
+                        <p>Well-structured reporting and remediation processes ensure that security testing leads to concrete improvements rather than simply documenting issues.</p>
+                    </div>
+                    
+                    <div>
+                        <div class="example-box">
+                            <span class="box-title">Browser Security Assessment Report Structure</span>
+                            <ol>
+                                <li><strong>Executive Summary</strong>
+                                    <ul>
+                                        <li>Overview of testing scope and objectives</li>
+                                        <li>Summary of key findings and risk levels</li>
+                                        <li>High-level recommendations</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Testing Methodology</strong>
+                                    <ul>
+                                        <li>Approach and techniques used</li>
+                                        <li>Testing environment and configurations</li>
+                                        <li>Tools and scripts utilized</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Detailed Findings</strong>
+                                    <ul>
+                                        <li>Internal page inventory and classification</li>
+                                        <li>Policy effectiveness assessment</li>
+                                        <li>Identified security gaps or bypass methods</li>
+                                        <li>Extension security issues</li>
+                                        <li>Network control effectiveness</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Risk Assessment</strong>
+                                    <ul>
+                                        <li>Severity and impact rating for each finding</li>
+                                        <li>Exploitability assessment</li>
+                                        <li>Potential attack scenarios</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Remediation Recommendations</strong>
+                                    <ul>
+                                        <li>Specific policy configurations</li>
+                                        <li>Network control improvements</li>
+                                        <li>User education recommendations</li>
+                                        <li>System hardening measures</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Implementation Roadmap</strong>
+                                    <ul>
+                                        <li>Prioritized remediation steps</li>
+                                        <li>Timeline and resource requirements</li>
+                                        <li>Verification testing approach</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Appendices</strong>
+                                    <ul>
+                                        <li>Complete internal page inventory</li>
+                                        <li>Detailed test results</li>
+                                        <li>Policy configuration examples</li>
+                                        <li>Testing scripts and tools</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </div>
+                        
+                        <div class="info-box">
+                            <span class="box-title">Remediation Best Practices</span>
+                            <p>For effective remediation of browser security issues:</p>
+                            <ul>
+                                <li><strong>Prioritize by Risk:</strong> Address high-risk findings first, focusing on issues that could lead to data theft or policy bypass</li>
+                                <li><strong>Layer Defenses:</strong> Implement multiple security controls for critical issues (e.g., both browser policy and network filtering)</li>
+                                <li><strong>Test Before Deployment:</strong> Verify remediation measures in a test environment before broad deployment</li>
+                                <li><strong>Document Exceptions:</strong> Clearly document any necessary exceptions to security controls and their justification</li>
+                                <li><strong>Establish Monitoring:</strong> Implement ongoing monitoring for high-risk internal page access</li>
+                                <li><strong>Periodic Reassessment:</strong> Schedule regular retesting as browsers and internal pages evolve</li>
+                                <li><strong>Incorporate User Feedback:</strong> Balance security with usability to prevent workarounds</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="review-questions">
+                    <h4>Review Questions</h4>
+                    <ol>
+                        <li>What techniques would you use to systematically enumerate and classify internal pages in a browser?</li>
+                        <li>How would you test the effectiveness of enterprise policies for controlling access to high-risk internal pages?</li>
+                        <li>What network-level testing approaches can verify the effectiveness of URL filtering for internal pages?</li>
+                        <li>How would you evaluate the security of extension installation controls?</li>
+                        <li>What are the key components of a comprehensive browser security assessment report?</li>
+                    </ol>
+                </div>
+            </div>
+            
+            
