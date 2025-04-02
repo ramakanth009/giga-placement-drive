@@ -1,6 +1,6 @@
 // src/components/faq/Faq.jsx
 import React, { useState } from 'react';
-import { Box, Typography, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import { Box, Typography, Accordion, AccordionSummary, AccordionDetails, Grid } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
@@ -47,7 +47,7 @@ const useStyles = makeStyles({
     },
   },
   accordionContainer: {
-    maxWidth: '900px',
+    maxWidth: '100%',
     margin: '0 auto',
     "@media (max-width: 960px)": {
       maxWidth: '100%',
@@ -141,6 +141,25 @@ const useStyles = makeStyles({
       lineHeight: '1.5 !important',
     },
   },
+  columnContainer: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: '24px',
+    "@media (max-width: 960px)": {
+      gap: '16px',
+    },
+    "@media (max-width: 600px)": {
+      gap: '10px',
+      flexDirection: 'column',
+    },
+  },
+  column: {
+    flex: 1,
+    minWidth: '45%',
+    "@media (max-width: 600px)": {
+      minWidth: '100%',
+    },
+  },
 });
 
 const Faq = () => {
@@ -196,6 +215,10 @@ const Faq = () => {
     },
   ];
 
+  // Split FAQ data into two columns: 4 questions in first column and 3 questions in second column
+  const firstColumnFaqs = faqData.slice(0, 4);
+  const secondColumnFaqs = faqData.slice(4);
+
   return (
     <Box className={classes.faqContainer}>
       <Box className={classes.titleBox}>
@@ -204,37 +227,74 @@ const Faq = () => {
         </Typography>
       </Box>
 
-      <Box className={classes.accordionContainer}>
-        {faqData.map((faq) => (
-          <Accordion
-            key={faq.id}
-            expanded={expanded === faq.id}
-            onChange={handleChange(faq.id)}
-            className={classes.accordion}
-          >
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon className={classes.expandIcon} />}
-              className={classes.accordionSummary}
-              classes={{
-                content: classes.summaryContent,
-              }}
-              aria-controls={`${faq.id}-content`}
-              id={`${faq.id}-header`}
+      <Box className={classes.columnContainer}>
+        {/* First Column - 4 questions */}
+        <Box className={classes.column}>
+          {firstColumnFaqs.map((faq) => (
+            <Accordion
+              key={faq.id}
+              expanded={expanded === faq.id}
+              onChange={handleChange(faq.id)}
+              className={classes.accordion}
             >
-              <Box display="flex" alignItems="center" width="100%">
-                <Typography className={classes.question}>
-                  <span className={classes.questionNumber}>{faq.number}.</span>
-                  {faq.question}
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon className={classes.expandIcon} />}
+                className={classes.accordionSummary}
+                classes={{
+                  content: classes.summaryContent,
+                }}
+                aria-controls={`${faq.id}-content`}
+                id={`${faq.id}-header`}
+              >
+                <Box display="flex" alignItems="center" width="100%">
+                  <Typography className={classes.question}>
+                    <span className={classes.questionNumber}>{faq.number}.</span>
+                    {faq.question}
+                  </Typography>
+                </Box>
+              </AccordionSummary>
+              <AccordionDetails className={classes.accordionDetails}>
+                <Typography className={classes.answer}>
+                  {faq.answer}
                 </Typography>
-              </Box>
-            </AccordionSummary>
-            <AccordionDetails className={classes.accordionDetails}>
-              <Typography className={classes.answer}>
-                {faq.answer}
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
-        ))}
+              </AccordionDetails>
+            </Accordion>
+          ))}
+        </Box>
+
+        {/* Second Column - 3 questions */}
+        <Box className={classes.column}>
+          {secondColumnFaqs.map((faq) => (
+            <Accordion
+              key={faq.id}
+              expanded={expanded === faq.id}
+              onChange={handleChange(faq.id)}
+              className={classes.accordion}
+            >
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon className={classes.expandIcon} />}
+                className={classes.accordionSummary}
+                classes={{
+                  content: classes.summaryContent,
+                }}
+                aria-controls={`${faq.id}-content`}
+                id={`${faq.id}-header`}
+              >
+                <Box display="flex" alignItems="center" width="100%">
+                  <Typography className={classes.question}>
+                    <span className={classes.questionNumber}>{faq.number}.</span>
+                    {faq.question}
+                  </Typography>
+                </Box>
+              </AccordionSummary>
+              <AccordionDetails className={classes.accordionDetails}>
+                <Typography className={classes.answer}>
+                  {faq.answer}
+                </Typography>
+              </AccordionDetails>
+            </Accordion>
+          ))}
+        </Box>
       </Box>
     </Box>
   );
