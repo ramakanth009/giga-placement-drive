@@ -217,6 +217,14 @@ const Navbar = () => {
                 Full Stack
               </Button>
               <Button 
+                className={`${classes.navLink} ${currentPath === "/datascience" ? classes.active : ""}`}
+                component={Link}
+                to="/datascience"
+                onClick={handleNavLinkClick}
+              >
+                Data Science
+              </Button>
+              <Button 
                 className={`${classes.navLink} ${currentPath === "/about" ? classes.active : ""}`}
                 component={Link}
                 to="/about"
@@ -290,6 +298,14 @@ const Navbar = () => {
             to="/fullstack"
           >
             Full Stack
+          </MenuItem>
+          <MenuItem 
+            onClick={() => handleNavLinkClick()} 
+            className={classes.menuItem} 
+            component={Link} 
+            to="/datascience"
+          >
+            Data Science
           </MenuItem>
           <MenuItem 
             onClick={() => handleNavLinkClick()} 

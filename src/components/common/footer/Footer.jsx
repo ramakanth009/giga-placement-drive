@@ -13,7 +13,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { ReactComponent as GigaLogo } from "../../../assets/GIGAVERSITY_LOGO.svg";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
-import { scrollToTop } from '../../../utils/scrollUtils';
+import { scrollToTop } from "../../../utils/scrollUtils";
 import { ReactComponent as CBottom } from "../../../assets/cbottom.svg";
 import { ReactComponent as CTop } from "../../../assets/ctop.svg";
 
@@ -325,9 +325,9 @@ const Footer = () => {
               </Typography>
               <ul className={classes.linksList}>
                 <li className={classes.linkItem}>
-                  <MuiLink 
-                    component={Link} 
-                    to="/" 
+                  <MuiLink
+                    component={Link}
+                    to="/"
                     className={classes.linkText}
                     onClick={scrollToTop}
                   >
@@ -391,6 +391,17 @@ const Footer = () => {
                     Full-Stack Development
                   </MuiLink>
                 </li>
+
+                <li className={classes.linkItem}>
+                  <MuiLink
+                    component={Link}
+                    to="/datascience"
+                    className={classes.programLink}
+                    onClick={scrollToTop}
+                  >
+                    Data Science
+                  </MuiLink>
+                </li>
                 <li className={classes.linkItem}>
                   <MuiLink
                     component={Link}
@@ -406,12 +417,14 @@ const Footer = () => {
 
             {/* Contact Info Column */}
             <Box className={classes.column}>
-              <Typography className={classes.sectionTitle}>Contact Us</Typography>
+              <Typography className={classes.sectionTitle}>
+                Contact Us
+              </Typography>
               <Box className={classes.contactItem}>
                 <LocationOnIcon className={classes.contactIcon} />
                 <Typography className={classes.contactText}>
-                  The Headquarters, Dwaraka Pride, Hitech City, 500018, Hyderabad,
-                  Telangana, India
+                  The Headquarters, Dwaraka Pride, Hitech City, 500018,
+                  Hyderabad, Telangana, India
                 </Typography>
               </Box>
               <Box className={classes.contactItem}>
@@ -422,8 +435,8 @@ const Footer = () => {
               </Box>
               <Box className={classes.contactItem}>
                 <EmailIcon className={classes.contactIcon} />
-                <MuiLink 
-                  href="mailto:Info@gigaversity.in" 
+                <MuiLink
+                  href="mailto:Info@gigaversity.in"
                   className={classes.contactLink}
                 >
                   Info@gigaversity.in
@@ -432,28 +445,48 @@ const Footer = () => {
 
               {/* Social Media Icons moved to Contact section */}
               <Box className={classes.socialIcons}>
-                <MuiLink href="https://www.facebook.com/gigaversity" target="_blank" rel="noopener noreferrer">
+                <MuiLink
+                  href="https://www.facebook.com/gigaversity"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Box className={classes.socialIcon}>
                     <FacebookIcon />
                   </Box>
                 </MuiLink>
-                <MuiLink href="https://www.linkedin.com/company/gigaversity" target="_blank" rel="noopener noreferrer">
+                <MuiLink
+                  href="https://www.linkedin.com/company/gigaversity"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Box className={classes.socialIcon}>
                     <LinkedInIcon />
                   </Box>
                 </MuiLink>
-                
-                <MuiLink href="https://wa.me/919849048999" target="_blank" rel="noopener noreferrer">
+
+                <MuiLink
+                  href="https://wa.me/919849048999"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Box className={classes.socialIcon}>
                     <WhatsAppIcon />
                   </Box>
                 </MuiLink>
-                <MuiLink href="https://www.youtube.com/channel/gigaversity" target="_blank" rel="noopener noreferrer">
+                <MuiLink
+                  href="https://www.youtube.com/channel/gigaversity"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Box className={classes.socialIcon}>
                     <YouTubeIcon />
                   </Box>
                 </MuiLink>
-                <MuiLink href="https://www.instagram.com/gigaversity" target="_blank" rel="noopener noreferrer">
+                <MuiLink
+                  href="https://www.instagram.com/gigaversity"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Box className={classes.socialIcon}>
                     <InstagramIcon />
                   </Box>
