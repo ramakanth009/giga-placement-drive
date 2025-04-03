@@ -1,29 +1,31 @@
-// src/App.js
-import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// src/App.jsx
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
+// Correct the import paths and case sensitivity
 import Homepage from "./pages/homepage/Homepage";
+import Fullstack from "./pages/fullstack/Fullstack";
 import ContactUs from "./pages/contactus/ContactUs";
 import AboutUs from "./pages/aboutus/AboutUs";
 import PrivacyPolicy from "./pages/privacypolicy/PrivacyPolicy";
 import TermsAndConditions from "./pages/termsandconditions/TermsAndConditions";
-import Fullstack from "./pages/fullstack/Fullstack";
+import DataScience from "./pages/datascience/DataScience";
 
-function App() {
+
+const App = () => {
   return (
     <Router>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/contact" element={<ContactUs />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
-          <Route path="/fullstack" element={<Fullstack />} />
-          {/* Add other routes here as your application grows */}
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/fullstack" element={<Fullstack />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/contact" element={<ContactUs />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+        <Route path="/datascience" element={<DataScience />} />
+      </Routes>
     </Router>
   );
-}
+};
 
 export default App;
