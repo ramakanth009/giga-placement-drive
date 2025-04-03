@@ -1,7 +1,7 @@
 // src/pages/homepage/Homepage.jsx
 import React from "react";
 import { Box } from "@mui/material";
-import Navbar from "../../components/homepagecomponets/navbar/Navbar";
+import Navbar from "../../components/common/navbar/Navbar";
 import Hero from "../../components/homepagecomponets/herosection/Hero";
 // import Background from "../../components/background/Background";
 import HiringPartners from "../../components/homepagecomponets/hiringpartners/HiringPartners";
@@ -13,10 +13,10 @@ import DataScienceTrainingPlan from "../../components/homepagecomponets/training
 import GigaversityAdvantage from "../../components/homepagecomponets/gigaversityadvantage/GigaversityAdvantage";
 import HowItWorks from "../../components/homepagecomponets/howitworks/HowItWorks";
 import WhoShouldJoin from "../../components/homepagecomponets/whoshouldjoin/WhoShouldJoin";
-import LimitedTimeOffer from "../../components/homepagecomponets/limitedtimeoffer/LimitedTimeOffer";
+import LimitedTimeOffer from "../../components/common/limitedtimeoffer/LimitedTimeOffer";
 import OtherPrograms from "../../components/homepagecomponets/otherprograms/OtherPrograms";
 import Faq from "../../components/homepagecomponets/faq/Faq";
-import Footer from "../../components/homepagecomponets/footer/Footer";
+import Footer from "../../components/common/footer/Footer";
 
 const Homepage = () => {
   return (

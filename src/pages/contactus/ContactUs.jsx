@@ -11,8 +11,8 @@ import {
   Grid
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import Navbar from '../../components/homepagecomponets/navbar/Navbar';
-import Footer from '../../components/homepagecomponets/footer/Footer';
+import Navbar from "../../components/common/navbar/Navbar";
+import Footer from "../../components/common/footer/Footer";
 import Background from '../../components/homepagecomponets/background/Background';
 
 // Social media icons

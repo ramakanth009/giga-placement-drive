@@ -209,6 +209,14 @@ const Navbar = () => {
                 Home
               </Button>
               <Button 
+                className={`${classes.navLink} ${currentPath === "/fullstack" ? classes.active : ""}`}
+                component={Link}
+                to="/fullstack"
+                onClick={handleNavLinkClick}
+              >
+                Full Stack
+              </Button>
+              <Button 
                 className={`${classes.navLink} ${currentPath === "/about" ? classes.active : ""}`}
                 component={Link}
                 to="/about"
@@ -274,6 +282,14 @@ const Navbar = () => {
             to="/"
           >
             Home
+          </MenuItem>
+          <MenuItem 
+            onClick={() => handleNavLinkClick()} 
+            className={classes.menuItem} 
+            component={Link} 
+            to="/fullstack"
+          >
+            Full Stack
           </MenuItem>
           <MenuItem 
             onClick={() => handleNavLinkClick()} 

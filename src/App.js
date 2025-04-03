@@ -6,6 +6,7 @@ import ContactUs from "./pages/contactus/ContactUs";
 import AboutUs from "./pages/aboutus/AboutUs";
 import PrivacyPolicy from "./pages/privacypolicy/PrivacyPolicy";
 import TermsAndConditions from "./pages/termsandconditions/TermsAndConditions";
+import Fullstack from "./pages/fullstack/Fullstack";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+          <Route path="/fullstack" element={<Fullstack />} />
           {/* Add other routes here as your application grows */}
         </Routes>
       </div>
