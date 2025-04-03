@@ -1,6 +1,6 @@
-// src/components/faq/Faq.jsx
+// src/components/common/faq/Faq.jsx
 import React, { useState } from 'react';
-import { Box, Typography, Accordion, AccordionSummary, AccordionDetails, Grid } from '@mui/material';
+import { Box, Typography, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
@@ -162,7 +162,7 @@ const useStyles = makeStyles({
   },
 });
 
-const Faq = () => {
+const Faq = ({ faqData, title, subtitle }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
 
@@ -170,67 +170,36 @@ const Faq = () => {
     setExpanded(isExpanded ? panel : false);
   };
 
-  const faqData = [
-    {
-      id: 'panel1',
-      number: '1',
-      question: 'Who can join the Gigaversity Virtual Placement Drive?',
-      answer: 'This program is open to final-year students, recent graduates, career switchers, and freelancers looking to enhance their skills. Anyone interested in developing job-ready technical skills and connecting with hiring partners can join.',
-    },
-    {
-      id: 'panel2',
-      number: '2',
-      question: 'How long is the training program?',
-      answer: 'The Gigaversity Virtual Placement Drive is a 30-day intensive training program designed to quickly build your skills and connect you with employers.',
-    },
-    {
-      id: 'panel3',
-      number: '3',
-      question: 'What is the daily schedule like?',
-      answer: 'The program includes daily 1-hour live project sessions with industry experts, hands-on project work, personalized feedback, and job preparation activities. The schedule is flexible to accommodate different time zones and commitments.',
-    },
-    {
-      id: 'panel4',
-      number: '4',
-      question: 'Do I need prior experience to join?',
-      answer: 'No prior experience is required for beginners tracks. We offer different entry points based on your current skill level. Basic computer literacy and a strong willingness to learn are all you need to get started.',
-    },
-    {
-      id: 'panel5',
-      number: '5',
-      question: 'Will I receive a certificate after completion?',
-      answer: 'Yes, upon successful completion of the program, you will receive a Gigaversity certificate that validates your skills and can be shared with potential employers and on your professional profiles.',
-    },
-    {
-      id: 'panel6',
-      number: '6',
-      question: 'How does the placement process work?',
-      answer: 'Our placement process connects you directly with our 100+ hiring partners. We share your portfolio and skills with relevant companies, arrange interviews, and provide support throughout the hiring process. We add new opportunities weekly.',
-    },
-    {
-      id: 'panel7',
-      number: '7',
-      question: 'What job roles are covered in the program?',
-      answer: 'The program covers in-demand roles in Full Stack Development (UI/UX Developer, Frontend Developer, MERN Stack Developer, Backend Engineer, Full Stack Developer) and Data Science (Data Analyst, Data Scientist, ML Engineer, Data Engineer, AI Specialist).',
-    },
-  ];
+  // Logic to distribute FAQs between columns
+  const distributeItems = (items) => {
+    const totalItems = items.length;
+    const firstColumnCount = totalItems % 2 === 0 ? totalItems / 2 : Math.ceil(totalItems / 2);
+    
+    return {
+      firstColumn: items.slice(0, firstColumnCount),
+      secondColumn: items.slice(firstColumnCount)
+    };
+  };
 
-  // Split FAQ data into two columns: 4 questions in first column and 3 questions in second column
-  const firstColumnFaqs = faqData.slice(0, 4);
-  const secondColumnFaqs = faqData.slice(4);
+  const { firstColumn, secondColumn } = distributeItems(faqData);
 
   return (
     <Box className={classes.faqContainer}>
       <Box className={classes.titleBox}>
         <Typography variant="h2" className={classes.title}>
-          FAQ'<span>s</span>
+          {title || <>FAQ'<span>s</span></>}
         </Typography>
+        {subtitle && (
+          <Typography variant="body1" sx={{ textAlign: 'center', maxWidth: '800px', mb: 3 }}>
+            {subtitle}
+          </Typography>
+        )}
       </Box>
 
       <Box className={classes.columnContainer}>
-        {/* First Column - 4 questions */}
+        {/* First Column */}
         <Box className={classes.column}>
-          {firstColumnFaqs.map((faq) => (
+          {firstColumn.map((faq) => (
             <Accordion
               key={faq.id}
               expanded={expanded === faq.id}
@@ -262,9 +231,9 @@ const Faq = () => {
           ))}
         </Box>
 
-        {/* Second Column - 3 questions */}
+        {/* Second Column */}
         <Box className={classes.column}>
-          {secondColumnFaqs.map((faq) => (
+          {secondColumn.map((faq) => (
             <Accordion
               key={faq.id}
               expanded={expanded === faq.id}

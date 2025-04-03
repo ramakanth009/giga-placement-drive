@@ -15,7 +15,7 @@ import HowItWorks from "../../components/homepagecomponets/howitworks/HowItWorks
 import WhoShouldJoin from "../../components/homepagecomponets/whoshouldjoin/WhoShouldJoin";
 import LimitedTimeOffer from "../../components/common/limitedtimeoffer/LimitedTimeOffer";
 import OtherPrograms from "../../components/homepagecomponets/otherprograms/OtherPrograms";
-import Faq from "../../components/homepagecomponets/faq/Faq";
+import Faq from "../../components/homepagecomponets/faqhomepage/FaqHomepage";
 import Footer from "../../components/common/footer/Footer";
 
 const Homepage = () => {

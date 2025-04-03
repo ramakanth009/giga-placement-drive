@@ -384,11 +384,11 @@ const Footer = () => {
                 <li className={classes.linkItem}>
                   <MuiLink
                     component={Link}
-                    // to="/programs/placement-drive"
+                    to="/fullstack"
                     className={classes.programLink}
                     onClick={scrollToTop}
                   >
-                    Placement Drive
+                    Full-Stack Development
                   </MuiLink>
                 </li>
                 <li className={classes.linkItem}>
