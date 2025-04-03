@@ -171,9 +171,7 @@ const useStyles = makeStyles({
     top: 0,
     width: '15%',
     height: '100%',
-    background: 'linear-gradient(to left, rgba(188, 225, 255, 0.7) 0%, rgba(188, 225, 255, 0.6) 40%, rgba(188, 225, 255, 0.2) 80%, rgba(188, 225, 255, 0))',
-    maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 1) 15%, rgba(0, 0, 0, 1) 85%, transparent 100%)',
-    WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 1) 15%, rgba(0, 0, 0, 1) 85%, transparent 100%)',
+    background: 'linear-gradient(to left, rgba(246, 249, 252, 1) 0%, rgba(246, 249, 252, 0.8) 40%, rgba(246, 249, 252, 0.4) 80%, rgba(246, 249, 252, 0))',
     zIndex: 1,
     pointerEvents: 'none',
     '@media (max-width: 768px)': {

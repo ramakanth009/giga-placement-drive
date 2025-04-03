@@ -7,14 +7,20 @@ import ProgramWorksSection from "../../components/common/programworks/ProgramWor
 import Footer from "../../components/common/footer/Footer";
 import FullStackFaq from "../../components/fullstackcomponents/faqfullstack/FaqFullstack";
 import { fullStackItems } from "../../data/programWorksData";
+import LimitedTimeOffer from "../../components/common/limitedtimeoffer/LimitedTimeOffer";
+import HiringPartners from "../../components/common/hiringpartners/HiringPartners";
+import FullStackCurriculum from "../../components/fullstackcomponents/curriculum/FullStackCurriculum";
 
 const Fullstack = () => {
   return (
     <div>
-        <Navbar />
+      <Navbar />
       <Hero />
       <FullstackImportance />
       <HiringRolesBoxes />
+      <FullStackCurriculum />
+      <HiringPartners />
+      <LimitedTimeOffer />
       <ProgramWorksSection items={fullStackItems} />
       <FullStackFaq />
       <Footer />

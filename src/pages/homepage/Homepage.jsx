@@ -4,7 +4,7 @@ import { Box } from "@mui/material";
 import Navbar from "../../components/common/navbar/Navbar";
 import Hero from "../../components/homepagecomponets/herosection/Hero";
 // import Background from "../../components/background/Background";
-import HiringPartners from "../../components/homepagecomponets/hiringpartners/HiringPartners";
+import HiringPartners from "../../components/common/hiringpartners/HiringPartners";
 import JobKickstart from "../../components/homepagecomponets/jobkickstart/JobKickstart";
 import WhyDifferent from "../../components/homepagecomponets/whydifferent/WhyDifferent";
 import InDemandRoles from "../../components/homepagecomponets/indemandroles/InDemandRoles";
