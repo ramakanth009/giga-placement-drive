@@ -10,8 +10,8 @@ import {
   Divider
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import Navbar from "../../components/navbar/Navbar";
-import Footer from "../../components/footer/Footer";
+import Navbar from "../../components/homepagecomponets/navbar/Navbar";
+import Footer from "../../components/homepagecomponets/footer/Footer";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import GavelIcon from '@mui/icons-material/Gavel';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';

@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 import { Box, Typography, Container } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import { ReactComponent as Briefcase } from '../../assets/briefcase.svg';
-import { ReactComponent as Calender } from '../../assets/calender.svg';
-import { ReactComponent as Sheet } from '../../assets/sheet.svg';
-import { ReactComponent as Graph } from '../../assets/graph.svg';
+import { ReactComponent as Briefcase } from '../../../assets/briefcase.svg';
+import { ReactComponent as Calender } from '../../../assets/calender.svg';
+import { ReactComponent as Sheet } from '../../../assets/sheet.svg';
+import { ReactComponent as Graph } from '../../../assets/graph.svg';
 
 const useStyles = makeStyles({
   section: {

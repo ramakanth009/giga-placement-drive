@@ -2,10 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Typography, Container } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { ReactComponent as WorkIcon} from '../../assets/WorkIcon.svg';
-import { ReactComponent as SchoolIcon} from '../../assets/SchoolIcon.svg';
-import { ReactComponent as SwitchAccountIcon} from '../../assets/SwitchAccountIcon.svg';
-import { ReactComponent as BusinessCenterIcon} from '../../assets/BusinessCenterIcon.svg';
+import { ReactComponent as WorkIcon} from '../../../assets/WorkIcon.svg';
+import { ReactComponent as SchoolIcon} from '../../../assets/SchoolIcon.svg';
+import { ReactComponent as SwitchAccountIcon} from '../../../assets/SwitchAccountIcon.svg';
+import { ReactComponent as BusinessCenterIcon} from '../../../assets/BusinessCenterIcon.svg';
+
 
 const useStyles = makeStyles({
   section: {

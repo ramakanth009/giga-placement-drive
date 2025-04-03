@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Box, Typography, Grid } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import Heroguy from "../../assets/heroguy.png";
-import { ReactComponent as AIbook } from "../../assets/ai-book.svg";
-import { ReactComponent as Simplecal } from "../../assets/simple-claender.svg";
+import Heroguy from "../../../assets/heroguy.png";
+import { ReactComponent as AIbook } from "../../../assets/ai-book.svg";
+import { ReactComponent as Simplecal } from "../../../assets/simple-claender.svg";
 import AnimatedCounter from "./AnimatedCounter";
 import CodeIcon from '@mui/icons-material/Code';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';

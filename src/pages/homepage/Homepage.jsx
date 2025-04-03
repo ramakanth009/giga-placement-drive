@@ -1,22 +1,22 @@
 // src/pages/homepage/Homepage.jsx
 import React from "react";
 import { Box } from "@mui/material";
-import Navbar from "../../components/navbar/Navbar";
-import Hero from "../../components/herosection/Hero";
+import Navbar from "../../components/homepagecomponets/navbar/Navbar";
+import Hero from "../../components/homepagecomponets/herosection/Hero";
 // import Background from "../../components/background/Background";
-import HiringPartners from "../../components/hiringpartners/HiringPartners";
-import JobKickstart from "../../components/jobkickstart/JobKickstart";
-import WhyDifferent from "../../components/whydifferent/WhyDifferent";
-import InDemandRoles from "../../components/indemandroles/InDemandRoles";
-import FullStackTrainingPlan from "../../components/trainingplancomponent/FullStackTrainingPlan";
-import DataScienceTrainingPlan from "../../components/trainingplancomponent/DataScienceTrainingPlan";
-import GigaversityAdvantage from "../../components/gigaversityadvantage/GigaversityAdvantage";
-import HowItWorks from "../../components/howitworks/HowItWorks";
-import WhoShouldJoin from "../../components/whoshouldjoin/WhoShouldJoin";
-import LimitedTimeOffer from "../../components/limitedtimeoffer/LimitedTimeOffer";
-import OtherPrograms from "../../components/otherprograms/OtherPrograms";
-import Faq from "../../components/faq/Faq";
-import Footer from "../../components/footer/Footer";
+import HiringPartners from "../../components/homepagecomponets/hiringpartners/HiringPartners";
+import JobKickstart from "../../components/homepagecomponets/jobkickstart/JobKickstart";
+import WhyDifferent from "../../components/homepagecomponets/whydifferent/WhyDifferent";
+import InDemandRoles from "../../components/homepagecomponets/indemandroles/InDemandRoles";
+import FullStackTrainingPlan from "../../components/homepagecomponets/trainingplancomponent/FullStackTrainingPlan";
+import DataScienceTrainingPlan from "../../components/homepagecomponets/trainingplancomponent/DataScienceTrainingPlan";
+import GigaversityAdvantage from "../../components/homepagecomponets/gigaversityadvantage/GigaversityAdvantage";
+import HowItWorks from "../../components/homepagecomponets/howitworks/HowItWorks";
+import WhoShouldJoin from "../../components/homepagecomponets/whoshouldjoin/WhoShouldJoin";
+import LimitedTimeOffer from "../../components/homepagecomponets/limitedtimeoffer/LimitedTimeOffer";
+import OtherPrograms from "../../components/homepagecomponets/otherprograms/OtherPrograms";
+import Faq from "../../components/homepagecomponets/faq/Faq";
+import Footer from "../../components/homepagecomponets/footer/Footer";
 
 const Homepage = () => {
   return (

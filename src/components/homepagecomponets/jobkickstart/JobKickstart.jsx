@@ -4,7 +4,7 @@ import { Box, Typography, Container, Button, Grid } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import Jobkick from "../../assets/jobkick.png";
+import Jobkick from "../../../assets/jobkick.png";
 
 const useStyles = makeStyles({
   section: {

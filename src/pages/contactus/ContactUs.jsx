@@ -11,9 +11,9 @@ import {
   Grid
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import Navbar from '../../components/navbar/Navbar';
-import Footer from '../../components/footer/Footer';
-import Background from '../../components/background/Background';
+import Navbar from '../../components/homepagecomponets/navbar/Navbar';
+import Footer from '../../components/homepagecomponets/footer/Footer';
+import Background from '../../components/homepagecomponets/background/Background';
 
 // Social media icons
 import FacebookIcon from '@mui/icons-material/Facebook';
@@ -23,12 +23,11 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
-import LanguageIcon from '@mui/icons-material/Language';
-
+import LanguageIcon from '@mui/icons-material/Language'
 const useStyles = makeStyles({
   heroSection: {
     position: 'relative',
-    background: 'none',
+    background: 'url(/path/to/your/image.jpg) no-repeat center center',
     color: 'white',
     padding: '80px 30px 400px',
     textAlign: 'center',
@@ -39,7 +38,7 @@ const useStyles = makeStyles({
       left: 0,
       right: 0,
       bottom: 0,
-      background: 'rgb(42,43,106)',
+      background: '#2A2B6AC7',
       clipPath: 'polygon(0 0, 100% 0, 100% 66%, 0 100%)',
       zIndex: -1,
       height: '598px',

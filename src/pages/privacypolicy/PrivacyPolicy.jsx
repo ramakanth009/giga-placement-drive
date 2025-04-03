@@ -14,8 +14,8 @@ import {
   ListItemIcon 
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import Navbar from "../../components/navbar/Navbar";
-import Footer from "../../components/footer/Footer";
+import Navbar from "../../components/homepagecomponets/navbar/Navbar";
+import Footer from "../../components/homepagecomponets/footer/Footer";
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import InfoIcon from '@mui/icons-material/Info';

@@ -2,9 +2,9 @@
 import React from "react";
 import { Box, Typography, Container, Divider, Avatar } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import Navbar from "../../components/navbar/Navbar";
-import Background from "../../components/background/Background";
-import Footer from "../../components/footer/Footer";
+import Navbar from "../../components/homepagecomponets/navbar/Navbar";
+import Background from "../../components/homepagecomponets/background/Background";
+import Footer from "../../components/homepagecomponets/footer/Footer";
 
 const useStyles = makeStyles({
   pageContainer: {

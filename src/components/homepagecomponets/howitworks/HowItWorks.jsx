@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Typography, Container, useMediaQuery } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import StudentImage from '../../assets/little-boy-at-the-table.png';
+import StudentImage from '../../../assets/little-boy-at-the-table.png';
 
 const useStyles = makeStyles({
   section: {

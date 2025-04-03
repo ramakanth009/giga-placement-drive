@@ -11,11 +11,11 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import { ReactComponent as GigaLogo } from "../../assets/GIGAVERSITY_LOGO.svg";
+import { ReactComponent as GigaLogo } from "../../../assets/GIGAVERSITY_LOGO.svg";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
-import { scrollToTop } from '../../utils/scrollUtils';
-import { ReactComponent as CBottom } from "../../assets/cbottom.svg";
-import { ReactComponent as CTop } from "../../assets/ctop.svg";
+import { scrollToTop } from '../../../utils/scrollUtils';
+import { ReactComponent as CBottom } from "../../../assets/cbottom.svg";
+import { ReactComponent as CTop } from "../../../assets/ctop.svg";
 
 const useStyles = makeStyles({
   footer: {

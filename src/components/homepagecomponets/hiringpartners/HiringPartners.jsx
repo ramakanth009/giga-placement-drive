@@ -4,24 +4,24 @@ import { Box, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
 // Import SVG logos as React components
-import { ReactComponent as AccentureLogo } from '../../assets/hiringpartners/Accenture.svg';
-import { ReactComponent as AdobeLogo } from '../../assets/hiringpartners/Adobe.svg';
-import { ReactComponent as AdpLogo } from '../../assets/hiringpartners/adp.svg';
-import { ReactComponent as AmazonLogo } from '../../assets/hiringpartners/Amazon.svg';
-import { ReactComponent as BharatPeLogo } from '../../assets/hiringpartners/BharatPe.svg';
-import { ReactComponent as CapgeminiLogo } from '../../assets/hiringpartners/capgemini.svg';
-import { ReactComponent as CredLogo } from '../../assets/hiringpartners/Cred.svg';
-import { ReactComponent as DellLogo } from '../../assets/hiringpartners/Dell.svg';
-import { ReactComponent as DeloitteLogo } from '../../assets/hiringpartners/deloitte.svg';
-import { ReactComponent as FlipkartLogo } from '../../assets/hiringpartners/Flipkart.svg';
-import { ReactComponent as InfosysLogo } from '../../assets/hiringpartners/Infosys.svg';
-import { ReactComponent as MuSigmaLogo } from '../../assets/hiringpartners/Mu-Sigma.svg';
-import { ReactComponent as PharmEasyLogo } from '../../assets/hiringpartners/pharmeasy.svg';
-import { ReactComponent as PhonePeLogo } from '../../assets/hiringpartners/PhonePe.svg';
-import { ReactComponent as TcsLogo } from '../../assets/hiringpartners/tcs.svg';
-import { ReactComponent as TechMahindraLogo } from '../../assets/hiringpartners/Tech_Mahindra.svg';
-import { ReactComponent as WiproLogo } from '../../assets/hiringpartners/Wipro.svg';
-import { ReactComponent as ZohoLogo } from '../../assets/hiringpartners/zoho.svg';
+import { ReactComponent as AccentureLogo } from '../../../assets/hiringpartners/Accenture.svg';
+import { ReactComponent as AdobeLogo } from '../../../assets/hiringpartners/Adobe.svg';
+import { ReactComponent as AdpLogo } from '../../../assets/hiringpartners/adp.svg';
+import { ReactComponent as AmazonLogo } from '../../../assets/hiringpartners/Amazon.svg';
+import { ReactComponent as BharatPeLogo } from '../../../assets/hiringpartners/BharatPe.svg';
+import { ReactComponent as CapgeminiLogo } from '../../../assets/hiringpartners/capgemini.svg';
+import { ReactComponent as CredLogo } from '../../../assets/hiringpartners/Cred.svg';
+import { ReactComponent as DellLogo } from '../../../assets/hiringpartners/Dell.svg';
+import { ReactComponent as DeloitteLogo } from '../../../assets/hiringpartners/deloitte.svg';
+import { ReactComponent as FlipkartLogo } from '../../../assets/hiringpartners/Flipkart.svg';
+import { ReactComponent as InfosysLogo } from '../../../assets/hiringpartners/Infosys.svg';
+import { ReactComponent as MuSigmaLogo } from '../../../assets/hiringpartners/Mu-Sigma.svg';
+import { ReactComponent as PharmEasyLogo } from '../../../assets/hiringpartners/pharmeasy.svg';
+import { ReactComponent as PhonePeLogo } from '../../../assets/hiringpartners/PhonePe.svg';
+import { ReactComponent as TcsLogo } from '../../../assets/hiringpartners/tcs.svg';
+import { ReactComponent as TechMahindraLogo } from '../../../assets/hiringpartners/Tech_Mahindra.svg';
+import { ReactComponent as WiproLogo } from '../../../assets/hiringpartners/Wipro.svg';
+import { ReactComponent as ZohoLogo } from '../../../assets/hiringpartners/zoho.svg';
 
 const useStyles = makeStyles({
   partnersSectionWrapper: {
