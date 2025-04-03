@@ -163,7 +163,7 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    height: '35px',
+    height: '48px',
     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
     cursor: 'pointer',
     boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1)',
@@ -238,14 +238,16 @@ const useStyles = makeStyles({
     border: '2px solid white !important',
     color: 'white !important',
     '&:hover': {
-      backgroundColor: 'rgba(255, 255, 255, 0.1) !important',
+      backgroundColor: '#FFC614 !important',
+      color: '#2A2B6A !important',
       transform: 'translateY(-3px)',
-      boxShadow: '0 6px 15px rgba(0, 0, 0, 0.15)',
+      boxShadow: '0 6px 15px rgba(0, 0, 0, 0.2)',
     },
   },
   joinButton: {
-    backgroundColor: 'white !important',
-    color: '#2A2B6A !important',
+    backgroundColor: 'transparent !important',
+    border: '2px solid white !important',
+    color: 'white !important',
     '&:hover': {
       backgroundColor: '#FFC614 !important',
       color: '#2A2B6A !important',
@@ -443,17 +445,17 @@ const InDemandRoles = () => {
         {/* Action Buttons */}
         <Box className={classes.actionsContainer}>
           <Button
-            variant="outlined"
+            variant="contained"
             className={`${classes.button} ${classes.checkButton}`}
           >
             Check Your Eligibility
           </Button>
-          <Button
+          {/* <Button
             variant="contained"
             className={`${classes.button} ${classes.joinButton}`}
           >
             Join Us Now
-          </Button>
+          </Button> */}
         </Box>
       </Container>
     </Box>

@@ -14,10 +14,12 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { ReactComponent as GigaLogo } from "../../assets/GIGAVERSITY_LOGO.svg";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import { scrollToTop } from '../../utils/scrollUtils';
+import { ReactComponent as CBottom } from "../../assets/cbottom.svg";
+import { ReactComponent as CTop } from "../../assets/ctop.svg";
 
 const useStyles = makeStyles({
   footer: {
-    backgroundColor: "#282880",
+    background: "linear-gradient(282.28deg, #001021 21.53%, #0C5FBA 106.11%)",
     color: "#ffffff",
     padding: "60px 0 20px 0",
     "@media (max-width: 960px)": {
@@ -77,6 +79,7 @@ const useStyles = makeStyles({
     fontSize: "1.5rem",
     fontWeight: "bold",
     marginBottom: "20px",
+    color: "#FFFFFF",
     "@media (max-width: 600px)": {
       fontSize: "1.3rem",
       marginBottom: "15px",
@@ -251,187 +254,223 @@ const useStyles = makeStyles({
     textAlign: "center",
     padding: "10px 0 0",
   },
+  footerWrapper: {
+    position: "relative",
+    overflow: "hidden",
+  },
+  topSvg: {
+    position: "absolute",
+    top: 0,
+    right: 0,
+    width: "182px",
+    height: "446px",
+    opacity: 0.5,
+    "@media (max-width: 960px)": {
+      width: "140px",
+      height: "340px",
+    },
+    "@media (max-width: 600px)": {
+      width: "100px",
+      height: "240px",
+    },
+  },
+  bottomSvg: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    width: "354px",
+    height: "382px",
+    opacity: 0.5,
+    "@media (max-width: 960px)": {
+      width: "280px",
+      height: "300px",
+    },
+    "@media (max-width: 600px)": {
+      width: "200px",
+      height: "220px",
+    },
+  },
 });
 
 const Footer = () => {
   const classes = useStyles();
 
   return (
-    <Box className={classes.footer}>
-      <Container maxWidth="lg">
-        <Box className={classes.footerContainer}>
-          {/* Company Info Column */}
-          <Box className={classes.column}>
-            <Box className={classes.logoSection}>
-              <Box className={classes.logoWrapper}>
-                <GigaLogo style={{ width: "100%", height: "100%" }} />
+    <Box className={classes.footerWrapper}>
+      <CTop className={classes.topSvg} />
+      <CBottom className={classes.bottomSvg} />
+      <Box className={classes.footer}>
+        <Container maxWidth="lg">
+          <Box className={classes.footerContainer}>
+            {/* Company Info Column */}
+            <Box className={classes.column}>
+              <Box className={classes.logoSection}>
+                <Box className={classes.logoWrapper}>
+                  <GigaLogo style={{ width: "100%", height: "100%" }} />
+                </Box>
+                <Typography variant="h6" className={classes.companyName}>
+                  Gigaversity
+                </Typography>
               </Box>
-              <Typography variant="h6" className={classes.companyName}>
-                Gigaversity
+              <Typography className={classes.description}>
+                India's premier platform connecting students with top tech
+                employers, offering specialized training for in-demand skills.
               </Typography>
             </Box>
-            <Typography className={classes.description}>
-              India's premier platform connecting students with top tech
-              employers, offering specialized training for in-demand skills.
-            </Typography>
-          </Box>
 
-          {/* Quick Links Column */}
-          <Box className={classes.column}>
-            <Typography className={classes.sectionTitle}>
-              Quick Links
-            </Typography>
-            <ul className={classes.linksList}>
-              <li className={classes.linkItem}>
+            {/* Quick Links Column */}
+            <Box className={classes.column}>
+              <Typography className={classes.sectionTitle}>
+                Quick Links
+              </Typography>
+              <ul className={classes.linksList}>
+                <li className={classes.linkItem}>
+                  <MuiLink 
+                    component={Link} 
+                    to="/" 
+                    className={classes.linkText}
+                    onClick={scrollToTop}
+                  >
+                    Home
+                  </MuiLink>
+                </li>
+                <li className={classes.linkItem}>
+                  <MuiLink
+                    component={Link}
+                    to="/about"
+                    className={classes.linkText}
+                    onClick={scrollToTop}
+                  >
+                    About Us
+                  </MuiLink>
+                </li>
+                <li className={classes.linkItem}>
+                  <MuiLink
+                    component={Link}
+                    to="/contact"
+                    className={classes.linkText}
+                    onClick={scrollToTop}
+                  >
+                    Contact Us
+                  </MuiLink>
+                </li>
+                <li className={classes.linkItem}>
+                  <MuiLink
+                    component={Link}
+                    to="/privacy-policy"
+                    className={classes.linkText}
+                    onClick={scrollToTop}
+                  >
+                    Privacy Policy
+                  </MuiLink>
+                </li>
+                <li className={classes.linkItem}>
+                  <MuiLink
+                    component={Link}
+                    to="/terms-and-conditions"
+                    className={classes.linkText}
+                    onClick={scrollToTop}
+                  >
+                    Terms & Conditions
+                  </MuiLink>
+                </li>
+              </ul>
+            </Box>
+
+            {/* Programs Column */}
+            <Box className={classes.column}>
+              <Typography className={classes.sectionTitle}>Programs</Typography>
+              <ul className={classes.linksList}>
+                <li className={classes.linkItem}>
+                  <MuiLink
+                    component={Link}
+                    // to="/programs/placement-drive"
+                    className={classes.programLink}
+                    onClick={scrollToTop}
+                  >
+                    Placement Drive
+                  </MuiLink>
+                </li>
+                <li className={classes.linkItem}>
+                  <MuiLink
+                    component={Link}
+                    // to="/programs/internship"
+                    className={classes.programLink}
+                    onClick={scrollToTop}
+                  >
+                    Master Internship
+                  </MuiLink>
+                </li>
+              </ul>
+            </Box>
+
+            {/* Contact Info Column */}
+            <Box className={classes.column}>
+              <Typography className={classes.sectionTitle}>Contact Us</Typography>
+              <Box className={classes.contactItem}>
+                <LocationOnIcon className={classes.contactIcon} />
+                <Typography className={classes.contactText}>
+                  The Headquarters, Dwaraka Pride, Hitech City, 500018, Hyderabad,
+                  Telangana, India
+                </Typography>
+              </Box>
+              <Box className={classes.contactItem}>
+                <PhoneIcon className={classes.contactIcon} />
+                <Typography className={classes.contactText}>
+                  9849048999
+                </Typography>
+              </Box>
+              <Box className={classes.contactItem}>
+                <EmailIcon className={classes.contactIcon} />
                 <MuiLink 
-                  component={Link} 
-                  to="/" 
-                  className={classes.linkText}
-                  onClick={scrollToTop}
+                  href="mailto:Info@gigaversity.in" 
+                  className={classes.contactLink}
                 >
-                  Home
+                  Info@gigaversity.in
                 </MuiLink>
-              </li>
-              <li className={classes.linkItem}>
-                <MuiLink
-                  component={Link}
-                  to="/about"
-                  className={classes.linkText}
-                  onClick={scrollToTop}
-                >
-                  About Us
-                </MuiLink>
-              </li>
-              <li className={classes.linkItem}>
-                <MuiLink
-                  component={Link}
-                  to="/contact"
-                  className={classes.linkText}
-                  onClick={scrollToTop}
-                >
-                  Contact Us
-                </MuiLink>
-              </li>
-              <li className={classes.linkItem}>
-                <MuiLink
-                  component={Link}
-                  to="/privacy-policy"
-                  className={classes.linkText}
-                  onClick={scrollToTop}
-                >
-                  Privacy Policy
-                </MuiLink>
-              </li>
-              <li className={classes.linkItem}>
-                <MuiLink
-                  component={Link}
-                  to="/terms-and-conditions"
-                  className={classes.linkText}
-                  onClick={scrollToTop}
-                >
-                  Terms & Conditions
-                </MuiLink>
-              </li>
-            </ul>
-          </Box>
+              </Box>
 
-          {/* Programs Column */}
-          <Box className={classes.column}>
-            <Typography className={classes.sectionTitle}>Programs</Typography>
-            <ul className={classes.linksList}>
-              <li className={classes.linkItem}>
-                <MuiLink
-                  component={Link}
-                  // to="/programs/placement-drive"
-                  className={classes.programLink}
-                  onClick={scrollToTop}
-                >
-                  Placement Drive
+              {/* Social Media Icons moved to Contact section */}
+              <Box className={classes.socialIcons}>
+                <MuiLink href="https://www.facebook.com/gigaversity" target="_blank" rel="noopener noreferrer">
+                  <Box className={classes.socialIcon}>
+                    <FacebookIcon />
+                  </Box>
                 </MuiLink>
-              </li>
-              <li className={classes.linkItem}>
-                <MuiLink
-                  component={Link}
-                  // to="/programs/internship"
-                  className={classes.programLink}
-                  onClick={scrollToTop}
-                >
-                  Master Internship
+                <MuiLink href="https://www.linkedin.com/company/gigaversity" target="_blank" rel="noopener noreferrer">
+                  <Box className={classes.socialIcon}>
+                    <LinkedInIcon />
+                  </Box>
                 </MuiLink>
-              </li>
-            </ul>
-          </Box>
-
-          {/* Contact Info Column */}
-          <Box className={classes.column}>
-            <Typography className={classes.sectionTitle}>Contact Us</Typography>
-            <Box className={classes.contactItem}>
-              <LocationOnIcon className={classes.contactIcon} />
-              <Typography className={classes.contactText}>
-                The Headquarters, Dwaraka Pride, Hitech City, 500018, Hyderabad,
-                Telangana, India
-              </Typography>
-            </Box>
-            <Box className={classes.contactItem}>
-              <PhoneIcon className={classes.contactIcon} />
-              <Typography className={classes.contactText}>
-                9849048999
-              </Typography>
-            </Box>
-            <Box className={classes.contactItem}>
-              <EmailIcon className={classes.contactIcon} />
-              <MuiLink 
-                href="mailto:Info@gigaversity.in" 
-                className={classes.contactLink}
-              >
-                Info@gigaversity.in
-              </MuiLink>
-            </Box>
-
-            {/* Social Media Icons moved to Contact section */}
-            <Box className={classes.socialIcons}>
-              <MuiLink href="https://www.facebook.com/gigaversity" target="_blank" rel="noopener noreferrer">
-                <Box className={classes.socialIcon}>
-                  <FacebookIcon />
-                </Box>
-              </MuiLink>
-              <MuiLink href="https://www.linkedin.com/company/gigaversity" target="_blank" rel="noopener noreferrer">
-                <Box className={classes.socialIcon}>
-                  <LinkedInIcon />
-                </Box>
-              </MuiLink>
-              <MuiLink href="https://twitter.com/gigaversity" target="_blank" rel="noopener noreferrer">
-                <Box className={classes.socialIcon}>
-                  <TwitterIcon />
-                </Box>
-              </MuiLink>
-              <MuiLink href="https://wa.me/919849048999" target="_blank" rel="noopener noreferrer">
-                <Box className={classes.socialIcon}>
-                  <WhatsAppIcon />
-                </Box>
-              </MuiLink>
-              <MuiLink href="https://www.youtube.com/channel/gigaversity" target="_blank" rel="noopener noreferrer">
-                <Box className={classes.socialIcon}>
-                  <YouTubeIcon />
-                </Box>
-              </MuiLink>
-              <MuiLink href="https://www.instagram.com/gigaversity" target="_blank" rel="noopener noreferrer">
-                <Box className={classes.socialIcon}>
-                  <InstagramIcon />
-                </Box>
-              </MuiLink>
+                
+                <MuiLink href="https://wa.me/919849048999" target="_blank" rel="noopener noreferrer">
+                  <Box className={classes.socialIcon}>
+                    <WhatsAppIcon />
+                  </Box>
+                </MuiLink>
+                <MuiLink href="https://www.youtube.com/channel/gigaversity" target="_blank" rel="noopener noreferrer">
+                  <Box className={classes.socialIcon}>
+                    <YouTubeIcon />
+                  </Box>
+                </MuiLink>
+                <MuiLink href="https://www.instagram.com/gigaversity" target="_blank" rel="noopener noreferrer">
+                  <Box className={classes.socialIcon}>
+                    <InstagramIcon />
+                  </Box>
+                </MuiLink>
+              </Box>
             </Box>
           </Box>
-        </Box>
 
-        <Box className={classes.divider} />
-        <Typography className={classes.copyright}>
-          Copyright © 2025 All rights reserved. Gigaversity
-        </Typography>
-        <Typography className={classes.poweredBy}>
-          Powered by Sun E-Learning
-        </Typography>
-      </Container>
+          <Box className={classes.divider} />
+          <Typography className={classes.copyright}>
+            Copyright © 2025 All rights reserved. Gigaversity
+          </Typography>
+          <Typography className={classes.poweredBy}>
+            Powered by Sun E-Learning
+          </Typography>
+        </Container>
+      </Box>
     </Box>
   );
 };

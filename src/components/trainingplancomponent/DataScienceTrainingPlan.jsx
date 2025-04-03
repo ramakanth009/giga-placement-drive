@@ -112,12 +112,13 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     width: '100%',
     zIndex: '1',
-    transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+    transform: 'translateY(0)',  // Add this line
+    transition: 'all 0.3s ease-out',  // Change this line
     '&:hover': {
-      transform: 'translateY(-15px)',
+      transform: 'translateY(-8px)',  // Reduce the movement
       boxShadow: '0 12px 24px rgba(0,0,0,0.15)',
       '& $iconContainer': {
-        transform: 'scale(1.1)',
+        transform: 'scale(1.05)',  // Reduce the scale amount
       }
     },
     "@media (max-width: 960px)": {

@@ -30,7 +30,7 @@ const useStyles = makeStyles({
     position: 'relative',
     background: 'none',
     color: 'white',
-    padding: '80px 30px 400px', // Increased padding to match SVG height
+    padding: '80px 30px 400px',
     textAlign: 'center',
     '&::before': {
       content: '""',
@@ -39,12 +39,24 @@ const useStyles = makeStyles({
       left: 0,
       right: 0,
       bottom: 0,
-      background: 'rgb(42,43,106)', // Exact color from SVG
-      clipPath: 'polygon(0 0, 100% 0, 100% 66%, 0 100%)', // Matches SVG path
+      background: 'rgb(42,43,106)',
+      clipPath: 'polygon(0 0, 100% 0, 100% 66%, 0 100%)',
       zIndex: -1,
-      height: '598px', // Exact SVG height
+      height: '598px',
       width: '100%',
     },
+  },
+  pageTitle: {
+    color: 'white !important',
+    fontSize: '3rem !important',
+    fontWeight: 'bold !important',
+    marginBottom: '1rem !important',
+  },
+  pageSubtitle: {
+    color: 'white !important',
+    fontSize: '1.2rem !important',
+    maxWidth: '800px',
+    margin: '0 auto !important',
   },
   contactSection: {
     padding: '0 30px 60px',

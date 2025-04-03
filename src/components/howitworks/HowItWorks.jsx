@@ -6,15 +6,15 @@ import StudentImage from '../../assets/little-boy-at-the-table.png';
 
 const useStyles = makeStyles({
   section: {
-    padding: '100px 0',
+    padding: '50px 0',
     position: 'relative',
     overflow: 'hidden',
     background: 'linear-gradient(180deg, #EAF4FF 0%, #F3F8FF 100%)',
     "@media (max-width: 960px)": {
-      padding: '80px 0',
+      padding: '40px 0',
     },
     "@media (max-width: 600px)": {
-      padding: '60px 0',
+      padding: '30px 0',
     },
   },
   container: {
@@ -25,21 +25,21 @@ const useStyles = makeStyles({
     zIndex: 2,
     "@media (max-width: 960px)": {
       flexDirection: 'column',
-      gap: '50px',
+      gap: '30px',
     },
   },
   leftContent: {
-    width: '45%',
+    width: '35%',
     position: 'relative',
     "@media (max-width: 1200px)": {
-      width: '42%',
+      width: '35%',
     },
     "@media (max-width: 960px)": {
-      width: '80%',
+      width: '60%',
       order: 2, // Move image below content on mobile
     },
     "@media (max-width: 600px)": {
-      width: '95%',
+      width: '85%',
     },
   },
   rightContent: {
@@ -104,33 +104,33 @@ const useStyles = makeStyles({
   },
   sectionHeading: {
     position: 'relative',
-    marginBottom: '45px',
+    marginBottom: '30px',
     "@media (max-width: 960px)": {
       textAlign: 'center',
-      marginBottom: '35px',
+      marginBottom: '25px',
     },
   },
   title: {
-    fontSize: '3.5rem !important',
+    fontSize: '3rem !important',
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
-    marginBottom: '20px !important',
+    marginBottom: '15px !important',
     position: 'relative',
     "@media (max-width: 1200px)": {
-      fontSize: '3rem !important',
+      fontSize: '2.7rem !important',
     },
     "@media (max-width: 960px)": {
-      fontSize: '2.8rem !important',
+      fontSize: '2.5rem !important',
     },
     "@media (max-width: 600px)": {
-      fontSize: '2.3rem !important',
-      marginBottom: '15px !important',
+      fontSize: '2rem !important',
+      marginBottom: '10px !important',
     },
   },
   subtitle: {
     fontSize: '1.25rem !important',
     color: '#555555 !important',
-    marginBottom: '40px !important',
+    marginBottom: '25px !important',
     lineHeight: '1.6 !important',
     maxWidth: '90%',
     "@media (max-width: 1200px)": {
@@ -138,19 +138,14 @@ const useStyles = makeStyles({
     },
     "@media (max-width: 960px)": {
       textAlign: 'center',
-      marginBottom: '30px !important',
+      marginBottom: '20px !important',
       maxWidth: '100%',
       margin: '0 auto !important',
-    },
-    "@media (max-width: 600px)": {
-      fontSize: '1rem !important',
-      marginBottom: '25px !important',
-      lineHeight: '1.5 !important',
     },
   },
   stepsContainer: {
     position: 'relative',
-    padding: '10px 0 10px 30px',
+    padding: '5px 0 5px 30px',
     "@media (max-width: 960px)": {
       paddingLeft: '20px',
       maxWidth: '500px',
@@ -162,9 +157,9 @@ const useStyles = makeStyles({
   },
   stepLine: {
     position: 'absolute',
-    left: '69px',
+    left: '58px',
     top: '46px',
-    bottom: '100px',
+    bottom: '70px',
     width: '3px',
     borderRadius: '3px',
     background: 'linear-gradient(to bottom, rgba(42, 43, 106, 0.3), rgba(255, 198, 20, 0.3))',
@@ -177,14 +172,14 @@ const useStyles = makeStyles({
   step: {
     display: 'flex',
     alignItems: 'flex-start',
-    marginBottom: '35px',
+    marginBottom: '20px',
     position: 'relative',
     zIndex: 2,
     transform: 'translateX(-20px)',
     opacity: 0,
     transition: 'all 0.5s ease',
     "@media (max-width: 600px)": {
-      marginBottom: '25px',
+      marginBottom: '15px',
     },
   },
   stepVisible: {
@@ -192,8 +187,8 @@ const useStyles = makeStyles({
     opacity: 1,
   },
   stepNumber: {
-    width: '80px',
-    height: '80px',
+    width: '60px',
+    height: '60px',
     borderRadius: '50%',
     display: 'flex',
     alignItems: 'center',
@@ -201,7 +196,7 @@ const useStyles = makeStyles({
     fontSize: '2rem !important',
     fontWeight: 'bold !important',
     position: 'relative',
-    marginRight: '20px',
+    marginRight: '15px',
     flexShrink: 0,
     boxShadow: '0 10px 20px rgba(0, 0, 0, 0.1)',
     background: 'linear-gradient(135deg, #2A2B6A 0%, #1A1B4A 100%)',
@@ -230,15 +225,16 @@ const useStyles = makeStyles({
       opacity: 1,
     },
     "@media (max-width: 600px)": {
-      width: '60px',
-      height: '60px',
-      fontSize: '1.5rem !important',
-      marginRight: '15px',
+      width: '45px',
+      height: '45px',
+      fontSize: '1.2rem !important',
+      marginRight: '10px',
     },
   },
   stepContent: {
     flex: 1,
-    paddingTop: '10px',
+    paddingTop: '5px',
+    paddingLeft: '20px',
   },
   stepText: {
     fontSize: '1.4rem !important',

@@ -184,22 +184,24 @@ const useStyles = makeStyles({
     },
   },
   regularPrice: {
-    fontSize: '1.3rem !important',
-    fontWeight: '500 !important',
     color: '#6d7c90 !important',
-    textDecoration: 'line-through !important',
     marginBottom: '12px !important',
     display: 'inline-block !important',
     position: 'relative',
-    paddingRight: '15px',
-    '&::after': {
-      content: '"-"',
-      position: 'absolute',
-      right: '0',
-      transform: 'rotate(-45deg)',
-      fontSize: '1.8rem',
-      color: '#e74c3c',
-      top: '-6px',
+    fontSize: '1.3rem !important',
+    fontWeight: '500 !important',
+    '& span': {
+      textDecoration: 'line-through !important',
+      position: 'relative',
+      '&::after': {
+        content: '"-"',
+        position: 'absolute',
+        right: '-15px',
+        transform: 'rotate(-45deg)',
+        fontSize: '1.8rem',
+        color: '#e74c3c',
+        top: '-6px',
+      },
     },
     "@media (max-width: 600px)": {
       fontSize: '1.1rem !important',
@@ -215,7 +217,7 @@ const useStyles = makeStyles({
     height: '26px !important',
   },
   priceBox: {
-    marginBottom: '30px',
+    // marginBottom: '30px',
     background: 'linear-gradient(135deg, #f8f9fa 0%, #fff 100%)',
     borderRadius: '15px',
     padding: '25px',
@@ -292,7 +294,7 @@ const useStyles = makeStyles({
     fontSize: '1.5rem !important',
     fontWeight: 'bold !important',
     width: '100%',
-    height: '50px',
+    height: '35px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -408,7 +410,7 @@ const useStyles = makeStyles({
     },
   },
   featuresTitle: {
-    fontSize: '2.5rem !important',
+    fontSize: '1.8rem !important',
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
     marginBottom: '25px !important',
@@ -453,7 +455,7 @@ const useStyles = makeStyles({
     },
   },
   featureText: {
-    fontSize: '1.7rem !important',
+    fontSize: '1.1rem !important',
     color: '#4A4A4A !important',
     fontWeight: '500 !important',
     "@media (max-width: 600px)": {
@@ -624,7 +626,7 @@ const LimitedTimeOffer = () => {
               <Box className={classes.priceBox}>
                 <Box className={classes.priceBadge}>Special Offer</Box>
                 <Typography className={classes.regularPrice}>
-                  Regular Price: ₹499
+                  Regular Price: <span>₹499</span>
                 </Typography>
                 <Chip 
                   label="Save ₹300" 
@@ -645,10 +647,6 @@ const LimitedTimeOffer = () => {
                   <strong>253+ students</strong> enrolled in the last week
                 </Typography>
               </Box>
-              
-              <Button variant="contained" className={classes.applyButton}>
-                Apply Now
-              </Button>
             </Box>
 
             {/* Right Column - Features */}
@@ -668,6 +666,12 @@ const LimitedTimeOffer = () => {
                 </Box>
               ))}
             </Box>
+          </Box>
+          
+          <Box sx={{ padding: '0 30px 30px' }}>
+            <Button variant="contained" className={classes.applyButton}>
+              Apply Now
+            </Button>
           </Box>
         </Paper>
       </Container>

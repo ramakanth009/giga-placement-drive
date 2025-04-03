@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Typography, Card, CardContent } from "@mui/material";
+import { Box, Typography, Grid } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import Heroguy from "../../assets/heroguy.png";
 import { ReactComponent as AIbook } from "../../assets/ai-book.svg";
@@ -9,7 +9,6 @@ import CodeIcon from '@mui/icons-material/Code';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import StarIcon from '@mui/icons-material/Star';
 
 const useStyles = makeStyles({
   imageCol: {
@@ -32,81 +31,58 @@ const useStyles = makeStyles({
   },
   featureCard: {
     backgroundColor: "#FFFFFFB3",
-    padding: "4px 14px",
-    borderRadius: "8px",
-    boxShadow: "0px 4px 60.4px 0px #2A2B6A0F",
+    padding: "12px 18px",
+    borderRadius: "12px",
+    boxShadow: "0px 10px 30px rgba(42, 43, 106, 0.15)",
+    backdropFilter: "blur(10px)",
     display: "inline-flex",
     alignItems: "center",
     margin: "4px",
     maxWidth: "90%",
-    transition: "all 0.5s ease",
+    position: "absolute",
+    zIndex: 10,
+    transform: "scale(0)",
+    opacity: 0,
+    transition: "all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+    "&:hover": {
+      transform: "scale(1.05) !important",
+      boxShadow: "0px 15px 30px rgba(42, 43, 106, 0.25)",
+    },
     "@media (max-width: 600px)": {
       display: "none", // Hide original cards on mobile
     },
   },
-  featureCardAnimated: {
-    animation: "$pulse 2s infinite alternate",
-    position: "relative",
-    "&::after": {
-      content: '""',
-      position: "absolute",
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      borderRadius: "8px",
-      boxShadow: "0 0 8px 3px rgba(255, 198, 20, 0.2)",
-      opacity: 0,
-      animation: "$glow 2s infinite alternate",
-    },
+  topLeftCard: {
+    top: "152px",
+    left: "7px",
+    animation: "$cardPopIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.8s forwards",
   },
-  "@keyframes pulse": {
-    "0%": {
-      transform: "scale(1)",
-    },
-    "100%": {
-      transform: "scale(1.05)",
-    },
+  topRightCard: {
+    top: "235px",
+    right: "-157px",
+    animation: "$cardPopIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 1s forwards",
   },
-  "@keyframes glow": {
-    "0%": {
-      opacity: 0,
-    },
-    "100%": {
-      opacity: 0.7,
-    },
+  bottomLeftCard: {
+    bottom: "124px",
+    left: "-76px",
+    animation: "$cardPopIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 1.2s forwards",
+  },
+  bottomRightCard: {
+    right: "-68px",
+    bottom: "56px",
+    animation: "$cardPopIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 1.4s forwards",
   },
   featureIcon1: {
     marginRight: "12px",
   },
   featureIcon2: {
-    backgroundColor: "#000000",
-    background: "linear-gradient(180deg, #FAFAFA 0%, #D6EBFF 100%)",
-    padding: "15px",
+    // backgroundColor: "#000000",
+    // background: "linear-gradient(180deg, #FAFAFA 0%, #D6EBFF 100%)",
+    // padding: "15px",
     fontWeight: "bold !important",
     fontSize: "1rem !important",
     borderRadius: "50%",
-    position: "absolute",
-    bottom: "70px",
-    left: "55px",
-    zIndex: 2,
-    animation: "$bounce 3s infinite",
-    "@media (max-width: 960px)": {
-      bottom: "50px",
-      left: "40px",
-      padding: "12px",
-    },
-    "@media (max-width: 600px)": {
-      display: "none", // Hide on mobile
-    },
-  },
-  "@keyframes bounce": {
-    "0%, 100%": {
-      transform: "translateY(0)",
-    },
-    "50%": {
-      transform: "translateY(-10px)",
-    },
+    marginRight: "12px",
   },
   featureText: {
     color: "#2F2E51",
@@ -117,100 +93,8 @@ const useStyles = makeStyles({
       fontFamily: "Montserrat, sans-serif",
       textAlign: "center",
     },
-    animation: "$fadeIn 1s ease",
-  },
-  "@keyframes fadeIn": {
-    "0%": {
-      opacity: 0,
-    },
-    "100%": {
-      opacity: 1,
-    },
-  },
-  featureCardTopLeft: {
-    position: "absolute",
-    top: "115px",
-    left: "11px",
-    zIndex: 2,
-    animation: "$slideInLeft 1s ease",
-    "@media (max-width: 960px)": {
-      top: "85px",
-      left: "5px",
-    },
-  },
-  "@keyframes slideInLeft": {
-    "0%": {
-      opacity: 0,
-      transform: "translateX(-50px)",
-    },
-    "100%": {
-      opacity: 1,
-      transform: "translateX(0)",
-    },
-  },
-  featureCardTopRight: {
-    position: "absolute",
-    top: "175px",
-    right: "-105px",
-    zIndex: 2,
-    animation: "$slideInRight 1s ease 0.3s",
-    animationFillMode: "backwards",
     "@media (max-width: 1200px)": {
-      right: "-80px",
-    },
-    "@media (max-width: 960px)": {
-      top: "145px",
-      right: "-60px",
-    },
-  },
-  "@keyframes slideInRight": {
-    "0%": {
-      opacity: 0,
-      transform: "translateX(50px)",
-    },
-    "100%": {
-      opacity: 1,
-      transform: "translateX(0)",
-    },
-  },
-  featureCardBottomLeft: {
-    width: "40%",
-    position: "absolute",
-    bottom: "90px",
-    left: "0",
-    zIndex: 2,
-    animation: "$slideInBottom 1s ease 0.6s",
-    animationFillMode: "backwards",
-    "@media (max-width: 960px)": {
-      bottom: "70px",
-      width: "45%",
-    },
-  },
-  "@keyframes slideInBottom": {
-    "0%": {
-      opacity: 0,
-      transform: "translateY(50px)",
-    },
-    "100%": {
-      opacity: 1,
-      transform: "translateY(0)",
-    },
-  },
-  featureCardBottomRight: {
-    width: "40%",
-    position: "absolute",
-    bottom: "60px",
-    right: "-68px",
-    zIndex: 2,
-    animation: "$slideInBottom 1s ease 0.9s",
-    animationFillMode: "backwards",
-    "@media (max-width: 1200px)": {
-      right: "-50px",
-    },
-    "@media (max-width: 960px)": {
-      bottom: "40px",
-      right: "-40px",
-      width: "45%",
+      fontSize: "0.95rem !important",
     },
   },
   imageContainer: {
@@ -219,6 +103,8 @@ const useStyles = makeStyles({
     zIndex: 1,
     maxWidth: "100%",
     height: "auto",
+    animation: "$float 6s ease-in-out infinite",
+    filter: "drop-shadow(0 15px 35px rgba(0, 0, 0, 0.15))",
     "@media (max-width: 960px)": {
       marginTop: "60px",
     },
@@ -258,6 +144,7 @@ const useStyles = makeStyles({
     borderRadius: "12px !important",
     boxShadow: "0 6px 15px rgba(0, 0, 0, 0.07) !important",
     height: "100%",
+    padding: "12px",
     transition: "transform 0.3s ease, box-shadow 0.3s ease",
     position: "relative",
     overflow: "hidden",
@@ -265,32 +152,6 @@ const useStyles = makeStyles({
       transform: "translateY(-5px)",
       boxShadow: "0 8px 25px rgba(0, 0, 0, 0.1) !important",
     },
-    "&::after": {
-      content: '""',
-      position: "absolute",
-      bottom: 0,
-      left: 0,
-      width: "100%",
-      height: "4px",
-      background: "linear-gradient(90deg, #FFC614, #2A2B6A)",
-      transformOrigin: "left",
-      transform: "scaleX(0)",
-      transition: "transform 0.3s ease",
-    },
-    "&:hover::after": {
-      transform: "scaleX(1)",
-    },
-  },
-  cardBadge: {
-    position: "absolute",
-    top: 0,
-    right: 0,
-    background: "#2A2B6A",
-    color: "white",
-    fontSize: "0.6rem !important",
-    padding: "2px 8px",
-    borderRadius: "0 8px 0 8px",
-    zIndex: 1,
   },
   iconCircle: {
     width: "36px",
@@ -318,25 +179,41 @@ const useStyles = makeStyles({
     color: "#FFC614 !important",
     lineHeight: "1.1 !important",
   },
-  mobileDecoration: {
-    position: "absolute",
-    width: "180px",
-    height: "180px",
-    borderRadius: "50%",
-    filter: "blur(40px)",
-    zIndex: -1,
-    opacity: 0.07,
+  "@keyframes float": {
+    "0%": {
+      transform: "translateY(0)",
+    },
+    "50%": {
+      transform: "translateY(-15px)",
+    },
+    "100%": {
+      transform: "translateY(0)",
+    },
   },
-  topRightGlow: {
-    top: "-30px",
-    right: "-30px",
-    background: "#FFC614",
+  "@keyframes cardPopIn": {
+    "0%": {
+      opacity: 0,
+      transform: "scale(0)",
+    },
+    "70%": {
+      opacity: 1,
+      transform: "scale(1.1)",
+    },
+    "100%": {
+      opacity: 1,
+      transform: "scale(1)",
+    },
   },
-  bottomLeftGlow: {
-    bottom: "-20px",
-    left: "-30px",
-    background: "#2A2B6A",
-  }
+  "@keyframes fadeInUp": {
+    "0%": {
+      opacity: 0,
+      transform: "translateY(20px)",
+    },
+    "100%": {
+      opacity: 1,
+      transform: "translateY(0)",
+    },
+  },
 });
 
 const HeroRightSection = () => {
@@ -349,8 +226,7 @@ const HeroRightSection = () => {
       title: "Code with AI", 
       value: "Simplified", 
       icon: <CodeIcon />,
-      delay: 0.1,
-      badge: "NEW"
+      delay: 0.1
     },
     { 
       title: "Training Program", 
@@ -362,8 +238,7 @@ const HeroRightSection = () => {
       title: "Placement Options", 
       value: "400+", 
       icon: <BusinessCenterIcon />,
-      delay: 0.5,
-      badge: "HOT"
+      delay: 0.5
     },
     { 
       title: "Weekly Jobs", 
@@ -377,7 +252,7 @@ const HeroRightSection = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setVisibleItems([0, 1, 2, 3]);
-    }, 100);
+    }, 500);
     
     return () => clearTimeout(timer);
   }, []);
@@ -385,48 +260,40 @@ const HeroRightSection = () => {
   return (
     <Box className={classes.imageCol}>
       {/* Feature Cards - Desktop */}
-      <Box className={classes.featureCardTopLeft}>
-        <Box className={`${classes.featureCard} ${classes.featureCardAnimated}`}>
-          <Box className={classes.featureIcon1}>
-            <AIbook />
-          </Box>
-          <Typography className={classes.featureText}>
-            Code with AI
-          </Typography>
+      <Box className={`${classes.featureCard} ${classes.topLeftCard}`}>
+        <Box className={classes.featureIcon1}>
+          <AIbook />
         </Box>
+        <Typography className={classes.featureText}>
+          Code with AI
+        </Typography>
       </Box>
 
-      <Box className={classes.featureCardTopRight}>
-        <Box className={`${classes.featureCard} ${classes.featureCardAnimated}`}>
-          <Box className={classes.featureIcon1}>
-            <Simplecal />
-          </Box>
-          <Typography className={classes.featureText}>
-            30-Day Intensive Training
-          </Typography>
+      <Box className={`${classes.featureCard} ${classes.topRightCard}`}>
+        <Box className={classes.featureIcon1}>
+          <Simplecal />
         </Box>
+        <Typography className={classes.featureText}>
+          30-Day Intensive Training
+        </Typography>
       </Box>
 
-      <Box className={classes.featureCardBottomLeft}>
-        <Box className={`${classes.featureCard} ${classes.featureCardAnimated}`}>
-          <Box className={classes.featureIcon2}>
-            <AnimatedCounter end={400} suffix="+" />
-          </Box>
-          <Typography className={classes.featureText} sx={{ mt: 2 }}>
-            Placement Opportunities
-          </Typography>
+      <Box className={`${classes.featureCard} ${classes.bottomLeftCard}`}>
+        <Box className={classes.featureIcon2}>
+          <AnimatedCounter end={400} suffix="+" />
         </Box>
+        <Typography className={classes.featureText}>
+          Placement Opportunities
+        </Typography>
       </Box>
 
-      <Box className={classes.featureCardBottomRight}>
-        <Box className={`${classes.featureCard} ${classes.featureCardAnimated}`}>
-          <Typography className={classes.featureText}>
-            Weekly <AnimatedCounter end={40} suffix="+" /> Opportunities
-          </Typography>
-        </Box>
+      <Box className={`${classes.featureCard} ${classes.bottomRightCard}`}>
+        <Typography className={classes.featureText}>
+          Weekly <AnimatedCounter end={40} suffix="+" /> Opportunities
+        </Typography>
       </Box>
 
-      {/* Student image - Only visible on desktop */}
+      {/* Student image */}
       <Box className={classes.imageContainer}>
         <img
           src={Heroguy}
@@ -435,51 +302,40 @@ const HeroRightSection = () => {
         />
       </Box>
       
-      {/* Mobile view specific content - Shows in grid layout */}
+      {/* Mobile view specific content */}
       <Box className={classes.mobileContainer}>
-        {/* Decorative elements */}
-        <Box className={`${classes.mobileDecoration} ${classes.topRightGlow}`} />
-        <Box className={`${classes.mobileDecoration} ${classes.bottomLeftGlow}`} />
-        
-        {/* Grid of feature cards */}
-        <Box className={classes.mobileFeatureGrid}>
+        <Grid container spacing={2} className={classes.mobileFeatureGrid}>
           {features.map((feature, index) => (
-            <Box 
+            <Grid 
+              item 
+              xs={6} 
               key={index}
-              className={classes.featureGridItem}
-              sx={{
-                animation: visibleItems.includes(index) ? 
-                  `fadeIn 0.5s ease forwards, slideUp 0.7s ease forwards` : 'none',
-                animationDelay: `${feature.delay}s`,
-                '@keyframes slideUp': {
-                  '0%': { transform: 'translateY(20px)', opacity: 0 },
-                  '100%': { transform: 'translateY(0)', opacity: 1 }
-                }
-              }}
             >
-              <Card className={classes.mobileFeatureCard}>
-                {feature.badge && (
-                  <Typography className={classes.cardBadge}>
-                    {feature.badge}
-                  </Typography>
-                )}
-                <CardContent sx={{ p: 2 }}>
-                  <Box className={classes.iconCircle}>
-                    {feature.icon}
-                  </Box>
-                  <Typography className={classes.featureTitle}>
-                    {feature.title}
-                  </Typography>
-                  <Typography className={classes.featureValue}>
-                    {feature.value}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Box>
+              <Box 
+                className={classes.mobileFeatureCard}
+                sx={{
+                  opacity: visibleItems.includes(index) ? 1 : 0,
+                  transform: visibleItems.includes(index) ? 'translateY(0)' : 'translateY(20px)',
+                  transition: 'opacity 0.5s ease, transform 0.5s ease',
+                  transitionDelay: `${feature.delay}s`,
+                }}
+              >
+                <Box className={classes.iconCircle}>
+                  {feature.icon}
+                </Box>
+                <Typography className={classes.featureTitle}>
+                  {feature.title}
+                </Typography>
+                <Typography className={classes.featureValue}>
+                  {feature.value}
+                </Typography>
+              </Box>
+            </Grid>
           ))}
-        </Box>
+        </Grid>
       </Box>
     </Box>
   );
 };
+
 export default HeroRightSection;

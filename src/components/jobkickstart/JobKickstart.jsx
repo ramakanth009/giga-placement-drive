@@ -8,7 +8,7 @@ import Jobkick from "../../assets/jobkick.png";
 
 const useStyles = makeStyles({
   section: {
-    padding: "70px 0",
+    padding: "30px 0",
     overflow: "hidden",
     position: "relative",
     background: "linear-gradient(180deg, #ffffff 0%, #f5f8ff 100%)",
