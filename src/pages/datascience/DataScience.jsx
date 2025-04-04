@@ -8,6 +8,7 @@ import LimitedTimeOffer from "../../components/common/limitedtimeoffer/LimitedTi
 import { dataScienceItems } from "../../data/programWorksData";
 import HiringPartners from "../../components/common/hiringpartners/HiringPartners";
 import DataScienceCurriculum from "../../components/datasciencecomponents/curriculum/DataScienceCurriculum";
+import CareerBanner from "../../components/common/careerbanner/CareerBanner";
 
 const DataScience = () => {
   return (
@@ -19,6 +20,7 @@ const DataScience = () => {
       <LimitedTimeOffer />
       <ProgramWorksSection items={dataScienceItems} />
       <DataScienceFaq />
+      <CareerBanner />
       <Footer />
     </div>
   );
