@@ -15,6 +15,7 @@ import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import TimerIcon from '@mui/icons-material/Timer';
 import PeopleIcon from '@mui/icons-material/People';
 import StarIcon from '@mui/icons-material/Star';
+import { useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles({
   section: {
@@ -578,6 +579,7 @@ const CountdownTimer = () => {
 
 const LimitedTimeOffer = () => {
   const classes = useStyles();
+  const navigate = useNavigate();
 
   // Features list
   const features = [
@@ -669,7 +671,11 @@ const LimitedTimeOffer = () => {
           </Box>
           
           <Box sx={{ padding: '0 30px 30px' }}>
-            <Button variant="contained" className={classes.applyButton}>
+            <Button 
+              variant="contained" 
+              className={classes.applyButton}
+              onClick={() => navigate('/register')}
+            >
               Apply Now
             </Button>
           </Box>

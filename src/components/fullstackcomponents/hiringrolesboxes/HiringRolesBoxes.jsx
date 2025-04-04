@@ -223,10 +223,7 @@ const HiringRolesBoxes = () => {
 
   // Data for roles
   const roles = [
-    {
-      title: 'Data Analyst',
-      icon: '📊',
-    },
+    
     {
       title: 'Frontend Developer',
       icon: '🖥️',
@@ -247,14 +244,8 @@ const HiringRolesBoxes = () => {
       title: 'React Developer',
       icon: '⚛️',
     },
-    {
-      title: 'Cloud Developer',
-      icon: '☁️',
-    },
-    {
-      title: 'DevOps Engineer',
-      icon: '🔄',
-    }
+   
+    
   ];
 
   return (

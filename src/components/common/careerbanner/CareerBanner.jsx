@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Typography, Button, Container } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import { useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles({
   bannerWrapper: {
@@ -76,12 +77,13 @@ const useStyles = makeStyles({
 
 const CareerBanner = () => {
   const classes = useStyles();
+  const navigate = useNavigate();
 
   return (
     <Box className={classes.bannerWrapper}>
       <Container maxWidth="lg" className={classes.container}>
         <Typography variant="h1" className={classes.headline}>
-          Launch Your <span className={classes.highlightText}>Full Stack Career Today</span>
+        Kickstart <span className={classes.highlightText}>Career Journey Today</span>
         </Typography>
         
         <Typography variant="h6" className={classes.subtitle}>
@@ -91,7 +93,7 @@ const CareerBanner = () => {
         <Button 
           variant="contained" 
           className={classes.ctaButton}
-          href="#join-program"
+          onClick={() => navigate('/register')}
         >
           JOIN NOW FOR JUST ₹199
         </Button>

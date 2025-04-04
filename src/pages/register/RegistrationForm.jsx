@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Box, 
   Typography, 
@@ -166,15 +166,49 @@ const RegistrationForm = () => {
     completedMandatoryCourses: '',
     previouslyApplied: '',
     previousApplicationDetails: '',
+    domain: '',
     preferredJobRole: '',
+    otherJobRole: '',
     agreeToTerms: false
   });
   
   const [errors, setErrors] = useState({});
+  const [jobRoles, setJobRoles] = useState([]);
+  
+  // Update job roles when domain changes
+  useEffect(() => {
+    if (formData.domain === 'Full Stack') {
+      setJobRoles([
+        'UI/UX Developer',
+        'Frontend Developer',
+        'Backend Developer',
+        'Database Engineer',
+        'Others'
+      ]);
+    } else if (formData.domain === 'Data Science') {
+      setJobRoles([
+        'Data Analyst',
+        'Data Scientist',
+        'Data Engineer',
+        'Machine Learning Engineer',
+        'Others'
+      ]);
+    } else {
+      setJobRoles([]);
+    }
+    
+    // Reset job role when domain changes
+    setFormData(prev => ({
+      ...prev,
+      preferredJobRole: '',
+      otherJobRole: ''
+    }));
+  }, [formData.domain]);
   
   const handleChange = (e) => {
-    const { name, value, checked } = e.target;
-    if (name === 'agreeToTerms') {
+    const { name, value, checked, type } = e.target;
+    
+    if (type === 'checkbox') {
       setFormData({
         ...formData,
         [name]: checked
@@ -194,8 +228,6 @@ const RegistrationForm = () => {
       });
     }
   };
-  
-  // Date change is now handled by the standard handleChange function
   
   const validateForm = () => {
     const newErrors = {};
@@ -234,7 +266,15 @@ const RegistrationForm = () => {
       newErrors.previousApplicationDetails = 'Please provide details of previous application';
     }
     
-    if (!formData.preferredJobRole.trim()) newErrors.preferredJobRole = 'Preferred job role is required';
+    // Validate domain and job role fields
+    if (!formData.domain) newErrors.domain = 'Domain is required';
+    
+    if (!formData.preferredJobRole) {
+      newErrors.preferredJobRole = 'Preferred job role is required';
+    } else if (formData.preferredJobRole === 'Others' && !formData.otherJobRole.trim()) {
+      newErrors.otherJobRole = 'Please specify the other job role';
+    }
+    
     if (!formData.agreeToTerms) newErrors.agreeToTerms = 'You must agree to the declaration';
     
     return newErrors;
@@ -260,8 +300,8 @@ const RegistrationForm = () => {
     // Simulate successful submission
     alert('Registration successful! You will receive a confirmation email shortly.');
     
-    // Redirect to homepage or confirmation page
-    navigate('/');
+    // Redirect to PaymentUnderConstruction page
+    navigate('/payment-under-construction');
   };
   
   // Generate graduation year options (5 years back to 5 years ahead)
@@ -269,6 +309,9 @@ const RegistrationForm = () => {
   for (let year = currentYear - 5; year <= currentYear + 5; year++) {
     graduationYears.push(year);
   }
+  
+  // Domain options
+  const domains = ['Full Stack', 'Data Science'];
   
   return (
     <>
@@ -330,20 +373,20 @@ const RegistrationForm = () => {
               </Box>
             </Box>
             
-            <Box className={classes.fullWidthField}>
-              <TextField
-                label="Alternate Contact Number (Optional)"
-                name="alternateNumber"
-                value={formData.alternateNumber}
-                onChange={handleChange}
-                variant="outlined"
-                fullWidth
-                error={!!errors.alternateNumber}
-                helperText={errors.alternateNumber}
-              />
-            </Box>
-            
             <Box className={classes.formRow}>
+              <Box className={classes.formColumn}>
+                <TextField
+                  label="Alternate Contact Number (Optional)"
+                  name="alternateNumber"
+                  value={formData.alternateNumber}
+                  onChange={handleChange}
+                  variant="outlined"
+                  fullWidth
+                  error={!!errors.alternateNumber}
+                  helperText={errors.alternateNumber}
+                />
+              </Box>
+              
               <Box className={classes.formColumn}>
                 <TextField
                   label="Date of Birth"
@@ -364,7 +407,9 @@ const RegistrationForm = () => {
                   }}
                 />
               </Box>
-              
+            </Box>
+            
+            <Box className={classes.formRow}>
               <Box className={classes.formColumn}>
                 <FormControl 
                   component="fieldset" 
@@ -387,20 +432,20 @@ const RegistrationForm = () => {
                   {errors.gender && <FormHelperText>{errors.gender}</FormHelperText>}
                 </FormControl>
               </Box>
-            </Box>
-            
-            <Box className={classes.fullWidthField}>
-              <TextField
-                label="University/College Name"
-                name="universityName"
-                value={formData.universityName}
-                onChange={handleChange}
-                variant="outlined"
-                fullWidth
-                required
-                error={!!errors.universityName}
-                helperText={errors.universityName}
-              />
+              
+              <Box className={classes.formColumn}>
+                <TextField
+                  label="University/College Name"
+                  name="universityName"
+                  value={formData.universityName}
+                  onChange={handleChange}
+                  variant="outlined"
+                  fullWidth
+                  required
+                  error={!!errors.universityName}
+                  helperText={errors.universityName}
+                />
+              </Box>
             </Box>
             
             <Box className={classes.formRow}>
@@ -560,19 +605,74 @@ const RegistrationForm = () => {
               )}
             </Box>
             
-            <Box className={classes.fullWidthField}>
-              <TextField
-                label="Preferred Job Role"
-                name="preferredJobRole"
-                value={formData.preferredJobRole}
-                onChange={handleChange}
-                variant="outlined"
-                fullWidth
-                required
-                error={!!errors.preferredJobRole}
-                helperText={errors.preferredJobRole}
-              />
+            {/* Domain Selection */}
+            <Box className={classes.formRow}>
+              <Box className={classes.formColumn}>
+                <FormControl 
+                  fullWidth 
+                  variant="outlined" 
+                  error={!!errors.domain}
+                >
+                  <InputLabel id="domain-label">Domain *</InputLabel>
+                  <Select
+                    labelId="domain-label"
+                    id="domain"
+                    name="domain"
+                    value={formData.domain}
+                    onChange={handleChange}
+                    label="Domain"
+                    required
+                  >
+                    {domains.map(domain => (
+                      <MenuItem key={domain} value={domain}>{domain}</MenuItem>
+                    ))}
+                  </Select>
+                  {errors.domain && <FormHelperText>{errors.domain}</FormHelperText>}
+                </FormControl>
+              </Box>
+              
+              <Box className={classes.formColumn}>
+                <FormControl 
+                  fullWidth 
+                  variant="outlined" 
+                  error={!!errors.preferredJobRole}
+                  disabled={!formData.domain}
+                >
+                  <InputLabel id="job-role-label">Preferred Job Role *</InputLabel>
+                  <Select
+                    labelId="job-role-label"
+                    id="preferredJobRole"
+                    name="preferredJobRole"
+                    value={formData.preferredJobRole}
+                    onChange={handleChange}
+                    label="Preferred Job Role"
+                    required
+                  >
+                    {jobRoles.map(role => (
+                      <MenuItem key={role} value={role}>{role}</MenuItem>
+                    ))}
+                  </Select>
+                  {errors.preferredJobRole && <FormHelperText>{errors.preferredJobRole}</FormHelperText>}
+                </FormControl>
+              </Box>
             </Box>
+            
+            {/* Other Job Role field - only shown when "Others" is selected */}
+            {formData.preferredJobRole === 'Others' && (
+              <Box className={classes.fullWidthField}>
+                <TextField
+                  label="Specify Other Job Role"
+                  name="otherJobRole"
+                  value={formData.otherJobRole}
+                  onChange={handleChange}
+                  variant="outlined"
+                  fullWidth
+                  required
+                  error={!!errors.otherJobRole}
+                  helperText={errors.otherJobRole}
+                />
+              </Box>
+            )}
             
             <Divider className={classes.divider} />
             

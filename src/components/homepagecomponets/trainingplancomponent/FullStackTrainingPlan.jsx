@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import { useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles({
   wrapper: {
@@ -323,6 +324,7 @@ const generateSectionedDots = (count, type, avoidTop = false) => {
 
 const FullStackTrainingPlan = () => {
   const classes = useStyles();
+  const navigate = useNavigate();
   
   // Generate dots with a sectioned approach to avoid overlaps
   const pinkDots = generateSectionedDots(12, 'pink', true);
@@ -449,7 +451,11 @@ const FullStackTrainingPlan = () => {
         ))}
       </Box>
 
-      <Button variant="contained" className={classes.viewButton}>
+      <Button 
+        variant="contained" 
+        className={classes.viewButton}
+        onClick={() => navigate('/fullstack')}
+      >
         View full program details
       </Button>
     </Box>

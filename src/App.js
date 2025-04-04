@@ -11,6 +11,7 @@ import PrivacyPolicy from "./pages/privacypolicy/PrivacyPolicy";
 import TermsAndConditions from "./pages/termsandconditions/TermsAndConditions";
 import DataScience from "./pages/datascience/DataScience";
 import RegistrationForm from './pages/register/RegistrationForm';
+import PaymentUnderConstruction from './pages/payment/PaymentUnderConstruction';
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         <Route path="/datascience" element={<DataScience />} />
         <Route path="/register" element={<RegistrationForm />} />
+        <Route path="/payment-under-construction" element={<PaymentUnderConstruction />} />
       </Routes>
     </Router>
   );

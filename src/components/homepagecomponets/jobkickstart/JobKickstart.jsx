@@ -4,6 +4,7 @@ import { Box, Typography, Container, Button, Grid } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { useNavigate } from "react-router-dom";
 import Jobkick from "../../../assets/jobkick.png";
 
 const useStyles = makeStyles({
@@ -262,6 +263,7 @@ const useStyles = makeStyles({
 const JobKickstart = () => {
   const classes = useStyles();
   const [visibleFeatures, setVisibleFeatures] = useState([]);
+  const navigate = useNavigate();
 
   // Feature items from the image
   const features = [
@@ -327,6 +329,7 @@ const JobKickstart = () => {
               variant="contained" 
               className={classes.actionButton}
               endIcon={<ArrowForwardIcon />}
+              onClick={() => navigate('/register')}
             >
               Apply Now
             </Button>
