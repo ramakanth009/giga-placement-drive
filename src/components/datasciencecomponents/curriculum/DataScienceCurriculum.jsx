@@ -1,51 +1,67 @@
 // src/components/datasciencecomponents/curriculum/DataScienceCurriculum.jsx
-import React from 'react';
-import Curriculum from '../../common/curriculum/Curriculum';
+import React from "react";
+import Curriculum from "../../common/curriculum/Curriculum";
 
 const DataScienceCurriculum = () => {
   // Define weeks data
   const weeks = [
-    'Week 1: Foundation Building',
-    'Week 2: Data Exploration & Storytelling',
-    'Week 3: Machine Learning & AI Tools',
-    'Week 4: Portfolio Building & Job Preparation'
+    "Data Analyst",
+    "Data Scientist",
+    "Data Engineer",
+    "Machine Learning Engineer",
   ];
 
   // Define skills for each week
   const skills = [
     // Week 1 skills
     [
-      'Master Python Fundamentals For Data Manipulation',
-      'Learn SQL For Database Queries And Analysis',
-      'Begin Data Cleaning And Preprocessing Techniques',
-      'Develop Professional Communication Skills'
+      "Understand raw data using Excel and Pandas.",
+      "Organize and refine data for analysis.",
+      "Summarize insights using formulas.",
+      "Identify trends using Pandas and SQL.",
+      "Create charts using Matplotlib, Seaborn, and BI tools.",
+      "Document key findings with business context.",
+      "Deliver a case study-backed analysis.",
     ],
     // Week 2 skills
     [
-      'Exploratory Data Analysis & Visualization',
-      'Statistical Analysis & Hypothesis Testing',
-      'Data Storytelling & Business Intelligence',
-      'Dashboard Creation with Tableau & Power BI'
+      "Explore data using Pandas.",
+      "Clean, preprocess, and analyze distributions.",
+      "Select features using Scikit-learn.",
+      "Train models with Scikit-learn.",
+      "Tune models with GridSearchCV.",
+      "Visualize and compare results.",
+      "Deploy with Flask/FastAPI & present with Streamlit.",
     ],
     // Week 3 skills
     [
-      'Machine Learning Algorithms & Applications',
-      'Feature Engineering & Model Selection',
-      'Neural Networks & Deep Learning Basics',
-      'Natural Language Processing Fundamentals'
+      "Learn ETL concepts with SQL and Python.",
+      "Design and create a MySQL database schema.",
+      "Develop an ETL script using Pandas.",
+      "Automate ETL processes with Apache Airflow.",
+      "Validate and test data integrity using SQL.",
+      "Document the ETL pipeline workflow.",
+      "Review, optimize, and monitor the ETL pipeline.",
     ],
     // Week 4 skills
     [
-      'End-to-End Data Science Project Implementation',
-      'Model Deployment & Monitoring',
-      'Portfolio Development & GitHub Organization',
-      'Data Science Interview Preparation & Case Studies'
-    ]
+      "Explore email data and analyze spam patterns.",
+      "Preprocess and tokenize text using NLTK.",
+      "Extract features using TF-IDF and Count Vectorizer.",
+      "Train a spam classifier using Scikit-learn.",
+      "Evaluate model and handle class imbalance.",
+      "Deploy spam detector with Streamlit.",
+      "Optimize model with GridSearchCV.",
+    ],
   ];
 
   return (
-    <Curriculum 
-      title={<>Our 30-Day Journey <span>To Job Readiness</span></>}
+    <Curriculum
+      title={
+        <>
+          Our 30-Day Journey <span>To Job Readiness</span>
+        </>
+      }
       weeks={weeks}
       skills={skills}
     />

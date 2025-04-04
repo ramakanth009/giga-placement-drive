@@ -48,6 +48,7 @@ const useStyles = makeStyles({
     left: "-200px",
   },
   heroTitle: {
+    color: "#ffffff !important",
     fontSize: "3.5rem !important",
     fontWeight: "bold !important",
     marginBottom: "20px !important",
@@ -58,6 +59,7 @@ const useStyles = makeStyles({
     },
   },
   heroSubtitle: {
+    color: "#ffffff !important",
     fontSize: "1.25rem !important",
     maxWidth: "800px",
     margin: "0 auto !important",

@@ -5,41 +5,55 @@ import Curriculum from '../../common/curriculum/Curriculum';
 const FullStackCurriculum = () => {
   // Define weeks data
   const weeks = [
-    'Week 1: Foundation Building',
-    'Week 2: Frontend Mastery',
-    'Week 3: Backend & Database Technologies',
-    'Week 4: Full Stack Integration & Deployment'
+    "UI/UX Developer",
+    "Frontend Developer",
+    "Backend Developer",
+    "Database Engineer"
   ];
-
-  // Define skills for each week
+  
   const skills = [
-    // Week 1 skills
+    // UI/UX Developer skills
     [
-      'Master HTML5, CSS3, And Responsive Design Principles',
-      'Learn JavaScript Fundamentals And ES6+ Features',
-      'Introduction To Version Control With Git',
-      'Develop Professional Communication Skills'
+      "Research UI/UX trends and define website purpose",
+      "Create user flow & wireframes for all pages",
+      "Design high-fidelity UI for Home & About pages",
+      "Design high-fidelity UI for Projects & Contact pages",
+      "Plan and prototype animations (hover effects, transitions)",
+      "Conduct usability testing and gather feedback",
+      "Finalize design and prepare assets for handoff"
     ],
-    // Week 2 skills
+    
+    // Frontend Developer skills
     [
-      'Advanced CSS Frameworks & UI Libraries',
-      'Master React.js & Component Architecture',
-      'State Management & API Integration',
-      'Responsive Design & Mobile-First Approach'
+      "Set up project with React, Vite, and TailwindCSS",
+      "Develop responsive Home & Product Listings pages",
+      "Build Product Details, Cart & Checkout pages",
+      "Implement animations & micro-interactions",
+      "Add scroll animations, lazy loading, filtering UI",
+      "Test and debug for responsiveness and performance",
+      "Deploy to Netlify/Vercel and document code"
     ],
-    // Week 3 skills
+    
+    // Backend Developer skills
     [
-      'Node.js & Express.js Backend Development',
-      'RESTful API Design & Implementation',
-      'Database Design with MongoDB & SQL',
-      'Authentication & Authorization Security'
+      "Set up project structure and configure environment",
+      "Develop secure User Authentication System (JWT)",
+      "Build Product Management APIs (CRUD operations)",
+      "Implement Cart & Checkout Functionality",
+      "Add Order Management & User Dashboard",
+      "Implement Security & Performance Optimization",
+      "Complete testing, documentation, and deployment"
     ],
-    // Week 4 skills
+    
+    // Database Engineer skills
     [
-      'Full Stack Project Integration',
-      'Deployment & DevOps Fundamentals',
-      'Performance Optimization Techniques',
-      'Portfolio Building & Technical Interview Prep'
+      "Choose database type and set up environments",
+      "Design schema & relationships for all entities",
+      "Implement CRUD operations for key entities",
+      "Optimize queries with indexes and caching",
+      "Implement data security & backup strategies",
+      "Integrate database with backend APIs",
+      "Perform stress testing and scaling strategies"
     ]
   ];
 

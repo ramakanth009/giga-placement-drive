@@ -84,21 +84,7 @@ const useStyles = makeStyles({
     display: "flex",
     alignItems: "center",
   },
-  loginButton: {
-    color: "#4A4A4A !important",
-    fontWeight: "bold !important",
-    padding: "8px 16px !important",
-    transition: "all 0.3s ease !important",
-    "&:hover": {
-      textDecoration: "underline",
-      transform: "translateY(-2px)",
-    },
-    "@media (max-width: 1200px)": {
-      padding: "8px 12px !important",
-    },
-  },
   signUpButton: {
-    marginLeft: 16,
     backgroundColor: "#232459 !important",
     color: "white !important",
     padding: "8px 24px !important",
@@ -110,7 +96,6 @@ const useStyles = makeStyles({
       transform: "translateY(-2px)",
     },
     "@media (max-width: 1200px)": {
-      marginLeft: 12,
       padding: "8px 16px !important",
     },
   },
@@ -242,24 +227,16 @@ const Navbar = () => {
               </Button>
             </Box>
 
-            {/* Login and Sign Up buttons */}
+            {/* Auth Container */}
             <Box className={classes.authContainer}>
-              <Button 
-                className={classes.loginButton} 
-                component={Link} 
-                to="/login"
-                onClick={scrollToTop}
-              >
-                Login
-              </Button>
               <Button 
                 variant="contained" 
                 className={classes.signUpButton} 
                 component={Link} 
-                to="/signup"
+                to="/register"
                 onClick={scrollToTop}
               >
-                Sign Up
+                Apply Now
               </Button>
             </Box>
           </>
@@ -325,19 +302,11 @@ const Navbar = () => {
           </MenuItem>
           <MenuItem 
             onClick={() => handleNavLinkClick()} 
-            className={classes.menuItem} 
-            component={Link} 
-            to="/login"
-          >
-            Login
-          </MenuItem>
-          <MenuItem 
-            onClick={() => handleNavLinkClick()} 
             className={`${classes.menuItem} ${classes.signUpMenuItem}`} 
             component={Link} 
-            to="/signup"
+            to="/register"
           >
-            Sign Up
+            Apply Now
           </MenuItem>
         </Menu>
       </Toolbar>

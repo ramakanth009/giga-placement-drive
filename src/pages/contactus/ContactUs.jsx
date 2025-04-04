@@ -38,7 +38,7 @@ const useStyles = makeStyles({
       left: 0,
       right: 0,
       bottom: 0,
-      background: '#2A2B6AC7',
+      background: '#2A2B6A',
       clipPath: 'polygon(0 0, 100% 0, 100% 66%, 0 100%)',
       zIndex: -1,
       height: '598px',

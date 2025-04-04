@@ -1,12 +1,13 @@
-// src/components/common/curriculum/Curriculum.jsx
 import React from 'react';
-import { Box, Typography, Container, Grid } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles({
   curriculumSection: {
-    padding: '50px 0',
+    padding: '50px 200px',
     width: '100%',
+    maxWidth: '1400px',
+    margin: '0 auto',
   },
   titleContainer: {
     textAlign: 'center',
@@ -24,7 +25,7 @@ const useStyles = makeStyles({
   weekItem: {
     display: 'flex',
     alignItems: 'center',
-    marginBottom: '16px',
+    marginBottom: '14px',
     cursor: 'pointer',
     transition: 'all 0.3s ease',
     '&:hover': {
@@ -32,8 +33,6 @@ const useStyles = makeStyles({
     },
   },
   weekBox: {
-    backgroundColor: '#06183D',
-    color: 'white',
     borderRadius: '6px',
     padding: '14px 20px',
     fontWeight: 'bold',
@@ -41,17 +40,21 @@ const useStyles = makeStyles({
     width: '100%',
     marginBottom: '8px',
     transition: 'all 0.3s ease',
-    '&:hover': {
-      backgroundColor: '#1b2d57',
-    },
   },
   activeWeekBox: {
     backgroundColor: '#06183D',
+    color: 'white',
+    '&:hover': {
+      backgroundColor: '#1b2d57',
+    },
   },
   inactiveWeekBox: {
     backgroundColor: 'white',
     color: '#555',
     border: '1px solid #ddd',
+    '&:hover': {
+      backgroundColor: '#f5f5f5',
+    },
   },
   skillItem: {
     display: 'flex',
@@ -76,14 +79,18 @@ const useStyles = makeStyles({
     },
   },
   weeksColumn: {
-    flex: '0 0 35%',
+    flex: '0 0 50%',
     '@media (max-width: 960px)': {
       flex: '0 0 100%',
       marginBottom: '30px',
     },
   },
   skillsColumn: {
-    flex: '0 0 65%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    // alignItems: 'center',
+    flex: '0 0 50%',
     paddingLeft: '40px',
     '@media (max-width: 960px)': {
       flex: '0 0 100%',
@@ -102,49 +109,49 @@ const Curriculum = ({ title, weeks, skills }) => {
 
   return (
     <Box className={classes.curriculumSection}>
-      <Container maxWidth="lg">
-        <Box className={classes.titleContainer}>
-          <Typography variant="h2" className={classes.title}>
-            {title}
-          </Typography>
-        </Box>
+      <Box className={classes.titleContainer}>
+        <Typography variant="h2" className={classes.title}>
+          {title}
+        </Typography>
+      </Box>
 
-        <Box className={classes.contentContainer}>
-          {/* Weeks Column */}
-          <Box className={classes.weeksColumn}>
-            {weeks.map((week, index) => (
+      <Box className={classes.contentContainer}>
+        {/* Weeks Column */}
+        <Box className={classes.weeksColumn}>
+          {weeks.map((week, index) => (
+            <Box 
+              key={index} 
+              className={classes.weekItem} 
+              onClick={() => handleWeekClick(index)}
+            >
               <Box 
-                key={index} 
-                className={classes.weekItem} 
-                onClick={() => handleWeekClick(index)}
+                className={`${classes.weekBox} ${
+                  activeWeek === index ? classes.activeWeekBox : classes.inactiveWeekBox
+                }`}
               >
-                <Box 
-                  className={`${classes.weekBox} ${activeWeek === index ? classes.activeWeekBox : classes.inactiveWeekBox}`}
-                >
-                  {week}
-                </Box>
+                {week}
               </Box>
-            ))}
-          </Box>
-
-          {/* Skills Column */}
-          <Box className={classes.skillsColumn}>
-            {skills[activeWeek].map((skill, index) => (
-              <Box key={index} className={classes.skillItem}>
-                <Typography variant="body1" className={classes.skillText} sx={{ display: 'flex', alignItems: 'center' }}>
-                  <span style={{ 
-                    color: '#FFC614', 
-                    marginRight: '16px', 
-                    fontSize: '24px',
-                    lineHeight: 1 
-                  }}>✦</span>
-                  {skill}
-                </Typography>
-              </Box>
-            ))}
-          </Box>
+            </Box>
+          ))}
         </Box>
-      </Container>
+
+        {/* Skills Column */}
+        <Box className={classes.skillsColumn}>
+          {skills[activeWeek].map((skill, index) => (
+            <Box key={index} className={classes.skillItem}>
+              <Typography variant="body1" className={classes.skillText} sx={{ display: 'flex', alignItems: 'center' }}>
+                <span style={{ 
+                  color: '#FFC614', 
+                  marginRight: '16px', 
+                  fontSize: '24px',
+                  lineHeight: 1 
+                }}>✦</span>
+                {skill}
+              </Typography>
+            </Box>
+          ))}
+        </Box>
+      </Box>
     </Box>
   );
 };

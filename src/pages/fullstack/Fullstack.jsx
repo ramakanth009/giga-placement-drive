@@ -12,6 +12,9 @@ import HiringPartners from "../../components/common/hiringpartners/HiringPartner
 import FullStackCurriculum from "../../components/fullstackcomponents/curriculum/FullStackCurriculum";
 import CareerBanner from "../../components/common/careerbanner/CareerBanner";
 import TestimonialComponent from "../../components/common/testimonialcomponent/TestimonialComponent";
+import ProjectsSection from "../../components/fullstackcomponents/projectssection/ProjectsSection";
+import ProjectHigh from "../../components/common/projecthighlightimg/ProjectHigh";
+
 
 const Fullstack = () => {
   return (
@@ -20,7 +23,9 @@ const Fullstack = () => {
       <Hero />
       <FullstackImportance />
       <HiringRolesBoxes />
+      <ProjectHigh />
       <FullStackCurriculum />
+      <ProjectsSection />
       <HiringPartners />
       <LimitedTimeOffer />
       <ProgramWorksSection items={fullStackItems} />
