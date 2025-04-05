@@ -81,10 +81,11 @@ const useStyles = makeStyles({
     },
   },
   roleName: {
+    textAlign:"center",
     fontSize: '18px !important',
     fontWeight: 'bold !important',
     marginBottom: '10px !important',
-    minHeight: '44px !important',
+    minHeight: '55px !important',
     transition: 'all 0.3s ease',
     "@media (max-width: 600px)": {
       fontSize: '16px !important',
@@ -95,7 +96,7 @@ const useStyles = makeStyles({
     fontSize: '14px !important',
     color: '#555 !important',
     lineHeight: '1.5 !important',
-    minHeight: '84px !important',
+    minHeight: '148px !important',
     transition: 'all 0.3s ease',
     "@media (max-width: 600px)": {
       fontSize: '13px !important',

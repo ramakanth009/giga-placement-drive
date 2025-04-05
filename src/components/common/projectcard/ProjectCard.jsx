@@ -44,12 +44,14 @@ const useStyles = makeStyles({
   },
   title: {
     fontSize: '18px !important',
+    minHeight: '60px !important',
     fontWeight: 'bold !important', 
     color: '#0A487A !important',
     marginBottom: '12px !important',
     marginTop: '30px !important',
   },
   description: {
+    minHeight: '110px !important',
     fontSize: '14px !important',
     color: '#6C6C6C !important',
     lineHeight: '1.5 !important',

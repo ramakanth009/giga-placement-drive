@@ -119,6 +119,7 @@ const useStyles = makeStyles({
     fontSize: '1.25rem !important',
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
+    minHeight: '100px',
     marginBottom: '10px !important',
     textAlign: 'center',
     '@media (max-width: 600px)': {
@@ -126,6 +127,7 @@ const useStyles = makeStyles({
     },
   },
   boxText: {
+    minHeight: '90px',
     fontSize: '0.95rem !important',
     color: '#666666 !important',
     lineHeight: '1.6 !important',

@@ -68,7 +68,7 @@ const useStyles = makeStyles({
     textAlign: 'center',
     boxShadow: '0 4px 20px rgba(0, 0, 0, 0.05)',
     transition: 'all 0.3s ease',
-    height: '318px',
+    height: '368px',
     position: 'relative',
     overflow: 'hidden',
     cursor: 'pointer',
@@ -136,6 +136,7 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'flex-start',
     justifyContent: 'center',
+    minHeight: '70px',
     "@media (max-width: 1200px)": {
       fontSize: '1.2rem !important',
       marginBottom: '12px !important',

@@ -23,13 +23,14 @@ const useStyles = makeStyles({
   },
   contentContainer: {
     width: '100%',
-    maxWidth: '1200px',
+    // maxWidth: '1200px',
     margin: '0 auto',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     position: 'relative',
     zIndex: 2,
+    padding: '0 24px', /* Matches the default padding of MUI Container */
   },
   titleContainer: {
     textAlign: 'center',
@@ -134,7 +135,7 @@ const useStyles = makeStyles({
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
     marginBottom: '16px !important',
-    minHeight: '30px',
+    minHeight: '65px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -153,7 +154,7 @@ const useStyles = makeStyles({
     fontSize: '1rem !important',
     color: '#4A4A4A !important',
     lineHeight: '1.6 !important',
-    minHeight: '100px',
+    minHeight: '108px',
     display: 'flex',
     alignItems: 'flex-start',
     justifyContent: 'center',
@@ -172,7 +173,7 @@ const useStyles = makeStyles({
     top: '15%',
     right: '-15px',
     width: '4px',
-    height: '70%',
+    height: '82%',
     background: 'repeating-linear-gradient(to bottom, rgba(42, 43, 106, 0.8) 0, rgba(42, 43, 106, 0.8) 6px, transparent 6px, transparent 12px)',
     zIndex: 2,
     opacity: 0,
@@ -332,7 +333,6 @@ const WhoShouldJoin = () => {
         />
       ))}
 
-      <Container maxWidth="lg">
         <Box className={classes.contentContainer}>
           <Box className={classes.titleContainer}>
             <Typography variant="h2" className={classes.title}>
@@ -385,7 +385,6 @@ const WhoShouldJoin = () => {
             ))}
           </Box>
         </Box>
-      </Container>
     </Box>
   );
 };
