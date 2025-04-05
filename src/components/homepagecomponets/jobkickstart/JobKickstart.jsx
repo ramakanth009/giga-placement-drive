@@ -329,7 +329,10 @@ const JobKickstart = () => {
               variant="contained" 
               className={classes.actionButton}
               endIcon={<ArrowForwardIcon />}
-              onClick={() => navigate('/register')}
+              onClick={() => {
+                navigate('/register');
+                window.scrollTo({ top: 0, behavior: 'smooth' }); // Ensure scroll to top
+              }}
             >
               Apply Now
             </Button>

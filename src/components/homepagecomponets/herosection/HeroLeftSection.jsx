@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Typography, Button } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles({
   contentContainer: {
@@ -167,6 +168,12 @@ const useStyles = makeStyles({
 
 const HeroLeftSection = () => {
   const classes = useStyles();
+  const navigate = useNavigate();
+
+  const handleJoinClick = () => {
+    navigate("/register");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <Box className={classes.contentContainer}>
@@ -185,7 +192,11 @@ const HeroLeftSection = () => {
       </Typography>
 
       {/* Join Now Button */}
-      <Button variant="contained" className={classes.joinButton}>
+      <Button
+        variant="contained"
+        className={classes.joinButton}
+        onClick={handleJoinClick}
+      >
         Join Us Now
       </Button>
 

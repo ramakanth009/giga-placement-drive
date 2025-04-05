@@ -93,7 +93,10 @@ const CareerBanner = () => {
         <Button 
           variant="contained" 
           className={classes.ctaButton}
-          onClick={() => navigate('/register')}
+          onClick={() => {
+            navigate('/register');
+            window.scrollTo({ top: 0, behavior: 'smooth' }); // Ensure scroll to top
+          }}
         >
           JOIN NOW FOR JUST ₹199
         </Button>

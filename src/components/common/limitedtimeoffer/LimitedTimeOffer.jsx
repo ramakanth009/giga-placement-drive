@@ -674,7 +674,10 @@ const LimitedTimeOffer = () => {
             <Button 
               variant="contained" 
               className={classes.applyButton}
-              onClick={() => navigate('/register')}
+              onClick={() => {
+                navigate('/register');
+                window.scrollTo({ top: 0, behavior: 'smooth' }); // Ensure scroll to top
+              }}
             >
               Apply Now
             </Button>

@@ -454,7 +454,10 @@ const FullStackTrainingPlan = () => {
       <Button 
         variant="contained" 
         className={classes.viewButton}
-        onClick={() => navigate('/fullstack')}
+        onClick={() => {
+          navigate('/fullstack');
+          window.scrollTo({ top: 0, behavior: 'smooth' }); // Ensure scroll to top
+        }}
       >
         View full program details
       </Button>
