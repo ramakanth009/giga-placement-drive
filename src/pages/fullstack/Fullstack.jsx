@@ -14,7 +14,7 @@ import CareerBanner from "../../components/common/careerbanner/CareerBanner";
 import TestimonialComponent from "../../components/common/testimonialcomponent/TestimonialComponent";
 import ProjectsSection from "../../components/fullstackcomponents/projectssection/ProjectsSection";
 import ProjectHigh from "../../components/common/projecthighlightimg/ProjectHigh";
-import CertificationsSection from "../../components/common/certificationssection/CertificationsSection";
+import FullStackCertificationsSection from "../../components/fullstackcomponents/certificationsection/FullStackCertificationsSection";
 
 
 const Fullstack = () => {
@@ -27,7 +27,7 @@ const Fullstack = () => {
       <ProjectHigh />
       <FullStackCurriculum />
       <ProjectsSection />
-      <CertificationsSection />
+      <FullStackCertificationsSection />
       <HiringPartners />
       <LimitedTimeOffer />
       <ProgramWorksSection items={fullStackItems} />

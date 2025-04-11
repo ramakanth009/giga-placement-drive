@@ -1,3 +1,4 @@
+// src/components/common/hiringrolesboxes/HiringRolesBoxes.jsx
 import React, { useState, useEffect } from 'react';
 import { Box, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
@@ -175,14 +176,18 @@ const useStyles = makeStyles({
     textAlign: 'center !important',
     lineHeight: '1.3 !important',
     transition: 'color 0.3s ease',
-    whiteSpace: 'nowrap', // Prevent text from wrapping
-    overflow: 'hidden',
-    textOverflow: 'ellipsis', // Add ellipsis for long text
     width: '100%', // Ensure all text containers have same width
     height: '45px', // Fixed height to ensure alignment
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    // Fixing text overflow issues
+    whiteSpace: 'normal', // Allow text to wrap
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    // New properties for better text handling
+    wordWrap: 'break-word',
+    hyphens: 'auto',
     '@media (max-width: 600px)': {
       fontSize: '1rem !important',
       height: '40px',

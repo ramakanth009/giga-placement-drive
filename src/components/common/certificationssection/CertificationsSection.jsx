@@ -1,7 +1,7 @@
+// src/components/common/certificationssection/CertificationsSection.jsx
 import React from 'react';
 import { Box, Typography, Container } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import CertificateImage from '../../../assets/certificate.jpg'; // Update with your actual certificate image path
 
 const useStyles = makeStyles({
   section: {
@@ -107,6 +107,7 @@ const useStyles = makeStyles({
   },
   certificateImage: {
     maxWidth: '100%',
+    width: '450px', // Increased fixed width
     borderRadius: '10px',
     boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',
     transform: 'rotate(3deg)',
@@ -115,6 +116,15 @@ const useStyles = makeStyles({
     zIndex: 2,
     '&:hover': {
       transform: 'rotate(0deg)',
+    },
+    '@media (max-width: 1200px)': {
+      width: '400px', // Responsive width for smaller screens
+    },
+    '@media (max-width: 960px)': {
+      width: '350px', // Responsive width for tablet
+    },
+    '@media (max-width: 600px)': {
+      width: '300px', // Responsive width for mobile
     },
   },
   certificateGlow: {
@@ -151,7 +161,7 @@ const useStyles = makeStyles({
   },
 });
 
-const CertificationsSection = () => {
+const CertificationsSection = ({ certificateImage, fieldType = 'Full Stack Development' }) => {
   const classes = useStyles();
 
   return (
@@ -177,9 +187,11 @@ const CertificationsSection = () => {
             </Typography>
             
             <Typography variant="body2" className={classes.subDescription}>
-              Showcase Your Full Stack Development Expertise And Unlock Career
-              Opportunities In Web Development, Software Engineering, And
-              Scalable Application Development.
+              Showcase Your {fieldType} Expertise And Unlock Career
+              Opportunities In {fieldType === 'Full Stack Development' 
+                ? 'Web Development, Software Engineering, And Scalable Application Development.'
+                : 'Data Analysis, Machine Learning, And Business Intelligence.'
+              }
             </Typography>
           </Box>
           
@@ -188,8 +200,8 @@ const CertificationsSection = () => {
             <Box className={classes.decorCircle2} />
             <Box className={classes.certificateGlow} />
             <img 
-              src={CertificateImage} 
-              alt="Certificate Sample" 
+              src={certificateImage} 
+              alt={`${fieldType} Certificate Sample`} 
               className={classes.certificateImage}
             />
           </Box>

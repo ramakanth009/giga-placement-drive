@@ -11,9 +11,10 @@ import HiringPartners from "../../components/common/hiringpartners/HiringPartner
 import DataScienceCurriculum from "../../components/datasciencecomponents/curriculum/DataScienceCurriculum";
 import CareerBanner from "../../components/common/careerbanner/CareerBanner";
 import TestimonialComponent from "../../components/common/testimonialcomponent/TestimonialComponent";
-import ProjectsSection from "../../components/datasciencecomponents/projectssection/ProjectsSection"
+import ProjectsSection from "../../components/datasciencecomponents/projectssection/ProjectsSection";
 import ProjectHigh from "../../components/common/projecthighlightimg/ProjectHigh";
 import HiringRolesBoxes from "../../components/datasciencecomponents/hiringrolesboxes/HiringRolesBoxes";
+import DataScienceCertificationsSection from "../../components/datasciencecomponents/certificationsection/DataScienceCertificationsSection";
 
 const DataScience = () => {
   return (
@@ -25,6 +26,7 @@ const DataScience = () => {
       <ProjectHigh />
       <DataScienceCurriculum />
       <ProjectsSection />
+      <DataScienceCertificationsSection />
       <HiringPartners />
       <LimitedTimeOffer />
       <ProgramWorksSection items={dataScienceItems} />
