@@ -6,28 +6,28 @@ import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
 import WebIcon from '@mui/icons-material/Web';
 import HiringRolesBoxes from '../../common/hiringrolesboxes/HiringRolesBoxes';
 
-const HiringRolesBoxesContainer = () => {
+const FullStackHiringRolesBoxes = () => {
   // Data for roles with Material-UI icons
   const roles = [
     {
       title: 'Frontend Developer',
-      icon: <WebIcon className="roleIcon" />,
+      icon: <WebIcon />,
     },
     {
       title: 'Backend Developer',
-      icon: <StorageIcon className="roleIcon" />,
+      icon: <StorageIcon />,
     },
     {
       title: 'Full Stack Developer',
-      icon: <CodeIcon className="roleIcon" />,
+      icon: <CodeIcon />,
     },
     {
       title: 'Node.js Developer',
-      icon: <DeveloperModeIcon className="roleIcon" />,
+      icon: <DeveloperModeIcon />,
     },
     {
       title: 'React Developer',
-      icon: <PhoneIphoneIcon className="roleIcon" />,
+      icon: <PhoneIphoneIcon />,
     },
   ];
 
@@ -45,4 +45,4 @@ const HiringRolesBoxesContainer = () => {
   );
 };
 
-export default HiringRolesBoxesContainer;
+export default FullStackHiringRolesBoxes;

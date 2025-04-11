@@ -1,4 +1,3 @@
-// src/components/common/hiringrolesboxes/HiringRolesBoxes.jsx
 import React, { useState, useEffect } from 'react';
 import { Box, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
@@ -82,6 +81,7 @@ const useStyles = makeStyles({
     width: '100%',
     overflowX: 'auto',
     paddingBottom: '15px',
+    alignItems: 'center', // Ensure all boxes are aligned vertically
     '&::-webkit-scrollbar': {
       height: '6px',
     },
@@ -107,19 +107,20 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
-    padding: '20px',
+    justifyContent: 'space-between', // Space between icon and text
+    padding: '30px 20px',
     transform: 'translateY(0)',
     transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
     border: '1px solid rgba(0, 0, 0, 0.05)',
     '@media (max-width: 1200px)': {
       width: '170px',
       height: '170px',
+      padding: '25px 15px',
     },
     '@media (max-width: 600px)': {
       width: '150px',
       height: '150px',
-      padding: '15px',
+      padding: '20px 15px',
     },
     '&:hover': {
       transform: 'translateY(-10px)',
@@ -134,31 +135,37 @@ const useStyles = makeStyles({
     height: '60px',
     borderRadius: '50%',
     backgroundColor: props => props.iconContainerBgColor || '#2A2B6A',
+    background: props => props.iconContainerGradient || undefined,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: '20px',
     transition: 'all 0.4s ease',
     boxShadow: '0 5px 15px rgba(42, 43, 106, 0.3)',
+    position: 'relative',
+    '& svg': {
+      color: 'white !important',
+      fontSize: '28px',
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+    },
     '@media (max-width: 600px)': {
       width: '50px',
       height: '50px',
       marginBottom: '15px',
+      '& svg': {
+        fontSize: '24px',
+      },
     },
     '@media (max-width: 480px)': {
       width: '45px',
       height: '45px',
       marginBottom: '10px',
-    },
-  },
-  roleIcon: {
-    fontSize: '28px !important',
-    color: 'white',
-    '@media (max-width: 600px)': {
-      fontSize: '24px !important',
-    },
-    '@media (max-width: 480px)': {
-      fontSize: '20px !important',
+      '& svg': {
+        fontSize: '20px',
+      },
     },
   },
   roleTitle: {
@@ -168,11 +175,21 @@ const useStyles = makeStyles({
     textAlign: 'center !important',
     lineHeight: '1.3 !important',
     transition: 'color 0.3s ease',
+    whiteSpace: 'nowrap', // Prevent text from wrapping
+    overflow: 'hidden',
+    textOverflow: 'ellipsis', // Add ellipsis for long text
+    width: '100%', // Ensure all text containers have same width
+    height: '45px', // Fixed height to ensure alignment
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     '@media (max-width: 600px)': {
       fontSize: '1rem !important',
+      height: '40px',
     },
     '@media (max-width: 480px)': {
       fontSize: '0.9rem !important',
+      height: '35px',
     },
   },
   decorativeDots: {
@@ -218,7 +235,8 @@ const HiringRolesBoxes = ({
     backgroundGradient, 
     decorativeShapeGradient, 
     decorativeShapeBottomGradient,
-    iconContainerBgColor 
+    iconContainerBgColor,
+    iconContainerGradient
   };
   const classes = useStyles(styleProps);
   const [visibleItems, setVisibleItems] = useState([]);
@@ -280,11 +298,7 @@ const HiringRolesBoxes = ({
               data-role-box
               data-index={index}
             >
-              <Box className={classes.iconContainer} 
-                   sx={iconContainerGradient ? 
-                       { backgroundImage: iconContainerGradient } : 
-                       {}
-                   }>
+              <Box className={classes.iconContainer}>
                 {role.icon}
               </Box>
               <Typography className={classes.roleTitle}>

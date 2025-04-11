@@ -7,32 +7,32 @@ import StorageIcon from '@mui/icons-material/Storage';
 import DataThresholdingIcon from '@mui/icons-material/DataThresholding';
 import HiringRolesBoxes from '../../common/hiringrolesboxes/HiringRolesBoxes';
 
-const HiringRolesBoxesContainer = () => {
+const DataScienceHiringRolesBoxes = () => {
   // Data for roles with Material-UI icons
   const roles = [
     {
       title: 'Data Analyst',
-      icon: <AnalyticsIcon className="roleIcon" />,
+      icon: <AnalyticsIcon />,
     },
     {
       title: 'Machine Learning Intern',
-      icon: <PsychologyIcon className="roleIcon" />,
+      icon: <PsychologyIcon />,
     },
     {
       title: 'Business Analyst',
-      icon: <BarChartIcon className="roleIcon" />,
+      icon: <BarChartIcon />,
     },
     {
       title: 'AI Associate',
-      icon: <SmartToyIcon className="roleIcon" />,
+      icon: <SmartToyIcon />,
     },
     {
       title: 'Data Engineer (Entry Level)',
-      icon: <StorageIcon className="roleIcon" />,
+      icon: <StorageIcon />,
     },
     {
       title: 'Data Science Intern',
-      icon: <DataThresholdingIcon className="roleIcon" />,
+      icon: <DataThresholdingIcon />,
     }
   ];
 
@@ -48,4 +48,4 @@ const HiringRolesBoxesContainer = () => {
   );
 };
 
-export default HiringRolesBoxesContainer;
+export default DataScienceHiringRolesBoxes;
