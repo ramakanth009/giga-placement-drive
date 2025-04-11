@@ -94,7 +94,7 @@ const CareerBanner = () => {
           variant="contained" 
           className={classes.ctaButton}
           onClick={() => {
-            navigate('/register');
+            navigate('/payment-under-construction');
             window.scrollTo({ top: 0, behavior: 'smooth' }); // Ensure scroll to top
           }}
         >

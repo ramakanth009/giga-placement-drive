@@ -55,11 +55,13 @@ const useStyles = makeStyles({
     fontSize: "3rem !important",
     fontWeight: "bold !important",
     marginBottom: "16px !important",
+    color:"#ffffff !important",
     "& span": {
       color: "#FFC614 !important",
     },
   },
   pageSubtitle: {
+    color:"#ffffff !important",
     fontSize: "1.2rem !important",
     maxWidth: "800px",
     fontWeight: "400 !important",
@@ -287,7 +289,12 @@ const TermsAndConditions = () => {
       content: (
         <Box>
           <Typography className={classes.contentText}>
-            Subject to the applicable refund policy, if you no longer wish to use any program, you may terminate your participation by giving a prior notice to Gigaversity. Participants of Gigaversity online live lectures and webinars shall be provided access to such classes via email. You agree not to share such access with any third party. If you are unable to attend an online live lecture/webinar, please provide Gigaversity with prior intimation regarding this.
+            Subject to the applicable refund policy, if user no longer wish to use any program, user may terminate their participation by providing prior notice to Gigaversity.</Typography>
+            <Typography className={classes.contentText}>
+            Once the refund is initiated, it may take 7 to 15 business days to process. The amount will be refunded to the Original source account used during the initial transaction.
+            </Typography>
+            <Typography className={classes.contentText}>
+             Participants of Gigaversity online live lectures and webinars shall be provided access to such classes via email. You agree not to share such access with any third party. If you are unable to attend an online live lecture/webinar, please provide Gigaversity with prior intimation regarding this.
           </Typography>
           <Typography className={classes.contentText}>
             You shall be exclusively responsible for obtaining and maintaining any equipment or ancillary services needed to connect to, access, receive or use the Platform, including, without limitation, hardware devices, software, and other internet, wireless, broadband, phone and/or other mobile communication device connection services. You shall be exclusively responsible for ensuring that such equipment or ancillary services are compatible with the Platform, and you shall be responsible for all charges incurred in connection with the use of the Platform and Program in connection with all such equipment and ancillary services.

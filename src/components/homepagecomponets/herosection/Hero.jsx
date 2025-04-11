@@ -26,7 +26,7 @@ const useStyles = makeStyles({
     height: "800px",
     top: "-300px",
     right: "-200px",
-    background: "radial-gradient(circle, rgba(255,198,20,0.15) 0%, rgba(255,198,20,0) 70%)",
+    // background: "radial-gradient(circle, rgba(255,198,20,0.15) 0%, rgba(255,198,20,0) 70%)",
     animation: "$pulse 15s infinite alternate",
   },
   bgElement2: {
@@ -45,7 +45,7 @@ const useStyles = makeStyles({
     bottom: 0,
     zIndex: 0,
     opacity: 0.4,
-    backgroundImage: "linear-gradient(to right, rgba(42,43,106,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(42,43,106,0.05) 1px, transparent 1px)",
+    backgroundImage: "linear-gradient(to right, rgba(42,43,106,0.10) 1px, transparent 1px), linear-gradient(to bottom, rgba(42,43,106,0.10) 1px, transparent 1px)",
     backgroundSize: "30px 30px",
   },
   contentContainer: {

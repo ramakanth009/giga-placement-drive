@@ -213,12 +213,12 @@ const PaymentUnderConstruction = () => {
               <PhonePeLogo className={classes.phonePeLogo} />
             </Box>
             
-            <Box className={classes.iconContainer}>
+            {/* <Box className={classes.iconContainer}>
               <ConstructionIcon className={classes.constructionIcon} />
-            </Box>
+            </Box> */}
             
             <Typography variant="h1" className={classes.title}>
-              PhonePe Payment Gateway <span>Under Construction</span>
+              PhonePe Payment Gateway <span>Coming Soon</span>
             </Typography>
             
             <Typography variant="body1" className={classes.message}>

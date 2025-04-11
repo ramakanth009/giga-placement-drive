@@ -1,344 +1,267 @@
-// src/components/jobkickstart/JobKickstart.jsx
-import React, { useState, useEffect } from "react";
-import { Box, Typography, Container, Button, Grid } from "@mui/material";
+import React from "react";
+import { Box, Typography, Button } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useNavigate } from "react-router-dom";
-import Jobkick from "../../../assets/jobkick.png";
+import kickstartBackground from '../../../assets/kickstart-background.png';
+import kickstartguy from '../../../assets/kickstartguy.png';
+import TargetIcon from '@mui/icons-material/TrackChanges';
+import AssessmentIcon from '@mui/icons-material/Assessment';
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 
 const useStyles = makeStyles({
   section: {
-    padding: "30px 0",
-    overflow: "hidden",
+    height: "75vh",
     position: "relative",
-    background: "linear-gradient(180deg, #ffffff 0%, #f5f8ff 100%)",
+    width: "100%",
+    padding: "122px 40px 40px 40px",
+    backgroundImage: `url(${kickstartBackground})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    overflow: "hidden",
+    
     "@media (max-width: 960px)": {
-      padding: "50px 0",
+      padding: "60px 20px",
     },
     "@media (max-width: 600px)": {
-      padding: "40px 0",
+      padding: "40px 15px",
     },
   },
-  contentContainer: {
+  content: {
+    width: "100%",
+    maxWidth: "1400px",
+    margin: "0 auto",
     display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    gap: "40px",
+    position: "relative",
+    zIndex: 2,
     "@media (max-width: 960px)": {
       flexDirection: "column",
-      gap: "30px",
     },
   },
-  leftContainer: {
-    position: "relative",
+  leftSection: {
     width: "40%",
-    height: "415px",
-    display: "flex",
-    justifyContent: "flex-end",
-    "@media (max-width: 1200px)": {
-      width: "45%",
-    },
-    "@media (max-width: 960px)": {
-      width: "80%",
-      height: "350px",
-      justifyContent: "center",
-      marginBottom: "20px",
-    },
-    "@media (max-width: 600px)": {
-      width: "90%",
-      height: "300px",
-    },
-  },
-  rightContainer: {
-    width: "55%",
-    padding: "20px 0",
-    "@media (max-width: 1200px)": {
-      width: "50%",
-    },
+    position: "relative",
     "@media (max-width: 960px)": {
       width: "100%",
-      padding: "0",
-    },
-  },
-  imageBox: {
-    position: "relative",
-    width: "90%",
-    maxWidth: "450px",
-    zIndex: 2,
-    borderRadius: "12px",
-    overflow: "hidden",
-    boxShadow: "0 20px 40px rgba(0, 0, 0, 0.12)",
-    "@media (max-width: 960px)": {
-      width: "100%",
-    },
-  },
-  image: {
-    width: "100%",
-    height: "auto",
-    display: "block",
-    transition: "transform 0.5s ease",
-    "&:hover": {
-      transform: "scale(1.03)",
-    },
-  },
-  backgroundBox: {
-    right: "-10px",
-    width: "90%",
-    bottom: "-11px",
-    height: "100%",
-    position: "absolute",
-    backgroundColor: "#e6f2ff",
-    borderBottom: "4px solid #2A2B6A",
-    borderRight: "4px solid #2A2B6A",
-    zIndex: 1,
-    borderRadius: "12px",
-    "@media (max-width: 960px)": {
-      right: "-5px",
-      bottom: "-5px",
-      borderWidth: "3px",
-    },
-  },
-  highlightDot: {
-    position: "absolute",
-    width: "120px",
-    height: "120px",
-    borderRadius: "50%",
-    background: "rgba(255, 198, 20, 0.15)",
-    filter: "blur(25px)",
-    zIndex: 0,
-    "@media (max-width: 600px)": {
-      width: "80px",
-      height: "80px",
-    },
-  },
-  topLeftDot: {
-    top: "10%",
-    left: "10%",
-  },
-  bottomRightDot: {
-    bottom: "15%",
-    right: "5%",
-  },
-  sectionTitle: {
-    fontSize: "2.5rem !important",
-    fontWeight: "bold !important",
-    marginBottom: "30px !important",
-    color: "#2A2B6A !important",
-    lineHeight: "1.3 !important",
-    position: "relative",
-    "&:after": {
-      content: "''",
-      position: "absolute",
-      bottom: "-12px",
-      left: "0",
-      width: "60px",
-      height: "3px",
-      backgroundColor: "#FFC614",
-    },
-    "@media (max-width: 960px)": {
-      fontSize: "2.2rem !important",
-      marginBottom: "25px !important",
       textAlign: "center",
-      "&:after": {
-        left: "50%",
-        transform: "translateX(-50%)",
-      },
-    },
-    "@media (max-width: 600px)": {
-      fontSize: "1.8rem !important",
-      marginBottom: "20px !important",
+      marginBottom: "40px",
     },
   },
-  featureList: {
-    marginBottom: "30px",
-    width: "100%",
-    "@media (max-width: 960px)": {
-      marginBottom: "20px",
-    },
-  },
-  featureItem: {
+  rightSection: {
+    width: "60%",
     display: "flex",
-    alignItems: "flex-start",
-    marginBottom: "22px",
-    transform: "translateX(-10px)",
-    opacity: 0,
-    transition: "transform 0.5s ease, opacity 0.5s ease",
-    width: "100%",
+    flexDirection: "column",
     "@media (max-width: 960px)": {
-      marginBottom: "18px",
-      justifyContent: "center",
-    },
-    "@media (max-width: 600px)": {
-      marginBottom: "15px",
+      width: "100%",
       alignItems: "center",
     },
   },
-  featureItemVisible: {
-    transform: "translateX(0)",
-    opacity: 1,
-  },
-  checkIcon: {
-    color: "#FFC614 !important",
-    marginRight: "15px",
-    fontSize: "24px !important",
-    flexShrink: 0,
-    "@media (max-width: 600px)": {
-      fontSize: "20px !important",
-      marginRight: "10px",
-    },
-  },
-  featureText: {
-    color: "#4A4A4A !important",
-    fontSize: "1.15rem !important",
-    fontWeight: "500 !important",
-    lineHeight: "1.5 !important",
+  titleContainer: {
+    marginTop:"30px",
+    marginBottom: "20px",
     "@media (max-width: 960px)": {
-      textAlign: "center",
-      maxWidth: "80%",
+      marginBottom: "30px",
     },
+  },
+  title: {
+    fontSize: "2rem !important",
+    fontWeight: "700 !important",
+    color: "#ffffff !important",
+    lineHeight: "1.2 !important",
+    "@media (max-width: 1200px)": {
+      fontSize: "2.5rem !important",
+    },
+    "@media (max-width: 960px)": {
+      fontSize: "2.2rem !important",
+    },
+    "@media (max-width: 600px)": {
+      fontSize: "1.8rem !important",
+    },
+  },
+  highlightText: {
+    color: "#FFC614 !important",
+  },
+  subtitle: {
+    fontSize: "1.2rem !important",
+    color: "#ffffff !important",
+    marginTop: "15px !important",
     "@media (max-width: 600px)": {
       fontSize: "1rem !important",
-      lineHeight: "1.4 !important",
-      maxWidth: "100%",
     },
   },
-
-  actionButton: {
-    backgroundColor: "#2A2B6A !important",
-    color: "white !important",
-    padding: "12px 24px !important",
-    borderRadius: "8px !important",
-    fontWeight: "bold !important",
-    fontSize: "1rem !important",
-    textTransform: "none !important",
-    transition: "all 0.3s ease !important",
-    marginTop: "30px !important",
-    marginBottom: "15px !important",
-    boxShadow: "0 4px 10px rgba(42, 43, 106, 0.2) !important",
-    "&:hover": {
-      backgroundColor: "#212255 !important",
-      transform: "translateY(-3px)",
-      boxShadow: "0 6px 15px rgba(42, 43, 106, 0.3) !important",
-    },
-    "@media (max-width: 960px)": {
-      display: "block",
-      margin: "25px auto 15px auto !important",
-    },
+  featureBoxesContainer: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "20px",
+    marginBottom: "20px",
+    width: "100%",
+    maxWidth: "800px",
+  },
+  featureRow: {
+    display: "flex",
+    gap: "20px",
     "@media (max-width: 600px)": {
-      padding: "10px 20px !important",
+      flexDirection: "column",
+      alignItems: "center",
+    },
+  },
+  featureBox: {
+    flex: 1,
+    display: "flex",
+    alignItems: "center",
+    padding: "15px 20px",
+    background: "rgba(255, 255, 255, 0.1)",
+    borderRadius: "8px",
+    backdropFilter: "blur(5px)",
+    border: "1px solid rgba(255, 255, 255, 0.2)",
+    "@media (max-width: 600px)": {
+      width: "100%",
+    },
+  },
+  iconCircle: {
+    width: "45px",
+    height: "45px",
+    minWidth: "45px",
+    borderRadius: "50%",
+    backgroundColor: "#FFC614",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: "15px",
+    "@media (max-width: 600px)": {  // Add this style for icons
+      width: "40px",
+      height: "40px",
+      minWidth: "40px",
+      marginRight: "12px",
+    },
+  },
+  boxText: {
+    fontSize: "1rem !important",
+    color: "#ffffff !important",
+    fontWeight: "500 !important",
+    "@media (max-width: 600px)": {
       fontSize: "0.9rem !important",
     },
   },
-
-  imageOverlay: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-    background: "linear-gradient(0deg, rgba(42, 43, 106, 0.1) 0%, rgba(255, 255, 255, 0) 50%)",
-    zIndex: 2,
+  imageContainer: {
+    position: "relative",
+    "@media (max-width: 960px)": {
+      display: "none",
+    },
   },
-  badge: {
+  personImage: {
     position: "absolute",
-    top: "15px",
-    right: "15px",
-    background: "#FFC614",
-    color: "#2A2B6A",
-    padding: "5px 10px",
-    borderRadius: "20px",
-    fontWeight: "bold",
-    fontSize: "0.8rem",
-    zIndex: 3,
-    boxShadow: "0 3px 8px rgba(0, 0, 0, 0.1)",
+    bottom: "-80px",
+    left: "0",
+    maxHeight: "600px",
+    "@media (max-width: 1200px)": {
+      maxHeight: "500px",
+      bottom: "-60px",
+    },
+  },
+  ctaButton: {
+    backgroundColor: "#FFC614 !important",
+    color: "#232559 !important",
+    fontWeight: "bold !important",
+    padding: "12px 25px !important",
+    borderRadius: "8px !important",
+    fontSize: "1.1rem !important",
+    textTransform: "none !important",
+    boxShadow: "0 4px 15px rgba(255, 198, 20, 0.3) !important",
+    transition: "all 0.3s ease !important",
+    "&:hover": {
+      backgroundColor: "#FFD23F !important",
+      transform: "translateY(-3px)",
+    },
     "@media (max-width: 600px)": {
-      fontSize: "0.7rem",
-      padding: "4px 8px",
+      "&:hover": {
+        padding: "10px 20px !important",
+        fontSize: "1rem !important",
+      },
     },
   },
 });
 
 const JobKickstart = () => {
   const classes = useStyles();
-  const [visibleFeatures, setVisibleFeatures] = useState([]);
   const navigate = useNavigate();
-
-  // Feature items from the image
-  const features = [
-    "Learn in-demand skills that employers seek for top-tier positions",
-    "Build portfolio projects that prove your expertise and stand out from other candidates",
-    "Connect with 100+ hiring partners for direct interview opportunities",
-    "Get hired with packages starting from 3 LPA-15 LPA",
-  ];
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setVisibleFeatures(features.map((_, i) => i));
-    }, 500);
-    
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <Box className={classes.section}>
-      <Box className={`${classes.highlightDot} ${classes.topLeftDot}`}></Box>
-      <Box className={`${classes.highlightDot} ${classes.bottomRightDot}`}></Box>
-      
-      <Container maxWidth="lg" sx={{ overflow: "hidden" }}>
-        <Box className={classes.contentContainer}>
-          {/* Left side - Image with background box */}
-          <Box className={classes.leftContainer}>
-            <Box className={classes.imageBox}>
-              <span className={classes.badge}>Featured</span>
-              <img
-                src={Jobkick}
-                alt="Students collaborating on a project"
-                className={classes.image}
-              />
-              <Box className={classes.imageOverlay}></Box>
-            </Box>
-            <Box className={classes.backgroundBox} />
-          </Box>
-
-          {/* Right side - Content */}
-          <Box className={classes.rightContainer}>
-            {/* Title */}
-            <Typography variant="h3" className={classes.sectionTitle}>
-              Why Struggle With Traditional Job Hunting When You Can
-            </Typography>
-
-            {/* Feature list */}
-            <Box className={classes.featureList}>
-              {features.map((feature, index) => (
-                <Box 
-                  key={index} 
-                  className={`${classes.featureItem} ${visibleFeatures.includes(index) ? classes.featureItemVisible : ''}`}
-                  style={{ transitionDelay: `${index * 0.2}s` }}
-                >
-                  <CheckCircleIcon className={classes.checkIcon} />
-                  <Typography className={classes.featureText}>
-                    {feature}
-                  </Typography>
-                </Box>
-              ))}
-            </Box>
-
-            <Button 
-              variant="contained" 
-              className={classes.actionButton}
-              endIcon={<ArrowForwardIcon />}
-              onClick={() => {
-                navigate('/register');
-                window.scrollTo({ top: 0, behavior: 'smooth' }); // Ensure scroll to top
-              }}
-            >
-              Apply Now
-            </Button>
-          </Box>
+      <Box className={classes.content}>
+        {/* Left Section with Image */}
+        <Box className={classes.leftSection}>
+          <img
+            src={kickstartguy}
+            alt="Professional with laptop"
+            className={classes.personImage}
+          />
         </Box>
-      </Container>
+
+        {/* Right Section with Content */}
+        <Box className={classes.rightSection}>
+          <Box className={classes.titleContainer}>
+            <Typography variant="h1" className={classes.title}>
+              Why Struggle With Traditional <span className={classes.highlightText}>Job Hunting WHEN You Can</span>
+            </Typography>
+          </Box>
+          <Box className={classes.featureBoxesContainer}>
+            {/* First Row - 2 Features */}
+            <Box className={classes.featureRow}>
+              <Box className={classes.featureBox}>
+                <Box className={classes.iconCircle}>
+                  <TargetIcon />
+                </Box>
+                <Typography className={classes.boxText}>
+                  Learn in-demand skills that employers seek
+                </Typography>
+              </Box>
+              <Box className={classes.featureBox}>
+                <Box className={classes.iconCircle}>
+                  <AssessmentIcon />
+                </Box>
+                <Typography className={classes.boxText}>
+                  Build portfolio projects that prove your expertise
+                </Typography>
+              </Box>
+            </Box>
+            {/* Second Row - 2 Features */}
+            <Box className={classes.featureRow}>
+              <Box className={classes.featureBox}>
+                <Box className={classes.iconCircle}>
+                  <PeopleAltIcon />
+                </Box>
+                <Typography className={classes.boxText}>
+                  Connect with 100+ hiring partners
+                </Typography>
+              </Box>
+              <Box className={classes.featureBox}>
+                <Box className={classes.iconCircle}>
+                  <BusinessCenterIcon />
+                </Box>
+                <Typography className={classes.boxText}>
+                  Get hired with packages Starting from 3 LPA-15 LPA
+                </Typography>
+              </Box>
+            </Box>
+          </Box>
+          {/* <Button 
+            variant="contained"
+            className={classes.ctaButton}
+            endIcon={<ArrowForwardIcon />}
+            onClick={() => navigate('/register')}
+          >
+            Apply Now
+          </Button> */}
+          <Typography variant="subtitle1" className={classes.subtitle}>
+              KickStart Your Job In 30 Days
+          </Typography>
+        </Box>
+      </Box>
+      {/* Wavy bottom shape */}
+      <Box className={classes.wavyBottomShape} />
     </Box>
   );
 };

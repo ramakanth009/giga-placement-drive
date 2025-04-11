@@ -26,6 +26,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    justifyContent: 'center',
     "@media (max-width: 960px)": {
       padding: '60px 0',
     },
@@ -82,6 +83,7 @@ const useStyles = makeStyles({
     },
   },
   offerCard: {
+    width:"60vw !important",
     position: 'relative',
     background: 'white',
     borderRadius: '20px !important',
@@ -377,12 +379,15 @@ const useStyles = makeStyles({
     borderRadius: '50px !important',
     fontWeight: 'bold !important',
     fontSize: '1.2rem !important',
-    width: '100% !important',
+    width: '50% !important',
+    textAlign: 'center !important',
     marginTop: '10px !important',
     position: 'relative',
     overflow: 'hidden',
     transition: 'all 0.3s ease !important',
     boxShadow: '0 5px 20px rgba(42, 43, 106, 0.3) !important',
+    display: 'block !important',
+    margin: '10px auto !important',
     '&:hover': {
       backgroundColor: '#1a1b43 !important',
       transform: 'translateY(-5px)',
@@ -392,7 +397,7 @@ const useStyles = makeStyles({
       content: '""',
       position: 'absolute',
       width: '30px',
-      height: '300px',
+      height: '600px',
       background: 'rgba(255, 255, 255, 0.2)',
       transform: 'rotate(30deg) translateY(-300px)',
       animation: '$shine 3s infinite',
@@ -604,7 +609,6 @@ const LimitedTimeOffer = () => {
         sx={{ width: '400px', height: '400px', bottom: '-150px', left: '-100px' }}
       />
       
-      <Container maxWidth="lg">
         <Typography variant="h2" className={classes.title}>
           Limited <span>Time Offer</span>
         </Typography>
@@ -637,7 +641,7 @@ const LimitedTimeOffer = () => {
                 />
                 
                 <Typography className={classes.limitedPrice}>
-                  Limited Time Price - INR <span className={classes.priceHighlight}>199</span> Only
+                  Limited Time Price - INR <span className={classes.priceHighlight}>199</span>
                 </Typography>
                 
                 <CountdownTimer />
@@ -675,7 +679,7 @@ const LimitedTimeOffer = () => {
               variant="contained" 
               className={classes.applyButton}
               onClick={() => {
-                navigate('/register');
+                navigate('/payment-under-construction');
                 window.scrollTo({ top: 0, behavior: 'smooth' }); // Ensure scroll to top
               }}
             >
@@ -683,7 +687,6 @@ const LimitedTimeOffer = () => {
             </Button>
           </Box>
         </Paper>
-      </Container>
     </Box>
   );
 };

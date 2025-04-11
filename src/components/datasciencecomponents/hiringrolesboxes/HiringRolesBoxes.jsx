@@ -1,42 +1,58 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Typography, Container } from '@mui/material';
+import { Box, Typography, Paper, Grid } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import AnalyticsIcon from '@mui/icons-material/Analytics';
+import PsychologyIcon from '@mui/icons-material/Psychology';
+import BarChartIcon from '@mui/icons-material/BarChart';
+import SmartToyIcon from '@mui/icons-material/SmartToy';
+import StorageIcon from '@mui/icons-material/Storage';
+import DataThresholdingIcon from '@mui/icons-material/DataThresholding';
 
 const useStyles = makeStyles({
   section: {
-    padding: '80px 0',
-    background: 'linear-gradient(to bottom, #f6f9fd, #ffffff)',
+    padding: '80px 40px',
+    background: 'linear-gradient(135deg, #f7faff 0%, #f0f6ff 100%)',
     position: 'relative',
     overflow: 'hidden',
+    '@media (max-width: 768px)': {
+      padding: '60px 20px',
+    },
   },
-  decorativeShape: {
+  decorativeCircle: {
     position: 'absolute',
-    width: '400px',
-    height: '400px',
     borderRadius: '50%',
-    background: 'radial-gradient(circle, rgba(42, 43, 106, 0.05) 0%, rgba(42, 43, 106, 0) 70%)',
     zIndex: 1,
   },
-  decorativeShapeTop: {
-    top: '-200px',
+  circle1: {
+    width: '300px',
+    height: '300px',
+    top: '-150px',
     right: '-100px',
+    background: 'radial-gradient(circle, rgba(42, 43, 106, 0.08) 0%, rgba(42, 43, 106, 0) 70%)',
   },
-  decorativeShapeBottom: {
-    bottom: '-200px',
-    left: '-100px',
-    background: 'radial-gradient(circle, rgba(255, 198, 20, 0.05) 0%, rgba(255, 198, 20, 0) 70%)',
+  circle2: {
+    width: '250px',
+    height: '250px',
+    bottom: '-120px',
+    left: '-80px',
+    background: 'radial-gradient(circle, rgba(255, 198, 20, 0.1) 0%, rgba(255, 198, 20, 0) 70%)',
+  },
+  contentWrapper: {
+    position: 'relative',
+    zIndex: 2,
+    maxWidth: '1360px',
+    margin: '0 auto',
   },
   titleContainer: {
     textAlign: 'center',
-    marginBottom: '60px',
+    marginBottom: '50px',
     position: 'relative',
-    zIndex: 2,
   },
   title: {
     fontSize: '2.5rem !important',
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
-    marginBottom: '20px !important',
+    marginBottom: '16px !important',
     '@media (max-width: 960px)': {
       fontSize: '2.2rem !important',
     },
@@ -49,111 +65,108 @@ const useStyles = makeStyles({
   },
   subtitle: {
     fontSize: '1.1rem !important',
-    color: '#666666 !important',
-    maxWidth: '900px',
+    color: '#555 !important',
+    maxWidth: '850px',
     margin: '0 auto !important',
     lineHeight: '1.8 !important',
     '@media (max-width: 960px)': {
       fontSize: '1rem !important',
-      padding: '0 20px',
+      maxWidth: '95%',
     },
     '@media (max-width: 600px)': {
       fontSize: '0.95rem !important',
     },
   },
-  highlight: {
-    fontWeight: 'bold !important',
-    color: '#2A2B6A !important',
-  },
-  rolesContainer: {
+  rolesWrapper: {
     display: 'flex',
-    flexWrap: 'wrap',
     justifyContent: 'center',
-    gap: '30px',
+    flexWrap: 'nowrap',
+    gap: '15px',
     width: '100%',
-    position: 'relative',
-    zIndex: 2,
+    overflowX: 'auto',
+    paddingBottom: '15px',
+    '&::-webkit-scrollbar': {
+      height: '6px',
+    },
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: 'rgba(42, 43, 106, 0.2)',
+      borderRadius: '10px',
+    },
+    '&::-webkit-scrollbar-track': {
+      backgroundColor: 'rgba(0, 0, 0, 0.05)',
+      borderRadius: '10px',
+    },
+    '@media (max-width: 1200px)': {
+      paddingBottom: '20px',
+    },
   },
   roleBox: {
-    width: '220px',
-    height: '220px',
+    width: '200px',
+    height: '180px',
+    flexShrink: 0,
+    borderRadius: '20px',
+    background: 'white',
+    boxShadow: '0 8px 25px rgba(0, 0, 0, 0.05)',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     padding: '20px',
-    borderRadius: '16px',
-    backgroundColor: 'white',
-    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.05)',
+    transform: 'translateY(0)',
     transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-    position: 'relative',
-    overflow: 'hidden',
     border: '1px solid rgba(0, 0, 0, 0.05)',
-    '&:hover': {
-      transform: 'translateY(-15px)',
-      boxShadow: '0 20px 40px rgba(0, 0, 0, 0.1)',
-      '& $iconContainer': {
-        transform: 'scale(1.1)',
-        backgroundColor: 'rgba(42, 43, 106, 0.9)',
-      },
-      '& $roleTitle': {
-        color: '#2A2B6A !important',
-      },
-    },
-    '@media (max-width: 960px)': {
-      width: '200px',
-      height: '200px',
+    '@media (max-width: 1200px)': {
+      width: '170px',
+      height: '170px',
     },
     '@media (max-width: 600px)': {
-      width: '160px',
-      height: '160px',
+      width: '150px',
+      height: '150px',
       padding: '15px',
     },
-    '@media (max-width: 480px)': {
-      width: '140px',
-      height: '140px',
-      padding: '10px',
+    '&:hover': {
+      transform: 'translateY(-10px)',
+      boxShadow: '0 15px 35px rgba(0, 0, 0, 0.1)',
+      '& $iconContainer': {
+        transform: 'scale(1.05)',
+      },
     },
   },
   iconContainer: {
-    width: '70px',
-    height: '70px',
+    width: '60px',
+    height: '60px',
     borderRadius: '50%',
-    backgroundColor: '#2A2B6A',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: '20px',
-    transition: 'all 0.4s ease',
-    boxShadow: '0 5px 15px rgba(42, 43, 106, 0.3)',
+    marginBottom: '12px',
+    backgroundImage: 'linear-gradient(135deg, #2A2B6A 0%, #3f4098 100%)',
+    color: 'white',
+    transition: 'all 0.3s ease',
+    boxShadow: '0 5px 15px rgba(42, 43, 106, 0.2)',
     '@media (max-width: 600px)': {
-      width: '60px',
-      height: '60px',
-      marginBottom: '15px',
-    },
-    '@media (max-width: 480px)': {
       width: '50px',
       height: '50px',
-      marginBottom: '10px',
-    },
-  },
-  iconText: {
-    fontSize: '2rem !important',
-    color: 'white',
-    '@media (max-width: 600px)': {
-      fontSize: '1.7rem !important',
     },
     '@media (max-width: 480px)': {
-      fontSize: '1.4rem !important',
+      width: '45px',
+      height: '45px',
+    },
+  },
+  roleIcon: {
+    fontSize: '28px !important',
+    '@media (max-width: 600px)': {
+      fontSize: '24px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '20px !important',
     },
   },
   roleTitle: {
     fontSize: '1.1rem !important',
     fontWeight: 'bold !important',
-    color: '#333 !important',
+    color: '#2A2B6A !important',
     textAlign: 'center !important',
-    lineHeight: '1.3 !important',
-    transition: 'color 0.3s ease',
     '@media (max-width: 600px)': {
       fontSize: '1rem !important',
     },
@@ -161,27 +174,10 @@ const useStyles = makeStyles({
       fontSize: '0.9rem !important',
     },
   },
-  decorativeDots: {
-    position: 'absolute',
-    width: '200px',
-    height: '200px',
-    backgroundImage: 'radial-gradient(#2A2B6A 2px, transparent 2px)',
-    backgroundSize: '20px 20px',
-    opacity: 0.1,
-    zIndex: 1,
-  },
-  dotsTopRight: {
-    top: '10%',
-    right: '5%',
-  },
-  dotsBottomLeft: {
-    bottom: '10%',
-    left: '5%',
-  },
   fadeIn: {
     opacity: 0,
-    transform: 'translateY(20px)',
-    transition: 'opacity 0.5s ease, transform 0.5s ease',
+    transform: 'translateY(30px)',
+    transition: 'opacity 0.6s ease, transform 0.6s ease',
   },
   visible: {
     opacity: 1,
@@ -221,43 +217,41 @@ const DataScienceRolesBoxes = () => {
     return () => elements.forEach(el => observer.unobserve(el));
   }, [visibleItems]);
 
-  // Data for roles - updated based on the image
+  // Data for roles with Material-UI icons
   const roles = [
     {
       title: 'Data Analyst',
-      icon: '📊',
+      icon: <AnalyticsIcon className={classes.roleIcon} />,
     },
     {
       title: 'Machine Learning Intern',
-      icon: '🧠',
+      icon: <PsychologyIcon className={classes.roleIcon} />,
     },
     {
       title: 'Business Analyst',
-      icon: '📈',
+      icon: <BarChartIcon className={classes.roleIcon} />,
     },
     {
       title: 'AI Associate',
-      icon: '🤖',
+      icon: <SmartToyIcon className={classes.roleIcon} />,
     },
     {
       title: 'Data Engineer (Entry Level)',
-      icon: '⚙️',
+      icon: <StorageIcon className={classes.roleIcon} />,
     },
     {
       title: 'Data Science Intern',
-      icon: '📊',
+      icon: <DataThresholdingIcon className={classes.roleIcon} />,
     }
   ];
 
   return (
     <Box className={classes.section}>
       {/* Decorative elements */}
-      <Box className={`${classes.decorativeShape} ${classes.decorativeShapeTop}`} />
-      <Box className={`${classes.decorativeShape} ${classes.decorativeShapeBottom}`} />
-      <Box className={`${classes.decorativeDots} ${classes.dotsTopRight}`} />
-      <Box className={`${classes.decorativeDots} ${classes.dotsBottomLeft}`} />
+      <Box className={`${classes.decorativeCircle} ${classes.circle1}`} />
+      <Box className={`${classes.decorativeCircle} ${classes.circle2}`} />
 
-      <Container maxWidth="lg">
+      <Box className={classes.contentWrapper}>
         <Box className={classes.titleContainer}>
           <Typography variant="h2" className={classes.title}>
             Get Trained For The Roles <span className={classes.highlightText}>Companies Are Hiring For!</span>
@@ -269,7 +263,7 @@ const DataScienceRolesBoxes = () => {
           </Typography>
         </Box>
 
-        <Box className={classes.rolesContainer}>
+        <Box className={classes.rolesWrapper}>
           {roles.map((role, index) => (
             <Box
               key={index}
@@ -279,7 +273,7 @@ const DataScienceRolesBoxes = () => {
               data-index={index}
             >
               <Box className={classes.iconContainer}>
-                <Typography className={classes.iconText}>{role.icon}</Typography>
+                {role.icon}
               </Box>
               <Typography className={classes.roleTitle}>
                 {role.title}
@@ -287,9 +281,9 @@ const DataScienceRolesBoxes = () => {
             </Box>
           ))}
         </Box>
-      </Container>
+      </Box>
     </Box>
   );
-};
+}
 
 export default DataScienceRolesBoxes;

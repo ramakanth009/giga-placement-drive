@@ -233,7 +233,7 @@ const Navbar = () => {
                 variant="contained" 
                 className={classes.signUpButton} 
                 component={Link} 
-                to="/register"
+                to="/payment-under-construction"
                 onClick={scrollToTop}
               >
                 Apply Now

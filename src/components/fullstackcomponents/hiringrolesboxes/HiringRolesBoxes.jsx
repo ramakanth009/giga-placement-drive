@@ -1,13 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Typography, Container } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import CodeIcon from '@mui/icons-material/Code';
+import StorageIcon from '@mui/icons-material/Storage';
+import DeveloperModeIcon from '@mui/icons-material/DeveloperMode';
+import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
+import WebIcon from '@mui/icons-material/Web';
 
 const useStyles = makeStyles({
   section: {
-    padding: '80px 0',
+    padding: '80px 40px',
     background: 'linear-gradient(to bottom, #f6f9fd, #ffffff)',
     position: 'relative',
     overflow: 'hidden',
+    '@media (max-width: 768px)': {
+      padding: '60px 20px',
+    },
   },
   decorativeShape: {
     position: 'absolute',
@@ -26,17 +34,22 @@ const useStyles = makeStyles({
     left: '-100px',
     background: 'radial-gradient(circle, rgba(255, 198, 20, 0.05) 0%, rgba(255, 198, 20, 0) 70%)',
   },
-  titleContainer: {
-    textAlign: 'center',
-    marginBottom: '60px',
+  contentWrapper: {
     position: 'relative',
     zIndex: 2,
+    maxWidth: '1360px',
+    margin: '0 auto',
+  },
+  titleContainer: {
+    textAlign: 'center',
+    marginBottom: '50px',
+    position: 'relative',
   },
   title: {
     fontSize: '2.5rem !important',
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
-    marginBottom: '20px !important',
+    marginBottom: '16px !important',
     '@media (max-width: 960px)': {
       fontSize: '2.2rem !important',
     },
@@ -50,12 +63,12 @@ const useStyles = makeStyles({
   subtitle: {
     fontSize: '1.1rem !important',
     color: '#666666 !important',
-    maxWidth: '900px',
+    maxWidth: '850px',
     margin: '0 auto !important',
     lineHeight: '1.8 !important',
     '@media (max-width: 960px)': {
       fontSize: '1rem !important',
-      padding: '0 20px',
+      maxWidth: '95%',
     },
     '@media (max-width: 600px)': {
       fontSize: '0.95rem !important',
@@ -65,59 +78,64 @@ const useStyles = makeStyles({
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
   },
-  rolesContainer: {
+  rolesWrapper: {
     display: 'flex',
-    flexWrap: 'wrap',
     justifyContent: 'center',
-    gap: '30px',
+    flexWrap: 'nowrap',
+    gap: '15px',
     width: '100%',
-    position: 'relative',
-    zIndex: 2,
+    overflowX: 'auto',
+    paddingBottom: '15px',
+    '&::-webkit-scrollbar': {
+      height: '6px',
+    },
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: 'rgba(42, 43, 106, 0.2)',
+      borderRadius: '10px',
+    },
+    '&::-webkit-scrollbar-track': {
+      backgroundColor: 'rgba(0, 0, 0, 0.05)',
+      borderRadius: '10px',
+    },
+    '@media (max-width: 1200px)': {
+      paddingBottom: '20px',
+    },
   },
   roleBox: {
-    width: '220px',
-    height: '220px',
+    width: '200px',
+    height: '180px',
+    flexShrink: 0,
+    borderRadius: '20px',
+    background: 'white',
+    boxShadow: '0 8px 25px rgba(0, 0, 0, 0.05)',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     padding: '20px',
-    borderRadius: '16px',
-    backgroundColor: 'white',
-    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.05)',
+    transform: 'translateY(0)',
     transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-    position: 'relative',
-    overflow: 'hidden',
     border: '1px solid rgba(0, 0, 0, 0.05)',
-    '&:hover': {
-      transform: 'translateY(-15px)',
-      boxShadow: '0 20px 40px rgba(0, 0, 0, 0.1)',
-      '& $iconContainer': {
-        transform: 'scale(1.1)',
-        backgroundColor: 'rgba(42, 43, 106, 0.9)',
-      },
-      '& $roleTitle': {
-        color: '#2A2B6A !important',
-      },
-    },
-    '@media (max-width: 960px)': {
-      width: '200px',
-      height: '200px',
+    '@media (max-width: 1200px)': {
+      width: '170px',
+      height: '170px',
     },
     '@media (max-width: 600px)': {
-      width: '160px',
-      height: '160px',
+      width: '150px',
+      height: '150px',
       padding: '15px',
     },
-    '@media (max-width: 480px)': {
-      width: '140px',
-      height: '140px',
-      padding: '10px',
+    '&:hover': {
+      transform: 'translateY(-10px)',
+      boxShadow: '0 15px 35px rgba(0, 0, 0, 0.1)',
+      '& $iconContainer': {
+        transform: 'scale(1.05)',
+      },
     },
   },
   iconContainer: {
-    width: '70px',
-    height: '70px',
+    width: '60px',
+    height: '60px',
     borderRadius: '50%',
     backgroundColor: '#2A2B6A',
     display: 'flex',
@@ -127,24 +145,24 @@ const useStyles = makeStyles({
     transition: 'all 0.4s ease',
     boxShadow: '0 5px 15px rgba(42, 43, 106, 0.3)',
     '@media (max-width: 600px)': {
-      width: '60px',
-      height: '60px',
+      width: '50px',
+      height: '50px',
       marginBottom: '15px',
     },
     '@media (max-width: 480px)': {
-      width: '50px',
-      height: '50px',
+      width: '45px',
+      height: '45px',
       marginBottom: '10px',
     },
   },
-  iconText: {
-    fontSize: '2rem !important',
+  roleIcon: {
+    fontSize: '28px !important',
     color: 'white',
     '@media (max-width: 600px)': {
-      fontSize: '1.7rem !important',
+      fontSize: '24px !important',
     },
     '@media (max-width: 480px)': {
-      fontSize: '1.4rem !important',
+      fontSize: '20px !important',
     },
   },
   roleTitle: {
@@ -180,8 +198,8 @@ const useStyles = makeStyles({
   },
   fadeIn: {
     opacity: 0,
-    transform: 'translateY(20px)',
-    transition: 'opacity 0.5s ease, transform 0.5s ease',
+    transform: 'translateY(30px)',
+    transition: 'opacity 0.6s ease, transform 0.6s ease',
   },
   visible: {
     opacity: 1,
@@ -221,31 +239,28 @@ const HiringRolesBoxes = () => {
     return () => elements.forEach(el => observer.unobserve(el));
   }, [visibleItems]);
 
-  // Data for roles
+  // Data for roles with Material-UI icons
   const roles = [
-    
     {
       title: 'Frontend Developer',
-      icon: '🖥️',
+      icon: <WebIcon className={classes.roleIcon} />,
     },
     {
       title: 'Backend Developer',
-      icon: '⚙️',
+      icon: <StorageIcon className={classes.roleIcon} />,
     },
     {
       title: 'Full Stack Developer',
-      icon: '💻',
+      icon: <CodeIcon className={classes.roleIcon} />,
     },
     {
       title: 'Node.js Developer',
-      icon: '📱',
+      icon: <DeveloperModeIcon className={classes.roleIcon} />,
     },
     {
       title: 'React Developer',
-      icon: '⚛️',
+      icon: <PhoneIphoneIcon className={classes.roleIcon} />,
     },
-   
-    
   ];
 
   return (
@@ -256,7 +271,7 @@ const HiringRolesBoxes = () => {
       <Box className={`${classes.decorativeDots} ${classes.dotsTopRight}`} />
       <Box className={`${classes.decorativeDots} ${classes.dotsBottomLeft}`} />
 
-      <Container maxWidth="lg">
+      <Box className={classes.contentWrapper}>
         <Box className={classes.titleContainer}>
           <Typography variant="h2" className={classes.title}>
             Get Trained For The Roles <span className={classes.highlightText}>Companies Are Hiring For!</span>
@@ -268,7 +283,7 @@ const HiringRolesBoxes = () => {
           </Typography>
         </Box>
 
-        <Box className={classes.rolesContainer}>
+        <Box className={classes.rolesWrapper}>
           {roles.map((role, index) => (
             <Box
               key={index}
@@ -278,7 +293,7 @@ const HiringRolesBoxes = () => {
               data-index={index}
             >
               <Box className={classes.iconContainer}>
-                <Typography className={classes.iconText}>{role.icon}</Typography>
+                {role.icon}
               </Box>
               <Typography className={classes.roleTitle}>
                 {role.title}
@@ -286,7 +301,7 @@ const HiringRolesBoxes = () => {
             </Box>
           ))}
         </Box>
-      </Container>
+      </Box>
     </Box>
   );
 };

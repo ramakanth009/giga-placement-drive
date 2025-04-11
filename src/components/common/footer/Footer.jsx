@@ -1,6 +1,11 @@
-// src/components/footer/Footer.jsx
+// src/components/common/footer/EnhancedFooter.jsx
 import React from "react";
-import { Box, Container, Typography, Link as MuiLink } from "@mui/material";
+import { 
+  Box, 
+  Typography, 
+  Container, 
+  Link as MuiLink 
+} from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -11,9 +16,17 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import HomeIcon from "@mui/icons-material/Home";
+import InfoIcon from "@mui/icons-material/Info";
+import ContactsIcon from "@mui/icons-material/Contacts";
+import PrivacyTipIcon from "@mui/icons-material/PrivacyTip";
+import GavelIcon from "@mui/icons-material/Gavel";
+import { ReactComponent as CodeIcon } from "../../../assets/fullstackfoot.svg";
+import { ReactComponent as DataObjectIcon } from "../../../assets/datasciencefoot.svg";
+import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import { ReactComponent as GigaLogo } from "../../../assets/GIGAVERSITY_LOGO.svg";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
-import { scrollToTop } from "../../../utils/scrollUtils";
+import { scrollToTop } from '../../../utils/scrollUtils';
 import { ReactComponent as CBottom } from "../../../assets/cbottom.svg";
 import { ReactComponent as CTop } from "../../../assets/ctop.svg";
 
@@ -132,6 +145,12 @@ const useStyles = makeStyles({
   },
   linkItem: {
     marginBottom: "15px",
+    display: "flex",
+    alignItems: "center",
+    transition: "transform 0.3s ease",
+    "&:hover": {
+      transform: "translateX(5px)",
+    },
     "@media (max-width: 600px)": {
       marginBottom: "12px",
     },
@@ -141,6 +160,7 @@ const useStyles = makeStyles({
     textDecoration: "none !important",
     fontSize: "1rem",
     transition: "color 0.3s ease",
+    marginLeft: "10px",
     "&:hover": {
       color: "#FFC614 !important",
       textDecoration: "underline !important",
@@ -149,11 +169,18 @@ const useStyles = makeStyles({
       fontSize: "0.95rem",
     },
   },
+  linkIcon: {
+    color: "#FFC614",
+    fontSize: "18px",
+    minWidth: "24px",
+    marginRight:"5px"
+  },
   programLink: {
     color: "#ffffff !important",
     textDecoration: "none !important",
     fontSize: "1rem",
     transition: "color 0.3s ease",
+    marginLeft: "10px",
     "&:hover": {
       color: "#FFC614 !important",
       textDecoration: "underline !important",
@@ -325,6 +352,7 @@ const Footer = () => {
               </Typography>
               <ul className={classes.linksList}>
                 <li className={classes.linkItem}>
+                  <HomeIcon className={classes.linkIcon} />
                   <MuiLink
                     component={Link}
                     to="/"
@@ -335,6 +363,7 @@ const Footer = () => {
                   </MuiLink>
                 </li>
                 <li className={classes.linkItem}>
+                  <InfoIcon className={classes.linkIcon} />
                   <MuiLink
                     component={Link}
                     to="/about"
@@ -345,6 +374,7 @@ const Footer = () => {
                   </MuiLink>
                 </li>
                 <li className={classes.linkItem}>
+                  <ContactsIcon className={classes.linkIcon} />
                   <MuiLink
                     component={Link}
                     to="/contact"
@@ -355,6 +385,7 @@ const Footer = () => {
                   </MuiLink>
                 </li>
                 <li className={classes.linkItem}>
+                  <PrivacyTipIcon className={classes.linkIcon} />
                   <MuiLink
                     component={Link}
                     to="/privacy-policy"
@@ -365,6 +396,7 @@ const Footer = () => {
                   </MuiLink>
                 </li>
                 <li className={classes.linkItem}>
+                  <GavelIcon className={classes.linkIcon} />
                   <MuiLink
                     component={Link}
                     to="/terms-and-conditions"
@@ -382,6 +414,7 @@ const Footer = () => {
               <Typography className={classes.sectionTitle}>Programs</Typography>
               <ul className={classes.linksList}>
                 <li className={classes.linkItem}>
+                  <CodeIcon className={classes.linkIcon} />
                   <MuiLink
                     component={Link}
                     to="/fullstack"
@@ -393,6 +426,7 @@ const Footer = () => {
                 </li>
 
                 <li className={classes.linkItem}>
+                  <DataObjectIcon className={classes.linkIcon} />
                   <MuiLink
                     component={Link}
                     to="/datascience"
@@ -403,6 +437,7 @@ const Footer = () => {
                   </MuiLink>
                 </li>
                 <li className={classes.linkItem}>
+                  <BusinessCenterIcon className={classes.linkIcon} />
                   <MuiLink
                     component={Link}
                     // to="/programs/internship"

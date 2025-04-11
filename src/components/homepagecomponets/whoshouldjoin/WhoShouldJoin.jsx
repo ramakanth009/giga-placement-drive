@@ -115,10 +115,15 @@ const useStyles = makeStyles({
       width: '50px',
       height: '50px',
       color: '#2A2B6A',
+      stroke: '#2A2B6A',
       transition: 'all 0.3s ease',
     },
-    "&:hover svg": {
-      color: '#FFC614',
+    '&:hover svg': {
+      color: '#FFFFFF',
+      stroke: '#FFFFFF',
+    },  
+    "&:hover":{
+      background:"#2A2B6A !important",
     },
     "@media (max-width: 600px)": {
       width: '80px',

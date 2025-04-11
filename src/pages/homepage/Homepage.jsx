@@ -51,8 +51,6 @@ const Homepage = () => {
 
         <FullStackTrainingPlan />
 
-        <DataScienceTrainingPlan />
-
         <GigaversityAdvantage />
 
         <HowItWorks />

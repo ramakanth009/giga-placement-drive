@@ -65,6 +65,7 @@ const useStyles = makeStyles({
     fontSize: "3rem !important",
     fontWeight: "bold !important",
     marginBottom: "16px !important",
+    color:"#ffffff !important",
     "& span": {
       color: "#FFC614 !important",
     },
@@ -73,6 +74,7 @@ const useStyles = makeStyles({
     fontSize: "1.2rem !important",
     maxWidth: "800px",
     fontWeight: "400 !important",
+    color:"#ffffff !important",
     opacity: "0.9",
   },
   contentSection: {

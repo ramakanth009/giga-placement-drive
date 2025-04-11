@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Box, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
@@ -9,9 +9,59 @@ const useStyles = makeStyles({
     maxWidth: '1400px',
     margin: '0 auto',
   },
+  '@keyframes fadeIn': {
+    '0%': {
+      opacity: 0,
+    },
+    '100%': {
+      opacity: 1,
+    },
+  },
+  '@keyframes slideDown': {
+    '0%': {
+      opacity: 0,
+      transform: 'translateY(-20px)',
+    },
+    '100%': {
+      opacity: 1,
+      transform: 'translateY(0)',
+    },
+  },
+  '@keyframes slideInLeft': {
+    '0%': {
+      opacity: 0,
+      transform: 'translateX(-30px)',
+    },
+    '100%': {
+      opacity: 1,
+      transform: 'translateX(0)',
+    },
+  },
+  '@keyframes slideInRight': {
+    '0%': {
+      opacity: 0,
+      transform: 'translateX(30px)',
+    },
+    '100%': {
+      opacity: 1,
+      transform: 'translateX(0)',
+    },
+  },
+  '@keyframes slideUp': {
+    '0%': {
+      opacity: 0,
+      transform: 'translateY(20px)',
+    },
+    '100%': {
+      opacity: 1,
+      transform: 'translateY(0)',
+    },
+  },
+
   titleContainer: {
     textAlign: 'center',
     marginBottom: '40px',
+    animation: '$slideDown 0.8s ease-out',
   },
   title: {
     fontSize: '2rem !important',
@@ -22,11 +72,22 @@ const useStyles = makeStyles({
       color: '#FFC614 !important',
     },
   },
+  contentContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    opacity: 0,
+    transform: 'translateY(20px)',
+    animation: '$fadeIn 0.8s ease-out forwards, $slideUp 0.8s ease-out forwards',
+    '@media (max-width: 960px)': {
+      flexDirection: 'column',
+    },
+  },
   weekItem: {
     display: 'flex',
     alignItems: 'center',
     marginBottom: '14px',
-    cursor: 'pointer',
+    opacity: 0,
+    transform: 'translateX(-20px)',
     transition: 'all 0.3s ease',
     '&:hover': {
       transform: 'translateX(5px)',
@@ -60,6 +121,9 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     marginBottom: '20px',
+    opacity: 0,
+    transform: 'translateX(20px)',
+    transition: 'all 0.3s ease-out',
   },
   skillIcon: {
     color: '#FFC614',
@@ -70,13 +134,6 @@ const useStyles = makeStyles({
     fontSize: '1rem',
     color: '#555',
     fontWeight: '500',
-  },
-  contentContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    '@media (max-width: 960px)': {
-      flexDirection: 'column',
-    },
   },
   weeksColumn: {
     flex: '0 0 50%',
@@ -89,7 +146,6 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    // alignItems: 'center',
     flex: '0 0 50%',
     paddingLeft: '40px',
     '@media (max-width: 960px)': {
@@ -102,9 +158,35 @@ const useStyles = makeStyles({
 const Curriculum = ({ title, weeks, skills }) => {
   const classes = useStyles();
   const [activeWeek, setActiveWeek] = React.useState(0);
+  const [mounted, setMounted] = React.useState(false);
+  const contentRef = useRef(null);
 
-  const handleWeekClick = (index) => {
+  useEffect(() => {
+    setMounted(true);
+    const timer = setTimeout(() => {
+      const weekItems = document.querySelectorAll(`.${classes.weekItem}`);
+      weekItems.forEach((item, index) => {
+        setTimeout(() => {
+          item.style.opacity = '1';
+          item.style.transform = 'translateX(0)';
+        }, index * 100);
+      });
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleWeekHover = (index) => {
     setActiveWeek(index);
+    const skillItems = document.querySelectorAll(`.${classes.skillItem}`);
+    skillItems.forEach((item, idx) => {
+      item.style.opacity = '0';
+      item.style.transform = 'translateX(20px)';
+      setTimeout(() => {
+        item.style.opacity = '1';
+        item.style.transform = 'translateX(0)';
+      }, idx * 100);
+    });
   };
 
   return (
@@ -115,14 +197,14 @@ const Curriculum = ({ title, weeks, skills }) => {
         </Typography>
       </Box>
 
-      <Box className={classes.contentContainer}>
+      <Box className={classes.contentContainer} ref={contentRef}>
         {/* Weeks Column */}
         <Box className={classes.weeksColumn}>
           {weeks.map((week, index) => (
             <Box 
               key={index} 
               className={classes.weekItem} 
-              onClick={() => handleWeekClick(index)}
+              onMouseEnter={() => handleWeekHover(index)}
             >
               <Box 
                 className={`${classes.weekBox} ${
@@ -138,7 +220,10 @@ const Curriculum = ({ title, weeks, skills }) => {
         {/* Skills Column */}
         <Box className={classes.skillsColumn}>
           {skills[activeWeek].map((skill, index) => (
-            <Box key={index} className={classes.skillItem}>
+            <Box 
+              key={index} 
+              className={classes.skillItem}
+            >
               <Typography variant="body1" className={classes.skillText} sx={{ display: 'flex', alignItems: 'center' }}>
                 <span style={{ 
                   color: '#FFC614', 
