@@ -1,225 +1,242 @@
+// src/components/common/importancesection/ImportanceSection.jsx
 import React from 'react';
 import { Box, Typography, Container } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles({
-  section: {
-    padding: '60px 0',
-    background: 'linear-gradient(to bottom, #f0f6ff, #ffffff)',
+  wrapper: {
     position: 'relative',
+    width: '100%',
+    padding: '40px 0',
     overflow: 'hidden',
+    background: props => props.background || 'linear-gradient(to bottom, #f7f9ff 0%, #ffffff 100%)',
   },
-  titleContainer: {
-    textAlign: 'center',
-    marginBottom: '50px',
+  // Custom background element
+  backgroundGradient: {
+    position: 'absolute',
+    width: '767px',
+    height: '566px',
+    top: '-100px',
+    left: '-150px',
+    background: props => props.gradientColor || '#BCE1FF',
+    borderRadius: '50%',
+    opacity: '0.3',
+    filter: 'blur(100px)',
+    zIndex: '-1',
   },
-  mainTitle: {
-    fontSize: '2.5rem !important',
+  title: {
+    fontSize: "2.5rem !important",
     fontWeight: 'bold !important',
-    color: '#2A2B6A !important',
-    marginBottom: '10px !important',
-    '@media (max-width: 960px)': {
-      fontSize: '2.2rem !important',
+    textAlign: 'center',
+    marginBottom: '12px !important',
+    color: "#2A2B6A !important",
+    position: 'relative',
+    zIndex: '2',
+    '& span': {
+      color: '#FFC614 !important',
     },
-    '@media (max-width: 600px)': {
-      fontSize: '1.8rem !important',
+    "@media (max-width: 960px)": {
+      fontSize: "2.2rem !important",
     },
-  },
-  highlightText: {
-    color: '#FFC614 !important',
+    "@media (max-width: 600px)": {
+      fontSize: "1.8rem !important",
+    },
   },
   subtitle: {
-    fontSize: '1.2rem !important',
-    color: '#666666 !important',
-    maxWidth: '900px',
-    margin: '0 auto !important',
-    lineHeight: '1.8 !important',
-    '@media (max-width: 960px)': {
-      fontSize: '1.1rem !important',
-      padding: '0 20px',
-    },
-    '@media (max-width: 600px)': {
-      fontSize: '1rem !important',
-    },
-  },
-  boxesContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    gap: '30px',
-    marginTop: '30px',
-    '@media (max-width: 960px)': {
-      flexWrap: 'wrap',
-    },
-  },
-  advantageBox: {
+    fontSize: '1.1rem !important',
+    textAlign: 'center',
+    color: '#555 !important',
+    marginBottom: '36px !important',
+    maxWidth: '90%',
+    margin: '0 auto 36px auto !important',
     position: 'relative',
-    padding: '30px 20px',
-    borderRadius: '12px',
-    boxShadow: '0 5px 15px rgba(0, 0, 0, 0.05)',
-    overflow: 'hidden',
-    background: 'rgba(255, 255, 255, 0.95)',
-    backdropFilter: 'blur(10px)',
-    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-    flex: '1',
-    maxWidth: '23%',
-    '@media (max-width: 1200px)': {
-      padding: '25px 15px',
+    zIndex: '2',
+    "@media (max-width: 960px)": {
+      fontSize: '1rem !important',
+      marginBottom: '30px !important',
     },
-    '@media (max-width: 960px)': {
-      maxWidth: '45%',
-      flex: '0 0 45%',
+    "@media (max-width: 600px)": {
+      fontSize: '0.95rem !important',
+      marginBottom: '24px !important',
+      maxWidth: '95%',
+    },
+  },
+  card: {
+    backgroundColor: '#fff',
+    borderRadius: '12px',
+    padding: '24px 20px',
+    height: '100%',
+    position: 'relative',
+    boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
+    display: 'flex',
+    flexDirection: 'column',
+    width: '100%',
+    zIndex: '1',
+    transform: 'translateY(0)',
+    transition: 'all 0.3s ease-out',
+    '&:hover': {
+      transform: 'translateY(-8px)',
+      boxShadow: '0 12px 24px rgba(0,0,0,0.15)',
+      '& $iconContainer': {
+        transform: 'scale(1.05)',
+      }
+    },
+    "@media (max-width: 960px)": {
+      height: '100%',
+      padding: '20px 16px',
+    },
+    "@media (max-width: 600px)": {
+      padding: '18px 14px',
+    },
+  },
+  cardsContainer: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    marginBottom: '40px',
+    width: '100%',
+    padding: '0 24px',
+    gap: '30px',
+    boxSizing: 'border-box',
+    position: 'relative',
+    zIndex: '1',
+    "@media (max-width: 1200px)": {
+      gap: '25px',
+    },
+    "@media (max-width: 960px)": {
+      gap: '20px',
+      padding: '0 15px',
+    },
+    "@media (max-width: 600px)": {
+      gap: '15px',
+      padding: '0 10px',
+    },
+  },
+  cardWrapper: {
+    width: '23%',
+    '@media (max-width: 1200px)': {
+      width: '46%',
     },
     '@media (max-width: 600px)': {
-      maxWidth: '100%',
-      flex: '0 0 100%',
-    },
-    '&:hover': {
-      transform: 'translateY(-5px)',
-      boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
-    },
+      width: '100%',
+      maxWidth: '350px',
+    }
   },
-  numberCircle: {
-    width: '60px',
-    height: '60px',
-    borderRadius: '50%',
+  iconContainer: {
+    width: '50px',
+    height: '50px',
+    borderRadius: '10px',
     display: 'flex',
-    justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: '20px',
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: '1.5rem',
-    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+    justifyContent: 'center',
+    marginBottom: '18px',
+    transition: 'transform 0.4s ease',
+    "@media (max-width: 600px)": {
+      width: '45px',
+      height: '45px',
+      marginBottom: '14px',
+    },
   },
-  circle1: {
-    background: 'linear-gradient(135deg, #e74c3c, #c0392b)',
-  },
-  circle2: {
-    background: 'linear-gradient(135deg, #2ecc71, #27ae60)',
-  },
-  circle3: {
-    background: 'linear-gradient(135deg, #3498db, #2980b9)',
-  },
-  circle4: {
-    background: 'linear-gradient(135deg, #f39c12, #d35400)',
-  },
-  purpleCircle: {
-    background: 'linear-gradient(135deg, #9b59b6, #8e44ad)',
-  },
-  pinkCircle: {
-    background: 'linear-gradient(135deg, #e84393, #d81b60)',
-  },
-  tealCircle: {
-    background: 'linear-gradient(135deg, #1abc9c, #16a085)',
-  },
-  indigoCircle: {
-    background: 'linear-gradient(135deg, #5352ed, #3742fa)',
-  },
-  boxTitle: {
-    fontSize: '1.25rem !important',
+  advantageTitle: {
+    fontSize: '1.2rem !important',
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
-    minHeight: '100px',
-    marginBottom: '10px !important',
-    textAlign: 'center',
-    '@media (max-width: 600px)': {
+    marginBottom: '8px !important',
+    minHeight: '30px !important',
+    "@media (max-width: 960px)": {
       fontSize: '1.1rem !important',
     },
+    "@media (max-width: 600px)": {
+      fontSize: '1rem !important',
+      minHeight: 'auto !important',
+    },
   },
-  boxText: {
-    minHeight: '90px',
+  advantageDescription: {
     fontSize: '0.95rem !important',
-    color: '#666666 !important',
-    lineHeight: '1.6 !important',
-    textAlign: 'center',
-    '@media (max-width: 600px)': {
+    color: '#555 !important',
+    lineHeight: '1.5 !important',
+    "@media (max-width: 600px)": {
       fontSize: '0.9rem !important',
     },
   },
-  decorativeCircle: {
+  headerContainer: {
+    position: 'relative',
+    marginBottom: '40px',
+    zIndex: '1',
+  },
+  decorCircle: {
     position: 'absolute',
     borderRadius: '50%',
-    background: 'rgba(255, 198, 20, 0.1)',
+    background: props => props.decorCircleColor || 'radial-gradient(circle, rgba(42, 43, 106, 0.05) 0%, rgba(42, 43, 106, 0) 70%)',
     zIndex: 0,
   },
-  circle: {
+  circle1: {
     width: '300px',
     height: '300px',
     top: '-150px',
-    left: '-150px',
+    right: '-50px',
   },
-  smallCircle: {
-    width: '200px',
-    height: '200px',
-    bottom: '-100px',
-    right: '-100px',
-    background: 'rgba(42, 43, 106, 0.05)',
+  circle2: {
+    width: '400px',
+    height: '400px',
+    bottom: '-150px',
+    left: '-100px',
+    background: 'radial-gradient(circle, rgba(255, 198, 20, 0.08) 0%, rgba(255, 198, 20, 0) 70%)',
   },
 });
 
-const getCircleClass = (classes, index, colorTheme) => {
-  if (colorTheme === 'datascience') {
-    switch (index % 4) {
-      case 0: return classes.purpleCircle;
-      case 1: return classes.tealCircle;
-      case 2: return classes.indigoCircle;
-      case 3: return classes.pinkCircle;
-      default: return classes.purpleCircle;
-    }
-  } else {
-    // Default fullstack colors
-    switch (index % 4) {
-      case 0: return classes.circle1;
-      case 1: return classes.circle2;
-      case 2: return classes.circle3;
-      case 3: return classes.circle4;
-      default: return classes.circle1;
-    }
-  }
-};
-
-const ImportanceSection = ({ 
-  mainTitle, 
-  highlightText, 
-  subtitle, 
+const ImportanceSection = ({
+  title,
+  highlightText,
+  subtitle,
   advantages,
-  colorTheme = 'fullstack', // 'fullstack' or 'datascience'
-  bgGradient 
+  background,
+  gradientColor,
+  decorCircleColor
 }) => {
-  const classes = useStyles();
-  
+  const styleProps = { background, gradientColor, decorCircleColor };
+  const classes = useStyles(styleProps);
+
   return (
-    <Box className={classes.section} sx={{ background: bgGradient || 'linear-gradient(to bottom, #f0f6ff, #ffffff)' }}>
-      {/* Decorative elements */}
-      <Box className={`${classes.decorativeCircle} ${classes.circle}`} />
-      <Box className={`${classes.decorativeCircle} ${classes.smallCircle}`} />
+    <Box className={classes.wrapper}>
+      {/* Custom background gradient on left side */}
+      <Box className={classes.backgroundGradient} />
+      
+      {/* Background circles */}
+      <Box className={`${classes.decorCircle} ${classes.circle1}`} />
+      <Box className={`${classes.decorCircle} ${classes.circle2}`} />
 
-      <Container maxWidth="lg">
-        <Box className={classes.titleContainer}>
-          <Typography variant="h2" className={classes.mainTitle}>
-            {mainTitle} <span className={classes.highlightText}>{highlightText}</span>
-          </Typography>
-          <Typography variant="body1" className={classes.subtitle}>
-            {subtitle}
-          </Typography>
-        </Box>
+      <Box className={classes.headerContainer}>
+        <Typography variant="h2" className={classes.title}>
+          {title} <span>{highlightText}</span>
+        </Typography>
+        <Typography variant="body1" className={classes.subtitle}>
+          {subtitle}
+        </Typography>
+      </Box>
 
-        <Box className={classes.boxesContainer}>
-          {advantages.map((advantage, index) => (
-            <Box key={advantage.id} className={classes.advantageBox}>
-              <Box className={`${classes.numberCircle} ${getCircleClass(classes, index, colorTheme)}`}>
-                {advantage.id}
+      <Box className={classes.cardsContainer}>
+        {advantages.map((advantage, index) => (
+          <Box className={classes.cardWrapper} key={index}>
+            <Box className={classes.card}>
+              <Box 
+                className={classes.iconContainer} 
+                sx={{ backgroundColor: `${advantage.color}20` }}
+              >
+                <Box sx={{ color: advantage.color }}>
+                  {advantage.icon}
+                </Box>
               </Box>
-              <Typography variant="h6" className={classes.boxTitle}>
+              <Typography className={classes.advantageTitle}>
                 {advantage.title}
               </Typography>
-              <Typography variant="body2" className={classes.boxText}>
+              <Typography className={classes.advantageDescription}>
                 {advantage.description}
               </Typography>
             </Box>
-          ))}
-        </Box>
-      </Container>
+          </Box>
+        ))}
+      </Box>
     </Box>
   );
 };
