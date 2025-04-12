@@ -13,9 +13,10 @@ import BubbleChartIcon from '@mui/icons-material/BubbleChart';
 import DataObjectIcon from '@mui/icons-material/DataObject';
 import MemoryIcon from '@mui/icons-material/Memory';
 import WorkIcon from '@mui/icons-material/Work';
-import StarIcon from '@mui/icons-material/Star';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import VerifiedIcon from '@mui/icons-material/Verified';
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+import SchoolIcon from '@mui/icons-material/School';
 
 const useStyles = makeStyles({
   section: {
@@ -243,16 +244,20 @@ const useStyles = makeStyles({
   },
   rolesGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
-    gap: '20px',
+    gridTemplateColumns: 'repeat(5, 1fr)',
+    gap: '15px',
     width: '100%',
-    "@media (max-width: 768px)": {
-      gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
+    "@media (max-width: 1100px)": {
+      gridTemplateColumns: 'repeat(3, 1fr)',
       gap: '15px',
     },
-    "@media (max-width: 480px)": {
-      gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))',
+    "@media (max-width: 768px)": {
+      gridTemplateColumns: 'repeat(2, 1fr)',
       gap: '12px',
+    },
+    "@media (max-width: 480px)": {
+      gridTemplateColumns: 'repeat(1, 1fr)',
+      gap: '10px',
     },
   },
   roleCard: {
@@ -260,15 +265,13 @@ const useStyles = makeStyles({
     borderRadius: '12px',
     padding: '15px',
     display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    height: '66px',
-    transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
-    cursor: 'pointer',
-    boxShadow: '0 8px 15px rgba(0, 0, 0, 0.1)',
+    flexDirection: 'column',
     position: 'relative',
-    overflow: 'hidden',
+    boxShadow: '0 8px 15px rgba(0, 0, 0, 0.1)',
     border: '1px solid rgba(255, 255, 255, 0.05)',
+    transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
+    overflow: 'hidden',
+    // Removed fixed height to allow content to determine height
     '&:before': {
       content: '""',
       position: 'absolute',
@@ -289,44 +292,78 @@ const useStyles = makeStyles({
         opacity: 1,
       },
       '& $roleIcon': {
-        transform: 'scale(1.2)',
+        transform: 'scale(1.1)',
         color: '#FFC614',
-      },
-      '& $roleText': {
-        transform: 'translateY(-2px)',
       },
     },
     "@media (max-width: 600px)": {
-      height: '60px',
       padding: '12px',
+      minHeight: '200px', // Set minimum height instead of fixed height
     },
   },
+  roleHeaderContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: '12px',
+  },
   roleIcon: {
-    marginRight: '10px',
     color: 'rgba(255, 198, 20, 0.8)',
     fontSize: '24px !important',
+    marginRight: '12px',
     transition: 'all 0.3s ease',
     filter: 'drop-shadow(0 2px 3px rgba(0,0,0,0.2))',
     "@media (max-width: 600px)": {
-      fontSize: '20px !important',
-      marginRight: '8px',
-    },
-    "@media (max-width: 480px)": {
-      fontSize: '18px !important',
-      marginRight: '6px',
+      fontSize: '22px !important',
+      marginRight: '10px',
     },
   },
   roleText: {
     color: 'white !important',
-    fontWeight: '600 !important',
-    fontSize: '1rem !important',
-    transition: 'transform 0.3s ease',
+    fontWeight: '700 !important',
+    fontSize: '1.05rem !important',
     "@media (max-width: 600px)": {
-      fontSize: '0.9rem !important',
+      fontSize: '1rem !important',
     },
-    "@media (max-width: 480px)": {
-      fontSize: '0.8rem !important',
+  },
+  roleDetails: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '12px',
+    marginTop: '5px',
+  },
+  detailRow: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  detailIcon: {
+    color: 'rgba(255, 198, 20, 0.9)',
+    marginRight: '8px',
+    fontSize: '18px !important',
+    "@media (max-width: 600px)": {
+      fontSize: '16px !important',
     },
+  },
+  detailText: {
+    color: 'rgba(255, 255, 255, 0.9) !important',
+    fontSize: '0.9rem !important',
+    fontWeight: '400 !important',
+    "@media (max-width: 600px)": {
+      fontSize: '0.85rem !important',
+    },
+  },
+  skillsContainer: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: '5px',
+    marginTop: '8px',
+    // Removed fixed height and overflow:hidden to show all skills
+  },
+  skillChip: {
+    backgroundColor: 'rgba(255, 255, 255, 0.1) !important',
+    color: 'white !important',
+    fontSize: '0.7rem !important',
+    height: '22px !important',
+    margin: '2px !important',
   },
   actionsContainer: {
     display: 'flex',
@@ -445,31 +482,113 @@ const InDemandRoles = () => {
   // Categories and their roles with additional metadata
   const categories = [
     {
+      id: 'fullstack',
       title: "Full Stack Development Roles",
       icon: <CodeIcon className={classes.categoryIcon} />,
       demandLevel: "High Demand",
       growthRate: "+35% YoY",
       verified: true,
       roles: [
-        { id: 'uiux', title: 'UI/UX Developer', icon: <ComputerIcon className={classes.roleIcon} /> },
-        { id: 'frontend', title: 'Frontend Developer', icon: <CodeIcon className={classes.roleIcon} /> },
-        { id: 'backend', title: 'Backend Engineer', icon: <StorageIcon className={classes.roleIcon} /> },
-        { id: 'mern', title: 'MERN Stack Developer', icon: <DeveloperModeIcon className={classes.roleIcon} /> },
-        { id: 'fullstack', title: 'Full Stack Developer', icon: <LayersIcon className={classes.roleIcon} /> }
+        { 
+          id: 'uiux', 
+          title: 'UI/UX Developer', 
+          icon: <ComputerIcon className={classes.roleIcon} />,
+          salary: "₹4-12 LPA",
+          experience: "0-2 years",
+          skills: ["HTML/CSS", "JavaScript", "Figma", "Adobe XD", "UI Design", "User Research"],
+          description: "Design and build user interfaces that provide exceptional user experiences while maintaining consistency with brand guidelines."
+        },
+        { 
+          id: 'frontend', 
+          title: 'Frontend Developer', 
+          icon: <CodeIcon className={classes.roleIcon} />,
+          salary: "₹5-14 LPA",
+          experience: "0-3 years",
+          skills: ["React.js", "JavaScript", "HTML/CSS", "Redux", "TypeScript", "Responsive Design"],
+          description: "Implement responsive web designs and interactions using modern JavaScript frameworks and libraries."
+        },
+        { 
+          id: 'backend', 
+          title: 'Backend Engineer', 
+          icon: <StorageIcon className={classes.roleIcon} />,
+          salary: "₹6-16 LPA",
+          experience: "1-3 years",
+          skills: ["Node.js", "Express", "MongoDB", "SQL", "REST APIs", "Authentication"],
+          description: "Build scalable server-side logic, integrate with databases, and develop APIs that power web applications."
+        },
+        { 
+          id: 'mern', 
+          title: 'MERN Stack Developer', 
+          icon: <DeveloperModeIcon className={classes.roleIcon} />,
+          salary: "₹7-18 LPA",
+          experience: "1-3 years",
+          skills: ["MongoDB", "Express.js", "React.js", "Node.js", "Redux", "RESTful APIs"],
+          description: "Specialized full stack developer who uses MongoDB, Express, React, and Node.js to build complete web applications."
+        },
+        { 
+          id: 'fullstack', 
+          title: 'Full Stack Developer', 
+          icon: <LayersIcon className={classes.roleIcon} />,
+          salary: "₹8-20 LPA",
+          experience: "2-4 years",
+          skills: ["JavaScript", "React.js", "Node.js", "Databases", "DevOps", "System Design"],
+          description: "Versatile developer capable of working on both client-side and server-side, handling all aspects of web development."
+        }
       ]
     },
     {
+      id: 'datascience',
       title: "Data Science Roles",
       icon: <DataIcon className={classes.categoryIcon} />,
       demandLevel: "Very High Demand",
       growthRate: "+42% YoY",
       verified: true,
       roles: [
-        { id: 'dataanalyst', title: 'Data Analyst', icon: <BarChartIcon className={classes.roleIcon} /> },
-        { id: 'datascientist', title: 'Data Scientist', icon: <DataObjectIcon className={classes.roleIcon} /> },
-        { id: 'mleng', title: 'ML Engineer', icon: <MemoryIcon className={classes.roleIcon} /> },
-        { id: 'dataeng', title: 'Data Engineer', icon: <StorageIcon className={classes.roleIcon} /> },
-        { id: 'aispecialist', title: 'AI Specialist', icon: <BubbleChartIcon className={classes.roleIcon} /> }
+        { 
+          id: 'dataanalyst', 
+          title: 'Data Analyst', 
+          icon: <BarChartIcon className={classes.roleIcon} />,
+          salary: "₹5-12 LPA",
+          experience: "0-2 years",
+          skills: ["SQL", "Excel", "Python", "Power BI", "Tableau", "Data Visualization"],
+          description: "Transform raw data into actionable insights through analysis, visualization, and reporting to support business decisions."
+        },
+        { 
+          id: 'datascientist', 
+          title: 'Data Scientist', 
+          icon: <DataObjectIcon className={classes.roleIcon} />,
+          salary: "₹8-22 LPA",
+          experience: "1-4 years",
+          skills: ["Python", "R", "Statistics", "Machine Learning", "Data Mining", "SQL"],
+          description: "Apply statistical models and machine learning algorithms to analyze complex data sets and extract meaningful patterns."
+        },
+        { 
+          id: 'mleng', 
+          title: 'ML Engineer', 
+          icon: <MemoryIcon className={classes.roleIcon} />,
+          salary: "₹10-25 LPA",
+          experience: "2-4 years",
+          skills: ["TensorFlow", "PyTorch", "Python", "Deep Learning", "MLOps", "Model Deployment"],
+          description: "Design and implement machine learning models at scale, focusing on production deployment and performance optimization."
+        },
+        { 
+          id: 'dataeng', 
+          title: 'Data Engineer', 
+          icon: <StorageIcon className={classes.roleIcon} />,
+          salary: "₹7-20 LPA",
+          experience: "1-3 years",
+          skills: ["SQL", "Python", "ETL", "Data Warehousing", "Apache Spark", "Cloud Platforms"],
+          description: "Build and maintain data pipelines, architectures, and infrastructure to support data science and analytics functions."
+        },
+        { 
+          id: 'aispecialist', 
+          title: 'AI Specialist', 
+          icon: <BubbleChartIcon className={classes.roleIcon} />,
+          salary: "₹12-30 LPA",
+          experience: "2-5 years",
+          skills: ["NLP", "Computer Vision", "Deep Learning", "Neural Networks", "Python", "Research"],
+          description: "Develop cutting-edge artificial intelligence solutions focused on specific domains like NLP, computer vision, or recommendation systems."
+        }
       ]
     }
   ];
@@ -566,11 +685,44 @@ const InDemandRoles = () => {
               
               <Box className={classes.rolesGrid}>
                 {category.roles.map((role, roleIndex) => (
-                  <Box key={roleIndex} className={classes.roleCard}>
-                    {role.icon}
-                    <Typography className={classes.roleText}>
-                      {role.title}
-                    </Typography>
+                  <Box 
+                    key={roleIndex} 
+                    className={classes.roleCard}
+                  >
+                    {/* Role Title with Icon */}
+                    <Box className={classes.roleHeaderContainer}>
+                      {role.icon}
+                      <Typography className={classes.roleText}>
+                        {role.title}
+                      </Typography>
+                    </Box>
+                    
+                    {/* Salary Detail */}
+                    <Box className={classes.detailRow}>
+                      <MonetizationOnIcon className={classes.detailIcon} />
+                      <Typography className={classes.detailText}>
+                        Salary: {role.salary}
+                      </Typography>
+                    </Box>
+                    
+                    {/* Skills Section */}
+                    <Box className={classes.detailRow} sx={{ mt: 2 }}>
+                      <SchoolIcon className={classes.detailIcon} />
+                      <Typography className={classes.detailText}>
+                        Key Skills:
+                      </Typography>
+                    </Box>
+                    
+                    <Box className={classes.skillsContainer}>
+                      {role.skills.map((skill, i) => (
+                        <Chip 
+                          key={i}
+                          label={skill}
+                          className={classes.skillChip}
+                          size="small"
+                        />
+                      ))}
+                    </Box>
                   </Box>
                 ))}
               </Box>

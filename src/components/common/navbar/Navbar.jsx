@@ -215,7 +215,7 @@ const Navbar = () => {
                 to="/about"
                 onClick={handleNavLinkClick}
               >
-                About Us
+                About
               </Button>
               <Button 
                 className={`${classes.navLink} ${currentPath === "/contact" ? classes.active : ""}`}

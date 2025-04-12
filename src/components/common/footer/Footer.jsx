@@ -458,7 +458,7 @@ const Footer = () => {
               <Box className={classes.contactItem}>
                 <LocationOnIcon className={classes.contactIcon} />
                 <Typography className={classes.contactText}>
-                  The Headquarters, Dwaraka Pride, Hitech City, 500018,
+                  The Headquarters, Dwaraka Pride, Hitech City, 500081 ,
                   Hyderabad, Telangana, India
                 </Typography>
               </Box>
