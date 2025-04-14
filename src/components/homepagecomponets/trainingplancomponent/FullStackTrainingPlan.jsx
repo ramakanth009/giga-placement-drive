@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Box, Typography, Container, Tabs, Tab, Button, Grid } from '@mui/material';
+import { Box, Typography, Tabs, Tab, Button } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import BusinessIcon from '@mui/icons-material/Business';
@@ -23,10 +23,12 @@ import { ReactComponent as ZohoLogo } from '../../../assets/hiringpartners/zoho.
 
 const useStyles = makeStyles({
   section: {
-    padding: '60px 0',
+    padding: '60px 24px', // Add horizontal padding equivalent to Container
     backgroundColor: '#f9fafc',
     position: 'relative',
     overflow: 'hidden',
+    maxWidth: '1400px', // Equivalent to Container maxWidth="lg"
+    margin: '0 auto',
   },
   sectionTitle: {
     fontSize: '2.5rem !important',
@@ -847,131 +849,129 @@ const FullStackTrainingPlan = () => {
 
   return (
     <Box className={classes.section}>
-      <Container maxWidth="lg">
-        <Typography variant="h2" className={classes.sectionTitle}>
-          Curriculum Tailored To <span>Industry-Specific Roles</span>
-        </Typography>
+      <Typography variant="h2" className={classes.sectionTitle}>
+        Hands-On Job Training for <span>High-Demand Full Stack Roles</span>
+      </Typography>
 
-        {/* Tab navigation */}
-        <Box className={classes.tabsContainer}>
-          <Tabs
-            value={activeTab}
-            onChange={handleTabChange}
-            className={classes.tabRoot}
-            variant="scrollable"
-            scrollButtons="auto"
+      {/* Tab navigation */}
+      <Box className={classes.tabsContainer}>
+        <Tabs
+          value={activeTab}
+          onChange={handleTabChange}
+          className={classes.tabRoot}
+          variant="scrollable"
+          scrollButtons="auto"
+        >
+          {tracks.map((track) => (
+            <Tab
+              key={track.id}
+              label={track.name + " Development"}
+              className={classes.tab}
+            />
+          ))}
+        </Tabs>
+      </Box>
+
+      {/* Weekly curriculum cards */}
+      <Box className={classes.weekCardContainer}>
+        {tracks[activeTab].weeks.map((weekData, index) => (
+          <Box 
+            className={`${classes.weekCard} ${
+              index === activeRole 
+                ? classes.activeCard 
+                : classes.inactiveCard
+            }`}
+            key={index}
+            onClick={() => handleRoleClick(index)}
+            sx={{
+              border: index === activeRole ? `2px solid ${weekData.color}` : '2px solid transparent',
+              backgroundColor: index === activeRole ? `${weekData.colorLight}` : '#fff',
+            }}
           >
-            {tracks.map((track) => (
-              <Tab
-                key={track.id}
-                label={track.name + " Development"}
-                className={classes.tab}
-              />
-            ))}
-          </Tabs>
+            <Box 
+              className={classes.iconContainer} 
+              sx={{ backgroundColor: `${weekData.color}20` }}
+            >
+              <CalendarMonthIcon sx={{ color: weekData.color }} />
+            </Box>
+            <Typography className={classes.weekLabel}>
+              {weekData.week}
+            </Typography>
+            <Typography className={classes.roleName} sx={{ color: weekData.color }}>
+              {weekData.role}
+            </Typography>
+            <Typography className={classes.description}>
+              {weekData.description}
+            </Typography>
+          </Box>
+        ))}
+      </Box>
+
+      {/* Data visualization and company info */}
+      <Box className={classes.horizontalContainer}>
+        {/* Left Section - Chart */}
+        <Box className={classes.visualizationBox}>
+          <Typography className={classes.chartTitle}>
+            {tracks[activeTab].weeks[activeRole].role} Demand in 2023
+          </Typography>
+          <Box className={classes.chartContainer}>
+            <canvas ref={chartRef} />
+          </Box>
         </Box>
 
-        {/* Weekly curriculum cards */}
-        <Box className={classes.weekCardContainer}>
-          {tracks[activeTab].weeks.map((weekData, index) => (
-            <Box 
-              className={`${classes.weekCard} ${
-                index === activeRole 
-                  ? classes.activeCard 
-                  : classes.inactiveCard
-              }`}
-              key={index}
-              onClick={() => handleRoleClick(index)}
-              sx={{
-                border: index === activeRole ? `2px solid ${weekData.color}` : '2px solid transparent',
-                backgroundColor: index === activeRole ? `${weekData.colorLight}` : '#fff',
-              }}
-            >
-              <Box 
-                className={classes.iconContainer} 
-                sx={{ backgroundColor: `${weekData.color}20` }}
-              >
-                <CalendarMonthIcon sx={{ color: weekData.color }} />
-              </Box>
-              <Typography className={classes.weekLabel}>
-                {weekData.week}
+        {/* Right Section - Company Info */}
+        <Box className={classes.companyInfoBox}>
+          <Typography className={classes.companyInfoTitle}>
+            Career Opportunities
+          </Typography>
+          <Box className={classes.companyInfo}>
+            <Box className={classes.companyItem}>
+              <LocationOnIcon sx={{ color: '#2A2B6A', fontSize: '20px' }} />
+              <Typography className={classes.companyText}>
+                Top Locations: {tracks[activeTab].weeks[activeRole].companies.topLocations.join(', ')}
               </Typography>
-              <Typography className={classes.roleName} sx={{ color: weekData.color }}>
-                {weekData.role}
+            </Box>
+            <Box className={classes.companyItem}>
+              <TrendingUpIcon sx={{ color: '#2A2B6A', fontSize: '20px' }} />
+              <Typography className={classes.companyText}>
+                Average Salary: {tracks[activeTab].weeks[activeRole].companies.avgSalary}
               </Typography>
-              <Typography className={classes.description}>
-                {weekData.description}
+            </Box>
+            <Box className={classes.companyItem}>
+              <BusinessIcon sx={{ color: '#2A2B6A', fontSize: '20px' }} />
+              <Typography className={classes.companyText}>
+                Current Openings: {tracks[activeTab].weeks[activeRole].companies.openings}
+              </Typography>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+
+      {/* Hiring Partners Section */}
+      <Box className={classes.partnersSection}>
+        <Typography className={classes.partnersTitle}>
+          Our Hiring Partners
+        </Typography>
+        <Box className={classes.partnersContainer}>
+          {partners.map(({ Component, alt }, index) => (
+            <Box key={index} className={classes.partnerCard}>
+              <Component className={classes.partnerLogo} alt={alt} />
+              <Typography variant="body2" sx={{ fontSize: '12px !important' }}>
+                {alt}
               </Typography>
             </Box>
           ))}
         </Box>
+      </Box>
 
-        {/* Data visualization and company info */}
-        <Box className={classes.horizontalContainer}>
-          {/* Left Section - Chart */}
-          <Box className={classes.visualizationBox}>
-            <Typography className={classes.chartTitle}>
-              {tracks[activeTab].weeks[activeRole].role} Demand in 2023
-            </Typography>
-            <Box className={classes.chartContainer}>
-              <canvas ref={chartRef} />
-            </Box>
-          </Box>
-
-          {/* Right Section - Company Info */}
-          <Box className={classes.companyInfoBox}>
-            <Typography className={classes.companyInfoTitle}>
-              Career Opportunities
-            </Typography>
-            <Box className={classes.companyInfo}>
-              <Box className={classes.companyItem}>
-                <LocationOnIcon sx={{ color: '#2A2B6A', fontSize: '20px' }} />
-                <Typography className={classes.companyText}>
-                  Top Locations: {tracks[activeTab].weeks[activeRole].companies.topLocations.join(', ')}
-                </Typography>
-              </Box>
-              <Box className={classes.companyItem}>
-                <TrendingUpIcon sx={{ color: '#2A2B6A', fontSize: '20px' }} />
-                <Typography className={classes.companyText}>
-                  Average Salary: {tracks[activeTab].weeks[activeRole].companies.avgSalary}
-                </Typography>
-              </Box>
-              <Box className={classes.companyItem}>
-                <BusinessIcon sx={{ color: '#2A2B6A', fontSize: '20px' }} />
-                <Typography className={classes.companyText}>
-                  Current Openings: {tracks[activeTab].weeks[activeRole].companies.openings}
-                </Typography>
-              </Box>
-            </Box>
-          </Box>
-        </Box>
-
-        {/* Hiring Partners Section */}
-        <Box className={classes.partnersSection}>
-          <Typography className={classes.partnersTitle}>
-            Our Hiring Partners
-          </Typography>
-          <Box className={classes.partnersContainer}>
-            {partners.map(({ Component, alt }, index) => (
-              <Box key={index} className={classes.partnerCard}>
-                <Component className={classes.partnerLogo} alt={alt} />
-                <Typography variant="body2" sx={{ fontSize: '12px !important' }}>
-                  {alt}
-                </Typography>
-              </Box>
-            ))}
-          </Box>
-        </Box>
-
-        {/* View Details Button */}
-        <Button 
-          variant="contained" 
-          className={classes.viewButton}
-          onClick={handleViewDetails}
-        >
-          View Full Curriculum
-        </Button>
-      </Container>
+      {/* View Details Button */}
+      <Button 
+        variant="contained" 
+        className={classes.viewButton}
+        onClick={handleViewDetails}
+      >
+        View Full Curriculum
+      </Button>
     </Box>
   );
 };

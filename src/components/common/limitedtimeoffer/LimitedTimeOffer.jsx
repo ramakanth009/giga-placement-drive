@@ -51,7 +51,7 @@ const useStyles = makeStyles({
     zIndex: 0,
   },
   title: {
-    fontSize: '3rem !important',
+    fontSize: '2.5rem !important',
     fontWeight: 'bold !important',
     marginBottom: '16px !important',
     color: '#0a192f !important',
@@ -618,7 +618,7 @@ const LimitedTimeOffer = () => {
 
         <Paper className={classes.offerCard} elevation={0}>
           <Box className={classes.cardHeader}>
-            <Typography variant="h5" className={classes.offerTitle}>
+            <Typography variant="h3" className={classes.offerTitle}>
               Virtual Placement Drive - April 2025
             </Typography>
             <Typography variant="subtitle1" className={classes.offerSubtitle}>

@@ -66,7 +66,7 @@ const useStyles = makeStyles({
     },
   },
   mainTitle: {
-    fontSize: '2.8rem !important',
+    fontSize: '2.5rem !important',
     fontWeight: 'bold !important',
     color: 'white !important',
     marginBottom: '16px !important',
@@ -486,7 +486,7 @@ const InDemandRoles = () => {
       title: "Full Stack Development Roles",
       icon: <CodeIcon className={classes.categoryIcon} />,
       demandLevel: "High Demand",
-      growthRate: "+35% YoY",
+      growthRate: "+13% (by 2030)",
       verified: true,
       roles: [
         { 
@@ -541,7 +541,7 @@ const InDemandRoles = () => {
       title: "Data Science Roles",
       icon: <DataIcon className={classes.categoryIcon} />,
       demandLevel: "Very High Demand",
-      growthRate: "+42% YoY",
+      growthRate: "+36% (by 2030)",
       verified: true,
       roles: [
         { 
@@ -634,7 +634,7 @@ const InDemandRoles = () => {
         {/* Title Section */}
         <Box className={classes.titleContainer}>
           <Typography variant="h2" className={classes.mainTitle}>
-            Top In-Demand <span>Roles You Can Land</span>
+          Explore In-Demand <span>Full Stack</span> and <span>Data Science</span> Jobs 
           </Typography>
           <Typography variant="h4" className={classes.subtitle}>
             New Opportunities Added Every Week
@@ -654,7 +654,7 @@ const InDemandRoles = () => {
               <Box className={classes.categoryHeader}>
                 <Box className={classes.categoryTitleGroup}>
                   {category.icon}
-                  <Typography className={classes.categoryTitle}>
+                  <Typography className={classes.categoryTitle} variant='h3'>
                     {category.title}
                   </Typography>
                 </Box>
@@ -675,7 +675,7 @@ const InDemandRoles = () => {
                   {category.verified && (
                     <Chip 
                       icon={<VerifiedIcon />}
-                      label="Verified Employers"
+                      label="Verified Sources"
                       className={`${classes.statChip} ${classes.verifiedChip}`}
                       size="small"
                     />

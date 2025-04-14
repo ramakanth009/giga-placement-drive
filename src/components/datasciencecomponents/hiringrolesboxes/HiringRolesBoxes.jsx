@@ -15,7 +15,7 @@ const DataScienceHiringRolesBoxes = () => {
       icon: <AnalyticsIcon />,
     },
     {
-      title: 'Machine Learning Intern',
+      title: 'Machine Learning Engineer',
       icon: <PsychologyIcon />,
     },
     {
@@ -27,11 +27,11 @@ const DataScienceHiringRolesBoxes = () => {
       icon: <SmartToyIcon />,
     },
     {
-      title: 'Data Engineer (Entry Level)',
+      title: 'Data Engineer',
       icon: <StorageIcon />,
     },
     {
-      title: 'Data Science Intern',
+      title: 'Jr. Data Scientist',
       icon: <DataThresholdingIcon />,
     }
   ];

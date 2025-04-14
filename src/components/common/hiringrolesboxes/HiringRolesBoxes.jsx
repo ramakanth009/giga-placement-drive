@@ -100,7 +100,7 @@ const useStyles = makeStyles({
   },
   roleBox: {
     width: '200px',
-    height: '180px',
+    height: '220px', // Increased from 200px
     flexShrink: 0,
     borderRadius: '20px',
     background: 'white',
@@ -115,12 +115,12 @@ const useStyles = makeStyles({
     border: '1px solid rgba(0, 0, 0, 0.05)',
     '@media (max-width: 1200px)': {
       width: '170px',
-      height: '170px',
+      height: '210px', // Increased from 190px
       padding: '25px 15px',
     },
     '@media (max-width: 600px)': {
       width: '150px',
-      height: '150px',
+      height: '190px', // Increased from 170px
       padding: '20px 15px',
     },
     '&:hover': {
@@ -177,7 +177,7 @@ const useStyles = makeStyles({
     lineHeight: '1.3 !important',
     transition: 'color 0.3s ease',
     width: '100%', // Ensure all text containers have same width
-    height: '45px', // Fixed height to ensure alignment
+    height: '75px', // Increased from 60px
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -190,11 +190,11 @@ const useStyles = makeStyles({
     hyphens: 'auto',
     '@media (max-width: 600px)': {
       fontSize: '1rem !important',
-      height: '40px',
+      height: '65px', // Increased from 50px
     },
     '@media (max-width: 480px)': {
       fontSize: '0.9rem !important',
-      height: '35px',
+      height: '60px', // Increased from 45px
     },
   },
   decorativeDots: {

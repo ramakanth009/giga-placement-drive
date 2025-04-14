@@ -9,43 +9,61 @@ const FaqHomepage = () => {
       id: 'panel1',
       number: '1',
       question: 'Who can join the Gigaversity Virtual Placement Drive?',
-      answer: 'This program is open to final-year students, recent graduates, career switchers, and freelancers looking to enhance their skills. Anyone interested in developing job-ready technical skills and connecting with hiring partners can join.',
+      answer: 'The Virtual Placement Drive is a structured placement initiative by Gigaversity where students are   trained in specific job roles and directly connected with companies actively hiring for those roles. It bridges the gap between learning and employment with hands-on, targeted training.',
     },
     {
       id: 'panel2',
       number: '2',
-      question: 'How long is the training program?',
-      answer: 'The Gigaversity Virtual Placement Drive is a 30-day intensive training program designed to quickly build your skills and connect you with employers.',
+      question: 'What is Job Role Specific Training?',
+      answer: 'Job Role Specific Training refers to focused training modules designed to prepare students for particular career paths. For example, learners are trained for roles like Front-End Developer, Back-End Developer, Data Analyst, and Data Scientist, ensuring they gain the exact skills companies are seeking.',
     },
     {
       id: 'panel3',
       number: '3',
-      question: 'What is the daily schedule like?',
-      answer: 'The program includes daily 1-hour live project sessions with industry experts, hands-on project work, personalized feedback, and job preparation activities. The schedule is flexible to accommodate different time zones and commitments.',
+      question: 'What are the benefits of joining a Virtual Placement Drive?',
+      answer: `Gigaversity's Virtual Placement Drive offers a wide range of benefits, including:
+
+• 1-week focused training based on your chosen domain and job role
+• Access to 400+ job opportunities from top companies
+• ATS-friendly resume optimization to boost your interview shortlisting chances
+• Development of mini-projects to add to your portfolio
+• Intensive focus on communication and soft skills to perform better in interviews`
     },
     {
       id: 'panel4',
       number: '4',
-      question: 'Do I need prior experience to join?',
-      answer: 'No prior experience is required for beginners tracks. We offer different entry points based on your current skill level. Basic computer literacy and a strong willingness to learn are all you need to get started.',
+      question: 'Who can join the Gigaversity Virtual Placement Drive?',
+      answer: 'Final-year students, fresh graduates, working professionals, and freelancers seeking job-ready skills and placements.',
     },
     {
       id: 'panel5',
       number: '5',
-      question: 'Will I receive a certificate after completion?',
-      answer: 'Yes, upon successful completion of the program, you will receive a Gigaversity certificate that validates your skills and can be shared with potential employers and on your professional profiles.',
+      question: 'How long is the training program?',
+      answer: 'The program lasts 30 days, with job-specific training and hands-on learning',
     },
     {
       id: 'panel6',
       number: '6',
-      question: 'How does the placement process work?',
-      answer: 'Our placement process connects you directly with our 100+ hiring partners. We share your portfolio and skills with relevant companies, arrange interviews, and provide support throughout the hiring process. We add new opportunities weekly.',
+      question: 'What is the daily schedule like?',
+      answer: '1-hour live interactive sessions, hands-on projects, and job preparation activities.',
     },
     {
       id: 'panel7',
       number: '7',
+      question: 'Do I need prior experience to join?',
+      answer: 'Basic familiarity is necessary. We provide extra support for beginners while building your skills step-by-step.',
+    },
+    {
+      id: 'panel8',
+      number: '8',
+      question: 'Will I receive a certificate after completion?',
+      answer: 'Yes, a verified completion and project certificate is provided upon successfully finishing the program.',
+    },
+    {
+      id: 'panel9',
+      number: '9',
       question: 'What job roles are covered in the program?',
-      answer: 'The program covers in-demand roles in Full Stack Development (UI/UX Developer, Frontend Developer, MERN Stack Developer, Backend Engineer, Full Stack Developer) and Data Science (Data Analyst, Data Scientist, ML Engineer, Data Engineer, AI Specialist).',
+      answer: 'Full Stack Development (Frontend, Backend, Database, API) and Data Science (Analyst, BI, Engineer, ML Associate).',
     },
   ];
 

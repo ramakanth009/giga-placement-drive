@@ -75,7 +75,7 @@ const useStyles = makeStyles({
     },
   },
   title: {
-    fontSize: '2.75rem !important',
+    fontSize: '2.5rem !important',
     fontWeight: 'bold !important',
     color: 'white !important',
     position: 'relative',

@@ -133,6 +133,7 @@ const useStyles = makeStyles({
     color: '#4A4A4A !important',
     fontSize: '1rem !important',
     lineHeight: '1.6 !important',
+    whiteSpace: 'pre-line !important',
     "@media (max-width: 960px)": {
       fontSize: '0.95rem !important',
     },

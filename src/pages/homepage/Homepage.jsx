@@ -17,6 +17,7 @@ import LimitedTimeOffer from "../../components/common/limitedtimeoffer/LimitedTi
 import OtherPrograms from "../../components/homepagecomponets/otherprograms/OtherPrograms";
 import Faq from "../../components/homepagecomponets/faqhomepage/FaqHomepage";
 import Footer from "../../components/common/footer/Footer";
+import ResumeBuilderSection from "../../components/homepagecomponets/resumebuilder/ResumeBuilderSection";
 
 const Homepage = () => {
   return (
@@ -37,7 +38,8 @@ const Homepage = () => {
         
         {/* Hero Section */}
         <Hero />
-        
+         
+        <ResumeBuilderSection />
         {/* Hiring Partners as separate section */}
         <HiringPartners />
         

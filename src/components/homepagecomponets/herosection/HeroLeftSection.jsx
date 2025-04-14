@@ -179,7 +179,7 @@ const HeroLeftSection = () => {
     <Box className={classes.contentContainer}>
       {/* Title with highlight */}
       <Box className={classes.titleBox}>
-        <Typography variant="h4" className={classes.heroHeading}>
+        <Typography variant="h1" className={classes.heroHeading}>
           Gigaversity's <span>Virtual</span>
           <br />
           <span>Placement Drive</span>

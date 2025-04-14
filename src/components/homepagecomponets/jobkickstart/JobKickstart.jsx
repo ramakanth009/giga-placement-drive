@@ -66,7 +66,7 @@ const useStyles = makeStyles({
     },
   },
   title: {
-    fontSize: "2rem !important",
+    fontSize: "2.5rem !important",
     fontWeight: "700 !important",
     color: "#ffffff !important",
     lineHeight: "1.2 !important",
@@ -203,7 +203,7 @@ const JobKickstart = () => {
         {/* Right Section with Content */}
         <Box className={classes.rightSection}>
           <Box className={classes.titleContainer}>
-            <Typography variant="h1" className={classes.title}>
+            <Typography variant="h2" className={classes.title}>
               Why Struggle With Traditional <span className={classes.highlightText}>Job Hunting WHEN You Can</span>
             </Typography>
           </Box>

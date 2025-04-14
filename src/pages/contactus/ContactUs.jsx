@@ -43,6 +43,7 @@ const useStyles = makeStyles({
       zIndex: -1,
       height: '598px',
       width: '100%',
+      borderRadius: "0 0 64% 30%"
     },
   },
   pageTitle: {

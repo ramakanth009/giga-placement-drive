@@ -229,7 +229,7 @@ const HiringPartners = () => {
     <Box className={classes.partnersSectionWrapper}>
       {/* Title at the top and centered */}
       <Box className={classes.titleContainer}>
-        <Typography variant="h4" className={classes.sectionTitle}>
+        <Typography variant="h2" className={classes.sectionTitle}>
           Our Hiring Partners
         </Typography>
       </Box>

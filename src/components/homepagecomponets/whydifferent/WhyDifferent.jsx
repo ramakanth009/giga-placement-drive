@@ -53,10 +53,11 @@ const useStyles = makeStyles({
     animation: '$slideDown 0.6s ease-out',
   },
   title: {
-    fontSize: '2.8rem !important',
+    fontSize: '2.5rem !important',
     fontWeight: '800 !important',
     color: '#2A2B6A !important',
     marginBottom: '16px !important',
+    
     '& span': {
       background: 'linear-gradient(90deg, #FFC614 0%, #FFD700 100%)',
       backgroundClip: 'text',
@@ -64,6 +65,7 @@ const useStyles = makeStyles({
       WebkitTextFillColor: 'transparent',
       padding: '0 5px',
     },
+    
     "@media (max-width: 960px)": {
       fontSize: '2.4rem !important',
     },

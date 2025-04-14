@@ -1,21 +1,23 @@
 // src/components/gigaversityadvantage/GigaversityAdvantage.jsx
 import React from 'react';
-import { Box, Typography, Container } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import AdvantageBoxes from './AdvantageBoxes';
 
 const useStyles = makeStyles({
   section: {
-    padding: '100px 0',
+    padding: '100px 50px',
     overflow: 'hidden',
     position: 'relative',
     backgroundColor: '#f9fafc',
     background: 'linear-gradient(180deg, #f9fafc 0%, #f0f7ff 100%)',
+    // maxWidth: '1200px',
+    margin: '0 auto',
     "@media (max-width: 960px)": {
-      padding: '70px 0',
+      padding: '70px 24px',
     },
     "@media (max-width: 600px)": {
-      padding: '50px 0',
+      padding: '50px 16px',
     },
   },
   contentContainer: {
@@ -47,7 +49,7 @@ const useStyles = makeStyles({
     },
   },
   title: {
-    fontSize: '3.5rem !important',
+    fontSize: '2.8rem !important',
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
     lineHeight: '1.2 !important',
@@ -150,12 +152,12 @@ const useStyles = makeStyles({
     position: 'absolute',
     width: '140px',
     height: '140px',
-    top: '10%',
+    top: '2%',
     right: '5%',
-    opacity: 0.3,
+    opacity: 0.2,
     backgroundImage: 'radial-gradient(#2A2B6A 2px, transparent 2px)',
     backgroundSize: '15px 15px',
-    zIndex: 1,
+    zIndex: 2,
     "@media (max-width: 960px)": {
       width: '100px',
       height: '100px',
@@ -199,23 +201,21 @@ const GigaversityAdvantage = () => {
       <Box className={classes.dotPatternOne}></Box>
       <Box className={classes.dotPatternTwo}></Box>
       
-      <Container maxWidth="lg">
-        <Box className={classes.contentContainer}>
-          {/* Left Content */}
-          <Box className={classes.leftContent}>
-            <Typography variant="h2" className={classes.title}>
-              The Gigaversity
-              <span className={classes.yellowText}>Advantage</span>
-            </Typography>
-            <Typography variant="body1" className={classes.description}>
-              Gain Job-Ready Skills, Build A Strong Resume, And Apply Expertise Through Hands-On Learning And Personalized Guidance For Career Success.
-            </Typography>
-          </Box>
-
-          {/* Right Content - Advantage Boxes Component (remains unchanged) */}
-          <AdvantageBoxes />
+      <Box className={classes.contentContainer}>
+        {/* Left Content */}
+        <Box className={classes.leftContent}>
+          <Typography variant="h2" className={classes.title}>
+            The Advantage of 
+            <span className={classes.yellowText}>Virtual PLacement Drive</span>
+          </Typography>
+          <Typography variant="body1" className={classes.description}>
+            Gain Job-Ready Skills, Build A Strong Resume, And Apply Expertise Through Hands-On Learning And Personalized Guidance For Career Success.
+          </Typography>
         </Box>
-      </Container>
+
+        {/* Right Content - Advantage Boxes Component */}
+        <AdvantageBoxes />
+      </Box>
     </Box>
   );
 };

@@ -10,19 +10,20 @@ import {
 
 const useStyles = makeStyles({
   section: {
-    padding: '80px 0',
-    background: '#f8f9fc',
-    position: 'relative',
+    padding: '100px 50px',
     overflow: 'hidden',
+    position: 'relative',
+    backgroundColor: '#f9fafc',
+    background: 'linear-gradient(180deg, #f9fafc 0%, #f0f7ff 100%)',
+    "@media (max-width: 960px)": {
+      padding: '70px 24px',
+    },
+    "@media (max-width: 600px)": {
+      padding: '50px 16px',
+    },
   },
   hexagonBg: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    opacity: 0.04,
-    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%232A2B6A' fill-opacity='1' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+    display: 'none', // Remove hexagon background
   },
   container: {
     maxWidth: '1200px',
@@ -34,6 +35,7 @@ const useStyles = makeStyles({
   header: {
     textAlign: 'center',
     marginBottom: '60px',
+    position: 'relative',
   },
   title: {
     fontSize: '2.5rem !important',
@@ -50,15 +52,28 @@ const useStyles = makeStyles({
       transform: 'translateX(-50%)',
       width: '80px',
       height: '4px',
-      background: '#FFC614',
+      background: 'linear-gradient(90deg, #FFC614, #FFA114)',
       borderRadius: '2px',
+    },
+    "@media (max-width: 960px)": {
+      fontSize: '2.8rem !important',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '2.3rem !important',
     },
   },
   subtitle: {
-    fontSize: '1.1rem !important',
-    color: '#555 !important',
+    fontSize: '1.25rem !important',
+    color: '#4A4A4A !important',
     maxWidth: '700px',
-    margin: '20px auto 0 !important',
+    margin: '30px auto 0 !important',
+    lineHeight: '1.6 !important',
+    "@media (max-width: 960px)": {
+      fontSize: '1.15rem !important',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '1rem !important',
+    },
   },
   timeline: {
     position: 'relative',
