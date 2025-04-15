@@ -1,240 +1,680 @@
-import React, { useEffect, useRef } from 'react';
-import { Box, Typography } from '@mui/material';
+// import React, { useEffect, useRef } from 'react';
+// import { Box, Typography } from '@mui/material';
+// import { makeStyles } from '@mui/styles';
+
+// const useStyles = makeStyles({
+//   curriculumSection: {
+//     padding: '50px 200px',
+//     width: '100%',
+//     maxWidth: '1400px',
+//     margin: '0 auto',
+//   },
+//   '@keyframes fadeIn': {
+//     '0%': {
+//       opacity: 0,
+//     },
+//     '100%': {
+//       opacity: 1,
+//     },
+//   },
+//   '@keyframes slideDown': {
+//     '0%': {
+//       opacity: 0,
+//       transform: 'translateY(-20px)',
+//     },
+//     '100%': {
+//       opacity: 1,
+//       transform: 'translateY(0)',
+//     },
+//   },
+//   '@keyframes slideInLeft': {
+//     '0%': {
+//       opacity: 0,
+//       transform: 'translateX(-30px)',
+//     },
+//     '100%': {
+//       opacity: 1,
+//       transform: 'translateX(0)',
+//     },
+//   },
+//   '@keyframes slideInRight': {
+//     '0%': {
+//       opacity: 0,
+//       transform: 'translateX(30px)',
+//     },
+//     '100%': {
+//       opacity: 1,
+//       transform: 'translateX(0)',
+//     },
+//   },
+//   '@keyframes slideUp': {
+//     '0%': {
+//       opacity: 0,
+//       transform: 'translateY(20px)',
+//     },
+//     '100%': {
+//       opacity: 1,
+//       transform: 'translateY(0)',
+//     },
+//   },
+
+//   titleContainer: {
+//     textAlign: 'center',
+//     marginBottom: '40px',
+//     animation: '$slideDown 0.8s ease-out',
+//   },
+//   title: {
+//     fontSize: '2rem !important',
+//     fontWeight: 'bold !important',
+//     color: '#2A2B6A !important',
+//     marginBottom: '8px !important',
+//     '& span': {
+//       color: '#FFC614 !important',
+//     },
+//   },
+//   contentContainer: {
+//     display: 'flex',
+//     flexDirection: 'row',
+//     opacity: 0,
+//     transform: 'translateY(20px)',
+//     animation: '$fadeIn 0.8s ease-out forwards, $slideUp 0.8s ease-out forwards',
+//     '@media (max-width: 960px)': {
+//       flexDirection: 'column',
+//     },
+//   },
+//   weekItem: {
+//     display: 'flex',
+//     alignItems: 'center',
+//     marginBottom: '14px',
+//     opacity: 0,
+//     transform: 'translateX(-20px)',
+//     transition: 'all 0.3s ease',
+//     '&:hover': {
+//       transform: 'translateX(5px)',
+//     },
+//   },
+//   weekBox: {
+//     borderRadius: '6px',
+//     padding: '14px 20px',
+//     fontWeight: 'bold',
+//     fontSize: '1rem',
+//     width: '100%',
+//     marginBottom: '8px',
+//     transition: 'all 0.3s ease',
+//   },
+//   activeWeekBox: {
+//     backgroundColor: '#06183D',
+//     color: 'white',
+//     '&:hover': {
+//       backgroundColor: '#1b2d57',
+//     },
+//   },
+//   inactiveWeekBox: {
+//     backgroundColor: 'white',
+//     color: '#555',
+//     border: '1px solid #ddd',
+//     '&:hover': {
+//       backgroundColor: '#f5f5f5',
+//     },
+//   },
+//   skillItem: {
+//     display: 'flex',
+//     alignItems: 'center',
+//     marginBottom: '20px',
+//     opacity: 0,
+//     transform: 'translateX(20px)',
+//     transition: 'all 0.3s ease-out',
+//   },
+//   skillIcon: {
+//     color: '#FFC614',
+//     marginRight: '16px',
+//     fontSize: '16px',
+//   },
+//   skillText: {
+//     fontSize: '1rem',
+//     color: '#555',
+//     fontWeight: '500',
+//   },
+//   weeksColumn: {
+//     flex: '0 0 50%',
+//     '@media (max-width: 960px)': {
+//       flex: '0 0 100%',
+//       marginBottom: '30px',
+//     },
+//   },
+//   skillsColumn: {
+//     display: 'flex',
+//     flexDirection: 'column',
+//     justifyContent: 'center',
+//     flex: '0 0 50%',
+//     paddingLeft: '40px',
+//     '@media (max-width: 960px)': {
+//       flex: '0 0 100%',
+//       paddingLeft: '0',
+//     },
+//   },
+// });
+
+// const Curriculum = ({ title, weeks, skills }) => {
+//   const classes = useStyles();
+//   const [activeWeek, setActiveWeek] = React.useState(0);
+//   const [mounted, setMounted] = React.useState(false);
+//   const contentRef = useRef(null);
+
+//   useEffect(() => {
+//     setMounted(true);
+//     const timer = setTimeout(() => {
+//       const weekItems = document.querySelectorAll(`.${classes.weekItem}`);
+//       weekItems.forEach((item, index) => {
+//         setTimeout(() => {
+//           item.style.opacity = '1';
+//           item.style.transform = 'translateX(0)';
+//         }, index * 100);
+//       });
+//     }, 300);
+
+//     return () => clearTimeout(timer);
+//   }, []);
+
+//   const handleWeekHover = (index) => {
+//     setActiveWeek(index);
+//     const skillItems = document.querySelectorAll(`.${classes.skillItem}`);
+//     skillItems.forEach((item, idx) => {
+//       item.style.opacity = '0';
+//       item.style.transform = 'translateX(20px)';
+//       setTimeout(() => {
+//         item.style.opacity = '1';
+//         item.style.transform = 'translateX(0)';
+//       }, idx * 100);
+//     });
+//   };
+
+//   return (
+//     <Box className={classes.curriculumSection}>
+//       <Box className={classes.titleContainer}>
+//         <Typography variant="h2" className={classes.title}>
+//           {title}
+//         </Typography>
+//       </Box>
+
+//       <Box className={classes.contentContainer} ref={contentRef}>
+//         {/* Weeks Column */}
+//         <Box className={classes.weeksColumn}>
+//           {weeks.map((week, index) => (
+//             <Box 
+//               key={index} 
+//               className={classes.weekItem} 
+//               onMouseEnter={() => handleWeekHover(index)}
+//             >
+//               <Box 
+//                 className={`${classes.weekBox} ${
+//                   activeWeek === index ? classes.activeWeekBox : classes.inactiveWeekBox
+//                 }`}
+//               >
+//                 {week}
+//               </Box>
+//             </Box>
+//           ))}
+//         </Box>
+
+//         {/* Skills Column */}
+//         <Box className={classes.skillsColumn}>
+//           {skills[activeWeek].map((skill, index) => (
+//             <Box 
+//               key={index} 
+//               className={classes.skillItem}
+//             >
+//               <Typography variant="body1" className={classes.skillText} sx={{ display: 'flex', alignItems: 'center' }}>
+//                 <span style={{ 
+//                   color: '#FFC614', 
+//                   marginRight: '16px', 
+//                   fontSize: '24px',
+//                   lineHeight: 1 
+//                 }}>✦</span>
+//                 {skill}
+//               </Typography>
+//             </Box>
+//           ))}
+//         </Box>
+//       </Box>
+//     </Box>
+//   );
+// };
+
+// export default Curriculum;
+import React, { useState, useEffect, useRef } from 'react';
+import { Box, Typography, Button } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import { 
+  Code as CodeIcon,
+  Storage as DatabaseIcon,
+  Computer as FrontendIcon,
+  Cloud as BackendIcon,
+  BarChart as AnalyticsIcon,
+  DataObject as DataScienceIcon,
+  Storage as DataEngineerIcon,
+  Memory as MLIcon,
+  ArrowForward as ArrowForwardIcon
+} from '@mui/icons-material';
 
 const useStyles = makeStyles({
-  curriculumSection: {
-    padding: '50px 200px',
+  section: {
+    padding: '80px 0',
+    backgroundColor: '#f8f9fc',
+    position: 'relative',
+    overflow: 'hidden',
+    minHeight: '100vh',
+    display: 'flex',
+    alignItems: 'center',
+  },
+  wrapper: {
     width: '100%',
-    maxWidth: '1400px',
+    maxWidth: '1200px',
     margin: '0 auto',
+    position: 'relative',
+    zIndex: 2,
+    padding: '0 20px',
   },
-  '@keyframes fadeIn': {
-    '0%': {
-      opacity: 0,
-    },
-    '100%': {
-      opacity: 1,
-    },
-  },
-  '@keyframes slideDown': {
-    '0%': {
-      opacity: 0,
-      transform: 'translateY(-20px)',
-    },
-    '100%': {
-      opacity: 1,
-      transform: 'translateY(0)',
-    },
-  },
-  '@keyframes slideInLeft': {
-    '0%': {
-      opacity: 0,
-      transform: 'translateX(-30px)',
-    },
-    '100%': {
-      opacity: 1,
-      transform: 'translateX(0)',
-    },
-  },
-  '@keyframes slideInRight': {
-    '0%': {
-      opacity: 0,
-      transform: 'translateX(30px)',
-    },
-    '100%': {
-      opacity: 1,
-      transform: 'translateX(0)',
-    },
-  },
-  '@keyframes slideUp': {
-    '0%': {
-      opacity: 0,
-      transform: 'translateY(20px)',
-    },
-    '100%': {
-      opacity: 1,
-      transform: 'translateY(0)',
-    },
-  },
-
   titleContainer: {
     textAlign: 'center',
-    marginBottom: '40px',
-    animation: '$slideDown 0.8s ease-out',
+    marginBottom: '60px',
+    position: 'relative',
   },
   title: {
-    fontSize: '2rem !important',
+    fontSize: '2.5rem !important',
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
-    marginBottom: '8px !important',
+    position: 'relative',
+    display: 'inline-block',
+    '&::after': {
+      content: '""',
+      position: 'absolute',
+      bottom: '-15px',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      width: '80px',
+      height: '4px',
+      background: '#FFC614',
+      borderRadius: '2px',
+    },
     '& span': {
       color: '#FFC614 !important',
+    },
+    "@media (max-width: 960px)": {
+      fontSize: '2.2rem !important',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '1.8rem !important',
+    },
+  },
+  subtitle: {
+    fontSize: '1.1rem !important',
+    color: '#555 !important',
+    maxWidth: '800px',
+    margin: '30px auto 0 !important',
+    "@media (max-width: 600px)": {
+      fontSize: '1rem !important',
     },
   },
   contentContainer: {
     display: 'flex',
-    flexDirection: 'row',
-    opacity: 0,
-    transform: 'translateY(20px)',
-    animation: '$fadeIn 0.8s ease-out forwards, $slideUp 0.8s ease-out forwards',
+    borderRadius: '20px',
+    overflow: 'hidden',
+    boxShadow: '0 20px 50px rgba(0, 0, 0, 0.1)',
+    backgroundColor: 'white',
     '@media (max-width: 960px)': {
       flexDirection: 'column',
+    },
+  },
+  weeksPanel: {
+    width: '40%',
+    backgroundColor: '#2A2B6A',
+    padding: '40px 0',
+    '@media (max-width: 960px)': {
+      width: '100%',
+      padding: '30px 0',
+    },
+  },
+  weeksList: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '15px',
+    padding: '0 30px',
+    '@media (max-width: 600px)': {
+      padding: '0 20px',
+      gap: '10px',
     },
   },
   weekItem: {
     display: 'flex',
     alignItems: 'center',
-    marginBottom: '14px',
-    opacity: 0,
-    transform: 'translateX(-20px)',
     transition: 'all 0.3s ease',
+    transform: 'translateX(0)',
+    padding: '18px 25px',
+    borderRadius: '12px',
+    position: 'relative',
+    overflow: 'hidden',
     '&:hover': {
       transform: 'translateX(5px)',
+      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+      '& $weekIconContainer': {
+        backgroundColor: '#FFC614',
+        '& svg': {
+          color: '#2A2B6A',
+        },
+      },
+    },
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      left: '0',
+      top: '0',
+      height: '100%',
+      width: '4px',
+      backgroundColor: '#FFC614',
+      opacity: 0,
+      transition: 'opacity 0.3s ease',
+    },
+    '@media (max-width: 600px)': {
+      padding: '15px 20px',
     },
   },
-  weekBox: {
-    borderRadius: '6px',
-    padding: '14px 20px',
-    fontWeight: 'bold',
-    fontSize: '1rem',
-    width: '100%',
-    marginBottom: '8px',
-    transition: 'all 0.3s ease',
-  },
-  activeWeekBox: {
-    backgroundColor: '#06183D',
-    color: 'white',
-    '&:hover': {
-      backgroundColor: '#1b2d57',
+  activeWeekItem: {
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    transform: 'translateX(5px)',
+    '&::before': {
+      opacity: 1,
     },
   },
-  inactiveWeekBox: {
-    backgroundColor: 'white',
-    color: '#555',
-    border: '1px solid #ddd',
-    '&:hover': {
-      backgroundColor: '#f5f5f5',
-    },
-  },
-  skillItem: {
+  weekIconContainer: {
+    width: '40px',
+    height: '40px',
+    borderRadius: '50%',
+    backgroundColor: 'rgba(255, 255, 255, 0.15)',
     display: 'flex',
     alignItems: 'center',
-    marginBottom: '20px',
-    opacity: 0,
-    transform: 'translateX(20px)',
-    transition: 'all 0.3s ease-out',
-  },
-  skillIcon: {
-    color: '#FFC614',
-    marginRight: '16px',
-    fontSize: '16px',
-  },
-  skillText: {
-    fontSize: '1rem',
-    color: '#555',
-    fontWeight: '500',
-  },
-  weeksColumn: {
-    flex: '0 0 50%',
-    '@media (max-width: 960px)': {
-      flex: '0 0 100%',
-      marginBottom: '30px',
+    justifyContent: 'center',
+    marginRight: '15px',
+    transition: 'all 0.3s ease',
+    flexShrink: 0,
+    '& svg': {
+      fontSize: '20px',
+      color: 'white',
+      transition: 'color 0.3s ease',
+    },
+    '@media (max-width: 600px)': {
+      width: '36px',
+      height: '36px',
+      marginRight: '12px',
+      '& svg': {
+        fontSize: '18px',
+      },
     },
   },
-  skillsColumn: {
+  activeWeekIconContainer: {
+    backgroundColor: '#FFC614',
+    '& svg': {
+      color: '#2A2B6A',
+    },
+  },
+  weekTitle: {
+    color: 'white',
+    fontWeight: '500',
+    fontSize: '1.1rem !important',
+    transition: 'all 0.3s ease',
+    '@media (max-width: 600px)': {
+      fontSize: '1rem !important',
+    },
+  },
+  skillsPanel: {
+    width: '60%',
+    padding: '40px',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    flex: '0 0 50%',
-    paddingLeft: '40px',
+    position: 'relative',
+    overflow: 'hidden',
     '@media (max-width: 960px)': {
-      flex: '0 0 100%',
-      paddingLeft: '0',
+      width: '100%',
+      padding: '30px 20px',
+    },
+  },
+  roleTitle: {
+    fontSize: '2rem !important',
+    fontWeight: 'bold !important',
+    color: '#2A2B6A !important',
+    marginBottom: '30px !important',
+    position: 'relative',
+    '&::after': {
+      content: '""',
+      position: 'absolute',
+      bottom: '-10px',
+      left: '0',
+      width: '60px',
+      height: '3px',
+      backgroundColor: '#FFC614',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '1.7rem !important',
+      marginBottom: '25px !important',
+    },
+  },
+  skillsList: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '16px',
+  },
+  skillItem: {
+    display: 'flex',
+    alignItems: 'flex-start',
+    opacity: 0,
+    transform: 'translateY(20px)',
+    transition: 'all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+  },
+  skillVisible: {
+    opacity: 1,
+    transform: 'translateY(0)',
+  },
+  skillDot: {
+    width: '10px',
+    height: '10px',
+    borderRadius: '50%',
+    backgroundColor: '#FFC614',
+    marginTop: '8px',
+    marginRight: '15px',
+    flexShrink: 0,
+  },
+  skillText: {
+    fontSize: '1.05rem !important',
+    color: '#444 !important',
+    lineHeight: '1.6 !important',
+    '@media (max-width: 600px)': {
+      fontSize: '1rem !important',
+    },
+  },
+  backgroundElement: {
+    position: 'absolute',
+    borderRadius: '50%',
+    opacity: 0.5,
+    zIndex: 1,
+  },
+  skillsBackground: {
+    background: 'radial-gradient(circle, rgba(42, 43, 106, 0.03) 0%, rgba(42, 43, 106, 0) 70%)',
+    width: '500px',
+    height: '500px',
+    top: '-250px',
+    right: '-200px',
+  },
+  decorativeDots: {
+    position: 'absolute',
+    width: '200px',
+    height: '200px',
+    backgroundImage: 'radial-gradient(#2A2B6A 2px, transparent 2px)',
+    backgroundSize: '20px 20px',
+    opacity: 0.05,
+    zIndex: 1,
+    bottom: '5%',
+    left: '5%',
+  },
+  exploreButtonContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: '40px',
+  },
+  exploreButton: {
+    backgroundColor: '#2A2B6A !important',
+    color: 'white !important',
+    padding: '12px 24px !important',
+    borderRadius: '8px !important',
+    fontWeight: 'bold !important',
+    fontSize: '1rem !important',
+    transition: 'all 0.3s ease !important',
+    '&:hover': {
+      backgroundColor: '#1A1B4A !important',
+      transform: 'translateY(-3px)',
+      boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15) !important',
+    },
+    '@media (max-width: 600px)': {
+      padding: '10px 20px !important',
+      fontSize: '0.9rem !important',
     },
   },
 });
 
-const Curriculum = ({ title, weeks, skills }) => {
+// Icons mapping for different roles
+const getIconForRole = (role, domain) => {
+  if (domain === 'fullstack') {
+    switch (role) {
+      case 'Frontend Developer':
+        return <FrontendIcon />;
+      case 'Backend Developer':
+        return <BackendIcon />;
+      case 'Database Engineer':
+        return <DatabaseIcon />;
+      case 'Full Stack Developer':
+      case 'UI/UX Developer':
+      default:
+        return <CodeIcon />;
+    }
+  } else if (domain === 'datascience') {
+    switch (role) {
+      case 'Data Analyst':
+        return <AnalyticsIcon />;
+      case 'Data Engineer':
+        return <DataEngineerIcon />;
+      case 'Machine Learning Engineer':
+        return <MLIcon />;
+      case 'Data Scientist':
+      case 'Data Science Associate':
+      default:
+        return <DataScienceIcon />;
+    }
+  }
+  
+  // Default icon
+  return <CodeIcon />;
+};
+
+const Curriculum = ({ title, subtitle, weeks, skills, domain }) => {
   const classes = useStyles();
-  const [activeWeek, setActiveWeek] = React.useState(0);
-  const [mounted, setMounted] = React.useState(false);
-  const contentRef = useRef(null);
+  const [activeWeek, setActiveWeek] = useState(0);
+  const [visibleSkills, setVisibleSkills] = useState([]);
+  const skillsRef = useRef([]);
 
   useEffect(() => {
-    setMounted(true);
-    const timer = setTimeout(() => {
-      const weekItems = document.querySelectorAll(`.${classes.weekItem}`);
-      weekItems.forEach((item, index) => {
-        setTimeout(() => {
-          item.style.opacity = '1';
-          item.style.transform = 'translateX(0)';
-        }, index * 100);
-      });
-    }, 300);
+    // Reset skill visibility when active week changes
+    setVisibleSkills([]);
 
+    // Animate each skill item with a delay
+    const showSkills = () => {
+      const currentSkills = skills[activeWeek];
+      const delays = currentSkills.map((_, index) => setTimeout(() => {
+        setVisibleSkills(prev => [...prev, index]);
+      }, 100 + (index * 100)));
+
+      return () => delays.forEach(delay => clearTimeout(delay));
+    };
+
+    // Add small delay before starting animation
+    const timer = setTimeout(showSkills, 200);
     return () => clearTimeout(timer);
-  }, []);
-
-  const handleWeekHover = (index) => {
-    setActiveWeek(index);
-    const skillItems = document.querySelectorAll(`.${classes.skillItem}`);
-    skillItems.forEach((item, idx) => {
-      item.style.opacity = '0';
-      item.style.transform = 'translateX(20px)';
-      setTimeout(() => {
-        item.style.opacity = '1';
-        item.style.transform = 'translateX(0)';
-      }, idx * 100);
-    });
-  };
+  }, [activeWeek, skills]);
 
   return (
-    <Box className={classes.curriculumSection}>
-      <Box className={classes.titleContainer}>
-        <Typography variant="h2" className={classes.title}>
-          {title}
-        </Typography>
-      </Box>
-
-      <Box className={classes.contentContainer} ref={contentRef}>
-        {/* Weeks Column */}
-        <Box className={classes.weeksColumn}>
-          {weeks.map((week, index) => (
-            <Box 
-              key={index} 
-              className={classes.weekItem} 
-              onMouseEnter={() => handleWeekHover(index)}
-            >
-              <Box 
-                className={`${classes.weekBox} ${
-                  activeWeek === index ? classes.activeWeekBox : classes.inactiveWeekBox
-                }`}
-              >
-                {week}
-              </Box>
-            </Box>
-          ))}
+    <Box className={classes.section}>
+      <Box className={classes.wrapper}>
+        <Box className={classes.titleContainer}>
+          <Typography variant="h2" className={classes.title}>
+            Curriculum Aligned with <span>{domain === 'fullstack' ? 'Full Stack' : 'Data Science'}</span> Job Roles
+          </Typography>
+          {subtitle && (
+            <Typography variant="body1" className={classes.subtitle}>
+              {subtitle}
+            </Typography>
+          )}
         </Box>
 
-        {/* Skills Column */}
-        <Box className={classes.skillsColumn}>
-          {skills[activeWeek].map((skill, index) => (
-            <Box 
-              key={index} 
-              className={classes.skillItem}
-            >
-              <Typography variant="body1" className={classes.skillText} sx={{ display: 'flex', alignItems: 'center' }}>
-                <span style={{ 
-                  color: '#FFC614', 
-                  marginRight: '16px', 
-                  fontSize: '24px',
-                  lineHeight: 1 
-                }}>✦</span>
-                {skill}
-              </Typography>
+        <Box className={classes.contentContainer}>
+          {/* Weeks Panel */}
+          <Box className={classes.weeksPanel}>
+            <Box className={classes.weeksList}>
+              {weeks.map((week, index) => (
+                <Box 
+                  key={index}
+                  onMouseEnter={() => setActiveWeek(index)}
+                  className={`${classes.weekItem} ${activeWeek === index ? classes.activeWeekItem : ''}`}
+                >
+                  <Box 
+                    className={`${classes.weekIconContainer} ${activeWeek === index ? classes.activeWeekIconContainer : ''}`}
+                  >
+                    {getIconForRole(week, domain)}
+                  </Box>
+                  <Typography className={classes.weekTitle}>
+                    {week}
+                  </Typography>
+                </Box>
+              ))}
             </Box>
-          ))}
+          </Box>
+
+          {/* Skills Panel */}
+          <Box className={classes.skillsPanel}>
+            {/* Background elements */}
+            <Box 
+              className={`${classes.backgroundElement} ${classes.skillsBackground}`} 
+            />
+            <Box className={classes.decorativeDots} />
+
+            <Typography variant="h3" className={classes.roleTitle}>
+              {weeks[activeWeek]}
+            </Typography>
+
+            <Box className={classes.skillsList}>
+              {skills[activeWeek].map((skill, index) => (
+                <Box 
+                  key={index}
+                  className={`${classes.skillItem} ${visibleSkills.includes(index) ? classes.skillVisible : ''}`}
+                  ref={el => skillsRef.current[index] = el}
+                  style={{ transitionDelay: `${index * 0.1}s` }}
+                >
+                  <Box className={classes.skillDot} />
+                  <Typography className={classes.skillText}>
+                    {skill}
+                  </Typography>
+                </Box>
+              ))}
+            </Box>
+          </Box>
+        </Box>
+
+        <Box className={classes.exploreButtonContainer}>
+          <Button 
+            variant="contained" 
+            className={classes.exploreButton}
+            endIcon={<ArrowForwardIcon />}
+          >
+            Explore Full Curriculum
+          </Button>
         </Box>
       </Box>
     </Box>

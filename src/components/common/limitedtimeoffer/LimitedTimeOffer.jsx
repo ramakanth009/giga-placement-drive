@@ -610,7 +610,7 @@ const LimitedTimeOffer = () => {
       />
       
         <Typography variant="h2" className={classes.title}>
-          Limited <span>Time Offer</span>
+        Limited-Time Offer - Join the <span>Virtual Placement Drive</span> Now
         </Typography>
         <Typography variant="subtitle1" className={classes.subtitle}>
           Grab this exclusive opportunity before it expires and kickstart your tech career journey

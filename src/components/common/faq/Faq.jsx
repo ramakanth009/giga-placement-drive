@@ -188,7 +188,7 @@ const Faq = ({ faqData, title, subtitle }) => {
     <Box className={classes.faqContainer}>
       <Box className={classes.titleBox}>
         <Typography variant="h2" className={classes.title}>
-          {title || <>FAQ'<span>s</span></>}
+         Frequently Asked <span>Questions</span>
         </Typography>
         {subtitle && (
           <Typography variant="body1" sx={{ textAlign: 'center', maxWidth: '800px', mb: 3 }}>

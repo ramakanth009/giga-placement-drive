@@ -1,452 +1,380 @@
 // src/components/resumebuilder/ResumeBuilderSection.jsx
 import React, { useState, useEffect } from 'react';
-import { Box, Typography, Button, Container } from '@mui/material';
+import { Box, Typography, Button, Container, Paper, Chip } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { useNavigate } from 'react-router-dom';
-import SpeedIcon from '@mui/icons-material/Speed';
+import DescriptionIcon from '@mui/icons-material/Description';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import StarIcon from '@mui/icons-material/Star';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
-import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
+// import ResumeTemplateImage from '../../assets/resume-template.png'; // Add this image
 
-// Define styles using makeStyles
 const useStyles = makeStyles({
   section: {
-    padding: '80px 0',
-    background: 'linear-gradient(180deg, #ffffff 0%, #f8f9fc 100%)',
+    padding: '70px 0',
     position: 'relative',
     overflow: 'hidden',
+    background: 'linear-gradient(135deg, #f0f4ff 0%, #e6f2ff 100%)',
+    marginTop: '-40px', // Create overlap effect with hero section
+    zIndex: 5,
   },
   container: {
     position: 'relative',
     zIndex: 2,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
-  header: {
+  banner: {
+    width: '90%',
+    maxWidth: '1000px',
+    padding: '40px',
+    borderRadius: '20px',
+    background: 'linear-gradient(135deg, #2A2B6A 0%, #1A1B4A 100%)',
+    boxShadow: '0 20px 60px rgba(42, 43, 106, 0.3)',
     textAlign: 'center',
-    marginBottom: '60px',
-  },
-  title: {
-    fontSize: '2.8rem !important',
-    fontWeight: 'bold !important',
-    color: '#2A2B6A !important',
-    marginBottom: '16px !important',
-    lineHeight: '1.2 !important',
     position: 'relative',
-    '&::after': {
-      content: '""',
-      position: 'absolute',
-      bottom: '-15px',
-      left: '50%',
-      transform: 'translateX(-50%)',
-      width: '80px',
-      height: '4px',
-      background: '#FFC614',
-      borderRadius: '2px',
+    overflow: 'hidden',
+    transform: 'translateY(-30px)',
+    marginBottom: '30px',
+    border: '1px solid rgba(255, 255, 255, 0.1)',
+    '@media (max-width: 768px)': {
+      padding: '30px 20px',
+      width: '95%',
     },
-    '@media (max-width: 960px)': {
-      fontSize: '2.4rem !important',
+  },
+  bannerTitle: {
+    fontSize: '2.8rem !important',
+    fontWeight: '800 !important',
+    color: 'black !important',
+    margin: '0 0 15px !important',
+    position: 'relative',
+    '@media (max-width: 768px)': {
+      fontSize: '2.2rem !important',
     },
-    '@media (max-width: 600px)': {
-      fontSize: '2rem !important',
+    '@media (max-width: 480px)': {
+      fontSize: '1.8rem !important',
     },
   },
   highlightText: {
     color: '#FFC614 !important',
+    position: 'relative',
+    display: 'inline-block',
+    '&:after': {
+      content: '""',
+      position: 'absolute',
+      bottom: '5px',
+      left: '0',
+      width: '100%',
+      height: '30%',
+      background: 'rgba(255, 198, 20, 0.2)',
+      zIndex: -1,
+      borderRadius: '2px',
+    },
   },
-  subtitle: {
-    fontSize: '1.2rem !important',
-    color: '#555 !important',
-    marginTop: '25px !important',
+  bannerSubtitle: {
+    fontSize: '1.3rem !important',
+    color: 'black !important',
+    margin: '0 auto 25px !important',
     maxWidth: '700px',
-    margin: '25px auto 0 !important',
-    '@media (max-width: 600px)': {
+    '@media (max-width: 768px)': {
       fontSize: '1.1rem !important',
     },
   },
-  mainContent: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    '@media (max-width: 960px)': {
-      flexDirection: 'column',
-      gap: '40px',
-    },
-  },
-  benefitsColumn: {
-    width: '50%',
-    padding: '0 30px',
-    '@media (max-width: 960px)': {
-      width: '100%',
-      padding: '0',
-    },
-  },
-  resumePreviewColumn: {
-    width: '50%',
-    display: 'flex',
-    justifyContent: 'center',
-    '@media (max-width: 960px)': {
-      width: '100%',
-      maxWidth: '500px',
-    },
-  },
-  benefitCard: {
-    display: 'flex',
-    alignItems: 'flex-start',
-    background: 'white',
-    padding: '20px 25px',
-    marginBottom: '20px',
-    borderRadius: '16px',
-    boxShadow: '0 8px 20px rgba(0, 0, 0, 0.06)',
-    transition: 'all 0.3s ease',
-    '&:hover': {
-      transform: 'translateY(-5px)',
-      boxShadow: '0 15px 30px rgba(0, 0, 0, 0.1)',
-      '& $benefitIcon': {
-        transform: 'rotateY(180deg)',
-      },
-    },
-    '@media (max-width: 600px)': {
-      padding: '16px 20px',
-      marginBottom: '15px',
-    },
-  },
-  benefitIconContainer: {
-    minWidth: '60px',
-    height: '60px',
-    borderRadius: '50%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: '20px',
-    background: 'linear-gradient(135deg, rgba(42, 43, 106, 0.1) 0%, rgba(255, 198, 20, 0.1) 100%)',
-    '@media (max-width: 600px)': {
-      minWidth: '50px',
-      height: '50px',
-      marginRight: '15px',
-    },
-  },
-  benefitIcon: {
-    color: '#2A2B6A',
-    fontSize: '28px !important',
-    transition: 'transform 0.5s ease',
-    '@media (max-width: 600px)': {
-      fontSize: '24px !important',
-    },
-  },
-  benefitTitle: {
-    fontSize: '1.2rem !important',
-    fontWeight: '600 !important',
+  freeChip: {
+    position: 'absolute',
+    top: '15px',
+    right: '15px',
+    backgroundColor: '#FFC614 !important',
     color: '#2A2B6A !important',
-    marginBottom: '5px !important',
-    '@media (max-width: 600px)': {
-      fontSize: '1.1rem !important',
-    },
-  },
-  benefitText: {
-    fontSize: '0.95rem !important',
-    color: '#555 !important',
-    lineHeight: '1.5 !important',
-    '@media (max-width: 600px)': {
+    fontWeight: 'bold !important',
+    fontSize: '1rem !important',
+    padding: '5px 15px !important',
+    borderRadius: '20px !important',
+    boxShadow: '0 4px 10px rgba(0, 0, 0, 0.15) !important',
+    animation: '$pulse 2s infinite',
+    '@media (max-width: 768px)': {
       fontSize: '0.9rem !important',
     },
   },
-  resumePreview: {
-    width: '100%',
-    maxWidth: '400px',
-    height: '550px',
-    backgroundColor: 'white',
-    borderRadius: '16px',
-    boxShadow: '0 20px 50px rgba(0, 0, 0, 0.12)',
-    overflow: 'hidden',
-    '@media (max-width: 600px)': {
-      height: '480px',
+  '@keyframes pulse': {
+    '0%': {
+      transform: 'scale(1)',
+      boxShadow: '0 4px 10px rgba(0, 0, 0, 0.15)',
+    },
+    '50%': {
+      transform: 'scale(1.05)',
+      boxShadow: '0 8px 15px rgba(0, 0, 0, 0.2)',
+    },
+    '100%': {
+      transform: 'scale(1)',
+      boxShadow: '0 4px 10px rgba(0, 0, 0, 0.15)',
     },
   },
-  resumeHeader: {
-    height: '80px',
-    background: '#2A2B6A',
-    padding: '20px',
-    position: 'relative',
-  },
-  profileCircle: {
-    width: '60px',
-    height: '60px',
-    borderRadius: '50%',
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
-    position: 'absolute',
-    top: '40px',
-    left: '20px',
-  },
-  headerLine: {
-    height: '10px',
-    width: '60%',
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
-    borderRadius: '5px',
-    marginBottom: '10px',
-  },
-  headerSubLine: {
-    height: '6px',
-    width: '40%',
-    backgroundColor: 'rgba(255, 255, 255, 0.15)',
-    borderRadius: '3px',
-  },
-  resumeBody: {
-    padding: '50px 20px 20px',
-  },
-  resumeSection: {
-    marginBottom: '20px',
-  },
-  sectionTitle: {
-    height: '16px',
-    width: '40%',
-    backgroundColor: '#2A2B6A',
-    opacity: 0.7,
-    borderRadius: '8px',
-    marginBottom: '15px',
-  },
-  sectionContent: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '10px',
-  },
-  contentLine: {
-    height: '10px',
-    backgroundColor: '#f0f0f0',
-    borderRadius: '5px',
-  },
-  buildButtonContainer: {
+  featureList: {
     display: 'flex',
     justifyContent: 'center',
-    marginTop: '50px',
-    position: 'relative',
+    flexWrap: 'wrap',
+    gap: '15px',
+    margin: '20px 0 30px',
+    '@media (max-width: 768px)': {
+      gap: '10px',
+    },
+  },
+  featureItem: {
+    display: 'flex',
+    alignItems: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    padding: '8px 15px',
+    borderRadius: '50px',
+    '@media (max-width: 768px)': {
+      padding: '6px 12px',
+      fontSize: '0.9rem',
+    },
+  },
+  featureIcon: {
+    color: '#FFC614 !important',
+    marginRight: '8px !important',
+    fontSize: '1.2rem !important',
+    '@media (max-width: 768px)': {
+      fontSize: '1rem !important',
+    },
+  },
+  featureText: {
+    fontSize: '1rem !important',
+    color: 'black !important',
+    fontWeight: '500 !important',
+    '@media (max-width: 768px)': {
+      fontSize: '0.9rem !important',
+    },
   },
   buildButton: {
-    backgroundColor: '#2A2B6A !important',
-    color: 'white !important',
-    padding: '15px 30px !important', // Larger padding for prominence
+    backgroundColor: '#FFC614 !important',
+    color: '#2A2B6A !important',
+    padding: '15px 40px !important',
     borderRadius: '50px !important',
-    fontSize: '1.2rem !important',
+    fontSize: '1.3rem !important',
     fontWeight: 'bold !important',
     textTransform: 'none !important',
-    transition: 'all 0.3s ease !important',
-    boxShadow: '0 10px 25px rgba(42, 43, 106, 0.2) !important',
+    transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important',
+    boxShadow: '0 10px 25px rgba(255, 198, 20, 0.4) !important',
+    marginTop: '10px',
+    marginBottom: '15px',
     '&:hover': {
-      backgroundColor: '#373881 !important',
-      transform: 'translateY(-5px)',
-      boxShadow: '0 15px 35px rgba(42, 43, 106, 0.3) !important',
+      backgroundColor: 'white !important',
+      transform: 'translateY(-7px) scale(1.05)',
+      boxShadow: '0 15px 35px rgba(255, 198, 20, 0.5) !important',
     },
-    '@media (max-width: 600px)': {
-      padding: '14px 30px !important',
+    '@media (max-width: 768px)': {
+      padding: '12px 30px !important',
       fontSize: '1.1rem !important',
     },
   },
-  buildButtonIcon: {
-    fontSize: '1.4rem !important',
-    marginRight: '10px !important',
-    '@media (max-width: 600px)': {
-      fontSize: '1.2rem !important',
+  previewSection: {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: '30px',
+    position: 'relative',
+  },
+  previewTitle: {
+    fontSize: '1.5rem !important',
+    fontWeight: 'bold !important',
+    color: '#2A2B6A !important',
+    textAlign: 'center',
+    margin: '0 0 30px !important',
+    position: 'relative',
+    '&:after': {
+      content: '""',
+      position: 'absolute',
+      bottom: '-10px',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      width: '60px',
+      height: '3px',
+      background: '#FFC614',
+      borderRadius: '2px',
     },
   },
-  freeBadge: {
-    position: 'absolute',
-    top: '-10px',
-    right: '-10px',
-    backgroundColor: '#FFC614',
-    color: 'white',
-    padding: '5px 10px',
-    borderRadius: '5px',
-    fontSize: '0.8rem',
-    fontWeight: 'bold',
+  resumePreview: {
+    display: 'flex',
+    gap: '30px',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    '@media (max-width: 768px)': {
+      gap: '20px',
+    },
   },
-  gradientCircle: {
+  templateCard: {
+    width: '280px',
+    backgroundColor: 'white',
+    borderRadius: '10px',
+    overflow: 'hidden',
+    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
+    transition: 'all 0.3s ease',
+    '&:hover': {
+      transform: 'translateY(-10px)',
+      boxShadow: '0 15px 40px rgba(0, 0, 0, 0.15)',
+    },
+    '@media (max-width: 768px)': {
+      width: '220px',
+    },
+  },
+  templateImage: {
+    width: '100%',
+    height: '350px',
+    objectFit: 'cover',
+    objectPosition: 'top',
+    '@media (max-width: 768px)': {
+      height: '280px',
+    },
+  },
+  templateLabel: {
+    padding: '15px',
+    textAlign: 'center',
+    fontWeight: 'bold !important',
+    fontSize: '1rem !important',
+    color: '#2A2B6A !important',
+  },
+  starIcon: {
     position: 'absolute',
+    color: '#FFC614',
+    zIndex: 0,
+    opacity: 0.5,
+  },
+  starBurst: {
+    position: 'absolute',
+    width: '150px',
+    height: '150px',
     borderRadius: '50%',
-    filter: 'blur(80px)',
+    background: 'radial-gradient(circle, rgba(255, 198, 20, 0.2) 0%, rgba(255, 198, 20, 0) 70%)',
     zIndex: 0,
   },
-  blueCircle: {
-    width: '500px',
-    height: '500px',
-    bottom: '-250px',
-    left: '-150px',
-    background: 'radial-gradient(circle, rgba(42, 43, 106, 0.1) 0%, rgba(42, 43, 106, 0) 70%)',
+  starburst1: {
+    top: '10%',
+    left: '10%',
   },
-  yellowCircle: {
-    width: '400px',
-    height: '400px',
-    top: '-150px',
-    right: '-100px',
-    background: 'radial-gradient(circle, rgba(255, 198, 20, 0.08) 0%, rgba(255, 198, 20, 0) 70%)',
+  starburst2: {
+    bottom: '5%',
+    right: '15%',
+  },
+  limitedText: {
+    fontSize: '1rem !important',
+    color: 'black !important',
+    fontStyle: 'italic !important',
+    margin: '15px 0 0 !important',
   },
 });
 
-// Main component
 const ResumeBuilderSection = () => {
   const classes = useStyles();
   const navigate = useNavigate();
+  
   const [animated, setAnimated] = useState(false);
-
-  // Trigger animations on mount
+  
   useEffect(() => {
+    // Trigger animation after component mounts
     setAnimated(true);
+    
+    // Generate random star positions
+    const stars = document.querySelectorAll(`.${classes.starIcon}`);
+    stars.forEach(star => {
+      const top = Math.random() * 100;
+      const left = Math.random() * 100;
+      const size = 20 + Math.random() * 30;
+      star.style.top = `${top}%`;
+      star.style.left = `${left}%`;
+      star.style.fontSize = `${size}px`;
+    });
   }, []);
 
-  // Navigate to resume builder page on button click
-  const handleBuildClick = () => {
+  const handleBuildResumeClick = () => {
+    // Navigate to resume builder page
     navigate('/resume-builder');
   };
 
-  // List of benefits
-  const benefits = [
-    {
-      icon: <SpeedIcon className={classes.benefitIcon} />,
-      title: "ATS-Optimized Templates",
-      text: "Beat applicant tracking systems with templates designed to pass automated screening.",
-    },
-    {
-      icon: <StarIcon className={classes.benefitIcon} />,
-      title: "Industry-Specific Keywords",
-      text: "Improve your match rate with job descriptions by using relevant technical keywords.",
-    },
-    {
-      icon: <VisibilityIcon className={classes.benefitIcon} />,
-      title: "Portfolio Showcase",
-      text: "Highlight your projects and technical achievements that make you stand out.",
-    },
-    {
-      icon: <RocketLaunchIcon className={classes.benefitIcon} />,
-      title: "Quick & User-Friendly",
-      text: "Create a professional tech resume in under 10 minutes with our guided builder.",
-    },
+  const features = [
+    "ATS Optimized",
+    "Technical Templates",
+    "Skills Highlighting",
+    "Project Showcase",
+    "Quick to Create"
   ];
 
   return (
     <Box className={classes.section}>
-      {/* Background gradient circles */}
-      <Box className={`${classes.gradientCircle} ${classes.blueCircle}`} />
-      <Box className={`${classes.gradientCircle} ${classes.yellowCircle}`} />
-
+      <Box className={classes.starburst1} />
+      <Box className={classes.starburst2} />
+      
+      {/* Add multiple decorative stars */}
+      {[...Array(8)].map((_, i) => (
+        <StarIcon key={i} className={classes.starIcon} />
+      ))}
+      
       <Container maxWidth="lg" className={classes.container}>
-        {/* Header */}
-        <Box className={classes.header}>
-          <Typography variant="h2" className={classes.title}>
-            Craft Your <span className={classes.highlightText}>Free</span> Tech Resume
+        <Paper 
+          elevation={0} 
+          className={classes.banner}
+          sx={{
+            opacity: animated ? 1 : 0,
+            transform: animated ? 'translateY(-30px)' : 'translateY(0px)',
+            transition: 'opacity 0.8s ease, transform 0.8s ease',
+          }}
+        >
+          <Chip 
+            icon={<StarIcon />} 
+            label="FREE" 
+            className={classes.freeChip} 
+          />
+          
+          <Typography variant="h1" className={classes.bannerTitle}>
+            Create Your <span className={classes.highlightText}>Professional Resume</span>
           </Typography>
-          <Typography variant="body1" className={classes.subtitle}>
-            Build your resume for free with our AI-powered tool designed to impress technical recruiters.
+          
+          <Typography variant="h4" className={classes.bannerSubtitle}>
+            Stand out from the competition with an ATS-friendly resume designed for tech roles
           </Typography>
-        </Box>
-
-        {/* Main Content */}
-        <Box className={classes.mainContent}>
-          {/* Benefits Column */}
-          <Box className={classes.benefitsColumn}>
-            {benefits.map((benefit, index) => (
-              <Box
-                key={index}
-                className={classes.benefitCard}
+          
+          <Box className={classes.featureList}>
+            {features.map((feature, index) => (
+              <Box 
+                key={index} 
+                className={classes.featureItem}
                 sx={{
                   opacity: animated ? 1 : 0,
-                  transform: animated ? 'translateX(0)' : 'translateX(-30px)',
+                  transform: animated ? 'translateY(0)' : 'translateY(20px)',
                   transition: 'opacity 0.6s ease, transform 0.6s ease',
-                  transitionDelay: `${index * 0.15}s`,
+                  transitionDelay: `${0.2 + (index * 0.1)}s`,
                 }}
               >
-                <Box className={classes.benefitIconContainer}>{benefit.icon}</Box>
-                <Box>
-                  <Typography className={classes.benefitTitle}>{benefit.title}</Typography>
-                  <Typography className={classes.benefitText}>{benefit.text}</Typography>
-                </Box>
+                <CheckCircleIcon className={classes.featureIcon} />
+                <Typography className={classes.featureText}>
+                  {feature}
+                </Typography>
               </Box>
             ))}
           </Box>
-
-          {/* Resume Preview Column */}
-          <Box
-            className={classes.resumePreviewColumn}
-            sx={{
-              opacity: animated ? 1 : 0,
-              transform: animated ? 'translateY(0)' : 'translateY(30px)',
-              transition: 'opacity 0.8s ease, transform 0.8s ease',
-              transitionDelay: '0.4s',
-            }}
-          >
-            <Box className={classes.resumePreview}>
-              <Box className={classes.resumeHeader}>
-                <Box className={classes.headerLine} />
-                <Box className={classes.headerSubLine} />
-                <Box className={classes.profileCircle} />
-              </Box>
-              <Box className={classes.resumeBody}>
-                {/* Experience Section */}
-                <Box className={classes.resumeSection}>
-                  <Box className={classes.sectionTitle} />
-                  <Box className={classes.sectionContent}>
-                    <Box className={classes.contentLine} sx={{ width: '100%' }} />
-                    <Box className={classes.contentLine} sx={{ width: '95%' }} />
-                    <Box className={classes.contentLine} sx={{ width: '90%' }} />
-                    <Box className={classes.contentLine} sx={{ width: '85%' }} />
-                  </Box>
-                </Box>
-                {/* Education Section */}
-                <Box className={classes.resumeSection}>
-                  <Box className={classes.sectionTitle} />
-                  <Box className={classes.sectionContent}>
-                    <Box className={classes.contentLine} sx={{ width: '100%' }} />
-                    <Box className={classes.contentLine} sx={{ width: '80%' }} />
-                    <Box className={classes.contentLine} sx={{ width: '90%' }} />
-                  </Box>
-                </Box>
-                {/* Skills Section */}
-                <Box className={classes.resumeSection}>
-                  <Box className={classes.sectionTitle} />
-                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-                    {[...Array(8)].map((_, i) => (
-                      <Box
-                        key={i}
-                        sx={{
-                          height: '30px',
-                          width: `${Math.floor(Math.random() * 30) + 60}px`,
-                          backgroundColor: i % 3 === 0 ? 'rgba(255, 198, 20, 0.2)' : '#f0f0f0',
-                          borderRadius: '15px',
-                        }}
-                      />
-                    ))}
-                  </Box>
-                </Box>
-                {/* Projects Section */}
-                <Box className={classes.resumeSection}>
-                  <Box className={classes.sectionTitle} />
-                  <Box className={classes.sectionContent}>
-                    <Box className={classes.contentLine} sx={{ width: '100%' }} />
-                    <Box className={classes.contentLine} sx={{ width: '95%' }} />
-                    <Box className={classes.contentLine} sx={{ width: '90%' }} />
-                    <Box className={classes.contentLine} sx={{ width: '80%' }} />
-                  </Box>
-                </Box>
-              </Box>
-            </Box>
-          </Box>
-        </Box>
-
-        {/* Call-to-Action Button */}
-        <Box className={classes.buildButtonContainer}>
-          <Button
-            variant="contained"
+          
+          <Button 
+            variant="contained" 
             className={classes.buildButton}
-            onClick={handleBuildClick}
-            startIcon={<DocumentScannerIcon className={classes.buildButtonIcon} />}
+            onClick={handleBuildResumeClick}
+            endIcon={<ArrowForwardIcon />}
             sx={{
               opacity: animated ? 1 : 0,
               transform: animated ? 'translateY(0)' : 'translateY(20px)',
-              transition: 'opacity 0.7s ease, transform 0.7s ease',
-              transitionDelay: '0.7s',
+              transition: 'opacity 0.8s ease, transform 0.8s ease',
+              transitionDelay: '0.6s',
             }}
           >
-            Build Your Resume Now
+            Build Your FREE Resume Now
           </Button>
-          <span className={classes.freeBadge}>Free</span>
-        </Box>
+          
+          <Typography variant="body2" className={classes.limitedText}>
+            Start building your professional resume in minutes
+          </Typography>
+        </Paper>
       </Container>
     </Box>
   );

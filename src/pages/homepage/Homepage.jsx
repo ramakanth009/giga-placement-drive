@@ -38,7 +38,7 @@ const Homepage = () => {
         
         {/* Hero Section */}
         <Hero />
-         
+        
         <ResumeBuilderSection />
         {/* Hiring Partners as separate section */}
         <HiringPartners />

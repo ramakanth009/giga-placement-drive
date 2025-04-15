@@ -5,8 +5,7 @@ import { makeStyles } from '@mui/styles';
 
 // Import SVG logos as React components
 import { ReactComponent as AccentureLogo } from '../../../assets/hiringpartners/Accenture.svg';
-import { ReactComponent as AdobeLogo } from '../../../assets/hiringpartners/Adobe.svg';
-import { ReactComponent as AdpLogo } from '../../../assets/hiringpartners/adp.svg';
+
 import { ReactComponent as AmazonLogo } from '../../../assets/hiringpartners/Amazon.svg';
 import { ReactComponent as BharatPeLogo } from '../../../assets/hiringpartners/BharatPe.svg';
 import { ReactComponent as CapgeminiLogo } from '../../../assets/hiringpartners/capgemini.svg';
@@ -188,8 +187,6 @@ const HiringPartners = () => {
   // Define the logos array with their React components
   const logos = [
     { Logo: AccentureLogo, alt: 'Accenture' },
-    { Logo: AdobeLogo, alt: 'Adobe' },
-    { Logo: AdpLogo, alt: 'ADP' },
     { Logo: AmazonLogo, alt: 'Amazon' },
     { Logo: BharatPeLogo, alt: 'BharatPe' },
     { Logo: CapgeminiLogo, alt: 'Capgemini' },

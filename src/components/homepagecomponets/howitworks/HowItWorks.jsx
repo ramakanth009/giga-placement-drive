@@ -380,7 +380,7 @@ const HowItWorks = () => {
       <Box className={classes.container}>
         <Box className={classes.header}>
           <Typography variant="h2" className={classes.title}>
-            How It Works
+          How Our Virtual Placement Drive Works
           </Typography>
           <Typography variant="body1" className={classes.subtitle}>
             Your skills matter more than marks—follow these steps to get noticed!

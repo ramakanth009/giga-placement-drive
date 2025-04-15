@@ -341,7 +341,7 @@ const WhoShouldJoin = () => {
         <Box className={classes.contentContainer}>
           <Box className={classes.titleContainer}>
             <Typography variant="h2" className={classes.title}>
-              Who Should Join This Program
+            Who Should Join Gigaversity’s Virtual Placement Drive
             </Typography>
           </Box>
 

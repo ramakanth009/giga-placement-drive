@@ -40,18 +40,18 @@ const useStyles = makeStyles({
     zIndex: 1,
     animation: '$fadeIn 0.8s ease-out',
   },
-  sectionLabel: {
-    display: 'inline-block',
-    padding: '7px 16px',
-    fontSize: '0.85rem !important',
-    fontWeight: '600 !important',
-    color: '#2A2B6A !important',
-    backgroundColor: 'rgba(42, 43, 106, 0.07)',
-    borderRadius: '30px',
-    marginBottom: '15px !important',
-    letterSpacing: '1px',
-    animation: '$slideDown 0.6s ease-out',
-  },
+  // sectionLabel: {
+  //   display: 'inline-block',
+  //   padding: '7px 16px',
+  //   fontSize: '0.85rem !important',
+  //   fontWeight: '600 !important',
+  //   color: '#2A2B6A !important',
+  //   backgroundColor: 'rgba(42, 43, 106, 0.07)',
+  //   borderRadius: '30px',
+  //   marginBottom: '15px !important',
+  //   letterSpacing: '1px',
+  //   animation: '$slideDown 0.6s ease-out',
+  // },
   title: {
     fontSize: '2.5rem !important',
     fontWeight: '800 !important',
@@ -470,7 +470,7 @@ const WhyDifferent = () => {
     <Box className={classes.section}>
       <Box className={classes.bgDecoration} />
       <Box className={classes.header}>
-        <Typography className={classes.sectionLabel}>Our Approach</Typography>
+        {/* <Typography className={classes.sectionLabel}>Our Approach</Typography> */}
         <Typography variant="h2" className={classes.title}>
           Why Gigaversity <span>Is Different</span>
         </Typography>
