@@ -1,11 +1,10 @@
-// src/components/hiringpartners/HiringPartners.jsx
+// src/components/common/hiringpartners/EnhancedHiringPartners.jsx
 import React, { useRef, useState } from 'react';
 import { Box, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
-// Import SVG logos as React components
+// Import existing SVG logos
 import { ReactComponent as AccentureLogo } from '../../../assets/hiringpartners/Accenture.svg';
-
 import { ReactComponent as AmazonLogo } from '../../../assets/hiringpartners/Amazon.svg';
 import { ReactComponent as BharatPeLogo } from '../../../assets/hiringpartners/BharatPe.svg';
 import { ReactComponent as CapgeminiLogo } from '../../../assets/hiringpartners/capgemini.svg';
@@ -22,14 +21,24 @@ import { ReactComponent as TechMahindraLogo } from '../../../assets/hiringpartne
 import { ReactComponent as WiproLogo } from '../../../assets/hiringpartners/Wipro.svg';
 import { ReactComponent as ZohoLogo } from '../../../assets/hiringpartners/zoho.svg';
 
+// Import new SVG logos
+import { ReactComponent as AdidasLogo } from '../../../assets/hiringpartners/Adidas-logo.svg';
+import { ReactComponent as CaterpillarLogo } from '../../../assets/hiringpartners/caterpillar-preview.svg';
+import { ReactComponent as InfrrtLogo } from '../../../assets/hiringpartners/Infrrt.svg';
+import { ReactComponent as MedplusLogo } from '../../../assets/hiringpartners/Medplus_logo.svg';
+import { ReactComponent as GoldmanSachsLogo } from '../../../assets/hiringpartners/goldman-sachs.svg';
+import { ReactComponent as PaytmLogo } from '../../../assets/hiringpartners/paytm.svg';
+import { ReactComponent as HappyFoxLogo } from '../../../assets/hiringpartners/happyfox.svg';
+import { ReactComponent as SynopsysLogo } from '../../../assets/hiringpartners/Synopsys_Logo.svg';
+
 const useStyles = makeStyles({
   partnersSectionWrapper: {
     width: '100%',
     backgroundColor: 'transparent',
-    padding: '30px 0',
+    padding: '50px 0',
     margin: '30px 0',
     '@media (max-width: 768px)': {
-      padding: '20px 0',
+      padding: '40px 0',
       margin: '20px 0',
     },
   },
@@ -37,11 +46,11 @@ const useStyles = makeStyles({
     width: '100%',
     display: 'flex',
     justifyContent: 'center',
-    marginBottom: '30px',
+    marginBottom: '40px',
     position: 'relative',
     zIndex: 2,
     '@media (max-width: 768px)': {
-      marginBottom: '20px',
+      marginBottom: '30px',
     },
   },
   sectionTitle: {
@@ -56,7 +65,7 @@ const useStyles = makeStyles({
       width: '60px',
       height: '3px',
       backgroundColor: '#FFC614',
-      bottom: '-8px',
+      bottom: '-12px',
       left: '50%',
       transform: 'translateX(-50%)',
     },
@@ -67,21 +76,41 @@ const useStyles = makeStyles({
       fontSize: '1.8rem !important',
       '&:after': {
         width: '50px',
+        bottom: '-10px',
       },
     },
+  },
+  subtitle: {
+    color: "#555555 !important",
+    textAlign: 'center !important',
+    fontSize: "1.1rem !important",
+    maxWidth: '800px',
+    margin: '30px auto 0 !important',
+    '@media (max-width: 960px)': {
+      fontSize: '1rem !important',
+      maxWidth: '90%',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.9rem !important',
+      margin: '25px auto 0 !important',
+    },
+  },
+  highlightText: {
+    fontWeight: '600 !important',
+    color: '#2A2B6A !important',
   },
   partnersSection: {
     width: '100%',
     position: 'relative',
     display: 'flex',
     alignItems: 'center',
-    height: '150px',
+    height: '180px', // Increased height for two rows
     overflow: 'hidden',
     '@media (max-width: 768px)': {
-      height: '120px',
+      height: '160px',
     },
     '@media (max-width: 480px)': {
-      height: '100px',
+      height: '140px',
     },
   },
   logoContainer: {
@@ -91,30 +120,56 @@ const useStyles = makeStyles({
     width: '100%',
     height: '100%',
     display: 'flex',
-    alignItems: 'center',
+    flexDirection: 'column', // Stack rows vertically
+    justifyContent: 'space-around', // Distribute space evenly
     overflow: 'hidden',
     zIndex: 1,
   },
+  logoRow: {
+    display: 'flex',
+    alignItems: 'center',
+    height: '80px', // Fixed height for each row
+    position: 'relative',
+    '@media (max-width: 768px)': {
+      height: '70px',
+    },
+    '@media (max-width: 480px)': {
+      height: '60px',
+    },
+  },
   logoSlider: {
     display: 'flex',
-    transition: 'transform 20s linear infinite',
-    animation: '$slideAnimation 25s linear infinite',
     position: 'absolute',
     left: '0',
     width: 'auto',
+    height: '100%',
+    alignItems: 'center',
+  },
+  sliderForward: {
+    animation: '$slideForward 35s linear infinite',
     '@media (max-width: 768px)': {
-      animation: '$slideAnimation 20s linear infinite',
+      animation: '$slideForward 25s linear infinite',
     },
     '@media (max-width: 480px)': {
-      animation: '$slideAnimation 15s linear infinite',
+      animation: '$slideForward 20s linear infinite',
+    },
+  },
+  sliderBackward: {
+    animation: '$slideBackward 35s linear infinite',
+    '@media (max-width: 768px)': {
+      animation: '$slideBackward 25s linear infinite',
+    },
+    '@media (max-width: 480px)': {
+      animation: '$slideBackward 20s linear infinite',
     },
   },
   logoWrapper: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: '0 30px',
+    padding: '0 25px',
     flexShrink: 0,
+    height: '100%',
     '@media (max-width: 768px)': {
       padding: '0 20px',
     },
@@ -123,12 +178,14 @@ const useStyles = makeStyles({
     },
   },
   logoSvg: {
-    width: '120px',
-    height: '60px',
-    opacity: 0.9,
+    width: '110px',
+    height: '55px',
+    opacity: 0.85,
     transition: 'all 0.3s ease',
+    objectFit: 'contain',
     '&:hover': {
       transform: 'scale(1.05)',
+      opacity: 1,
     },
     '@media (max-width: 960px)': {
       width: '100px',
@@ -143,7 +200,7 @@ const useStyles = makeStyles({
       height: '35px',
     },
   },
-  '@keyframes slideAnimation': {
+  '@keyframes slideForward': {
     '0%': {
       transform: 'translateX(0)',
     },
@@ -151,111 +208,178 @@ const useStyles = makeStyles({
       transform: 'translateX(-50%)',
     },
   },
+  '@keyframes slideBackward': {
+    '0%': {
+      transform: 'translateX(-50%)',
+    },
+    '100%': {
+      transform: 'translateX(0)',
+    },
+  },
   whiteFadeLeft: {
     position: 'absolute',
     left: 0,
     top: 0,
-    width: '18%',
+    width: '15%',
     height: '100%',
     background: 'linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 40%, rgba(255, 255, 255, 0.4) 80%, rgba(255, 255, 255, 0.1))',
-    zIndex: 1,
+    zIndex: 2,
     pointerEvents: 'none',
     '@media (max-width: 768px)': {
-      width: '20%',
+      width: '18%',
     },
   }, 
   whiteFadeRight: {
     position: 'absolute',
     right: 0,
     top: 0,
-    width: '18%',
+    width: '15%',
     height: '100%',
     background: 'linear-gradient(to left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 40%, rgba(255, 255, 255, 0.4) 80%, rgba(255, 255, 255, 0.1))',
-    zIndex: 1,
+    zIndex: 2,
     pointerEvents: 'none',
     '@media (max-width: 768px)': {
-      width: '20%',
+      width: '18%',
     },
   },
 });
 
 const HiringPartners = () => {
   const classes = useStyles();
-  const sliderRef = useRef(null);
-  const [isHovered, setIsHovered] = useState(false);
+  const topRowRef = useRef(null);
+  const bottomRowRef = useRef(null);
+  const [isTopRowHovered, setIsTopRowHovered] = useState(false);
+  const [isBottomRowHovered, setIsBottomRowHovered] = useState(false);
 
-  // Define the logos array with their React components
-  const logos = [
-    { Logo: AccentureLogo, alt: 'Accenture' },
+  // First row logos
+  const firstRowLogos = [
     { Logo: AmazonLogo, alt: 'Amazon' },
-    { Logo: BharatPeLogo, alt: 'BharatPe' },
+    { Logo: AccentureLogo, alt: 'Accenture' }, 
     { Logo: CapgeminiLogo, alt: 'Capgemini' },
-    { Logo: CredLogo, alt: 'Cred' },
     { Logo: DellLogo, alt: 'Dell' },
     { Logo: DeloitteLogo, alt: 'Deloitte' },
     { Logo: FlipkartLogo, alt: 'Flipkart' },
+    { Logo: GoldmanSachsLogo, alt: 'Goldman Sachs' },
+    { Logo: AdidasLogo, alt: 'Adidas' },
+    { Logo: PaytmLogo, alt: 'Paytm' },
+    { Logo: ZohoLogo, alt: 'Zoho' },
+    { Logo: TcsLogo, alt: 'TCS' },
+    { Logo: SynopsysLogo, alt: 'Synopsys' },
+  ];
+
+  // Second row logos
+  const secondRowLogos = [
     { Logo: InfosysLogo, alt: 'Infosys' },
+    { Logo: WiproLogo, alt: 'Wipro' },
     { Logo: MuSigmaLogo, alt: 'Mu Sigma' },
+    { Logo: TechMahindraLogo, alt: 'Tech Mahindra' },
     { Logo: PharmEasyLogo, alt: 'PharmEasy' },
     { Logo: PhonePeLogo, alt: 'PhonePe' },
-    { Logo: TcsLogo, alt: 'TCS' },
-    { Logo: TechMahindraLogo, alt: 'Tech Mahindra' },
-    { Logo: WiproLogo, alt: 'Wipro' },
-    { Logo: ZohoLogo, alt: 'Zoho' },
+    { Logo: BharatPeLogo, alt: 'BharatPe' },
+    { Logo: CredLogo, alt: 'Cred' },
+    { Logo: InfrrtLogo, alt: 'Infrrt' },
+    { Logo: MedplusLogo, alt: 'Medplus' },
+    { Logo: CaterpillarLogo, alt: 'Caterpillar' },
+    { Logo: HappyFoxLogo, alt: 'HappyFox' },
   ];
 
   // Duplicate logos for seamless infinite scrolling
-  const allLogos = [...logos, ...logos];
+  const allFirstRowLogos = [...firstRowLogos, ...firstRowLogos];
+  const allSecondRowLogos = [...secondRowLogos, ...secondRowLogos];
 
-  // Pause animation on hover
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-    if (sliderRef.current) {
-      sliderRef.current.style.animationPlayState = 'paused';
+  // Pause animation on hover for first row
+  const handleFirstRowMouseEnter = () => {
+    setIsTopRowHovered(true);
+    if (topRowRef.current) {
+      topRowRef.current.style.animationPlayState = 'paused';
     }
   };
 
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    if (sliderRef.current) {
-      sliderRef.current.style.animationPlayState = 'running';
+  const handleFirstRowMouseLeave = () => {
+    setIsTopRowHovered(false);
+    if (topRowRef.current) {
+      topRowRef.current.style.animationPlayState = 'running';
+    }
+  };
+
+  // Pause animation on hover for second row
+  const handleSecondRowMouseEnter = () => {
+    setIsBottomRowHovered(true);
+    if (bottomRowRef.current) {
+      bottomRowRef.current.style.animationPlayState = 'paused';
+    }
+  };
+
+  const handleSecondRowMouseLeave = () => {
+    setIsBottomRowHovered(false);
+    if (bottomRowRef.current) {
+      bottomRowRef.current.style.animationPlayState = 'running';
     }
   };
 
   return (
     <Box className={classes.partnersSectionWrapper}>
-      {/* Title at the top and centered */}
+      {/* Title section */}
       <Box className={classes.titleContainer}>
-        <Typography variant="h2" className={classes.sectionTitle}>
-          Our Hiring Partners
-        </Typography>
+        <Box sx={{ textAlign: 'center' }}>
+          <Typography variant="h2" className={classes.sectionTitle}>
+            Our Hiring Partners
+          </Typography>
+          
+        </Box>
       </Box>
       
       <Box className={classes.partnersSection}>
-        {/* Logo slider */}
-        <Box 
-          className={classes.logoContainer}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          onTouchStart={handleMouseEnter}
-          onTouchEnd={handleMouseLeave}
-        >
-          <Box 
-            className={classes.logoSlider} 
-            ref={sliderRef}
-            sx={{ 
-              animationPlayState: isHovered ? 'paused' : 'running',
-            }}
-          >
-            {allLogos.map(({ Logo, alt }, index) => (
-              <Box key={index} className={classes.logoWrapper}>
-                <Logo 
-                  className={classes.logoSvg} 
-                  title={alt}
-                  aria-label={alt}
-                />
-              </Box>
-            ))}
+        {/* Logo container with two rows */}
+        <Box className={classes.logoContainer}>
+          {/* First row - moves forward */}
+          <Box className={classes.logoRow}>
+            <Box 
+              className={`${classes.logoSlider} ${classes.sliderForward}`} 
+              ref={topRowRef}
+              sx={{ 
+                animationPlayState: isTopRowHovered ? 'paused' : 'running',
+              }}
+              onMouseEnter={handleFirstRowMouseEnter}
+              onMouseLeave={handleFirstRowMouseLeave}
+              onTouchStart={handleFirstRowMouseEnter}
+              onTouchEnd={handleFirstRowMouseLeave}
+            >
+              {allFirstRowLogos.map(({ Logo, alt }, index) => (
+                <Box key={`row1-${index}`} className={classes.logoWrapper}>
+                  <Logo 
+                    className={classes.logoSvg} 
+                    title={alt}
+                    aria-label={alt}
+                  />
+                </Box>
+              ))}
+            </Box>
+          </Box>
+          
+          {/* Second row - moves backward */}
+          <Box className={classes.logoRow}>
+            <Box 
+              className={`${classes.logoSlider} ${classes.sliderBackward}`} 
+              ref={bottomRowRef}
+              sx={{ 
+                animationPlayState: isBottomRowHovered ? 'paused' : 'running',
+              }}
+              onMouseEnter={handleSecondRowMouseEnter}
+              onMouseLeave={handleSecondRowMouseLeave}
+              onTouchStart={handleSecondRowMouseEnter}
+              onTouchEnd={handleSecondRowMouseLeave}
+            >
+              {allSecondRowLogos.map(({ Logo, alt }, index) => (
+                <Box key={`row2-${index}`} className={classes.logoWrapper}>
+                  <Logo 
+                    className={classes.logoSvg} 
+                    title={alt}
+                    aria-label={alt}
+                  />
+                </Box>
+              ))}
+            </Box>
           </Box>
         </Box>
         

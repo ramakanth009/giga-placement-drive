@@ -41,27 +41,22 @@ const FaqHomepage = () => {
       question: 'How long is the training program?',
       answer: 'The program lasts 30 days, with job-specific training and hands-on learning',
     },
+    
     {
       id: 'panel6',
       number: '6',
-      question: 'What is the daily schedule like?',
-      answer: '1-hour live interactive sessions, hands-on projects, and job preparation activities.',
-    },
-    {
-      id: 'panel7',
-      number: '7',
       question: 'Do I need prior experience to join?',
       answer: 'Basic familiarity is necessary. We provide extra support for beginners while building your skills step-by-step.',
     },
     {
-      id: 'panel8',
-      number: '8',
+      id: 'panel7',
+      number: '7',
       question: 'Will I receive a certificate after completion?',
       answer: 'Yes, a verified completion and project certificate is provided upon successfully finishing the program.',
     },
     {
-      id: 'panel9',
-      number: '9',
+      id: 'panel8',
+      number: '8',
       question: 'What job roles are covered in the program?',
       answer: 'Full Stack Development (Frontend, Backend, Database, API) and Data Science (Analyst, BI, Engineer, ML Associate).',
     },

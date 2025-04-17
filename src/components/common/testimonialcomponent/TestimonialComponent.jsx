@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Typography, Container, Avatar } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
@@ -147,29 +147,30 @@ const useStyles = makeStyles({
     width: "24px",
     borderRadius: "4px",
   },
-//   watermarkContainer: {
-//     display: "flex",
-//     width: "10vw",
-//     position: "absolute",
-//     bottom: "-10px",
-//     // left: "10px",
-//     backgroundColor: "rgba(255, 255, 255, 0.8)",
-//     borderRadius: "4px",
-//     padding: "2px 6px",
-//     zIndex: 1,
-//     display: "flex",
-//     alignItems: "center",
-//   },
-//   watermark: {
-//     fontSize: "0.7rem !important",
-//     color: "rgba(0, 0, 0, 0.6)",
-//     fontWeight: "500 !important",
-//   },
+  slideTransition: {
+    transition: "opacity 0.8s ease", // Increased transition time for smoother auto-sliding
+    opacity: 1,
+  },
+  hiddenSlide: {
+    opacity: 0,
+    position: "absolute",
+  },
 });
 
 const TestimonialComponent = () => {
   const classes = useStyles();
   const [activeSlide, setActiveSlide] = useState(0);
+
+  // Add automatic sliding
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveSlide((prevSlide) => 
+        prevSlide === testimonials.length - 1 ? 0 : prevSlide + 1
+      );
+    }, 5000); // Change slide every 5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
 
   const testimonials = [
     {
@@ -182,7 +183,26 @@ const TestimonialComponent = () => {
       avatar: Review, // Using the same image as avatar
       rating: 4.5,
     },
-    // Add more testimonials as needed
+    {
+      id: 2,
+      image: Review, // Using the imported image
+      quote:
+        "The hands-on projects were invaluable! I went from zero coding knowledge to landing a junior developer position in just 6 months. The mentorship and career support were exceptional.",
+      name: "Arjun Kumar",
+      title: "Software Developer at TechSolutions",
+      avatar: Review, // Using the same image as avatar
+      rating: 5.0,
+    },
+    {
+      id: 3,
+      image: Review, // Using the imported image
+      quote:
+        "As someone who was looking to pivot my career, this program provided exactly what I needed - practical skills, industry insights, and networking opportunities that ultimately led to my new role.",
+      name: "Priya Sharma",
+      title: "Business Intelligence Analyst",
+      avatar: Review, // Using the same image as avatar
+      rating: 4.0,
+    },
   ];
 
   // Function to render star ratings (including half stars)
@@ -216,21 +236,12 @@ const TestimonialComponent = () => {
             {/* Image Card */}
             <Box className={classes.imageCard}>
               <img
-                src={Review}
+                src={testimonials[activeSlide].image}
                 alt="Successful Graduate"
                 className={classes.testimonialImage}
               />
             </Box>
-            {/* <Box className={classes.watermarkContainer}>
-              <Typography className={classes.watermark}>
-                ShutterstockImage
-              </Typography>
-              <Box className={classes.avatarGroup}>
-                <Avatar className={classes.smallAvatar} src="/path/to/avatar1.jpg" />
-                <Avatar className={classes.smallAvatar} src="/path/to/avatar2.jpg" />
-                <Avatar className={classes.smallAvatar} src="/path/to/avatar3.jpg" />
-              </Box>
-            </Box> */}
+            
             {/* Testimonial Card */}
             <Box className={classes.testimonialText}>
               <FormatQuoteIcon className={classes.quoteIcon} />
@@ -242,7 +253,7 @@ const TestimonialComponent = () => {
               <Box className={classes.testimonialAuthor}>
                 <Avatar
                   className={classes.authorAvatar}
-                  src={Review}
+                  src={testimonials[activeSlide].avatar}
                   alt={testimonials[activeSlide].name}
                 />
                 <Box className={classes.authorInfo}>
@@ -264,13 +275,16 @@ const TestimonialComponent = () => {
 
         {/* Pagination Dots */}
         <Box className={classes.paginationDots}>
-          {[0, 1, 2].map((_, index) => (
+          {testimonials.map((_, index) => (
             <Box
               key={index}
               className={`${classes.dot} ${
                 activeSlide === index ? classes.activeDot : ""
               }`}
               onClick={() => setActiveSlide(index)}
+              aria-label={`Go to testimonial ${index + 1}`}
+              role="button"
+              tabIndex={0}
             />
           ))}
         </Box>

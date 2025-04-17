@@ -9,10 +9,10 @@ const useStyles = makeStyles({
   },
   "@keyframes numberPulse": {
     "0%": {
-      textShadow: "0 0 5px rgba(255, 198, 20, 0.3)",
+      // textShadow: "0 0 5px rgba(255, 198, 20, 0.3)",
     },
     "100%": {
-      textShadow: "0 0 15px rgba(255, 198, 20, 0.8)",
+      // textShadow: "0 0 15px rgba(255, 198, 20, 0.8)",
     },
   },
 });

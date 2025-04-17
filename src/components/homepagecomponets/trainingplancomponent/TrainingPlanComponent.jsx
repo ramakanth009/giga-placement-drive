@@ -1,491 +1,976 @@
-import React, { useState } from 'react';
-import { Box, Typography, Button, Tabs, Tab } from '@mui/material';
+import React, { useState, useRef, useEffect } from 'react';
+import { Box, Typography, Tabs, Tab, Button } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import BusinessIcon from '@mui/icons-material/Business';
+import PeopleIcon from '@mui/icons-material/People';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import Chart from 'chart.js/auto';
+import { useNavigate } from 'react-router-dom';
+
+// SVG imports for company logos
+import { ReactComponent as AccentureLogo } from '../../../assets/hiringpartners/Accenture.svg';
+import { ReactComponent as AmazonLogo } from '../../../assets/hiringpartners/Amazon.svg';
+import { ReactComponent as InfosysLogo } from '../../../assets/hiringpartners/Infosys.svg';
+import { ReactComponent as TcsLogo } from '../../../assets/hiringpartners/tcs.svg';
+import { ReactComponent as AdobeLogo } from '../../../assets/hiringpartners/Adobe.svg';
+import { ReactComponent as DellLogo } from '../../../assets/hiringpartners/Dell.svg';
+import { ReactComponent as FlipkartLogo } from '../../../assets/hiringpartners/Flipkart.svg';
+import { ReactComponent as MuSigmaLogo } from '../../../assets/hiringpartners/Mu-Sigma.svg';
+import { ReactComponent as WiproLogo } from '../../../assets/hiringpartners/Wipro.svg';
+import { ReactComponent as ZohoLogo } from '../../../assets/hiringpartners/zoho.svg';
 
 const useStyles = makeStyles({
-  wrapper: {
+  section: {
+    padding: '60px 24px', // Add horizontal padding equivalent to Container
+    backgroundColor: '#f9fafc',
     position: 'relative',
-    width: '100%',
-    padding: '32px 0',
     overflow: 'hidden',
+    maxWidth: '1400px', // Equivalent to Container maxWidth="lg"
+    margin: '0 auto',
   },
-  // Custom background element
-  backgroundGradient: {
-    position: 'absolute',
-    width: '767px',
-    height: '566px',
-    top: '-100px',
-    left: '-150px',
-    background: '#BCE1FF',
-    borderRadius: '50%',
-    opacity: '0.3',
-    filter: 'blur(100px)',
-    zIndex: '-1',
-  },
-  title: {
-    fontSize: '24px !important',
+  sectionTitle: {
+    fontSize: '2.5rem !important',
     fontWeight: 'bold !important',
+    color: '#2A2B6A !important',
     textAlign: 'center',
-    marginBottom: '8px !important',
-    color: '#1a237e !important',
+    marginBottom: '40px !important',
     '& span': {
-      color: '#f9c74f !important',
+      color: '#FFC614 !important',
+    },
+    "@media (max-width: 960px)": {
+      fontSize: '2.2rem !important',
+      marginBottom: '30px !important',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '1.8rem !important',
+      marginBottom: '25px !important',
     },
   },
-  subtitle: {
-    fontSize: '14px !important',
-    textAlign: 'center',
-    color: '#555 !important',
-    marginBottom: '24px !important',
-    maxWidth: '90%',
-    margin: '0 auto 24px auto !important',
-  },
-  weekTitle: {
-    fontSize: '14px !important',
-    fontWeight: '500 !important',
-    marginBottom: '4px !important',
-  },
-  roleName: {
-    fontSize: '15px !important',
-    fontWeight: 'bold !important',
-    marginBottom: '8px !important',
-  },
-  description: {
-    fontSize: '12px !important',
-    color: '#555 !important',
-    lineHeight: '1.4 !important',
-  },
-  card: {
-    backgroundColor: '#fff',
-    borderRadius: '8px',
-    padding: '16px',
-    height: '230px',
-    position: 'relative',
-    boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+  tabsContainer: {
+    marginBottom: '40px',
     display: 'flex',
-    flexDirection: 'column',
-    width: '100%',
-    zIndex: '1',
+    justifyContent: 'center',
+    "& .MuiTabs-flexContainer": {
+      justifyContent: 'center',
+    },
+    "@media (max-width: 600px)": {
+      marginBottom: '30px',
+    },
   },
-  cardsContainer: {
+  tabRoot: {
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    borderRadius: '30px',
+    padding: '5px',
+    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)',
+    "& .MuiTabs-indicator": {
+      display: 'none',
+    },
+  },
+  tab: {
+    minWidth: '150px !important',
+    minHeight: '45px !important',
+    borderRadius: '30px !important',
+    margin: '0 5px !important',
+    color: '#555 !important',
+    fontWeight: '600 !important',
+    fontSize: '1rem !important',
+    textTransform: 'none !important',
+    transition: 'all 0.3s ease !important',
+    opacity: '1 !important',
+    "&.Mui-selected": {
+      backgroundColor: '#2A2B6A !important',
+      color: 'white !important',
+      boxShadow: '0 5px 15px rgba(42, 43, 106, 0.3) !important',
+    },
+    "@media (max-width: 600px)": {
+      minWidth: '120px !important',
+      fontSize: '0.9rem !important',
+    },
+  },
+  contentGrid: {
+    marginTop: '30px',
+  },
+  weekCardContainer: {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    marginBottom: '32px',
-    width: '100%',
-    padding: '0 24px',
-    gap: '60px',
-    boxSizing: 'border-box',
+    gap: '25px',
+    marginBottom: '40px',
+    padding: '0 10px',
+    "@media (max-width: 960px)": {
+      gap: '20px',
+    },
+    "@media (max-width: 600px)": {
+      gap: '15px',
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
   },
-  cardWrapper: {
-    width: '18%',
-    '@media (max-width: 1200px)': {
-      width: '20%',
+  weekCard: {
+    backgroundColor: '#fff',
+    borderRadius: '12px',
+    padding: '24px 20px',
+    height: '180px',
+    width: '230px',
+    position: 'relative',
+    boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
+    display: 'flex',
+    flexDirection: 'column',
+    transition: 'all 0.3s ease-out',
+    cursor: 'pointer',
+    '&:hover': {
+      transform: 'translateY(-8px)',
+      boxShadow: '0 12px 24px rgba(0,0,0,0.15)',
     },
-    '@media (max-width: 900px)': {
-      width: '40%',
+    "@media (max-width: 960px)": {
+      padding: '20px 16px',
+      width: '210px',
+      height: '170px',
     },
-    '@media (max-width: 600px)': {
-      width: '100%',
-      maxWidth: '350px',
-    }
+    "@media (max-width: 600px)": {
+      padding: '18px 14px',
+      width: '90%',
+      maxWidth: '280px',
+      height: 'auto',
+    },
+  },
+  activeCard: {
+    transform: 'translateY(-8px)',
+    boxShadow: '0 12px 24px rgba(0,0,0,0.2)',
+  },
+  inactiveCard: {
+    position: 'relative',
+    '&:after': {
+      content: '""',
+      position: 'absolute',
+      inset: '0',
+      borderRadius: '12px',
+      animation: '$pulse 2s infinite',
+      opacity: 0.6,
+      pointerEvents: 'none',
+    },
+  },
+  '@keyframes pulse': {
+    '0%': {
+      boxShadow: '0 0 0 0 rgba(67, 118, 235, 0.4)',
+    },
+    '70%': {
+      boxShadow: '0 0 0 6px rgba(67, 118, 235, 0)',
+    },
+    '100%': {
+      boxShadow: '0 0 0 0 rgba(67, 118, 235, 0)',
+    },
   },
   iconContainer: {
-    width: '40px',
-    height: '40px',
-    borderRadius: '8px',
+    width: '45px',
+    height: '45px',
+    borderRadius: '10px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: '16px',
-  },
-  viewButton: {
-    marginTop: '16px !important',
-    textTransform: 'none !important',
-    backgroundColor: 'rgba(255, 255, 255, 0.8) !important',
-    color: '#333 !important',
-    border: '1px solid #ddd !important',
-    borderRadius: '5px !important',
-    padding: '6px 16px !important',
-    display: 'block !important',
-    margin: '0 auto !important',
-    zIndex: '1',
-    position: 'relative',
-  },
-  orangeDot: {
-    height: '12px',
-    width: '12px',
-    backgroundColor: '#f9a826',
-    borderRadius: '50%',
-    position: 'absolute',
-    top: '32px',
-    left: '32px',
-  },
-  pinkDot: {
-    height: '12px',
-    width: '12px',
-    backgroundColor: '#e8518d',
-    borderRadius: '50%',
-    position: 'absolute',
-    top: '32px',
-    right: '32px',
+    marginBottom: '15px',
+    "@media (max-width: 600px)": {
+      width: '40px',
+      height: '40px',
+      marginBottom: '12px',
+    },
   },
   weekLabel: {
     textTransform: 'uppercase',
     fontSize: '12px !important',
-    marginBottom: '8px !important',
+    marginBottom: '6px !important',
     color: '#555 !important',
-  },
-  pinkDotBg: {
-    position: 'absolute',
-    width: '18px',
-    height: '18px',
-    borderRadius: '50%',
-    backgroundColor: 'rgba(237, 30, 121, 0.7)',
-    zIndex: '0',
-  },
-  blueDotBg: {
-    position: 'absolute',
-    width: '22px',
-    height: '22px',
-    borderRadius: '50%',
-    backgroundColor: 'rgba(0, 114, 255, 0.5)',
-    zIndex: '0',
-  },
-  headerContainer: {
-    position: 'relative',
-    marginBottom: '30px',
-    zIndex: '2',
-    background: 'linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 80%, rgba(255,255,255,0) 100%)',
-    padding: '20px 15px 30px 15px',
-    borderRadius: '16px',
-  },
-  tabsContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    marginBottom: '30px',
-  },
-  tab: {
-    minWidth: '180px !important',
-    textTransform: 'none !important',
-    fontWeight: 'bold !important',
-    fontSize: '16px !important',
-    padding: '12px 24px !important',
-  },
-  tabsRoot: {
-    backgroundColor: 'rgba(255, 255, 255, 0.5) !important',
-    borderRadius: '30px !important',
-    padding: '4px !important',
-    '& .MuiTabs-indicator': {
-      backgroundColor: '#2A2B6A !important',
-      height: '100% !important',
-      borderRadius: '30px !important',
-      zIndex: '0 !important',
+    "@media (max-width: 600px)": {
+      fontSize: '11px !important',
+      marginBottom: '4px !important',
     },
   },
-  selectedTab: {
-    color: 'white !important',
-    zIndex: '1 !important',
+  roleName: {
+    fontSize: '16px !important',
+    fontWeight: 'bold !important',
+    marginBottom: '8px !important',
+    lineHeight: '1.3 !important',
+    "@media (max-width: 600px)": {
+      fontSize: '15px !important',
+      marginBottom: '6px !important',
+    },
   },
-  tabPanel: {
+  description: {
+    fontSize: '13px !important',
+    color: '#555 !important',
+    lineHeight: '1.4 !important',
+    overflow: 'hidden',
+    display: '-webkit-box',
+    WebkitLineClamp: 3,
+    WebkitBoxOrient: 'vertical',
+    "@media (max-width: 600px)": {
+      fontSize: '12px !important',
+    },
+  },
+  // Modified dataSection for horizontal layout
+  dataSection: {
+    marginTop: '40px',
+  },
+  // New styles for horizontal container
+  horizontalContainer: {
+    display: 'flex',
+    gap: '30px',
+    marginBottom: '40px',
+    "@media (max-width: 960px)": {
+      flexDirection: 'column',
+      gap: '20px',
+    },
+  },
+  // New styles for left and right sections
+  chartTitle: {
+    fontSize: '1.4rem !important',
+    fontWeight: 'bold !important',
+    color: '#2A2B6A !important',
+    marginBottom: '30px !important',
+    textAlign: 'center',
+    "@media (max-width: 600px)": {
+      fontSize: '1.2rem !important',
+      marginBottom: '20px !important',
+    },
+  },
+  visualizationBox: {
+    flex: '1',
+    padding: '20px',
+    backgroundColor: 'white',
+    borderRadius: '15px',
+    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.05)',
+    display: 'flex',
+    flexDirection: 'column',
+    transition: 'all 0.3s ease',
+    height: '400px', // Set fixed height
+    width: '100%',   // Set width to 100%
+  },
+  companyInfoBox: {
+    flex: '1',
+    padding: '20px',
+    backgroundColor: 'white',
+    borderRadius: '15px',
+    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.05)',
+    display: 'flex',
+    flexDirection: 'column',
+    transition: 'all 0.3s ease',
+    height: '400px', // Set same height as visualizationBox
+    width: '100%',   // Set width to 100%
+  },
+  chartContainer: {
+    flex: 1,
+    position: 'relative',
+    height: '300px',  // Adjusted height
+    marginBottom: '20px',
+    "@media (max-width: 600px)": {
+      height: '250px',
+    },
+  },
+  companyInfoTitle: {
+    fontSize: '1.4rem !important',
+    fontWeight: 'bold !important',
+    color: '#2A2B6A !important',
+    marginBottom: '30px !important',
+    textAlign: 'center',
+    "@media (max-width: 600px)": {
+      fontSize: '1.2rem !important',
+      marginBottom: '20px !important',
+    },
+  },
+  companyInfo: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '20px',
+    padding: '10px',
+    height: '100%',
+    justifyContent: 'center',
+  },
+  companyItem: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px',
+    marginBottom: '10px',
+    padding: '10px',
+    borderRadius: '8px',
+    backgroundColor: '#f9f9f9',
+    transition: 'all 0.3s ease',
+    '&:hover': {
+      backgroundColor: '#f0f0f0',
+      transform: 'translateY(-3px)',
+    },
+  },
+  companyText: {
+    fontSize: '14px !important',
+    color: '#555 !important',
+  },
+  partnersTitle: {
+    fontSize: '1.4rem !important',
+    fontWeight: 'bold !important',
+    color: '#2A2B6A !important',
+    marginBottom: '20px !important',
+    textAlign: 'center',
+    "@media (max-width: 600px)": {
+      fontSize: '1.2rem !important',
+      marginBottom: '15px !important',
+    },
+  },
+  partnersContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    gap: '20px',
+    marginTop: '15px',
+    marginBottom: '15px',
+    "@media (max-width: 600px)": {
+      gap: '15px',
+    },
+  },
+  partnerCard: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    width: '100%',
-  }
+    padding: '12px',
+    borderRadius: '8px',
+    backgroundColor: '#f9f9f9',
+    transition: 'all 0.3s ease',
+    width: '110px',
+    '&:hover': {
+      backgroundColor: '#f0f0f0',
+      transform: 'translateY(-3px)',
+    },
+  },
+  partnerLogo: {
+    width: '70px',
+    height: '40px',
+    objectFit: 'contain',
+    marginBottom: '10px',
+    opacity: 0.85,
+    transition: 'all 0.3s ease',
+    '&:hover': {
+      opacity: 1,
+    },
+  },
+  partnersSection: {
+    backgroundColor: 'white',
+    borderRadius: '15px',
+    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.05)',
+    padding: '20px',
+    marginBottom: '30px',
+  },
+  viewButton: {
+    backgroundColor: '#2A2B6A !important',
+    color: 'white !important',
+    padding: '10px 24px !important',
+    borderRadius: '8px !important',
+    fontWeight: 'bold !important',
+    fontSize: '1rem !important',
+    marginTop: '20px !important',
+    transition: 'all 0.3s ease !important',
+    display: 'block !important',
+    margin: '20px auto 0 !important',
+    '&:hover': {
+      backgroundColor: '#1A1B4A !important',
+      transform: 'translateY(-3px)',
+      boxShadow: '0 6px 12px rgba(42, 43, 106, 0.2) !important',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '0.9rem !important',
+      padding: '8px 20px !important',
+    },
+  },
 });
-
-// Function to generate random dots with position constraints
-const generateDots = (count, avoidZone = null) => {
-  const dots = [];
-  const positions = new Set(); // To track existing positions
-  
-  // Define the region to avoid (header area)
-  const avoidTop = avoidZone?.top || "0%";
-  const avoidBottom = avoidZone?.bottom || "25%";
-  const avoidLeft = avoidZone?.left || "15%";
-  const avoidRight = avoidZone?.right || "85%";
-  
-  const topPixels = parseInt(avoidTop);
-  const bottomPixels = parseInt(avoidBottom);
-  const leftPixels = parseInt(avoidLeft);
-  const rightPixels = parseInt(avoidRight);
-  
-  // Function to check if position is valid (not overlapping)
-  const isValidPosition = (top, left, size) => {
-    // Convert to numbers for comparison
-    const topNum = parseInt(top);
-    const leftNum = parseInt(left);
-    const sizeNum = parseInt(size);
-    
-    // Check if it's in the avoid zone (header area)
-    if (avoidZone && 
-        topNum >= topPixels && 
-        topNum <= bottomPixels && 
-        leftNum >= leftPixels && 
-        leftNum <= rightPixels) {
-      return false;
-    }
-    
-    // Check against existing positions
-    for (const pos of positions) {
-      const [existingTop, existingLeft, existingSize] = pos.split('|').map(p => parseInt(p));
-      const minDistance = (sizeNum + parseInt(existingSize)) / 1.5;
-      
-      // Calculate distance between dots
-      const distance = Math.sqrt(
-        Math.pow(topNum - existingTop, 2) + 
-        Math.pow(leftNum - existingLeft, 2)
-      );
-      
-      // If dots are too close, reject this position
-      if (distance < minDistance) {
-        return false;
-      }
-    }
-    
-    return true;
-  };
-  
-  for (let i = 0; i < count * 2; i++) { // Try more attempts to ensure we get enough dots
-    if (dots.length >= count) break;
-    
-    const size = Math.random() * 18 + 10;
-    const top = Math.random() * 95; // Keep within bounds
-    const left = Math.random() * 95;
-    
-    if (isValidPosition(top, left, size)) {
-      const position = `${top}|${left}|${size}`;
-      positions.add(position);
-      
-      dots.push({
-        top: `${top}%`,
-        left: `${left}%`,
-        size: `${size}px`,
-        opacity: Math.random() * 0.2 + 0.5,
-      });
-    }
-  }
-  
-  return dots;
-};
-
-const TabPanel = (props) => {
-  const { children, value, index, ...other } = props;
-  const classes = useStyles();
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`plan-tabpanel-${index}`}
-      aria-labelledby={`plan-tab-${index}`}
-      className={classes.tabPanel}
-      {...other}
-    >
-      {value === index && children}
-    </div>
-  );
-};
 
 const TrainingPlanComponent = () => {
   const classes = useStyles();
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState(0);
-  
-  const pinkDots = generateDots(12, { top: "0%", bottom: "220px", left: "0%", right: "100%" });
-  const blueDots = generateDots(10, { top: "0%", bottom: "220px", left: "0%", right: "100%" });
+  const [activeRole, setActiveRole] = useState(0); // Track active role card
+  const chartRef = useRef(null);
+  const chartInstance = useRef(null);
 
+  // Track data for different tracks
+  const tracks = [
+    {
+      id: 'fullstack',
+      name: 'Full Stack',
+      weeks: [
+        {
+          week: 'Week 1',
+          role: 'Frontend Developer',
+          description: 'Learn HTML, CSS, JavaScript, and UI/UX principles while gaining communication skills.',
+          color: '#8a5cf7',
+          colorLight: 'rgba(138, 92, 247, 0.1)',
+          chartData: {
+            labels: ['Healthcare', 'IT & Services', 'Cybersecurity', 'Finance', 'Quick Commerce', 'Technology', 'Manufacturing', 'EdTech', 'Energy'],
+            datasets: [{
+              label: 'Demand by Industry (in %)',
+              data: [3, 6, 2, 4, 10, 10, 3, 4, 3],
+              backgroundColor: [
+                'rgba(138, 92, 247, 0.7)',
+                'rgba(67, 118, 235, 0.7)',
+                'rgba(240, 124, 62, 0.7)',
+                'rgba(232, 81, 141, 0.7)',
+                'rgba(42, 43, 106, 0.7)',
+                'rgba(156, 39, 176, 0.7)',
+                'rgba(255, 152, 0, 0.7)',
+                'rgba(76, 175, 80, 0.7)',
+                'rgba(33, 150, 243, 0.7)'
+              ],
+              borderColor: [
+                'rgba(138, 92, 247, 1)',
+                'rgba(67, 118, 235, 1)',
+                'rgba(240, 124, 62, 1)',
+                'rgba(232, 81, 141, 1)',
+                'rgba(42, 43, 106, 1)',
+                'rgba(156, 39, 176, 1)',
+                'rgba(255, 152, 0, 1)',
+                'rgba(76, 175, 80, 1)',
+                'rgba(33, 150, 243, 1)'
+              ],
+            }]
+          },
+          companies: {
+            topLocations: ['Bangalore', 'Hyderabad', 'Mumbai','Chennai','Gurgaon'],
+            avgSalary: '5-12 LPA',
+            openings: '12,500+',
+          }
+        },
+        {
+          week: 'Week 2',
+          role: 'Backend Developer',
+          description: 'Understand API development, databases, and server-side logic with hands-on experience.',
+          color: '#4376eb',
+          colorLight: 'rgba(67, 118, 235, 0.1)',
+          chartData: {
+            labels: ['Healthcare', 'IT & Services', 'Cybersecurity', 'Finance', 'Quick Commerce', 'Technology', 'Manufacturing', 'EdTech', 'Energy'],
+            datasets: [{
+              label: 'Demand by Industry (in %)',
+              data: [7, 8, 6, 7, 8, 10, 7, 4, 6],
+              backgroundColor: [
+                'rgba(138, 92, 247, 0.7)',
+                'rgba(67, 118, 235, 0.7)',
+                'rgba(240, 124, 62, 0.7)',
+                'rgba(232, 81, 141, 0.7)',
+                'rgba(42, 43, 106, 0.7)',
+                'rgba(156, 39, 176, 0.7)',
+                'rgba(255, 152, 0, 0.7)',
+                'rgba(76, 175, 80, 0.7)',
+                'rgba(33, 150, 243, 0.7)'
+              ],
+              borderColor: [
+                'rgba(138, 92, 247, 1)',
+                'rgba(67, 118, 235, 1)',
+                'rgba(240, 124, 62, 1)',
+                'rgba(232, 81, 141, 1)',
+                'rgba(42, 43, 106, 1)',
+                'rgba(156, 39, 176, 1)',
+                'rgba(255, 152, 0, 1)',
+                'rgba(76, 175, 80, 1)',
+                'rgba(33, 150, 243, 1)'
+              ],
+            }]
+          },
+          companies: {
+            topLocations: ['Pune', 'Chennai', 'Delhi', 'Bangalore', 'Hyderabad'],
+            avgSalary: '6-14 LPA',
+            openings: '9,800+',
+          }
+        },
+        {
+          week: 'Week 3',
+          role: 'Database Engineer',
+          description: 'Master SQL, MongoDB, cloud technologies, and CI/CD workflows with analytical skills.',
+          color: '#f07c3e',
+          colorLight: 'rgba(240, 124, 62, 0.1)',
+          chartData: {
+            labels: ['Healthcare', 'IT & Services', 'Cybersecurity', 'Finance', 'Quick Commerce', 'Technology', 'Manufacturing', 'EdTech', 'Energy'],
+            datasets: [{
+              label: 'Demand by Industry (in %)',
+              data: [5, 5, 3, 4, 6, 6, 5, 2, 4],
+              backgroundColor: [
+                'rgba(138, 92, 247, 0.7)',
+                'rgba(67, 118, 235, 0.7)',
+                'rgba(240, 124, 62, 0.7)',
+                'rgba(232, 81, 141, 0.7)',
+                'rgba(42, 43, 106, 0.7)',
+                'rgba(156, 39, 176, 0.7)',
+                'rgba(255, 152, 0, 0.7)',
+                'rgba(76, 175, 80, 0.7)',
+                'rgba(33, 150, 243, 0.7)'
+              ],
+              borderColor: [
+                'rgba(138, 92, 247, 1)',
+                'rgba(67, 118, 235, 1)',
+                'rgba(240, 124, 62, 1)',
+                'rgba(232, 81, 141, 1)',
+                'rgba(42, 43, 106, 1)',
+                'rgba(156, 39, 176, 1)',
+                'rgba(255, 152, 0, 1)',
+                'rgba(76, 175, 80, 1)',
+                'rgba(33, 150, 243, 1)'
+              ],
+            }]
+          },
+          companies: {
+            topLocations: ['Bangalore', 'Mumbai', 'Hyderabad','Pune','Gurgaon'],
+            avgSalary: '8-15 LPA',
+            openings: '6,200+',
+          }
+        },
+        {
+          week: 'Week 4',
+          role: 'Full Stack Developer',
+          description: 'Build end-to-end web apps with RESTful & GraphQL APIs (Postman/Swagger), frontend frameworks, and databases. Master full-stack development for technical interviews.',
+          color: '#e8518d',
+          colorLight: 'rgba(232, 81, 141, 0.1)',
+          chartData: {
+            labels: ['Healthcare', 'IT & Services', 'Cybersecurity', 'Finance', 'Quick Commerce', 'Technology', 'Manufacturing', 'EdTech', 'Energy'],
+            datasets: [{
+              label: 'Demand by Industry (in %)',
+              data: [4, 7, 3, 5, 10, 11, 4, 4, 4],
+              backgroundColor: [
+                'rgba(138, 92, 247, 0.7)',
+                'rgba(67, 118, 235, 0.7)',
+                'rgba(240, 124, 62, 0.7)',
+                'rgba(232, 81, 141, 0.7)',
+                'rgba(42, 43, 106, 0.7)',
+                'rgba(156, 39, 176, 0.7)',
+                'rgba(255, 152, 0, 0.7)',
+                'rgba(76, 175, 80, 0.7)',
+                'rgba(33, 150, 243, 0.7)'
+              ],
+              borderColor: [
+                'rgba(138, 92, 247, 1)',
+                'rgba(67, 118, 235, 1)',
+                'rgba(240, 124, 62, 1)',
+                'rgba(232, 81, 141, 1)',
+                'rgba(42, 43, 106, 1)',
+                'rgba(156, 39, 176, 1)',
+                'rgba(255, 152, 0, 1)',
+                'rgba(76, 175, 80, 1)',
+                'rgba(33, 150, 243, 1)'
+              ],
+            }]
+          },
+          companies: {
+            topLocations: ['Hyderabad', 'Delhi', 'Chennai','Bangalore','Mumbai'],
+            avgSalary: '7-13 LPA',
+            openings: '7,500+',
+          }
+        },
+      ],
+    },
+    {
+      id: 'datascience',
+      name: 'Data Science',
+      weeks: [
+        {
+          week: 'Week 1',
+          role: 'Data Analyst',
+          description: 'Learn data cleaning, visualization, and analysis with Excel, SQL and Python.',
+          color: '#8a5cf7',
+          colorLight: 'rgba(138, 92, 247, 0.1)',
+          chartData: {
+            labels: ['Healthcare', 'IT & Services', 'Cybersecurity', 'Finance', 'Quick Commerce', 'Technology', 'Manufacturing', 'EdTech', 'Energy'],
+            datasets: [{
+              label: 'Demand by Industry (in %)',
+              data: [6, 5, 2, 6, 7, 8, 5, 4, 4],
+              backgroundColor: [
+                'rgba(138, 92, 247, 0.7)',
+                'rgba(67, 118, 235, 0.7)',
+                'rgba(240, 124, 62, 0.7)',
+                'rgba(232, 81, 141, 0.7)',
+                'rgba(42, 43, 106, 0.7)',
+                'rgba(156, 39, 176, 0.7)',
+                'rgba(255, 152, 0, 0.7)',
+                'rgba(76, 175, 80, 0.7)',
+                'rgba(33, 150, 243, 0.7)'
+              ],
+              borderColor: [
+                'rgba(138, 92, 247, 1)',
+                'rgba(67, 118, 235, 1)',
+                'rgba(240, 124, 62, 1)',
+                'rgba(232, 81, 141, 1)',
+                'rgba(42, 43, 106, 1)',
+                'rgba(156, 39, 176, 1)',
+                'rgba(255, 152, 0, 1)',
+                'rgba(76, 175, 80, 1)',
+                'rgba(33, 150, 243, 1)'
+              ],
+            }]
+          },
+          companies: {
+            topLocations: ['Bangalore', 'Mumbai', 'Pune','Chennai','Hyderabad'],
+            avgSalary: '5-10 LPA',
+            openings: '15,000+',
+          }
+        },
+        {
+          week: 'Week 2',
+          role: 'BI Analyst',
+          description: 'Create dashboards with Power BI, Tableau, and SQL for data-driven decision-making.',
+          color: '#4376eb',
+          colorLight: 'rgba(67, 118, 235, 0.1)',
+          chartData: {
+            labels: ['Healthcare', 'IT & Services', 'Cybersecurity', 'Finance', 'Quick Commerce', 'Technology', 'Manufacturing', 'EdTech', 'Energy'],
+            datasets: [{
+              label: 'Demand by Industry (in %)',
+              data: [3, 4, 2, 5, 5, 6, 3, 3, 3],
+              backgroundColor: [
+                'rgba(138, 92, 247, 0.7)',
+                'rgba(67, 118, 235, 0.7)',
+                'rgba(240, 124, 62, 0.7)',
+                'rgba(232, 81, 141, 0.7)',
+                'rgba(42, 43, 106, 0.7)',
+                'rgba(156, 39, 176, 0.7)',
+                'rgba(255, 152, 0, 0.7)',
+                'rgba(76, 175, 80, 0.7)',
+                'rgba(33, 150, 243, 0.7)'
+              ],
+              borderColor: [
+                'rgba(138, 92, 247, 1)',
+                'rgba(67, 118, 235, 1)',
+                'rgba(240, 124, 62, 1)',
+                'rgba(232, 81, 141, 1)',
+                'rgba(42, 43, 106, 1)',
+                'rgba(156, 39, 176, 1)',
+                'rgba(255, 152, 0, 1)',
+                'rgba(76, 175, 80, 1)',
+                'rgba(33, 150, 243, 1)'
+              ],
+            }]
+          },
+          companies: {
+            topLocations: ['Bangalore', 'Hyderabad', 'Delhi','Chennai','Pune'],
+            avgSalary: '6-12 LPA',
+            openings: '8,600+',
+          }
+        },
+        {
+          week: 'Week 3',
+          role: 'Data Engineer',
+          description: 'Build ETL pipelines, manage databases, and implement cloud storage solutions.',
+          color: '#f07c3e',
+          colorLight: 'rgba(240, 124, 62, 0.1)',
+          chartData: {
+            labels: ['Healthcare', 'IT & Services', 'Cybersecurity', 'Finance', 'Quick Commerce', 'Technology', 'Manufacturing', 'EdTech', 'Energy'],
+            datasets: [{
+              label: 'Demand by Industry (in %)',
+              data: [5, 8, 6, 4, 8, 9, 6, 4, 6],
+              backgroundColor: [
+                'rgba(138, 92, 247, 0.7)',
+                'rgba(67, 118, 235, 0.7)',
+                'rgba(240, 124, 62, 0.7)',
+                'rgba(232, 81, 141, 0.7)',
+                'rgba(42, 43, 106, 0.7)',
+                'rgba(156, 39, 176, 0.7)',
+                'rgba(255, 152, 0, 0.7)',
+                'rgba(76, 175, 80, 0.7)',
+                'rgba(33, 150, 243, 0.7)'
+              ],
+              borderColor: [
+                'rgba(138, 92, 247, 1)',
+                'rgba(67, 118, 235, 1)',
+                'rgba(240, 124, 62, 1)',
+                'rgba(232, 81, 141, 1)',
+                'rgba(42, 43, 106, 1)',
+                'rgba(156, 39, 176, 1)',
+                'rgba(255, 152, 0, 1)',
+                'rgba(76, 175, 80, 1)',
+                'rgba(33, 150, 243, 1)'
+              ],
+            }]
+          },
+          companies: {
+            topLocations: ['Bangalore', 'Pune', 'Hyderabad','Gurgaon','Chennai'],
+            avgSalary: '8-18 LPA',
+            openings: '5,800+',
+          }
+        },
+        {
+          week: 'Week 4',
+          role: 'Data Scientist',
+          description: 'Develop skills in statistics, feature engineering, and machine learning models.',
+          color: '#e8518d',
+          colorLight: 'rgba(232, 81, 141, 0.1)',
+          chartData: {
+            labels: ['Healthcare', 'IT & Services', 'Cybersecurity', 'Finance', 'Quick Commerce', 'Technology', 'Manufacturing', 'EdTech', 'Energy'],
+            datasets: [{
+              label: 'Demand by Industry (in %)',
+              data: [4, 7, 4, 5, 6, 8, 5, 3, 4],
+              backgroundColor: [
+                'rgba(138, 92, 247, 0.7)',
+                'rgba(67, 118, 235, 0.7)',
+                'rgba(240, 124, 62, 0.7)',
+                'rgba(232, 81, 141, 0.7)',
+                'rgba(42, 43, 106, 0.7)',
+                'rgba(156, 39, 176, 0.7)',
+                'rgba(255, 152, 0, 0.7)',
+                'rgba(76, 175, 80, 0.7)',
+                'rgba(33, 150, 243, 0.7)'
+              ],
+              borderColor: [
+                'rgba(138, 92, 247, 1)',
+                'rgba(67, 118, 235, 1)',
+                'rgba(240, 124, 62, 1)',
+                'rgba(232, 81, 141, 1)',
+                'rgba(42, 43, 106, 1)',
+                'rgba(156, 39, 176, 1)',
+                'rgba(255, 152, 0, 1)',
+                'rgba(76, 175, 80, 1)',
+                'rgba(33, 150, 243, 1)'
+              ],
+            }]
+          },
+          companies: {
+            topLocations: ['Bangalore', 'Mumbai', 'Hyderabad',"Chennai","Pune"],
+            avgSalary: '10-25 LPA',
+            openings: '4,500+',
+          }
+        },
+      ],
+    },
+  ];
+
+  // Partner logos array with hiring details
+  const partners = activeTab === 0
+    ? [
+        { Component: AccentureLogo, alt: 'Accenture' },
+        { Component: AmazonLogo, alt: 'Amazon' },
+        { Component: FlipkartLogo, alt: 'Flipkart' },
+        { Component: InfosysLogo, alt: 'Infosys' },
+        { Component: TcsLogo, alt: 'TCS' },
+      ]
+    : [
+        { Component: AdobeLogo, alt: 'Adobe' },
+        { Component: DellLogo, alt: 'Dell' },
+        { Component: MuSigmaLogo, alt: 'Mu Sigma' },
+        { Component: WiproLogo, alt: 'Wipro' },
+        { Component: ZohoLogo, alt: 'Zoho' },
+      ];
+
+  // Handle tab change
   const handleTabChange = (event, newValue) => {
     setActiveTab(newValue);
+    setActiveRole(0); // Reset to first role when tab changes
   };
 
-  const fullstackWeeks = [
-    {
-      week: 'Week 1',
-      role: 'Frontend Developer',
-      description: 'Learn the basics of HTML, CSS, and JavaScript, explore UI/UX tools, and enhance communication with API training.',
-      color: '#8a5cf7',
-    },
-    {
-      week: 'Week 2',
-      role: 'Backend Developer',
-      description: 'Understand API development, databases, and server-side logic while gaining hands-on experience with industry tools.',
-      color: '#4376eb',
-    },
-    {
-      week: 'Week 3',
-      role: 'Database Engineer & DevOps',
-      description: 'Get familiar with SQL, MongoDB, cloud technologies, and CI/CD workflows, along with analytical skill-building.',
-      color: '#f07c3e',
-    },
-    {
-      week: 'Week 4',
-      role: 'API Developer',
-      description: 'Explore RESTful & GraphQL APIs using Postman and Swagger, with a focus on tool proficiency and technical interview preparation.',
-      color: '#e8518d',
-    },
-  ];
+  // Handle role card click
+  const handleRoleClick = (index) => {
+    setActiveRole(index);
+  };
 
-  const dataScienceWeeks = [
-    {
-      week: 'Week 1',
-      role: 'Data Analyst',
-      description: 'Learn data cleaning, visualization, and analysis using Excel, SQL and Python, along with exploratory data analysis (EDA) and communication skills through GAI training.',
-      color: '#8a5cf7',
-    },
-    {
-      week: 'Week 2',
-      role: 'Business Intelligence (BI) Analyst',
-      description: 'Gain hands-on experience with Power BI, Tableau, and SQL queries to create dashboards and reports for data-driven decision-making.',
-      color: '#4376eb',
-    },
-    {
-      week: 'Week 3',
-      role: 'Data Engineer',
-      description: 'Understand ETL pipelines, database management (SQL & NoSQL), and cloud storage, along with data warehousing and workflow automation.',
-      color: '#f07c3e',
-    },
-    {
-      week: 'Week 4',
-      role: 'Data Science Associate',
-      description: 'Develop skills in statistics, feature engineering, and Python libraries (NumPy, Pandas, TensorFlow, and Seaborn) with a focus on technical interviews and real-world problem-solving.',
-      color: '#e8518d',
-    },
-  ];
+  // Initialize and update chart when tab or active role changes
+  useEffect(() => {
+    if (chartInstance.current) {
+      chartInstance.current.destroy();
+    }
+    
+    const ctx = chartRef.current.getContext('2d');
+    const currentTrack = tracks[activeTab];
+    const currentRole = currentTrack.weeks[activeRole];
+    
+    chartInstance.current = new Chart(ctx, {
+      type: 'bar',
+      data: currentRole.chartData,
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: false,
+          },
+          tooltip: {
+            backgroundColor: 'rgba(42, 43, 106, 0.8)',
+            titleFont: {
+              size: 14,
+              weight: 'bold',
+            },
+            bodyFont: {
+              size: 13,
+            },
+            padding: 10,
+            cornerRadius: 6,
+          },
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            grid: {
+              color: 'rgba(0, 0, 0, 0.05)',
+            },
+            ticks: {
+              callback: function(value) {
+                return value + '%';
+              },
+              font: {
+                size: 11,
+              },
+              color: '#666',
+            },
+          },
+          x: {
+            grid: {
+              display: false,
+            },
+            ticks: {
+              font: {
+                size: 11,
+              },
+              color: '#666',
+                          },
+          },
+        },
+        animation: {
+          duration: 1000,
+          easing: 'easeInOutQuad'
+        }
+      },
+    });
+
+    return () => {
+      if (chartInstance.current) {
+        chartInstance.current.destroy();
+      }
+    };
+  }, [activeTab, activeRole]);
+
+  // Navigate to respective page based on active tab
+  const handleViewDetails = () => {
+    const routes = {
+      0: '/fullstack',
+      1: '/datascience',
+    };
+    
+    navigate(routes[activeTab] || '/');
+  };
 
   return (
-    <Box className={classes.wrapper}>
-      {/* Custom background gradient on left side */}
-      <Box className={classes.backgroundGradient} />
-      
-      {/* Random pink dots */}
-      {pinkDots.map((dot, index) => (
-        <Box 
-          key={`pink-${index}`}
-          className={classes.pinkDotBg}
-          sx={{
-            top: dot.top,
-            left: dot.left,
-            width: dot.size,
-            height: dot.size,
-            opacity: dot.opacity,
-          }}
-        />
-      ))}
-      
-      {/* Random blue dots */}
-      {blueDots.map((dot, index) => (
-        <Box 
-          key={`blue-${index}`}
-          className={classes.blueDotBg}
-          sx={{
-            top: dot.top,
-            left: dot.left,
-            width: dot.size,
-            height: dot.size,
-            opacity: dot.opacity,
-          }}
-        />
-      ))}
+    <Box className={classes.section}>
+      <Typography variant="h2" className={classes.sectionTitle}>
+        Hands-On Job Training for <span>High-Demand Full Stack Roles</span>
+      </Typography>
 
-      <Box className={classes.headerContainer}>
-        <Box className={classes.orangeDot}></Box>
-        <Box className={classes.pinkDot}></Box>
-        <Typography variant="h4" className={classes.title}>
-          1-Month Job-Specific Training Plan <span>{activeTab === 0 ? 'In Full Stack Development' : 'In Data Science'}</span>
-        </Typography>
-        <Typography variant="body1" className={classes.subtitle}>
-          Each students selects one job role and receives both technical training and placement preparation
-        </Typography>
-
-        <Box className={classes.tabsContainer}>
-          <Tabs 
-            value={activeTab} 
-            onChange={handleTabChange} 
-            className={classes.tabsRoot}
-            variant="fullWidth"
-          >
-            <Tab 
-              label="Full Stack Development" 
-              className={classes.tab} 
-              classes={{ selected: classes.selectedTab }}
+      {/* Tab navigation */}
+      <Box className={classes.tabsContainer}>
+        <Tabs
+          value={activeTab}
+          onChange={handleTabChange}
+          className={classes.tabRoot}
+          variant="scrollable"
+          scrollButtons="auto"
+        >
+          {tracks.map((track) => (
+            <Tab
+              key={track.id}
+              label={track.name + " Development"}
+              className={classes.tab}
             />
-            <Tab 
-              label="Data Science" 
-              className={classes.tab} 
-              classes={{ selected: classes.selectedTab }}
-            />
-          </Tabs>
-        </Box>
-
-        <Typography variant="h6" sx={{ 
-          textAlign: 'center', 
-          fontSize: '18px', 
-          fontWeight: 'bold', 
-          color: '#333',
-          marginBottom: '24px',
-          position: 'relative',
-          zIndex: 1,
-        }}>
-          Weekly Job Role Training Breakdown
-        </Typography>
+          ))}
+        </Tabs>
       </Box>
 
-      <TabPanel value={activeTab} index={0}>
-        <Box className={classes.cardsContainer}>
-          {fullstackWeeks.map((weekData, index) => (
-            <Box className={classes.cardWrapper} key={index}>
-              <Box className={classes.card}>
-                <Box 
-                  className={classes.iconContainer} 
-                  sx={{ backgroundColor: `${weekData.color}20` }}
-                >
-                  <CalendarMonthIcon sx={{ color: weekData.color }} />
-                </Box>
-                <Typography className={classes.weekLabel}>
-                  {weekData.week}
-                </Typography>
-                <Typography className={classes.roleName} sx={{ color: weekData.color }}>
-                  {weekData.role}
-                </Typography>
-                <Typography className={classes.description}>
-                  {weekData.description}
-                </Typography>
-              </Box>
+      {/* Weekly curriculum cards */}
+      <Box className={classes.weekCardContainer}>
+        {tracks[activeTab].weeks.map((weekData, index) => (
+          <Box 
+            className={`${classes.weekCard} ${
+              index === activeRole 
+                ? classes.activeCard 
+                : classes.inactiveCard
+            }`}
+            key={index}
+            onClick={() => handleRoleClick(index)}
+            sx={{
+              border: index === activeRole ? `2px solid ${weekData.color}` : '2px solid transparent',
+              backgroundColor: index === activeRole ? `${weekData.colorLight}` : '#fff',
+            }}
+          >
+            <Box 
+              className={classes.iconContainer} 
+              sx={{ backgroundColor: `${weekData.color}20` }}
+            >
+              <CalendarMonthIcon sx={{ color: weekData.color }} />
+            </Box>
+            <Typography className={classes.weekLabel}>
+              {weekData.week}
+            </Typography>
+            <Typography className={classes.roleName} sx={{ color: weekData.color }}>
+              {weekData.role}
+            </Typography>
+            <Typography className={classes.description}>
+              {weekData.description}
+            </Typography>
+          </Box>
+        ))}
+      </Box>
+
+      {/* Data visualization and company info */}
+      <Box className={classes.horizontalContainer}>
+        {/* Left Section - Chart */}
+        <Box className={classes.visualizationBox}>
+          <Typography className={classes.chartTitle}>
+            {tracks[activeTab].weeks[activeRole].role} Demand in 2023
+          </Typography>
+          <Box className={classes.chartContainer}>
+            <canvas ref={chartRef} />
+          </Box>
+        </Box>
+
+        {/* Right Section - Company Info */}
+        <Box className={classes.companyInfoBox}>
+          <Typography className={classes.companyInfoTitle}>
+            Career Opportunities
+          </Typography>
+          <Box className={classes.companyInfo}>
+            <Box className={classes.companyItem}>
+              <LocationOnIcon sx={{ color: '#2A2B6A', fontSize: '20px' }} />
+              <Typography className={classes.companyText}>
+                Top Locations: {tracks[activeTab].weeks[activeRole].companies.topLocations.join(', ')}
+              </Typography>
+            </Box>
+            <Box className={classes.companyItem}>
+              <TrendingUpIcon sx={{ color: '#2A2B6A', fontSize: '20px' }} />
+              <Typography className={classes.companyText}>
+                Average Salary: {tracks[activeTab].weeks[activeRole].companies.avgSalary}
+              </Typography>
+            </Box>
+            <Box className={classes.companyItem}>
+              <BusinessIcon sx={{ color: '#2A2B6A', fontSize: '20px' }} />
+              <Typography className={classes.companyText}>
+                Current Openings: {tracks[activeTab].weeks[activeRole].companies.openings}
+              </Typography>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+
+      {/* Hiring Partners Section */}
+      <Box className={classes.partnersSection}>
+        <Typography className={classes.partnersTitle}>
+          Our Hiring Partners
+        </Typography>
+        <Box className={classes.partnersContainer}>
+          {partners.map(({ Component, alt }, index) => (
+            <Box key={index} className={classes.partnerCard}>
+              <Component className={classes.partnerLogo} alt={alt} />
+              <Typography variant="body2" sx={{ fontSize: '12px !important' }}>
+                {alt}
+              </Typography>
             </Box>
           ))}
         </Box>
-      </TabPanel>
+      </Box>
 
-      <TabPanel value={activeTab} index={1}>
-        <Box className={classes.cardsContainer}>
-          {dataScienceWeeks.map((weekData, index) => (
-            <Box className={classes.cardWrapper} key={index}>
-              <Box className={classes.card}>
-                <Box 
-                  className={classes.iconContainer} 
-                  sx={{ backgroundColor: `${weekData.color}20` }}
-                >
-                  <CalendarMonthIcon sx={{ color: weekData.color }} />
-                </Box>
-                <Typography className={classes.weekLabel}>
-                  {weekData.week}
-                </Typography>
-                <Typography className={classes.roleName} sx={{ color: weekData.color }}>
-                  {weekData.role}
-                </Typography>
-                <Typography className={classes.description}>
-                  {weekData.description}
-                </Typography>
-              </Box>
-            </Box>
-          ))}
-        </Box>
-      </TabPanel>
-
-      <Button variant="outlined" className={classes.viewButton}>
-        View full program details
+      {/* View Details Button */}
+      <Button 
+        variant="contained" 
+        className={classes.viewButton}
+        onClick={handleViewDetails}
+      >
+        View Full Curriculum
       </Button>
     </Box>
   );
