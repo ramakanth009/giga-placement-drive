@@ -3,23 +3,23 @@ import { Box, Typography, Tabs, Tab, Button } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import BusinessIcon from '@mui/icons-material/Business';
-import PeopleIcon from '@mui/icons-material/People';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import ExploreIcon from '@mui/icons-material/Explore';
 import Chart from 'chart.js/auto';
 import { useNavigate } from 'react-router-dom';
 
 // SVG imports for company logos
 import { ReactComponent as AccentureLogo } from '../../../assets/hiringpartners/Accenture.svg';
-import { ReactComponent as AmazonLogo } from '../../../assets/hiringpartners/Amazon.svg';
-import { ReactComponent as InfosysLogo } from '../../../assets/hiringpartners/Infosys.svg';
-import { ReactComponent as TcsLogo } from '../../../assets/hiringpartners/tcs.svg';
-import { ReactComponent as AdobeLogo } from '../../../assets/hiringpartners/Adobe.svg';
-import { ReactComponent as DellLogo } from '../../../assets/hiringpartners/Dell.svg';
-import { ReactComponent as FlipkartLogo } from '../../../assets/hiringpartners/Flipkart.svg';
-import { ReactComponent as MuSigmaLogo } from '../../../assets/hiringpartners/Mu-Sigma.svg';
-import { ReactComponent as WiproLogo } from '../../../assets/hiringpartners/Wipro.svg';
+import { ReactComponent as SynopsysLogo } from '../../../assets/hiringpartners/Synopsys_Logo.svg';
+import { ReactComponent as HappyFoxLogo } from '../../../assets/hiringpartners/happyfox.svg';
 import { ReactComponent as ZohoLogo } from '../../../assets/hiringpartners/zoho.svg';
+import { ReactComponent as PaytmLogo } from '../../../assets/hiringpartners/paytm.svg';
+import { ReactComponent as GoldmanSachsLogo } from '../../../assets/hiringpartners/goldman-sachs.svg';
+import { ReactComponent as MedplusLogo } from '../../../assets/hiringpartners/Medplus_logo.svg';
+import { ReactComponent as InfrrtLogo } from '../../../assets/hiringpartners/Infrrt.svg';
+import { ReactComponent as CaterpillarLogo } from '../../../assets/hiringpartners/caterpillar-preview.svg';
+import { ReactComponent as AdidasLogo } from '../../../assets/hiringpartners/Adidas-logo.svg';
 
 const useStyles = makeStyles({
   section: {
@@ -209,11 +209,9 @@ const useStyles = makeStyles({
       fontSize: '12px !important',
     },
   },
-  // Modified dataSection for horizontal layout
   dataSection: {
     marginTop: '40px',
   },
-  // New styles for horizontal container
   horizontalContainer: {
     display: 'flex',
     gap: '30px',
@@ -223,7 +221,6 @@ const useStyles = makeStyles({
       gap: '20px',
     },
   },
-  // New styles for left and right sections
   chartTitle: {
     fontSize: '1.4rem !important',
     fontWeight: 'bold !important',
@@ -331,21 +328,21 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    padding: '12px',
+    // padding: '15px',
     borderRadius: '8px',
     backgroundColor: '#f9f9f9',
     transition: 'all 0.3s ease',
     width: '110px',
     '&:hover': {
-      backgroundColor: '#f0f0f0',
+      // backgroundColor: '#f0f0f0',
       transform: 'translateY(-3px)',
+      boxShadow: '0 5px 15px rgba(0, 0, 0, 0.08)',
     },
   },
   partnerLogo: {
-    width: '70px',
-    height: '40px',
+    width: '93px',
+    height: '60px',
     objectFit: 'contain',
-    marginBottom: '10px',
     opacity: 0.85,
     transition: 'all 0.3s ease',
     '&:hover': {
@@ -380,13 +377,24 @@ const useStyles = makeStyles({
       padding: '8px 20px !important',
     },
   },
+  actionsContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    gap: '20px',
+    marginTop: '20px',
+    flexWrap: 'wrap',
+    "@media (max-width: 600px)": {
+      gap: '15px',
+    },
+  },
+  
 });
 
 const TrainingPlanComponent = () => {
   const classes = useStyles();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState(0);
-  const [activeRole, setActiveRole] = useState(0); // Track active role card
+  const [activeRole, setActiveRole] = useState(0); // Default to first role (Frontend Developer)
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
 
@@ -734,22 +742,25 @@ const TrainingPlanComponent = () => {
     },
   ];
 
-  // Partner logos array with hiring details
-  const partners = activeTab === 0
-    ? [
-        { Component: AccentureLogo, alt: 'Accenture' },
-        { Component: AmazonLogo, alt: 'Amazon' },
-        { Component: FlipkartLogo, alt: 'Flipkart' },
-        { Component: InfosysLogo, alt: 'Infosys' },
-        { Component: TcsLogo, alt: 'TCS' },
-      ]
-    : [
-        { Component: AdobeLogo, alt: 'Adobe' },
-        { Component: DellLogo, alt: 'Dell' },
-        { Component: MuSigmaLogo, alt: 'Mu Sigma' },
-        { Component: WiproLogo, alt: 'Wipro' },
-        { Component: ZohoLogo, alt: 'Zoho' },
-      ];
+  // Updated hiring partners with only logos
+  const partnersForTabs = [
+    // Full Stack partners - Accenture, Synopsys, HappyFox, Zoho, Paytm
+    [
+      { Component: AccentureLogo, alt: 'Accenture' },
+      { Component: SynopsysLogo, alt: 'Synopsys' },
+      { Component: HappyFoxLogo, alt: 'HappyFox' },
+      { Component: ZohoLogo, alt: 'Zoho' },
+      { Component: PaytmLogo, alt: 'Paytm' },
+    ],
+    // Data Science partners - Goldman Sachs, MedPlus, Infrrt, Caterpillar, Adidas
+    [
+      { Component: GoldmanSachsLogo, alt: 'Goldman Sachs' },
+      { Component: MedplusLogo, alt: 'MedPlus' },
+      { Component: InfrrtLogo, alt: 'Infrrt' },
+      { Component: CaterpillarLogo, alt: 'Caterpillar' },
+      { Component: AdidasLogo, alt: 'Adidas' },
+    ]
+  ];
 
   // Handle tab change
   const handleTabChange = (event, newValue) => {
@@ -820,7 +831,7 @@ const TrainingPlanComponent = () => {
                 size: 11,
               },
               color: '#666',
-                          },
+            },
           },
         },
         animation: {
@@ -847,10 +858,17 @@ const TrainingPlanComponent = () => {
     navigate(routes[activeTab] || '/');
   };
 
+  // Handle click on explore other programs button
+  const handleExploreOtherPrograms = () => {
+    // Toggle between fullstack and data science
+    setActiveTab(activeTab === 0 ? 1 : 0);
+    setActiveRole(0); // Reset role when switching tabs
+  };
+
   return (
     <Box className={classes.section}>
       <Typography variant="h2" className={classes.sectionTitle}>
-        Hands-On Job Training for <span>High-Demand Full Stack Roles</span>
+        Hands-On Job Training for <span>High-Demand Tech Roles</span>
       </Typography>
 
       {/* Tab navigation */}
@@ -953,25 +971,26 @@ const TrainingPlanComponent = () => {
           Our Hiring Partners
         </Typography>
         <Box className={classes.partnersContainer}>
-          {partners.map(({ Component, alt }, index) => (
+          {partnersForTabs[activeTab].map(({ Component, alt }, index) => (
             <Box key={index} className={classes.partnerCard}>
               <Component className={classes.partnerLogo} alt={alt} />
-              <Typography variant="body2" sx={{ fontSize: '12px !important' }}>
-                {alt}
-              </Typography>
             </Box>
           ))}
         </Box>
       </Box>
 
-      {/* View Details Button */}
-      <Button 
-        variant="contained" 
-        className={classes.viewButton}
-        onClick={handleViewDetails}
-      >
-        View Full Curriculum
-      </Button>
+      {/* Action Buttons */}
+      <Box className={classes.actionsContainer}>
+        <Button 
+          variant="contained" 
+          className={classes.viewButton}
+          onClick={handleViewDetails}
+        >
+          View Full Curriculum
+        </Button>
+        
+        
+      </Box>
     </Box>
   );
 };

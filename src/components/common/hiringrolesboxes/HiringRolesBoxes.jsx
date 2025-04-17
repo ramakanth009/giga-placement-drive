@@ -290,7 +290,7 @@ const HiringRolesBoxes = ({
           <Typography variant="body1" className={classes.subtitle}>
             In Just 30 Days, Launch Your Career In One Of Today's Most {subtitle} Fields. Our {subtitle} 
             Program Connects You Directly With Hiring Partners Looking For Fresh Talent – All For 
-            Less Than <span className={classes.highlight}>Your Monthly Data Recharge</span>.
+            Less Than <span className={classes.highlight}>Your Monthly Data Pack</span>.
           </Typography>
         </Box>
 

@@ -110,13 +110,13 @@ const useStyles = makeStyles({
     width: '450px', // Increased fixed width
     borderRadius: '10px',
     boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',
-    transform: 'rotate(3deg)',
+    // transform: 'rotate(3deg)',
     transition: 'transform 0.3s ease',
     position: 'relative',
     zIndex: 2,
-    '&:hover': {
-      transform: 'rotate(0deg)',
-    },
+    // '&:hover': {
+    //   transform: 'rotate(0deg)',
+    // },
     '@media (max-width: 1200px)': {
       width: '400px', // Responsive width for smaller screens
     },
@@ -127,28 +127,28 @@ const useStyles = makeStyles({
       width: '300px', // Responsive width for mobile
     },
   },
-  certificateGlow: {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: '90%',
-    height: '90%',
-    borderRadius: '10px',
-    background: 'rgba(255, 198, 20, 0.3)',
-    filter: 'blur(20px)',
-    zIndex: 1,
-  },
-  decorCircle1: {
-    position: 'absolute',
-    width: '200px',
-    height: '200px',
-    borderRadius: '50%',
-    background: 'radial-gradient(circle, rgba(255, 198, 20, 0.2) 0%, rgba(255, 198, 20, 0) 70%)',
-    top: '-50px',
-    right: '-50px',
-    zIndex: 1,
-  },
+  // certificateGlow: {
+  //   position: 'absolute',
+  //   top: '50%',
+  //   left: '50%',
+  //   transform: 'translate(-50%, -50%)',
+  //   width: '90%',
+  //   height: '90%',
+  //   borderRadius: '10px',
+  //   background: 'rgba(255, 198, 20, 0.3)',
+  //   filter: 'blur(20px)',
+  //   zIndex: 1,
+  // },
+  // decorCircle1: {
+  //   position: 'absolute',
+  //   width: '200px',
+  //   height: '200px',
+  //   borderRadius: '50%',
+  //   background: 'radial-gradient(circle, rgba(255, 198, 20, 0.2) 0%, rgba(255, 198, 20, 0) 70%)',
+  //   top: '-50px',
+  //   right: '-50px',
+  //   zIndex: 1,
+  // },
   decorCircle2: {
     position: 'absolute',
     width: '150px',

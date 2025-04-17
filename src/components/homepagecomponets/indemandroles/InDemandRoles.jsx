@@ -15,12 +15,12 @@ import MemoryIcon from '@mui/icons-material/Memory';
 import WorkIcon from '@mui/icons-material/Work';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import VerifiedIcon from '@mui/icons-material/Verified';
-import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import SchoolIcon from '@mui/icons-material/School';
 
 const useStyles = makeStyles({
   section: {
-    padding: '50px 0',
+    padding: '50px 50px',
     background: 'linear-gradient(135deg, #2A2B6A 0%, #1A1B4A 100%)',
     color: 'white',
     position: 'relative',
@@ -118,8 +118,8 @@ const useStyles = makeStyles({
   categoriesContainer: {
     display: 'flex',
     flexDirection: 'column', 
-    width: '100%',
-    maxWidth: '1200px',
+    // width: '120%',
+    // maxWidth: '1200px',
     gap: '50px',
     margin: '10px 0 10px',
     "@media (max-width: 600px)": {
@@ -260,47 +260,60 @@ const useStyles = makeStyles({
       gap: '10px',
     },
   },
+  
   roleCard: {
-    backgroundColor: 'rgba(255, 255, 255, 0.05)',
-    borderRadius: '12px',
-    padding: '15px',
-    display: 'flex',
-    flexDirection: 'column',
-    position: 'relative',
-    boxShadow: '0 8px 15px rgba(0, 0, 0, 0.1)',
-    border: '1px solid rgba(255, 255, 255, 0.05)',
-    transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
-    overflow: 'hidden',
-    // Removed fixed height to allow content to determine height
+  backgroundColor: 'rgba(255, 255, 255, 0.05)',
+  borderRadius: '12px',
+  padding: '15px',
+  display: 'flex',
+  flexDirection: 'column',
+  position: 'relative',
+  boxShadow: '0 8px 15px rgba(0, 0, 0, 0.1)',
+  border: '1px solid rgba(255, 255, 255, 0.05)',
+  transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
+  overflow: 'hidden',
+  '&:before': {
+    content: '""',
+    position: 'absolute',
+    top: '0',
+    left: '0',
+    width: '100%',
+    height: '100%',
+    background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%)',
+    opacity: 0,
+    transition: 'opacity 0.3s ease',
+  },
+  '&:hover': {
+    backgroundColor: '#ffffff',
+    transform: 'translateY(-8px)',
+    boxShadow: '0 15px 30px rgba(0, 0, 0, 0.2)',
+    borderColor: 'rgba(255, 198, 20, 0.3)',
     '&:before': {
-      content: '""',
-      position: 'absolute',
-      top: '0',
-      left: '0',
-      width: '100%',
-      height: '100%',
-      background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%)',
-      opacity: 0,
-      transition: 'opacity 0.3s ease',
+      opacity: 1,
     },
-    '&:hover': {
-      backgroundColor: 'rgba(255, 255, 255, 0.1)',
-      transform: 'translateY(-8px)',
-      boxShadow: '0 15px 30px rgba(0, 0, 0, 0.2)',
-      borderColor: 'rgba(255, 198, 20, 0.3)',
-      '&:before': {
-        opacity: 1,
-      },
-      '& $roleIcon': {
-        transform: 'scale(1.1)',
-        color: '#FFC614',
-      },
+    '& $roleIcon': {
+      transform: 'scale(1.1)',
+      color: '#2A2B6A',
     },
-    "@media (max-width: 600px)": {
-      padding: '12px',
-      minHeight: '200px', // Set minimum height instead of fixed height
+    '& $roleText': {
+      color: '#2A2B6A !important',
+    },
+    '& $detailText': {
+      color: '#2A2B6A !important',
+    },
+    '& $skillChip': {
+      backgroundColor: 'rgba(42, 43, 106, 0.1) !important',
+      color: '#2A2B6A !important',
+    },
+     "$detailIcon": {  // Target the icon when roleCard is hovered
+      color: '#2A2B6A',
     },
   },
+  "@media (max-width: 600px)": {
+    padding: '12px',
+    minHeight: '200px',
+  },
+},
   roleHeaderContainer: {
     display: 'flex',
     alignItems: 'center',
@@ -318,13 +331,14 @@ const useStyles = makeStyles({
     },
   },
   roleText: {
-    color: 'white !important',
-    fontWeight: '700 !important',
-    fontSize: '1.05rem !important',
-    "@media (max-width: 600px)": {
-      fontSize: '1rem !important',
-    },
+  color: '#ffffff',
+  fontWeight: '700 !important',
+  fontSize: '1.05rem !important',
+  transition: 'color 0.3s ease !important',
+  "@media (max-width: 600px)": {
+    fontSize: '1rem !important',
   },
+},
   roleDetails: {
     display: 'flex',
     flexDirection: 'column',
@@ -334,6 +348,9 @@ const useStyles = makeStyles({
   detailRow: {
     display: 'flex',
     alignItems: 'center',
+    '&:hover': {
+      color:"#2A2B6A"
+    }
   },
   detailIcon: {
     color: 'rgba(255, 198, 20, 0.9)',
@@ -342,15 +359,20 @@ const useStyles = makeStyles({
     "@media (max-width: 600px)": {
       fontSize: '16px !important',
     },
-  },
-  detailText: {
-    color: 'rgba(255, 255, 255, 0.9) !important',
-    fontSize: '0.9rem !important',
-    fontWeight: '400 !important',
-    "@media (max-width: 600px)": {
-      fontSize: '0.85rem !important',
+    "$roleCard:hover &": {  // Target the icon when roleCard is hovered
+      color: '#2A2B6A',
     },
   },
+  detailText: {
+  color: 'rgba(255, 255, 255, 0.9) !important',
+  fontSize: '0.9rem !important',
+  fontWeight: 'bold !important',
+  transition: 'color 0.3s ease !important',
+  "@media (max-width: 600px)": {
+    fontSize: '0.85rem !important',
+  },
+},
+
   skillsContainer: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -359,12 +381,13 @@ const useStyles = makeStyles({
     // Removed fixed height and overflow:hidden to show all skills
   },
   skillChip: {
-    backgroundColor: 'rgba(255, 255, 255, 0.1) !important',
-    color: 'white !important',
-    fontSize: '0.7rem !important',
-    height: '22px !important',
-    margin: '2px !important',
-  },
+  backgroundColor: 'rgba(255, 255, 255, 0.1) !important',
+  color: 'white !important',
+  fontSize: '0.7rem !important',
+  height: '22px !important',
+  margin: '2px !important',
+  transition: 'background-color 0.3s ease, color 0.3s ease !important',
+},
   actionsContainer: {
     display: 'flex',
     justifyContent: 'center',
@@ -518,7 +541,7 @@ const InDemandRoles = () => {
         },
         { 
           id: 'mern', 
-          title: 'MERN Stack Developer', 
+          title: 'MERN Stack', 
           icon: <DeveloperModeIcon className={classes.roleIcon} />,
           salary: "₹7-18 LPA",
           experience: "1-3 years",
@@ -630,7 +653,6 @@ const InDemandRoles = () => {
         />
       ))}
 
-      <Container maxWidth="lg" className={classes.container}>
         {/* Title Section */}
         <Box className={classes.titleContainer}>
           <Typography variant="h2" className={classes.mainTitle}>
@@ -699,14 +721,14 @@ const InDemandRoles = () => {
                     
                     {/* Salary Detail */}
                     <Box className={classes.detailRow}>
-                      <MonetizationOnIcon className={classes.detailIcon} />
+                      <CurrencyRupeeIcon  className={classes.detailIcon} />
                       <Typography className={classes.detailText}>
-                        Salary: {role.salary}
+                        Avg Salary: {role.salary}
                       </Typography>
                     </Box>
                     
                     {/* Skills Section */}
-                    <Box className={classes.detailRow} sx={{ mt: 2 }}>
+                    {/* <Box className={classes.detailRow} sx={{ mt: 2 }}>
                       <SchoolIcon className={classes.detailIcon} />
                       <Typography className={classes.detailText}>
                         Key Skills:
@@ -722,7 +744,7 @@ const InDemandRoles = () => {
                           size="small"
                         />
                       ))}
-                    </Box>
+                    </Box> */}
                   </Box>
                 ))}
               </Box>
@@ -739,7 +761,6 @@ const InDemandRoles = () => {
             Check Your Eligibility
           </Button>
         </Box>
-      </Container>
     </Box>
   );
 };

@@ -40,17 +40,7 @@ const useStyles = makeStyles({
     color: '#FFC614 !important',
     position: 'relative',
     display: 'inline-block',
-    '&:after': {
-      content: '""',
-      position: 'absolute',
-      bottom: '5px',
-      left: '0',
-      width: '100%',
-      height: '30%',
-      background: 'rgba(255, 198, 20, 0.2)',
-      zIndex: -1,
-      borderRadius: '2px',
-    }
+    
   },
   cardsContainer: {
     display: 'grid',

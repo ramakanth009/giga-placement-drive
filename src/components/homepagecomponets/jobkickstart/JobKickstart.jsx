@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState } from "react";
 import { Box, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import TargetIcon from '@mui/icons-material/TrackChanges';
@@ -20,7 +20,6 @@ const useStyles = makeStyles({
     },
   },
   container: {
-    // maxWidth: "1200px",
     margin: "0 auto",
     padding: "0px 140px",
     position: "relative",
@@ -153,7 +152,7 @@ const useStyles = makeStyles({
     backgroundColor: "#FFC614",
     borderRadius: "2px",
     transform: "translateX(-50%)",
-    transition: "height 0.4s cubic-bezier(0.65, 0, 0.35, 1)", // Reduced from 0.8s to 0.4s
+    height: "100%",
   },
   pathNode: {
     position: "absolute",
@@ -185,7 +184,6 @@ const useStyles = makeStyles({
     border: "3px solid rgba(42, 43, 106, 0.3)",
     position: "relative",
     zIndex: "1",
-    transition: "all 0.2s ease", // Reduced from 0.4s to 0.2s
   },
   activeNode: {
     backgroundColor: "#FFC614",
@@ -197,7 +195,6 @@ const useStyles = makeStyles({
     width: "40px",
     height: "3px",
     backgroundColor: "rgba(42, 43, 106, 0.2)",
-    transition: "all 0.2s ease", // Reduced from 0.4s to 0.2s
     "@media (max-width: 600px)": {
       width: "30px",
     },
@@ -210,9 +207,8 @@ const useStyles = makeStyles({
     backgroundColor: "white",
     borderRadius: "10px",
     boxShadow: "0 5px 15px rgba(0, 0, 0, 0.05)",
-    transition: "all 0.2s ease", // Reduced from 0.4s to 0.2s
-    opacity: "0.6",
-    transform: "scale(0.95)",
+    opacity: "1",
+    transform: "scale(1)",
     width: "200px",
     display: "flex",
     alignItems: "center",
@@ -226,8 +222,6 @@ const useStyles = makeStyles({
     },
   },
   activeCard: {
-    opacity: "1",
-    transform: "scale(1)",
     boxShadow: "0 10px 30px rgba(42, 43, 106, 0.15)",
   },
   featureIcon: {
@@ -251,6 +245,11 @@ const useStyles = makeStyles({
       },
     },
   },
+  activeFeatureIcon: {
+    backgroundColor: "#2A2B6A",
+    color: "#FFC614",
+    boxShadow: "0 5px 15px rgba(42, 43, 106, 0.25)",
+  },
   featureText: {
     fontSize: "0.85rem !important",
     fontWeight: "500 !important",
@@ -260,12 +259,6 @@ const useStyles = makeStyles({
       fontSize: "0.75rem !important",
     },
   },
-  activeFeatureIcon: {
-    backgroundColor: "#2A2B6A",
-    color: "#FFC614",
-    boxShadow: "0 5px 15px rgba(42, 43, 106, 0.25)",
-  },
-  // Remove control buttons completely
   controlButtons: {
     display: "none",
   },
@@ -275,7 +268,6 @@ const useStyles = makeStyles({
   controlButtonIcon: {
     fontSize: "20px !important",
     color: "#2A2B6A !important",
-    transition: "all 0.3s ease !important",
     "@media (max-width: 600px)": {
       fontSize: "18px !important",
     },
@@ -296,23 +288,11 @@ const useStyles = makeStyles({
   decorElement2: {
     display: "none",
   },
-  slideIn: {
-    opacity: "0",
-    transform: "translateY(30px)",
-    transition: "opacity 0.3s ease, transform 0.3s ease", // Reduced from 0.6s to 0.3s
-  },
-  slideInActive: {
-    opacity: "1",
-    transform: "translateY(0)",
-  },
 });
 
 const JobKickstart = () => {
   const classes = useStyles();
-  const [activeStep, setActiveStep] = useState(0);
-  const [progressHeight, setProgressHeight] = useState(0);
-  const [inView, setInView] = useState(false);
-  const sectionRef = useRef(null);
+  const [activeStep] = useState(3); // Set to show all steps as active
 
   // Feature data
   const features = [
@@ -334,74 +314,15 @@ const JobKickstart = () => {
     },
   ];
 
-  // Progress animation
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      const maxHeight = Math.min(33 * (activeStep + 1), 100);
-      setProgressHeight(`${maxHeight}%`);
-    }, 25); // Reduced from 50 to 25
-
-    return () => clearTimeout(timer);
-  }, [activeStep]);
-
-  // Intersection Observer to trigger animations when section is in view
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setTimeout(() => {
-            setInView(true);
-            
-            const timeout = setTimeout(() => {
-              setActiveStep(1);
-              
-              const interval = setInterval(() => {
-                setActiveStep((prev) => {
-                  if (prev >= 3) {
-                    clearInterval(interval);
-                    return 3;
-                  }
-                  return prev + 1;
-                });
-              }, 800); // Reduced from 1500 to 800
-              
-              return () => clearInterval(interval);
-            }, 200); // Reduced from 500 to 200
-            
-            return () => clearTimeout(timeout);
-          }, 150); // Reduced from 300 to 150
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-
-  // Handle step change
-  const handleStepChange = (step) => {
-    if (step >= 0 && step <= 3) {
-      setActiveStep(step);
-    }
-  };
-
   return (
-    <Box className={classes.section} ref={sectionRef}>
+    <Box className={classes.section}>
       <Box className={classes.decorElement1} />
       <Box className={classes.decorElement2} />
       
       <Box className={classes.container}>
         <Box className={classes.contentWrapper}>
           {/* Left Content */}
-          <Box className={`${classes.leftContent} ${classes.slideIn} ${inView ? classes.slideInActive : ''}`}>
+          <Box className={classes.leftContent}>
             <Typography variant="h2" className={classes.title}>
               Why Struggle With Traditional <span className={classes.highlightText}>Job Hunting WHEN You Can</span>
             </Typography>
@@ -416,20 +337,17 @@ const JobKickstart = () => {
           </Box>
           
           {/* Right Content - Pathway Visualization */}
-          <Box className={`${classes.rightContent} ${classes.slideIn} ${inView ? classes.slideInActive : ''}`} style={{ transitionDelay: '0.3s' }}>
+          <Box className={classes.rightContent}>
             <Box className={classes.pathwayContainer}>
-              {/* Vertical progress line */}
-              <Box 
-                className={classes.pathwayProgress}
-                sx={{ height: progressHeight }}
-              />
+              {/* Vertical progress line - now fully shown by default */}
+              <Box className={classes.pathwayProgress} />
               
               {/* Node 1 */}
               <Box className={`${classes.pathNode} ${classes.node1}`}>
-                <Box className={`${classes.nodeCircle} ${activeStep >= 0 ? classes.activeNode : ''}`} />
-                <Box className={`${classes.nodeLine} ${activeStep >= 0 ? classes.activeNodeLine : ''}`} />
-                <Box className={`${classes.nodeCard} ${activeStep >= 0 ? classes.activeCard : ''}`}>
-                  <Box className={`${classes.featureIcon} ${activeStep >= 0 ? classes.activeFeatureIcon : ''}`}>
+                <Box className={`${classes.nodeCircle} ${classes.activeNode}`} />
+                <Box className={`${classes.nodeLine} ${classes.activeNodeLine}`} />
+                <Box className={`${classes.nodeCard} ${classes.activeCard}`}>
+                  <Box className={`${classes.featureIcon} ${classes.activeFeatureIcon}`}>
                     {features[0].icon}
                   </Box>
                   <Typography className={classes.featureText}>
@@ -440,24 +358,24 @@ const JobKickstart = () => {
               
               {/* Node 2 */}
               <Box className={`${classes.pathNode} ${classes.node2}`}>
-                <Box className={`${classes.nodeCard} ${activeStep >= 1 ? classes.activeCard : ''}`}>
-                  <Box className={`${classes.featureIcon} ${activeStep >= 1 ? classes.activeFeatureIcon : ''}`}>
+                <Box className={`${classes.nodeCard} ${classes.activeCard}`}>
+                  <Box className={`${classes.featureIcon} ${classes.activeFeatureIcon}`}>
                     {features[1].icon}
                   </Box>
                   <Typography className={classes.featureText}>
                     {features[1].text}
                   </Typography>
                 </Box>
-                <Box className={`${classes.nodeLine} ${activeStep >= 1 ? classes.activeNodeLine : ''}`} />
-                <Box className={`${classes.nodeCircle} ${activeStep >= 1 ? classes.activeNode : ''}`} />
+                <Box className={`${classes.nodeLine} ${classes.activeNodeLine}`} />
+                <Box className={`${classes.nodeCircle} ${classes.activeNode}`} />
               </Box>
               
               {/* Node 3 */}
               <Box className={`${classes.pathNode} ${classes.node3}`}>
-                <Box className={`${classes.nodeCircle} ${activeStep >= 2 ? classes.activeNode : ''}`} />
-                <Box className={`${classes.nodeLine} ${activeStep >= 2 ? classes.activeNodeLine : ''}`} />
-                <Box className={`${classes.nodeCard} ${activeStep >= 2 ? classes.activeCard : ''}`}>
-                  <Box className={`${classes.featureIcon} ${activeStep >= 2 ? classes.activeFeatureIcon : ''}`}>
+                <Box className={`${classes.nodeCircle} ${classes.activeNode}`} />
+                <Box className={`${classes.nodeLine} ${classes.activeNodeLine}`} />
+                <Box className={`${classes.nodeCard} ${classes.activeCard}`}>
+                  <Box className={`${classes.featureIcon} ${classes.activeFeatureIcon}`}>
                     {features[2].icon}
                   </Box>
                   <Typography className={classes.featureText}>
@@ -468,20 +386,18 @@ const JobKickstart = () => {
               
               {/* Node 4 */}
               <Box className={`${classes.pathNode} ${classes.node4}`}>
-                <Box className={`${classes.nodeCard} ${activeStep >= 3 ? classes.activeCard : ''}`}>
-                  <Box className={`${classes.featureIcon} ${activeStep >= 3 ? classes.activeFeatureIcon : ''}`}>
+                <Box className={`${classes.nodeCard} ${classes.activeCard}`}>
+                  <Box className={`${classes.featureIcon} ${classes.activeFeatureIcon}`}>
                     {features[3].icon}
                   </Box>
                   <Typography className={classes.featureText}>
                     {features[3].text}
                   </Typography>
                 </Box>
-                <Box className={`${classes.nodeLine} ${activeStep >= 3 ? classes.activeNodeLine : ''}`} />
-                <Box className={`${classes.nodeCircle} ${activeStep >= 3 ? classes.activeNode : ''}`} />
+                <Box className={`${classes.nodeLine} ${classes.activeNodeLine}`} />
+                <Box className={`${classes.nodeCircle} ${classes.activeNode}`} />
               </Box>
-              
-          {/* Remove control buttons section */}
-          </Box>
+            </Box>
           </Box>
         </Box>
       </Box>
