@@ -1,16 +1,35 @@
 // src/components/fullstackcomponents/curriculum/FullStackCurriculum.jsx
 import React from 'react';
 import Curriculum from '../../common/curriculum/Curriculum';
+import { 
+  Code as CodeIcon,
+  Computer as FrontendIcon,
+  Cloud as BackendIcon,
+  Storage as DatabaseIcon
+} from '@mui/icons-material';
 
 const FullStackCurriculum = () => {
-  // Define weeks data
+  // Define weeks data with icons
   const weeks = [
-    "UI/UX Developer",
-    "Frontend Developer",
-    "Backend Developer",
-    "Database Engineer"
+    {
+      title: "UI/UX Developer",
+      icon: <CodeIcon />
+    },
+    {
+      title: "Frontend Developer",
+      icon: <FrontendIcon />
+    },
+    {
+      title: "Backend Developer",
+      icon: <BackendIcon />
+    },
+    {
+      title: "Database Engineer",
+      icon: <DatabaseIcon />
+    }
   ];
   
+  // Define skills for each week
   const skills = [
     // UI/UX Developer skills
     [
@@ -62,6 +81,7 @@ const FullStackCurriculum = () => {
       title={<>Our 30-Day Journey <span>To Job Readiness</span></>}
       weeks={weeks}
       skills={skills}
+      domain="fullstack"
     />
   );
 };

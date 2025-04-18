@@ -22,10 +22,7 @@ const DataScienceHiringRolesBoxes = () => {
       title: 'Business Analyst',
       icon: <BarChartIcon />,
     },
-    {
-      title: 'AI Associate',
-      icon: <SmartToyIcon />,
-    },
+    
     {
       title: 'Data Engineer',
       icon: <StorageIcon />,

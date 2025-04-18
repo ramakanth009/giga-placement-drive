@@ -1,381 +1,705 @@
 // src/components/resumebuilder/ResumeBuilderSection.jsx
 import React, { useState, useEffect } from 'react';
-import { Box, Typography, Button, Container, Paper, Chip } from '@mui/material';
+import { Box, Typography, Button, Container, Grid, Paper, Chip, Divider } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { useNavigate } from 'react-router-dom';
-import DescriptionIcon from '@mui/icons-material/Description';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import AssignmentIcon from '@mui/icons-material/Assignment';
+import WorkIcon from '@mui/icons-material/Work';
+import SummarizeIcon from '@mui/icons-material/Summarize';
+import AutoGraphIcon from '@mui/icons-material/AutoGraph';
+import DoneIcon from '@mui/icons-material/Done';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import StarIcon from '@mui/icons-material/Star';
-// import ResumeTemplateImage from '../../assets/resume-template.png'; // Add this image
+import WbIncandescentIcon from '@mui/icons-material/WbIncandescent';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import SchoolIcon from '@mui/icons-material/School';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import CodeIcon from '@mui/icons-material/Code';
+import BuildIcon from '@mui/icons-material/Build';
+import PersonIcon from '@mui/icons-material/Person';
+import PsychologyIcon from '@mui/icons-material/Psychology';
+import SettingsIcon from '@mui/icons-material/Settings';
+import DesignServicesIcon from '@mui/icons-material/DesignServices';
 
 const useStyles = makeStyles({
   section: {
-    padding: '70px 0',
+    // padding: '0 20px',
+    marginTop: '30px',
+    marginBottom: '70px',
     position: 'relative',
-    overflow: 'hidden',
-    background: 'linear-gradient(135deg, #f0f4ff 0%, #e6f2ff 100%)',
-    marginTop: '-40px', // Create overlap effect with hero section
-    zIndex: 5,
+    overflow: 'visible',
   },
   container: {
     position: 'relative',
     zIndex: 2,
+  },
+  outerBox: {
+    // borderRadius: '30px',
+    overflow: 'hidden',
+    background: 'linear-gradient(135deg, #2A2B6A 0%, #1A1B4A 100%)',
+    boxShadow: '0 25px 60px rgba(42, 43, 106, 0.15)',
+    position: 'relative',
+  },
+  contentWrapper: {
+    padding: '60px 40px',
+    display: 'flex',
+    gap: '30px',
+    justifyContent: 'space-between',
+    position: 'relative',
+    '@media (max-width: 1100px)': {
+      flexDirection: 'column',
+      padding: '50px 30px',
+      gap: '40px',
+    },
+    '@media (max-width: 600px)': {
+      padding: '40px 20px',
+      gap: '30px',
+    },
+  },
+  leftContent: {
+    flex: '1',
+    position: 'relative',
+    zIndex: 2,
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
+    justifyContent: 'center',
   },
-  banner: {
-    width: '90%',
-    maxWidth: '1000px',
-    padding: '40px',
-    borderRadius: '20px',
-    background: 'linear-gradient(135deg, #2A2B6A 0%, #1A1B4A 100%)',
-    boxShadow: '0 20px 60px rgba(42, 43, 106, 0.3)',
-    textAlign: 'center',
-    position: 'relative',
-    overflow: 'hidden',
-    transform: 'translateY(-30px)',
-    marginBottom: '30px',
-    border: '1px solid rgba(255, 255, 255, 0.1)',
-    '@media (max-width: 768px)': {
-      padding: '30px 20px',
-      width: '95%',
+  title: {
+    fontSize: '2.5rem !important',
+    fontWeight: 'bold !important',
+    color: 'white !important',
+    lineHeight: '1.2 !important',
+    marginBottom: '20px !important',
+    '@media (max-width: 1200px)': {
+      fontSize: '2.5rem !important',
     },
-  },
-  bannerTitle: {
-    fontSize: '2.8rem !important',
-    fontWeight: '800 !important',
-    color: 'black !important',
-    margin: '0 0 15px !important',
-    position: 'relative',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 900px)': {
       fontSize: '2.2rem !important',
     },
-    '@media (max-width: 480px)': {
+    '@media (max-width: 600px)': {
       fontSize: '1.8rem !important',
+      marginBottom: '15px !important',
     },
   },
   highlightText: {
     color: '#FFC614 !important',
     position: 'relative',
-    display: 'inline-block',
-    '&:after': {
-      content: '""',
-      position: 'absolute',
-      bottom: '5px',
-      left: '0',
-      width: '100%',
-      height: '30%',
-      background: 'rgba(255, 198, 20, 0.2)',
-      zIndex: -1,
-      borderRadius: '2px',
-    },
+    // '&::after': {
+    //   content: '""',
+    //   position: 'absolute',
+    //   width: '100%',
+    //   height: '30%',
+    //   bottom: '5px',
+    //   left: '0',
+    //   background: 'rgba(255, 198, 20, 0.2)',
+    //   zIndex: -1,
+    //   borderRadius: '3px',
+    // },
   },
-  bannerSubtitle: {
-    fontSize: '1.3rem !important',
-    color: 'black !important',
-    margin: '0 auto 25px !important',
-    maxWidth: '700px',
-    '@media (max-width: 768px)': {
+  subtitle: {
+    fontSize: '1.2rem !important',
+    color: 'rgba(255, 255, 255, 0.9) !important',
+    marginBottom: '30px !important',
+    maxWidth: '550px',
+    '@media (max-width: 900px)': {
       fontSize: '1.1rem !important',
     },
-  },
-  freeChip: {
-    position: 'absolute',
-    top: '15px',
-    right: '15px',
-    backgroundColor: '#FFC614 !important',
-    color: '#2A2B6A !important',
-    fontWeight: 'bold !important',
-    fontSize: '1rem !important',
-    padding: '5px 15px !important',
-    borderRadius: '20px !important',
-    boxShadow: '0 4px 10px rgba(0, 0, 0, 0.15) !important',
-    animation: '$pulse 2s infinite',
-    '@media (max-width: 768px)': {
-      fontSize: '0.9rem !important',
+    '@media (max-width: 600px)': {
+      fontSize: '1rem !important',
+      marginBottom: '20px !important',
     },
   },
-  '@keyframes pulse': {
-    '0%': {
-      transform: 'scale(1)',
-      boxShadow: '0 4px 10px rgba(0, 0, 0, 0.15)',
-    },
-    '50%': {
-      transform: 'scale(1.05)',
-      boxShadow: '0 8px 15px rgba(0, 0, 0, 0.2)',
-    },
-    '100%': {
-      transform: 'scale(1)',
-      boxShadow: '0 4px 10px rgba(0, 0, 0, 0.15)',
-    },
-  },
-  featureList: {
+  featuresContainer: {
     display: 'flex',
-    justifyContent: 'center',
-    flexWrap: 'wrap',
-    gap: '15px',
-    margin: '20px 0 30px',
-    '@media (max-width: 768px)': {
-      gap: '10px',
-    },
+    flexDirection: 'column',
+    gap: '10px',
+    marginBottom: '30px',
+    maxWidth: '550px',
   },
   featureItem: {
     display: 'flex',
     alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-    padding: '8px 15px',
-    borderRadius: '50px',
-    '@media (max-width: 768px)': {
-      padding: '6px 12px',
-      fontSize: '0.9rem',
-    },
+    color: 'white',
   },
   featureIcon: {
-    color: '#FFC614 !important',
-    marginRight: '8px !important',
-    fontSize: '1.2rem !important',
-    '@media (max-width: 768px)': {
-      fontSize: '1rem !important',
-    },
+    fontSize: '1rem !important',
+    marginRight: '10px',
+    color: '#FFC614',
   },
   featureText: {
     fontSize: '1rem !important',
-    color: 'black !important',
+    color: 'rgba(255, 255, 255, 0.9) !important',
     fontWeight: '500 !important',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 600px)': {
       fontSize: '0.9rem !important',
+    },
+  },
+  statsContainer: {
+    display: 'flex',
+    gap: '20px',
+    marginBottom: '30px',
+    '@media (max-width: 600px)': {
+      gap: '15px',
+      flexWrap: 'wrap',
+    },
+  },
+  statItem: {
+    background: 'rgba(255, 255, 255, 0.1)',
+    borderRadius: '15px',
+    padding: '15px 20px',
+    minWidth: '120px',
+    textAlign: 'center',
+    '@media (max-width: 900px)': {
+      padding: '12px 15px',
+      minWidth: '100px',
+    },
+    '@media (max-width: 600px)': {
+      padding: '10px',
+      flex: '1',
+      minWidth: '80px',
+    },
+  },
+  statNumber: {
+    fontSize: '1.8rem !important',
+    fontWeight: 'bold !important',
+    color: '#FFC614 !important',
+    marginBottom: '5px !important',
+    '@media (max-width: 900px)': {
+      fontSize: '1.6rem !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '1.4rem !important',
+      marginBottom: '3px !important',
+    },
+  },
+  statLabel: {
+    fontSize: '0.85rem !important',
+    color: 'rgba(255, 255, 255, 0.8) !important',
+    '@media (max-width: 600px)': {
+      fontSize: '0.75rem !important',
     },
   },
   buildButton: {
     backgroundColor: '#FFC614 !important',
     color: '#2A2B6A !important',
-    padding: '15px 40px !important',
+    padding: '14px 30px !important',
     borderRadius: '50px !important',
-    fontSize: '1.3rem !important',
+    fontSize: '1.1rem !important',
     fontWeight: 'bold !important',
     textTransform: 'none !important',
-    transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important',
-    boxShadow: '0 10px 25px rgba(255, 198, 20, 0.4) !important',
-    marginTop: '10px',
-    marginBottom: '15px',
+    boxShadow: '0 10px 25px rgba(255, 198, 20, 0.3) !important',
+    transition: 'all 0.3s ease !important',
+    maxWidth: 'fit-content',
     '&:hover': {
-      backgroundColor: 'white !important',
-      transform: 'translateY(-7px) scale(1.05)',
-      boxShadow: '0 15px 35px rgba(255, 198, 20, 0.5) !important',
+      backgroundColor: '#FFD23F !important',
+      transform: 'translateY(-5px)',
+      boxShadow: '0 15px 35px rgba(255, 198, 20, 0.4) !important',
     },
-    '@media (max-width: 768px)': {
-      padding: '12px 30px !important',
-      fontSize: '1.1rem !important',
+    '@media (max-width: 600px)': {
+      padding: '12px 25px !important',
+      fontSize: '1rem !important',
     },
   },
-  previewSection: {
-    width: '100%',
+  rightContent: {
+    flex: '1',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: '30px',
     position: 'relative',
+    zIndex: 2,
   },
-  previewTitle: {
-    fontSize: '1.5rem !important',
-    fontWeight: 'bold !important',
-    color: '#2A2B6A !important',
-    textAlign: 'center',
-    margin: '0 0 30px !important',
+  resumeWrapper: {
     position: 'relative',
-    '&:after': {
-      content: '""',
-      position: 'absolute',
-      bottom: '-10px',
-      left: '50%',
-      transform: 'translateX(-50%)',
-      width: '60px',
-      height: '3px',
-      background: '#FFC614',
-      borderRadius: '2px',
-    },
-  },
-  resumePreview: {
-    display: 'flex',
-    gap: '30px',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    '@media (max-width: 768px)': {
-      gap: '20px',
-    },
-  },
-  templateCard: {
-    width: '280px',
-    backgroundColor: 'white',
-    borderRadius: '10px',
-    overflow: 'hidden',
-    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
-    transition: 'all 0.3s ease',
-    '&:hover': {
-      transform: 'translateY(-10px)',
-      boxShadow: '0 15px 40px rgba(0, 0, 0, 0.15)',
-    },
-    '@media (max-width: 768px)': {
-      width: '220px',
-    },
-  },
-  templateImage: {
     width: '100%',
-    height: '350px',
-    objectFit: 'cover',
-    objectPosition: 'top',
-    '@media (max-width: 768px)': {
-      height: '280px',
+    maxWidth: '550px',
+    margin: '0 auto',
+    perspective: '1000px',
+  },
+  resumeSheet: {
+    position: 'relative',
+    width: '100%',
+    minHeight: '550px',
+    backgroundColor: 'white',
+    borderRadius: '15px',
+    boxShadow: '0 20px 40px rgba(0, 0, 0, 0.2)',
+    padding: '30px 25px',
+    transition: 'transform 0.6s ease',
+    transformStyle: 'preserve-3d',
+    transform: 'rotateY(0deg)',
+    '@media (max-width: 900px)': {
+      minHeight: '500px',
+    },
+    '@media (max-width: 600px)': {
+      minHeight: '450px',
+      padding: '25px 20px',
     },
   },
-  templateLabel: {
-    padding: '15px',
-    textAlign: 'center',
+  resumeHeader: {
+    borderBottom: '1px solid #eee',
+    paddingBottom: '20px',
+    marginBottom: '20px',
+  },
+  resumeName: {
+    fontSize: '1.8rem !important',
     fontWeight: 'bold !important',
-    fontSize: '1rem !important',
     color: '#2A2B6A !important',
+    marginBottom: '5px !important',
+    '@media (max-width: 600px)': {
+      fontSize: '1.5rem !important',
+    },
   },
-  starIcon: {
-    position: 'absolute',
+  resumeTitle: {
+    fontSize: '1.1rem !important',
+    color: '#555 !important',
+    marginBottom: '10px !important',
+    '@media (max-width: 600px)': {
+      fontSize: '1rem !important',
+    },
+  },
+  contactInfo: {
+    display: 'flex',
+    gap: '15px',
+    flexWrap: 'wrap',
+  },
+  contactChip: {
+    backgroundColor: '#f5f5f5 !important',
+    fontSize: '0.8rem !important',
+    height: '26px !important',
+  },
+  sectionTitle: {
+    fontSize: '1.15rem !important',
+    fontWeight: 'bold !important',
+    color: '#2A2B6A !important',
+    marginBottom: '10px !important',
+    display: 'flex',
+    alignItems: 'center',
+    '@media (max-width: 600px)': {
+      fontSize: '1rem !important',
+    },
+  },
+  sectionIcon: {
+    fontSize: '1.2rem !important',
+    marginRight: '8px',
     color: '#FFC614',
-    zIndex: 0,
-    opacity: 0.5,
   },
-  starBurst: {
-    position: 'absolute',
-    width: '150px',
-    height: '150px',
-    borderRadius: '50%',
-    background: 'radial-gradient(circle, rgba(255, 198, 20, 0.2) 0%, rgba(255, 198, 20, 0) 70%)',
-    zIndex: 0,
+  experienceItem: {
+    marginBottom: '15px',
+    paddingBottom: '15px',
+    borderBottom: '1px dashed #eee',
+    '&:last-child': {
+      marginBottom: '0',
+      paddingBottom: '0',
+      borderBottom: 'none',
+    },
   },
-  starburst1: {
-    top: '10%',
-    left: '10%',
-  },
-  starburst2: {
-    bottom: '5%',
-    right: '15%',
-  },
-  limitedText: {
+  expCompany: {
     fontSize: '1rem !important',
-    color: 'black !important',
+    fontWeight: 'bold !important',
+    color: '#333 !important',
+    marginBottom: '3px !important',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    '@media (max-width: 600px)': {
+      fontSize: '0.9rem !important',
+    },
+  },
+  expRole: {
+    fontSize: '0.9rem !important',
+    color: '#555 !important',
+    marginBottom: '5px !important',
+    '@media (max-width: 600px)': {
+      fontSize: '0.85rem !important',
+    },
+  },
+  expDate: {
+    fontSize: '0.8rem !important',
+    color: '#777 !important',
     fontStyle: 'italic !important',
-    margin: '15px 0 0 !important',
+  },
+  skillsContainer: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: '8px',
+    marginTop: '10px',
+  },
+  skillChip: {
+    backgroundColor: 'rgba(42, 43, 106, 0.1) !important',
+    color: '#2A2B6A !important',
+    fontSize: '0.8rem !important',
+    height: '26px !important',
+  },
+  projectsContainer: {
+    marginTop: '10px',
+  },
+  decorativeElement: {
+    position: 'absolute',
+    zIndex: 1,
+  },
+  circleElement: {
+    borderRadius: '50%',
+  },
+  floatingTags: {
+    position: 'absolute',
+    top: '25%',
+    right: '-30px',
+    transform: 'translateY(-50%)',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '15px',
+    zIndex: 2,
+    '@media (max-width: 1100px)': {
+      top: 'auto',
+      bottom: '-20px',
+      right: '30px',
+      flexDirection: 'row',
+    },
+    '@media (max-width: 600px)': {
+      bottom: '-15px',
+      right: '20px',
+      gap: '10px',
+    },
+  },
+  tag: {
+    backgroundColor: '#FFC614 !important',
+    padding: '5px 10px !important',
+    borderRadius: '20px !important',
+    color: '#2A2B6A !important',
+    fontWeight: 'bold !important',
+    boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1) !important',
+    fontSize: '0.8rem !important',
+    '@media (max-width: 600px)': {
+      padding: '4px 8px !important',
+      fontSize: '0.7rem !important',
+    },
+  },
+  backgroundPattern: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    backgroundImage: `radial-gradient(rgba(255, 255, 255, 0.1) 2px, transparent 2px)`,
+    backgroundSize: '30px 30px',
+    opacity: 0.3,
+    zIndex: 1,
+  },
+  floatingIcons: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    zIndex: 1,
+  },
+  floatingIcon: {
+    position: 'absolute',
+    color: 'rgba(255, 255, 255, 0.05)',
+    animation: '$float 8s infinite ease-in-out',
+  },
+  '@keyframes float': {
+    '0%': {
+      transform: 'translateY(0) rotate(0deg)',
+    },
+    '50%': {
+      transform: 'translateY(-20px) rotate(10deg)',
+    },
+    '100%': {
+      transform: 'translateY(0) rotate(0deg)',
+    },
+  },
+  resumeVisualContainer: {
+    position: 'absolute',
+    top: '-40px',
+    left: '-40px',
+    zIndex: 3,
+    '@media (max-width: 900px)': {
+      top: '-30px',
+      left: '-30px',
+    },
+    '@media (max-width: 600px)': {
+      top: '-20px',
+      left: '-20px',
+    },
+  },
+  resumeVisual: {
+    width: '80px',
+    height: '80px',
+    borderRadius: '50%',
+    backgroundColor: '#FFC614',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    boxShadow: '0 8px 25px rgba(255, 198, 20, 0.4)',
+    '@media (max-width: 900px)': {
+      width: '70px',
+      height: '70px',
+    },
+    '@media (max-width: 600px)': {
+      width: '60px',
+      height: '60px',
+    },
+  },
+  resumeIcon: {
+    fontSize: '40px !important',
+    color: '#2A2B6A',
+    '@media (max-width: 900px)': {
+      fontSize: '35px !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '30px !important',
+    },
   },
 });
 
 const ResumeBuilderSection = () => {
   const classes = useStyles();
   const navigate = useNavigate();
-  
   const [animated, setAnimated] = useState(false);
-  
+  const [flipped, setFlipped] = useState(false);
+
   useEffect(() => {
-    // Trigger animation after component mounts
     setAnimated(true);
     
-    // Generate random star positions
-    const stars = document.querySelectorAll(`.${classes.starIcon}`);
-    stars.forEach(star => {
-      const top = Math.random() * 100;
-      const left = Math.random() * 100;
-      const size = 20 + Math.random() * 30;
-      star.style.top = `${top}%`;
-      star.style.left = `${left}%`;
-      star.style.fontSize = `${size}px`;
-    });
+    // Add a timer to flip the resume occasionally
+    const flipInterval = setInterval(() => {
+      setFlipped(prev => !prev);
+      setTimeout(() => setFlipped(prev => !prev), 2000);
+    }, 10000);
+    
+    return () => clearInterval(flipInterval);
   }, []);
 
-  const handleBuildResumeClick = () => {
-    // Navigate to resume builder page
+  const handleBuildClick = () => {
     navigate('/resume-builder');
   };
 
-  const features = [
-    "ATS Optimized",
-    "Technical Templates",
-    "Skills Highlighting",
-    "Project Showcase",
-    "Quick to Create"
+  // Tech skills for the resume preview
+  const techSkills = ['React.js', 'JavaScript', 'Python', 'MongoDB', 'Git'];
+  
+  // Floating icons for background effect
+  const floatingIcons = [
+    { icon: <CodeIcon />, top: '15%', left: '10%', size: '40px', delay: '0s' },
+    { icon: <SchoolIcon />, top: '25%', right: '15%', size: '35px', delay: '1s' },
+    { icon: <PsychologyIcon />, bottom: '20%', left: '20%', size: '45px', delay: '2s' },
+    { icon: <SettingsIcon />, top: '70%', right: '25%', size: '30px', delay: '3s' },
+    { icon: <DesignServicesIcon />, top: '40%', left: '25%', size: '35px', delay: '4s' },
   ];
-
+  
   return (
     <Box className={classes.section}>
-      <Box className={classes.starburst1} />
-      <Box className={classes.starburst2} />
-      
-      {/* Add multiple decorative stars */}
-      {[...Array(8)].map((_, i) => (
-        <StarIcon key={i} className={classes.starIcon} />
-      ))}
-      
-      <Container maxWidth="lg" className={classes.container}>
-        <Paper 
-          elevation={0} 
-          className={classes.banner}
-          sx={{
-            opacity: animated ? 1 : 0,
-            transform: animated ? 'translateY(-30px)' : 'translateY(0px)',
-            transition: 'opacity 0.8s ease, transform 0.8s ease',
-          }}
-        >
-          <Chip 
-            icon={<StarIcon />} 
-            label="FREE" 
-            className={classes.freeChip} 
-          />
+      {/* <Container maxWidth="lg" className={classes.container}> */}
+        <Box className={classes.outerBox}>
+          <Box className={classes.backgroundPattern} />
           
-          <Typography variant="h1" className={classes.bannerTitle}>
-            Create Your <span className={classes.highlightText}>Professional Resume</span>
-          </Typography>
-          
-          <Typography variant="h4" className={classes.bannerSubtitle}>
-            Stand out from the competition with an ATS-friendly resume designed for tech roles
-          </Typography>
-          
-          <Box className={classes.featureList}>
-            {features.map((feature, index) => (
-              <Box 
-                key={index} 
-                className={classes.featureItem}
+          {/* Floating icons in the background */}
+          <Box className={classes.floatingIcons}>
+            {floatingIcons.map((icon, index) => (
+              <Box
+                key={index}
+                className={classes.floatingIcon}
                 sx={{
-                  opacity: animated ? 1 : 0,
-                  transform: animated ? 'translateY(0)' : 'translateY(20px)',
-                  transition: 'opacity 0.6s ease, transform 0.6s ease',
-                  transitionDelay: `${0.2 + (index * 0.1)}s`,
+                  top: icon.top,
+                  left: icon.left,
+                  right: icon.right,
+                  bottom: icon.bottom,
+                  fontSize: icon.size,
+                  animationDelay: icon.delay,
                 }}
               >
-                <CheckCircleIcon className={classes.featureIcon} />
-                <Typography className={classes.featureText}>
-                  {feature}
-                </Typography>
+                {icon.icon}
               </Box>
             ))}
           </Box>
           
-          <Button 
-            variant="contained" 
-            className={classes.buildButton}
-            onClick={handleBuildResumeClick}
-            endIcon={<ArrowForwardIcon />}
-            sx={{
-              opacity: animated ? 1 : 0,
-              transform: animated ? 'translateY(0)' : 'translateY(20px)',
-              transition: 'opacity 0.8s ease, transform 0.8s ease',
-              transitionDelay: '0.6s',
-            }}
-          >
-            Build Your FREE Resume Now
-          </Button>
-          
-          <Typography variant="body2" className={classes.limitedText}>
-            Start building your professional resume in minutes
-          </Typography>
-        </Paper>
-      </Container>
+          <Box className={classes.contentWrapper}>
+            <Box 
+              className={classes.leftContent}
+              sx={{
+                opacity: animated ? 1 : 0,
+                transform: animated ? 'translateY(0)' : 'translateY(30px)',
+                transition: 'opacity 0.8s ease, transform 0.8s ease',
+              }}
+            >
+              <Typography variant="h1" className={classes.title}>
+                Build Your <span className={classes.highlightText}>ATS-Optimized</span>Resume
+              </Typography>
+              
+              <Typography variant="body1" className={classes.subtitle}>
+                Create a standout technical resume in minutes that passes through Applicant Tracking Systems and impresses hiring managers.
+              </Typography>
+              
+              <Box className={classes.featuresContainer}>
+                {[
+                  "Industry-specific templates designed for tech roles",
+                  "AI-powered content suggestions for each section",
+                  "Keyword optimization for job description matching",
+                  "Showcase your projects and technical skills effectively",
+                  // "Export to PDF, DOCX, or share via custom link"
+                ].map((feature, index) => (
+                  <Box 
+                    key={index} 
+                    className={classes.featureItem}
+                    sx={{
+                      opacity: animated ? 1 : 0,
+                      transform: animated ? 'translateX(0)' : 'translateX(-20px)',
+                      transition: 'opacity 0.6s ease, transform 0.6s ease',
+                      transitionDelay: `${0.2 + (index * 0.1)}s`,
+                    }}
+                  >
+                    <DoneIcon className={classes.featureIcon} />
+                    <Typography className={classes.featureText}>{feature}</Typography>
+                  </Box>
+                ))}
+              </Box>
+              
+              <Box 
+                className={classes.statsContainer}
+                sx={{
+                  opacity: animated ? 1 : 0,
+                  transform: animated ? 'translateY(0)' : 'translateY(20px)',
+                  transition: 'opacity 0.7s ease, transform 0.7s ease',
+                  transitionDelay: '0.7s',
+                }}
+              >
+                <Box className={classes.statItem}>
+                  <Typography className={classes.statNumber}>3x</Typography>
+                  <Typography className={classes.statLabel}>More Interviews</Typography>
+                </Box>
+                <Box className={classes.statItem}>
+                  <Typography className={classes.statNumber}>5min</Typography>
+                  <Typography className={classes.statLabel}>To Create</Typography>
+                </Box>
+                <Box className={classes.statItem}>
+                  <Typography className={classes.statNumber}>95%</Typography>
+                  <Typography className={classes.statLabel}>ATS Pass Rate</Typography>
+                </Box>
+              </Box>
+              
+              <Button 
+                variant="contained" 
+                className={classes.buildButton}
+                onClick={handleBuildClick}
+                endIcon={<ArrowForwardIcon />}
+                sx={{
+                  opacity: animated ? 1 : 0,
+                  transform: animated ? 'translateY(0)' : 'translateY(20px)',
+                  transition: 'opacity 0.8s ease, transform 0.8s ease',
+                  transitionDelay: '0.9s',
+                }}
+              >
+                Build Your Resume Now
+              </Button>
+            </Box>
+            
+            <Box 
+              className={classes.rightContent}
+              sx={{
+                opacity: animated ? 1 : 0,
+                transform: animated ? 'translateY(0)' : 'translateY(30px)',
+                transition: 'opacity 0.9s ease, transform 0.9s ease',
+                transitionDelay: '0.5s',
+              }}
+            >
+              <Box className={classes.resumeWrapper}>
+                {/* Resume Visual Icon */}
+                <Box className={classes.resumeVisualContainer}>
+                  <Box className={classes.resumeVisual}>
+                    <AssignmentIcon className={classes.resumeIcon} />
+                  </Box>
+                </Box>
+                
+                {/* Floating Tags */}
+                <Box className={classes.floatingTags}>
+                  <Box className={classes.tag}>ATS-Friendly</Box>
+                  {/* <Box className={classes.tag}>Tech-Focused</Box> */}
+                  <Box className={classes.tag}>Customizable</Box>
+                </Box>
+                
+                {/* Resume Preview */}
+                <Box 
+                  className={classes.resumeSheet}
+                  sx={{
+                    transform: flipped ? 'rotateY(8deg)' : 'rotateY(0deg)',
+                  }}
+                >
+                  <Box className={classes.resumeHeader}>
+                    <Typography className={classes.resumeName}>Alex Johnson</Typography>
+                    <Typography className={classes.resumeTitle}>Senior Full Stack Developer</Typography>
+                    <Box className={classes.contactInfo}>
+                      <Chip label="alex.j@email.com" size="small" className={classes.contactChip} />
+                      <Chip label="+91XXXXXXXXXX" size="small" className={classes.contactChip} />
+                      <Chip label="linkedin.com/in/alexj" size="small" className={classes.contactChip} />
+                    </Box>
+                  </Box>
+                  
+                  <Box mb={3}>
+                    <Typography className={classes.sectionTitle}>
+                      <SummarizeIcon className={classes.sectionIcon} />
+                      Summary
+                    </Typography>
+                    <Typography variant="body2" sx={{ fontSize: '0.9rem', color: '#555' }}>
+                      Full Stack Developer with 5+ years of experience building scalable web applications using React.js and Node.js. Passionate about writing clean, efficient code and implementing user-centered designs.
+                    </Typography>
+                  </Box>
+                  
+                  <Box mb={3}>
+                    <Typography className={classes.sectionTitle}>
+                      <WorkIcon className={classes.sectionIcon} />
+                      Experience
+                    </Typography>
+                    
+                    <Box className={classes.experienceItem}>
+                      <Typography className={classes.expCompany}>
+                        TechCorp Solutions
+                        <Typography className={classes.expDate}>2020 - Present</Typography>
+                      </Typography>
+                      <Typography className={classes.expRole}>Senior Full Stack Developer</Typography>
+                    </Box>
+                    
+                    <Box className={classes.experienceItem}>
+                      <Typography className={classes.expCompany}>
+                        WebDev Innovations
+                        <Typography className={classes.expDate}>2018 - 2020</Typography>
+                      </Typography>
+                      <Typography className={classes.expRole}>Frontend Developer</Typography>
+                    </Box>
+                  </Box>
+                  
+                  <Box mb={3}>
+                    <Typography className={classes.sectionTitle}>
+                      <CodeIcon className={classes.sectionIcon} />
+                      Technical Skills
+                    </Typography>
+                    <Box className={classes.skillsContainer}>
+                      {techSkills.map((skill, index) => (
+                        <Chip 
+                          key={index} 
+                          label={skill} 
+                          size="small" 
+                          className={classes.skillChip} 
+                        />
+                      ))}
+                    </Box>
+                  </Box>
+                  
+                  <Box>
+                    <Typography className={classes.sectionTitle}>
+                      <BuildIcon className={classes.sectionIcon} />
+                      Projects
+                    </Typography>
+                    <Box className={classes.projectsContainer}>
+                      <Typography variant="body2" sx={{ fontSize: '0.9rem', fontWeight: 'bold', color: '#444', mb: 0.5 }}>
+                        E-Commerce Platform Redesign
+                      </Typography>
+                      <Typography variant="body2" sx={{ fontSize: '0.85rem', color: '#555' }}>
+                        React, Node.js, MongoDB, GraphQL
+                      </Typography>
+                    </Box>
+                  </Box>
+                </Box>
+              </Box>
+            </Box>
+          </Box>
+        </Box>
+      {/* </Container> */}
     </Box>
   );
 };
