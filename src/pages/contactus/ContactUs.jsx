@@ -18,7 +18,7 @@ import Background from '../../components/homepagecomponets/background/Background
 // Social media icons
 import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import TwitterIcon from '@mui/icons-material/Twitter';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
@@ -337,7 +337,7 @@ const ContactUs = () => {
                       <LinkedInIcon />
                     </Link>
                     <Link href="#" className={classes.socialIcon}>
-                      <TwitterIcon />
+                      <YouTubeIcon />
                     </Link>
                     <Link href="#" className={classes.socialIcon}>
                       <InstagramIcon />

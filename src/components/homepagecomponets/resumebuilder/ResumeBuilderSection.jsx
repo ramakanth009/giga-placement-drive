@@ -1,24 +1,24 @@
 // src/components/resumebuilder/ResumeBuilderSection.jsx
 import React, { useState, useEffect } from 'react';
-import { Box, Typography, Button, Container, Grid, Paper, Chip, Divider } from '@mui/material';
-import { makeStyles } from '@mui/styles';
-import { useNavigate } from 'react-router-dom';
-import AssignmentIcon from '@mui/icons-material/Assignment';
-import WorkIcon from '@mui/icons-material/Work';
-import SummarizeIcon from '@mui/icons-material/Summarize';
-import AutoGraphIcon from '@mui/icons-material/AutoGraph';
-import DoneIcon from '@mui/icons-material/Done';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import WbIncandescentIcon from '@mui/icons-material/WbIncandescent';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import SchoolIcon from '@mui/icons-material/School';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import CodeIcon from '@mui/icons-material/Code';
-import BuildIcon from '@mui/icons-material/Build';
-import PersonIcon from '@mui/icons-material/Person';
-import PsychologyIcon from '@mui/icons-material/Psychology';
-import SettingsIcon from '@mui/icons-material/Settings';
-import DesignServicesIcon from '@mui/icons-material/DesignServices';
+import { Box, Typography, Button, Container, Grid, Paper, Chip, Divider } from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import { useNavigate } from "react-router-dom";
+import AssignmentIcon from "@mui/icons-material/Assignment";
+import WorkIcon from "@mui/icons-material/Work";
+import SummarizeIcon from "@mui/icons-material/Summarize";
+import AutoGraphIcon from "@mui/icons-material/AutoGraph";
+import DoneIcon from "@mui/icons-material/Done";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import WbIncandescentIcon from "@mui/icons-material/WbIncandescent";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import SchoolIcon from "@mui/icons-material/School";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import CodeIcon from "@mui/icons-material/Code";
+import BuildIcon from "@mui/icons-material/Build";
+import PersonIcon from "@mui/icons-material/Person";
+import PsychologyIcon from "@mui/icons-material/Psychology";
+import SettingsIcon from "@mui/icons-material/Settings";
+import DesignServicesIcon from "@mui/icons-material/DesignServices";
 
 const useStyles = makeStyles({
   section: {
@@ -189,15 +189,41 @@ const useStyles = makeStyles({
     boxShadow: '0 10px 25px rgba(255, 198, 20, 0.3) !important',
     transition: 'all 0.3s ease !important',
     maxWidth: 'fit-content',
+    position: 'relative',
+    overflow: 'hidden',
     '&:hover': {
       backgroundColor: '#FFD23F !important',
       transform: 'translateY(-5px)',
       boxShadow: '0 15px 35px rgba(255, 198, 20, 0.4) !important',
     },
+    '&::after': {
+      content: '""',
+      position: 'absolute',
+      width: '30px',
+      height: '100%',
+      background: 'rgba(255, 255, 255, 0.3)',
+      transform: 'skewX(-30deg) translateX(-150px)',
+      animation: '$shine 3s infinite',
+    },
     '@media (max-width: 600px)': {
       padding: '12px 25px !important',
       fontSize: '1rem !important',
     },
+  },
+  '@keyframes shine': {
+    '0%': {
+      transform: 'skewX(-30deg) translateX(-150px)',
+    },
+    '100%': {
+      transform: 'skewX(-30deg) translateX(350px)',
+    },
+  },
+  freeText: {
+    display: 'inline-block',
+    transform: 'rotate(-5deg)',
+    color: '#2A2B6A',
+    fontWeight: 'bold',
+    marginRight: '5px',
   },
   rightContent: {
     flex: '1',
@@ -217,7 +243,7 @@ const useStyles = makeStyles({
   resumeSheet: {
     position: 'relative',
     width: '100%',
-    minHeight: '550px',
+    minHeight: '450px', // Decreased from 550px
     backgroundColor: 'white',
     borderRadius: '15px',
     boxShadow: '0 20px 40px rgba(0, 0, 0, 0.2)',
@@ -226,10 +252,10 @@ const useStyles = makeStyles({
     transformStyle: 'preserve-3d',
     transform: 'rotateY(0deg)',
     '@media (max-width: 900px)': {
-      minHeight: '500px',
+      minHeight: '400px',
     },
     '@media (max-width: 600px)': {
-      minHeight: '450px',
+      minHeight: '350px',
       padding: '25px 20px',
     },
   },
@@ -585,7 +611,7 @@ const ResumeBuilderSection = () => {
                   transitionDelay: '0.9s',
                 }}
               >
-                Build Your Resume Now
+                Build Your <span className={classes.freeText}>Free</span> Resume Now
               </Button>
             </Box>
             
