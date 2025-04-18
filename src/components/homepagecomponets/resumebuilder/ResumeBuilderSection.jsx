@@ -22,7 +22,6 @@ import DesignServicesIcon from "@mui/icons-material/DesignServices";
 
 const useStyles = makeStyles({
   section: {
-    // padding: '0 20px',
     marginTop: '30px',
     marginBottom: '70px',
     position: 'relative',
@@ -33,7 +32,6 @@ const useStyles = makeStyles({
     zIndex: 2,
   },
   outerBox: {
-    // borderRadius: '30px',
     overflow: 'hidden',
     background: 'linear-gradient(135deg, #2A2B6A 0%, #1A1B4A 100%)',
     boxShadow: '0 25px 60px rgba(42, 43, 106, 0.15)',
@@ -62,6 +60,8 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
   },
   title: {
     fontSize: '2.5rem !important',
@@ -83,23 +83,14 @@ const useStyles = makeStyles({
   highlightText: {
     color: '#FFC614 !important',
     position: 'relative',
-    // '&::after': {
-    //   content: '""',
-    //   position: 'absolute',
-    //   width: '100%',
-    //   height: '30%',
-    //   bottom: '5px',
-    //   left: '0',
-    //   background: 'rgba(255, 198, 20, 0.2)',
-    //   zIndex: -1,
-    //   borderRadius: '3px',
-    // },
   },
   subtitle: {
     fontSize: '1.2rem !important',
     color: 'rgba(255, 255, 255, 0.9) !important',
     marginBottom: '30px !important',
-    maxWidth: '550px',
+    maxWidth: '700px',
+    textAlign: 'center', 
+    margin: '0 auto 30px !important',
     '@media (max-width: 900px)': {
       fontSize: '1.1rem !important',
     },
@@ -113,7 +104,10 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     gap: '10px',
     marginBottom: '30px',
-    maxWidth: '550px',
+    maxWidth: '700px',
+    margin: '0 auto 30px',
+    // alignItems: 'center',
+    // textAlign: 'left !i',
   },
   featureItem: {
     display: 'flex',
@@ -137,6 +131,9 @@ const useStyles = makeStyles({
     display: 'flex',
     gap: '20px',
     marginBottom: '30px',
+    justifyContent: 'center',
+    maxWidth: '700px',
+    margin: '0 auto 30px',
     '@media (max-width: 600px)': {
       gap: '15px',
       flexWrap: 'wrap',
@@ -243,7 +240,7 @@ const useStyles = makeStyles({
   resumeSheet: {
     position: 'relative',
     width: '100%',
-    minHeight: '450px', // Decreased from 550px
+    minHeight: '400px', // Decreased from 450px
     backgroundColor: 'white',
     borderRadius: '15px',
     boxShadow: '0 20px 40px rgba(0, 0, 0, 0.2)',
@@ -252,10 +249,10 @@ const useStyles = makeStyles({
     transformStyle: 'preserve-3d',
     transform: 'rotateY(0deg)',
     '@media (max-width: 900px)': {
-      minHeight: '400px',
+      minHeight: '350px', // Decreased from 400px
     },
     '@media (max-width: 600px)': {
-      minHeight: '350px',
+      minHeight: '320px', // Decreased from 350px
       padding: '25px 20px',
     },
   },
@@ -511,7 +508,6 @@ const ResumeBuilderSection = () => {
   
   return (
     <Box className={classes.section}>
-      {/* <Container maxWidth="lg" className={classes.container}> */}
         <Box className={classes.outerBox}>
           <Box className={classes.backgroundPattern} />
           
@@ -599,20 +595,22 @@ const ResumeBuilderSection = () => {
                 </Box>
               </Box>
               
-              <Button 
-                variant="contained" 
-                className={classes.buildButton}
-                onClick={handleBuildClick}
-                endIcon={<ArrowForwardIcon />}
-                sx={{
-                  opacity: animated ? 1 : 0,
-                  transform: animated ? 'translateY(0)' : 'translateY(20px)',
-                  transition: 'opacity 0.8s ease, transform 0.8s ease',
-                  transitionDelay: '0.9s',
-                }}
-              >
-                Build Your <span className={classes.freeText}>Free</span> Resume Now
-              </Button>
+              <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+                <Button 
+                  variant="contained" 
+                  className={classes.buildButton}
+                  onClick={handleBuildClick}
+                  endIcon={<ArrowForwardIcon />}
+                  sx={{
+                    opacity: animated ? 1 : 0,
+                    transform: animated ? 'translateY(0)' : 'translateY(20px)',
+                    transition: 'opacity 0.8s ease, transform 0.8s ease',
+                    transitionDelay: '0.9s',
+                  }}
+                >
+                  Build Your <span className={classes.freeText}>Free</span> Resume Now
+                </Button>
+              </Box>
             </Box>
             
             <Box 
@@ -635,7 +633,6 @@ const ResumeBuilderSection = () => {
                 {/* Floating Tags */}
                 <Box className={classes.floatingTags}>
                   <Box className={classes.tag}>ATS-Friendly</Box>
-                  {/* <Box className={classes.tag}>Tech-Focused</Box> */}
                   <Box className={classes.tag}>Customizable</Box>
                 </Box>
                 
@@ -656,17 +653,17 @@ const ResumeBuilderSection = () => {
                     </Box>
                   </Box>
                   
-                  <Box mb={3}>
+                  <Box mb={2.5}>
                     <Typography className={classes.sectionTitle}>
                       <SummarizeIcon className={classes.sectionIcon} />
                       Summary
                     </Typography>
-                    <Typography variant="body2" sx={{ fontSize: '0.9rem', color: '#555' }}>
-                      Full Stack Developer with 5+ years of experience building scalable web applications using React.js and Node.js. Passionate about writing clean, efficient code and implementing user-centered designs.
+                    <Typography variant="body2" sx={{ fontSize: '0.88rem', color: '#555' }}>
+                      Full Stack Developer with 5+ years of experience building scalable web applications using React.js and Node.js. Passionate about writing clean, efficient code.
                     </Typography>
                   </Box>
                   
-                  <Box mb={3}>
+                  <Box mb={2.5}>
                     <Typography className={classes.sectionTitle}>
                       <WorkIcon className={classes.sectionIcon} />
                       Experience
@@ -689,7 +686,7 @@ const ResumeBuilderSection = () => {
                     </Box>
                   </Box>
                   
-                  <Box mb={3}>
+                  <Box mb={2}>
                     <Typography className={classes.sectionTitle}>
                       <CodeIcon className={classes.sectionIcon} />
                       Technical Skills
@@ -725,7 +722,6 @@ const ResumeBuilderSection = () => {
             </Box>
           </Box>
         </Box>
-      {/* </Container> */}
     </Box>
   );
 };
