@@ -29,7 +29,7 @@ const useStyles = makeStyles({
     position: 'relative',
     background: 'url(/path/to/your/image.jpg) no-repeat center center',
     color: 'white',
-    padding: '80px 30px 400px',
+    padding: '80px 30px 350px',
     textAlign: 'center',
     '&::before': {
       content: '""',
@@ -237,7 +237,7 @@ const ContactUs = () => {
   const classes = useStyles();
   const [formData, setFormData] = useState({
     name: '',
-    company: '',
+    // company: '',
     phone: '',
     email: '',
     subject: '',
@@ -270,7 +270,7 @@ const ContactUs = () => {
         {/* Hero Section */}
         <Box className={classes.heroSection}>
           <Typography variant="h1" className={classes.pageTitle}>
-            Contact Us
+            Contact <span style={{ color: "#FFC614", position: "relative", display: "inline-block" }}>Us</span>
           </Typography>
           <Typography variant="h6" className={classes.pageSubtitle}>
             Whether you're looking to upskill, switch careers, or hire top talent, Gigaversity is here
@@ -378,7 +378,7 @@ const ContactUs = () => {
                     </Box>
                     
                     {/* Company field */}
-                    <Box sx={{ flex: 1 }}>
+                    {/* <Box sx={{ flex: 1 }}>
                       <InputLabel htmlFor="company" className={classes.label}>
                         Company
                       </InputLabel>
@@ -398,7 +398,7 @@ const ContactUs = () => {
                           },
                         }}
                       />
-                    </Box>
+                    </Box> */}
                   </Box>
 
                   {/* Phone and Email row */}

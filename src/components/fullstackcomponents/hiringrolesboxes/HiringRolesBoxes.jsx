@@ -1,8 +1,7 @@
 import React from 'react';
 import CodeIcon from '@mui/icons-material/Code';
 import StorageIcon from '@mui/icons-material/Storage';
-import DeveloperModeIcon from '@mui/icons-material/DeveloperMode';
-import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
+import TerminalIcon from '@mui/icons-material/Terminal'; // Changed to Terminal icon
 import WebIcon from '@mui/icons-material/Web';
 import HiringRolesBoxes from '../../common/hiringrolesboxes/HiringRolesBoxes';
 
@@ -22,7 +21,7 @@ const FullStackHiringRolesBoxes = () => {
     },
     {
       title: 'Backend Developer',
-      icon: <DeveloperModeIcon />,
+      icon: <TerminalIcon />, // Changed to Terminal icon for better representation of backend
       points: [
         'Design and build RESTful APIs',
         'Implement database schema & models',

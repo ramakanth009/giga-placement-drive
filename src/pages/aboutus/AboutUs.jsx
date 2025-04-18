@@ -23,7 +23,7 @@ const useStyles = makeStyles({
   heroSection: {
     position: 'relative',
     color: 'white',
-    padding: '80px 30px 400px',
+    padding: '80px 30px 40px',
     textAlign: 'center',
     '&::before': {
       content: '""',
@@ -40,6 +40,9 @@ const useStyles = makeStyles({
       borderRadius: "0 0 30% 64%" // Changed this line to flip the border radius
     },
   },
+  herocontent:{
+    minHeight: '30vh',
+  },
   pageTitle: {
     color: 'white !important',
     fontSize: '3rem !important',
@@ -52,46 +55,85 @@ const useStyles = makeStyles({
     maxWidth: '800px',
     margin: '0 auto !important',
   },
-  // About Gigaversity Section Styles with Laptop Layout
+  // About Gigaversity Section Styles with Enhanced Laptop Layout
   aboutSection: {
     padding: "60px 0 80px",
     position: "relative",
     zIndex: 1,
   },
   laptopContainer: {
-    width: "90%",
-    maxWidth: "1200px",
-    margin: "-100px auto 0",
+    width: "95%",
+    maxWidth: "1400px", // Increased from 1200px
+    margin: "-120px auto 0", // Adjusted margin for larger size
     position: "relative",
+    perspective: "2000px",
     "@media (max-width: 600px)": {
       width: "95%",
       margin: "-80px auto 0",
     },
   },
-  laptopFrame: {
+  laptop: {
     position: "relative",
     width: "100%",
-    padding: "20px 20px 40px 20px", // Increased padding for bezel effect
-    backgroundColor: "#e0e5ec",
-    borderRadius: "20px 20px 8px 8px", // More rounded at top, less at bottom
-    boxShadow: "0 20px 60px rgba(0, 0, 0, 0.2), 0 -2px 5px rgba(0, 0, 0, 0.1) inset",
-    "&:before": { // Creates top bezel camera element
+    maxWidth: "1000px", // Increased from 800px
+    margin: "0 auto",
+    transformStyle: "preserve-3d",
+  },
+  laptopScreen: {
+    position: "relative",
+    width: "100%",
+    padding: "50px 70px 70px", // Added more bottom padding
+    backgroundColor: "white",
+    borderRadius: "12px 12px 0 0",
+    boxSizing: "border-box",
+    boxShadow: "0 1px 5px rgba(0, 0, 0, 0.1) inset",
+    border: "12px solid #E2E8F0",
+    borderBottom: "24px solid #E2E8F0", // Increased bottom border height
+    "@media (max-width: 768px)": {
+      padding: "35px 45px 55px", // Adjusted responsive padding
+    },
+    "@media (max-width: 600px)": {
+      padding: "25px 30px 45px", // Adjusted responsive padding
+      borderWidth: "8px",
+    },
+  },
+  screenContent: {
+    position: "relative",
+    zIndex: 2,
+  },
+  laptopTopBezel: {
+    position: "absolute",
+    top: "-2px",
+    left: "50%",
+    transform: "translateX(-50%)",
+    width: "120px",
+    height: "6px",
+    backgroundColor: "#E2E8F0", // Changed from #ffffff to #E2E8F0
+    borderRadius: "0 0 4px 4px",
+    zIndex: 3,
+    "&:before": {
       content: "''",
       position: "absolute",
-      top: "10px",
       left: "50%",
       transform: "translateX(-50%)",
       width: "8px",
       height: "8px",
-      backgroundColor: "#555",
+      backgroundColor: "#000000", // Changed to black
       borderRadius: "50%",
-      boxShadow: "0 0 0 2px rgba(0, 0, 0, 0.1)",
-      zIndex: 1,
-    },
-    "&:after": { // Creates bottom bezel indent
+    }
+  },
+  laptopBase: {
+    position: "relative",
+    width: "105%",
+    height: "20px",
+    marginLeft: "-2.5%",
+    backgroundColor: "#e0e5ec",
+    borderRadius: "0 0 8px 8px",
+    boxShadow: "0 10px 30px rgba(0, 0, 0, 0.2)",
+    "&:before": {
       content: "''",
       position: "absolute",
-      bottom: "15px",
+      bottom: "8px",
       left: "50%",
       transform: "translateX(-50%)",
       width: "120px",
@@ -100,25 +142,31 @@ const useStyles = makeStyles({
       borderRadius: "4px",
       boxShadow: "0 1px 2px rgba(0, 0, 0, 0.1) inset",
     },
+    "&:after": {
+      content: "''",
+      position: "absolute",
+      bottom: "0",
+      left: "0",
+      right: "0",
+      height: "8px",
+      backgroundColor: "#d0d5dc",
+      borderRadius: "0 0 8px 8px",
+    }
   },
-  laptopScreen: {
-    width: "100%",
-    backgroundColor: "white",
-    borderRadius: "8px",
-    overflow: "hidden",
-    padding: "40px 60px",
-    boxSizing: "border-box",
-    boxShadow: "0 1px 5px rgba(0, 0, 0, 0.1) inset",
-    "@media (max-width: 768px)": {
-      padding: "30px 40px",
-    },
-    "@media (max-width: 600px)": {
-      padding: "20px 25px",
-    },
+  laptopHinge: {
+    position: "absolute",
+    top: "-2px",
+    left: "50%",
+    transform: "translateX(-50%)",
+    width: "150px",
+    height: "4px",
+    backgroundColor: "#999",
+    borderRadius: "2px 2px 0 0",
+    zIndex: -1,
   },
   aboutTitle: {
-    fontSize: "2.8rem !important",
-    color: "#0A1929 !important",
+    fontSize: "3.2rem !important", // Increased from 2.8rem
+    color: "#2A2B6A !important",
     fontWeight: "bold !important",
     marginBottom: "15px !important",
     "@media (max-width: 768px)": {
@@ -133,7 +181,7 @@ const useStyles = makeStyles({
     display: "block",
   },
   aboutDescription: {
-    fontSize: "1.1rem !important",
+    fontSize: "1.3rem !important", // Increased from 1.1rem
     color: "#555 !important",
     lineHeight: "1.8 !important",
     marginBottom: "25px !important",
@@ -525,36 +573,46 @@ const AboutUs = () => {
 
       {/* Hero Section */}
       <Box className={classes.heroSection}>
-        <Typography variant="h1" className={classes.pageTitle}>
-          About <span style={{ color: "#FFC614", position: "relative", display: "inline-block" }}>Gigaversity</span>
-        </Typography>
-        <Typography variant="h6" className={classes.pageSubtitle}>
-          India's first product-based learning platform designed to transform students into industry-ready professionals
-        </Typography>
+        <Box className={classes.herocontent}>
+          <Typography variant="h1" className={classes.pageTitle}>
+            About <span style={{ color: "#FFC614", position: "relative", display: "inline-block" }}>Us</span>
+          </Typography>
+          <Typography variant="h6" className={classes.pageSubtitle}>
+            India's first product-based learning platform designed to transform students into industry-ready professionals
+          </Typography>
+        </Box>
       </Box>
 
-      {/* About Gigaversity Section with Laptop Layout */}
+      {/* About Gigaversity Section with Enhanced Laptop Layout */}
       <Box className={classes.aboutSection}>
         <Box className={classes.laptopContainer}>
-          <Box className={classes.laptopFrame}>
+          <Box className={classes.laptop}>
+            {/* Laptop Screen */}
             <Box className={classes.laptopScreen}>
-              <Typography variant="h2" className={classes.aboutTitle}>
-                About
-                <span className={classes.gigaversityText}>Gigaversity</span>
-              </Typography>
+              <Box className={classes.laptopTopBezel} />
+              <Box className={classes.screenContent}>
+                <Typography variant="h2" className={classes.aboutTitle}>
+                  About
+                  <span className={classes.gigaversityText}>Gigaversity</span>
+                </Typography>
 
-              <Typography variant="body1" className={classes.aboutDescription}>
-                Gigaversity is <span className={classes.highlight}>India's first product-based learning platform</span>, designed to equip students with practical skills, industry experience, and direct job opportunities. Unlike traditional online courses, we focus on <span className={classes.highlight}>real-world project building, job-specific training, and hands-on mentorship</span>, ensuring that learners graduate with an impressive portfolio that makes them stand out to recruiters.
-              </Typography>
+                <Typography variant="body1" className={classes.aboutDescription}>
+                  Gigaversity is <span className={classes.highlight}>India's first product-based learning platform</span>, designed to equip students with practical skills, industry experience, and direct job opportunities. Unlike traditional online courses, we focus on <span className={classes.highlight}>real-world project building, job-specific training, and hands-on mentorship</span>, ensuring that learners graduate with an impressive portfolio that makes them stand out to recruiters.
+                </Typography>
 
-              <Button 
-                variant="contained" 
-                className={classes.talkButton}
-                endIcon={<ArrowForwardIcon />}
-              >
-                Talk To Our Expert
-              </Button>
+                <Button 
+                  variant="contained" 
+                  className={classes.talkButton}
+                  endIcon={<ArrowForwardIcon />}
+                >
+                  Talk To Our Expert
+                </Button>
+              </Box>
             </Box>
+            
+            {/* Laptop Base */}
+            <Box className={classes.laptopHinge} />
+            <Box className={classes.laptopBase} />
           </Box>
         </Box>
       </Box>
@@ -574,7 +632,7 @@ const AboutUs = () => {
                 "Yet, most education systems still focus on theory over practice, leaving students unprepared for real job roles. Even edtech platforms focus on generic courses but fail to bridge the learning-to-hiring gap.",
                 "That's where Gigaversity comes in. At Gigaversity, we believe you shouldn't just learn—you should get hired. And that's exactly what we help you do."
               ]}
-              typingSpeed={30}
+              typingSpeed={15} // Changed from 30 to 15 for faster typing
               className={classes.whyText}
             />
           </Box>
