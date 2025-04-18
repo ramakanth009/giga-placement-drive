@@ -2,34 +2,33 @@
 import React from 'react';
 import Curriculum from '../../common/curriculum/Curriculum';
 import { 
-  Code as CodeIcon,
-  Computer as FrontendIcon,
-  Cloud as BackendIcon,
-  Storage as DatabaseIcon
+  Palette as UiUxIcon, 
+  Storage as DatabaseIcon,
+  Terminal as BackendIcon,
+  Code as FullStackIcon
 } from '@mui/icons-material';
 
 const FullStackCurriculum = () => {
-  // Define weeks data with icons
+  // Define weeks data with appropriate icons
   const weeks = [
     {
       title: "UI/UX Developer",
-      icon: <CodeIcon />
+      icon: <UiUxIcon />  // Design palette icon for UI/UX Developer
     },
     {
       title: "Frontend Developer",
-      icon: <FrontendIcon />
+      icon: <FullStackIcon />  // Code icon for Frontend Developer
     },
     {
       title: "Backend Developer",
-      icon: <BackendIcon />
+      icon: <BackendIcon />  // Terminal icon for Backend Developer
     },
     {
       title: "Database Engineer",
-      icon: <DatabaseIcon />
+      icon: <DatabaseIcon />  // Storage icon for Database Engineer
     }
   ];
   
-  // Define skills for each week
   const skills = [
     // UI/UX Developer skills
     [

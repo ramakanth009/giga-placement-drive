@@ -1,33 +1,32 @@
 // src/components/datasciencecomponents/curriculum/DataScienceCurriculum.jsx
 import React from "react";
 import Curriculum from "../../common/curriculum/Curriculum";
-import {
-  BarChart as DataAnalystIcon,
-  Assessment as BIAnalystIcon,
+import { 
+  Assessment as DataAnalystIcon, 
+  Dashboard as BiAnalystIcon,
   Storage as DataEngineerIcon,
-  Memory as MLIcon,
-  DataObject as DataScienceIcon
-} from '@mui/icons-material';
+  Psychology as MLEngineerIcon
+} from "@mui/icons-material";
 
 const DataScienceCurriculum = () => {
-  // Define weeks data with icons
+  // Define weeks data with appropriate icons
   const weeks = [
     {
       title: "Data Analyst",
-      icon: <DataAnalystIcon />
+      icon: <DataAnalystIcon />  // Assessment/Charts icon for Data Analyst
     },
     {
       title: "BI Analyst",
-      icon: <BIAnalystIcon />
+      icon: <BiAnalystIcon />  // Dashboard icon for Business Intelligence
     },
     {
       title: "Data Engineer",
-      icon: <DataEngineerIcon />
+      icon: <DataEngineerIcon />  // Storage/Database icon for Data Engineer
     },
     {
       title: "Machine Learning Engineer",
-      icon: <MLIcon />
-    }
+      icon: <MLEngineerIcon />  // Psychology/Brain icon for ML Engineer
+    },
   ];
 
   // Define skills for each week
@@ -40,17 +39,17 @@ const DataScienceCurriculum = () => {
       "Identify trends using Pandas and SQL.",
       "Create charts using Matplotlib, Seaborn, and BI tools.",
       "Document key findings with business context.",
-      "Deliver a case study-backed analysis."
+      "Deliver a case study-backed analysis.",
     ],
     // Week 2 skills - BI Analyst
     [
-      "Create interactive dashboards with Power BI.",
-      "Design data models for business intelligence.",
-      "Develop KPI tracking and visualization systems.",
-      "Build automated reporting workflows.",
-      "Connect SQL databases to BI platforms.",
-      "Design executive dashboards and reports.",
-      "Present data stories to stakeholders."
+      "Explore data using Pandas.",
+      "Clean, preprocess, and analyze distributions.",
+      "Create interactive dashboards with Power BI and Tableau.",
+      "Connect to multiple data sources and transform data.",
+      "Design metrics and KPIs for business performance.",
+      "Build automated reports and monitoring systems.",
+      "Present insights to non-technical stakeholders.",
     ],
     // Week 3 skills - Data Engineer
     [
@@ -60,9 +59,9 @@ const DataScienceCurriculum = () => {
       "Automate ETL processes with Apache Airflow.",
       "Validate and test data integrity using SQL.",
       "Document the ETL pipeline workflow.",
-      "Review, optimize, and monitor the ETL pipeline."
+      "Review, optimize, and monitor the ETL pipeline.",
     ],
-    // Week 4 skills - Machine Learning Engineer
+    // Week 4 skills - ML Engineer
     [
       "Explore email data and analyze spam patterns.",
       "Preprocess and tokenize text using NLTK.",
@@ -70,8 +69,8 @@ const DataScienceCurriculum = () => {
       "Train a spam classifier using Scikit-learn.",
       "Evaluate model and handle class imbalance.",
       "Deploy spam detector with Streamlit.",
-      "Optimize model with GridSearchCV."
-    ]
+      "Optimize model with GridSearchCV.",
+    ],
   ];
 
   return (
