@@ -6,7 +6,7 @@ import fullstackhero2 from "../../../assets/Rectangle-8699.png";
 const Hero = () => {
   // Define features
   const features = [
-    "Code with AI, 400+ Job Opportunities",
+    "Code with AI\n400+ Job Opportunities",
     "30-Day Expert Training",
     "₹199 Limited Offer"
   ];

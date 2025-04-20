@@ -285,14 +285,33 @@ const useStyles = makeStyles({
     fontWeight: 'bold !important',
     fontSize: '1rem !important',
     transition: 'all 0.3s ease !important',
+    position: 'relative',
+    overflow: 'hidden',
     '&:hover': {
       backgroundColor: '#1A1B4A !important',
       transform: 'translateY(-3px)',
       boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15) !important',
     },
+    '&::after': {
+      content: '""',
+      position: 'absolute',
+      width: '30px',
+      height: '100%',
+      background: 'rgba(255, 255, 255, 0.3)',
+      transform: 'skewX(-30deg) translateX(-150px)',
+      animation: '$shine 3s infinite',
+    },
     '@media (max-width: 600px)': {
       padding: '10px 20px !important',
       fontSize: '0.9rem !important',
+    },
+  },
+  '@keyframes shine': {
+    '0%': {
+      transform: 'skewX(-30deg) translateX(-150px)',
+    },
+    '100%': {
+      transform: 'skewX(-30deg) translateX(350px)',
     },
   },
 });

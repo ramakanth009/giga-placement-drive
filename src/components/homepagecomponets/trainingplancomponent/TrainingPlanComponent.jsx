@@ -930,7 +930,7 @@ const TrainingPlanComponent = () => {
         {/* Left Section - Chart */}
         <Box className={classes.visualizationBox}>
           <Typography className={classes.chartTitle}>
-            {tracks[activeTab].weeks[activeRole].role} Demand in 2023
+            {tracks[activeTab].weeks[activeRole].role} Demand in 2024
           </Typography>
           <Box className={classes.chartContainer}>
             <canvas ref={chartRef} />
@@ -968,7 +968,7 @@ const TrainingPlanComponent = () => {
       {/* Hiring Partners Section */}
       <Box className={classes.partnersSection}>
         <Typography className={classes.partnersTitle}>
-          Our Hiring Partners
+          Hiring Partners for {tracks[activeTab].name}
         </Typography>
         <Box className={classes.partnersContainer}>
           {partnersForTabs[activeTab].map(({ Component, alt }, index) => (

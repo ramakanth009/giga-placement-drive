@@ -6,7 +6,7 @@ import AdvantageBoxes from './AdvantageBoxes';
 
 const useStyles = makeStyles({
   section: {
-    padding: '100px 50px',
+    padding: '30px 50px',
     overflow: 'hidden',
     position: 'relative',
     backgroundColor: '#f9fafc',

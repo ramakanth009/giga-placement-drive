@@ -10,7 +10,7 @@ import { ReactComponent as Graph } from '../../../assets/graph.svg';
 
 const useStyles = makeStyles({
   section: {
-    padding: '100px 0',
+    padding: '20px 0 40px 0',
     background: 'linear-gradient(145deg, #ffffff 0%, #f8f9ff 50%, #f0f7ff 100%)',
     position: 'relative',
     overflow: 'hidden',
@@ -34,7 +34,7 @@ const useStyles = makeStyles({
     zIndex: 0,
   },
   header: {
-    marginBottom: '20px',
+    marginBottom: '10px',
     textAlign: 'center',
     position: 'relative',
     zIndex: 1,
@@ -75,7 +75,7 @@ const useStyles = makeStyles({
     animation: '$slideDown 0.8s ease-out',
   },
   subtitle: {
-    maxWidth: '700px',
+    maxWidth: '800px',
     margin: '0 auto !important',
     fontSize: '1.1rem !important',
     lineHeight: '1.7 !important',
@@ -92,7 +92,7 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     width: '100%',
     maxWidth: '1200px',
-    marginTop: '40px',
+    marginTop: '20px',
     zIndex: 1,
     animation: '$fadeIn 1.2s ease-out',
     "@media (max-width: 960px)": {

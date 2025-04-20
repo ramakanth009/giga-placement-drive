@@ -27,7 +27,7 @@ import DataUsageIcon from '@mui/icons-material/DataUsage';
 
 const useStyles = makeStyles({
   section: {
-    padding: '80px 0',
+    padding: '20px 0',
     position: 'relative',
     overflow: 'hidden',
     background: 'linear-gradient(180deg, #101138 0%, #1e1c44 100%)',
@@ -544,9 +544,9 @@ const OtherPrograms = () => {
       
       <Container maxWidth="lg" className={classes.container}>
         <Box className={classes.titleContainer}>
-          <Box className={classes.topBar}></Box>
           <Typography variant="h2" className={classes.title}>
             Explore Our <span className={classes.highlight}>Other Programs</span>
+          <Box className={classes.topBar}></Box>
           </Typography>
           <Typography variant="body1" className={classes.subtitle}>
             Immersive learning experiences designed to transform beginners into industry-ready professionals

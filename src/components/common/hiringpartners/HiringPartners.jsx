@@ -36,7 +36,7 @@ const useStyles = makeStyles({
     width: '100%',
     backgroundColor: 'transparent',
     padding: '50px 0',
-    margin: '30px 0',
+    margin: '5px 0',
     '@media (max-width: 768px)': {
       padding: '40px 0',
       margin: '20px 0',

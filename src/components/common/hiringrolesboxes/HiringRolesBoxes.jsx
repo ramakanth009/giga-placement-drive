@@ -6,7 +6,7 @@ import TaskAltIcon from '@mui/icons-material/TaskAlt';
 
 const useStyles = makeStyles({
   section: {
-    padding: '80px 40px',
+    padding: '20px 40px',
     background: props => props.backgroundGradient || 'linear-gradient(to bottom, #f6f9fd, #ffffff)',
     position: 'relative',
     overflow: 'hidden',
@@ -82,16 +82,16 @@ const useStyles = makeStyles({
     gap: '30px',
     width: '100%',
     '@media (max-width: 1200px)': {
-      gap: '25px',
+      gap: '20px',
     },
     '@media (max-width: 600px)': {
-      gap: '20px',
+      gap: '15px',
     },
   },
   roleBox: {
-    width: '300px',
+    width: 'calc(25% - 23px)', // 4 cards per row with gap compensation
     minHeight: '320px',
-    borderRadius: '20px',
+    borderRadius: '20px !important',
     background: 'white',
     boxShadow: '0 8px 25px rgba(0, 0, 0, 0.05)',
     display: 'flex',
@@ -99,20 +99,26 @@ const useStyles = makeStyles({
     padding: '30px 25px',
     transform: 'translateY(0)',
     transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-    border: '1px solid rgba(0, 0, 0, 0.05)',
+    border: '2px solid rgba(0, 0, 0, 0.05)',
     position: 'relative',
     overflow: 'hidden',
     '@media (max-width: 1200px)': {
-      width: '280px',
+      width: 'calc(25% - 15px)', // Adjusted for smaller gap
       padding: '25px 20px',
     },
     '@media (max-width: 960px)': {
-      width: '45%',
-      minWidth: '260px',
+      width: 'calc(25% - 12px)', // Further adjusted for even smaller gap
+      padding: '20px 15px',
     },
     '@media (max-width: 600px)': {
-      width: '100%',
-      padding: '20px 15px',
+      width: 'calc(25% - 12px)',
+      padding: '15px 10px',
+      '& $roleTitle': {
+        fontSize: '0.9rem !important',
+      },
+      '& $pointText': {
+        fontSize: '0.8rem !important',
+      },
     },
     '&:hover': {
       transform: 'translateY(-10px)',

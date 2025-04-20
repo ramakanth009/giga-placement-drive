@@ -54,10 +54,21 @@ const useStyles = makeStyles({
     borderRadius: '6px !important',
     marginBottom: '15px !important',
     transition: 'all 0.3s ease !important',
+    position: 'relative',
+    overflow: 'hidden',
     '&:hover': {
       backgroundColor: '#1A1B4A !important',
       transform: 'translateY(-3px)',
       boxShadow: '0 4px 12px rgba(42, 43, 106, 0.3) !important',
+    },
+    '&::after': {
+      content: '""',
+      position: 'absolute',
+      width: '30px',
+      height: '100%',
+      background: 'rgba(255, 255, 255, 0.3)',
+      transform: 'skewX(-30deg) translateX(-150px)',
+      animation: '$shine 3s infinite',
     },
     '@media (max-width: 600px)': {
       padding: '10px 24px !important',
@@ -71,6 +82,14 @@ const useStyles = makeStyles({
     lineHeight: '1.5 !important',
     '@media (max-width: 600px)': {
       fontSize: '0.85rem !important',
+    },
+  },
+  '@keyframes shine': {
+    '0%': {
+      transform: 'skewX(-30deg) translateX(-150px)',
+    },
+    '100%': {
+      transform: 'skewX(-30deg) translateX(350px)',
     },
   },
 });

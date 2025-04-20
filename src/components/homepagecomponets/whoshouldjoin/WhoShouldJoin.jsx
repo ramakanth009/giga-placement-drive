@@ -10,7 +10,7 @@ import { ReactComponent as BusinessCenterIcon} from '../../../assets/BusinessCen
 
 const useStyles = makeStyles({
   section: {
-    padding: '80px 40px',
+    padding: '20px 40px',
     backgroundColor: '#ffffff',
     overflow: 'hidden',
     position: 'relative',

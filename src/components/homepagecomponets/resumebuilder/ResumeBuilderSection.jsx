@@ -1,29 +1,23 @@
-// src/components/resumebuilder/ResumeBuilderSection.jsx
+// src/components/homepagecomponets/resumebuilder/ResumeBuilderSection.jsx
 import React, { useState, useEffect } from 'react';
-import { Box, Typography, Button, Container, Grid, Paper, Chip, Divider } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { useNavigate } from "react-router-dom";
-import AssignmentIcon from "@mui/icons-material/Assignment";
-import WorkIcon from "@mui/icons-material/Work";
-import SummarizeIcon from "@mui/icons-material/Summarize";
-import AutoGraphIcon from "@mui/icons-material/AutoGraph";
 import DoneIcon from "@mui/icons-material/Done";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import WbIncandescentIcon from "@mui/icons-material/WbIncandescent";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import SchoolIcon from "@mui/icons-material/School";
-import GitHubIcon from "@mui/icons-material/GitHub";
 import CodeIcon from "@mui/icons-material/Code";
-import BuildIcon from "@mui/icons-material/Build";
-import PersonIcon from "@mui/icons-material/Person";
+import SchoolIcon from "@mui/icons-material/School";
 import PsychologyIcon from "@mui/icons-material/Psychology";
 import SettingsIcon from "@mui/icons-material/Settings";
 import DesignServicesIcon from "@mui/icons-material/DesignServices";
 
+// Import the new ResumeCard component
+import ResumeCard from './ResumeCard';
+
 const useStyles = makeStyles({
   section: {
-    marginTop: '30px',
-    marginBottom: '70px',
+    marginTop: '5px',
+    marginBottom: '5px',
     position: 'relative',
     overflow: 'visible',
   },
@@ -36,6 +30,7 @@ const useStyles = makeStyles({
     background: 'linear-gradient(135deg, #2A2B6A 0%, #1A1B4A 100%)',
     boxShadow: '0 25px 60px rgba(42, 43, 106, 0.15)',
     position: 'relative',
+    borderRadius: '20px',
   },
   contentWrapper: {
     padding: '60px 40px',
@@ -106,8 +101,6 @@ const useStyles = makeStyles({
     marginBottom: '30px',
     maxWidth: '700px',
     margin: '0 auto 30px',
-    // alignItems: 'center',
-    // textAlign: 'left !i',
   },
   featureItem: {
     display: 'flex',
@@ -215,13 +208,7 @@ const useStyles = makeStyles({
       transform: 'skewX(-30deg) translateX(350px)',
     },
   },
-  freeText: {
-    display: 'inline-block',
-    transform: 'rotate(-5deg)',
-    color: '#2A2B6A',
-    fontWeight: 'bold',
-    marginRight: '5px',
-  },
+  
   rightContent: {
     flex: '1',
     display: 'flex',
@@ -229,171 +216,6 @@ const useStyles = makeStyles({
     alignItems: 'center',
     position: 'relative',
     zIndex: 2,
-  },
-  resumeWrapper: {
-    position: 'relative',
-    width: '100%',
-    maxWidth: '550px',
-    margin: '0 auto',
-    perspective: '1000px',
-  },
-  resumeSheet: {
-    position: 'relative',
-    width: '100%',
-    minHeight: '400px', // Decreased from 450px
-    backgroundColor: 'white',
-    borderRadius: '15px',
-    boxShadow: '0 20px 40px rgba(0, 0, 0, 0.2)',
-    padding: '30px 25px',
-    transition: 'transform 0.6s ease',
-    transformStyle: 'preserve-3d',
-    transform: 'rotateY(0deg)',
-    '@media (max-width: 900px)': {
-      minHeight: '350px', // Decreased from 400px
-    },
-    '@media (max-width: 600px)': {
-      minHeight: '320px', // Decreased from 350px
-      padding: '25px 20px',
-    },
-  },
-  resumeHeader: {
-    borderBottom: '1px solid #eee',
-    paddingBottom: '20px',
-    marginBottom: '20px',
-  },
-  resumeName: {
-    fontSize: '1.8rem !important',
-    fontWeight: 'bold !important',
-    color: '#2A2B6A !important',
-    marginBottom: '5px !important',
-    '@media (max-width: 600px)': {
-      fontSize: '1.5rem !important',
-    },
-  },
-  resumeTitle: {
-    fontSize: '1.1rem !important',
-    color: '#555 !important',
-    marginBottom: '10px !important',
-    '@media (max-width: 600px)': {
-      fontSize: '1rem !important',
-    },
-  },
-  contactInfo: {
-    display: 'flex',
-    gap: '15px',
-    flexWrap: 'wrap',
-  },
-  contactChip: {
-    backgroundColor: '#f5f5f5 !important',
-    fontSize: '0.8rem !important',
-    height: '26px !important',
-  },
-  sectionTitle: {
-    fontSize: '1.15rem !important',
-    fontWeight: 'bold !important',
-    color: '#2A2B6A !important',
-    marginBottom: '10px !important',
-    display: 'flex',
-    alignItems: 'center',
-    '@media (max-width: 600px)': {
-      fontSize: '1rem !important',
-    },
-  },
-  sectionIcon: {
-    fontSize: '1.2rem !important',
-    marginRight: '8px',
-    color: '#FFC614',
-  },
-  experienceItem: {
-    marginBottom: '15px',
-    paddingBottom: '15px',
-    borderBottom: '1px dashed #eee',
-    '&:last-child': {
-      marginBottom: '0',
-      paddingBottom: '0',
-      borderBottom: 'none',
-    },
-  },
-  expCompany: {
-    fontSize: '1rem !important',
-    fontWeight: 'bold !important',
-    color: '#333 !important',
-    marginBottom: '3px !important',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    '@media (max-width: 600px)': {
-      fontSize: '0.9rem !important',
-    },
-  },
-  expRole: {
-    fontSize: '0.9rem !important',
-    color: '#555 !important',
-    marginBottom: '5px !important',
-    '@media (max-width: 600px)': {
-      fontSize: '0.85rem !important',
-    },
-  },
-  expDate: {
-    fontSize: '0.8rem !important',
-    color: '#777 !important',
-    fontStyle: 'italic !important',
-  },
-  skillsContainer: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: '8px',
-    marginTop: '10px',
-  },
-  skillChip: {
-    backgroundColor: 'rgba(42, 43, 106, 0.1) !important',
-    color: '#2A2B6A !important',
-    fontSize: '0.8rem !important',
-    height: '26px !important',
-  },
-  projectsContainer: {
-    marginTop: '10px',
-  },
-  decorativeElement: {
-    position: 'absolute',
-    zIndex: 1,
-  },
-  circleElement: {
-    borderRadius: '50%',
-  },
-  floatingTags: {
-    position: 'absolute',
-    top: '25%',
-    right: '-30px',
-    transform: 'translateY(-50%)',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '15px',
-    zIndex: 2,
-    '@media (max-width: 1100px)': {
-      top: 'auto',
-      bottom: '-20px',
-      right: '30px',
-      flexDirection: 'row',
-    },
-    '@media (max-width: 600px)': {
-      bottom: '-15px',
-      right: '20px',
-      gap: '10px',
-    },
-  },
-  tag: {
-    backgroundColor: '#FFC614 !important',
-    padding: '5px 10px !important',
-    borderRadius: '20px !important',
-    color: '#2A2B6A !important',
-    fontWeight: 'bold !important',
-    boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1) !important',
-    fontSize: '0.8rem !important',
-    '@media (max-width: 600px)': {
-      padding: '4px 8px !important',
-      fontSize: '0.7rem !important',
-    },
   },
   backgroundPattern: {
     position: 'absolute',
@@ -428,74 +250,20 @@ const useStyles = makeStyles({
       transform: 'translateY(0) rotate(0deg)',
     },
   },
-  resumeVisualContainer: {
-    position: 'absolute',
-    top: '-40px',
-    left: '-40px',
-    zIndex: 3,
-    '@media (max-width: 900px)': {
-      top: '-30px',
-      left: '-30px',
-    },
-    '@media (max-width: 600px)': {
-      top: '-20px',
-      left: '-20px',
-    },
-  },
-  resumeVisual: {
-    width: '80px',
-    height: '80px',
-    borderRadius: '50%',
-    backgroundColor: '#FFC614',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    boxShadow: '0 8px 25px rgba(255, 198, 20, 0.4)',
-    '@media (max-width: 900px)': {
-      width: '70px',
-      height: '70px',
-    },
-    '@media (max-width: 600px)': {
-      width: '60px',
-      height: '60px',
-    },
-  },
-  resumeIcon: {
-    fontSize: '40px !important',
-    color: '#2A2B6A',
-    '@media (max-width: 900px)': {
-      fontSize: '35px !important',
-    },
-    '@media (max-width: 600px)': {
-      fontSize: '30px !important',
-    },
-  },
 });
 
 const ResumeBuilderSection = () => {
   const classes = useStyles();
   const navigate = useNavigate();
   const [animated, setAnimated] = useState(false);
-  const [flipped, setFlipped] = useState(false);
 
   useEffect(() => {
     setAnimated(true);
-    
-    // Add a timer to flip the resume occasionally
-    const flipInterval = setInterval(() => {
-      setFlipped(prev => !prev);
-      setTimeout(() => setFlipped(prev => !prev), 2000);
-    }, 10000);
-    
-    return () => clearInterval(flipInterval);
   }, []);
 
   const handleBuildClick = () => {
-    navigate('/resume-builder');
+    navigate('/payment-under-construction');
   };
-
-  // Tech skills for the resume preview
-  const techSkills = ['React.js', 'JavaScript', 'Python', 'MongoDB', 'Git'];
   
   // Floating icons for background effect
   const floatingIcons = [
@@ -541,20 +309,20 @@ const ResumeBuilderSection = () => {
               }}
             >
               <Typography variant="h1" className={classes.title}>
-                Build Your <span className={classes.highlightText}>ATS-Optimized</span>Resume
+                Build Your <span className={classes.highlightText}>ATS-Optimized</span> Resume
               </Typography>
               
               <Typography variant="body1" className={classes.subtitle}>
-                Create a standout technical resume in minutes that passes through Applicant Tracking Systems and impresses hiring managers.
+                Create a standout resume in minutes that passes through Applicant Tracking Systems and impresses hiring managers in both tech and non-tech roles.
               </Typography>
               
               <Box className={classes.featuresContainer}>
                 {[
-                  "Industry-specific templates designed for tech roles",
+                  "Industry-specific templates for tech and non-tech roles",
                   "AI-powered content suggestions for each section",
                   "Keyword optimization for job description matching",
-                  "Showcase your projects and technical skills effectively",
-                  // "Export to PDF, DOCX, or share via custom link"
+                  "Tailor your skills for different career paths",
+                  "Multiple resume formats for different industries"
                 ].map((feature, index) => (
                   <Box 
                     key={index} 
@@ -586,7 +354,7 @@ const ResumeBuilderSection = () => {
                   <Typography className={classes.statLabel}>More Interviews</Typography>
                 </Box>
                 <Box className={classes.statItem}>
-                  <Typography className={classes.statNumber}>5min</Typography>
+                  <Typography className={classes.statNumber}>5 min</Typography>
                   <Typography className={classes.statLabel}>To Create</Typography>
                 </Box>
                 <Box className={classes.statItem}>
@@ -608,11 +376,12 @@ const ResumeBuilderSection = () => {
                     transitionDelay: '0.9s',
                   }}
                 >
-                  Build Your <span className={classes.freeText}>Free</span> Resume Now
+                  Build Your FREE Resume Now
                 </Button>
               </Box>
             </Box>
             
+            {/* Right content now using the new ResumeCard component */}
             <Box 
               className={classes.rightContent}
               sx={{
@@ -622,103 +391,7 @@ const ResumeBuilderSection = () => {
                 transitionDelay: '0.5s',
               }}
             >
-              <Box className={classes.resumeWrapper}>
-                {/* Resume Visual Icon */}
-                <Box className={classes.resumeVisualContainer}>
-                  <Box className={classes.resumeVisual}>
-                    <AssignmentIcon className={classes.resumeIcon} />
-                  </Box>
-                </Box>
-                
-                {/* Floating Tags */}
-                <Box className={classes.floatingTags}>
-                  <Box className={classes.tag}>ATS-Friendly</Box>
-                  <Box className={classes.tag}>Customizable</Box>
-                </Box>
-                
-                {/* Resume Preview */}
-                <Box 
-                  className={classes.resumeSheet}
-                  sx={{
-                    transform: flipped ? 'rotateY(8deg)' : 'rotateY(0deg)',
-                  }}
-                >
-                  <Box className={classes.resumeHeader}>
-                    <Typography className={classes.resumeName}>Alex Johnson</Typography>
-                    <Typography className={classes.resumeTitle}>Senior Full Stack Developer</Typography>
-                    <Box className={classes.contactInfo}>
-                      <Chip label="alex.j@email.com" size="small" className={classes.contactChip} />
-                      <Chip label="+91XXXXXXXXXX" size="small" className={classes.contactChip} />
-                      <Chip label="linkedin.com/in/alexj" size="small" className={classes.contactChip} />
-                    </Box>
-                  </Box>
-                  
-                  <Box mb={2.5}>
-                    <Typography className={classes.sectionTitle}>
-                      <SummarizeIcon className={classes.sectionIcon} />
-                      Summary
-                    </Typography>
-                    <Typography variant="body2" sx={{ fontSize: '0.88rem', color: '#555' }}>
-                      Full Stack Developer with 5+ years of experience building scalable web applications using React.js and Node.js. Passionate about writing clean, efficient code.
-                    </Typography>
-                  </Box>
-                  
-                  <Box mb={2.5}>
-                    <Typography className={classes.sectionTitle}>
-                      <WorkIcon className={classes.sectionIcon} />
-                      Experience
-                    </Typography>
-                    
-                    <Box className={classes.experienceItem}>
-                      <Typography className={classes.expCompany}>
-                        TechCorp Solutions
-                        <Typography className={classes.expDate}>2020 - Present</Typography>
-                      </Typography>
-                      <Typography className={classes.expRole}>Senior Full Stack Developer</Typography>
-                    </Box>
-                    
-                    <Box className={classes.experienceItem}>
-                      <Typography className={classes.expCompany}>
-                        WebDev Innovations
-                        <Typography className={classes.expDate}>2018 - 2020</Typography>
-                      </Typography>
-                      <Typography className={classes.expRole}>Frontend Developer</Typography>
-                    </Box>
-                  </Box>
-                  
-                  <Box mb={2}>
-                    <Typography className={classes.sectionTitle}>
-                      <CodeIcon className={classes.sectionIcon} />
-                      Technical Skills
-                    </Typography>
-                    <Box className={classes.skillsContainer}>
-                      {techSkills.map((skill, index) => (
-                        <Chip 
-                          key={index} 
-                          label={skill} 
-                          size="small" 
-                          className={classes.skillChip} 
-                        />
-                      ))}
-                    </Box>
-                  </Box>
-                  
-                  <Box>
-                    <Typography className={classes.sectionTitle}>
-                      <BuildIcon className={classes.sectionIcon} />
-                      Projects
-                    </Typography>
-                    <Box className={classes.projectsContainer}>
-                      <Typography variant="body2" sx={{ fontSize: '0.9rem', fontWeight: 'bold', color: '#444', mb: 0.5 }}>
-                        E-Commerce Platform Redesign
-                      </Typography>
-                      <Typography variant="body2" sx={{ fontSize: '0.85rem', color: '#555' }}>
-                        React, Node.js, MongoDB, GraphQL
-                      </Typography>
-                    </Box>
-                  </Box>
-                </Box>
-              </Box>
+              <ResumeCard animated={animated} />
             </Box>
           </Box>
         </Box>
