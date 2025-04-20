@@ -20,15 +20,20 @@ const useStyles = makeStyles({
     },
   },
   container: {
+    height: "auto",
     margin: "0 auto",
     padding: "0px 140px",
     position: "relative",
     zIndex: "2",
+    "@media (max-width: 960px)": {
+      padding: "0 20px",
+    },
     "@media (max-width: 600px)": {
       padding: "0 20px",
     },
   },
   contentWrapper: {
+    minHeight: "520px",
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
@@ -38,6 +43,7 @@ const useStyles = makeStyles({
     },
   },
   leftContent: {
+    
     width: "48%",
     "@media (max-width: 960px)": {
       width: "100%",
@@ -121,6 +127,8 @@ const useStyles = makeStyles({
   rightContent: {
     width: "48%",
     position: "relative",
+    // Added max-width to ensure content stays within boundaries
+    maxWidth: "48%",
     "@media (max-width: 960px)": {
       width: "100%",
       maxWidth: "450px",
@@ -128,7 +136,8 @@ const useStyles = makeStyles({
   },
   pathwayContainer: {
     position: "relative",
-    minHeight: "400px",
+    // Reduced minimum height for a tighter layout
+    minHeight: "320px",
     display: "flex",
     justifyContent: "center",
     "&:before": {
@@ -136,14 +145,14 @@ const useStyles = makeStyles({
       position: "absolute",
       left: "50%",
       top: "0",
-      bottom: "0",
+      bottom: "34px",
       width: "4px",
       backgroundColor: "rgba(42, 43, 106, 0.1)",
       borderRadius: "2px",
       transform: "translateX(-50%)",
     },
     "@media (max-width: 600px)": {
-      minHeight: "360px",
+      minHeight: "300px",
     },
   },
   pathwayProgress: {
@@ -151,7 +160,7 @@ const useStyles = makeStyles({
     left: "50%",
     top: "0",
     width: "4px",
-    height: "100%",
+    height: "88%",
     backgroundColor: "#FFC614",
     borderRadius: "2px",
     transform: "translateX(-50%)",
@@ -163,17 +172,20 @@ const useStyles = makeStyles({
     width: "100%",
     justifyContent: "center",
   },
+  // Adjusted node positions for tighter spacing
   node1: {
     top: "0%",
   },
   node2: {
-    top: "33%", // changed from 25%
+    // Reduced gap between nodes
+    top: "28%",
   },
   node3: {
-    top: "66%", // changed from 52%
+    // Reduced gap between nodes
+    top: "56%",
   },
   node4: {
-    top: "100%",
+    top: "85%",
     transform: "translateY(-100%)",
   },
   nodeCircle: {
@@ -192,7 +204,6 @@ const useStyles = makeStyles({
     border: "3px solid #2A2B6A",
     boxShadow: "0 0 0 5px rgba(255, 198, 20, 0.3)",
   },
-  // Added connecting line styles
   nodeLine: {
     position: "absolute",
     height: "3px",
@@ -201,48 +212,49 @@ const useStyles = makeStyles({
     transform: "translateY(-50%)",
     zIndex: "1",
   },
-  // Left side line
   leftLine: {
-    right: "calc(50% + 12px)", // From center to the left card
-    width: "25px", // Length of the line
+    right: "calc(50% + 12px)",
+    width: "25px",
   },
-  // Right side line
   rightLine: {
-    left: "calc(50% + 12px)", // From center to the right card
-    width: "25px", // Length of the line
+    left: "calc(50% + 12px)",
+    width: "25px",
   },
   nodeCard: {
-    padding: "16px 20px",
+    padding: "14px 16px", // Reduced padding
     backgroundColor: "white",
     borderRadius: "10px",
     boxShadow: "0 5px 15px rgba(0, 0, 0, 0.05)",
     opacity: "1",
     transform: "scale(1)",
-    width: "200px",
+    // Reduced width to prevent overflow
+    width: "215px",
     display: "flex",
     alignItems: "center",
-    gap: "12px",
+    gap: "10px", // Reduced gap
     position: "absolute",
     "&:hover": {
       boxShadow: "0 8px 25px rgba(0, 0, 0, 0.1)",
     },
     "@media (max-width: 600px)": {
-      padding: "12px 16px",
-      width: "180px",
+      padding: "12px 14px",
+      width: "160px",
     },
   },
   leftCard: {
-    right: "calc(50% + 40px)", // Position further from line to make space for connecting line
+    // Adjusted position to ensure it stays within bounds
+    right: "calc(50% + 37px)",
   },
   rightCard: {
-    left: "calc(50% + 40px)", // Position further from line to make space for connecting line
+    // Adjusted position to ensure it stays within bounds
+    left: "calc(50% + 37px)",
   },
   activeCard: {
     boxShadow: "0 10px 30px rgba(42, 43, 106, 0.15)",
   },
   featureIcon: {
-    width: "40px",
-    height: "40px",
+    width: "36px", // Reduced size
+    height: "36px", // Reduced size
     borderRadius: "8px",
     backgroundColor: "rgba(42, 43, 106, 0.04)",
     display: "flex",
@@ -251,13 +263,13 @@ const useStyles = makeStyles({
     flexShrink: "0",
     color: "#2A2B6A",
     "& svg": {
-      fontSize: "20px !important",
+      fontSize: "18px !important", // Reduced icon size
     },
     "@media (max-width: 600px)": {
-      width: "36px",
-      height: "36px",
+      width: "32px",
+      height: "32px",
       "& svg": {
-        fontSize: "18px !important",
+        fontSize: "16px !important",
       },
     },
   },
@@ -270,7 +282,7 @@ const useStyles = makeStyles({
     fontSize: "0.85rem !important",
     fontWeight: "500 !important",
     color: "#2A2B6A !important",
-    lineHeight: "1.4 !important",
+    lineHeight: "1.3 !important", // Tightened line height
     "@media (max-width: 600px)": {
       fontSize: "0.75rem !important",
     },
