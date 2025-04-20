@@ -5,7 +5,7 @@ import { makeStyles } from '@mui/styles';
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
-  bannerContainer: {
+ bannerContainer: {
     height: "85vh",
     backgroundImage: props => `url(${props.backgroundImage})`,
     backgroundSize: 'cover',
@@ -14,15 +14,17 @@ const useStyles = makeStyles({
     overflow: 'hidden',
     borderRadius: '0 0 20px 20px',
     boxShadow: '0 4px 20px rgba(0, 0, 0, 0.06)',
+    display: 'flex', // Add display flex
+    alignItems: 'center', // Add vertical centering
   },
   contentContainer: {
     position: 'relative',
     zIndex: 2,
     maxWidth: '90%',
-    // padding: '40px 100px', // increased top padding
+    width: '100%', // Add width
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'flex-start', // changed from 'center' to 'flex-start'
+    alignItems: 'center', // Change from 'flex-start' to 'center'
     justifyContent: 'space-between',
     margin: '0 auto',
     '@media (max-width: 960px)': {
@@ -32,13 +34,13 @@ const useStyles = makeStyles({
     },
   },
   leftContent: {
-    marginTop: '1%', // added top margin
+    // Remove marginTop: '1%'
     width: '58%',
-    // paddingTop: '40px', // added top padding
+    // Remove paddingTop
     '@media (max-width: 960px)': {
       width: '100%',
       textAlign: 'center',
-      paddingTop: '20px', // adjusted for mobile
+      marginBottom: '20px', // Add margin bottom instead of padding top
     },
   },
   rightContent: {
