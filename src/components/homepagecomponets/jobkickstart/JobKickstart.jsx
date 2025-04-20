@@ -43,7 +43,6 @@ const useStyles = makeStyles({
     },
   },
   leftContent: {
-    
     width: "48%",
     "@media (max-width: 960px)": {
       width: "100%",
@@ -127,16 +126,22 @@ const useStyles = makeStyles({
   rightContent: {
     width: "48%",
     position: "relative",
-    // Added max-width to ensure content stays within boundaries
     maxWidth: "48%",
+    // Enhanced background styling
+    // backgroundColor: "rgba(249, 250, 252, 0.85)",
+    // backgroundImage: "linear-gradient(135deg, rgba(42, 43, 106, 0.02) 0%, rgba(255, 198, 20, 0.05) 100%)",
+    padding: "25px 20px",
+    borderRadius: "16px",
+    // border: "1px solid rgba(42, 43, 106, 0.06)",
+    // boxShadow: "0 10px 30px rgba(42, 43, 106, 0.07)",
     "@media (max-width: 960px)": {
       width: "100%",
       maxWidth: "450px",
+      padding: "20px 15px",
     },
   },
   pathwayContainer: {
     position: "relative",
-    // Reduced minimum height for a tighter layout
     minHeight: "320px",
     display: "flex",
     justifyContent: "center",
@@ -144,7 +149,7 @@ const useStyles = makeStyles({
       content: '""',
       position: "absolute",
       left: "50%",
-      top: "0",
+      top: "5%",
       bottom: "34px",
       width: "4px",
       backgroundColor: "rgba(42, 43, 106, 0.1)",
@@ -158,9 +163,9 @@ const useStyles = makeStyles({
   pathwayProgress: {
     position: "absolute",
     left: "50%",
-    top: "0",
+    top: "4%",
     width: "4px",
-    height: "88%",
+    height: "84%",
     backgroundColor: "#FFC614",
     borderRadius: "2px",
     transform: "translateX(-50%)",
@@ -172,16 +177,13 @@ const useStyles = makeStyles({
     width: "100%",
     justifyContent: "center",
   },
-  // Adjusted node positions for tighter spacing
   node1: {
-    top: "0%",
+    top: "8%",
   },
   node2: {
-    // Reduced gap between nodes
     top: "28%",
   },
   node3: {
-    // Reduced gap between nodes
     top: "56%",
   },
   node4: {
@@ -221,20 +223,22 @@ const useStyles = makeStyles({
     width: "25px",
   },
   nodeCard: {
-    padding: "14px 16px", // Reduced padding
+    padding: "14px 16px",
     backgroundColor: "white",
     borderRadius: "10px",
-    boxShadow: "0 5px 15px rgba(0, 0, 0, 0.05)",
+    // Enhanced box shadow for better elevation
+    boxShadow: "0 6px 20px rgba(42, 43, 106, 0.1), 0 2px 5px rgba(0, 0, 0, 0.05)",
     opacity: "1",
     transform: "scale(1)",
-    // Reduced width to prevent overflow
     width: "215px",
     display: "flex",
     alignItems: "center",
-    gap: "10px", // Reduced gap
+    gap: "10px",
     position: "absolute",
+    transition: "transform 0.3s ease, box-shadow 0.3s ease",
     "&:hover": {
-      boxShadow: "0 8px 25px rgba(0, 0, 0, 0.1)",
+      transform: "translateY(-3px)",
+      boxShadow: "0 10px 25px rgba(42, 43, 106, 0.15), 0 3px 8px rgba(0, 0, 0, 0.06)",
     },
     "@media (max-width: 600px)": {
       padding: "12px 14px",
@@ -242,19 +246,20 @@ const useStyles = makeStyles({
     },
   },
   leftCard: {
-    // Adjusted position to ensure it stays within bounds
     right: "calc(50% + 37px)",
   },
   rightCard: {
-    // Adjusted position to ensure it stays within bounds
     left: "calc(50% + 37px)",
   },
   activeCard: {
-    boxShadow: "0 10px 30px rgba(42, 43, 106, 0.15)",
+    // Enhanced box shadow for active cards
+    boxShadow: "0 10px 30px rgba(42, 43, 106, 0.15), 0 4px 8px rgba(0, 0, 0, 0.08)",
+    backgroundColor: "rgba(255, 255, 255, 0.95)",
+    borderLeft: "3px solid #FFC614",
   },
   featureIcon: {
-    width: "36px", // Reduced size
-    height: "36px", // Reduced size
+    width: "36px",
+    height: "36px",
     borderRadius: "8px",
     backgroundColor: "rgba(42, 43, 106, 0.04)",
     display: "flex",
@@ -263,7 +268,7 @@ const useStyles = makeStyles({
     flexShrink: "0",
     color: "#2A2B6A",
     "& svg": {
-      fontSize: "18px !important", // Reduced icon size
+      fontSize: "18px !important",
     },
     "@media (max-width: 600px)": {
       width: "32px",
@@ -282,7 +287,7 @@ const useStyles = makeStyles({
     fontSize: "0.85rem !important",
     fontWeight: "500 !important",
     color: "#2A2B6A !important",
-    lineHeight: "1.3 !important", // Tightened line height
+    lineHeight: "1.3 !important",
     "@media (max-width: 600px)": {
       fontSize: "0.75rem !important",
     },
