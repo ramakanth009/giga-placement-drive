@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Box, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import TargetIcon from '@mui/icons-material/TrackChanges';
@@ -129,6 +129,8 @@ const useStyles = makeStyles({
   pathwayContainer: {
     position: "relative",
     minHeight: "400px",
+    display: "flex",
+    justifyContent: "center",
     "&:before": {
       content: '""',
       position: "absolute",
@@ -149,31 +151,29 @@ const useStyles = makeStyles({
     left: "50%",
     top: "0",
     width: "4px",
+    height: "100%",
     backgroundColor: "#FFC614",
     borderRadius: "2px",
     transform: "translateX(-50%)",
-    height: "100%",
   },
   pathNode: {
     position: "absolute",
     display: "flex",
     alignItems: "center",
+    width: "100%",
+    justifyContent: "center",
   },
   node1: {
     top: "0%",
-    left: "0",
   },
   node2: {
-    top: "25%",
-    right: "0",
+    top: "33%", // changed from 25%
   },
   node3: {
-    top: "52%",
-    left: "0",
+    top: "66%", // changed from 52%
   },
   node4: {
     top: "100%",
-    right: "0",
     transform: "translateY(-100%)",
   },
   nodeCircle: {
@@ -182,25 +182,34 @@ const useStyles = makeStyles({
     borderRadius: "50%",
     backgroundColor: "white",
     border: "3px solid rgba(42, 43, 106, 0.3)",
-    position: "relative",
-    zIndex: "1",
+    position: "absolute",
+    zIndex: "2",
+    left: "50%",
+    transform: "translateX(-50%)",
   },
   activeNode: {
     backgroundColor: "#FFC614",
     border: "3px solid #2A2B6A",
-    transform: "scale(1.2)",
     boxShadow: "0 0 0 5px rgba(255, 198, 20, 0.3)",
   },
+  // Added connecting line styles
   nodeLine: {
-    width: "40px",
+    position: "absolute",
     height: "3px",
-    backgroundColor: "rgba(42, 43, 106, 0.2)",
-    "@media (max-width: 600px)": {
-      width: "30px",
-    },
-  },
-  activeNodeLine: {
     backgroundColor: "#FFC614",
+    top: "50%",
+    transform: "translateY(-50%)",
+    zIndex: "1",
+  },
+  // Left side line
+  leftLine: {
+    right: "calc(50% + 12px)", // From center to the left card
+    width: "25px", // Length of the line
+  },
+  // Right side line
+  rightLine: {
+    left: "calc(50% + 12px)", // From center to the right card
+    width: "25px", // Length of the line
   },
   nodeCard: {
     padding: "16px 20px",
@@ -213,6 +222,7 @@ const useStyles = makeStyles({
     display: "flex",
     alignItems: "center",
     gap: "12px",
+    position: "absolute",
     "&:hover": {
       boxShadow: "0 8px 25px rgba(0, 0, 0, 0.1)",
     },
@@ -220,6 +230,12 @@ const useStyles = makeStyles({
       padding: "12px 16px",
       width: "180px",
     },
+  },
+  leftCard: {
+    right: "calc(50% + 40px)", // Position further from line to make space for connecting line
+  },
+  rightCard: {
+    left: "calc(50% + 40px)", // Position further from line to make space for connecting line
   },
   activeCard: {
     boxShadow: "0 10px 30px rgba(42, 43, 106, 0.15)",
@@ -259,40 +275,10 @@ const useStyles = makeStyles({
       fontSize: "0.75rem !important",
     },
   },
-  controlButtons: {
-    display: "none",
-  },
-  controlButton: {
-    display: "none",
-  },
-  controlButtonIcon: {
-    fontSize: "20px !important",
-    color: "#2A2B6A !important",
-    "@media (max-width: 600px)": {
-      fontSize: "18px !important",
-    },
-  },
-  disabledButton: {
-    opacity: "0.5 !important",
-    cursor: "not-allowed !important",
-    "&:hover": {
-      transform: "translateY(0) !important",
-    },
-  },
-  decorElement: {
-    display: "none",
-  },
-  decorElement1: {
-    display: "none",
-  },
-  decorElement2: {
-    display: "none",
-  },
 });
 
 const JobKickstart = () => {
   const classes = useStyles();
-  const [activeStep] = useState(3); // Set to show all steps as active
 
   // Feature data
   const features = [
@@ -316,9 +302,6 @@ const JobKickstart = () => {
 
   return (
     <Box className={classes.section}>
-      <Box className={classes.decorElement1} />
-      <Box className={classes.decorElement2} />
-      
       <Box className={classes.container}>
         <Box className={classes.contentWrapper}>
           {/* Left Content */}
@@ -342,11 +325,12 @@ const JobKickstart = () => {
               {/* Vertical progress line - now fully shown by default */}
               <Box className={classes.pathwayProgress} />
               
-              {/* Node 1 */}
+              {/* Node 1 - Left side */}
               <Box className={`${classes.pathNode} ${classes.node1}`}>
                 <Box className={`${classes.nodeCircle} ${classes.activeNode}`} />
-                <Box className={`${classes.nodeLine} ${classes.activeNodeLine}`} />
-                <Box className={`${classes.nodeCard} ${classes.activeCard}`}>
+                {/* Add connecting line */}
+                <Box className={`${classes.nodeLine} ${classes.leftLine}`} />
+                <Box className={`${classes.nodeCard} ${classes.leftCard} ${classes.activeCard}`}>
                   <Box className={`${classes.featureIcon} ${classes.activeFeatureIcon}`}>
                     {features[0].icon}
                   </Box>
@@ -356,9 +340,12 @@ const JobKickstart = () => {
                 </Box>
               </Box>
               
-              {/* Node 2 */}
+              {/* Node 2 - Right side */}
               <Box className={`${classes.pathNode} ${classes.node2}`}>
-                <Box className={`${classes.nodeCard} ${classes.activeCard}`}>
+                <Box className={`${classes.nodeCircle} ${classes.activeNode}`} />
+                {/* Add connecting line */}
+                <Box className={`${classes.nodeLine} ${classes.rightLine}`} />
+                <Box className={`${classes.nodeCard} ${classes.rightCard} ${classes.activeCard}`}>
                   <Box className={`${classes.featureIcon} ${classes.activeFeatureIcon}`}>
                     {features[1].icon}
                   </Box>
@@ -366,15 +353,14 @@ const JobKickstart = () => {
                     {features[1].text}
                   </Typography>
                 </Box>
-                <Box className={`${classes.nodeLine} ${classes.activeNodeLine}`} />
-                <Box className={`${classes.nodeCircle} ${classes.activeNode}`} />
               </Box>
               
-              {/* Node 3 */}
+              {/* Node 3 - Left side */}
               <Box className={`${classes.pathNode} ${classes.node3}`}>
                 <Box className={`${classes.nodeCircle} ${classes.activeNode}`} />
-                <Box className={`${classes.nodeLine} ${classes.activeNodeLine}`} />
-                <Box className={`${classes.nodeCard} ${classes.activeCard}`}>
+                {/* Add connecting line */}
+                <Box className={`${classes.nodeLine} ${classes.leftLine}`} />
+                <Box className={`${classes.nodeCard} ${classes.leftCard} ${classes.activeCard}`}>
                   <Box className={`${classes.featureIcon} ${classes.activeFeatureIcon}`}>
                     {features[2].icon}
                   </Box>
@@ -384,9 +370,12 @@ const JobKickstart = () => {
                 </Box>
               </Box>
               
-              {/* Node 4 */}
+              {/* Node 4 - Right side */}
               <Box className={`${classes.pathNode} ${classes.node4}`}>
-                <Box className={`${classes.nodeCard} ${classes.activeCard}`}>
+                <Box className={`${classes.nodeCircle} ${classes.activeNode}`} />
+                {/* Add connecting line */}
+                <Box className={`${classes.nodeLine} ${classes.rightLine}`} />
+                <Box className={`${classes.nodeCard} ${classes.rightCard} ${classes.activeCard}`}>
                   <Box className={`${classes.featureIcon} ${classes.activeFeatureIcon}`}>
                     {features[3].icon}
                   </Box>
@@ -394,8 +383,6 @@ const JobKickstart = () => {
                     {features[3].text}
                   </Typography>
                 </Box>
-                <Box className={`${classes.nodeLine} ${classes.activeNodeLine}`} />
-                <Box className={`${classes.nodeCircle} ${classes.activeNode}`} />
               </Box>
             </Box>
           </Box>

@@ -6,6 +6,7 @@ import BusinessIcon from '@mui/icons-material/Business';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import ExploreIcon from '@mui/icons-material/Explore';
+import TouchIcon from '@mui/icons-material/TouchApp'; // Added for the "Click Me" indicator
 import Chart from 'chart.js/auto';
 import { useNavigate } from 'react-router-dom';
 
@@ -27,7 +28,7 @@ const useStyles = makeStyles({
     backgroundColor: '#f9fafc',
     position: 'relative',
     overflow: 'hidden',
-    maxWidth: '1400px', // Equivalent to Container maxWidth="lg"
+    // maxWidth: '1400px', // Equivalent to Container maxWidth="lg"
     margin: '0 auto',
   },
   sectionTitle: {
@@ -387,7 +388,46 @@ const useStyles = makeStyles({
       gap: '15px',
     },
   },
-  
+  // New styles for the "Click Me" indicator
+  clickMeOverlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'rgba(42, 43, 106, 0.7)',
+    borderRadius: '12px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    opacity: 0,
+    transition: 'opacity 0.3s ease',
+    pointerEvents: 'none', // This ensures the overlay doesn't block clicks
+    zIndex: 10,
+  },
+  clickMeText: {
+    color: 'white !important',
+    fontWeight: 'bold !important',
+    fontSize: '1.2rem !important',
+    marginTop: '8px !important',
+  },
+  clickMeIcon: {
+    color: 'white !important',
+    fontSize: '2rem !important',
+    animation: '$bounce 2s infinite',
+  },
+  '@keyframes bounce': {
+    '0%, 20%, 50%, 80%, 100%': {
+      transform: 'translateY(0)',
+    },
+    '40%': {
+      transform: 'translateY(-12px)',
+    },
+    '60%': {
+      transform: 'translateY(-5px)',
+    },
+  },
 });
 
 const TrainingPlanComponent = () => {
@@ -395,6 +435,7 @@ const TrainingPlanComponent = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState(0);
   const [activeRole, setActiveRole] = useState(0); // Default to first role (Frontend Developer)
+  const [hoveredRole, setHoveredRole] = useState(null); // New state to track which card is being hovered
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
 
@@ -766,11 +807,25 @@ const TrainingPlanComponent = () => {
   const handleTabChange = (event, newValue) => {
     setActiveTab(newValue);
     setActiveRole(0); // Reset to first role when tab changes
+    setHoveredRole(null); // Reset hovered role
   };
 
   // Handle role card click
   const handleRoleClick = (index) => {
     setActiveRole(index);
+    setHoveredRole(null); // Reset hovered role when a card is clicked
+  };
+
+  // Handle mouse enter for role cards
+  const handleRoleMouseEnter = (index) => {
+    if (index !== activeRole) {
+      setHoveredRole(index);
+    }
+  };
+
+  // Handle mouse leave for role cards
+  const handleRoleMouseLeave = () => {
+    setHoveredRole(null);
   };
 
   // Initialize and update chart when tab or active role changes
@@ -901,11 +956,26 @@ const TrainingPlanComponent = () => {
             }`}
             key={index}
             onClick={() => handleRoleClick(index)}
+            onMouseEnter={() => handleRoleMouseEnter(index)}
+            onMouseLeave={handleRoleMouseLeave}
             sx={{
               border: index === activeRole ? `2px solid ${weekData.color}` : '2px solid transparent',
               backgroundColor: index === activeRole ? `${weekData.colorLight}` : '#fff',
             }}
           >
+            {/* Click Me Overlay - only visible when hovered and not active */}
+            <Box 
+              className={classes.clickMeOverlay}
+              sx={{ 
+                opacity: hoveredRole === index ? 0.9 : 0,
+              }}
+            >
+              <TouchIcon className={classes.clickMeIcon} />
+              <Typography className={classes.clickMeText}>
+                Click to explore
+              </Typography>
+            </Box>
+            
             <Box 
               className={classes.iconContainer} 
               sx={{ backgroundColor: `${weekData.color}20` }}
@@ -988,8 +1058,6 @@ const TrainingPlanComponent = () => {
         >
           View Full Curriculum
         </Button>
-        
-        
       </Box>
     </Box>
   );
