@@ -1,5 +1,5 @@
 // src/pages/aboutus/AboutUs.jsx
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Box, Typography, Button, Paper } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import Navbar from "../../components/common/navbar/Navbar";
@@ -256,24 +256,14 @@ const useStyles = makeStyles({
     },
   },
   whyText: {
-    textAlign: "center",
     color: "rgba(255, 255, 255, 0.85) !important",
     fontSize: "1.1rem !important",
     lineHeight: "1.8 !important",
     maxWidth: "950px",
-    margin: "0 auto !important",
+    margin: "0 auto 20px !important",
     "@media (max-width: 768px)": {
       fontSize: "1rem !important",
     },
-  },
-  cursor: {
-    borderRight: "2px solid #FFC614",
-    animation: "$blink 1s infinite",
-  },
-  "@keyframes blink": {
-    "0%": { opacity: 1 },
-    "50%": { opacity: 0 },
-    "100%": { opacity: 1 },
   },
   // Core Values & Objectives Section Styles
   valuesSection: {
@@ -473,69 +463,6 @@ const useStyles = makeStyles({
   },
 });
 
-// Typing Text Effect Component
-const TypingTextEffect = ({ texts, typingSpeed = 50, className }) => {
-  const [currentTextIndex, setCurrentTextIndex] = useState(0);
-  const [displayedText, setDisplayedText] = useState('');
-  const [isTyping, setIsTyping] = useState(true);
-  const [pauseBetweenTexts, setPauseBetweenTexts] = useState(false);
-  
-  useEffect(() => {
-    if (currentTextIndex >= texts.length) return;
-    
-    if (pauseBetweenTexts) {
-      const pauseTimer = setTimeout(() => {
-        setPauseBetweenTexts(false);
-        setCurrentTextIndex(prev => prev + 1);
-        setDisplayedText('');
-        setIsTyping(true);
-      }, 1000); // 1 second pause between texts
-      
-      return () => clearTimeout(pauseTimer);
-    }
-    
-    if (!isTyping) return;
-    
-    const currentText = texts[currentTextIndex];
-    
-    if (displayedText.length < currentText.length) {
-      const typingTimer = setTimeout(() => {
-        setDisplayedText(currentText.slice(0, displayedText.length + 1));
-      }, typingSpeed);
-      
-      return () => clearTimeout(typingTimer);
-    } else {
-      setIsTyping(false);
-      
-      if (currentTextIndex < texts.length - 1) {
-        setPauseBetweenTexts(true);
-      }
-    }
-  }, [currentTextIndex, displayedText, isTyping, pauseBetweenTexts, texts, typingSpeed]);
-  
-  return (
-    <Box>
-      {texts.map((text, index) => (
-        <Typography 
-          key={index} 
-          className={className}
-          sx={{ 
-            mt: index > 0 ? 3 : 0,
-            fontWeight: index === texts.length - 1 ? 'bold' : 'normal',
-            opacity: currentTextIndex > index ? 1 : currentTextIndex === index ? 1 : 0,
-            height: currentTextIndex >= index ? 'auto' : 0,
-            overflow: 'hidden',
-            transition: 'all 0.5s ease',
-          }}
-        >
-          {currentTextIndex === index ? displayedText : (currentTextIndex > index ? text : '')}
-          {currentTextIndex === index && isTyping && <span style={{ borderRight: '2px solid #FFC614', animation: 'blink 1s infinite' }}>|</span>}
-        </Typography>
-      ))}
-    </Box>
-  );
-};
-
 const AboutUs = () => {
   const classes = useStyles();
 
@@ -624,17 +551,22 @@ const AboutUs = () => {
             Why Did We <span>Start Gigaversity?</span>
           </Typography>
           
-          <Box sx={{ mt: 4 }}>
-            <TypingTextEffect 
-              texts={[
-                "Every year, millions of students graduate, but a huge number of them struggle to land a job. Not because they lack potential, but because they lack the real-world skills that companies actually need.",
-                "We spoke to recruiters, hiring managers, and industry experts, and the message was clear: Degrees don't get jobs—skills do.",
-                "Yet, most education systems still focus on theory over practice, leaving students unprepared for real job roles. Even edtech platforms focus on generic courses but fail to bridge the learning-to-hiring gap.",
-                "That's where Gigaversity comes in. At Gigaversity, we believe you shouldn't just learn—you should get hired. And that's exactly what we help you do."
-              ]}
-              typingSpeed={15} // Changed from 30 to 15 for faster typing
-              className={classes.whyText}
-            />
+          <Box sx={{ mt: 4, textAlign: 'center' }}>
+            <Typography className={classes.whyText}>
+              Every year, millions of students graduate, but a huge number of them struggle to land a job. Not because they lack potential, but because they lack the real-world skills that companies actually need.
+            </Typography>
+            
+            <Typography className={classes.whyText}>
+              We spoke to recruiters, hiring managers, and industry experts, and the message was clear: Degrees don't get jobs—skills do.
+            </Typography>
+            
+            <Typography className={classes.whyText}>
+              Yet, most education systems still focus on theory over practice, leaving students unprepared for real job roles. Even edtech platforms focus on generic courses but fail to bridge the learning-to-hiring gap.
+            </Typography>
+            
+            <Typography className={classes.whyText}>
+              That's where Gigaversity comes in. At Gigaversity, we believe you shouldn't just learn—you should get hired. And that's exactly what we help you do.
+            </Typography>
           </Box>
         </Box>
       </Box>

@@ -1,4 +1,4 @@
-// src/components/limitedtimeoffer/LimitedTimeOffer.jsx
+// src/components/common/limitedtimeoffer/LimitedTimeOffer.jsx
 import React, { useState, useEffect } from 'react';
 import { 
   Box, 
@@ -6,7 +6,6 @@ import {
   Button, 
   Container, 
   Paper, 
-  Grid,
   Chip
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
@@ -91,11 +90,6 @@ const useStyles = makeStyles({
     boxShadow: '0 20px 60px rgba(0, 0, 0, 0.1) !important',
     padding: '0 !important',
     zIndex: 1,
-    // transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-    // '&:hover': {
-    //   transform: 'translateY(-10px)',
-    //   boxShadow: '0 30px 70px rgba(0, 0, 0, 0.15) !important',
-    // },
   },
   cardHeader: {
     background: 'linear-gradient(135deg, #2A2B6A 0%, #1a1b43 100%)',
@@ -104,28 +98,6 @@ const useStyles = makeStyles({
     position: 'relative',
     overflow: 'hidden',
     textAlign: 'center', 
-    // '&::before': {
-    //   content: '""',
-    //   position: 'absolute',
-    //   top: '-50%',
-    //   right: '-50%',
-    //   width: '200px',
-    //   height: '200px',
-    //   borderRadius: '40%',
-    //   background: 'radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%)',
-    //   zIndex: 1,
-    // },
-    // '&::after': {
-    //   content: '""',
-    //   position: 'absolute',
-    //   bottom: '-30%',
-    //   left: '10%',
-    //   width: '150px',
-    //   height: '150px',
-    //   borderRadius: '40%',
-    //   background: 'radial-gradient(circle, rgba(255,198,20,0.15) 0%, rgba(255,198,20,0) 70%)',
-    //   zIndex: 1,
-    // },
   },
   limitedBadge: {
     position: 'absolute !important',
@@ -177,7 +149,6 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'flex-start',
-    // justifyContent: 'space-between',
     gap:"40px",
     "@media (max-width: 960px)": {
       flexDirection: 'column',
@@ -220,7 +191,6 @@ const useStyles = makeStyles({
     height: '26px !important',
   },
   priceBox: {
-    // marginBottom: '30px',
     background: 'linear-gradient(135deg, #f8f9fa 0%, #fff 100%)',
     borderRadius: '15px',
     padding: '25px',
@@ -468,9 +438,6 @@ const useStyles = makeStyles({
       fontSize: '1rem !important',
     },
   },
-  // featuredText: {
-  //   position: 'relative',
-  // },
   guaranteeBox: {
     display: 'flex',
     alignItems: 'center',
@@ -505,12 +472,14 @@ const useStyles = makeStyles({
 const CountdownTimer = () => {
   const classes = useStyles();
   const [timeLeft, setTimeLeft] = useState({
-    days: 2,
-    hours: 14,
-    minutes: 36,
+    days: 0,
+    hours: 0,
+    minutes: 0,
     seconds: 0
   });
 
+  // Initialize with all zeros as requested
+  
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft(prev => {
@@ -534,10 +503,10 @@ const CountdownTimer = () => {
               if (days > 0) {
                 days -= 1;
               } else {
-                // Timer completed - reset to keep it running
-                days = 2;
-                hours = 14;
-                minutes = 36;
+                // Timer completed - reset to zeros as requested
+                days = 0;
+                hours = 0;
+                minutes = 0;
                 seconds = 0;
               }
             }
@@ -590,7 +559,7 @@ const LimitedTimeOffer = () => {
   const features = [
     'Access to all learning materials',
     'Access to 400+ job opportunities',
-    '40+ Roles specific jobs every week',
+    '40+ Role specific jobs every week',
     'ATS-friendly resume building',
     'Live coding & mock interviews',
     'Communication skills development',
@@ -665,9 +634,7 @@ const LimitedTimeOffer = () => {
                 <Box key={index} className={classes.featureItem}>
                   <CheckCircleIcon className={classes.checkIcon} />
                   <Typography className={classes.featureText}>
-                    {index === 1 ? (
-                      <span className={classes.featuredText}>{feature}</span>
-                    ) : feature}
+                    {feature}
                   </Typography>
                 </Box>
               ))}
