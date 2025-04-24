@@ -40,7 +40,6 @@ const useStyles = makeStyles({
     color: '#FFC614 !important',
     position: 'relative',
     display: 'inline-block',
-    
   },
   cardsContainer: {
     display: 'grid',
@@ -79,29 +78,12 @@ const useStyles = makeStyles({
       boxShadow: '0 25px 50px rgba(0, 0, 0, 0.3)',
       '& $cardIconCircle': {
         transform: 'scale(1.15)',
-      },
-      '& $cardShine': {
-        opacity: 1,
-        transform: 'translateX(200px) translateY(-100px)',
       }
     },
   },
   cardVisible: {
     opacity: 1,
     transform: 'translateY(0)',
-  },
-  cardShine: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '50px',
-    height: '100%',
-    background: 'linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%)',
-    transform: 'translateX(-100px) translateY(0)',
-    transition: 'all 0.5s ease',
-    opacity: 0,
-    pointerEvents: 'none',
-    zIndex: 2,
   },
   cardIconCircle: {
     width: '80px',
@@ -340,8 +322,6 @@ const ProgramHighlights = () => {
                 borderTop: `3px solid ${card.color}`,
               }}
             >
-              <Box className={classes.cardShine} />
-              
               <Box 
                 className={classes.cardIconCircle}
                 sx={{ color: card.color }}

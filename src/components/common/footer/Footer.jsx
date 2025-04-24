@@ -481,7 +481,7 @@ const Footer = () => {
               {/* Social Media Icons moved to Contact section */}
               <Box className={classes.socialIcons}>
                 <MuiLink
-                  href="https://www.facebook.com/gigaversity"
+                  href="https://www.facebook.com/share/1BCGVFefmp/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -490,7 +490,7 @@ const Footer = () => {
                   </Box>
                 </MuiLink>
                 <MuiLink
-                  href="https://www.linkedin.com/company/gigaversity"
+                  href="https://www.linkedin.com/company/gigaversity/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -518,7 +518,7 @@ const Footer = () => {
                   </Box>
                 </MuiLink>
                 <MuiLink
-                  href="https://www.instagram.com/gigaversity"
+                  href="https://www.instagram.com/gigaversity.in?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                   target="_blank"
                   rel="noopener noreferrer"
                 >

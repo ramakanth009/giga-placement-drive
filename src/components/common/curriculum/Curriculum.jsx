@@ -6,7 +6,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const useStyles = makeStyles({
   curriculumSection: {
-    padding: '80px 0',
+    padding: '45px 0',
     backgroundColor: '#f8f9fc',
     position: 'relative',
     overflow: 'hidden',

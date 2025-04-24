@@ -330,16 +330,36 @@ const ContactUs = () => {
                     Connect with us on Social Media
                   </Typography>
                   <Box className={classes.socialIconsWrapper}>
-                    <Link href="#" className={classes.socialIcon}>
+                    <Link 
+                      href="https://www.facebook.com/share/1BCGVFefmp/" 
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={classes.socialIcon}
+                    >
                       <FacebookIcon />
                     </Link>
-                    <Link href="#" className={classes.socialIcon}>
+                    <Link 
+                      href="https://www.linkedin.com/company/gigaversity/"
+                      target="_blank"
+                      rel="noopener noreferrer" 
+                      className={classes.socialIcon}
+                    >
                       <LinkedInIcon />
                     </Link>
-                    <Link href="#" className={classes.socialIcon}>
+                    <Link 
+                      href="https://www.youtube.com/channel/gigaversity"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={classes.socialIcon}
+                    >
                       <YouTubeIcon />
                     </Link>
-                    <Link href="#" className={classes.socialIcon}>
+                    <Link 
+                      href="https://www.instagram.com/gigaversity.in?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={classes.socialIcon}
+                    >
                       <InstagramIcon />
                     </Link>
                   </Box>
