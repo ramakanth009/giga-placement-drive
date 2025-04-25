@@ -43,7 +43,6 @@ const Homepage = () => {
         <HiringPartners />
         
         <JobKickstart /> 
-
         {/* Add the WhyDifferent component */}
         <WhyDifferent />
 
