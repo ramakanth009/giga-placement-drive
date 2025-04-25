@@ -86,7 +86,7 @@ const useStyles = makeStyles({
     pointerEvents: "none"
   },
   stepBox: {
-    width: "250px",
+    width: "330px",
     position: "relative",
     "@media (max-width: 960px)": {
       width: "100%",
@@ -97,10 +97,10 @@ const useStyles = makeStyles({
   stepBoxContent: {
     backgroundColor: "white",
     borderRadius: "24px",
-    padding: "30px 25px 45px", // Reduced top padding
+    padding: "30px 15px 15px", // Reduced top padding
     boxShadow: "0 10px 30px rgba(0, 0, 0, 0.08)",
     transition: "all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
-    height: "450px",
+    height: "350px",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -140,7 +140,7 @@ const useStyles = makeStyles({
   },
   stepNumber: {
     position: "absolute",
-    top: "-8px", // Positioned higher to sit on top of the card
+    top: "-7px", // Positioned higher to sit on top of the card
     left: "50%",
     transform: "translateX(-50%)",
     width: "60px", // Larger size
@@ -218,10 +218,11 @@ const useStyles = makeStyles({
     fontSize: "1.1rem !important",
     color: "#555 !important",
     lineHeight: "1.7 !important",
-    flex: 1,
     display: "flex",
     alignItems: "center",
     padding: "0 10px",
+    minHeight: "32px", // Decreased min height
+    // flex: 1, // Remove or comment this out if you don't want it to stretch
   },
   animatedStep: {
     opacity: 0,
@@ -325,7 +326,7 @@ const HowItWorks = () => {
           How Our <span>Virtual Placement Drive</span> Works
         </Typography>
         <Typography variant="body1" className={classes.subtitle}>
-          Your skills matter more than marks—follow these simple steps to get noticed by top recruiters!
+          Your skills matter more than marks - follow these simple steps to get noticed by top recruiters!
         </Typography>
       </Box>
 
