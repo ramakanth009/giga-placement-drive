@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Typography, Grid } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import Heroguy from "../../../assets/heroguy.png";
 import { ReactComponent as AIbook } from "../../../assets/ai-book.svg";
@@ -126,19 +126,17 @@ const useStyles = makeStyles({
       zIndex: 5,
     }
   },
-  mobileFeatureGrid: {
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gridTemplateRows: "1fr 1fr",
+  mobileFeatureBoxes: {
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
     gap: "15px",
     width: "100%",
     maxWidth: "340px",
     margin: "0 auto",
-    placeItems: "center", // Centers items both horizontally and vertically
   },
-  featureGridItem: {
-    width: "100%",
-    height: "100%",
+  featureBox: {
+    width: "calc(50% - 15px)", // 2 boxes per row with gap
     opacity: 0,
     transform: "translateY(20px)",
   },
@@ -312,13 +310,13 @@ const HeroRightSection = () => {
         />
       </Box>
       
-      {/* Mobile view specific content - 2x2 grid */}
+      {/* Mobile view - using boxes instead of grid */}
       <Box className={classes.mobileContainer}>
-        <Box className={classes.mobileFeatureGrid}>
+        <Box className={classes.mobileFeatureBoxes}>
           {features.map((feature, index) => (
             <Box 
               key={index}
-              className={classes.featureGridItem}
+              className={classes.featureBox}
               sx={{
                 opacity: visibleItems.includes(index) ? 1 : 0,
                 transform: visibleItems.includes(index) ? 'translateY(0)' : 'translateY(20px)',

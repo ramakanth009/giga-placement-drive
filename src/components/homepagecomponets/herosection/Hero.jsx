@@ -86,7 +86,7 @@ const Hero = () => {
       <Box className={classes.bgGrid} />
 
       <Container maxWidth="lg" className={classes.contentContainer}>
-        <Grid container spacing={4} alignItems="center">
+        <Grid container spacing={4} alignItems="center" justifyContent="center">
           <Grid item xs={12} md={7} lg={8}>
             <HeroLeftSection />
           </Grid>
