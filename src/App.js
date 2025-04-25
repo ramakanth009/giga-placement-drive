@@ -14,6 +14,8 @@ import DataScience from "./pages/datascience/DataScience";
 import RegistrationForm from './pages/register/RegistrationForm';
 import PaymentUnderConstruction from './pages/payment/PaymentUnderConstruction';
 import NotFound from './pages/notfound/NotFound';
+import CartPage from './components/cart/Cart'; 
+import PaymentProcess from './components/payment/PaymentProcess'; // Import the Payment Process component
 
 const App = () => {
   return (
@@ -33,6 +35,8 @@ const App = () => {
         {/* Redirect for old/alternative routes */}
         <Route path="/terms" element={<Navigate to="/terms-and-conditions" replace />} />
         <Route path="/privacy" element={<Navigate to="/privacy-policy" replace />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/payment-process" element={<PaymentProcess />} />
         
         {/* 404 catch-all route */}
         <Route path="*" element={<NotFound />} />

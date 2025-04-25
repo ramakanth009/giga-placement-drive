@@ -233,7 +233,7 @@ const Navbar = () => {
                 variant="contained" 
                 className={classes.signUpButton} 
                 component={Link} 
-                to="/payment-under-construction"
+                to="/cart"
                 onClick={scrollToTop}
               >
                 Apply Now
@@ -304,7 +304,7 @@ const Navbar = () => {
             onClick={() => handleNavLinkClick()} 
             className={`${classes.menuItem} ${classes.signUpMenuItem}`} 
             component={Link} 
-            to="/register"
+            to="/cart"
           >
             Apply Now
           </MenuItem>

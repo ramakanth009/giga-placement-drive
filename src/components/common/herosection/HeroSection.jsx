@@ -257,7 +257,7 @@ const HeroSection = ({
             variant="contained" 
             className={classes.joinButton} 
             component={Link} 
-            to="/payment-under-construction"
+            to="/cart"
           >
             Join Us Now
           </Button>

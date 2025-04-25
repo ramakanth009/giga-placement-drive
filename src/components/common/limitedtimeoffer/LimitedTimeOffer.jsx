@@ -646,7 +646,7 @@ const LimitedTimeOffer = () => {
               variant="contained" 
               className={classes.applyButton}
               onClick={() => {
-                navigate('/payment-under-construction');
+                navigate('/cart');
                 window.scrollTo({ top: 0, behavior: 'smooth' }); // Ensure scroll to top
               }}
             >

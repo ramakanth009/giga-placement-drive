@@ -171,7 +171,7 @@ const HeroLeftSection = () => {
   const navigate = useNavigate();
 
   const handleJoinClick = () => {
-    navigate("/payment-under-construction");
+    navigate("/cart");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
