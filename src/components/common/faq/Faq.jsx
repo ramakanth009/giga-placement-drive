@@ -10,11 +10,20 @@ const useStyles = makeStyles({
     maxWidth: '100%',
     margin: '0 auto',
     boxSizing: 'border-box',
+    "@media (max-width: 1200px)": {
+      padding: '55px 35px',
+    },
     "@media (max-width: 960px)": {
       padding: '50px 30px',
     },
     "@media (max-width: 600px)": {
       padding: '40px 20px',
+    },
+    "@media (max-width: 480px)": {
+      padding: '35px 15px',
+    },
+    "@media (max-width: 375px)": {
+      padding: '30px 12px',
     },
   },
   titleBox: {
@@ -22,11 +31,20 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     alignItems: 'center',
     marginBottom: '40px',
+    "@media (max-width: 1200px)": {
+      marginBottom: '35px',
+    },
     "@media (max-width: 960px)": {
       marginBottom: '30px',
     },
     "@media (max-width: 600px)": {
       marginBottom: '25px',
+    },
+    "@media (max-width: 480px)": {
+      marginBottom: '22px',
+    },
+    "@media (max-width: 375px)": {
+      marginBottom: '20px',
     },
   },
   title: {
@@ -36,20 +54,38 @@ const useStyles = makeStyles({
     position: 'relative',
     display: 'inline-block',
     marginBottom: '10px !important',
+    textAlign: 'center',
     '& span': {
       color: '#FFC614 !important',
+    },
+    "@media (max-width: 1200px)": {
+      fontSize: '2.3rem !important',
     },
     "@media (max-width: 960px)": {
       fontSize: '2.2rem !important',
     },
     "@media (max-width: 600px)": {
       fontSize: '1.8rem !important',
+      marginBottom: '8px !important',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '1.6rem !important',
+    },
+    "@media (max-width: 375px)": {
+      fontSize: '1.4rem !important',
+      marginBottom: '6px !important',
     },
   },
   accordionContainer: {
     maxWidth: '100%',
     margin: '0 auto',
+    "@media (max-width: 1200px)": {
+      maxWidth: '95%',
+    },
     "@media (max-width: 960px)": {
+      maxWidth: '100%',
+    },
+    "@media (max-width: 480px)": {
       maxWidth: '100%',
     },
   },
@@ -64,9 +100,37 @@ const useStyles = makeStyles({
     '&.Mui-expanded': {
       margin: '0 0 16px 0 !important',
     },
+    "@media (max-width: 1200px)": {
+      marginBottom: '14px !important',
+      '&.Mui-expanded': {
+        margin: '0 0 14px 0 !important',
+      },
+    },
+    "@media (max-width: 960px)": {
+      marginBottom: '14px !important',
+      '&.Mui-expanded': {
+        margin: '0 0 14px 0 !important',
+      },
+    },
     "@media (max-width: 600px)": {
       borderRadius: '8px !important',
       marginBottom: '12px !important',
+      '&.Mui-expanded': {
+        margin: '0 0 12px 0 !important',
+      },
+    },
+    "@media (max-width: 480px)": {
+      marginBottom: '10px !important',
+      '&.Mui-expanded': {
+        margin: '0 0 10px 0 !important',
+      },
+    },
+    "@media (max-width: 375px)": {
+      marginBottom: '8px !important',
+      borderRadius: '6px !important',
+      '&.Mui-expanded': {
+        margin: '0 0 8px 0 !important',
+      },
     },
   },
   accordionSummary: {
@@ -75,11 +139,39 @@ const useStyles = makeStyles({
     '&.Mui-expanded': {
       minHeight: '64px !important',
     },
+    "@media (max-width: 1200px)": {
+      padding: '0 22px !important',
+      minHeight: '62px !important',
+      '&.Mui-expanded': {
+        minHeight: '62px !important',
+      },
+    },
+    "@media (max-width: 960px)": {
+      padding: '0 20px !important',
+      minHeight: '60px !important',
+      '&.Mui-expanded': {
+        minHeight: '60px !important',
+      },
+    },
     "@media (max-width: 600px)": {
       padding: '0 16px !important',
       minHeight: '56px !important',
       '&.Mui-expanded': {
         minHeight: '56px !important',
+      },
+    },
+    "@media (max-width: 480px)": {
+      padding: '0 14px !important',
+      minHeight: '52px !important',
+      '&.Mui-expanded': {
+        minHeight: '52px !important',
+      },
+    },
+    "@media (max-width: 375px)": {
+      padding: '0 12px !important',
+      minHeight: '48px !important',
+      '&.Mui-expanded': {
+        minHeight: '48px !important',
       },
     },
   },
@@ -88,10 +180,34 @@ const useStyles = makeStyles({
     '&.Mui-expanded': {
       margin: '12px 0 !important',
     },
+    "@media (max-width: 1200px)": {
+      margin: '11px 0 !important',
+      '&.Mui-expanded': {
+        margin: '11px 0 !important',
+      },
+    },
+    "@media (max-width: 960px)": {
+      margin: '11px 0 !important',
+      '&.Mui-expanded': {
+        margin: '11px 0 !important',
+      },
+    },
     "@media (max-width: 600px)": {
       margin: '10px 0 !important',
       '&.Mui-expanded': {
         margin: '10px 0 !important',
+      },
+    },
+    "@media (max-width: 480px)": {
+      margin: '9px 0 !important',
+      '&.Mui-expanded': {
+        margin: '9px 0 !important',
+      },
+    },
+    "@media (max-width: 375px)": {
+      margin: '8px 0 !important',
+      '&.Mui-expanded': {
+        margin: '8px 0 !important',
       },
     },
   },
@@ -100,33 +216,78 @@ const useStyles = makeStyles({
     fontWeight: '600 !important',
     color: '#2A2B6A !important',
     flexGrow: 1,
+    "@media (max-width: 1200px)": {
+      fontSize: '1.05rem !important',
+    },
     "@media (max-width: 960px)": {
       fontSize: '1rem !important',
     },
     "@media (max-width: 600px)": {
       fontSize: '0.9rem !important',
     },
+    "@media (max-width: 480px)": {
+      fontSize: '0.85rem !important',
+    },
+    "@media (max-width: 375px)": {
+      fontSize: '0.8rem !important',
+    },
   },
   questionNumber: {
     color: '#FFC614 !important',
     fontWeight: 'bold !important',
     marginRight: '10px !important',
+    "@media (max-width: 1200px)": {
+      marginRight: '9px !important',
+    },
+    "@media (max-width: 960px)": {
+      marginRight: '9px !important',
+    },
     "@media (max-width: 600px)": {
       marginRight: '8px !important',
+    },
+    "@media (max-width: 480px)": {
+      marginRight: '7px !important',
+    },
+    "@media (max-width: 375px)": {
+      marginRight: '6px !important',
     },
   },
   expandIcon: {
     color: '#2A2B6A !important',
     fontSize: '1.5rem !important',
-    "@media (max-width: 600px)": {
+    "@media (max-width: 1200px)": {
+      fontSize: '1.4rem !important',
+    },
+    "@media (max-width: 960px)": {
       fontSize: '1.3rem !important',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '1.2rem !important',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '1.1rem !important',
+    },
+    "@media (max-width: 375px)": {
+      fontSize: '1rem !important',
     },
   },
   accordionDetails: {
     padding: '0 24px 24px !important',
     borderTop: '1px solid #EAF0F6',
+    "@media (max-width: 1200px)": {
+      padding: '0 22px 22px !important',
+    },
+    "@media (max-width: 960px)": {
+      padding: '0 20px 20px !important',
+    },
     "@media (max-width: 600px)": {
       padding: '0 16px 16px !important',
+    },
+    "@media (max-width: 480px)": {
+      padding: '0 14px 14px !important',
+    },
+    "@media (max-width: 375px)": {
+      padding: '0 12px 12px !important',
     },
   },
   answer: {
@@ -134,6 +295,9 @@ const useStyles = makeStyles({
     fontSize: '1rem !important',
     lineHeight: '1.6 !important',
     whiteSpace: 'pre-line !important',
+    "@media (max-width: 1200px)": {
+      fontSize: '0.98rem !important',
+    },
     "@media (max-width: 960px)": {
       fontSize: '0.95rem !important',
     },
@@ -141,11 +305,22 @@ const useStyles = makeStyles({
       fontSize: '0.9rem !important',
       lineHeight: '1.5 !important',
     },
+    "@media (max-width: 480px)": {
+      fontSize: '0.85rem !important',
+      lineHeight: '1.45 !important',
+    },
+    "@media (max-width: 375px)": {
+      fontSize: '0.8rem !important',
+      lineHeight: '1.4 !important',
+    },
   },
   columnContainer: {
     display: 'flex',
     flexWrap: 'wrap',
     gap: '24px',
+    "@media (max-width: 1200px)": {
+      gap: '20px',
+    },
     "@media (max-width: 960px)": {
       gap: '16px',
     },
@@ -153,11 +328,29 @@ const useStyles = makeStyles({
       gap: '10px',
       flexDirection: 'column',
     },
+    "@media (max-width: 480px)": {
+      gap: '8px',
+    },
+    "@media (max-width: 375px)": {
+      gap: '6px',
+    },
   },
   column: {
     flex: 1,
     minWidth: '45%',
+    "@media (max-width: 1200px)": {
+      minWidth: '45%',
+    },
+    "@media (max-width: 960px)": {
+      minWidth: '45%',
+    },
     "@media (max-width: 600px)": {
+      minWidth: '100%',
+    },
+    "@media (max-width: 480px)": {
+      minWidth: '100%',
+    },
+    "@media (max-width: 375px)": {
       minWidth: '100%',
     },
   },
@@ -188,7 +381,7 @@ const Faq = ({ faqData, title, subtitle }) => {
     <Box className={classes.faqContainer}>
       <Box className={classes.titleBox}>
         <Typography variant="h2" className={classes.title}>
-         Frequently Asked <span>Questions</span>
+          {typeof title === 'object' ? title : <>Frequently Asked <span>Questions</span></>}
         </Typography>
         {subtitle && (
           <Typography variant="body1" sx={{ textAlign: 'center', maxWidth: '800px', mb: 3 }}>

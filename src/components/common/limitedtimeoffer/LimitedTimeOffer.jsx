@@ -26,11 +26,20 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+    "@media (max-width: 1200px)": {
+      padding: '70px 0',
+    },
     "@media (max-width: 960px)": {
       padding: '60px 0',
     },
     "@media (max-width: 600px)": {
+      padding: '50px 0',
+    },
+    "@media (max-width: 480px)": {
       padding: '40px 0',
+    },
+    "@media (max-width: 375px)": {
+      padding: '30px 0',
     },
   },
   decorativeBg: {
@@ -48,6 +57,12 @@ const useStyles = makeStyles({
     background: 'linear-gradient(135deg, rgba(42, 43, 106, 0.1) 0%, rgba(255, 198, 20, 0.08) 100%)',
     filter: 'blur(40px)',
     zIndex: 0,
+    "@media (max-width: 600px)": {
+      filter: 'blur(30px)',
+    },
+    "@media (max-width: 375px)": {
+      filter: 'blur(20px)',
+    },
   },
   title: {
     fontSize: '2.5rem !important',
@@ -62,11 +77,23 @@ const useStyles = makeStyles({
       position: 'relative',
       zIndex: 1,
     },
+    "@media (max-width: 1200px)": {
+      fontSize: '2.3rem !important',
+    },
     "@media (max-width: 960px)": {
-      fontSize: '2.5rem !important',
+      fontSize: '2.1rem !important',
     },
     "@media (max-width: 600px)": {
-      fontSize: '2rem !important',
+      fontSize: '1.8rem !important',
+      lineHeight: '1.3 !important',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '1.6rem !important',
+      marginBottom: '12px !important',
+    },
+    "@media (max-width: 375px)": {
+      fontSize: '1.4rem !important',
+      marginBottom: '10px !important',
     },
   },
   subtitle: {
@@ -76,13 +103,31 @@ const useStyles = makeStyles({
     marginBottom: '40px !important',
     maxWidth: '800px',
     margin: '0 auto 40px auto !important',
+    "@media (max-width: 1200px)": {
+      fontSize: '1.2rem !important',
+      maxWidth: '750px',
+    },
+    "@media (max-width: 960px)": {
+      fontSize: '1.15rem !important',
+      maxWidth: '700px',
+      marginBottom: '35px !important',
+    },
     "@media (max-width: 600px)": {
-      fontSize: '1.1rem !important',
+      fontSize: '1rem !important',
+      maxWidth: '90%',
       marginBottom: '30px !important',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '0.9rem !important',
+      marginBottom: '25px !important',
+    },
+    "@media (max-width: 375px)": {
+      fontSize: '0.85rem !important',
+      marginBottom: '20px !important',
     },
   },
   offerCard: {
-    width:"60vw !important",
+    width: "60vw !important",
     position: 'relative',
     background: 'white',
     borderRadius: '20px !important',
@@ -90,6 +135,22 @@ const useStyles = makeStyles({
     boxShadow: '0 20px 60px rgba(0, 0, 0, 0.1) !important',
     padding: '0 !important',
     zIndex: 1,
+    "@media (max-width: 1200px)": {
+      width: "70vw !important",
+    },
+    "@media (max-width: 960px)": {
+      width: "80vw !important",
+    },
+    "@media (max-width: 600px)": {
+      width: "90vw !important",
+      borderRadius: '15px !important',
+    },
+    "@media (max-width: 480px)": {
+      width: "95vw !important",
+    },
+    "@media (max-width: 375px)": {
+      borderRadius: '12px !important',
+    },
   },
   cardHeader: {
     background: 'linear-gradient(135deg, #2A2B6A 0%, #1a1b43 100%)',
@@ -98,6 +159,21 @@ const useStyles = makeStyles({
     position: 'relative',
     overflow: 'hidden',
     textAlign: 'center', 
+    "@media (max-width: 1200px)": {
+      padding: '18px 25px',
+    },
+    "@media (max-width: 960px)": {
+      padding: '16px 20px',
+    },
+    "@media (max-width: 600px)": {
+      padding: '15px 15px',
+    },
+    "@media (max-width: 480px)": {
+      padding: '12px 12px',
+    },
+    "@media (max-width: 375px)": {
+      padding: '10px 10px',
+    },
   },
   limitedBadge: {
     position: 'absolute !important',
@@ -112,6 +188,33 @@ const useStyles = makeStyles({
     fontSize: '0.9rem !important',
     animation: '$pulse 2s infinite',
     zIndex: 2,
+    "@media (max-width: 1200px)": {
+      padding: '7px 14px !important',
+      fontSize: '0.85rem !important',
+    },
+    "@media (max-width: 960px)": {
+      padding: '6px 12px !important',
+      fontSize: '0.8rem !important',
+      right: '25px',
+    },
+    "@media (max-width: 600px)": {
+      padding: '5px 10px !important',
+      fontSize: '0.75rem !important',
+      right: '20px',
+      top: '-12px',
+    },
+    "@media (max-width: 480px)": {
+      padding: '4px 8px !important',
+      fontSize: '0.7rem !important',
+      right: '15px',
+      top: '-10px',
+    },
+    "@media (max-width: 375px)": {
+      padding: '3px 6px !important',
+      fontSize: '0.65rem !important',
+      right: '10px',
+      top: '-8px',
+    },
   },
   '@keyframes pulse': {
     '0%': {
@@ -134,6 +237,22 @@ const useStyles = makeStyles({
     position: 'relative',
     zIndex: 2,
     color: 'white !important',
+    "@media (max-width: 1200px)": {
+      fontSize: '1.7rem !important',
+    },
+    "@media (max-width: 960px)": {
+      fontSize: '1.6rem !important',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '1.4rem !important',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '1.2rem !important',
+      marginBottom: '4px !important',
+    },
+    "@media (max-width: 375px)": {
+      fontSize: '1.1rem !important',
+    },
   },
   offerSubtitle: {
     fontSize: '1.1rem !important',
@@ -142,6 +261,21 @@ const useStyles = makeStyles({
     position: 'relative',
     zIndex: 2,
     color: 'white !important',
+    "@media (max-width: 1200px)": {
+      fontSize: '1.05rem !important',
+    },
+    "@media (max-width: 960px)": {
+      fontSize: '1rem !important',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '0.9rem !important',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '0.85rem !important',
+    },
+    "@media (max-width: 375px)": {
+      fontSize: '0.8rem !important',
+    },
   },
   cardContent: {
     padding: '30px !important',
@@ -149,12 +283,27 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'flex-start',
-    gap:"40px",
+    gap: "40px",
+    "@media (max-width: 1200px)": {
+      padding: '25px !important',
+      gap: "35px",
+    },
     "@media (max-width: 960px)": {
-      flexDirection: 'column',
+      padding: '20px !important',
+      gap: "30px",
     },
     "@media (max-width: 600px)": {
-      padding: '20px !important',
+      padding: '18px !important',
+      flexDirection: 'column',
+      gap: "25px",
+    },
+    "@media (max-width: 480px)": {
+      padding: '15px !important',
+      gap: "20px",
+    },
+    "@media (max-width: 375px)": {
+      padding: '12px !important',
+      gap: "15px",
     },
   },
   regularPrice: {
@@ -177,8 +326,32 @@ const useStyles = makeStyles({
         top: '-6px',
       },
     },
+    "@media (max-width: 1200px)": {
+      fontSize: '1.25rem !important',
+      marginBottom: '10px !important',
+    },
+    "@media (max-width: 960px)": {
+      fontSize: '1.2rem !important',
+    },
     "@media (max-width: 600px)": {
+      fontSize: '1.15rem !important',
+      marginBottom: '8px !important',
+    },
+    "@media (max-width: 480px)": {
       fontSize: '1.1rem !important',
+      '& span::after': {
+        fontSize: '1.6rem',
+        right: '-12px',
+      },
+    },
+    "@media (max-width: 375px)": {
+      fontSize: '1rem !important',
+      marginBottom: '6px !important',
+      '& span::after': {
+        fontSize: '1.4rem',
+        right: '-10px',
+        top: '-5px',
+      },
     },
   },
   discountChip: {
@@ -189,6 +362,31 @@ const useStyles = makeStyles({
     marginLeft: '15px !important',
     boxShadow: '0 3px 6px rgba(255, 87, 34, 0.3) !important',
     height: '26px !important',
+    "@media (max-width: 1200px)": {
+      fontSize: '0.75rem !important',
+      height: '24px !important',
+    },
+    "@media (max-width: 960px)": {
+      fontSize: '0.7rem !important',
+      height: '22px !important',
+      marginLeft: '12px !important',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '0.65rem !important',
+      height: '20px !important',
+      marginLeft: '10px !important',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '0.6rem !important',
+      height: '18px !important',
+      marginLeft: '8px !important',
+    },
+    "@media (max-width: 375px)": {
+      fontSize: '0.55rem !important',
+      height: '16px !important',
+      marginLeft: '6px !important',
+      boxShadow: '0 2px 4px rgba(255, 87, 34, 0.3) !important',
+    },
   },
   priceBox: {
     background: 'linear-gradient(135deg, #f8f9fa 0%, #fff 100%)',
@@ -198,9 +396,24 @@ const useStyles = makeStyles({
     border: '1px solid rgba(0, 0, 0, 0.05)',
     position: 'relative',
     overflow: 'hidden',
+    "@media (max-width: 1200px)": {
+      padding: '22px',
+    },
+    "@media (max-width: 960px)": {
+      padding: '20px',
+    },
     "@media (max-width: 600px)": {
-      padding: '20px 15px',
-      marginBottom: '25px',
+      padding: '18px',
+      marginBottom: '0',
+      width: '100%',
+    },
+    "@media (max-width: 480px)": {
+      padding: '15px',
+      borderRadius: '12px',
+    },
+    "@media (max-width: 375px)": {
+      padding: '12px',
+      borderRadius: '10px',
     },
   },
   priceBadge: {
@@ -213,14 +426,45 @@ const useStyles = makeStyles({
     fontSize: '0.8rem',
     fontWeight: 'bold',
     borderRadius: '0 0 0 12px',
+    "@media (max-width: 960px)": {
+      padding: '4px 10px',
+      fontSize: '0.75rem',
+    },
+    "@media (max-width: 600px)": {
+      padding: '3px 8px',
+      fontSize: '0.7rem',
+    },
+    "@media (max-width: 480px)": {
+      padding: '3px 6px',
+      fontSize: '0.65rem',
+    },
+    "@media (max-width: 375px)": {
+      padding: '2px 5px',
+      fontSize: '0.6rem',
+      borderRadius: '0 0 0 8px',
+    },
   },
   limitedPrice: {
     fontSize: '1.5rem !important',
     fontWeight: 'bold !important',
     color: '#0a192f !important',
     marginBottom: '8px !important',
-    "@media (max-width: 600px)": {
+    "@media (max-width: 1200px)": {
+      fontSize: '1.4rem !important',
+    },
+    "@media (max-width: 960px)": {
       fontSize: '1.3rem !important',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '1.2rem !important',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '1.1rem !important',
+      marginBottom: '6px !important',
+    },
+    "@media (max-width: 375px)": {
+      fontSize: '1rem !important',
+      marginBottom: '5px !important',
     },
   },
   priceHighlight: {
@@ -241,8 +485,28 @@ const useStyles = makeStyles({
       zIndex: -1,
       borderRadius: '2px',
     },
+    "@media (max-width: 1200px)": {
+      fontSize: '3rem !important',
+    },
+    "@media (max-width: 960px)": {
+      fontSize: '2.8rem !important',
+    },
     "@media (max-width: 600px)": {
-      fontSize: '2.7rem !important',
+      fontSize: '2.5rem !important',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '2.2rem !important',
+      '&::after': {
+        bottom: '4px',
+        height: '25%',
+      },
+    },
+    "@media (max-width: 375px)": {
+      fontSize: '2rem !important',
+      '&::after': {
+        bottom: '3px',
+        height: '20%',
+      },
     },
   },
   timerContainer: {
@@ -256,9 +520,25 @@ const useStyles = makeStyles({
     alignItems: 'center',
     margin: '0 8px',
     width: '55px',
-    "@media (max-width: 600px)": {
-      margin: '0 6px',
+    "@media (max-width: 1200px)": {
+      width: '50px',
+      margin: '0 7px',
+    },
+    "@media (max-width: 960px)": {
       width: '45px',
+      margin: '0 6px',
+    },
+    "@media (max-width: 600px)": {
+      width: '40px',
+      margin: '0 5px',
+    },
+    "@media (max-width: 480px)": {
+      width: '35px',
+      margin: '0 4px',
+    },
+    "@media (max-width: 375px)": {
+      width: '30px',
+      margin: '0 3px',
     },
   },
   timerValue: {
@@ -285,9 +565,35 @@ const useStyles = makeStyles({
       background: 'rgba(255, 255, 255, 0.1)',
       borderRadius: '8px 8px 0 0',
     },
-    "@media (max-width: 600px)": {
+    "@media (max-width: 1200px)": {
+      fontSize: '1.4rem !important',
+      height: '33px',
+    },
+    "@media (max-width: 960px)": {
       fontSize: '1.3rem !important',
-      height: '40px',
+      height: '32px',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '1.2rem !important',
+      height: '30px',
+      borderRadius: '6px',
+      '&::after': {
+        borderRadius: '6px 6px 0 0',
+      },
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '1.1rem !important',
+      height: '28px',
+      boxShadow: '0 4px 10px rgba(42, 43, 106, 0.2)',
+    },
+    "@media (max-width: 375px)": {
+      fontSize: '1rem !important',
+      height: '25px',
+      borderRadius: '5px',
+      boxShadow: '0 3px 8px rgba(42, 43, 106, 0.2)',
+      '&::after': {
+        borderRadius: '5px 5px 0 0',
+      },
     },
   },
   timerLabel: {
@@ -295,8 +601,22 @@ const useStyles = makeStyles({
     color: '#4A4A4A !important',
     marginTop: '5px !important',
     fontWeight: '500 !important',
-    "@media (max-width: 600px)": {
+    "@media (max-width: 1200px)": {
+      fontSize: '0.75rem !important',
+    },
+    "@media (max-width: 960px)": {
       fontSize: '0.7rem !important',
+      marginTop: '4px !important',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '0.65rem !important',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '0.6rem !important',
+      marginTop: '3px !important',
+    },
+    "@media (max-width: 375px)": {
+      fontSize: '0.55rem !important',
     },
   },
   timerText: {
@@ -310,8 +630,38 @@ const useStyles = makeStyles({
       marginRight: '8px',
       color: '#FFC614',
     },
-    "@media (max-width: 600px)": {
+    "@media (max-width: 1200px)": {
+      fontSize: '0.9rem !important',
+    },
+    "@media (max-width: 960px)": {
       fontSize: '0.85rem !important',
+      '& svg': {
+        marginRight: '7px',
+        fontSize: '1.1rem',
+      },
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '0.8rem !important',
+      '& svg': {
+        marginRight: '6px',
+        fontSize: '1rem',
+      },
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '0.75rem !important',
+      marginBottom: '8px !important',
+      '& svg': {
+        marginRight: '5px',
+        fontSize: '0.9rem',
+      },
+    },
+    "@media (max-width: 375px)": {
+      fontSize: '0.7rem !important',
+      marginBottom: '6px !important',
+      '& svg': {
+        marginRight: '4px',
+        fontSize: '0.8rem',
+      },
     },
   },
   socialProof: {
@@ -320,15 +670,53 @@ const useStyles = makeStyles({
     margin: '20px 0 !important',
     padding: '10px 15px',
     borderRadius: '8px',
-    background: 'rgba(42, 43, 106, 0.03)',
+    backgroundColor: 'rgba(42, 43, 106, 0.03)',
     border: '1px solid rgba(42, 43, 106, 0.1)',
+    "@media (max-width: 1200px)": {
+      margin: '18px 0 !important',
+      padding: '9px 14px',
+    },
+    "@media (max-width: 960px)": {
+      margin: '16px 0 !important',
+      padding: '8px 12px',
+    },
+    "@media (max-width: 600px)": {
+      margin: '15px 0 !important',
+      padding: '7px 10px',
+      borderRadius: '6px',
+    },
+    "@media (max-width: 480px)": {
+      margin: '12px 0 !important',
+      padding: '6px 8px',
+    },
+    "@media (max-width: 375px)": {
+      margin: '10px 0 !important',
+      padding: '5px 7px',
+      borderRadius: '5px',
+    },
   },
   socialProofIcon: {
     color: '#FFC614 !important',
     marginRight: '10px !important',
     fontSize: '1.5rem !important',
-    "@media (max-width: 600px)": {
+    "@media (max-width: 1200px)": {
+      fontSize: '1.4rem !important',
+    },
+    "@media (max-width: 960px)": {
       fontSize: '1.3rem !important',
+      marginRight: '8px !important',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '1.2rem !important',
+      marginRight: '7px !important',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '1.1rem !important',
+      marginRight: '6px !important',
+    },
+    "@media (max-width: 375px)": {
+      fontSize: '1rem !important',
+      marginRight: '5px !important',
     },
   },
   socialProofText: {
@@ -338,8 +726,20 @@ const useStyles = makeStyles({
     '& strong': {
       color: '#2A2B6A',
     },
-    "@media (max-width: 600px)": {
+    "@media (max-width: 1200px)": {
+      fontSize: '0.9rem !important',
+    },
+    "@media (max-width: 960px)": {
       fontSize: '0.85rem !important',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '0.8rem !important',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '0.75rem !important',
+    },
+    "@media (max-width: 375px)": {
+      fontSize: '0.7rem !important',
     },
   },
   applyButton: {
@@ -372,9 +772,40 @@ const useStyles = makeStyles({
       transform: 'rotate(30deg) translateY(-300px)',
       animation: '$shine 3s infinite',
     },
-    "@media (max-width: 600px)": {
-      padding: '12px !important',
+    "@media (max-width: 1200px)": {
+      fontSize: '1.15rem !important',
+      padding: '13px !important',
+      width: '55% !important',
+    },
+    "@media (max-width: 960px)": {
       fontSize: '1.1rem !important',
+      padding: '12px !important',
+      width: '60% !important',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '1rem !important',
+      padding: '10px !important',
+      width: '70% !important',
+      borderRadius: '40px !important',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '0.9rem !important',
+      padding: '9px !important',
+      width: '80% !important',
+      boxShadow: '0 4px 15px rgba(42, 43, 106, 0.3) !important',
+      '&:hover': {
+        boxShadow: '0 8px 20px rgba(42, 43, 106, 0.4) !important',
+      },
+    },
+    "@media (max-width: 375px)": {
+      fontSize: '0.85rem !important',
+      padding: '8px !important',
+      width: '90% !important',
+      borderRadius: '30px !important',
+      boxShadow: '0 3px 12px rgba(42, 43, 106, 0.3) !important',
+      '&:hover': {
+        boxShadow: '0 6px 15px rgba(42, 43, 106, 0.4) !important',
+      },
     },
   },
   '@keyframes shine': {
@@ -400,9 +831,40 @@ const useStyles = makeStyles({
       left: '0',
       background: '#FFC614',
     },
+    "@media (max-width: 1200px)": {
+      fontSize: '1.7rem !important',
+      marginBottom: '22px !important',
+    },
+    "@media (max-width: 960px)": {
+      fontSize: '1.6rem !important',
+      marginBottom: '20px !important',
+    },
     "@media (max-width: 600px)": {
       fontSize: '1.5rem !important',
-      marginBottom: '20px !important',
+      marginBottom: '18px !important',
+      textAlign: 'center',
+      '&::after': {
+        left: '50%',
+        transform: 'translateX(-50%)',
+        width: '50px',
+      },
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '1.3rem !important',
+      marginBottom: '16px !important',
+      '&::after': {
+        width: '40px',
+        height: '2.5px',
+      },
+    },
+    "@media (max-width: 375px)": {
+      fontSize: '1.2rem !important',
+      marginBottom: '14px !important',
+      '&::after': {
+        width: '35px',
+        height: '2px',
+        bottom: '-6px',
+      },
     },
   },
   featureItem: {
@@ -414,8 +876,24 @@ const useStyles = makeStyles({
     '&:hover': {
       transform: 'translateX(5px)',
     },
+    "@media (max-width: 1200px)": {
+      marginBottom: '18px',
+    },
+    "@media (max-width: 960px)": {
+      marginBottom: '16px',
+    },
     "@media (max-width: 600px)": {
-      marginBottom: '15px',
+      marginBottom: '14px',
+      justifyContent: 'center',
+      '&:hover': {
+        transform: 'none',
+      },
+    },
+    "@media (max-width: 480px)": {
+      marginBottom: '12px',
+    },
+    "@media (max-width: 375px)": {
+      marginBottom: '10px',
     },
   },
   checkIcon: {
@@ -425,17 +903,46 @@ const useStyles = makeStyles({
     backgroundColor: 'rgba(255, 198, 20, 0.1)',
     borderRadius: '50%',
     padding: '2px',
+    "@media (max-width: 1200px)": {
+      marginRight: '14px !important',
+    },
+    "@media (max-width: 960px)": {
+      marginRight: '12px !important',
+      fontSize: '20px !important',
+    },
     "@media (max-width: 600px)": {
       marginRight: '10px !important',
-      fontSize: '1.2rem !important',
+      fontSize: '18px !important',
+    },
+    "@media (max-width: 480px)": {
+      marginRight: '8px !important',
+      fontSize: '16px !important',
+      padding: '1px',
+    },
+    "@media (max-width: 375px)": {
+      marginRight: '7px !important',
+      fontSize: '14px !important',
     },
   },
   featureText: {
     fontSize: '1.1rem !important',
     color: '#4A4A4A !important',
     fontWeight: '500 !important',
-    "@media (max-width: 600px)": {
+    "@media (max-width: 1200px)": {
+      fontSize: '1.05rem !important',
+    },
+    "@media (max-width: 960px)": {
       fontSize: '1rem !important',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '0.95rem !important',
+      textAlign: 'center',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '0.9rem !important',
+    },
+    "@media (max-width: 375px)": {
+      fontSize: '0.85rem !important',
     },
   },
   guaranteeBox: {
@@ -446,14 +953,52 @@ const useStyles = makeStyles({
     borderRadius: '10px',
     border: '1px dashed rgba(42, 43, 106, 0.3)',
     backgroundColor: 'rgba(42, 43, 106, 0.03)',
+    "@media (max-width: 1200px)": {
+      padding: '14px',
+      marginTop: '18px',
+    },
+    "@media (max-width: 960px)": {
+      padding: '12px',
+      marginTop: '16px',
+    },
+    "@media (max-width: 600px)": {
+      padding: '10px',
+      marginTop: '15px',
+      borderRadius: '8px',
+    },
+    "@media (max-width: 480px)": {
+      padding: '8px',
+      marginTop: '12px',
+    },
+    "@media (max-width: 375px)": {
+      padding: '7px',
+      marginTop: '10px',
+      borderRadius: '6px',
+    },
   },
   guaranteeIcon: {
     color: '#2A2B6A !important',
     fontSize: '2rem !important',
     marginRight: '15px !important',
+    "@media (max-width: 1200px)": {
+      fontSize: '1.9rem !important',
+      marginRight: '14px !important',
+    },
+    "@media (max-width: 960px)": {
+      fontSize: '1.8rem !important',
+      marginRight: '12px !important',
+    },
     "@media (max-width: 600px)": {
       fontSize: '1.7rem !important',
       marginRight: '10px !important',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '1.6rem !important',
+      marginRight: '8px !important',
+    },
+    "@media (max-width: 375px)": {
+      fontSize: '1.5rem !important',
+      marginRight: '7px !important',
     },
   },
   guaranteeText: {
@@ -463,8 +1008,32 @@ const useStyles = makeStyles({
     '& strong': {
       color: '#2A2B6A',
     },
-    "@media (max-width: 600px)": {
+    "@media (max-width: 1200px)": {
+      fontSize: '0.9rem !important',
+    },
+    "@media (max-width: 960px)": {
       fontSize: '0.85rem !important',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '0.8rem !important',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '0.75rem !important',
+    },
+    "@media (max-width: 375px)": {
+      fontSize: '0.7rem !important',
+    },
+  },
+  leftColumn: {
+    flex: 1,
+    "@media (max-width: 600px)": {
+      width: '100%',
+    },
+  },
+  rightColumn: {
+    flex: 1,
+    "@media (max-width: 600px)": {
+      width: '100%',
     },
   },
 });

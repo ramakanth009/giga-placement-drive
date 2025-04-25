@@ -1,5 +1,5 @@
 // src/components/whoshouldjoin/WhoShouldJoin.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Box, Typography, Container } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { ReactComponent as WorkIcon} from '../../../assets/WorkIcon.svg';
@@ -7,40 +7,74 @@ import { ReactComponent as SchoolIcon} from '../../../assets/SchoolIcon.svg';
 import { ReactComponent as SwitchAccountIcon} from '../../../assets/SwitchAccountIcon.svg';
 import { ReactComponent as BusinessCenterIcon} from '../../../assets/BusinessCenterIcon.svg';
 
-
 const useStyles = makeStyles({
   section: {
-    padding: '20px 40px',
+    padding: '80px 0',
     backgroundColor: '#ffffff',
     overflow: 'hidden',
     position: 'relative',
+    "@media (max-width: 1200px)": {
+      padding: '70px 0',
+    },
     "@media (max-width: 960px)": {
-      padding: '60px 30px',
+      padding: '60px 0',
     },
     "@media (max-width: 600px)": {
-      padding: '40px 20px',
+      padding: '50px 0',
+    },
+    "@media (max-width: 480px)": {
+      padding: '40px 0',
+    },
+    "@media (max-width: 375px)": {
+      padding: '30px 0',
     },
   },
   contentContainer: {
     width: '100%',
-    // maxWidth: '1200px',
+    maxWidth: '1200px',
     margin: '0 auto',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     position: 'relative',
     zIndex: 2,
-    padding: '0 24px', /* Matches the default padding of MUI Container */
-  },
-  titleContainer: {
-    textAlign: 'center',
-    marginBottom: '60px',
-    width: '100%',
-    position: 'relative',
+    padding: '0 24px',
+    "@media (max-width: 1200px)": {
+      maxWidth: '1000px',
+    },
     "@media (max-width: 960px)": {
-      marginBottom: '40px',
+      maxWidth: '700px',
     },
     "@media (max-width: 600px)": {
+      maxWidth: '100%',
+      padding: '0 20px',
+    },
+    "@media (max-width: 480px)": {
+      padding: '0 16px',
+    },
+    "@media (max-width: 375px)": {
+      padding: '0 12px',
+    },
+  },
+  titleContainer: {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    marginBottom: '60px',
+    position: 'relative',
+    "@media (max-width: 1200px)": {
+      marginBottom: '55px',
+    },
+    "@media (max-width: 960px)": {
+      marginBottom: '50px',
+    },
+    "@media (max-width: 600px)": {
+      marginBottom: '40px',
+    },
+    "@media (max-width: 480px)": {
+      marginBottom: '35px',
+    },
+    "@media (max-width: 375px)": {
       marginBottom: '30px',
     },
   },
@@ -50,11 +84,27 @@ const useStyles = makeStyles({
     color: '#2A2B6A !important',
     position: 'relative',
     display: 'inline-block',
+    textAlign: 'center',
+    maxWidth: '90%',
+    "@media (max-width: 1200px)": {
+      fontSize: '2.3rem !important',
+      maxWidth: '90%',
+    },
     "@media (max-width: 960px)": {
-      fontSize: '2.5rem !important',
+      fontSize: '2.1rem !important',
+      maxWidth: '95%',
     },
     "@media (max-width: 600px)": {
-      fontSize: '2rem !important',
+      fontSize: '1.8rem !important',
+      lineHeight: '1.3 !important',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '1.6rem !important',
+      lineHeight: '1.3 !important',
+    },
+    "@media (max-width: 375px)": {
+      fontSize: '1.4rem !important',
+      lineHeight: '1.3 !important',
     },
   },
   boxesContainer: {
@@ -63,13 +113,24 @@ const useStyles = makeStyles({
     justifyContent: 'space-between',
     gap: '30px',
     position: 'relative',
+    "@media (max-width: 1200px)": {
+      gap: '25px',
+    },
     "@media (max-width: 960px)": {
       flexWrap: 'wrap',
       gap: '40px 30px',
+      justifyContent: 'center',
     },
     "@media (max-width: 600px)": {
       flexDirection: 'column',
       gap: '30px',
+      alignItems: 'center',
+    },
+    "@media (max-width: 480px)": {
+      gap: '25px',
+    },
+    "@media (max-width: 375px)": {
+      gap: '20px',
     },
   },
   categoryBox: {
@@ -90,14 +151,26 @@ const useStyles = makeStyles({
         transform: 'scale(1.1) rotate(5deg)',
       },
     },
+    "@media (max-width: 1200px)": {
+      padding: '22px 12px',
+    },
     "@media (max-width: 960px)": {
       width: '45%',
+      padding: '25px 15px',
     },
     "@media (max-width: 600px)": {
       width: '100%',
       padding: '20px 15px',
       maxWidth: '400px',
       margin: '0 auto',
+    },
+    "@media (max-width: 480px)": {
+      padding: '18px 12px',
+      maxWidth: '350px',
+    },
+    "@media (max-width: 375px)": {
+      padding: '15px 10px',
+      maxWidth: '300px',
     },
   },
   iconContainer: {
@@ -122,8 +195,26 @@ const useStyles = makeStyles({
       color: '#FFFFFF',
       stroke: '#FFFFFF',
     },  
-    "&:hover":{
-      background:"#2A2B6A !important",
+    "&:hover": {
+      background: "#2A2B6A !important",
+    },
+    "@media (max-width: 1200px)": {
+      width: '85px',
+      height: '85px',
+      marginBottom: '22px',
+      '& svg': {
+        width: '47px',
+        height: '47px',
+      },
+    },
+    "@media (max-width: 960px)": {
+      width: '85px',
+      height: '85px',
+      marginBottom: '22px',
+      '& svg': {
+        width: '47px',
+        height: '47px',
+      },
     },
     "@media (max-width: 600px)": {
       width: '80px',
@@ -132,6 +223,24 @@ const useStyles = makeStyles({
       '& svg': {
         width: '45px',
         height: '45px',
+      },
+    },
+    "@media (max-width: 480px)": {
+      width: '70px',
+      height: '70px',
+      marginBottom: '18px',
+      '& svg': {
+        width: '40px',
+        height: '40px',
+      },
+    },
+    "@media (max-width: 375px)": {
+      width: '60px',
+      height: '60px',
+      marginBottom: '15px',
+      '& svg': {
+        width: '35px',
+        height: '35px',
       },
     },
   },
@@ -146,13 +255,28 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     position: 'relative',
     transition: 'all 0.3s ease',
+    "@media (max-width: 1200px)": {
+      fontSize: '1.4rem !important',
+      minHeight: '60px',
+      marginBottom: '14px !important',
+    },
     "@media (max-width: 960px)": {
       fontSize: '1.4rem !important',
+      minHeight: '60px',
+      marginBottom: '14px !important',
     },
     "@media (max-width: 600px)": {
       fontSize: '1.3rem !important',
       marginBottom: '12px !important',
       minHeight: 'auto',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '1.2rem !important',
+      marginBottom: '10px !important',
+    },
+    "@media (max-width: 375px)": {
+      fontSize: '1.1rem !important',
+      marginBottom: '8px !important',
     },
   },
   categoryDescription: {
@@ -163,14 +287,29 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'flex-start',
     justifyContent: 'center',
+    "@media (max-width: 1200px)": {
+      fontSize: '0.95rem !important',
+      minHeight: '115px',
+      lineHeight: '1.5 !important',
+    },
     "@media (max-width: 960px)": {
       fontSize: '0.95rem !important',
-      minHeight: '110px',
+      minHeight: '115px',
+      lineHeight: '1.5 !important',
     },
     "@media (max-width: 600px)": {
       fontSize: '0.9rem !important',
       minHeight: 'auto',
       marginBottom: '10px',
+      lineHeight: '1.5 !important',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '0.85rem !important',
+      lineHeight: '1.4 !important',
+    },
+    "@media (max-width: 375px)": {
+      fontSize: '0.8rem !important',
+      lineHeight: '1.4 !important',
     },
   },
   divider: {
@@ -184,6 +323,10 @@ const useStyles = makeStyles({
     opacity: 0,
     animation: '$fadeIn 0.5s ease forwards',
     animationDelay: '0.5s',
+    "@media (max-width: 1200px)": {
+      height: '80%',
+      width: '3px',
+    },
     "@media (max-width: 960px)": {
       display: 'none', // Hide divider on tablet and mobile
     },
@@ -201,6 +344,11 @@ const useStyles = makeStyles({
     opacity: 0,
     animation: '$fadeIn 0.5s ease forwards',
     animationDelay: '0.5s',
+    "@media (max-width: 1200px)": {
+      height: '70%',
+      width: '3px',
+      right: '-12px',
+    },
     "@media (max-width: 960px)": {
       display: 'none', // Hide divider on tablet and mobile
     },
@@ -219,6 +367,12 @@ const useStyles = makeStyles({
     borderRadius: '50%',
     background: 'rgba(42, 43, 106, 0.03)',
     zIndex: 1,
+    "@media (max-width: 480px)": {
+      opacity: 0.5, // Reduce opacity on small screens
+    },
+    "@media (max-width: 375px)": {
+      opacity: 0.3, // Further reduce opacity on very small screens
+    },
   },
   yellowDecoration: {
     background: 'rgba(255, 198, 20, 0.05)',
@@ -235,6 +389,34 @@ const useStyles = makeStyles({
     backgroundSize: '20px 20px',
     opacity: 0.5,
     zIndex: 1,
+    "@media (max-width: 1200px)": {
+      width: '180px',
+      height: '180px',
+      backgroundSize: '18px 18px',
+    },
+    "@media (max-width: 960px)": {
+      width: '160px',
+      height: '160px',
+      backgroundSize: '16px 16px',
+    },
+    "@media (max-width: 600px)": {
+      width: '140px',
+      height: '140px',
+      backgroundSize: '14px 14px',
+      opacity: 0.4,
+    },
+    "@media (max-width: 480px)": {
+      width: '120px',
+      height: '120px',
+      backgroundSize: '12px 12px',
+      opacity: 0.3,
+    },
+    "@media (max-width: 375px)": {
+      width: '100px',
+      height: '100px',
+      backgroundSize: '10px 10px',
+      opacity: 0.25,
+    },
   },
 });
 
@@ -317,8 +499,20 @@ const WhoShouldJoin = () => {
             top: element.top,
             left: element.left,
             right: element.right,
-            width: element.width,
-            height: element.height,
+            width: {
+              xs: `calc(${element.width} * 0.6)`,
+              sm: `calc(${element.width} * 0.7)`,
+              md: `calc(${element.width} * 0.8)`,
+              lg: `calc(${element.width} * 0.9)`,
+              xl: element.width,
+            },
+            height: {
+              xs: `calc(${element.height} * 0.6)`,
+              sm: `calc(${element.height} * 0.7)`,
+              md: `calc(${element.height} * 0.8)`,
+              lg: `calc(${element.height} * 0.9)`,
+              xl: element.height,
+            },
           }}
         />
       ))}
@@ -338,58 +532,58 @@ const WhoShouldJoin = () => {
         />
       ))}
 
-        <Box className={classes.contentContainer}>
-          <Box className={classes.titleContainer}>
-            <Typography variant="h2" className={classes.title}>
-            Who Should Join Gigaversity’s Virtual Placement Drive
-            </Typography>
-          </Box>
-
-          <Box id="categories-container" className={classes.boxesContainer}>
-            {categories.map((category, index) => (
-              <Box 
-                key={index} 
-                className={classes.categoryBox}
-                sx={{
-                  opacity: visibleCategories.includes(index) ? 1 : 0,
-                  transform: visibleCategories.includes(index) 
-                    ? 'translateY(0)' 
-                    : 'translateY(30px)',
-                  transition: 'opacity 0.5s ease, transform 0.5s ease',
-                  transitionDelay: `${index * 0.1}s`,
-                }}
-              >
-                <Box className={classes.iconContainer}>
-                  {category.icon}
-                </Box>
-                <Typography variant="h5" className={classes.categoryTitle}>
-                  {category.title}
-                </Typography>
-                <Typography variant="body1" className={classes.categoryDescription}>
-                  {category.description}
-                </Typography>
-                
-                {/* Vertical gradient dotted divider between boxes (except for the last one) */}
-                {index < categories.length - 1 && (
-                  <Box 
-                    className={classes.gradientDivider}
-                    sx={{
-                      background: `repeating-linear-gradient(
-                        to bottom, 
-                        rgba(42, 43, 106, 0.8) 0, 
-                        rgba(42, 43, 106, 0.8) 6px, 
-                        transparent 6px, 
-                        transparent 12px
-                      )`,
-                      WebkitMaskImage: 'linear-gradient(to bottom, rgba(42, 43, 106, 0.8) 0%, rgba(255, 198, 20, 0.8) 100%)',
-                      maskImage: 'linear-gradient(to bottom, rgba(42, 43, 106, 0.8) 0%, rgba(255, 198, 20, 0.8) 100%)',
-                    }}
-                  />
-                )}
-              </Box>
-            ))}
-          </Box>
+      <Box className={classes.contentContainer}>
+        <Box className={classes.titleContainer}>
+          <Typography variant="h2" className={classes.title}>
+            Who Should Join Gigaversity's Virtual Placement Drive
+          </Typography>
         </Box>
+
+        <Box id="categories-container" className={classes.boxesContainer}>
+          {categories.map((category, index) => (
+            <Box 
+              key={index} 
+              className={classes.categoryBox}
+              sx={{
+                opacity: visibleCategories.includes(index) ? 1 : 0,
+                transform: visibleCategories.includes(index) 
+                  ? 'translateY(0)' 
+                  : 'translateY(30px)',
+                transition: 'opacity 0.5s ease, transform 0.5s ease',
+                transitionDelay: `${index * 0.1}s`,
+              }}
+            >
+              <Box className={classes.iconContainer}>
+                {category.icon}
+              </Box>
+              <Typography variant="h5" className={classes.categoryTitle}>
+                {category.title}
+              </Typography>
+              <Typography variant="body1" className={classes.categoryDescription}>
+                {category.description}
+              </Typography>
+              
+              {/* Vertical gradient dotted divider between boxes (except for the last one) */}
+              {index < categories.length - 1 && (
+                <Box 
+                  className={classes.gradientDivider}
+                  sx={{
+                    background: `repeating-linear-gradient(
+                      to bottom, 
+                      rgba(42, 43, 106, 0.8) 0, 
+                      rgba(42, 43, 106, 0.8) 6px, 
+                      transparent 6px, 
+                      transparent 12px
+                    )`,
+                    WebkitMaskImage: 'linear-gradient(to bottom, rgba(42, 43, 106, 0.8) 0%, rgba(255, 198, 20, 0.8) 100%)',
+                    maskImage: 'linear-gradient(to bottom, rgba(42, 43, 106, 0.8) 0%, rgba(255, 198, 20, 0.8) 100%)',
+                  }}
+                />
+              )}
+            </Box>
+          ))}
+        </Box>
+      </Box>
     </Box>
   );
 };

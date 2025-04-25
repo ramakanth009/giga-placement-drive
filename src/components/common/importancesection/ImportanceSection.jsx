@@ -23,6 +23,36 @@ const useStyles = makeStyles({
     opacity: '0.3',
     filter: 'blur(100px)',
     zIndex: '-1',
+    '@media (max-width: 1200px)': {
+      width: '600px',
+      height: '500px',
+      top: '-80px',
+      left: '-120px',
+    },
+    '@media (max-width: 960px)': {
+      width: '500px',
+      height: '400px',
+      top: '-70px',
+      left: '-100px',
+    },
+    '@media (max-width: 600px)': {
+      width: '400px',
+      height: '300px',
+      top: '-60px',
+      left: '-80px',
+    },
+    '@media (max-width: 480px)': {
+      width: '300px',
+      height: '250px',
+      top: '-50px',
+      left: '-70px',
+    },
+    '@media (max-width: 375px)': {
+      width: '250px',
+      height: '200px',
+      top: '-40px',
+      left: '-60px',
+    },
   },
   title: {
     fontSize: "2.5rem !important",
@@ -35,11 +65,23 @@ const useStyles = makeStyles({
     '& span': {
       color: '#FFC614 !important',
     },
+    "@media (max-width: 1200px)": {
+      fontSize: "2.3rem !important",
+      marginBottom: '10px !important',
+    },
     "@media (max-width: 960px)": {
       fontSize: "2.2rem !important",
     },
     "@media (max-width: 600px)": {
       fontSize: "1.8rem !important",
+    },
+    "@media (max-width: 480px)": {
+      fontSize: "1.6rem !important",
+      marginBottom: '8px !important',
+    },
+    "@media (max-width: 375px)": {
+      fontSize: "1.4rem !important",
+      marginBottom: '6px !important',
     },
   },
   subtitle: {
@@ -51,6 +93,10 @@ const useStyles = makeStyles({
     margin: '0 auto 36px auto !important',
     position: 'relative',
     zIndex: '2',
+    "@media (max-width: 1200px)": {
+      fontSize: '1.05rem !important',
+      marginBottom: '32px !important',
+    },
     "@media (max-width: 960px)": {
       fontSize: '1rem !important',
       marginBottom: '30px !important',
@@ -59,6 +105,15 @@ const useStyles = makeStyles({
       fontSize: '0.95rem !important',
       marginBottom: '24px !important',
       maxWidth: '95%',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '0.9rem !important',
+      marginBottom: '20px !important',
+    },
+    "@media (max-width: 375px)": {
+      fontSize: '0.85rem !important',
+      marginBottom: '18px !important',
+      maxWidth: '100%',
     },
   },
   card: {
@@ -81,12 +136,29 @@ const useStyles = makeStyles({
         transform: 'scale(1.05)',
       }
     },
+    "@media (max-width: 1200px)": {
+      padding: '22px 18px',
+      borderRadius: '10px',
+    },
     "@media (max-width: 960px)": {
       height: '100%',
       padding: '20px 16px',
     },
     "@media (max-width: 600px)": {
       padding: '18px 14px',
+    },
+    "@media (max-width: 480px)": {
+      padding: '16px 12px',
+      '&:hover': {
+        transform: 'translateY(-5px)',
+      }
+    },
+    "@media (max-width: 375px)": {
+      padding: '14px 10px',
+      borderRadius: '8px',
+      '&:hover': {
+        transform: 'translateY(-3px)',
+      }
     },
   },
   cardsContainer: {
@@ -110,17 +182,34 @@ const useStyles = makeStyles({
     "@media (max-width: 600px)": {
       gap: '15px',
       padding: '0 10px',
+      marginBottom: '30px',
+    },
+    "@media (max-width: 480px)": {
+      gap: '12px',
+      padding: '0 8px',
+      marginBottom: '25px',
+    },
+    "@media (max-width: 375px)": {
+      gap: '10px',
+      padding: '0 5px',
+      marginBottom: '20px',
     },
   },
   cardWrapper: {
     width: '23%',
     '@media (max-width: 1200px)': {
-      width: '46%',
+      width: '45%',
     },
     '@media (max-width: 600px)': {
       width: '100%',
       maxWidth: '350px',
-    }
+    },
+    '@media (max-width: 480px)': {
+      maxWidth: '320px',
+    },
+    '@media (max-width: 375px)': {
+      maxWidth: '280px',
+    },
   },
   iconContainer: {
     width: '50px',
@@ -131,10 +220,32 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     marginBottom: '18px',
     transition: 'transform 0.4s ease',
+    "@media (max-width: 1200px)": {
+      width: '48px',
+      height: '48px',
+      marginBottom: '16px',
+    },
+    "@media (max-width: 960px)": {
+      width: '45px',
+      height: '45px',
+      marginBottom: '15px',
+    },
     "@media (max-width: 600px)": {
       width: '45px',
       height: '45px',
       marginBottom: '14px',
+    },
+    "@media (max-width: 480px)": {
+      width: '40px',
+      height: '40px',
+      marginBottom: '12px',
+      borderRadius: '8px',
+    },
+    "@media (max-width: 375px)": {
+      width: '35px',
+      height: '35px',
+      marginBottom: '10px',
+      borderRadius: '7px',
     },
   },
   advantageTitle: {
@@ -143,26 +254,69 @@ const useStyles = makeStyles({
     color: '#2A2B6A !important',
     marginBottom: '8px !important',
     minHeight: '30px !important',
+    "@media (max-width: 1200px)": {
+      fontSize: '1.15rem !important',
+      minHeight: '28px !important',
+    },
     "@media (max-width: 960px)": {
       fontSize: '1.1rem !important',
+      minHeight: '26px !important',
     },
     "@media (max-width: 600px)": {
       fontSize: '1rem !important',
       minHeight: 'auto !important',
+      marginBottom: '6px !important',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '0.95rem !important',
+      marginBottom: '5px !important',
+    },
+    "@media (max-width: 375px)": {
+      fontSize: '0.9rem !important',
+      marginBottom: '4px !important',
     },
   },
   advantageDescription: {
     fontSize: '0.95rem !important',
     color: '#555 !important',
     lineHeight: '1.5 !important',
+    "@media (max-width: 1200px)": {
+      fontSize: '0.93rem !important',
+    },
+    "@media (max-width: 960px)": {
+      fontSize: '0.9rem !important',
+    },
     "@media (max-width: 600px)": {
       fontSize: '0.9rem !important',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '0.85rem !important',
+      lineHeight: '1.4 !important',
+    },
+    "@media (max-width: 375px)": {
+      fontSize: '0.8rem !important',
+      lineHeight: '1.3 !important',
     },
   },
   headerContainer: {
     position: 'relative',
     marginBottom: '40px',
     zIndex: '1',
+    "@media (max-width: 1200px)": {
+      marginBottom: '35px',
+    },
+    "@media (max-width: 960px)": {
+      marginBottom: '30px',
+    },
+    "@media (max-width: 600px)": {
+      marginBottom: '25px',
+    },
+    "@media (max-width: 480px)": {
+      marginBottom: '20px',
+    },
+    "@media (max-width: 375px)": {
+      marginBottom: '18px',
+    },
   },
   decorCircle: {
     position: 'absolute',
@@ -175,6 +329,36 @@ const useStyles = makeStyles({
     height: '300px',
     top: '-150px',
     right: '-50px',
+    "@media (max-width: 1200px)": {
+      width: '280px',
+      height: '280px',
+      top: '-140px',
+      right: '-45px',
+    },
+    "@media (max-width: 960px)": {
+      width: '250px',
+      height: '250px',
+      top: '-125px',
+      right: '-40px',
+    },
+    "@media (max-width: 600px)": {
+      width: '200px',
+      height: '200px',
+      top: '-100px',
+      right: '-30px',
+    },
+    "@media (max-width: 480px)": {
+      width: '180px',
+      height: '180px',
+      top: '-90px',
+      right: '-25px',
+    },
+    "@media (max-width: 375px)": {
+      width: '150px',
+      height: '150px',
+      top: '-75px',
+      right: '-20px',
+    },
   },
   circle2: {
     width: '400px',
@@ -182,6 +366,36 @@ const useStyles = makeStyles({
     bottom: '-150px',
     left: '-100px',
     background: 'radial-gradient(circle, rgba(255, 198, 20, 0.08) 0%, rgba(255, 198, 20, 0) 70%)',
+    "@media (max-width: 1200px)": {
+      width: '350px',
+      height: '350px',
+      bottom: '-130px',
+      left: '-90px',
+    },
+    "@media (max-width: 960px)": {
+      width: '300px',
+      height: '300px',
+      bottom: '-120px',
+      left: '-80px',
+    },
+    "@media (max-width: 600px)": {
+      width: '250px',
+      height: '250px',
+      bottom: '-100px',
+      left: '-70px',
+    },
+    "@media (max-width: 480px)": {
+      width: '200px',
+      height: '200px',
+      bottom: '-80px',
+      left: '-60px',
+    },
+    "@media (max-width: 375px)": {
+      width: '150px',
+      height: '150px',
+      bottom: '-60px',
+      left: '-50px',
+    },
   },
 });
 

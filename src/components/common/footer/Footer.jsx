@@ -1,4 +1,4 @@
-// src/components/common/footer/EnhancedFooter.jsx
+// src/components/common/footer/Footer.jsx
 import React from "react";
 import { 
   Box, 
@@ -31,23 +31,105 @@ import { ReactComponent as CBottom } from "../../../assets/cbottom.svg";
 import { ReactComponent as CTop } from "../../../assets/ctop.svg";
 
 const useStyles = makeStyles({
+  footerWrapper: {
+    position: "relative",
+    overflow: "hidden",
+  },
+  topSvg: {
+    position: "absolute",
+    top: 0,
+    right: 0,
+    width: "182px",
+    height: "446px",
+    opacity: 0.5,
+    "@media (max-width: 1200px)": {
+      width: "160px",
+      height: "390px",
+    },
+    "@media (max-width: 960px)": {
+      width: "140px",
+      height: "340px",
+    },
+    "@media (max-width: 600px)": {
+      width: "100px",
+      height: "240px",
+    },
+    "@media (max-width: 480px)": {
+      width: "80px",
+      height: "200px",
+    },
+    "@media (max-width: 375px)": {
+      width: "60px",
+      height: "150px",
+    },
+  },
+  bottomSvg: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    width: "354px",
+    height: "382px",
+    opacity: 0.5,
+    "@media (max-width: 1200px)": {
+      width: "320px",
+      height: "345px",
+    },
+    "@media (max-width: 960px)": {
+      width: "280px",
+      height: "300px",
+    },
+    "@media (max-width: 600px)": {
+      width: "200px",
+      height: "220px",
+    },
+    "@media (max-width: 480px)": {
+      width: "150px",
+      height: "160px",
+    },
+    "@media (max-width: 375px)": {
+      width: "120px",
+      height: "130px",
+    },
+  },
   footer: {
     background: "linear-gradient(282.28deg, #001021 21.53%, #0C5FBA 106.11%)",
     color: "#ffffff",
     padding: "60px 0 20px 0",
+    "@media (max-width: 1200px)": {
+      padding: "55px 0 20px 0",
+    },
     "@media (max-width: 960px)": {
       padding: "50px 0 20px 0",
     },
     "@media (max-width: 600px)": {
       padding: "40px 0 20px 0",
     },
+    "@media (max-width: 480px)": {
+      padding: "35px 0 15px 0",
+    },
+    "@media (max-width: 375px)": {
+      padding: "30px 0 15px 0",
+    },
   },
   footerContainer: {
     display: "flex",
     justifyContent: "space-between",
     flexWrap: "wrap",
+    "@media (max-width: 1200px)": {
+      gap: "25px",
+    },
     "@media (max-width: 960px)": {
       gap: "30px",
+    },
+    "@media (max-width: 600px)": {
+      gap: "35px",
+      justifyContent: "center",
+    },
+    "@media (max-width: 480px)": {
+      gap: "30px",
+    },
+    "@media (max-width: 375px)": {
+      gap: "25px",
     },
   },
   column: {
@@ -57,15 +139,26 @@ const useStyles = makeStyles({
     paddingRight: "15px",
     "@media (max-width: 1200px)": {
       minWidth: "200px",
+      marginBottom: "25px",
       paddingRight: "10px",
     },
     "@media (max-width: 960px)": {
       flex: "0 0 45%",
       paddingRight: "0px",
+      marginBottom: "20px",
     },
     "@media (max-width: 600px)": {
       flex: "0 0 100%",
       marginBottom: "20px",
+      maxWidth: "350px",
+    },
+    "@media (max-width: 480px)": {
+      marginBottom: "15px",
+      maxWidth: "300px",
+    },
+    "@media (max-width: 375px)": {
+      marginBottom: "15px",
+      maxWidth: "280px",
     },
   },
   logoSection: {
@@ -74,11 +167,30 @@ const useStyles = makeStyles({
     alignItems: "center",
     textAlign: "center",
     marginBottom: "20px",
+    "@media (max-width: 1200px)": {
+      marginBottom: "18px",
+    },
+    "@media (max-width: 960px)": {
+      marginBottom: "16px",
+    },
+    "@media (max-width: 600px)": {
+      marginBottom: "15px",
+    },
+    "@media (max-width: 480px)": {
+      marginBottom: "12px",
+    },
+    "@media (max-width: 375px)": {
+      marginBottom: "10px",
+    },
   },
   logoWrapper: {
     width: "80px",
     height: "80px",
     marginBottom: "5px",
+    "@media (max-width: 1200px)": {
+      width: "75px",
+      height: "75px",
+    },
     "@media (max-width: 960px)": {
       width: "70px",
       height: "70px",
@@ -87,15 +199,41 @@ const useStyles = makeStyles({
       width: "60px",
       height: "60px",
     },
+    "@media (max-width: 480px)": {
+      width: "55px",
+      height: "55px",
+      marginBottom: "4px",
+    },
+    "@media (max-width: 375px)": {
+      width: "50px",
+      height: "50px",
+      marginBottom: "3px",
+    },
   },
   companyName: {
     fontSize: "1.5rem",
     fontWeight: "bold",
     marginBottom: "20px",
     color: "#FFFFFF",
+    "@media (max-width: 1200px)": {
+      fontSize: "1.4rem",
+      marginBottom: "18px",
+    },
+    "@media (max-width: 960px)": {
+      fontSize: "1.3rem",
+      marginBottom: "16px",
+    },
     "@media (max-width: 600px)": {
       fontSize: "1.3rem",
       marginBottom: "15px",
+    },
+    "@media (max-width: 480px)": {
+      fontSize: "1.2rem",
+      marginBottom: "12px",
+    },
+    "@media (max-width: 375px)": {
+      fontSize: "1.1rem",
+      marginBottom: "10px",
     },
   },
   description: {
@@ -105,9 +243,29 @@ const useStyles = makeStyles({
     marginBottom: "25px",
     maxWidth: "93%",
     textAlign: "center",
+    "@media (max-width: 1200px)": {
+      fontSize: "0.93rem",
+      marginBottom: "22px",
+      lineHeight: 1.45,
+    },
+    "@media (max-width: 960px)": {
+      fontSize: "0.9rem",
+      marginBottom: "20px",
+    },
     "@media (max-width: 600px)": {
       fontSize: "0.9rem",
       marginBottom: "20px",
+      maxWidth: "95%",
+    },
+    "@media (max-width: 480px)": {
+      fontSize: "0.85rem",
+      marginBottom: "18px",
+      lineHeight: 1.4,
+    },
+    "@media (max-width: 375px)": {
+      fontSize: "0.8rem",
+      marginBottom: "15px",
+      lineHeight: 1.35,
     },
   },
   sectionTitle: {
@@ -125,7 +283,12 @@ const useStyles = makeStyles({
       height: "3px",
       backgroundColor: "#FFC614",
     },
+    "@media (max-width: 1200px)": {
+      fontSize: "1.2rem !important",
+      marginBottom: "28px !important",
+    },
     "@media (max-width: 960px)": {
+      fontSize: "1.15rem !important",
       marginBottom: "25px !important",
     },
     "@media (max-width: 600px)": {
@@ -134,6 +297,24 @@ const useStyles = makeStyles({
       paddingBottom: "8px",
       "&:after": {
         width: "35px",
+        height: "2px",
+      },
+    },
+    "@media (max-width: 480px)": {
+      fontSize: "1.1rem !important",
+      marginBottom: "18px !important",
+      paddingBottom: "7px",
+      "&:after": {
+        width: "32px",
+        height: "2px",
+      },
+    },
+    "@media (max-width: 375px)": {
+      fontSize: "1rem !important",
+      marginBottom: "15px !important",
+      paddingBottom: "6px",
+      "&:after": {
+        width: "30px",
         height: "2px",
       },
     },
@@ -151,8 +332,20 @@ const useStyles = makeStyles({
     "&:hover": {
       transform: "translateX(5px)",
     },
+    "@media (max-width: 1200px)": {
+      marginBottom: "14px",
+    },
+    "@media (max-width: 960px)": {
+      marginBottom: "13px",
+    },
     "@media (max-width: 600px)": {
       marginBottom: "12px",
+    },
+    "@media (max-width: 480px)": {
+      marginBottom: "10px",
+    },
+    "@media (max-width: 375px)": {
+      marginBottom: "8px",
     },
   },
   linkText: {
@@ -165,15 +358,50 @@ const useStyles = makeStyles({
       color: "#FFC614 !important",
       textDecoration: "underline !important",
     },
+    "@media (max-width: 1200px)": {
+      fontSize: "0.98rem",
+    },
+    "@media (max-width: 960px)": {
+      fontSize: "0.95rem",
+    },
     "@media (max-width: 600px)": {
       fontSize: "0.95rem",
+      marginLeft: "8px",
+    },
+    "@media (max-width: 480px)": {
+      fontSize: "0.9rem",
+      marginLeft: "7px",
+    },
+    "@media (max-width: 375px)": {
+      fontSize: "0.85rem",
+      marginLeft: "6px",
     },
   },
   linkIcon: {
     color: "#FFC614",
     fontSize: "18px",
     minWidth: "24px",
-    marginRight:"5px"
+    marginRight: "5px",
+    "@media (max-width: 1200px)": {
+      fontSize: "17px",
+    },
+    "@media (max-width: 960px)": {
+      fontSize: "16px",
+    },
+    "@media (max-width: 600px)": {
+      fontSize: "16px",
+      minWidth: "22px",
+    },
+    "@media (max-width: 480px)": {
+      fontSize: "15px",
+      minWidth: "20px",
+      marginRight: "4px",
+    },
+    "@media (max-width: 375px)": {
+      fontSize: "14px",
+      minWidth: "18px",
+      marginRight: "3px",
+    },
   },
   programLink: {
     color: "#ffffff !important",
@@ -185,16 +413,43 @@ const useStyles = makeStyles({
       color: "#FFC614 !important",
       textDecoration: "underline !important",
     },
+    "@media (max-width: 1200px)": {
+      fontSize: "0.98rem",
+    },
+    "@media (max-width: 960px)": {
+      fontSize: "0.95rem",
+    },
     "@media (max-width: 600px)": {
       fontSize: "0.95rem",
+      marginLeft: "8px",
+    },
+    "@media (max-width: 480px)": {
+      fontSize: "0.9rem",
+      marginLeft: "7px",
+    },
+    "@media (max-width: 375px)": {
+      fontSize: "0.85rem",
+      marginLeft: "6px",
     },
   },
   contactItem: {
     display: "flex",
     alignItems: "flex-start",
     marginBottom: "20px",
+    "@media (max-width: 1200px)": {
+      marginBottom: "18px",
+    },
+    "@media (max-width: 960px)": {
+      marginBottom: "16px",
+    },
     "@media (max-width: 600px)": {
       marginBottom: "15px",
+    },
+    "@media (max-width: 480px)": {
+      marginBottom: "12px",
+    },
+    "@media (max-width: 375px)": {
+      marginBottom: "10px",
     },
   },
   contactIcon: {
@@ -202,17 +457,50 @@ const useStyles = makeStyles({
     marginRight: "15px",
     marginTop: "3px",
     fontSize: "20px",
-    "@media (max-width: 600px)": {
-      marginRight: "12px",
+    "@media (max-width: 1200px)": {
+      fontSize: "19px",
+      marginRight: "14px",
+    },
+    "@media (max-width: 960px)": {
       fontSize: "18px",
+      marginRight: "13px",
+    },
+    "@media (max-width: 600px)": {
+      fontSize: "18px",
+      marginRight: "12px",
+    },
+    "@media (max-width: 480px)": {
+      fontSize: "16px",
+      marginRight: "10px",
+      marginTop: "2px",
+    },
+    "@media (max-width: 375px)": {
+      fontSize: "15px",
+      marginRight: "8px",
+      marginTop: "2px",
     },
   },
   contactText: {
     color: "#ffffff",
     fontSize: "1rem",
     lineHeight: 1.5,
+    "@media (max-width: 1200px)": {
+      fontSize: "0.98rem",
+    },
+    "@media (max-width: 960px)": {
+      fontSize: "0.95rem",
+    },
     "@media (max-width: 600px)": {
       fontSize: "0.95rem",
+      lineHeight: 1.4,
+    },
+    "@media (max-width: 480px)": {
+      fontSize: "0.9rem",
+      lineHeight: 1.4,
+    },
+    "@media (max-width: 375px)": {
+      fontSize: "0.85rem",
+      lineHeight: 1.35,
     },
   },
   contactLink: {
@@ -224,8 +512,20 @@ const useStyles = makeStyles({
       color: "#FFC614 !important",
       textDecoration: "underline !important",
     },
+    "@media (max-width: 1200px)": {
+      fontSize: "0.98rem",
+    },
+    "@media (max-width: 960px)": {
+      fontSize: "0.95rem",
+    },
     "@media (max-width: 600px)": {
       fontSize: "0.95rem",
+    },
+    "@media (max-width: 480px)": {
+      fontSize: "0.9rem",
+    },
+    "@media (max-width: 375px)": {
+      fontSize: "0.85rem",
     },
   },
   socialIcons: {
@@ -233,9 +533,25 @@ const useStyles = makeStyles({
     gap: "15px",
     marginTop: "25px",
     flexWrap: "wrap",
+    "@media (max-width: 1200px)": {
+      gap: "14px",
+      marginTop: "23px",
+    },
+    "@media (max-width: 960px)": {
+      gap: "13px",
+      marginTop: "22px",
+    },
     "@media (max-width: 600px)": {
       gap: "12px",
       marginTop: "20px",
+    },
+    "@media (max-width: 480px)": {
+      gap: "10px",
+      marginTop: "18px",
+    },
+    "@media (max-width: 375px)": {
+      gap: "8px",
+      marginTop: "15px",
     },
   },
   socialIcon: {
@@ -252,11 +568,33 @@ const useStyles = makeStyles({
       backgroundColor: "rgba(255, 255, 255, 0.25)",
       transform: "translateY(-3px)",
     },
+    "@media (max-width: 1200px)": {
+      width: "38px",
+      height: "38px",
+    },
+    "@media (max-width: 960px)": {
+      width: "36px",
+      height: "36px",
+    },
     "@media (max-width: 600px)": {
       width: "35px",
       height: "35px",
       "& svg": {
         fontSize: "1.2rem",
+      },
+    },
+    "@media (max-width: 480px)": {
+      width: "32px",
+      height: "32px",
+      "& svg": {
+        fontSize: "1.1rem",
+      },
+    },
+    "@media (max-width: 375px)": {
+      width: "30px",
+      height: "30px",
+      "& svg": {
+        fontSize: "1rem",
       },
     },
   },
@@ -265,14 +603,44 @@ const useStyles = makeStyles({
     height: "1px",
     backgroundColor: "rgba(255, 255, 255, 0.1)",
     margin: "20px 0",
+    "@media (max-width: 1200px)": {
+      margin: "18px 0",
+    },
+    "@media (max-width: 960px)": {
+      margin: "16px 0",
+    },
+    "@media (max-width: 600px)": {
+      margin: "15px 0",
+    },
+    "@media (max-width: 480px)": {
+      margin: "12px 0",
+    },
+    "@media (max-width: 375px)": {
+      margin: "10px 0",
+    },
   },
   copyright: {
     color: "#b0b0b0",
     fontSize: "0.9rem !important",
     textAlign: "center",
     padding: "10px 0 0",
+    "@media (max-width: 1200px)": {
+      fontSize: "0.88rem !important",
+    },
+    "@media (max-width: 960px)": {
+      fontSize: "0.85rem !important",
+    },
     "@media (max-width: 600px)": {
       fontSize: "0.85rem !important",
+      padding: "8px 0 0",
+    },
+    "@media (max-width: 480px)": {
+      fontSize: "0.8rem !important",
+      padding: "6px 0 0",
+    },
+    "@media (max-width: 375px)": {
+      fontSize: "0.75rem !important",
+      padding: "5px 0 0",
     },
   },
   poweredBy: {
@@ -280,41 +648,25 @@ const useStyles = makeStyles({
     fontSize: "0.6rem !important",
     textAlign: "center",
     padding: "10px 0 0",
-  },
-  footerWrapper: {
-    position: "relative",
-    overflow: "hidden",
-  },
-  topSvg: {
-    position: "absolute",
-    top: 0,
-    right: 0,
-    width: "182px",
-    height: "446px",
-    opacity: 0.5,
+    "@media (max-width: 1200px)": {
+      fontSize: "0.58rem !important",
+      padding: "8px 0 0",
+    },
     "@media (max-width: 960px)": {
-      width: "140px",
-      height: "340px",
+      fontSize: "0.55rem !important",
+      padding: "7px 0 0",
     },
     "@media (max-width: 600px)": {
-      width: "100px",
-      height: "240px",
+      fontSize: "0.55rem !important",
+      padding: "6px 0 0",
     },
-  },
-  bottomSvg: {
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    width: "354px",
-    height: "382px",
-    opacity: 0.5,
-    "@media (max-width: 960px)": {
-      width: "280px",
-      height: "300px",
+    "@media (max-width: 480px)": {
+      fontSize: "0.5rem !important",
+      padding: "5px 0 0",
     },
-    "@media (max-width: 600px)": {
-      width: "200px",
-      height: "220px",
+    "@media (max-width: 375px)": {
+      fontSize: "0.45rem !important",
+      padding: "4px 0 0",
     },
   },
 });
@@ -458,7 +810,7 @@ const Footer = () => {
               <Box className={classes.contactItem}>
                 <LocationOnIcon className={classes.contactIcon} />
                 <Typography className={classes.contactText}>
-                  The Headquarters, Dwaraka Pride, Hitech City, 500081 ,
+                  The Headquarters, Dwaraka Pride, Hitech City, 500081 ,
                   Hyderabad, Telangana, India
                 </Typography>
               </Box>

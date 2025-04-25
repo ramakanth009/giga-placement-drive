@@ -21,7 +21,7 @@ const Fullstack = () => {
   return (
     <div>
       <Navbar />
-      <Hero />
+      <Hero /> 
       <FullstackImportance />
       <HiringRolesBoxes />
       <ProjectHigh />
