@@ -25,6 +25,21 @@ const useStyles = makeStyles({
     color: 'white',
     position: 'relative',
     overflow: 'hidden',
+    '@media (max-width: 1200px)': {
+      padding: '45px 40px',
+    },
+    '@media (max-width: 960px)': {
+      padding: '40px 30px',
+    },
+    '@media (max-width: 600px)': {
+      padding: '35px 20px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '30px 15px',
+    },
+    '@media (max-width: 375px)': {
+      padding: '25px 10px',
+    },
   },
   backgroundGlow: {
     position: 'absolute',
@@ -34,16 +49,46 @@ const useStyles = makeStyles({
     filter: 'blur(150px)',
     opacity: 0.15,
     zIndex: 0,
+    '@media (max-width: 960px)': {
+      width: '500px',
+      height: '500px',
+    },
+    '@media (max-width: 600px)': {
+      width: '400px',
+      height: '400px',
+      filter: 'blur(100px)',
+    },
+    '@media (max-width: 480px)': {
+      width: '300px',
+      height: '300px',
+      filter: 'blur(80px)',
+    },
   },
   bottomLeftGlow: {
     background: '#4376eb',
     bottom: '-300px',
     left: '-200px',
+    '@media (max-width: 600px)': {
+      bottom: '-200px',
+      left: '-150px',
+    },
+    '@media (max-width: 480px)': {
+      bottom: '-150px',
+      left: '-100px',
+    },
   },
   topRightGlow: {
     background: '#7039e5',
     top: '-200px',
     right: '-200px',
+    '@media (max-width: 600px)': {
+      top: '-150px',
+      right: '-150px',
+    },
+    '@media (max-width: 480px)': {
+      top: '-100px',
+      right: '-100px',
+    },
   },
   container: {
     display: 'flex',
@@ -55,6 +100,21 @@ const useStyles = makeStyles({
   titleContainer: {
     textAlign: 'center',
     marginBottom: '40px',
+    '@media (max-width: 1200px)': {
+      marginBottom: '35px',
+    },
+    '@media (max-width: 960px)': {
+      marginBottom: '30px',
+    },
+    '@media (max-width: 600px)': {
+      marginBottom: '25px',
+    },
+    '@media (max-width: 480px)': {
+      marginBottom: '20px',
+    },
+    '@media (max-width: 375px)': {
+      marginBottom: '15px',
+    },
   },
   mainTitle: {
     fontSize: '2.5rem !important',
@@ -78,18 +138,97 @@ const useStyles = makeStyles({
       color: '#FFC614 !important',
       position: 'relative',
     },
+    '@media (max-width: 1200px)': {
+      fontSize: '2.3rem !important',
+      marginBottom: '14px !important',
+      '&:after': {
+        width: '55px',
+        bottom: '-12px',
+      },
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '2.1rem !important',
+      marginBottom: '12px !important',
+      '&:after': {
+        width: '50px',
+        bottom: '-10px',
+      },
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '1.8rem !important',
+      marginBottom: '10px !important',
+      '&:after': {
+        width: '45px',
+        height: '2.5px',
+        bottom: '-8px',
+      },
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '1.6rem !important',
+      marginBottom: '8px !important',
+      '&:after': {
+        width: '40px',
+        height: '2px',
+        bottom: '-7px',
+      },
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1.4rem !important',
+      marginBottom: '7px !important',
+      '&:after': {
+        width: '35px',
+        height: '2px',
+        bottom: '-6px',
+      },
+    },
   },
   subtitle: {
     fontSize: '1.5rem !important',
     fontWeight: '500 !important',
     color: 'rgba(255, 255, 255, 0.9) !important',
     marginTop: '20px !important',
+    '@media (max-width: 1200px)': {
+      fontSize: '1.4rem !important',
+      marginTop: '18px !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '1.3rem !important',
+      marginTop: '16px !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '1.2rem !important',
+      marginTop: '14px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '1.1rem !important',
+      marginTop: '12px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1rem !important',
+      marginTop: '10px !important',
+    },
   },
   categoriesContainer: {
     display: 'flex',
     flexDirection: 'column', 
     gap: '50px',
     margin: '10px 0 10px',
+    width: '100%',
+    '@media (max-width: 1200px)': {
+      gap: '45px',
+    },
+    '@media (max-width: 960px)': {
+      gap: '40px',
+    },
+    '@media (max-width: 600px)': {
+      gap: '35px',
+    },
+    '@media (max-width: 480px)': {
+      gap: '30px',
+    },
+    '@media (max-width: 375px)': {
+      gap: '25px',
+    },
   },
   categoryHeader: {
     backgroundColor: 'rgba(255, 255, 255, 0.07)',
@@ -128,12 +267,50 @@ const useStyles = makeStyles({
       backgroundColor: 'rgba(255, 255, 255, 0.1)',
       transform: 'translateY(-3px)',
     },
-    
+    '@media (max-width: 1200px)': {
+      padding: '16px 22px',
+      marginBottom: '22px',
+      borderRadius: '14px',
+      borderLeft: '4px solid #FFC614',
+    },
+    '@media (max-width: 960px)': {
+      padding: '18px 20px',
+      marginBottom: '20px',
+      borderRadius: '12px',
+      flexDirection: 'column',
+      alignItems: 'center',
+      gap: '15px',
+    },
+    '@media (max-width: 600px)': {
+      padding: '16px 18px',
+      marginBottom: '18px',
+      borderRadius: '10px',
+      borderLeft: '3px solid #FFC614',
+    },
+    '@media (max-width: 480px)': {
+      padding: '14px 15px',
+      marginBottom: '15px',
+      borderRadius: '8px',
+    },
+    '@media (max-width: 375px)': {
+      padding: '12px 12px',
+      marginBottom: '12px',
+      borderRadius: '6px',
+      borderLeft: '2px solid #FFC614',
+    },
   },
   categoryTitleGroup: {
     display: 'flex',
     alignItems: 'center',
     zIndex: 1,
+    '@media (max-width: 960px)': {
+      justifyContent: 'center',
+      width: '100%',
+      marginBottom: '3px',
+    },
+    '@media (max-width: 480px)': {
+      gap: '5px',
+    },
   },
   categoryTitle: {
     fontSize: '1.25rem !important',
@@ -141,20 +318,75 @@ const useStyles = makeStyles({
     color: 'white !important',
     marginLeft: '15px !important',
     zIndex: 1,
-    
+    '@media (max-width: 1200px)': {
+      fontSize: '1.2rem !important',
+      marginLeft: '12px !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '1.15rem !important',
+      marginLeft: '10px !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '1.1rem !important',
+      marginLeft: '8px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '1rem !important',
+      marginLeft: '6px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.9rem !important',
+      marginLeft: '5px !important',
+    },
   },
   categoryIcon: {
     color: '#FFC614',
     fontSize: '26px !important',
     zIndex: 1,
     filter: 'drop-shadow(0 2px 3px rgba(0,0,0,0.2))',
-    
+    '@media (max-width: 1200px)': {
+      fontSize: '24px !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '22px !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '20px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '18px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '16px !important',
+    },
   },
   categoryRightContent: {
     display: 'flex',
     alignItems: 'center',
     gap: '15px',
-    
+    '@media (max-width: 1200px)': {
+      gap: '12px',
+    },
+    '@media (max-width: 960px)': {
+      gap: '10px',
+      flexWrap: 'wrap',
+      justifyContent: 'center',
+      width: '100%',
+      borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+      paddingTop: '12px',
+    },
+    '@media (max-width: 600px)': {
+      gap: '8px',
+      paddingTop: '10px',
+    },
+    '@media (max-width: 480px)': {
+      gap: '6px',
+      paddingTop: '8px',
+    },
+    '@media (max-width: 375px)': {
+      gap: '5px',
+      paddingTop: '6px',
+    },
   },
   statChip: {
     borderRadius: '20px !important',
@@ -163,7 +395,37 @@ const useStyles = makeStyles({
     padding: '2px 8px !important',
     height: '28px !important',
     zIndex: '1 !important',
-    
+    '@media (max-width: 1200px)': {
+      fontSize: '0.8rem !important',
+      height: '26px !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '0.75rem !important',
+      height: '24px !important',
+      padding: '2px 6px !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.7rem !important',
+      height: '22px !important',
+      padding: '1px 6px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.65rem !important',
+      height: '20px !important',
+      padding: '1px 5px !important',
+      '& .MuiChip-icon': {
+        fontSize: '0.8rem',
+      },
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.6rem !important',
+      height: '18px !important',
+      padding: '1px 4px !important',
+      '& .MuiChip-icon': {
+        fontSize: '0.7rem',
+        marginRight: '2px !important',
+      },
+    },
   },
   demandChip: {
     backgroundColor: '#FFC614 !important',
@@ -182,70 +444,130 @@ const useStyles = makeStyles({
   verifiedChip: {
     backgroundColor: '#00a0fc !important',
     color: 'white !important',
-    
+    '@media (max-width: 480px)': {
+      display: 'none',
+    },
   },
   rolesGrid: {
     display: 'grid',
     gridTemplateColumns: 'repeat(5, 1fr)',
     gap: '15px',
     width: '100%',
-    
+    justifyContent: 'center',
+    '@media (max-width: 1200px)': {
+      gridTemplateColumns: 'repeat(5, 1fr)',
+      gap: '12px',
+    },
+    '@media (max-width: 960px)': {
+      gridTemplateColumns: 'repeat(3, 1fr)',
+      gap: '10px',
+    },
+    '@media (max-width: 600px)': {
+      gridTemplateColumns: 'repeat(2, 1fr)',
+      gap: '10px',
+    },
+    '@media (max-width: 480px)': {
+      gridTemplateColumns: 'repeat(2, 1fr)',
+      gap: '8px',
+    },
+    '@media (max-width: 375px)': {
+      gridTemplateColumns: '1fr',
+      gap: '8px',
+      justifyItems: 'center',
+      '& $roleCard': {
+        width: '90%',
+        maxWidth: '280px',
+      },
+    },
   },
-  
   roleCard: {
-  backgroundColor: 'rgba(255, 255, 255, 0.05)',
-  borderRadius: '12px',
-  padding: '15px',
-  display: 'flex',
-  flexDirection: 'column',
-  position: 'relative',
-  boxShadow: '0 8px 15px rgba(0, 0, 0, 0.1)',
-  border: '1px solid rgba(255, 255, 255, 0.05)',
-  transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
-  overflow: 'hidden',
-  '&:before': {
-    content: '""',
-    position: 'absolute',
-    top: '0',
-    left: '0',
-    width: '100%',
-    height: '100%',
-    background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%)',
-    opacity: 0,
-    transition: 'opacity 0.3s ease',
-  },
-  '&:hover': {
-    backgroundColor: '#ffffff',
-    transform: 'translateY(-8px)',
-    boxShadow: '0 15px 30px rgba(0, 0, 0, 0.2)',
-    borderColor: 'rgba(255, 198, 20, 0.3)',
+    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+    borderRadius: '12px',
+    padding: '15px',
+    display: 'flex',
+    flexDirection: 'column',
+    position: 'relative',
+    boxShadow: '0 8px 15px rgba(0, 0, 0, 0.1)',
+    border: '1px solid rgba(255, 255, 255, 0.05)',
+    transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
+    overflow: 'hidden',
     '&:before': {
-      opacity: 1,
+      content: '""',
+      position: 'absolute',
+      top: '0',
+      left: '0',
+      width: '100%',
+      height: '100%',
+      background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%)',
+      opacity: 0,
+      transition: 'opacity 0.3s ease',
     },
-    '& $roleIcon': {
-      transform: 'scale(1.1)',
-      color: '#2A2B6A',
+    '&:hover': {
+      backgroundColor: '#ffffff',
+      transform: 'translateY(-8px)',
+      boxShadow: '0 15px 30px rgba(0, 0, 0, 0.2)',
+      borderColor: 'rgba(255, 198, 20, 0.3)',
+      '&:before': {
+        opacity: 1,
+      },
+      '& $roleIcon': {
+        transform: 'scale(1.1)',
+        color: '#2A2B6A',
+      },
+      '& $roleText': {
+        color: '#2A2B6A !important',
+      },
+      '& $detailText': {
+        color: '#2A2B6A !important',
+      },
+      '& $skillChip': {
+        backgroundColor: 'rgba(42, 43, 106, 0.1) !important',
+        color: '#2A2B6A !important',
+      },
+      '& $detailIcon': {
+        color: '#2A2B6A',
+      },
     },
-    '& $roleText': {
-      color: '#2A2B6A !important',
+    '@media (max-width: 1200px)': {
+      padding: '14px',
+      borderRadius: '10px',
     },
-    '& $detailText': {
-      color: '#2A2B6A !important',
+    '@media (max-width: 960px)': {
+      padding: '12px',
+      borderRadius: '8px',
     },
-    '& $skillChip': {
-      backgroundColor: 'rgba(42, 43, 106, 0.1) !important',
-      color: '#2A2B6A !important',
+    '@media (max-width: 600px)': {
+      padding: '10px',
+      borderRadius: '8px',
     },
-     "$detailIcon": {  // Target the icon when roleCard is hovered
-      color: '#2A2B6A',
+    '@media (max-width: 480px)': {
+      padding: '8px',
+      borderRadius: '6px',
+    },
+    '@media (max-width: 375px)': {
+      padding: '8px',
+      borderRadius: '6px',
     },
   },
-  
-},
   roleHeaderContainer: {
     display: 'flex',
     alignItems: 'center',
     marginBottom: '12px',
+    '@media (max-width: 1200px)': {
+      marginBottom: '10px',
+    },
+    '@media (max-width: 960px)': {
+      marginBottom: '10px',
+    },
+    '@media (max-width: 600px)': {
+      marginBottom: '8px',
+    },
+    '@media (max-width: 480px)': {
+      marginBottom: '6px',
+    },
+    '@media (max-width: 375px)': {
+      marginBottom: '5px',
+    },
   },
   roleIcon: {
     color: 'rgba(255, 198, 20, 0.8)',
@@ -253,44 +575,125 @@ const useStyles = makeStyles({
     marginRight: '12px',
     transition: 'all 0.3s ease',
     filter: 'drop-shadow(0 2px 3px rgba(0,0,0,0.2))',
-    
+    '@media (max-width: 1200px)': {
+      fontSize: '22px !important',
+      marginRight: '10px',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '20px !important',
+      marginRight: '8px',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '18px !important',
+      marginRight: '6px',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '16px !important',
+      marginRight: '6px',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '16px !important',
+      marginRight: '5px',
+    },
   },
   roleText: {
-  color: '#ffffff',
-  fontWeight: '700 !important',
-  fontSize: '1.05rem !important',
-  transition: 'color 0.3s ease !important',
-  
-},
+    color: '#ffffff',
+    fontWeight: '700 !important',
+    fontSize: '1.05rem !important',
+    transition: 'color 0.3s ease !important',
+    '@media (max-width: 1200px)': {
+      fontSize: '1rem !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '0.95rem !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.9rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.85rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.8rem !important',
+    },
+  },
   roleDetails: {
     display: 'flex',
     flexDirection: 'column',
     gap: '12px',
     marginTop: '5px',
+    '@media (max-width: 1200px)': {
+      gap: '10px',
+    },
+    '@media (max-width: 960px)': {
+      gap: '8px',
+    },
+    '@media (max-width: 600px)': {
+      gap: '6px',
+    },
+    '@media (max-width: 480px)': {
+      gap: '4px',
+    },
+    '@media (max-width: 375px)': {
+      gap: '4px',
+    },
   },
   detailRow: {
     display: 'flex',
     alignItems: 'center',
     '&:hover': {
-      color:"#2A2B6A"
+      color: "#2A2B6A"
     }
   },
   detailIcon: {
     color: 'rgba(255, 198, 20, 0.9)',
     marginRight: '8px',
     fontSize: '18px !important',
-    
-    "$roleCard:hover &": {  // Target the icon when roleCard is hovered
+    '$roleCard:hover &': {
       color: '#2A2B6A',
+    },
+    '@media (max-width: 1200px)': {
+      fontSize: '17px !important',
+      marginRight: '7px',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '16px !important',
+      marginRight: '6px',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '15px !important',
+      marginRight: '5px',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '14px !important',
+      marginRight: '4px',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '13px !important',
+      marginRight: '4px',
     },
   },
   detailText: {
-  color: 'rgba(255, 255, 255, 0.9) !important',
-  fontSize: '0.9rem !important',
-  fontWeight: 'bold !important',
-  transition: 'color 0.3s ease !important',
-  
-},
+    color: 'rgba(255, 255, 255, 0.9) !important',
+    fontSize: '0.9rem !important',
+    fontWeight: 'bold !important',
+    transition: 'color 0.3s ease !important',
+    '@media (max-width: 1200px)': {
+      fontSize: '0.85rem !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '0.8rem !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.75rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.7rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.65rem !important',
+    },
+  },
   actionsContainer: {
     display: 'flex',
     justifyContent: 'center',
@@ -298,7 +701,28 @@ const useStyles = makeStyles({
     marginTop: '50px',
     position: 'relative',
     zIndex: 2,
-    
+    '@media (max-width: 1200px)': {
+      marginTop: '45px',
+      gap: '18px',
+    },
+    '@media (max-width: 960px)': {
+      marginTop: '40px',
+      gap: '15px',
+    },
+    '@media (max-width: 600px)': {
+      marginTop: '35px',
+      gap: '12px',
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+    '@media (max-width: 480px)': {
+      marginTop: '30px',
+      gap: '10px',
+    },
+    '@media (max-width: 375px)': {
+      marginTop: '25px',
+      gap: '8px',
+    },
   },
   button: {
     padding: '12px 24px !important',
@@ -321,7 +745,32 @@ const useStyles = makeStyles({
       background: 'linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0))',
       zIndex: -1,
     },
-    
+    '@media (max-width: 1200px)': {
+      padding: '11px 22px !important',
+      fontSize: '0.95rem !important',
+    },
+    '@media (max-width: 960px)': {
+      padding: '10px 20px !important',
+      fontSize: '0.9rem !important',
+      borderRadius: '7px !important',
+    },
+    '@media (max-width: 600px)': {
+      padding: '10px 20px !important',
+      fontSize: '0.85rem !important',
+      borderRadius: '6px !important',
+      width: '80%',
+      maxWidth: '300px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '8px 16px !important',
+      fontSize: '0.8rem !important',
+      borderRadius: '5px !important',
+    },
+    '@media (max-width: 375px)': {
+      padding: '7px 14px !important',
+      fontSize: '0.75rem !important',
+      borderRadius: '4px !important',
+    },
   },
   checkButton: {
     backgroundColor: '#FFC614 !important',
@@ -339,12 +788,32 @@ const useStyles = makeStyles({
     height: '8px',
     backgroundColor: 'rgba(255, 255, 255, 0.5)',
     borderRadius: '50%',
+    '@media (max-width: 1200px)': {
+      width: '7px',
+      height: '7px',
+    },
+    '@media (max-width: 960px)': {
+      width: '6px',
+      height: '6px',
+    },
+    '@media (max-width: 600px)': {
+      width: '5px',
+      height: '5px',
+    },
+    '@media (max-width: 480px)': {
+      width: '4px',
+      height: '4px',
+    },
   },
   hiddenMd: {
-    
+    '@media (max-width: 960px)': {
+      display: 'none',
+    },
   },
   hiddenSm: {
-   
+    '@media (max-width: 600px)': {
+      display: 'none',
+    },
   },
   categoryContainer: {
     opacity: 0,
@@ -512,97 +981,95 @@ const InDemandRoles = () => {
         />
       ))}
 
-        {/* Title Section */}
-        <Box className={classes.titleContainer}>
-          <Typography variant="h2" className={classes.mainTitle}>
+      {/* Title Section */}
+      <Box className={classes.titleContainer}>
+        <Typography variant="h2" className={classes.mainTitle}>
           Explore In-Demand <span>Full Stack</span> and <span>Data Science</span> Jobs 
-          </Typography>
-          <Typography variant="h4" className={classes.subtitle}>
-            New Opportunities Added Every Week
-          </Typography>
-        </Box>
+        </Typography>
+        <Typography variant="h4" className={classes.subtitle}>
+          New Opportunities Added Every Week
+        </Typography>
+      </Box>
 
-        {/* Categories and Roles */}
-        <Box className={classes.categoriesContainer}>
-          {categories.map((category, categoryIndex) => (
-            <Box 
-              key={categoryIndex} 
-              className={`${classes.categoryContainer} ${visibleCategories.includes(categoryIndex) ? classes.visibleCategory : ''}`}
-              data-category
-              data-index={categoryIndex}
-              sx={{ transitionDelay: `${categoryIndex * 0.2}s` }}
-            >
-              <Box className={classes.categoryHeader}>
-                <Box className={classes.categoryTitleGroup}>
-                  {category.icon}
-                  <Typography className={classes.categoryTitle} variant='h3'>
-                    {category.title}
-                  </Typography>
-                </Box>
-                
-                <Box className={classes.categoryRightContent}>
-                  <Chip 
-                    icon={<WorkIcon />}
-                    label={category.demandLevel}
-                    className={`${classes.statChip} ${classes.demandChip}`}
-                    size="small"
-                  />
-                  <Chip 
-                    icon={<TrendingUpIcon />}
-                    label={category.growthRate}
-                    className={`${classes.statChip} ${classes.growthChip}`}
-                    size="small"
-                  />
-                  {category.verified && (
-                    <Chip 
-                      icon={<VerifiedIcon />}
-                      label="Verified Sources"
-                      className={`${classes.statChip} ${classes.verifiedChip}`}
-                      size="small"
-                    />
-                  )}
-                </Box>
+      {/* Categories and Roles */}
+      <Box className={classes.categoriesContainer}>
+        {categories.map((category, categoryIndex) => (
+          <Box 
+            key={categoryIndex} 
+            className={`${classes.categoryContainer} ${visibleCategories.includes(categoryIndex) ? classes.visibleCategory : ''}`}
+            data-category
+            data-index={categoryIndex}
+            sx={{ transitionDelay: `${categoryIndex * 0.2}s` }}
+          >
+            <Box className={classes.categoryHeader}>
+              <Box className={classes.categoryTitleGroup}>
+                {category.icon}
+                <Typography className={classes.categoryTitle} variant='h3'>
+                  {category.title}
+                </Typography>
               </Box>
               
-              <Box className={classes.rolesGrid}>
-                {category.roles.map((role, roleIndex) => (
-                  <Box 
-                    key={roleIndex} 
-                    className={classes.roleCard}
-                  >
-                    {/* Role Title with Icon */}
-                    <Box className={classes.roleHeaderContainer}>
-                      {role.icon}
-                      <Typography className={classes.roleText}>
-                        {role.title}
-                      </Typography>
-                    </Box>
-                    
-                    {/* Salary Detail */}
-                    <Box className={classes.detailRow}>
-                      <CurrencyRupeeIcon  className={classes.detailIcon} />
-                      <Typography className={classes.detailText}>
-                        Avg Salary: {role.salary}
-                      </Typography>
-                    </Box>
-                    
-                    
-                  </Box>
-                ))}
+              <Box className={classes.categoryRightContent}>
+                <Chip 
+                  icon={<WorkIcon />}
+                  label={category.demandLevel}
+                  className={`${classes.statChip} ${classes.demandChip}`}
+                  size="small"
+                />
+                <Chip 
+                  icon={<TrendingUpIcon />}
+                  label={category.growthRate}
+                  className={`${classes.statChip} ${classes.growthChip}`}
+                  size="small"
+                />
+                {category.verified && (
+                  <Chip 
+                    icon={<VerifiedIcon />}
+                    label="Verified Sources"
+                    className={`${classes.statChip} ${classes.verifiedChip}`}
+                    size="small"
+                  />
+                )}
               </Box>
             </Box>
-          ))}
-        </Box>
+            
+            <Box className={classes.rolesGrid}>
+              {category.roles.map((role, roleIndex) => (
+                <Box 
+                  key={roleIndex} 
+                  className={classes.roleCard}
+                >
+                  {/* Role Title with Icon */}
+                  <Box className={classes.roleHeaderContainer}>
+                    {role.icon}
+                    <Typography className={classes.roleText}>
+                      {role.title}
+                    </Typography>
+                  </Box>
+                  
+                  {/* Salary Detail */}
+                  <Box className={classes.detailRow}>
+                    <CurrencyRupeeIcon className={classes.detailIcon} />
+                    <Typography className={classes.detailText}>
+                      Avg Salary: {role.salary}
+                    </Typography>
+                  </Box>
+                </Box>
+              ))}
+            </Box>
+          </Box>
+        ))}
+      </Box>
 
-        {/* Action Buttons */}
-        <Box className={classes.actionsContainer}>
-          <Button
-            variant="contained"
-            className={`${classes.button} ${classes.checkButton}`}
-          >
-            Check Your Eligibility
-          </Button>
-        </Box>
+      {/* Action Buttons */}
+      <Box className={classes.actionsContainer}>
+        <Button
+          variant="contained"
+          className={`${classes.button} ${classes.checkButton}`}
+        >
+          Check Your Eligibility
+        </Button>
+      </Box>
     </Box>
   );
 };
