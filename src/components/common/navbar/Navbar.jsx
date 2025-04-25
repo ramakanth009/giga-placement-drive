@@ -298,7 +298,7 @@ const Navbar = () => {
             component={Link} 
             to="/contact"
           >
-            Contact
+            Contact Us
           </MenuItem>
           <MenuItem 
             onClick={() => handleNavLinkClick()} 

@@ -76,9 +76,6 @@ const useStyles = makeStyles({
     marginRight: "12px",
   },
   featureIcon2: {
-    // backgroundColor: "#000000",
-    // background: "linear-gradient(180deg, #FAFAFA 0%, #D6EBFF 100%)",
-    // padding: "15px",
     fontWeight: "bold !important",
     fontSize: "1rem !important",
     borderRadius: "50%",
@@ -122,7 +119,9 @@ const useStyles = makeStyles({
     "@media (max-width: 600px)": {
       display: "flex",
       flexDirection: "column",
-      width: "100vw",
+      alignItems: "center",
+      justifyContent: "center",
+      width: "100%",
       position: "relative",
       zIndex: 5,
     }
@@ -130,12 +129,16 @@ const useStyles = makeStyles({
   mobileFeatureGrid: {
     display: "grid",
     gridTemplateColumns: "1fr 1fr",
-    gap: "12px",
+    gridTemplateRows: "1fr 1fr",
+    gap: "15px",
     width: "100%",
+    maxWidth: "340px",
     margin: "0 auto",
-    maxWidth: "320px",
+    placeItems: "center", // Centers items both horizontally and vertically
   },
   featureGridItem: {
+    width: "100%",
+    height: "100%",
     opacity: 0,
     transform: "translateY(20px)",
   },
@@ -144,7 +147,12 @@ const useStyles = makeStyles({
     borderRadius: "12px !important",
     boxShadow: "0 6px 15px rgba(0, 0, 0, 0.07) !important",
     height: "100%",
-    padding: "12px",
+    width: "100%",
+    padding: "16px",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
     transition: "transform 0.3s ease, box-shadow 0.3s ease",
     position: "relative",
     overflow: "hidden",
@@ -154,13 +162,13 @@ const useStyles = makeStyles({
     },
   },
   iconCircle: {
-    width: "36px",
-    height: "36px",
+    width: "40px",
+    height: "40px",
     borderRadius: "50%",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: "8px",
+    marginBottom: "10px",
     background: "#F2F6FF",
     color: "#2A2B6A",
     "& svg": {
@@ -172,12 +180,14 @@ const useStyles = makeStyles({
     fontWeight: "600 !important",
     color: "#2A2B6A !important",
     marginBottom: "4px !important",
+    textAlign: "center",
   },
   featureValue: {
     fontSize: "1.4rem !important",
     fontWeight: "bold !important",
     color: "#FFC614 !important",
     lineHeight: "1.1 !important",
+    textAlign: "center",
   },
   "@keyframes float": {
     "0%": {
@@ -302,24 +312,21 @@ const HeroRightSection = () => {
         />
       </Box>
       
-      {/* Mobile view specific content */}
+      {/* Mobile view specific content - 2x2 grid */}
       <Box className={classes.mobileContainer}>
-        <Grid container spacing={2} className={classes.mobileFeatureGrid}>
+        <Box className={classes.mobileFeatureGrid}>
           {features.map((feature, index) => (
-            <Grid 
-              item 
-              xs={6} 
+            <Box 
               key={index}
+              className={classes.featureGridItem}
+              sx={{
+                opacity: visibleItems.includes(index) ? 1 : 0,
+                transform: visibleItems.includes(index) ? 'translateY(0)' : 'translateY(20px)',
+                transition: 'opacity 0.5s ease, transform 0.5s ease',
+                transitionDelay: `${feature.delay}s`,
+              }}
             >
-              <Box 
-                className={classes.mobileFeatureCard}
-                sx={{
-                  opacity: visibleItems.includes(index) ? 1 : 0,
-                  transform: visibleItems.includes(index) ? 'translateY(0)' : 'translateY(20px)',
-                  transition: 'opacity 0.5s ease, transform 0.5s ease',
-                  transitionDelay: `${feature.delay}s`,
-                }}
-              >
+              <Box className={classes.mobileFeatureCard}>
                 <Box className={classes.iconCircle}>
                   {feature.icon}
                 </Box>
@@ -330,9 +337,9 @@ const HeroRightSection = () => {
                   {feature.value}
                 </Typography>
               </Box>
-            </Grid>
+            </Box>
           ))}
-        </Grid>
+        </Box>
       </Box>
     </Box>
   );
