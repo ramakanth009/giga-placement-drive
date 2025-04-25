@@ -18,27 +18,28 @@ const useStyles = makeStyles({
   resumeWrapper: {
     position: 'relative',
     width: '100%',
-    maxWidth: '650px',
+    maxWidth: '550px',
     margin: '0 auto',
     perspective: '2000px',
-    height: '750px',
+    height: 'auto',
+    minHeight: '700px',
     '@media (max-width: 1200px)': {
-      maxWidth: '550px',
-      height: '700px',
+      maxWidth: '450px',
+      minHeight: '600px',
     },
     '@media (max-width: 960px)': {
-      maxWidth: '500px',
-      height: '650px',
+      maxWidth: '420px',
+      minHeight: '599px',
     },
     '@media (max-width: 600px)': {
-      height: '550px',
+      minHeight: '550px',
     },
     '@media (max-width: 480px)': {
-      height: '500px',
+      minHeight: '500px',
       perspective: '1500px',
     },
     '@media (max-width: 375px)': {
-      height: '450px',
+      minHeight: '400px',
     },
   },
   resumeCard: {
@@ -62,7 +63,7 @@ const useStyles = makeStyles({
       padding: '22px 18px',
     },
     '@media (max-width: 960px)': {
-      padding: '20px 15px',
+      padding: '15px 12px',
     },
     '@media (max-width: 600px)': {
       padding: '15px 12px',
@@ -107,38 +108,38 @@ const useStyles = makeStyles({
     },
   },
   resumeName: {
-    fontSize: '1.4rem !important',
+    fontSize: '1.2rem !important',
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
     marginBottom: '3px !important',
     '@media (max-width: 960px)': {
-      fontSize: '1.3rem !important',
+      fontSize: '0.85rem !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '1.2rem !important',
+      fontSize: '0.85rem !important',
     },
     '@media (max-width: 480px)': {
-      fontSize: '1.1rem !important',
+      fontSize: '0.75rem !important',
     },
     '@media (max-width: 375px)': {
-      fontSize: '1rem !important',
-      marginBottom: '2px !important',
+      fontSize: '0.7rem !important',
     },
   },
   resumeTitle: {
-    fontSize: '0.9rem !important',
+    fontSize: '0.8rem !important',
     color: '#555 !important',
     marginBottom: '8px !important',
+    '@media (max-width: 960px)': {
+      fontSize: '0.65rem !important',
+    },
     '@media (max-width: 600px)': {
-      fontSize: '0.85rem !important',
-      marginBottom: '6px !important',
+      fontSize: '0.65rem !important',
     },
     '@media (max-width: 480px)': {
-      fontSize: '0.8rem !important',
+      fontSize: '0.6rem !important',
     },
     '@media (max-width: 375px)': {
-      fontSize: '0.75rem !important',
-      marginBottom: '5px !important',
+      fontSize: '0.55rem !important',
     },
   },
   contactInfo: {
@@ -150,44 +151,40 @@ const useStyles = makeStyles({
     },
   },
   contactChip: {
-    backgroundColor: '#f5f5f5 !important',
-    fontSize: '0.7rem !important',
-    height: '24px !important',
+    fontSize: '0.65rem !important',
+    height: '22px !important',
     '@media (max-width: 600px)': {
-      fontSize: '0.65rem !important',
-      height: '22px !important',
-    },
-    '@media (max-width: 480px)': {
-      fontSize: '0.6rem !important',
-      height: '20px !important',
-      '& .MuiChip-label': {
-        padding: '0 8px !important',
-      },
-    },
-    '@media (max-width: 375px)': {
       fontSize: '0.55rem !important',
       height: '18px !important',
-      '& .MuiChip-label': {
-        padding: '0 6px !important',
-      },
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.5rem !important',
+      height: '16px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.45rem !important',
+      height: '14px !important',
     },
   },
   sectionTitle: {
-    fontSize: '1rem !important',
+    fontSize: '0.9rem !important',
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
     marginBottom: '8px !important',
     display: 'flex',
     alignItems: 'center',
-    '@media (max-width: 600px)': {
-      fontSize: '0.9rem !important',
+    '@media (max-width: 960px)': {
+      fontSize: '0.7rem !important',
       marginBottom: '6px !important',
     },
+    '@media (max-width: 600px)': {
+      fontSize: '0.7rem !important',
+    },
     '@media (max-width: 480px)': {
-      fontSize: '0.85rem !important',
+      fontSize: '0.65rem !important',
     },
     '@media (max-width: 375px)': {
-      fontSize: '0.8rem !important',
+      fontSize: '0.6rem !important',
       marginBottom: '5px !important',
     },
   },
@@ -227,47 +224,57 @@ const useStyles = makeStyles({
     },
   },
   expCompany: {
-    fontSize: '0.9rem !important',
+    fontSize: '0.8rem !important',
     fontWeight: 'bold !important',
     color: '#333 !important',
     marginBottom: '2px !important',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
+    '@media (max-width: 960px)': {
+      fontSize: '0.6rem !important',
+    },
     '@media (max-width: 600px)': {
-      fontSize: '0.85rem !important',
+      fontSize: '0.65rem !important',
     },
     '@media (max-width: 480px)': {
-      fontSize: '0.8rem !important',
+      fontSize: '0.6rem !important',
     },
     '@media (max-width: 375px)': {
-      fontSize: '0.75rem !important',
+      fontSize: '0.55rem !important',
     },
   },
   expRole: {
-    fontSize: '0.8rem !important',
+    fontSize: '0.75rem !important',
     color: '#555 !important',
     marginBottom: '3px !important',
+    '@media (max-width: 960px)': {
+      fontSize: '0.55rem !important',
+      marginBottom: '2px !important',
+    },
     '@media (max-width: 600px)': {
-      fontSize: '0.75rem !important',
+      fontSize: '0.6rem !important',
     },
     '@media (max-width: 480px)': {
-      fontSize: '0.7rem !important',
+      fontSize: '0.55rem !important',
       marginBottom: '2px !important',
     },
     '@media (max-width: 375px)': {
-      fontSize: '0.65rem !important',
+      fontSize: '0.5rem !important',
     },
   },
   expDate: {
-    fontSize: '0.7rem !important',
+    fontSize: '0.65rem !important',
     color: '#777 !important',
     fontStyle: 'italic !important',
+    '@media (max-width: 960px)': {
+      fontSize: '0.5rem !important',
+    },
     '@media (max-width: 480px)': {
-      fontSize: '0.65rem !important',
+      fontSize: '0.6rem !important',
     },
     '@media (max-width: 375px)': {
-      fontSize: '0.6rem !important',
+      fontSize: '0.55rem !important',
     },
   },
   skillsContainer: {
@@ -289,20 +296,27 @@ const useStyles = makeStyles({
     color: '#2A2B6A !important',
     fontSize: '0.7rem !important',
     height: '24px !important',
+    '@media (max-width: 960px)': {
+      fontSize: '0.55rem !important',
+      height: '18px !important',
+      '& .MuiChip-label': {
+        padding: '0 6px !important',
+      },
+    },
     '@media (max-width: 600px)': {
-      fontSize: '0.65rem !important',
-      height: '22px !important',
+      fontSize: '0.55rem !important',
+      height: '20px !important',
     },
     '@media (max-width: 480px)': {
-      fontSize: '0.6rem !important',
-      height: '20px !important',
+      fontSize: '0.5rem !important',
+      height: '18px !important',
       '& .MuiChip-label': {
         padding: '0 8px !important',
       },
     },
     '@media (max-width: 375px)': {
-      fontSize: '0.55rem !important',
-      height: '18px !important',
+      fontSize: '0.45rem !important',
+      height: '16px !important',
       '& .MuiChip-label': {
         padding: '0 6px !important',
       },
@@ -320,23 +334,23 @@ const useStyles = makeStyles({
   resumeVisualContainer: {
     position: 'absolute',
     top: '-40px',
-    left: '-40px',
+    right: '-40px',
     zIndex: 3,
     '@media (max-width: 960px)': {
       top: '-30px',
-      left: '-30px',
+      right: '-30px',
     },
     '@media (max-width: 600px)': {
       top: '-25px',
-      left: '-25px',
+      right: '-25px',
     },
     '@media (max-width: 480px)': {
       top: '-20px',
-      left: '-20px',
+      right: '-20px',
     },
     '@media (max-width: 375px)': {
       top: '-15px',
-      left: '-15px',
+      right: '-15px',
     },
   },
   resumeVisual: {
@@ -402,19 +416,22 @@ const useStyles = makeStyles({
       flexDirection: 'row',
     },
     '@media (max-width: 600px)': {
-      bottom: '-15px',
-      right: '20px',
-      gap: '10px',
+      top: '-15px',
+      bottom: 'auto',
+      right: '50px',
+      gap: '8px',
+      flexDirection: 'row',
+      transform: 'translateY(0)',
     },
     '@media (max-width: 480px)': {
-      bottom: '-12px',
-      right: '15px',
-      gap: '8px',
+      top: '-12px',
+      right: '38px',
+      gap: '6px',
     },
     '@media (max-width: 375px)': {
-      bottom: '-10px',
-      right: '10px',
-      gap: '6px',
+      top: '-10px',
+      right: '25px',
+      gap: '5px',
     },
   },
   tag: {
@@ -440,7 +457,7 @@ const useStyles = makeStyles({
     },
     '@media (max-width: 375px)': {
       padding: '2px 5px !important',
-      fontSize: '0.55rem !important',
+      fontSize: '0.45rem !important',
       borderRadius: '12px !important',
       boxShadow: '0 3px 10px rgba(0, 0, 0, 0.1) !important',
     },
@@ -501,7 +518,7 @@ const useStyles = makeStyles({
     },
   },
   eduTitle: {
-    fontSize: '0.9rem !important',
+    fontSize: '0.7rem !important',
     fontWeight: 'bold !important',
     color: '#333 !important',
     marginBottom: '2px !important',
@@ -509,14 +526,14 @@ const useStyles = makeStyles({
       fontSize: '0.85rem !important',
     },
     '@media (max-width: 480px)': {
-      fontSize: '0.8rem !important',
+      fontSize: '0.6rem !important',
     },
     '@media (max-width: 375px)': {
-      fontSize: '0.75rem !important',
+      fontSize: '0.50rem !important',
     },
   },
   eduInstitution: {
-    fontSize: '0.8rem !important',
+    fontSize: '0.6rem !important',
     color: '#555 !important',
     marginBottom: '2px !important',
     fontStyle: 'italic !important',
@@ -524,20 +541,20 @@ const useStyles = makeStyles({
       fontSize: '0.75rem !important',
     },
     '@media (max-width: 480px)': {
-      fontSize: '0.7rem !important',
+      fontSize: '0.5rem !important',
     },
     '@media (max-width: 375px)': {
-      fontSize: '0.65rem !important',
+      fontSize: '0.40rem !important',
     },
   },
   eduYear: {
-    fontSize: '0.7rem !important',
+    fontSize: '0.5rem !important',
     color: '#777 !important',
     '@media (max-width: 480px)': {
-      fontSize: '0.65rem !important',
+      fontSize: '0.5rem !important',
     },
     '@media (max-width: 375px)': {
-      fontSize: '0.6rem !important',
+      fontSize: '0.35rem !important',
     },
   },
   nonTechChip: {
@@ -545,20 +562,27 @@ const useStyles = makeStyles({
     color: '#2A2B6A !important',
     fontSize: '0.7rem !important',
     height: '24px !important',
+    '@media (max-width: 960px)': {
+      fontSize: '0.55rem !important',
+      height: '18px !important',
+      '& .MuiChip-label': {
+        padding: '0 6px !important',
+      },
+    },
     '@media (max-width: 600px)': {
-      fontSize: '0.65rem !important',
-      height: '22px !important',
+      fontSize: '0.55rem !important',
+      height: '20px !important',
     },
     '@media (max-width: 480px)': {
-      fontSize: '0.6rem !important',
-      height: '20px !important',
+      fontSize: '0.5rem !important',
+      height: '18px !important',
       '& .MuiChip-label': {
         padding: '0 8px !important',
       },
     },
     '@media (max-width: 375px)': {
-      fontSize: '0.55rem !important',
-      height: '18px !important',
+      fontSize: '0.45rem !important',
+      height: '16px !important',
       '& .MuiChip-label': {
         padding: '0 6px !important',
       },
@@ -578,15 +602,19 @@ const useStyles = makeStyles({
     fontWeight: 'bold !important',
     color: '#444 !important',
     marginBottom: '3px !important',
+    '@media (max-width: 960px)': {
+      fontSize: '0.6rem !important',
+      marginBottom: '2px !important',
+    },
     '@media (max-width: 600px)': {
-      fontSize: '0.75rem !important',
+      fontSize: '0.65rem !important',
     },
     '@media (max-width: 480px)': {
-      fontSize: '0.7rem !important', 
+      fontSize: '0.6rem !important',
       marginBottom: '2px !important',
     },
     '@media (max-width: 375px)': {
-      fontSize: '0.65rem !important',
+      fontSize: '0.55rem !important',
     },
   },
   projectTech: {
@@ -623,16 +651,19 @@ const useStyles = makeStyles({
     color: '#555 !important',
     marginBottom: '4px !important',
     lineHeight: '1.4 !important',
-    '@media (max-width: 600px)': {
-      fontSize: '0.7rem !important',
-      marginBottom: '3px !important',
-    },
-    '@media (max-width: 480px)': {
-      fontSize: '0.65rem !important',
+    '@media (max-width: 960px)': {
+      fontSize: '0.55rem !important',
+      lineHeight: '1.2 !important',
       marginBottom: '2px !important',
     },
-    '@media (max-width: 375px)': {
+    '@media (max-width: 600px)': {
       fontSize: '0.6rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.55rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.5rem !important',
       lineHeight: '1.3 !important',
     },
   },
@@ -646,7 +677,7 @@ const ResumeCard = ({ animated }) => {
   const techSkills = ['React.js', 'JavaScript', 'Node.js', 'MongoDB', 'REST APIs'];
   
   // Management skills for the non-IT Resume
-  const managementSkills = ['Project Management', 'Team Leadership', 'Strategic Planning', 'Client Relations', 'Stakeholder Management'];
+  const managementSkills = ['Project Management', 'Team Leadership', 'Strategic Planning', 'Client Relations'];
   
   // Language skills for the non-IT Resume
   const languages = ['English (Native)', 'Spanish (Professional)', 'French (Basic)'];

@@ -226,7 +226,7 @@ const useStyles = makeStyles({
     zIndex: 2,
     pointerEvents: 'none',
     '@media (max-width: 768px)': {
-      width: '18%',
+      display: 'none',
     },
   }, 
   whiteFadeRight: {
@@ -239,7 +239,7 @@ const useStyles = makeStyles({
     zIndex: 2,
     pointerEvents: 'none',
     '@media (max-width: 768px)': {
-      width: '18%',
+      display: 'none',
     },
   },
 });

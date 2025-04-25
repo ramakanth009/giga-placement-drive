@@ -55,14 +55,20 @@ const useStyles = makeStyles({
     gap: '30px',
     justifyContent: 'space-between',
     position: 'relative',
+    minHeight: '850px', // Increased to accommodate content
+    height: '100%',
+    overflow: 'hidden', // Prevent scrolling
     '@media (max-width: 1100px)': {
       padding: '50px 30px',
       gap: '40px',
+      minHeight: '800px',
     },
     '@media (max-width: 960px)': {
       flexDirection: 'column',
       padding: '40px 30px',
       alignItems: 'center',
+      height: 'auto',
+      minHeight: 'unset',
     },
     '@media (max-width: 600px)': {
       padding: '30px 16px',
@@ -284,13 +290,18 @@ const useStyles = makeStyles({
     alignItems: 'center',
     position: 'relative',
     zIndex: 2,
-    maxWidth: '650px',
+    maxWidth: '750px',
+    height: '100%',
+    overflow: 'visible', // Allow the resume card to overflow
     '@media (max-width: 1200px)': {
-      maxWidth: '500px',
+      maxWidth: '600px',
     },
     '@media (max-width: 960px)': {
       width: '100%',
       maxWidth: '550px',
+      height: 'auto',
+      minHeight: 'unset',
+      marginTop: '20px',
     },
     '@media (max-width: 480px)': {
       maxWidth: '100%',
