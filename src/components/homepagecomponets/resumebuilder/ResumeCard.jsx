@@ -155,11 +155,13 @@ const useStyles = makeStyles({
     zIndex: 3,
     '@media (max-width: 900px)': {
       top: '-30px',
-      left: '-30px',
+      right: '-30px',
+      left: 'auto'
     },
     '@media (max-width: 600px)': {
       top: '-20px',
-      left: '-20px',
+      right: '-20px',
+      left: 'auto'
     },
   },
   resumeVisual: {

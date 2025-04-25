@@ -11,7 +11,7 @@ import PsychologyIcon from "@mui/icons-material/Psychology";
 import SettingsIcon from "@mui/icons-material/Settings";
 import DesignServicesIcon from "@mui/icons-material/DesignServices";
 
-// Import the new ResumeCard component
+// Import the ResumeCard component
 import ResumeCard from './ResumeCard';
 
 const useStyles = makeStyles({
@@ -20,10 +20,24 @@ const useStyles = makeStyles({
     marginBottom: '5px',
     position: 'relative',
     overflow: 'visible',
+    padding: '20px 0',
+    '@media (max-width: 960px)': {
+      padding: '40px 0',
+    },
+    '@media (max-width: 600px)': {
+      padding: '30px 0',
+    },
   },
   container: {
     position: 'relative',
     zIndex: 2,
+    width: '100%',
+    maxWidth: '1400px',
+    margin: '0 auto',
+    padding: '0 20px',
+    '@media (max-width: 600px)': {
+      padding: '0 16px',
+    },
   },
   outerBox: {
     overflow: 'hidden',
@@ -31,6 +45,9 @@ const useStyles = makeStyles({
     boxShadow: '0 25px 60px rgba(42, 43, 106, 0.15)',
     position: 'relative',
     borderRadius: '20px',
+    '@media (max-width: 600px)': {
+      borderRadius: '16px',
+    },
   },
   contentWrapper: {
     padding: '60px 40px',
@@ -39,12 +56,16 @@ const useStyles = makeStyles({
     justifyContent: 'space-between',
     position: 'relative',
     '@media (max-width: 1100px)': {
-      flexDirection: 'column',
       padding: '50px 30px',
       gap: '40px',
     },
+    '@media (max-width: 960px)': {
+      flexDirection: 'column',
+      padding: '40px 30px',
+      alignItems: 'center',
+    },
     '@media (max-width: 600px)': {
-      padding: '40px 20px',
+      padding: '30px 16px',
       gap: '30px',
     },
   },
@@ -55,8 +76,12 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center',
-    textAlign: 'center',
+    alignItems: 'flex-start',
+    '@media (max-width: 960px)': {
+      alignItems: 'center',
+      textAlign: 'center',
+      width: '100%',
+    },
   },
   title: {
     fontSize: '2.5rem !important',
@@ -65,14 +90,19 @@ const useStyles = makeStyles({
     lineHeight: '1.2 !important',
     marginBottom: '20px !important',
     '@media (max-width: 1200px)': {
-      fontSize: '2.5rem !important',
+      fontSize: '2.3rem !important',
     },
-    '@media (max-width: 900px)': {
+    '@media (max-width: 960px)': {
       fontSize: '2.2rem !important',
+      textAlign: 'center',
     },
     '@media (max-width: 600px)': {
       fontSize: '1.8rem !important',
       marginBottom: '15px !important',
+      lineHeight: '1.3 !important',
+    },
+    '@media (max-width: 400px)': {
+      fontSize: '1.6rem !important',
     },
   },
   highlightText: {
@@ -83,15 +113,16 @@ const useStyles = makeStyles({
     fontSize: '1.2rem !important',
     color: 'rgba(255, 255, 255, 0.9) !important',
     marginBottom: '30px !important',
-    maxWidth: '700px',
-    textAlign: 'center', 
-    margin: '0 auto 30px !important',
-    '@media (max-width: 900px)': {
+    maxWidth: '600px',
+    '@media (max-width: 960px)': {
       fontSize: '1.1rem !important',
+      textAlign: 'center',
+      margin: '0 auto 25px auto !important',
     },
     '@media (max-width: 600px)': {
       fontSize: '1rem !important',
       marginBottom: '20px !important',
+      lineHeight: '1.5 !important',
     },
   },
   featuresContainer: {
@@ -99,18 +130,36 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     gap: '10px',
     marginBottom: '30px',
-    maxWidth: '700px',
-    margin: '0 auto 30px',
+    width: '100%',
+    maxWidth: '600px',
+    '@media (max-width: 960px)': {
+      margin: '0 auto 25px auto',
+    },
+    '@media (max-width: 600px)': {
+      gap: '8px',
+      marginBottom: '20px',
+    },
   },
   featureItem: {
     display: 'flex',
     alignItems: 'center',
     color: 'white',
+    '@media (max-width: 960px)': {
+      width: 'fit-content',
+      margin: '0 auto',
+    },
+    '@media (max-width: 600px)': {
+      alignItems: 'flex-start',
+    },
   },
   featureIcon: {
     fontSize: '1rem !important',
     marginRight: '10px',
     color: '#FFC614',
+    flexShrink: 0,
+    '@media (max-width: 600px)': {
+      marginTop: '3px',
+    },
   },
   featureText: {
     fontSize: '1rem !important',
@@ -118,18 +167,23 @@ const useStyles = makeStyles({
     fontWeight: '500 !important',
     '@media (max-width: 600px)': {
       fontSize: '0.9rem !important',
+      lineHeight: '1.4 !important',
+      textAlign: 'left',
     },
   },
   statsContainer: {
     display: 'flex',
     gap: '20px',
     marginBottom: '30px',
-    justifyContent: 'center',
-    maxWidth: '700px',
-    margin: '0 auto 30px',
-    '@media (max-width: 600px)': {
+    flexWrap: 'wrap',
+    '@media (max-width: 960px)': {
+      justifyContent: 'center',
       gap: '15px',
-      flexWrap: 'wrap',
+      margin: '0 auto 25px auto',
+    },
+    '@media (max-width: 480px)': {
+      gap: '10px',
+      marginBottom: '20px',
     },
   },
   statItem: {
@@ -138,14 +192,16 @@ const useStyles = makeStyles({
     padding: '15px 20px',
     minWidth: '120px',
     textAlign: 'center',
-    '@media (max-width: 900px)': {
+    '@media (max-width: 960px)': {
       padding: '12px 15px',
       minWidth: '100px',
     },
-    '@media (max-width: 600px)': {
-      padding: '10px',
-      flex: '1',
+    '@media (max-width: 480px)': {
+      padding: '10px 12px',
       minWidth: '80px',
+      flex: '1',
+      minWidth: '40%',
+      maxWidth: 'calc(50% - 5px)',
     },
   },
   statNumber: {
@@ -153,10 +209,10 @@ const useStyles = makeStyles({
     fontWeight: 'bold !important',
     color: '#FFC614 !important',
     marginBottom: '5px !important',
-    '@media (max-width: 900px)': {
+    '@media (max-width: 960px)': {
       fontSize: '1.6rem !important',
     },
-    '@media (max-width: 600px)': {
+    '@media (max-width: 480px)': {
       fontSize: '1.4rem !important',
       marginBottom: '3px !important',
     },
@@ -164,7 +220,7 @@ const useStyles = makeStyles({
   statLabel: {
     fontSize: '0.85rem !important',
     color: 'rgba(255, 255, 255, 0.8) !important',
-    '@media (max-width: 600px)': {
+    '@media (max-width: 480px)': {
       fontSize: '0.75rem !important',
     },
   },
@@ -178,7 +234,6 @@ const useStyles = makeStyles({
     textTransform: 'none !important',
     boxShadow: '0 10px 25px rgba(255, 198, 20, 0.3) !important',
     transition: 'all 0.3s ease !important',
-    maxWidth: 'fit-content',
     position: 'relative',
     overflow: 'hidden',
     '&:hover': {
@@ -195,9 +250,14 @@ const useStyles = makeStyles({
       transform: 'skewX(-30deg) translateX(-150px)',
       animation: '$shine 3s infinite',
     },
+    '@media (max-width: 960px)': {
+      margin: '0 auto',
+    },
     '@media (max-width: 600px)': {
       padding: '12px 25px !important',
-      fontSize: '1rem !important',
+      fontSize: '0.9rem !important',  // Reduced from 1rem to 0.9rem
+      width: '100%',
+      maxWidth: '280px',
     },
   },
   '@keyframes shine': {
@@ -208,7 +268,6 @@ const useStyles = makeStyles({
       transform: 'skewX(-30deg) translateX(350px)',
     },
   },
-  
   rightContent: {
     flex: '1',
     display: 'flex',
@@ -216,6 +275,17 @@ const useStyles = makeStyles({
     alignItems: 'center',
     position: 'relative',
     zIndex: 2,
+    maxWidth: '650px',
+    '@media (max-width: 1200px)': {
+      maxWidth: '500px',
+    },
+    '@media (max-width: 960px)': {
+      width: '100%',
+      maxWidth: '550px',
+    },
+    '@media (max-width: 480px)': {
+      maxWidth: '100%',
+    },
   },
   backgroundPattern: {
     position: 'absolute',
@@ -233,11 +303,18 @@ const useStyles = makeStyles({
     width: '100%',
     height: '100%',
     zIndex: 1,
+    '@media (max-width: 600px)': {
+      opacity: 0.4,
+    },
   },
   floatingIcon: {
     position: 'absolute',
     color: 'rgba(255, 255, 255, 0.05)',
     animation: '$float 8s infinite ease-in-out',
+    '@media (max-width: 480px)': {
+      // Make floating icons smaller on mobile
+      fontSize: '80% !important',
+    },
   },
   '@keyframes float': {
     '0%': {
@@ -258,14 +335,19 @@ const ResumeBuilderSection = () => {
   const [animated, setAnimated] = useState(false);
 
   useEffect(() => {
-    setAnimated(true);
+    // Short delay before starting animations
+    const timer = setTimeout(() => {
+      setAnimated(true);
+    }, 300);
+    return () => clearTimeout(timer);
   }, []);
 
   const handleBuildClick = () => {
     navigate('/payment-under-construction');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
   
-  // Floating icons for background effect
+  // Floating icons for background effect with responsive positioning
   const floatingIcons = [
     { icon: <CodeIcon />, top: '15%', left: '10%', size: '40px', delay: '0s' },
     { icon: <SchoolIcon />, top: '25%', right: '15%', size: '35px', delay: '1s' },
@@ -276,6 +358,7 @@ const ResumeBuilderSection = () => {
   
   return (
     <Box className={classes.section}>
+      <Box className={classes.container}>
         <Box className={classes.outerBox}>
           <Box className={classes.backgroundPattern} />
           
@@ -363,25 +446,23 @@ const ResumeBuilderSection = () => {
                 </Box>
               </Box>
               
-              <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
-                <Button 
-                  variant="contained" 
-                  className={classes.buildButton}
-                  onClick={handleBuildClick}
-                  endIcon={<ArrowForwardIcon />}
-                  sx={{
-                    opacity: animated ? 1 : 0,
-                    transform: animated ? 'translateY(0)' : 'translateY(20px)',
-                    transition: 'opacity 0.8s ease, transform 0.8s ease',
-                    transitionDelay: '0.9s',
-                  }}
-                >
-                  Build Your FREE Resume Now
-                </Button>
-              </Box>
+              <Button 
+                variant="contained" 
+                className={classes.buildButton}
+                onClick={handleBuildClick}
+                endIcon={<ArrowForwardIcon />}
+                sx={{
+                  opacity: animated ? 1 : 0,
+                  transform: animated ? 'translateY(0)' : 'translateY(20px)',
+                  transition: 'opacity 0.8s ease, transform 0.8s ease',
+                  transitionDelay: '0.9s',
+                }}
+              >
+                Build Your FREE Resume Now
+              </Button>
             </Box>
             
-            {/* Right content now using the new ResumeCard component */}
+            {/* Right content with ResumeCard component */}
             <Box 
               className={classes.rightContent}
               sx={{
@@ -395,6 +476,7 @@ const ResumeBuilderSection = () => {
             </Box>
           </Box>
         </Box>
+      </Box>
     </Box>
   );
 };
