@@ -60,7 +60,7 @@ const Homepage = () => {
 
         <LimitedTimeOffer />
 
-        <OtherPrograms />
+        {/* <OtherPrograms /> */}
         <Faq />
         <Footer />
       </Box>

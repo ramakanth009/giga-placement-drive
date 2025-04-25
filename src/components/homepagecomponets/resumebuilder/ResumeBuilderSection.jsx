@@ -144,6 +144,11 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     color: 'white',
+    // Add fixed width for the icon wrapper to ensure consistent text alignment
+    '& > svg': {
+      width: '24px',
+      textAlign: 'center',
+    },
     '@media (max-width: 960px)': {
       width: 'fit-content',
       margin: '0 auto',
@@ -157,6 +162,9 @@ const useStyles = makeStyles({
     marginRight: '10px',
     color: '#FFC614',
     flexShrink: 0,
+    display: 'flex',
+    justifyContent: 'center',
+    width: '14px', // Fixed width to ensure alignment
     '@media (max-width: 600px)': {
       marginTop: '3px',
     },
@@ -165,6 +173,7 @@ const useStyles = makeStyles({
     fontSize: '1rem !important',
     color: 'rgba(255, 255, 255, 0.9) !important',
     fontWeight: '500 !important',
+    paddingLeft: '0', // Explicit padding to maintain alignment
     '@media (max-width: 600px)': {
       fontSize: '0.9rem !important',
       lineHeight: '1.4 !important',
@@ -255,7 +264,7 @@ const useStyles = makeStyles({
     },
     '@media (max-width: 600px)': {
       padding: '12px 25px !important',
-      fontSize: '0.9rem !important',  // Reduced from 1rem to 0.9rem
+      fontSize: '1rem !important',
       width: '100%',
       maxWidth: '280px',
     },

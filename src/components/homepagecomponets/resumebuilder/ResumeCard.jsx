@@ -22,6 +22,24 @@ const useStyles = makeStyles({
     margin: '0 auto',
     perspective: '2000px',
     height: '750px',
+    '@media (max-width: 1200px)': {
+      maxWidth: '550px',
+      height: '700px',
+    },
+    '@media (max-width: 960px)': {
+      maxWidth: '500px',
+      height: '650px',
+    },
+    '@media (max-width: 600px)': {
+      height: '550px',
+    },
+    '@media (max-width: 480px)': {
+      height: '500px',
+      perspective: '1500px',
+    },
+    '@media (max-width: 375px)': {
+      height: '450px',
+    },
   },
   resumeCard: {
     position: 'absolute',
@@ -40,11 +58,36 @@ const useStyles = makeStyles({
     padding: '25px 20px',
     backfaceVisibility: 'hidden',
     overflow: 'auto',
-    '@media (max-width: 900px)': {
+    '@media (max-width: 1200px)': {
+      padding: '22px 18px',
+    },
+    '@media (max-width: 960px)': {
       padding: '20px 15px',
     },
     '@media (max-width: 600px)': {
       padding: '15px 12px',
+      borderRadius: '12px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '12px 10px',
+    },
+    '@media (max-width: 375px)': {
+      padding: '10px 8px',
+    },
+    // Improve scrollbar styling for mobile
+    '&::-webkit-scrollbar': {
+      width: '6px',
+      '@media (max-width: 480px)': {
+        width: '4px',
+      },
+    },
+    '&::-webkit-scrollbar-track': {
+      background: '#f1f1f1',
+      borderRadius: '10px',
+    },
+    '&::-webkit-scrollbar-thumb': {
+      background: '#c1c1c1',
+      borderRadius: '10px',
     },
   },
   resumeSheetBack: {
@@ -54,14 +97,32 @@ const useStyles = makeStyles({
     borderBottom: '1px solid #eee',
     paddingBottom: '15px',
     marginBottom: '15px',
+    '@media (max-width: 600px)': {
+      paddingBottom: '12px',
+      marginBottom: '12px',
+    },
+    '@media (max-width: 480px)': {
+      paddingBottom: '10px',
+      marginBottom: '10px',
+    },
   },
   resumeName: {
     fontSize: '1.4rem !important',
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
     marginBottom: '3px !important',
+    '@media (max-width: 960px)': {
+      fontSize: '1.3rem !important',
+    },
     '@media (max-width: 600px)': {
       fontSize: '1.2rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '1.1rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1rem !important',
+      marginBottom: '2px !important',
     },
   },
   resumeTitle: {
@@ -70,17 +131,46 @@ const useStyles = makeStyles({
     marginBottom: '8px !important',
     '@media (max-width: 600px)': {
       fontSize: '0.85rem !important',
+      marginBottom: '6px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.8rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.75rem !important',
+      marginBottom: '5px !important',
     },
   },
   contactInfo: {
     display: 'flex',
     gap: '10px',
     flexWrap: 'wrap',
+    '@media (max-width: 480px)': {
+      gap: '5px',
+    },
   },
   contactChip: {
     backgroundColor: '#f5f5f5 !important',
     fontSize: '0.7rem !important',
     height: '24px !important',
+    '@media (max-width: 600px)': {
+      fontSize: '0.65rem !important',
+      height: '22px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.6rem !important',
+      height: '20px !important',
+      '& .MuiChip-label': {
+        padding: '0 8px !important',
+      },
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.55rem !important',
+      height: '18px !important',
+      '& .MuiChip-label': {
+        padding: '0 6px !important',
+      },
+    },
   },
   sectionTitle: {
     fontSize: '1rem !important',
@@ -91,12 +181,32 @@ const useStyles = makeStyles({
     alignItems: 'center',
     '@media (max-width: 600px)': {
       fontSize: '0.9rem !important',
+      marginBottom: '6px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.85rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.8rem !important',
+      marginBottom: '5px !important',
     },
   },
   sectionIcon: {
     fontSize: '1.1rem !important',
     marginRight: '8px',
     color: '#FFC614',
+    '@media (max-width: 600px)': {
+      fontSize: '1rem !important',
+      marginRight: '6px',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.9rem !important',
+      marginRight: '5px',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.85rem !important',
+      marginRight: '4px',
+    },
   },
   experienceItem: {
     marginBottom: '12px',
@@ -106,6 +216,14 @@ const useStyles = makeStyles({
       marginBottom: '0',
       paddingBottom: '0',
       borderBottom: 'none',
+    },
+    '@media (max-width: 480px)': {
+      marginBottom: '10px',
+      paddingBottom: '10px',
+    },
+    '@media (max-width: 375px)': {
+      marginBottom: '8px',
+      paddingBottom: '8px',
     },
   },
   expCompany: {
@@ -117,7 +235,13 @@ const useStyles = makeStyles({
     alignItems: 'center',
     justifyContent: 'space-between',
     '@media (max-width: 600px)': {
+      fontSize: '0.85rem !important',
+    },
+    '@media (max-width: 480px)': {
       fontSize: '0.8rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.75rem !important',
     },
   },
   expRole: {
@@ -127,41 +251,92 @@ const useStyles = makeStyles({
     '@media (max-width: 600px)': {
       fontSize: '0.75rem !important',
     },
+    '@media (max-width: 480px)': {
+      fontSize: '0.7rem !important',
+      marginBottom: '2px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.65rem !important',
+    },
   },
   expDate: {
     fontSize: '0.7rem !important',
     color: '#777 !important',
     fontStyle: 'italic !important',
+    '@media (max-width: 480px)': {
+      fontSize: '0.65rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.6rem !important',
+    },
   },
   skillsContainer: {
     display: 'flex',
     flexWrap: 'wrap',
     gap: '6px',
     marginTop: '8px',
+    '@media (max-width: 480px)': {
+      gap: '4px',
+      marginTop: '6px',
+    },
+    '@media (max-width: 375px)': {
+      gap: '3px',
+      marginTop: '5px',
+    },
   },
   skillChip: {
     backgroundColor: 'rgba(42, 43, 106, 0.1) !important',
     color: '#2A2B6A !important',
     fontSize: '0.7rem !important',
     height: '24px !important',
+    '@media (max-width: 600px)': {
+      fontSize: '0.65rem !important',
+      height: '22px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.6rem !important',
+      height: '20px !important',
+      '& .MuiChip-label': {
+        padding: '0 8px !important',
+      },
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.55rem !important',
+      height: '18px !important',
+      '& .MuiChip-label': {
+        padding: '0 6px !important',
+      },
+    },
   },
   projectsContainer: {
     marginTop: '8px',
+    '@media (max-width: 480px)': {
+      marginTop: '6px',
+    },
+    '@media (max-width: 375px)': {
+      marginTop: '5px',
+    },
   },
   resumeVisualContainer: {
     position: 'absolute',
     top: '-40px',
     left: '-40px',
     zIndex: 3,
-    '@media (max-width: 900px)': {
+    '@media (max-width: 960px)': {
       top: '-30px',
-      right: '-30px',
-      left: 'auto'
+      left: '-30px',
     },
     '@media (max-width: 600px)': {
+      top: '-25px',
+      left: '-25px',
+    },
+    '@media (max-width: 480px)': {
       top: '-20px',
-      right: '-20px',
-      left: 'auto'
+      left: '-20px',
+    },
+    '@media (max-width: 375px)': {
+      top: '-15px',
+      left: '-15px',
     },
   },
   resumeVisual: {
@@ -173,7 +348,7 @@ const useStyles = makeStyles({
     alignItems: 'center',
     justifyContent: 'center',
     boxShadow: '0 8px 25px rgba(255, 198, 20, 0.4)',
-    '@media (max-width: 900px)': {
+    '@media (max-width: 960px)': {
       width: '70px',
       height: '70px',
     },
@@ -181,15 +356,30 @@ const useStyles = makeStyles({
       width: '60px',
       height: '60px',
     },
+    '@media (max-width: 480px)': {
+      width: '50px',
+      height: '50px',
+    },
+    '@media (max-width: 375px)': {
+      width: '40px',
+      height: '40px',
+      boxShadow: '0 5px 15px rgba(255, 198, 20, 0.4)',
+    },
   },
   resumeIcon: {
     fontSize: '40px !important',
     color: '#2A2B6A',
-    '@media (max-width: 900px)': {
+    '@media (max-width: 960px)': {
       fontSize: '35px !important',
     },
     '@media (max-width: 600px)': {
       fontSize: '30px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '25px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '20px !important',
     },
   },
   floatingTags: {
@@ -202,6 +392,10 @@ const useStyles = makeStyles({
     gap: '15px',
     zIndex: 2,
     '@media (max-width: 1100px)': {
+      right: '-20px',
+      gap: '12px',
+    },
+    '@media (max-width: 960px)': {
       top: 'auto',
       bottom: '-20px',
       right: '30px',
@@ -212,6 +406,16 @@ const useStyles = makeStyles({
       right: '20px',
       gap: '10px',
     },
+    '@media (max-width: 480px)': {
+      bottom: '-12px',
+      right: '15px',
+      gap: '8px',
+    },
+    '@media (max-width: 375px)': {
+      bottom: '-10px',
+      right: '10px',
+      gap: '6px',
+    },
   },
   tag: {
     backgroundColor: '#FFC614 !important',
@@ -221,9 +425,24 @@ const useStyles = makeStyles({
     fontWeight: 'bold !important',
     boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1) !important',
     fontSize: '0.75rem !important',
+    whiteSpace: 'nowrap !important',
+    '@media (max-width: 960px)': {
+      fontSize: '0.7rem !important',
+    },
     '@media (max-width: 600px)': {
       padding: '4px 8px !important',
       fontSize: '0.65rem !important',
+    },
+    '@media (max-width: 480px)': {
+      padding: '3px 6px !important',
+      fontSize: '0.6rem !important',
+      borderRadius: '15px !important',
+    },
+    '@media (max-width: 375px)': {
+      padding: '2px 5px !important',
+      fontSize: '0.55rem !important',
+      borderRadius: '12px !important',
+      boxShadow: '0 3px 10px rgba(0, 0, 0, 0.1) !important',
     },
   },
   flipIndicator: {
@@ -246,11 +465,39 @@ const useStyles = makeStyles({
     '&:hover': {
       backgroundColor: 'rgba(255, 255, 255, 0.2)',
     },
+    '@media (max-width: 960px)': {
+      bottom: '-35px',
+      fontSize: '0.85rem',
+      padding: '4px 12px',
+    },
+    '@media (max-width: 600px)': {
+      bottom: '-30px',
+      fontSize: '0.8rem',
+      padding: '4px 10px',
+    },
+    '@media (max-width: 480px)': {
+      bottom: '-25px',
+      fontSize: '0.75rem',
+      padding: '3px 8px',
+      borderRadius: '20px',
+    },
+    '@media (max-width: 375px)': {
+      bottom: '-22px',
+      fontSize: '0.7rem',
+      padding: '3px 6px',
+      borderRadius: '15px',
+    },
   },
   eduItem: {
     marginBottom: '12px',
     '&:last-child': {
       marginBottom: '0',
+    },
+    '@media (max-width: 480px)': {
+      marginBottom: '10px',
+    },
+    '@media (max-width: 375px)': {
+      marginBottom: '8px',
     },
   },
   eduTitle: {
@@ -259,7 +506,13 @@ const useStyles = makeStyles({
     color: '#333 !important',
     marginBottom: '2px !important',
     '@media (max-width: 600px)': {
+      fontSize: '0.85rem !important',
+    },
+    '@media (max-width: 480px)': {
       fontSize: '0.8rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.75rem !important',
     },
   },
   eduInstitution: {
@@ -270,19 +523,118 @@ const useStyles = makeStyles({
     '@media (max-width: 600px)': {
       fontSize: '0.75rem !important',
     },
+    '@media (max-width: 480px)': {
+      fontSize: '0.7rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.65rem !important',
+    },
   },
   eduYear: {
     fontSize: '0.7rem !important',
     color: '#777 !important',
+    '@media (max-width: 480px)': {
+      fontSize: '0.65rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.6rem !important',
+    },
   },
   nonTechChip: {
     backgroundColor: 'rgba(42, 43, 106, 0.1) !important',
     color: '#2A2B6A !important',
     fontSize: '0.7rem !important',
     height: '24px !important',
+    '@media (max-width: 600px)': {
+      fontSize: '0.65rem !important',
+      height: '22px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.6rem !important',
+      height: '20px !important',
+      '& .MuiChip-label': {
+        padding: '0 8px !important',
+      },
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.55rem !important',
+      height: '18px !important',
+      '& .MuiChip-label': {
+        padding: '0 6px !important',
+      },
+    },
   },
   nonTechSection: {
     marginBottom: '12px',
+    '@media (max-width: 480px)': {
+      marginBottom: '10px',
+    },
+    '@media (max-width: 375px)': {
+      marginBottom: '8px',
+    },
+  },
+  projectTitle: {
+    fontSize: '0.8rem !important',
+    fontWeight: 'bold !important',
+    color: '#444 !important',
+    marginBottom: '3px !important',
+    '@media (max-width: 600px)': {
+      fontSize: '0.75rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.7rem !important', 
+      marginBottom: '2px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.65rem !important',
+    },
+  },
+  projectTech: {
+    fontSize: '0.75rem !important',
+    color: '#555 !important',
+    marginBottom: '6px !important',
+    '@media (max-width: 600px)': {
+      fontSize: '0.7rem !important',
+      marginBottom: '5px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.65rem !important',
+      marginBottom: '4px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.6rem !important',
+      marginBottom: '3px !important',
+    },
+  },
+  projectPoints: {
+    paddingLeft: '16px',
+    '@media (max-width: 600px)': {
+      paddingLeft: '12px',
+    },
+    '@media (max-width: 480px)': {
+      paddingLeft: '10px',
+    },
+    '@media (max-width: 375px)': {
+      paddingLeft: '8px',
+    },
+  },
+  projectPoint: {
+    fontSize: '0.75rem !important',
+    color: '#555 !important',
+    marginBottom: '4px !important',
+    lineHeight: '1.4 !important',
+    '@media (max-width: 600px)': {
+      fontSize: '0.7rem !important',
+      marginBottom: '3px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.65rem !important',
+      marginBottom: '2px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.6rem !important',
+      lineHeight: '1.3 !important',
+    },
   },
 });
 
@@ -304,7 +656,7 @@ const ResumeCard = ({ animated }) => {
     setFlipped(!flipped);
   };
 
-  // Auto-flip every 20 seconds
+  // Auto-flip every 10 seconds
   useEffect(() => {
     const flipInterval = setInterval(() => {
       setFlipped(prev => !prev);
@@ -330,8 +682,10 @@ const ResumeCard = ({ animated }) => {
       
       {/* Flip indicator */}
       <Box className={classes.flipIndicator} onClick={handleFlip}>
-        <AutoAwesomeIcon sx={{ fontSize: '1rem' }} />
-        <Typography variant="body2">Click to flip</Typography>
+        <AutoAwesomeIcon sx={{ fontSize: { xs: '0.8rem', sm: '0.9rem', md: '1rem' } }} />
+        <Typography variant="body2" sx={{ fontSize: { xs: '0.7rem', sm: '0.75rem', md: '0.8rem' } }}>
+          Click to flip
+        </Typography>
       </Box>
       
       {/* Resume Card with Front and Back */}
@@ -362,7 +716,7 @@ const ResumeCard = ({ animated }) => {
               <SummarizeIcon className={classes.sectionIcon} />
               Professional Summary
             </Typography>
-            <Typography variant="body2" sx={{ fontSize: '0.8rem', color: '#555' }}>
+            <Typography variant="body2" sx={{ fontSize: { xs: '0.65rem', sm: '0.75rem', md: '0.8rem' }, color: '#555' }}>
               Innovative Full Stack Developer with 5+ years of experience building responsive and scalable web applications. Expertise in React.js, Node.js, and MongoDB. Passionate about delivering clean, efficient code and exceptional user experiences.
             </Typography>
           </Box>
@@ -412,21 +766,21 @@ const ResumeCard = ({ animated }) => {
               <BuildIcon className={classes.sectionIcon} />
               Projects
             </Typography>
-            <Box className={classes.projectsContainer}>
-              <Typography variant="body2" sx={{ fontSize: '0.8rem', fontWeight: 'bold', color: '#444', mb: 0.5 }}>
+            <Box sx={{ mt: 1 }}>
+              <Typography className={classes.projectTitle}>
                 E-Commerce Platform Redesign
               </Typography>
-              <Typography variant="body2" sx={{ fontSize: '0.75rem', color: '#555', mb: 1 }}>
+              <Typography className={classes.projectTech}>
                 React, Node.js, MongoDB, GraphQL
               </Typography>
-              <Box sx={{ pl: 2 }}>
-                <Typography variant="body2" sx={{ fontSize: '0.75rem', color: '#555', mb: 0.5 }}>
+              <Box className={classes.projectPoints}>
+                <Typography className={classes.projectPoint}>
                   • Led frontend development using React, resulting in 40% improvement in user engagement
                 </Typography>
-                <Typography variant="body2" sx={{ fontSize: '0.75rem', color: '#555', mb: 0.5 }}>
+                <Typography className={classes.projectPoint}>
                   • Implemented GraphQL API, reducing data fetching time by 60%
                 </Typography>
-                <Typography variant="body2" sx={{ fontSize: '0.75rem', color: '#555', mb: 0.5 }}>
+                <Typography className={classes.projectPoint}>
                   • Optimized MongoDB queries leading to 30% faster page load times
                 </Typography>
               </Box>
@@ -451,7 +805,7 @@ const ResumeCard = ({ animated }) => {
               <PersonIcon className={classes.sectionIcon} />
               Professional Profile
             </Typography>
-            <Typography variant="body2" sx={{ fontSize: '0.8rem', color: '#555' }}>
+            <Typography variant="body2" sx={{ fontSize: { xs: '0.65rem', sm: '0.75rem', md: '0.8rem' }, color: '#555' }}>
               Results-driven Operations Manager with 6+ years of experience optimizing business processes and leading cross-functional teams. Strong track record of improving efficiency and driving operational excellence across diverse industries.
             </Typography>
           </Box>
