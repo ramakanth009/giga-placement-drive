@@ -1,12 +1,16 @@
 // src/components/common/herosection/HeroSection.jsx
 import React from 'react';
-import { Box, Typography, Button } from '@mui/material';
+import { Box, Typography, Button, useMediaQuery } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { Link } from "react-router-dom";
+import CodeIcon from '@mui/icons-material/Code';
+import WorkIcon from '@mui/icons-material/Work';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 
 const useStyles = makeStyles({
- bannerContainer: {
-    height: "85vh",
+  bannerContainer: {
+    minHeight: "85vh",
     backgroundImage: props => `url(${props.backgroundImage})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
@@ -14,41 +18,76 @@ const useStyles = makeStyles({
     overflow: 'hidden',
     borderRadius: '0 0 20px 20px',
     boxShadow: '0 4px 20px rgba(0, 0, 0, 0.06)',
-    display: 'flex', // Add display flex
-    alignItems: 'center', // Add vertical centering
+    display: 'flex',
+    alignItems: 'center',
+    '@media (max-width: 1200px)': {
+      minHeight: "75vh",
+    },
+    '@media (max-width: 960px)': {
+      minHeight: "70vh",
+      padding: '0',
+    },
+    '@media (max-width: 600px)': {
+      minHeight: "auto",
+      padding: '50px 0',
+      borderRadius: '0 0 15px 15px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '40px 0 30px',
+    },
   },
   contentContainer: {
     position: 'relative',
     zIndex: 2,
-    maxWidth: '90%',
-    width: '100%', // Add width
+    width: '90%',
+    maxWidth: '1400px',
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center', // Change from 'flex-start' to 'center'
+    alignItems: 'center',
     justifyContent: 'space-between',
     margin: '0 auto',
+    '@media (max-width: 1200px)': {
+      width: '95%',
+    },
     '@media (max-width: 960px)': {
-      padding: '30px 20px',
-      flexDirection: 'column',
-      gap: '30px',
+      flexDirection: 'row', // Keep row direction for tablet
+      gap: '20px',
+      width: '90%',
+    },
+    '@media (max-width: 600px)': {
+      width: '90%',
+      flexDirection: 'column', // Change to column for mobile
+      gap: '20px',
     },
   },
   leftContent: {
-    // Remove marginTop: '1%'
     width: '58%',
-    // Remove paddingTop
+    '@media (max-width: 1200px)': {
+      width: '55%',
+    },
     '@media (max-width: 960px)': {
+      width: '50%', // Maintain two-column layout
+      textAlign: 'left',
+      paddingLeft: '20px',
+    },
+    '@media (max-width: 600px)': {
       width: '100%',
       textAlign: 'center',
-      marginBottom: '20px', // Add margin bottom instead of padding top
+      paddingLeft: '0',
     },
   },
   rightContent: {
     width: '38%',
+    '@media (max-width: 1200px)': {
+      width: '42%',
+    },
     '@media (max-width: 960px)': {
-      width: '100%',
+      width: '45%', // Keep two-column layout but with adjusted proportions
       display: 'flex',
       justifyContent: 'center',
+    },
+    '@media (max-width: 600px)': {
+      display: 'none', // Hide image on mobile devices
     },
   },
   bannerTitle: {
@@ -57,11 +96,22 @@ const useStyles = makeStyles({
     color: '#2A2B6A !important',
     lineHeight: '1.2 !important',
     marginBottom: '16px !important',
+    '@media (max-width: 1200px)': {
+      fontSize: '2.7rem !important',
+    },
     '@media (max-width: 960px)': {
-      fontSize: '2.5rem !important',
+      fontSize: '2.2rem !important',
+      marginBottom: '12px !important',
     },
     '@media (max-width: 600px)': {
       fontSize: '2rem !important',
+      marginBottom: '10px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '1.8rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1.6rem !important',
     },
   },
   highlightText: {
@@ -73,28 +123,57 @@ const useStyles = makeStyles({
     color: '#555555 !important',
     marginBottom: '40px !important',
     maxWidth: '90%',
+    '@media (max-width: 1200px)': {
+      fontSize: '1.1rem !important',
+      marginBottom: '35px !important',
+    },
     '@media (max-width: 960px)': {
-      marginBottom: '30px !important',
-      maxWidth: '100%',
-      margin: '0 auto 30px auto !important',
+      fontSize: '1rem !important',
+      marginBottom: '25px !important',
+      maxWidth: '95%',
     },
     '@media (max-width: 600px)': {
       fontSize: '1rem !important',
+      marginBottom: '25px !important',
+      maxWidth: '100%',
+      margin: '0 auto 25px auto !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.95rem !important',
+      marginBottom: '20px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.9rem !important',
     },
   },
   featuresContainer: {
     backgroundColor: "#ffffff",
     display: 'flex',
-    alignItems: 'stretch', // changed to stretch
+    alignItems: 'stretch',
     justifyContent: 'space-between',
     marginBottom: '40px',
     borderRadius: '8px',
-    padding: '10px 15px',
+    padding: '15px',
+    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.05)',
+    '@media (max-width: 1200px)': {
+      marginBottom: '35px',
+      padding: '12px',
+    },
     '@media (max-width: 960px)': {
-      flexDirection: 'column',
-      gap: '15px',
       width: '100%',
-      margin: '0 auto 30px auto',
+      margin: '0 auto 25px auto',
+      padding: '8px',
+    },
+    '@media (max-width: 600px)': {
+      flexDirection: 'column',
+      gap: '0',
+      marginBottom: '25px',
+      padding: '0',
+      boxShadow: 'none',
+      background: 'transparent',
+    },
+    '@media (max-width: 480px)': {
+      marginBottom: '20px',
     },
   },
   featureItem: {
@@ -102,27 +181,38 @@ const useStyles = makeStyles({
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,
-    position: 'relative', // added
+    position: 'relative',
     padding: "0 10px",
-    '&:not(:last-child)::after': { // changed border to pseudo-element
+    '&:not(:last-child)::after': {
       content: '""',
       position: 'absolute',
       right: 0,
-      top: '5%',
-      height: '90%',
+      top: '10%',
+      height: '80%',
       width: '1px',
-      backgroundColor: '#A3A3A3',
+      backgroundColor: '#e0e0e0',
+    },
+    '@media (max-width: 1200px)': {
+      padding: "0 12px",
     },
     '@media (max-width: 960px)': {
+      padding: "0 10px",
+      textAlign: 'center',
+    },
+    '@media (max-width: 600px)': {
       width: '100%',
-      padding: '10px 0',
+      padding: '12px 15px',
+      margin: '8px 0',
+      backgroundColor: '#fff',
+      borderRadius: '10px',
+      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.08)',
+      border: '1px solid rgba(42, 43, 106, 0.1)',
+      display: 'grid',
+      gridTemplateColumns: '40px 1fr',
+      alignItems: 'center',
+      gap: '10px',
       '&:not(:last-child)::after': {
-        right: 'auto',
-        top: 'auto',
-        bottom: 0,
-        height: '1px',
-        width: '100%',
-        backgroundColor: '#000000',
+        display: 'none',
       },
     },
   },
@@ -132,17 +222,32 @@ const useStyles = makeStyles({
     color: '#2A2B6A !important',
     textAlign: 'center',
     whiteSpace: 'pre-line !important',
-    '@media (max-width: 960px)': {
-      fontSize: '1.1rem !important',
-    },
-    '@media (max-width: 600px)': {
+    '@media (max-width: 1200px)': {
       fontSize: '1rem !important',
     },
+    '@media (max-width: 960px)': {
+      fontSize: '0.95rem !important',
+      lineHeight: '1.4 !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '1.05rem !important',
+      textAlign: 'left !important',
+      padding: '0',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '1rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.95rem !important',
+    },
   },
-  joinsection:{
-    // marginLeft:"60px !important",
+  joinsection: {
+    '@media (max-width: 960px)': {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
   },
-
   joinButton: {
     backgroundColor: '#2A2B6A !important',
     color: 'white !important',
@@ -169,12 +274,24 @@ const useStyles = makeStyles({
       transform: 'skewX(-30deg) translateX(-150px)',
       animation: '$shine 3s infinite',
     },
+    '@media (max-width: 1200px)': {
+      padding: '10px 25px !important',
+      fontSize: '1.05rem !important',
+    },
     '@media (max-width: 960px)': {
-      margin: '0 auto',
-      display: 'block',
+      padding: '10px 22px !important',
+      fontSize: '1rem !important',
     },
     '@media (max-width: 600px)': {
-      padding: '10px 25px !important',
+      padding: '12px 25px !important',
+      fontSize: '1.1rem !important',
+      width: '100%',
+      maxWidth: '280px',
+      background: 'linear-gradient(45deg, #2A2B6A 30%, #3c3d8a 90%) !important',
+      boxShadow: '0 8px 20px rgba(42, 43, 106, 0.3) !important',
+    },
+    '@media (max-width: 375px)': {
+      padding: '10px 20px !important',
       fontSize: '1rem !important',
     },
   },
@@ -185,9 +302,15 @@ const useStyles = makeStyles({
     fontStyle: 'italic !important',
     '@media (max-width: 960px)': {
       textAlign: 'center',
+      marginTop: '15px !important',
     },
     '@media (max-width: 600px)': {
+      fontSize: '0.85rem !important',
+      marginTop: '12px !important',
+    },
+    '@media (max-width: 375px)': {
       fontSize: '0.8rem !important',
+      marginTop: '10px !important',
     },
   },
   imageContainer: {
@@ -203,8 +326,13 @@ const useStyles = makeStyles({
     position: 'relative',
     zIndex: 2,
     borderRadius: '12px',
+    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
+    '@media (max-width: 1200px)': {
+      maxWidth: '100%',
+    },
     '@media (max-width: 960px)': {
-      maxWidth: '80%',
+      maxWidth: '100%',
+      transform: 'scale(0.9)',
     },
   },
   '@keyframes shine': {
@@ -228,7 +356,8 @@ const HeroSection = ({
 }) => {
   const styleProps = { backgroundImage, displayAsBlock };
   const classes = useStyles(styleProps);
-
+  const isMobile = useMediaQuery('(max-width:600px)');
+  
   return (
     <Box className={classes.bannerContainer}>
       <Box className={classes.contentContainer}>
@@ -244,6 +373,13 @@ const HeroSection = ({
           <Box className={classes.featuresContainer}>
             {features.map((feature, index) => (
               <Box key={index} className={classes.featureItem}>
+                {isMobile && (
+                  <Box>
+                    {index === 0 && <CodeIcon sx={{ color: '#FFC614' }} />}
+                    {index === 1 && <CalendarMonthIcon sx={{ color: '#FFC614' }} />}
+                    {index === 2 && <CurrencyRupeeIcon sx={{ color: '#FFC614' }} />}
+                  </Box>
+                )}
                 <Typography className={classes.featureText}>
                   {feature}
                 </Typography>
@@ -251,23 +387,21 @@ const HeroSection = ({
             ))}
           </Box>
 
-<Box className={classes.joinsection} >
+          <Box className={classes.joinsection}>
+            <Button 
+              variant="contained" 
+              className={classes.joinButton} 
+              component={Link} 
+              to="/cart"
+            >
+              Join Us Now
+            </Button>
 
-          <Button 
-            variant="contained" 
-            className={classes.joinButton} 
-            component={Link} 
-            to="/cart"
-          >
-            Join Us Now
-          </Button>
-
-          <Typography className={classes.eligibilityText}>
-            Eligible for 2023, 2024, and 2025 batches
-          </Typography>
+            <Typography className={classes.eligibilityText}>
+              Eligible for 2023, 2024, and 2025 batches
+            </Typography>
+          </Box>
         </Box>
-</Box>
-
 
         <Box className={classes.rightContent}>
           <Box className={classes.imageContainer}>

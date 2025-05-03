@@ -73,30 +73,20 @@ const useStyles = makeStyles({
   },
   cartContainer: {
     width: '100%',
-    maxWidth: '1100px',
+    maxWidth: '900px',
     display: 'flex',
+    flexDirection: 'column',
     gap: '30px',
     '@media (max-width: 960px)': {
-      flexDirection: 'column',
       gap: '25px',
-    }
-  },
-  selectionColumn: {
-    flex: '6',
-    '@media (max-width: 960px)': {
-      order: 2
-    }
-  },
-  summaryColumn: {
-    flex: '4',
-    '@media (max-width: 960px)': {
-      order: 1
+    },
+    '@media (max-width: 600px)': {
+      gap: '20px',
     }
   },
   card: {
     borderRadius: '15px !important',
     boxShadow: '0 8px 30px rgba(0, 0, 0, 0.06) !important',
-    height: '100%',
     overflow: 'visible !important',
     position: 'relative',
     backgroundColor: '#ffffff !important',
@@ -121,6 +111,13 @@ const useStyles = makeStyles({
       marginBottom: '16px !important',
     }
   },
+  programSelectionSection: {
+    width: '100%',
+    marginBottom: '30px',
+    '@media (max-width: 600px)': {
+      marginBottom: '25px',
+    }
+  },
   optionCard: {
     border: '2px solid #e0e0e0',
     borderRadius: '12px',
@@ -132,6 +129,7 @@ const useStyles = makeStyles({
     transition: 'all 0.3s ease',
     position: 'relative',
     overflow: 'hidden',
+    transform: 'translateX(0)',
     '&:hover': {
       borderColor: '#FFC614',
       transform: 'translateY(-3px)',
@@ -195,6 +193,43 @@ const useStyles = makeStyles({
     '@media (max-width: 600px)': {
       fontSize: '20px !important',
     }
+  },
+  formSection: {
+    marginTop: '30px',
+    width: '100%',
+  },
+  formTitle: {
+    fontSize: '1.4rem !important',
+    fontWeight: 'bold !important',
+    color: '#2A2B6A !important',
+    marginBottom: '20px !important',
+    position: 'relative',
+    '&:after': {
+      content: '""',
+      position: 'absolute',
+      bottom: '-8px',
+      left: '0',
+      width: '60px',
+      height: '3px',
+      backgroundColor: '#FFC614',
+    },
+  },
+  formField: {
+    marginBottom: '20px !important',
+    '& .MuiOutlinedInput-root': {
+      '&:hover fieldset': {
+        borderColor: '#2A2B6A',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: '#2A2B6A',
+      }
+    },
+    '& .MuiFormLabel-root.Mui-focused': {
+      color: '#2A2B6A',
+    }
+  },
+  programDetailsCard: {
+    width: '100%',
   },
   summaryCard: {
     padding: '25px !important',
@@ -371,40 +406,6 @@ const useStyles = makeStyles({
     marginRight: '10px',
     fontSize: '0.9rem !important',
   },
-  formSection: {
-    marginTop: '30px',
-    width: '100%',
-  },
-  formTitle: {
-    fontSize: '1.4rem !important',
-    fontWeight: 'bold !important',
-    color: '#2A2B6A !important',
-    marginBottom: '20px !important',
-    position: 'relative',
-    '&:after': {
-      content: '""',
-      position: 'absolute',
-      bottom: '-8px',
-      left: '0',
-      width: '60px',
-      height: '3px',
-      backgroundColor: '#FFC614',
-    },
-  },
-  formField: {
-    marginBottom: '20px !important',
-    '& .MuiOutlinedInput-root': {
-      '&:hover fieldset': {
-        borderColor: '#2A2B6A',
-      },
-      '&.Mui-focused fieldset': {
-        borderColor: '#2A2B6A',
-      }
-    },
-    '& .MuiFormLabel-root.Mui-focused': {
-      color: '#2A2B6A',
-    }
-  },
   errorText: {
     color: '#f44336 !important',
     fontSize: '0.75rem !important',
@@ -533,7 +534,8 @@ const Cart = () => {
           </Typography>
 
           <Box className={classes.cartContainer}>
-            <Box className={classes.selectionColumn}>
+            {/* Program Selection Section (Top) */}
+            <Box className={classes.programSelectionSection}>
               <Paper className={classes.card} elevation={0}>
                 <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
                   <Typography className={classes.cardTitle}>
@@ -612,7 +614,8 @@ const Cart = () => {
               </Paper>
             </Box>
 
-            <Box className={classes.summaryColumn}>
+            {/* Program Details Card (Bottom) */}
+            <Box className={classes.programDetailsCard}>
               <Paper className={classes.card} elevation={0}>
                 <CardContent className={classes.summaryCard}>
                   <Typography className={classes.cardTitle}>

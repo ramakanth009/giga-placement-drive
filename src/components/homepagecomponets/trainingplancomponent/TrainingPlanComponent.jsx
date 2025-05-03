@@ -1,18 +1,23 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Box, Typography, Tabs, Tab, Button, Grid, Paper } from '@mui/material';
+import { Box, Typography, Tabs, Tab, Button, Grid, Paper, IconButton } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import BusinessIcon from '@mui/icons-material/Business';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import TouchAppIcon from '@mui/icons-material/TouchApp';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import Chart from 'chart.js/auto';
 import { useNavigate } from 'react-router-dom';
 import Swiper from 'swiper';
+import { Navigation, Autoplay } from 'swiper/modules';
 import { SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/autoplay';
 
-// SVG imports for company logos (same as original)
+// SVG imports for company logos
 import { ReactComponent as AccentureLogo } from '../../../assets/hiringpartners/Accenture.svg';
 import { ReactComponent as SynopsysLogo } from '../../../assets/hiringpartners/Synopsys_Logo.svg';
 import { ReactComponent as HappyFoxLogo } from '../../../assets/hiringpartners/happyfox.svg';
@@ -89,11 +94,24 @@ const useStyles = makeStyles({
     "@media (max-width: 600px)": {
       minWidth: '120px !important',
       fontSize: '0.9rem !important',
+      padding: '0 10px !important',
     },
     "@media (max-width: 480px)": {
       minWidth: '100px !important',
-      fontSize: '0.85rem !important',
-      padding: '6px 10px !important',
+      fontSize: '0.75rem !important',
+      padding: '6px 8px !important',
+      '& .MuiTab-wrapper': {
+        fontSize: '0.75rem !important',
+      },
+    },
+  },
+  mobileTabLabel: {
+    "@media (max-width: 480px)": {
+      fontSize: '0.75rem !important',
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      maxWidth: '100px',
     },
   },
   weekCardContainer: {
@@ -117,6 +135,7 @@ const useStyles = makeStyles({
     display: 'none',
     width: '100%',
     marginBottom: '30px',
+    position: 'relative',
     "@media (max-width: 480px)": {
       display: 'block',
     },
@@ -567,6 +586,32 @@ const useStyles = makeStyles({
       transform: 'translateY(-5px)',
     },
   },
+  // Add mobile navigation arrow buttons
+  mobileNavArrow: {
+    display: 'none !important',
+    "@media (max-width: 480px)": {
+      display: 'flex !important',
+      position: 'absolute !important',
+      top: '50%',
+      transform: 'translateY(-50%)',
+      zIndex: 10,
+      backgroundColor: 'rgba(42, 43, 106, 0.7) !important',
+      color: 'white !important',
+      width: '32px !important',
+      height: '32px !important',
+      minWidth: 'unset !important',
+      borderRadius: '50% !important',
+      '& svg': {
+        fontSize: '0.9rem',
+      },
+    },
+  },
+  prevArrow: {
+    left: '5px !important',
+  },
+  nextArrow: {
+    right: '5px !important',
+  },
 });
 
 const TrainingPlanComponent = () => {
@@ -579,8 +624,10 @@ const TrainingPlanComponent = () => {
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
   const swiperRef = useRef(null);
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
 
-  // Track data for different tracks (same as original component)
+  // Track data for different tracks
   const tracks = [
     {
       id: 'fullstack',
@@ -752,7 +799,7 @@ const TrainingPlanComponent = () => {
         },
       ],
     },
-    // Data Science track (same as original)
+    // Data Science track
     {
       id: 'datascience',
       name: 'Data Science',
@@ -925,7 +972,7 @@ const TrainingPlanComponent = () => {
     },
   ];
 
-  // Hiring partners (same as original)
+  // Hiring partners
   const partnersForTabs = [
     [
       { Component: AccentureLogo, alt: 'Accenture' },
@@ -961,6 +1008,20 @@ const TrainingPlanComponent = () => {
   const handleSlideChange = (index) => {
     setActiveMobileSlide(index);
     setActiveRole(index);
+  };
+
+  // Handle prev arrow click
+  const handlePrevClick = () => {
+    if (swiperRef.current) {
+      swiperRef.current.slidePrev();
+    }
+  };
+
+  // Handle next arrow click
+  const handleNextClick = () => {
+    if (swiperRef.current) {
+      swiperRef.current.slideNext();
+    }
   };
 
   // Handle mouse events for cards
@@ -1053,18 +1114,29 @@ const TrainingPlanComponent = () => {
     };
   }, [activeTab, activeRole]);
 
-  // Initialize mobile swiper
+  // Initialize mobile swiper with autoplay and navigation
   useEffect(() => {
     if (window.innerWidth <= 480) {
       swiperRef.current = new Swiper('.role-swiper', {
+        modules: [Navigation, Autoplay],
         slidesPerView: 1.2,
         spaceBetween: 15,
         centeredSlides: true,
-        loop: false,
+        loop: true,
         initialSlide: activeRole,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        },
+        navigation: {
+          prevEl: prevRef.current,
+          nextEl: nextRef.current,
+        },
         on: {
           slideChange: (swiper) => {
-            handleSlideChange(swiper.activeIndex);
+            const realIndex = swiper.realIndex;
+            handleSlideChange(realIndex);
           },
         },
       });
@@ -1105,7 +1177,11 @@ const TrainingPlanComponent = () => {
           {tracks.map((track) => (
             <Tab
               key={track.id}
-              label={track.name + " Development"}
+              label={
+                <Box className={classes.mobileTabLabel}>
+                  {track.name}
+                </Box>
+              }
               className={classes.tab}
             />
           ))}
@@ -1164,6 +1240,23 @@ const TrainingPlanComponent = () => {
 
       {/* Mobile Swiper */}
       <Box className={classes.mobileCardSwiper}>
+        {/* Navigation Arrows */}
+        <IconButton 
+          className={`${classes.mobileNavArrow} ${classes.prevArrow}`}
+          ref={prevRef}
+          onClick={handlePrevClick}
+        >
+          <ArrowBackIosNewIcon />
+        </IconButton>
+        
+        <IconButton 
+          className={`${classes.mobileNavArrow} ${classes.nextArrow}`}
+          ref={nextRef}
+          onClick={handleNextClick}
+        >
+          <ArrowForwardIosIcon />
+        </IconButton>
+        
         <div className="role-swiper">
           <div className="swiper-wrapper">
             {tracks[activeTab].weeks.map((weekData, index) => (
@@ -1211,10 +1304,6 @@ const TrainingPlanComponent = () => {
             />
           ))}
         </Box>
-        
-        <Typography className={classes.indicatorText}>
-          Swipe to explore more roles
-        </Typography>
       </Box>
 
       {/* Data visualization and company info */}

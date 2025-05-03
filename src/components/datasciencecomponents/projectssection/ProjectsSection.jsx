@@ -1,40 +1,109 @@
-import React from "react";
-import { Box, Typography, Container } from "@mui/material";
-import { makeStyles } from "@mui/styles";
-import ProjectCard from "../../common/projectcard/ProjectCard";
-import ShowChartIcon from "@mui/icons-material/ShowChart";
-import GroupIcon from "@mui/icons-material/Group";
-import TrendingUpIcon from "@mui/icons-material/TrendingUp";
-import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt";
+import React from 'react';
+import { Box, Typography, Container } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import ProjectCard from '../../common/projectcard/ProjectCard';
+import ShowChartIcon from '@mui/icons-material/ShowChart';
+import GroupIcon from '@mui/icons-material/Group';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
 
 const useStyles = makeStyles({
   section: {
-    padding: "60px 0",
-    position: "relative",
-    overflow: "hidden",
-    background: "linear-gradient(180deg, #FFFFFF 4.46%, #B5D1ED 100%)",
+    padding: '60px 0',
+    position: 'relative',
+    overflow: 'hidden',
+    background: 'linear-gradient(180deg, #FFFFFF 4.46%, #B5D1ED 100%)',
+    '@media (max-width: 1200px)': {
+      padding: '55px 0',
+    },
+    '@media (max-width: 960px)': {
+      padding: '50px 0',
+    },
+    '@media (max-width: 600px)': {
+      padding: '45px 0',
+    },
+    '@media (max-width: 480px)': {
+      padding: '40px 0',
+    },
+    '@media (max-width: 375px)': {
+      padding: '35px 0',
+    },
   },
   titleContainer: {
-    textAlign: "center",
-    marginBottom: "50px",
+    textAlign: 'center',
+    marginBottom: '50px',
+    '@media (max-width: 1200px)': {
+      marginBottom: '45px',
+    },
+    '@media (max-width: 960px)': {
+      marginBottom: '40px',
+    },
+    '@media (max-width: 600px)': {
+      marginBottom: '35px',
+    },
+    '@media (max-width: 480px)': {
+      marginBottom: '30px',
+    },
+    '@media (max-width: 375px)': {
+      marginBottom: '25px',
+    },
   },
   title: {
-    fontSize: "2.5rem !important",
-    fontWeight: "bold !important",
-    color: "#333366 !important",
-    marginBottom: "16px !important",
-    "& span": {
-      color: "#FFB800 !important",
+    fontSize: '2.5rem !important',
+    fontWeight: 'bold !important',
+    color: '#333366 !important',
+    marginBottom: '16px !important',
+    '& span': {
+      color: '#FFB800 !important',
+    },
+    '@media (max-width: 1200px)': {
+      fontSize: '2.3rem !important',
+      marginBottom: '15px !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '2.1rem !important',
+      marginBottom: '14px !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '1.9rem !important',
+      marginBottom: '12px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '1.7rem !important',
+      marginBottom: '10px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1.5rem !important',
+      marginBottom: '8px !important',
     },
   },
   projectsContainer: {
-    display: "flex",
-    justifyContent: "center",
-    flexWrap: "wrap",
-    gap: "30px",
-    "@media (max-width: 960px)": {
-      flexDirection: "column",
-      alignItems: "center",
+    display: 'flex',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    gap: '30px',
+    padding: '0 15px',
+    '@media (max-width: 1200px)': {
+      gap: '25px',
+      padding: '0 20px',
+    },
+    '@media (max-width: 960px)': {
+      gap: '20px',
+      flexDirection: 'column',
+      alignItems: 'center',
+      padding: '0 30px',
+    },
+    '@media (max-width: 600px)': {
+      gap: '18px',
+      padding: '0 20px',
+    },
+    '@media (max-width: 480px)': {
+      gap: '15px',
+      padding: '0 15px',
+    },
+    '@media (max-width: 375px)': {
+      gap: '12px',
+      padding: '0 10px',
     },
   },
 });
