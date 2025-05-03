@@ -1,16 +1,18 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Box, Typography, Tabs, Tab, Button } from '@mui/material';
+import { Box, Typography, Tabs, Tab, Button, Grid, Paper } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import BusinessIcon from '@mui/icons-material/Business';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import ExploreIcon from '@mui/icons-material/Explore';
-import TouchIcon from '@mui/icons-material/TouchApp'; // Added for the "Click Me" indicator
+import TouchAppIcon from '@mui/icons-material/TouchApp';
 import Chart from 'chart.js/auto';
 import { useNavigate } from 'react-router-dom';
+import Swiper from 'swiper';
+import { SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 
-// SVG imports for company logos
+// SVG imports for company logos (same as original)
 import { ReactComponent as AccentureLogo } from '../../../assets/hiringpartners/Accenture.svg';
 import { ReactComponent as SynopsysLogo } from '../../../assets/hiringpartners/Synopsys_Logo.svg';
 import { ReactComponent as HappyFoxLogo } from '../../../assets/hiringpartners/happyfox.svg';
@@ -24,11 +26,10 @@ import { ReactComponent as AdidasLogo } from '../../../assets/hiringpartners/Adi
 
 const useStyles = makeStyles({
   section: {
-    padding: '60px 24px', // Add horizontal padding equivalent to Container
+    padding: '60px 24px',
     backgroundColor: '#f9fafc',
     position: 'relative',
     overflow: 'hidden',
-    // maxWidth: '1400px', // Equivalent to Container maxWidth="lg"
     margin: '0 auto',
   },
   sectionTitle: {
@@ -89,9 +90,11 @@ const useStyles = makeStyles({
       minWidth: '120px !important',
       fontSize: '0.9rem !important',
     },
-  },
-  contentGrid: {
-    marginTop: '30px',
+    "@media (max-width: 480px)": {
+      minWidth: '100px !important',
+      fontSize: '0.85rem !important',
+      padding: '6px 10px !important',
+    },
   },
   weekCardContainer: {
     display: 'flex',
@@ -105,9 +108,22 @@ const useStyles = makeStyles({
     },
     "@media (max-width: 600px)": {
       gap: '15px',
-      flexDirection: 'column',
-      alignItems: 'center',
     },
+    "@media (max-width: 480px)": {
+      display: 'none', // Hide cards on mobile
+    },
+  },
+  mobileCardSwiper: {
+    display: 'none',
+    width: '100%',
+    marginBottom: '30px',
+    "@media (max-width: 480px)": {
+      display: 'block',
+    },
+  },
+  swiperSlide: {
+    display: 'flex',
+    justifyContent: 'center',
   },
   weekCard: {
     backgroundColor: '#fff',
@@ -132,9 +148,15 @@ const useStyles = makeStyles({
     },
     "@media (max-width: 600px)": {
       padding: '18px 14px',
-      width: '90%',
+      width: '180px',
+      height: '165px',
+    },
+    "@media (max-width: 480px)": {
+      width: '85%',
       maxWidth: '280px',
       height: 'auto',
+      minHeight: '160px',
+      margin: '0 auto',
     },
   },
   activeCard: {
@@ -177,6 +199,11 @@ const useStyles = makeStyles({
       height: '40px',
       marginBottom: '12px',
     },
+    "@media (max-width: 480px)": {
+      width: '38px',
+      height: '38px',
+      marginBottom: '10px',
+    },
   },
   weekLabel: {
     textTransform: 'uppercase',
@@ -197,6 +224,9 @@ const useStyles = makeStyles({
       fontSize: '15px !important',
       marginBottom: '6px !important',
     },
+    "@media (max-width: 480px)": {
+      fontSize: '14px !important',
+    },
   },
   description: {
     fontSize: '13px !important',
@@ -208,33 +238,48 @@ const useStyles = makeStyles({
     WebkitBoxOrient: 'vertical',
     "@media (max-width: 600px)": {
       fontSize: '12px !important',
+      WebkitLineClamp: 2,
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '12px !important',
+      WebkitLineClamp: 3,
     },
   },
-  dataSection: {
+  dataVisualizationSection: {
     marginTop: '40px',
+    display: 'flex',
+    flexDirection: 'column',
+    width: '100%',
   },
-  horizontalContainer: {
+  contentGrid: {
     display: 'flex',
     gap: '30px',
     marginBottom: '40px',
+    justifyContent: 'center',
     "@media (max-width: 960px)": {
       flexDirection: 'column',
-      gap: '20px',
+      alignItems: 'center',
+      gap: '25px',
     },
   },
   chartTitle: {
     fontSize: '1.4rem !important',
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
-    marginBottom: '30px !important',
+    marginBottom: '20px !important',
     textAlign: 'center',
     "@media (max-width: 600px)": {
       fontSize: '1.2rem !important',
-      marginBottom: '20px !important',
+      marginBottom: '15px !important',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '1.1rem !important',
+      marginBottom: '12px !important',
     },
   },
   visualizationBox: {
     flex: '1',
+    maxWidth: '600px',
     padding: '20px',
     backgroundColor: 'white',
     borderRadius: '15px',
@@ -242,48 +287,72 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     transition: 'all 0.3s ease',
-    height: '400px', // Set fixed height
-    width: '100%',   // Set width to 100%
+    "@media (max-width: 960px)": {
+      width: '100%',
+      maxWidth: '500px',
+    },
+    "@media (max-width: 480px)": {
+      padding: '15px',
+      borderRadius: '12px',
+    },
   },
   companyInfoBox: {
     flex: '1',
+    maxWidth: '600px',
     padding: '20px',
     backgroundColor: 'white',
     borderRadius: '15px',
     boxShadow: '0 4px 15px rgba(0, 0, 0, 0.05)',
     display: 'flex',
     flexDirection: 'column',
-    transition: 'all 0.3s ease',
-    height: '400px', // Set same height as visualizationBox
-    width: '100%',   // Set width to 100%
+    "@media (max-width: 960px)": {
+      width: '100%',
+      maxWidth: '500px',
+    },
+    "@media (max-width: 480px)": {
+      padding: '15px',
+      borderRadius: '12px',
+    },
   },
   chartContainer: {
     flex: 1,
     position: 'relative',
-    height: '300px',  // Adjusted height
+    height: '300px',
     marginBottom: '20px',
     "@media (max-width: 600px)": {
       height: '250px',
+      marginBottom: '15px',
+    },
+    "@media (max-width: 480px)": {
+      height: '220px',
     },
   },
   companyInfoTitle: {
     fontSize: '1.4rem !important',
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
-    marginBottom: '30px !important',
+    marginBottom: '20px !important',
     textAlign: 'center',
     "@media (max-width: 600px)": {
       fontSize: '1.2rem !important',
-      marginBottom: '20px !important',
+      marginBottom: '15px !important',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '1.1rem !important',
+      marginBottom: '12px !important',
     },
   },
   companyInfo: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '20px',
+    gap: '15px',
     padding: '10px',
     height: '100%',
     justifyContent: 'center',
+    "@media (max-width: 480px)": {
+      gap: '12px',
+      padding: '5px',
+    },
   },
   companyItem: {
     display: 'flex',
@@ -298,10 +367,18 @@ const useStyles = makeStyles({
       backgroundColor: '#f0f0f0',
       transform: 'translateY(-3px)',
     },
+    "@media (max-width: 480px)": {
+      padding: '8px',
+      gap: '10px',
+      marginBottom: '8px',
+    },
   },
   companyText: {
     fontSize: '14px !important',
     color: '#555 !important',
+    "@media (max-width: 480px)": {
+      fontSize: '13px !important',
+    },
   },
   partnersTitle: {
     fontSize: '1.4rem !important',
@@ -312,6 +389,10 @@ const useStyles = makeStyles({
     "@media (max-width: 600px)": {
       fontSize: '1.2rem !important',
       marginBottom: '15px !important',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '1.1rem !important',
+      marginBottom: '12px !important',
     },
   },
   partnersContainer: {
@@ -324,20 +405,24 @@ const useStyles = makeStyles({
     "@media (max-width: 600px)": {
       gap: '15px',
     },
+    "@media (max-width: 480px)": {
+      gap: '10px',
+    },
   },
   partnerCard: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    // padding: '15px',
     borderRadius: '8px',
     backgroundColor: '#f9f9f9',
     transition: 'all 0.3s ease',
     width: '110px',
     '&:hover': {
-      // backgroundColor: '#f0f0f0',
       transform: 'translateY(-3px)',
       boxShadow: '0 5px 15px rgba(0, 0, 0, 0.08)',
+    },
+    "@media (max-width: 480px)": {
+      width: '90px',
     },
   },
   partnerLogo: {
@@ -349,6 +434,10 @@ const useStyles = makeStyles({
     '&:hover': {
       opacity: 1,
     },
+    "@media (max-width: 480px)": {
+      width: '75px',
+      height: '50px',
+    },
   },
   partnersSection: {
     backgroundColor: 'white',
@@ -356,6 +445,11 @@ const useStyles = makeStyles({
     boxShadow: '0 4px 15px rgba(0, 0, 0, 0.05)',
     padding: '20px',
     marginBottom: '30px',
+    "@media (max-width: 480px)": {
+      padding: '15px',
+      borderRadius: '12px',
+      marginBottom: '25px',
+    },
   },
   viewButton: {
     backgroundColor: '#2A2B6A !important',
@@ -377,6 +471,10 @@ const useStyles = makeStyles({
       fontSize: '0.9rem !important',
       padding: '8px 20px !important',
     },
+    "@media (max-width: 480px)": {
+      width: '80% !important',
+      fontSize: '0.85rem !important',
+    },
   },
   actionsContainer: {
     display: 'flex',
@@ -387,8 +485,43 @@ const useStyles = makeStyles({
     "@media (max-width: 600px)": {
       gap: '15px',
     },
+    "@media (max-width: 480px)": {
+      flexDirection: 'column',
+      alignItems: 'center',
+      gap: '15px',
+    },
   },
-  // New styles for the "Click Me" indicator
+  swiperPagination: {
+    display: 'flex',
+    justifyContent: 'center',
+    gap: '8px',
+    marginTop: '15px',
+    "@media (max-width: 480px)": {
+      marginTop: '10px',
+    },
+  },
+  paginationDot: {
+    width: '8px',
+    height: '8px',
+    borderRadius: '50%',
+    backgroundColor: 'rgba(42, 43, 106, 0.3)',
+    transition: 'all 0.3s ease',
+  },
+  activeDot: {
+    backgroundColor: '#2A2B6A',
+    width: '24px',
+    borderRadius: '4px',
+  },
+  indicatorText: {
+    textAlign: 'center',
+    fontSize: '0.85rem !important',
+    color: '#666 !important',
+    marginTop: '10px !important',
+    display: 'none', // Hidden by default
+    "@media (max-width: 480px)": {
+      display: 'block', // Show only on mobile
+    },
+  },
   clickMeOverlay: {
     position: 'absolute',
     top: 0,
@@ -403,7 +536,7 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     opacity: 0,
     transition: 'opacity 0.3s ease',
-    pointerEvents: 'none', // This ensures the overlay doesn't block clicks
+    pointerEvents: 'none',
     zIndex: 10,
   },
   clickMeText: {
@@ -411,11 +544,17 @@ const useStyles = makeStyles({
     fontWeight: 'bold !important',
     fontSize: '1.2rem !important',
     marginTop: '8px !important',
+    "@media (max-width: 480px)": {
+      fontSize: '1rem !important',
+    },
   },
   clickMeIcon: {
     color: 'white !important',
     fontSize: '2rem !important',
     animation: '$bounce 2s infinite',
+    "@media (max-width: 480px)": {
+      fontSize: '1.8rem !important',
+    },
   },
   '@keyframes bounce': {
     '0%, 20%, 50%, 80%, 100%': {
@@ -434,12 +573,14 @@ const TrainingPlanComponent = () => {
   const classes = useStyles();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState(0);
-  const [activeRole, setActiveRole] = useState(0); // Default to first role (Frontend Developer)
-  const [hoveredRole, setHoveredRole] = useState(null); // New state to track which card is being hovered
+  const [activeRole, setActiveRole] = useState(0);
+  const [hoveredRole, setHoveredRole] = useState(null);
+  const [activeMobileSlide, setActiveMobileSlide] = useState(0);
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
+  const swiperRef = useRef(null);
 
-  // Track data for different tracks
+  // Track data for different tracks (same as original component)
   const tracks = [
     {
       id: 'fullstack',
@@ -571,7 +712,7 @@ const TrainingPlanComponent = () => {
         {
           week: 'Week 4',
           role: 'Full Stack Developer',
-          description: 'Build end-to-end web apps with RESTful & GraphQL APIs (Postman/Swagger), frontend frameworks, and databases. Master full-stack development for technical interviews.',
+          description: 'Build end-to-end web apps with RESTful & GraphQL APIs, frontend frameworks, and databases.',
           color: '#e8518d',
           colorLight: 'rgba(232, 81, 141, 0.1)',
           chartData: {
@@ -611,6 +752,7 @@ const TrainingPlanComponent = () => {
         },
       ],
     },
+    // Data Science track (same as original)
     {
       id: 'datascience',
       name: 'Data Science',
@@ -783,9 +925,8 @@ const TrainingPlanComponent = () => {
     },
   ];
 
-  // Updated hiring partners with only logos
+  // Hiring partners (same as original)
   const partnersForTabs = [
-    // Full Stack partners - Accenture, Synopsys, HappyFox, Zoho, Paytm
     [
       { Component: AccentureLogo, alt: 'Accenture' },
       { Component: SynopsysLogo, alt: 'Synopsys' },
@@ -793,7 +934,6 @@ const TrainingPlanComponent = () => {
       { Component: ZohoLogo, alt: 'Zoho' },
       { Component: PaytmLogo, alt: 'Paytm' },
     ],
-    // Data Science partners - Goldman Sachs, MedPlus, Infrrt, Caterpillar, Adidas
     [
       { Component: GoldmanSachsLogo, alt: 'Goldman Sachs' },
       { Component: MedplusLogo, alt: 'MedPlus' },
@@ -806,95 +946,105 @@ const TrainingPlanComponent = () => {
   // Handle tab change
   const handleTabChange = (event, newValue) => {
     setActiveTab(newValue);
-    setActiveRole(0); // Reset to first role when tab changes
-    setHoveredRole(null); // Reset hovered role
+    setActiveRole(0);
+    setHoveredRole(null);
+    setActiveMobileSlide(0);
   };
 
   // Handle role card click
   const handleRoleClick = (index) => {
     setActiveRole(index);
-    setHoveredRole(null); // Reset hovered role when a card is clicked
+    setHoveredRole(null);
   };
 
-  // Handle mouse enter for role cards
+  // Handle mobile slide change
+  const handleSlideChange = (index) => {
+    setActiveMobileSlide(index);
+    setActiveRole(index);
+  };
+
+  // Handle mouse events for cards
   const handleRoleMouseEnter = (index) => {
     if (index !== activeRole) {
       setHoveredRole(index);
     }
   };
 
-  // Handle mouse leave for role cards
   const handleRoleMouseLeave = () => {
     setHoveredRole(null);
   };
 
-  // Initialize and update chart when tab or active role changes
+  // Initialize chart
   useEffect(() => {
     if (chartInstance.current) {
       chartInstance.current.destroy();
     }
     
-    const ctx = chartRef.current.getContext('2d');
-    const currentTrack = tracks[activeTab];
-    const currentRole = currentTrack.weeks[activeRole];
-    
-    chartInstance.current = new Chart(ctx, {
-      type: 'bar',
-      data: currentRole.chartData,
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            display: false,
-          },
-          tooltip: {
-            backgroundColor: 'rgba(42, 43, 106, 0.8)',
-            titleFont: {
-              size: 14,
-              weight: 'bold',
-            },
-            bodyFont: {
-              size: 13,
-            },
-            padding: 10,
-            cornerRadius: 6,
-          },
-        },
-        scales: {
-          y: {
-            beginAtZero: true,
-            grid: {
-              color: 'rgba(0, 0, 0, 0.05)',
-            },
-            ticks: {
-              callback: function(value) {
-                return value + '%';
-              },
-              font: {
-                size: 11,
-              },
-              color: '#666',
-            },
-          },
-          x: {
-            grid: {
+    if (chartRef.current) {
+      const ctx = chartRef.current.getContext('2d');
+      const currentTrack = tracks[activeTab];
+      const currentRole = currentTrack.weeks[activeRole];
+      
+      chartInstance.current = new Chart(ctx, {
+        type: 'bar',
+        data: currentRole.chartData,
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
               display: false,
             },
-            ticks: {
-              font: {
-                size: 11,
+            tooltip: {
+              backgroundColor: 'rgba(42, 43, 106, 0.8)',
+              titleFont: {
+                size: 14,
+                weight: 'bold',
               },
-              color: '#666',
+              bodyFont: {
+                size: 13,
+              },
+              padding: 10,
+              cornerRadius: 6,
             },
           },
+          scales: {
+            y: {
+              beginAtZero: true,
+              grid: {
+                color: 'rgba(0, 0, 0, 0.05)',
+              },
+              ticks: {
+                callback: function(value) {
+                  return value + '%';
+                },
+                font: {
+                  size: window.innerWidth < 480 ? 10 : 11,
+                },
+                color: '#666',
+              },
+            },
+            x: {
+              grid: {
+                display: false,
+              },
+              ticks: {
+                font: {
+                  size: window.innerWidth < 480 ? 9 : 11,
+                },
+                color: '#666',
+                maxRotation: window.innerWidth < 480 ? 45 : 0,
+                minRotation: window.innerWidth < 480 ? 45 : 0,
+              },
+            },
+          },
+          animation: {
+            duration: 1000,
+            easing: 'easeInOutQuad'
+          }
         },
-        animation: {
-          duration: 1000,
-          easing: 'easeInOutQuad'
-        }
-      },
-    });
+      });
+    }
 
     return () => {
       if (chartInstance.current) {
@@ -903,7 +1053,31 @@ const TrainingPlanComponent = () => {
     };
   }, [activeTab, activeRole]);
 
-  // Navigate to respective page based on active tab
+  // Initialize mobile swiper
+  useEffect(() => {
+    if (window.innerWidth <= 480) {
+      swiperRef.current = new Swiper('.role-swiper', {
+        slidesPerView: 1.2,
+        spaceBetween: 15,
+        centeredSlides: true,
+        loop: false,
+        initialSlide: activeRole,
+        on: {
+          slideChange: (swiper) => {
+            handleSlideChange(swiper.activeIndex);
+          },
+        },
+      });
+    }
+
+    return () => {
+      if (swiperRef.current) {
+        swiperRef.current.destroy();
+      }
+    };
+  }, [activeTab]);
+
+  // Navigate to respective page
   const handleViewDetails = () => {
     const routes = {
       0: '/fullstack',
@@ -911,13 +1085,6 @@ const TrainingPlanComponent = () => {
     };
     
     navigate(routes[activeTab] || '/');
-  };
-
-  // Handle click on explore other programs button
-  const handleExploreOtherPrograms = () => {
-    // Toggle between fullstack and data science
-    setActiveTab(activeTab === 0 ? 1 : 0);
-    setActiveRole(0); // Reset role when switching tabs
   };
 
   return (
@@ -945,7 +1112,7 @@ const TrainingPlanComponent = () => {
         </Tabs>
       </Box>
 
-      {/* Weekly curriculum cards */}
+      {/* Desktop/Tablet Weekly curriculum cards */}
       <Box className={classes.weekCardContainer}>
         {tracks[activeTab].weeks.map((weekData, index) => (
           <Box 
@@ -963,14 +1130,14 @@ const TrainingPlanComponent = () => {
               backgroundColor: index === activeRole ? `${weekData.colorLight}` : '#fff',
             }}
           >
-            {/* Click Me Overlay - only visible when hovered and not active */}
+            {/* Click Me Overlay */}
             <Box 
               className={classes.clickMeOverlay}
               sx={{ 
                 opacity: hoveredRole === index ? 0.9 : 0,
               }}
             >
-              <TouchIcon className={classes.clickMeIcon} />
+              <TouchAppIcon className={classes.clickMeIcon} />
               <Typography className={classes.clickMeText}>
                 Click to explore
               </Typography>
@@ -995,12 +1162,67 @@ const TrainingPlanComponent = () => {
         ))}
       </Box>
 
+      {/* Mobile Swiper */}
+      <Box className={classes.mobileCardSwiper}>
+        <div className="role-swiper">
+          <div className="swiper-wrapper">
+            {tracks[activeTab].weeks.map((weekData, index) => (
+              <div className="swiper-slide" key={index}>
+                <Box 
+                  className={`${classes.weekCard} ${
+                    index === activeRole ? classes.activeCard : ''
+                  }`}
+                  sx={{
+                    border: index === activeRole ? `2px solid ${weekData.color}` : '2px solid transparent',
+                    backgroundColor: index === activeRole ? `${weekData.colorLight}` : '#fff',
+                  }}
+                  onClick={() => handleRoleClick(index)}
+                >
+                  <Box 
+                    className={classes.iconContainer} 
+                    sx={{ backgroundColor: `${weekData.color}20` }}
+                  >
+                    <CalendarMonthIcon sx={{ color: weekData.color }} />
+                  </Box>
+                  <Typography className={classes.weekLabel}>
+                    {weekData.week}
+                  </Typography>
+                  <Typography className={classes.roleName} sx={{ color: weekData.color }}>
+                    {weekData.role}
+                  </Typography>
+                  <Typography className={classes.description}>
+                    {weekData.description}
+                  </Typography>
+                </Box>
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        {/* Pagination dots for mobile */}
+        <Box className={classes.swiperPagination}>
+          {tracks[activeTab].weeks.map((_, index) => (
+            <Box
+              key={index}
+              className={`${classes.paginationDot} ${
+                index === activeMobileSlide ? classes.activeDot : ''
+              }`}
+              onClick={() => handleSlideChange(index)}
+            />
+          ))}
+        </Box>
+        
+        <Typography className={classes.indicatorText}>
+          Swipe to explore more roles
+        </Typography>
+      </Box>
+
       {/* Data visualization and company info */}
-      <Box className={classes.horizontalContainer}>
+      <Box className={classes.contentGrid}>
         {/* Left Section - Chart */}
         <Box className={classes.visualizationBox}>
           <Typography className={classes.chartTitle}>
-            {tracks[activeTab].weeks[activeRole].role} Demand in 2024
+            {tracks[activeTab].weeks[activeRole].role} Demand in 2025
           </Typography>
           <Box className={classes.chartContainer}>
             <canvas ref={chartRef} />
