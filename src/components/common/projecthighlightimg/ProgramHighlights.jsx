@@ -16,10 +16,31 @@ const useStyles = makeStyles({
     position: 'relative',
     background: 'linear-gradient(135deg, #2A2B6A 0%, #1A1B4A 100%)',
     overflow: 'hidden',
+    '@media (max-width: 1200px)': {
+      padding: '70px 0',
+    },
+    '@media (max-width: 960px)': {
+      padding: '60px 0',
+    },
+    '@media (max-width: 600px)': {
+      padding: '50px 0',
+    },
+    '@media (max-width: 480px)': {
+      padding: '40px 0',
+    },
+    '@media (max-width: 375px)': {
+      padding: '30px 0',
+    }
   },
   container: {
     position: 'relative',
     zIndex: 2,
+    '@media (max-width: 1200px)': {
+      maxWidth: '90%',
+    },
+    '@media (max-width: 480px)': {
+      maxWidth: '95%',
+    }
   },
   title: {
     fontSize: '2.5rem !important',
@@ -28,6 +49,26 @@ const useStyles = makeStyles({
     textAlign: 'center',
     marginBottom: '24px !important',
     position: 'relative',
+    '@media (max-width: 1200px)': {
+      fontSize: '2.3rem !important',
+      marginBottom: '22px !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '2.1rem !important',
+      marginBottom: '20px !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '1.8rem !important',
+      marginBottom: '18px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '1.6rem !important',
+      marginBottom: '16px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1.4rem !important',
+      marginBottom: '14px !important',
+    }
   },
   subtitle: {
     fontSize: '1.1rem !important',
@@ -35,11 +76,39 @@ const useStyles = makeStyles({
     textAlign: 'center',
     maxWidth: '700px',
     margin: '0 auto 60px !important',
+    '@media (max-width: 1200px)': {
+      fontSize: '1.05rem !important',
+      maxWidth: '650px',
+      margin: '0 auto 50px !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '1rem !important',
+      maxWidth: '600px',
+      margin: '0 auto 45px !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.95rem !important',
+      maxWidth: '100%',
+      margin: '0 auto 40px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.9rem !important',
+      lineHeight: '1.5 !important',
+      margin: '0 auto 35px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.85rem !important',
+      lineHeight: '1.4 !important',
+      margin: '0 auto 30px !important',
+    }
   },
   highlight: {
     color: '#FFC614 !important',
     position: 'relative',
     display: 'inline-block',
+    '@media (max-width: 480px)': {
+      display: 'inline',
+    }
   },
   cardsContainer: {
     display: 'grid',
@@ -48,14 +117,29 @@ const useStyles = makeStyles({
     maxWidth: '1200px',
     margin: '0 auto',
     position: 'relative',
+    '@media (max-width: 1200px)': {
+      gridTemplateColumns: 'repeat(3, 1fr)',
+      gap: '25px',
+      maxWidth: '950px',
+    },
     '@media (max-width: 960px)': {
       gridTemplateColumns: 'repeat(2, 1fr)',
-      gap: '25px',
+      gap: '20px',
+      maxWidth: '700px',
     },
     '@media (max-width: 600px)': {
       gridTemplateColumns: '1fr',
       gap: '20px',
+      maxWidth: '400px',
     },
+    '@media (max-width: 480px)': {
+      gap: '18px',
+      maxWidth: '350px',
+    },
+    '@media (max-width: 375px)': {
+      gap: '15px',
+      maxWidth: '300px',
+    }
   },
   card: {
     position: 'relative',
@@ -80,6 +164,34 @@ const useStyles = makeStyles({
         transform: 'scale(1.15)',
       }
     },
+    '@media (max-width: 1200px)': {
+      padding: '28px 18px',
+      borderRadius: '14px',
+    },
+    '@media (max-width: 960px)': {
+      padding: '25px 16px',
+      borderRadius: '12px',
+    },
+    '@media (max-width: 600px)': {
+      padding: '22px 15px',
+      borderRadius: '12px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '20px 12px',
+      borderRadius: '10px',
+      '&:hover': {
+        transform: 'translateY(-8px)',
+        boxShadow: '0 20px 40px rgba(0, 0, 0, 0.25)',
+      }
+    },
+    '@media (max-width: 375px)': {
+      padding: '18px 10px',
+      borderRadius: '8px',
+      '&:hover': {
+        transform: 'translateY(-5px)',
+        boxShadow: '0 15px 30px rgba(0, 0, 0, 0.2)',
+      }
+    }
   },
   cardVisible: {
     opacity: 1,
@@ -107,11 +219,53 @@ const useStyles = makeStyles({
       WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
       WebkitMaskComposite: 'xor',
       maskComposite: 'exclude',
+    },
+    '@media (max-width: 1200px)': {
+      width: '75px',
+      height: '75px',
+      marginBottom: '18px',
+    },
+    '@media (max-width: 960px)': {
+      width: '70px',
+      height: '70px',
+      marginBottom: '16px',
+    },
+    '@media (max-width: 600px)': {
+      width: '65px',
+      height: '65px',
+      marginBottom: '15px',
+    },
+    '@media (max-width: 480px)': {
+      width: '60px',
+      height: '60px',
+      marginBottom: '14px',
+      boxShadow: '0 6px 12px rgba(0, 0, 0, 0.1)',
+    },
+    '@media (max-width: 375px)': {
+      width: '55px',
+      height: '55px',
+      marginBottom: '12px',
+      boxShadow: '0 5px 10px rgba(0, 0, 0, 0.1)',
     }
   },
   cardIcon: {
     fontSize: '2.2rem !important',
     color: 'currentColor',
+    '@media (max-width: 1200px)': {
+      fontSize: '2.1rem !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '2rem !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '1.9rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '1.8rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1.7rem !important',
+    }
   },
   cardTitle: {
     fontSize: '1.2rem !important',
@@ -120,11 +274,46 @@ const useStyles = makeStyles({
     marginBottom: '12px !important',
     position: 'relative',
     zIndex: 1,
+    '@media (max-width: 1200px)': {
+      fontSize: '1.15rem !important',
+      marginBottom: '10px !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '1.1rem !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '1.05rem !important',
+      marginBottom: '8px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '1rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.95rem !important',
+      marginBottom: '7px !important',
+    }
   },
   cardDescription: {
     fontSize: '0.9rem !important',
     color: 'rgba(255, 255, 255, 0.7) !important',
     lineHeight: '1.5 !important',
+    '@media (max-width: 1200px)': {
+      fontSize: '0.88rem !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '0.85rem !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.85rem !important',
+      lineHeight: '1.4 !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.8rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.75rem !important',
+      lineHeight: '1.35 !important',
+    }
   },
   backgroundGlow: {
     position: 'absolute',
@@ -134,34 +323,139 @@ const useStyles = makeStyles({
     filter: 'blur(150px)',
     opacity: 0.15,
     zIndex: 0,
+    '@media (max-width: 1200px)': {
+      width: '550px',
+      height: '550px',
+      filter: 'blur(130px)',
+    },
+    '@media (max-width: 960px)': {
+      width: '500px',
+      height: '500px',
+      filter: 'blur(110px)',
+    },
+    '@media (max-width: 600px)': {
+      width: '450px',
+      height: '450px',
+      filter: 'blur(100px)',
+    },
+    '@media (max-width: 480px)': {
+      width: '350px',
+      height: '350px',
+      filter: 'blur(80px)',
+    },
+    '@media (max-width: 375px)': {
+      width: '300px',
+      height: '300px',
+      filter: 'blur(70px)',
+    }
   },
   topRightGlow: {
     background: '#FFC614',
     top: '-200px',
     right: '-200px',
+    '@media (max-width: 1200px)': {
+      top: '-180px',
+      right: '-180px',
+    },
+    '@media (max-width: 960px)': {
+      top: '-160px',
+      right: '-160px',
+    },
+    '@media (max-width: 600px)': {
+      top: '-140px',
+      right: '-140px',
+    },
+    '@media (max-width: 480px)': {
+      top: '-120px',
+      right: '-120px',
+    },
+    '@media (max-width: 375px)': {
+      top: '-100px',
+      right: '-100px',
+    }
   },
   bottomLeftGlow: {
     background: '#7039e5',
     bottom: '-300px',
     left: '-200px',
+    '@media (max-width: 1200px)': {
+      bottom: '-280px',
+      left: '-180px',
+    },
+    '@media (max-width: 960px)': {
+      bottom: '-260px',
+      left: '-160px',
+    },
+    '@media (max-width: 600px)': {
+      bottom: '-230px',
+      left: '-140px',
+    },
+    '@media (max-width: 480px)': {
+      bottom: '-200px',
+      left: '-120px',
+    },
+    '@media (max-width: 375px)': {
+      bottom: '-180px',
+      left: '-100px',
+    }
   },
   decorativeElement: {
     position: 'absolute',
     zIndex: 1,
     opacity: 0.05,
+    '@media (max-width: 480px)': {
+      opacity: 0.04,
+    },
+    '@media (max-width: 375px)': {
+      opacity: 0.03,
+    }
   },
   circleElement: {
     borderRadius: '50%',
     border: '2px solid #FFC614',
+    '@media (max-width: 480px)': {
+      border: '1.5px solid #FFC614',
+    },
+    '@media (max-width: 375px)': {
+      border: '1px solid #FFC614',
+    }
   },
   squareElement: {
     width: '40px',
     height: '40px',
     border: '2px solid white',
     transform: 'rotate(45deg)',
+    '@media (max-width: 1200px)': {
+      width: '38px',
+      height: '38px',
+    },
+    '@media (max-width: 960px)': {
+      width: '35px',
+      height: '35px',
+    },
+    '@media (max-width: 600px)': {
+      width: '30px',
+      height: '30px',
+    },
+    '@media (max-width: 480px)': {
+      width: '25px',
+      height: '25px',
+      border: '1.5px solid white',
+    },
+    '@media (max-width: 375px)': {
+      width: '20px',
+      height: '20px',
+      border: '1px solid white',
+    }
   },
   floatingAnimation: {
     animation: '$floating 8s infinite ease-in-out',
+    '@media (max-width: 480px)': {
+      animation: '$floating 9s infinite ease-in-out',
+    },
+    '@media (max-width: 375px)': {
+      animation: '$floating 10s infinite ease-in-out',
+    }
   },
   '@keyframes floating': {
     '0%': {
@@ -182,14 +476,74 @@ const useStyles = makeStyles({
     backgroundSize: '20px 20px',
     opacity: 0.1,
     zIndex: 1,
+    '@media (max-width: 1200px)': {
+      width: '180px',
+      height: '180px',
+      backgroundSize: '18px 18px',
+    },
+    '@media (max-width: 960px)': {
+      width: '160px',
+      height: '160px',
+      backgroundSize: '16px 16px',
+    },
+    '@media (max-width: 600px)': {
+      width: '140px',
+      height: '140px',
+      backgroundSize: '14px 14px',
+    },
+    '@media (max-width: 480px)': {
+      width: '120px',
+      height: '120px',
+      backgroundSize: '12px 12px',
+      opacity: 0.08,
+    },
+    '@media (max-width: 375px)': {
+      width: '100px',
+      height: '100px',
+      backgroundSize: '10px 10px',
+      opacity: 0.07,
+    }
   },
   dotsTopRight: {
     top: '10%',
     right: '5%',
+    '@media (max-width: 600px)': {
+      top: '8%',
+      right: '4%',
+    },
+    '@media (max-width: 375px)': {
+      top: '6%',
+      right: '3%',
+    }
   },
   dotsBottomLeft: {
     bottom: '10%',
     left: '5%',
+    '@media (max-width: 600px)': {
+      bottom: '8%',
+      left: '4%',
+    },
+    '@media (max-width: 375px)': {
+      bottom: '6%',
+      left: '3%',
+    }
+  },
+  pulse: {
+    animation: '$pulse 1.5s infinite',
+    '@media (max-width: 480px)': {
+      animation: '$pulse 2s infinite',
+    }
+  },
+  '@keyframes pulse': {
+    '0%': {
+      transform: 'scale(1)',
+    },
+    '50%': {
+      transform: 'scale(1.05)',
+    },
+    '100%': {
+      transform: 'scale(1)',
+    },
   },
 });
 
@@ -277,7 +631,7 @@ const ProgramHighlights = () => {
   return (
     <Box className={classes.section}>
       {/* Background glows */}
-      <Box className={`${classes.backgroundGlow} ${classes.topRightGlow}`} />
+      {/* <Box className={`${classes.backgroundGlow} ${classes.topRightGlow}`} /> */}
       <Box className={`${classes.backgroundGlow} ${classes.bottomLeftGlow}`} />
       
       {/* Decorative dot patterns */}
