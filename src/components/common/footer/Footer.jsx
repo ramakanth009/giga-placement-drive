@@ -776,7 +776,6 @@ const Footer = () => {
                     Full-Stack Development
                   </MuiLink>
                 </li>
-
                 <li className={classes.linkItem}>
                   <DataObjectIcon className={classes.linkIcon} />
                   <MuiLink
@@ -792,11 +791,36 @@ const Footer = () => {
                   <BusinessCenterIcon className={classes.linkIcon} />
                   <MuiLink
                     component={Link}
-                    // to="/programs/internship"
                     className={classes.programLink}
                     onClick={scrollToTop}
                   >
                     Master Internship
+                  </MuiLink>
+                </li>
+
+                <Typography className={classes.sectionTitle} style={{ marginTop: '30px' }}>
+                  Full-Time Programs
+                </Typography>
+                <li className={classes.linkItem}>
+                  <CodeIcon className={classes.linkIcon} />
+                  <MuiLink
+                    component={Link}
+                    to="/fulltime/fullstack"
+                    className={classes.programLink}
+                    onClick={scrollToTop}
+                  >
+                    Full Stack Full Time
+                  </MuiLink>
+                </li>
+                <li className={classes.linkItem}>
+                  <DataObjectIcon className={classes.linkIcon} />
+                  <MuiLink
+                    component={Link}
+                    to="/fulltime/datascience"
+                    className={classes.programLink}
+                    onClick={scrollToTop}
+                  >
+                    Data Science Full Time
                   </MuiLink>
                 </li>
               </ul>

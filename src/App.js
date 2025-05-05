@@ -16,6 +16,8 @@ import PaymentUnderConstruction from './pages/payment/PaymentUnderConstruction';
 import NotFound from './pages/notfound/NotFound';
 import CartPage from './components/cart/Cart'; 
 import PaymentProcess from './components/payment/PaymentProcess'; // Import the Payment Process component
+import FullstackFulltime from './pages/full_time/FullstackFulltime';
+import DatascienceFulltime from './pages/full_time/DatascienceFulltime';
 
 const App = () => {
   return (
@@ -31,6 +33,10 @@ const App = () => {
         <Route path="/datascience" element={<DataScience />} />
         <Route path="/register" element={<RegistrationForm />} />
         <Route path="/payment-under-construction" element={<PaymentUnderConstruction />} />
+        
+        {/* New Full-Time Program routes */}
+        <Route path="/fulltime/fullstack" element={<FullstackFulltime />} />
+        <Route path="/fulltime/datascience" element={<DatascienceFulltime />} />
         
         {/* Redirect for old/alternative routes */}
         <Route path="/terms" element={<Navigate to="/terms-and-conditions" replace />} />
