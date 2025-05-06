@@ -363,8 +363,7 @@ const ResumeBuilderSection = () => {
   }, []);
 
   const handleBuildClick = () => {
-    navigate('/payment-under-construction');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.open('https://airesume.gigaversity.in/', '_blank');
   };
   
   // Floating icons for background effect with responsive positioning
