@@ -67,6 +67,7 @@ const IndustryCaseStudies = ({ title, subtitle, caseStudies }) => {
             key={index}
             logoSrc={study.logoSrc}
             companyName={study.companyName}
+            monoLogoSrc={study.monoLogoSrc}
             title={study.title}
             description={study.description}
             metrics={study.metrics}

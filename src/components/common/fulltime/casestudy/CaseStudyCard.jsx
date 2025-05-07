@@ -47,17 +47,15 @@ const useStyles = makeStyles({
     borderRadius: '30px',
     padding: '8px 16px',
     marginBottom: '16px',
+    filter: 'grayscale(100%)',
   },
   companyIcon: {
-    width: '24px',
+    width: '100px',
     height: '24px',
     objectFit: 'contain',
+    filter: 'brightness(0.4)',
   },
-  companyName: {
-    fontSize: '16px',
-    fontWeight: 500,
-    color: '#333333',
-  },
+  
   cardTitle: {
     fontSize: '24px !important',
     fontWeight: '600 !important',
@@ -149,7 +147,6 @@ const CaseStudyCard = ({ logoSrc, companyName, monoLogoSrc, title, description, 
       <Box className={classes.contentSection}>
         <Box className={classes.companyBadge}>
           <img src={monoLogoSrc} alt={`${companyName} logo`} className={classes.companyIcon} />
-          <Typography className={classes.companyName}>{companyName}</Typography>
         </Box>
         <Typography className={classes.cardTitle}>{title}</Typography>
         <Typography className={classes.cardDescription}>{description}</Typography>
