@@ -1,6 +1,6 @@
 // src/components/datasciencecomponents/industryfacts/DataScienceIndustryFacts.jsx
 import React from 'react';
-import IndustryBackedFacts from '../../../common/industryfacts/IndustryBackedFacts';
+import IndustryBackedFacts from '../../../common/fulltime/industryfacts/IndustryBackedFacts';
 
 const DataScienceIndustryFacts = () => {
   // Define Data Science specific facts
