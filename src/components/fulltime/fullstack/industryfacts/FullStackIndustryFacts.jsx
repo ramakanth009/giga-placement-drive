@@ -1,6 +1,6 @@
 // src/components/fullstackcomponents/industryfacts/FullStackIndustryFacts.jsx
 import React from 'react';
-import IndustryBackedFacts from '../../../common/industryfacts/IndustryBackedFacts';
+import IndustryBackedFacts from '../../../common/fulltime/industryfacts/IndustryBackedFacts';
 
 const FullStackIndustryFacts = () => {
   // Define Full Stack specific facts

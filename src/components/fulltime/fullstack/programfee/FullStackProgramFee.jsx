@@ -1,6 +1,6 @@
 // src/components/fullstackcomponents/programfee/FullStackProgramFee.jsx
 import React from 'react';
-import ProgramFee from '../../../common/programfee/ProgramFee';
+import ProgramFee from '../../../common/fulltime/programfee/ProgramFee';
 
 const FullStackProgramFee = () => {
   // Handle enroll button click
