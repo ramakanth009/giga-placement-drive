@@ -363,7 +363,7 @@ const ResumeBuilderSection = () => {
   }, []);
 
   const handleBuildClick = () => {
-    window.open('https://airesume.gigaversity.in/', '_blank');
+    window.open('http://resume.gigaversity.in/', '_blank');
   };
   
   // Floating icons for background effect with responsive positioning

@@ -8,7 +8,7 @@ const useStyles = makeStyles({
     backgroundColor: '#FFFFFF',
     borderRadius: '12px',
     padding: '20px 0',
-    boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.05)',
+    // boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.05)',
     margin: '30px 0',
     overflow: 'hidden',
   },
@@ -34,14 +34,19 @@ const useStyles = makeStyles({
   },
   sectionWrapper: {
     marginBottom: '15px',
+    boxShadow: '0px 0px 44.63px 0px rgba(202, 199, 199, 0.32)',
+    borderRadius: '8px !important',
+    padding: '0 0 5px 0',
+    marginLeft: '150px',
+    marginRight: '150px',
   },
   sectionLabel: {
     display: 'inline-block',
     backgroundColor: '#FFC614',
     color: '#FFFFFF',
-    fontWeight: '600',
+    fontWeight: '600 !important',
     padding: '10px 25px',
-    borderRadius: '0 30px 30px 0',
+    borderRadius: '0 30px 30px 15px',
     fontSize: '18px !important',
     marginBottom: '15px !important',
     '@media (max-width: 768px)': {
@@ -60,25 +65,26 @@ const useStyles = makeStyles({
   },
   pricingText: {
     textAlign: 'center',
-    fontSize: '18px !important',
+    fontSize: '1.3rem !important',
     color: '#2A2B6A !important',
     '@media (max-width: 768px)': {
-      fontSize: '16px !important',
+      fontSize: '1rem !important',
     }
   },
   highlightedAmount: {
     fontWeight: '700 !important',
-    fontSize: '22px !important',
+    fontSize: '1.3rem !important',
     '@media (max-width: 768px)': {
       fontSize: '20px !important',
     }
   },
   supportText: {
     textAlign: 'center',
-    color: '#4A4A4A !important',
+    color: '#2A2B6A !important',
+    fontWeight: '500 !important',
     marginTop: '10px !important',
     marginBottom: '5px !important',
-    fontSize: '16px !important',
+    fontSize: '1.3rem !important',
     '@media (max-width: 768px)': {
       fontSize: '15px !important',
     },
@@ -93,7 +99,7 @@ const useStyles = makeStyles({
     marginBottom: '10px',
   },
   enrollButton: {
-    backgroundColor: '#001131 !important',
+    backgroundColor: '#002746 !important',
     color: 'white !important',
     padding: '12px 40px !important',
     fontSize: '18px !important',
