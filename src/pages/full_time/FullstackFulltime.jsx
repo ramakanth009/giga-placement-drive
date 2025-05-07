@@ -4,6 +4,7 @@ import Navbar from '../../components/common/navbar/Navbar'
 import Footer from '../../components/common/footer/Footer'
 import TestimonialComponent from '../../components/common/testimonialcomponent/TestimonialComponent'
 import FullStackProgramFee from '../../components/fulltime/fullstack/programfee/FullStackProgramFee'
+import FullStackProjectSection from '../../components/fulltime/fullstack/projectssection/FullStackProjectsSection'
 import FullStackIndustryFacts from '../../components/fulltime/fullstack/industryfacts/FullStackIndustryFacts'
 import FulltimeCertificates from '../../components/common/fulltime/fulltimeCertificates/FulltimeCertificates';
 import FullStackCaseStudies from '../../components/fulltime/fullstack/fullStackcasestudies/FullStackCaseStudies'
@@ -15,6 +16,7 @@ const FullstackFulltime = () => {
         <Navbar/>
         <FullStackHero />
         <FullStackIndustryFacts />
+        <FullStackProjectSection />
         <FullStackCaseStudies />
         <FulltimeCertificates />
         <FullStackProgramFee />
