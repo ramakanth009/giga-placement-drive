@@ -8,6 +8,7 @@ import DataScienceProgramFee from "../../components/common/fulltime/programfee/P
 import FulltimeCertificates from "../../components/common/fulltime/fulltimeCertificates/FulltimeCertificates";
 import DataScienceProjectsSection from "../../components/fulltime/datascience/projectssection/DataScienceProjectsSection";
 import DataScienceTechnologyKit from '../../components/fulltime/datascience/technologykit/DataScienceTechnologyKit'
+import DataScienceCurriculum from "../../components/fulltime/datascience/curriculum/DataScienceCurriculum";
 
 
 const DatascienceFulltime = () => {
@@ -15,8 +16,8 @@ const DatascienceFulltime = () => {
     <div>
       <Navbar />
       <DataScienceIndustryFacts />
+      <DataScienceCurriculum />
       <DataScienceTechnologyKit />
-
       <DataScienceProjectsSection />
       <DataScienceCaseStudies />
       <FulltimeCertificates />
