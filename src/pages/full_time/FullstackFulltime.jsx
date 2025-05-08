@@ -1,13 +1,14 @@
 import React from 'react'
-import FullStackHero from '../../components/fulltime/fullstack/fullstackhero/FullStackHero'
 import Navbar from '../../components/common/navbar/Navbar'
-import Footer from '../../components/common/footer/Footer'
-import TestimonialComponent from '../../components/common/testimonialcomponent/TestimonialComponent'
-import FullStackProgramFee from '../../components/fulltime/fullstack/programfee/FullStackProgramFee'
-import FullStackProjectSection from '../../components/fulltime/fullstack/projectssection/FullStackProjectsSection'
+import FullStackHero from '../../components/fulltime/fullstack/fullstackhero/FullStackHero'
 import FullStackIndustryFacts from '../../components/fulltime/fullstack/industryfacts/FullStackIndustryFacts'
-import FulltimeCertificates from '../../components/common/fulltime/fulltimeCertificates/FulltimeCertificates';
+import FullStackTechnologyKit from '../../components/fulltime/fullstack/technologykit/FullStackTechnologyKit'
+import FullStackProjectSection from '../../components/fulltime/fullstack/projectssection/FullStackProjectsSection'
 import FullStackCaseStudies from '../../components/fulltime/fullstack/fullStackcasestudies/FullStackCaseStudies'
+import FulltimeCertificates from '../../components/common/fulltime/fulltimeCertificates/FulltimeCertificates';
+import FullStackProgramFee from '../../components/fulltime/fullstack/programfee/FullStackProgramFee'
+import TestimonialComponent from '../../components/common/testimonialcomponent/TestimonialComponent'
+import Footer from '../../components/common/footer/Footer'
 
 
 const FullstackFulltime = () => {
@@ -16,6 +17,7 @@ const FullstackFulltime = () => {
         <Navbar/>
         <FullStackHero />
         <FullStackIndustryFacts />
+        <FullStackTechnologyKit />
         <FullStackProjectSection />
         <FullStackCaseStudies />
         <FulltimeCertificates />
