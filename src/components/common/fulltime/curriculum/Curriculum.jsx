@@ -1,4 +1,4 @@
-// 4. Curriculum Component
+// Enhanced Curriculum Component with auto-scrolling and improved padding
 import React, { useRef, useState, useEffect } from 'react';
 import { Box, Typography, Container, Chip } from '@mui/material';
 import { makeStyles } from '@mui/styles';
@@ -6,21 +6,21 @@ import CurriculumCard from './CurriculumCard';
 
 const useStyles = makeStyles({
   section: {
-    padding: '70px 0',
+    padding: '80px 0',
     position: 'relative',
     overflow: 'hidden',
     background: 'linear-gradient(180deg, #f8f9ff 0%, #ffffff 100%)',
     '@media (max-width: 1200px)': {
-      padding: '60px 0',
+      padding: '70px 0',
     },
     '@media (max-width: 960px)': {
-      padding: '50px 0',
+      padding: '60px 0',
     },
     '@media (max-width: 600px)': {
-      padding: '40px 0',
+      padding: '50px 0',
     },
     '@media (max-width: 480px)': {
-      padding: '35px 0',
+      padding: '40px 0',
     },
     '@media (max-width: 375px)': {
       padding: '30px 0',
@@ -71,23 +71,24 @@ const useStyles = makeStyles({
   container: {
     position: 'relative',
     zIndex: 2,
+    padding: '0 20px',
   },
   titleContainer: {
-    marginBottom: '40px',
+    marginBottom: '50px',
     position: 'relative',
     zIndex: 2,
     textAlign: 'center',
     '@media (max-width: 960px)': {
-      marginBottom: '35px',
+      marginBottom: '40px',
     },
     '@media (max-width: 600px)': {
-      marginBottom: '30px',
+      marginBottom: '35px',
     },
     '@media (max-width: 480px)': {
-      marginBottom: '25px',
+      marginBottom: '30px',
     },
     '@media (max-width: 375px)': {
-      marginBottom: '20px',
+      marginBottom: '25px',
     },
   },
   sectionTitle: {
@@ -152,27 +153,27 @@ const useStyles = makeStyles({
     color: '#666666 !important',
     textAlign: 'center',
     maxWidth: '700px',
-    margin: '25px auto 0 !important',
+    margin: '30px auto 0 !important',
     '@media (max-width: 1200px)': {
       fontSize: '1.05rem !important',
     },
     '@media (max-width: 960px)': {
       fontSize: '1rem !important',
       maxWidth: '650px',
-      margin: '22px auto 0 !important',
+      margin: '25px auto 0 !important',
     },
     '@media (max-width: 600px)': {
       fontSize: '0.95rem !important',
       maxWidth: '90%',
-      margin: '20px auto 0 !important',
+      margin: '22px auto 0 !important',
     },
     '@media (max-width: 480px)': {
       fontSize: '0.9rem !important',
-      margin: '18px auto 0 !important',
+      margin: '20px auto 0 !important',
     },
     '@media (max-width: 375px)': {
       fontSize: '0.85rem !important',
-      margin: '15px auto 0 !important',
+      margin: '18px auto 0 !important',
     },
   },
   roadmapLine: {
@@ -231,11 +232,14 @@ const useStyles = makeStyles({
   sliderContainer: {
     position: 'relative',
     paddingTop: '40px',
+    paddingBottom: '30px',
     '@media (max-width: 960px)': {
       paddingTop: '35px',
+      paddingBottom: '25px',
     },
     '@media (max-width: 600px)': {
       paddingTop: '30px',
+      paddingBottom: '20px',
     },
   },
   coreSkillsLabel: {
@@ -248,6 +252,8 @@ const useStyles = makeStyles({
     fontWeight: 'bold',
     fontSize: '18px',
     color: 'white',
+    marginTop:"20px",
+    marginBottom:"20px",
     whiteSpace: 'nowrap',
     background: 'linear-gradient(90deg, #6A5AF9 0%, #9E8DFC 100%)',
     boxShadow: '0 4px 15px rgba(106, 90, 249, 0.3)',
@@ -271,8 +277,8 @@ const useStyles = makeStyles({
   },
   sliderTrack: {
     display: 'flex',
-    transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
-    padding: '10px 0',
+    transition: 'transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)',
+    padding: '20px 0',
   },
   sliderWrapper: {
     position: 'relative',
@@ -293,46 +299,48 @@ const useStyles = makeStyles({
   progressContainer: {
     display: 'flex',
     justifyContent: 'center',
-    marginTop: '30px',
-    gap: '8px',
+    marginTop: '35px',
+    gap: '10px',
     '@media (max-width: 960px)': {
-      marginTop: '25px',
+      marginTop: '30px',
+      gap: '9px',
     },
     '@media (max-width: 600px)': {
+      marginTop: '25px',
+      gap: '8px',
+    },
+    '@media (max-width: 480px)': {
       marginTop: '20px',
       gap: '7px',
     },
-    '@media (max-width: 480px)': {
+    '@media (max-width: 375px)': {
       marginTop: '15px',
       gap: '6px',
     },
-    '@media (max-width: 375px)': {
-      gap: '5px',
-    },
   },
   progressDot: {
-    width: '10px',
-    height: '10px',
+    width: '12px',
+    height: '12px',
     borderRadius: '50%',
     backgroundColor: '#e0e0e0',
     transition: 'all 0.3s ease',
     cursor: 'pointer',
     '@media (max-width: 600px)': {
+      width: '10px',
+      height: '10px',
+    },
+    '@media (max-width: 480px)': {
       width: '9px',
       height: '9px',
     },
-    '@media (max-width: 480px)': {
+    '@media (max-width: 375px)': {
       width: '8px',
       height: '8px',
-    },
-    '@media (max-width: 375px)': {
-      width: '7px',
-      height: '7px',
     },
   },
   progressDotActive: {
     backgroundColor: '#4A63E7',
-    transform: 'scale(1.2)',
+    transform: 'scale(1.3)',
     boxShadow: '0 0 0 2px rgba(74, 99, 231, 0.2)',
   },
   skillChip: {
@@ -340,24 +348,26 @@ const useStyles = makeStyles({
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    gap: '8px',
+    gap: '10px',
+    padding: '0 10px',
     '@media (max-width: 960px)': {
-      gap: '7px',
+      gap: '8px',
     },
     '@media (max-width: 600px)': {
-      gap: '6px',
+      gap: '7px',
     },
     '@media (max-width: 480px)': {
-      gap: '5px',
+      gap: '6px',
     },
     '@media (max-width: 375px)': {
-      gap: '4px',
+      gap: '5px',
     },
   },
   chip: {
     fontSize: '0.85rem !important',
     fontWeight: '500 !important',
     borderRadius: '50px !important',
+    padding: '8px 14px !important',
     transition: 'all 0.3s ease !important',
     '&:hover': {
       transform: 'translateY(-2px)',
@@ -365,15 +375,19 @@ const useStyles = makeStyles({
     },
     '@media (max-width: 960px)': {
       fontSize: '0.8rem !important',
+      padding: '7px 12px !important',
     },
     '@media (max-width: 600px)': {
       fontSize: '0.75rem !important',
+      padding: '6px 10px !important',
     },
     '@media (max-width: 480px)': {
       fontSize: '0.7rem !important',
+      padding: '5px 8px !important',
     },
     '@media (max-width: 375px)': {
       fontSize: '0.65rem !important',
+      padding: '4px 7px !important',
     },
   },
   chipActive: {
@@ -448,6 +462,8 @@ const Curriculum = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
   const [visibleCategoryId, setVisibleCategoryId] = useState(null);
+  const [autoPlay, setAutoPlay] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
   
   // Extract cards data from curriculum data
   const [cardsData, setCardsData] = useState([]);
@@ -480,6 +496,26 @@ const Curriculum = ({
     }
   }, [curriculumData, icons]);
 
+  // Auto-scroll functionality
+  useEffect(() => {
+    let interval;
+    if (autoPlay && !isHovered && totalItems > 1) {
+      interval = setInterval(() => {
+        const nextIndex = (currentIndex + 1) % totalItems;
+        setCurrentIndex(nextIndex);
+        
+        const newVisibleId = cardsData[nextIndex]?.id;
+        if (newVisibleId) {
+          setVisibleCategoryId(newVisibleId);
+        }
+      }, 3000); // Change slide every 3 seconds
+    }
+    
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [autoPlay, currentIndex, totalItems, isHovered, cardsData]);
+
   // Determine if a card should be scaled (Core Skills section - assuming it's the middle card)
   const isCardInCoreSkills = (index) => {
     return index === Math.floor(totalItems / 2);
@@ -491,6 +527,9 @@ const Curriculum = ({
     if (newVisibleId) {
       setVisibleCategoryId(newVisibleId);
     }
+    // Pause autoplay briefly when user interacts
+    setAutoPlay(false);
+    setTimeout(() => setAutoPlay(true), 5000);
   };
 
   const handleChipClick = (id) => {
@@ -498,6 +537,9 @@ const Curriculum = ({
     if (index !== -1) {
       setCurrentIndex(index);
       setVisibleCategoryId(id);
+      // Pause autoplay briefly when user interacts
+      setAutoPlay(false);
+      setTimeout(() => setAutoPlay(true), 5000);
     }
   };
 
@@ -548,7 +590,11 @@ const Curriculum = ({
             Core Skills
           </Box>
           
-          <Box className={classes.sliderWrapper}>
+          <Box 
+            className={classes.sliderWrapper}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
             <Box 
               ref={sliderRef}
               className={classes.sliderTrack} 
@@ -586,4 +632,4 @@ const Curriculum = ({
   );
 };
 
-export default Curriculum   
+export default Curriculum;
