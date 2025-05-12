@@ -1,414 +1,521 @@
-// src/components/common/herosection/HeroSection.jsx
-import React from 'react';
-import { Box, Typography, Button, useMediaQuery } from '@mui/material';
+import React, { useEffect, useRef } from 'react';
+import { Box, Typography, Button } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { Link } from "react-router-dom";
-import CodeIcon from '@mui/icons-material/Code';
-import WorkIcon from '@mui/icons-material/Work';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 
 const useStyles = makeStyles({
-  bannerContainer: {
-    minHeight: "85vh",
-    backgroundImage: props => `url(${props.backgroundImage})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
+  heroSection: {
     position: 'relative',
+    width: '100%',
+    minHeight: '90vh',
     overflow: 'hidden',
-    borderRadius: '0 0 20px 20px',
-    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.06)',
+    backgroundImage: 'linear-gradient(to right, #2a2b6a, #32337e)',
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
     display: 'flex',
     alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: '30px',
+    paddingBottom: '90px',
     '@media (max-width: 1200px)': {
-      minHeight: "75vh",
+      minHeight: '85vh',
+      paddingTop: '25px',
+      paddingBottom: '80px',
     },
     '@media (max-width: 960px)': {
-      minHeight: "70vh",
-      padding: '0',
+      minHeight: '80vh',
+      paddingTop: '20px',
+      paddingBottom: '70px',
     },
     '@media (max-width: 600px)': {
-      minHeight: "auto",
-      padding: '50px 0',
-      borderRadius: '0 0 15px 15px',
+      minHeight: '75vh',
+      paddingTop: '15px',
+      paddingBottom: '60px',
     },
     '@media (max-width: 480px)': {
-      padding: '40px 0 30px',
+      minHeight: '70vh',
+      paddingTop: '10px',
+      paddingBottom: '50px',
+    },
+    '@media (max-width: 375px)': {
+      minHeight: '65vh',
+      paddingTop: '5px',
+      paddingBottom: '40px',
+    },
+  },
+  networkCanvas: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    zIndex: 1,
+  },
+  shapeDivider: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    height: '170px',
+    background: 'white',
+    transform: 'skewY(-4deg)',
+    transformOrigin: 'bottom',
+    marginBottom: '-70px',
+    zIndex: 2,
+    '@media (max-width: 1200px)': {
+      height: '150px',
+      marginBottom: '-60px',
+    },
+    '@media (max-width: 960px)': {
+      height: '130px',
+      marginBottom: '-50px',
+    },
+    '@media (max-width: 600px)': {
+      height: '110px',
+      marginBottom: '-40px',
+    },
+    '@media (max-width: 480px)': {
+      height: '90px',
+      marginBottom: '-35px',
+    },
+    '@media (max-width: 375px)': {
+      height: '70px',
+      marginBottom: '-30px',
     },
   },
   contentContainer: {
-    position: 'relative',
-    zIndex: 2,
-    width: '90%',
-    maxWidth: '1400px',
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    width: '100%',
+    maxWidth: '1200px',
     margin: '0 auto',
+    display: 'flex',
+    alignItems: 'center', 
+    justifyContent: 'space-between',
+    padding: '0 40px',
+    position: 'relative',
+    zIndex: 3,
     '@media (max-width: 1200px)': {
-      width: '95%',
+      maxWidth: '1100px',
+      padding: '0 35px',
     },
     '@media (max-width: 960px)': {
-      flexDirection: 'row', // Keep row direction for tablet
-      gap: '20px',
-      width: '90%',
+      maxWidth: '900px',
+      padding: '0 30px',
     },
-    '@media (max-width: 600px)': {
-      width: '90%',
-      flexDirection: 'column', // Change to column for mobile
-      gap: '20px',
-    },
-  },
-  leftContent: {
-    width: '58%',
-    '@media (max-width: 1200px)': {
-      width: '55%',
-    },
-    '@media (max-width: 960px)': {
-      width: '50%', // Maintain two-column layout
-      textAlign: 'left',
-      paddingLeft: '20px',
-    },
-    '@media (max-width: 600px)': {
-      width: '100%',
+    '@media (max-width: 900px)': {
+      flexDirection: 'column',
       textAlign: 'center',
-      paddingLeft: '0',
+      gap: '40px',
+      padding: '0 20px',
+    },
+    '@media (max-width: 480px)': {
+      gap: '30px',
+      padding: '0 15px',
+    },
+    '@media (max-width: 375px)': {
+      gap: '25px',
+      padding: '0 10px',
     },
   },
-  rightContent: {
-    width: '38%',
+  leftSection: {
+    flex: '1',
+    maxWidth: '600px',
+    paddingRight: '20px',
     '@media (max-width: 1200px)': {
-      width: '42%',
+      maxWidth: '550px',
+      paddingRight: '18px',
     },
     '@media (max-width: 960px)': {
-      width: '45%', // Keep two-column layout but with adjusted proportions
-      display: 'flex',
-      justifyContent: 'center',
+      maxWidth: '500px',
+      paddingRight: '15px',
+    },
+    '@media (max-width: 900px)': {
+      paddingRight: 0,
+      maxWidth: '100%',
+    },
+    '@media (max-width: 480px)': {
+      maxWidth: '100%',
+    },
+    '@media (max-width: 375px)': {
+      maxWidth: '100%',
+    },
+  },
+  rightSection: {
+    flex: '1',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative',
+    '@media (max-width: 1200px)': {
+      maxWidth: '550px',
+    },
+    '@media (max-width: 960px)': {
+      maxWidth: '500px',
+    },
+    '@media (max-width: 900px)': {
+      width: '100%',
+      maxWidth: '450px',
     },
     '@media (max-width: 600px)': {
-      display: 'none', // Hide image on mobile devices
+      maxWidth: '400px',
+    },
+    '@media (max-width: 480px)': {
+      maxWidth: '350px',
+    },
+    '@media (max-width: 375px)': {
+      maxWidth: '300px',
     },
   },
-  bannerTitle: {
-    fontSize: '3rem !important',
-    fontWeight: '800 !important',
-    color: '#2A2B6A !important',
+  title: {
+    fontSize: '3.2rem !important',
+    fontWeight: '700 !important',
+    color: 'white !important',
+    marginBottom: '10px !important',
     lineHeight: '1.2 !important',
-    marginBottom: '16px !important',
     '@media (max-width: 1200px)': {
-      fontSize: '2.7rem !important',
+      fontSize: '3rem !important',
     },
     '@media (max-width: 960px)': {
-      fontSize: '2.2rem !important',
-      marginBottom: '12px !important',
+      fontSize: '2.8rem !important',
+    },
+    '@media (max-width: 900px)': {
+      fontSize: '2.5rem !important',
     },
     '@media (max-width: 600px)': {
       fontSize: '2rem !important',
-      marginBottom: '10px !important',
     },
     '@media (max-width: 480px)': {
       fontSize: '1.8rem !important',
+      marginBottom: '8px !important',
     },
     '@media (max-width: 375px)': {
       fontSize: '1.6rem !important',
+      marginBottom: '6px !important',
     },
   },
-  highlightText: {
+  highlighted: {
     color: '#FFC614 !important',
-    display: props => props.displayAsBlock ? 'block' : 'inline',
+    display: 'block',
+    '@media (max-width: 480px)': {
+      display: 'inline',
+    },
+    '@media (max-width: 375px)': {
+      display: 'inline',
+    },
   },
-  subTitle: {
-    fontSize: '1.2rem !important',
-    color: '#555555 !important',
+  subtitle: {
+    fontSize: '1.5rem !important',
+    fontWeight: '500 !important',
+    color: '#FFC614 !important',
     marginBottom: '40px !important',
-    maxWidth: '90%',
     '@media (max-width: 1200px)': {
-      fontSize: '1.1rem !important',
+      fontSize: '1.4rem !important',
       marginBottom: '35px !important',
     },
     '@media (max-width: 960px)': {
-      fontSize: '1rem !important',
-      marginBottom: '25px !important',
-      maxWidth: '95%',
+      fontSize: '1.35rem !important',
+      marginBottom: '32px !important',
+    },
+    '@media (max-width: 900px)': {
+      fontSize: '1.3rem !important',
+      marginBottom: '30px !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '1rem !important',
+      fontSize: '1.1rem !important',
       marginBottom: '25px !important',
-      maxWidth: '100%',
-      margin: '0 auto 25px auto !important',
     },
     '@media (max-width: 480px)': {
-      fontSize: '0.95rem !important',
+      fontSize: '1rem !important',
       marginBottom: '20px !important',
     },
     '@media (max-width: 375px)': {
       fontSize: '0.9rem !important',
+      marginBottom: '15px !important',
     },
   },
-  featuresContainer: {
-    backgroundColor: "#ffffff",
+  buttonContainer: {
     display: 'flex',
-    alignItems: 'stretch',
-    justifyContent: 'space-between',
-    marginBottom: '40px',
-    borderRadius: '8px',
-    padding: '15px',
-    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.05)',
+    gap: '20px',
     '@media (max-width: 1200px)': {
-      marginBottom: '35px',
-      padding: '12px',
+      gap: '18px',
     },
     '@media (max-width: 960px)': {
-      width: '100%',
-      margin: '0 auto 25px auto',
-      padding: '8px',
+      gap: '16px',
+    },
+    '@media (max-width: 900px)': {
+      justifyContent: 'center',
+      gap: '15px',
     },
     '@media (max-width: 600px)': {
       flexDirection: 'column',
-      gap: '0',
-      marginBottom: '25px',
-      padding: '0',
-      boxShadow: 'none',
-      background: 'transparent',
-    },
-    '@media (max-width: 480px)': {
-      marginBottom: '20px',
-    },
-  },
-  featureItem: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-    position: 'relative',
-    padding: "0 10px",
-    '&:not(:last-child)::after': {
-      content: '""',
-      position: 'absolute',
-      right: 0,
-      top: '10%',
-      height: '80%',
-      width: '1px',
-      backgroundColor: '#e0e0e0',
-    },
-    '@media (max-width: 1200px)': {
-      padding: "0 12px",
-    },
-    '@media (max-width: 960px)': {
-      padding: "0 10px",
-      textAlign: 'center',
-    },
-    '@media (max-width: 600px)': {
-      width: '100%',
-      padding: '12px 15px',
-      margin: '8px 0',
-      backgroundColor: '#fff',
-      borderRadius: '10px',
-      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.08)',
-      border: '1px solid rgba(42, 43, 106, 0.1)',
-      display: 'grid',
-      gridTemplateColumns: '40px 1fr',
       alignItems: 'center',
-      gap: '10px',
-      '&:not(:last-child)::after': {
-        display: 'none',
-      },
-    },
-  },
-  featureText: {
-    fontSize: '1.1rem !important',
-    fontWeight: '700 !important',
-    color: '#2A2B6A !important',
-    textAlign: 'center',
-    whiteSpace: 'pre-line !important',
-    '@media (max-width: 1200px)': {
-      fontSize: '1rem !important',
-    },
-    '@media (max-width: 960px)': {
-      fontSize: '0.95rem !important',
-      lineHeight: '1.4 !important',
-    },
-    '@media (max-width: 600px)': {
-      fontSize: '1.05rem !important',
-      textAlign: 'left !important',
-      padding: '0',
+      gap: '12px',
     },
     '@media (max-width: 480px)': {
-      fontSize: '1rem !important',
+      gap: '10px',
     },
     '@media (max-width: 375px)': {
-      fontSize: '0.95rem !important',
+      gap: '8px',
     },
   },
-  joinsection: {
-    '@media (max-width: 960px)': {
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-    },
-  },
-  joinButton: {
-    backgroundColor: '#2A2B6A !important',
-    color: 'white !important',
+  applyButton: {
+    backgroundColor: 'white !important',
+    color: '#2a2b6a !important',
     padding: '12px 30px !important',
-    borderRadius: '8px !important',
+    borderRadius: '50px !important',
     fontSize: '1.1rem !important',
     fontWeight: '600 !important',
     textTransform: 'none !important',
-    boxShadow: '0 4px 15px rgba(42, 43, 106, 0.2) !important',
-    transition: 'all 0.3s ease !important',
-    position: 'relative',
-    overflow: 'hidden',
     '&:hover': {
-      backgroundColor: '#1a1b43 !important',
-      transform: 'translateY(-3px)',
-      boxShadow: '0 8px 25px rgba(42, 43, 106, 0.3) !important',
-    },
-    '&::after': {
-      content: '""',
-      position: 'absolute',
-      width: '30px',
-      height: '100%',
-      background: 'rgba(255, 255, 255, 0.3)',
-      transform: 'skewX(-30deg) translateX(-150px)',
-      animation: '$shine 3s infinite',
+      backgroundColor: '#f0f0f0 !important',
     },
     '@media (max-width: 1200px)': {
-      padding: '10px 25px !important',
+      padding: '11px 28px !important',
       fontSize: '1.05rem !important',
     },
     '@media (max-width: 960px)': {
-      padding: '10px 22px !important',
+      padding: '10px 26px !important',
       fontSize: '1rem !important',
     },
     '@media (max-width: 600px)': {
-      padding: '12px 25px !important',
-      fontSize: '1.1rem !important',
-      width: '100%',
-      maxWidth: '280px',
-      background: 'linear-gradient(45deg, #2A2B6A 30%, #3c3d8a 90%) !important',
-      boxShadow: '0 8px 20px rgba(42, 43, 106, 0.3) !important',
+      padding: '10px 24px !important',
+      fontSize: '1rem !important',
+      width: '70%',
+    },
+    '@media (max-width: 480px)': {
+      padding: '9px 22px !important',
+      fontSize: '0.95rem !important',
+      width: '80%',
     },
     '@media (max-width: 375px)': {
-      padding: '10px 20px !important',
-      fontSize: '1rem !important',
+      padding: '8px 20px !important',
+      fontSize: '0.9rem !important',
+      width: '90%',
     },
   },
-  eligibilityText: {
-    fontSize: '0.9rem !important',
-    color: '#666666 !important',
-    marginTop: '20px !important',
-    fontStyle: 'italic !important',
+  brochureButton: {
+    borderColor: 'white !important',
+    color: 'white !important',
+    padding: '12px 30px !important',
+    borderRadius: '50px !important',
+    fontSize: '1.1rem !important',
+    fontWeight: '600 !important',
+    textTransform: 'none !important',
+    '&:hover': {
+      borderColor: '#f0f0f0 !important',
+      backgroundColor: 'rgba(255, 255, 255, 0.1) !important',
+    },
+    '@media (max-width: 1200px)': {
+      padding: '11px 28px !important',
+      fontSize: '1.05rem !important',
+    },
     '@media (max-width: 960px)': {
-      textAlign: 'center',
-      marginTop: '15px !important',
+      padding: '10px 26px !important',
+      fontSize: '1rem !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '0.85rem !important',
-      marginTop: '12px !important',
+      padding: '10px 24px !important',
+      fontSize: '1rem !important',
+      width: '70%',
+    },
+    '@media (max-width: 480px)': {
+      padding: '9px 22px !important',
+      fontSize: '0.95rem !important',
+      width: '80%',
     },
     '@media (max-width: 375px)': {
-      fontSize: '0.8rem !important',
-      marginTop: '10px !important',
+      padding: '8px 20px !important',
+      fontSize: '0.9rem !important',
+      width: '90%',
     },
   },
   imageContainer: {
     position: 'relative',
-    height: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  bannerImage: {
-    maxWidth: '100%',
+    width: '100%',
+    maxWidth: '550px',
     height: 'auto',
-    position: 'relative',
-    zIndex: 2,
-    borderRadius: '12px',
-    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
+    borderRadius: '10px',
+    overflow: 'hidden',
+    boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
     '@media (max-width: 1200px)': {
-      maxWidth: '100%',
+      maxWidth: '500px',
+      borderRadius: '9px',
+    },
+    '@media (max-width: 1100px)': {
+      maxWidth: '450px',
+      borderRadius: '8px',
     },
     '@media (max-width: 960px)': {
-      maxWidth: '100%',
-      transform: 'scale(0.9)',
+      maxWidth: '400px',
+      borderRadius: '7px',
+    },
+    '@media (max-width: 600px)': {
+      maxWidth: '350px',
+      borderRadius: '6px',
+    },
+    '@media (max-width: 480px)': {
+      maxWidth: '320px',
+      borderRadius: '5px',
+    },
+    '@media (max-width: 375px)': {
+      maxWidth: '280px',
+      borderRadius: '4px',
     },
   },
-  '@keyframes shine': {
-    '0%': {
-      transform: 'skewX(-30deg) translateX(-150px)',
-    },
-    '100%': {
-      transform: 'skewX(-30deg) translateX(350px)',
-    },
+  heroImage: {
+    width: '100%',
+    height: 'auto',
+    objectFit: 'cover',
   },
+  decorElement: {
+    position: 'absolute',
+    zIndex: 2,
+  }
 });
 
-const HeroSection = ({
-  domain,
-  highlightText,
+const HeroSection = ({ 
+  titleFirstLine, 
+  highlightedText, 
+  titleSecondLine, 
   subtitle,
-  features,
   heroImage,
-  backgroundImage,
-  displayAsBlock = false
+  applyButtonText = "Apply Now",
+  brochureButtonText = "Download brochure",
+  onApplyClick,
+  onBrochureClick,
+  decorElements = []
 }) => {
-  const styleProps = { backgroundImage, displayAsBlock };
-  const classes = useStyles(styleProps);
-  const isMobile = useMediaQuery('(max-width:600px)');
-  
+  const classes = useStyles();
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    const width = canvas.width = window.innerWidth;
+    const height = canvas.height = window.innerHeight;
+
+    // Create particles (dots)
+    const particles = [];
+    const particleCount = Math.min(width * 0.08, 120); 
+    
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        radius: Math.random() * 2.5 + 2.5,
+        opacity: Math.random() * 0.9 + 0.2,
+        fadeY: 1 - (Math.random() * 0.5)
+      });
+    }
+
+    const maxDist = 250;
+    
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      
+      ctx.lineWidth = 0.8;
+      
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          
+          if (dist < maxDist) {
+            const fadeY = Math.min(particles[i].fadeY, particles[j].fadeY);
+            const opacity = (1 - dist / maxDist) * 0.25 * fadeY;
+            
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+            ctx.closePath();
+          }
+        }
+      }
+      
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        const yPosition = p.y / height;
+        
+        const fadeFactor = p.fadeY * (1 - Math.pow(yPosition, 2));
+        const finalOpacity = p.opacity * fadeFactor;
+        
+        if (finalOpacity > 0.01) {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(155, 155, 155, ${finalOpacity})`;
+          ctx.fill();
+        }
+      }
+      
+      requestAnimationFrame(animate);
+    }
+    
+    animate();
+    
+    const handleResize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    
+    window.addEventListener('resize', handleResize);
+    
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
-    <Box className={classes.bannerContainer}>
+    <Box className={classes.heroSection}>
+      <canvas ref={canvasRef} className={classes.networkCanvas} />
+      <Box className={classes.shapeDivider} />
+      
       <Box className={classes.contentContainer}>
-        <Box className={classes.leftContent}>
-          <Typography variant="h1" className={classes.bannerTitle}>
-            Virtual Placement Drive For
-            <span className={classes.highlightText}>{highlightText}</span>
+        <Box className={classes.leftSection}>
+          <Typography variant="h1" className={classes.title}>
+            {titleFirstLine} {titleSecondLine && titleSecondLine}
+            <span className={classes.highlighted}>{highlightedText}</span>
           </Typography>
-          <Typography variant="h6" className={classes.subTitle}>
+          <Typography variant="h2" className={classes.subtitle}>
             {subtitle}
           </Typography>
-
-          <Box className={classes.featuresContainer}>
-            {features.map((feature, index) => (
-              <Box key={index} className={classes.featureItem}>
-                {isMobile && (
-                  <Box>
-                    {index === 0 && <CodeIcon sx={{ color: '#FFC614' }} />}
-                    {index === 1 && <CalendarMonthIcon sx={{ color: '#FFC614' }} />}
-                    {index === 2 && <CurrencyRupeeIcon sx={{ color: '#FFC614' }} />}
-                  </Box>
-                )}
-                <Typography className={classes.featureText}>
-                  {feature}
-                </Typography>
-              </Box>
-            ))}
-          </Box>
-
-          <Box className={classes.joinsection}>
+          <Box className={classes.buttonContainer}>
             <Button 
               variant="contained" 
-              className={classes.joinButton} 
-              component={Link} 
-              to="/cart"
+              className={classes.applyButton}
+              onClick={onApplyClick}
             >
-              Join Us Now
+              {applyButtonText}
             </Button>
-
-            <Typography className={classes.eligibilityText}>
-              Eligible for 2023, 2024, and 2025 batches
-            </Typography>
+            <Button 
+              variant="outlined" 
+              className={classes.brochureButton}
+              onClick={onBrochureClick}
+            >
+              {brochureButtonText}
+            </Button>
           </Box>
         </Box>
 
-        <Box className={classes.rightContent}>
+        <Box className={classes.rightSection}>
+          {/* Render decorative elements */}
+          {decorElements.map((elem, index) => (
+            <Box 
+              key={index}
+              className={classes.decorElement}
+              style={elem.style}
+            >
+              {elem.content}
+            </Box>
+          ))}
+          
           <Box className={classes.imageContainer}>
-            <img 
-              src={heroImage} 
-              alt={`Young professional studying ${domain}`} 
-              className={classes.bannerImage}
+            <img
+              src={heroImage}
+              alt="Program visualization"
+              className={classes.heroImage}
             />
           </Box>
         </Box>

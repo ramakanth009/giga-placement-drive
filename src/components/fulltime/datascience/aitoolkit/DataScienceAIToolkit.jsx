@@ -107,9 +107,51 @@ const DataScienceAIToolkit = () => {
     }
   ];
   
+  // Capabilities data
+  const capabilities = [
+    { 
+      name: 'Code Generation', 
+      iconHtml: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>`
+    },
+    { 
+      name: 'Data Analysis', 
+      iconHtml: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
+                  <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
+                </svg>`
+    },
+    { 
+      name: 'Visualization', 
+      iconHtml: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="7" y1="15" x2="7" y2="5"></line>
+                  <line x1="11" y1="18" x2="11" y2="9"></line>
+                  <line x1="15" y1="18" x2="15" y2="11"></line>
+                  <line x1="19" y1="18" x2="19" y2="7"></line>
+                </svg>`
+    },
+    { 
+      name: 'Explanation', 
+      iconHtml: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>`
+    },
+    { 
+      name: 'Research', 
+      iconHtml: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>`
+    }
+  ];
+
   return (
     <AIToolkit
       tools={tools}
+      capabilities={capabilities}
       programName="Data Science"
     />
   );
