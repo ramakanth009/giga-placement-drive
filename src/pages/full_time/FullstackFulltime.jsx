@@ -4,6 +4,7 @@ import FullStackHero from '../../components/fulltime/fullstack/fullstackhero/Ful
 import FullStackIndustryFacts from '../../components/fulltime/fullstack/industryfacts/FullStackIndustryFacts'
 import FullStackProgramHighlights from '../../components/fulltime/fullstack/programhighlights/FullStackProgramHighlights'
 import FullStackTechnologyKit from '../../components/fulltime/fullstack/technologykit/FullStackTechnologyKit'
+import Fullstackcurriculam from '../../components/fulltime/fullstack/curriculum/FullStackCurriculum'
 import FullStackProjectSection from '../../components/fulltime/fullstack/projectssection/FullStackProjectsSection'
 import FullStackCaseStudies from '../../components/fulltime/fullstack/fullStackcasestudies/FullStackCaseStudies'
 import FulltimeCertificates from '../../components/common/fulltime/fulltimeCertificates/FulltimeCertificates';
@@ -25,7 +26,7 @@ const FullstackFulltime = () => {
         <FullStackAIToolkit />
         <FullStackCurriculumMonths />
         <FullStackSkillsMaster />
-        {/* <Fullstackcurriculam /> */}
+        <Fullstackcurriculam />
         <FullStackIndustryFacts />
         <FullStackTechnologyKit />
         <FullStackProjectSection />
