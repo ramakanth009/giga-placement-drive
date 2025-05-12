@@ -1,9 +1,7 @@
 // src/components/common/fulltime/curriculum/Curriculum.jsx
 import React, { useRef, useState, useEffect } from 'react';
-import { Box, Typography, IconButton, Container } from '@mui/material';
+import { Box, Typography, Container, Chip } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import CurriculumCard from './CurriculumCard';
 
 const useStyles = makeStyles({
@@ -11,14 +9,35 @@ const useStyles = makeStyles({
     padding: '80px 0',
     position: 'relative',
     overflow: 'hidden',
+    background: 'linear-gradient(180deg, #f8f9ff 0%, #ffffff 100%)',
+  },
+  bgDecoration: {
+    position: 'absolute',
+    borderRadius: '50%',
+    background: 'radial-gradient(circle, rgba(74, 99, 231, 0.05) 0%, rgba(74, 99, 231, 0.01) 70%)',
+    zIndex: 1,
+  },
+  bgDecorationTop: {
+    width: '600px',
+    height: '600px',
+    top: '-200px',
+    right: '-100px',
+  },
+  bgDecorationBottom: {
+    width: '800px',
+    height: '800px',
+    bottom: '-300px',
+    left: '-200px',
   },
   container: {
     position: 'relative',
+    zIndex: 2,
   },
   titleContainer: {
     marginBottom: '80px',
     position: 'relative',
     zIndex: 2,
+    textAlign: 'center',
   },
   sectionTitle: {
     fontSize: '2.5rem !important',
@@ -26,24 +45,93 @@ const useStyles = makeStyles({
     color: '#2A2B6A !important',
     textAlign: 'center',
     marginBottom: '15px !important',
+    position: 'relative',
+    display: 'inline-block',
+    '&::after': {
+      content: '""',
+      position: 'absolute',
+      bottom: '-15px',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      width: '80px',
+      height: '4px',
+      background: 'linear-gradient(90deg, #4A63E7 0%, #8B5CF6 100%)',
+      borderRadius: '2px',
+    },
   },
   highlightText: {
-    color: '#FFC614 !important',
+    color: '#4A63E7 !important',
+    fontWeight: 'bold !important',
+    position: 'relative',
+    '&::after': {
+      content: '""',
+      position: 'absolute',
+      bottom: '5px',
+      left: '0',
+      width: '100%',
+      height: '8px',
+      background: 'rgba(255, 198, 20, 0.3)',
+      borderRadius: '4px',
+      zIndex: -1,
+    },
   },
   sectionSubtitle: {
     fontSize: '1.1rem !important',
     color: '#666666 !important',
     textAlign: 'center',
     maxWidth: '700px',
-    margin: '0 auto !important',
+    margin: '25px auto 0 !important',
+  },
+  roadmapLine: {
+    position: 'absolute',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    top: '200px',
+    bottom: '100px',
+    width: '4px',
+    background: 'linear-gradient(180deg, #4A63E7 0%, #8B5CF6 100%)',
+    zIndex: 1,
+    borderRadius: '2px',
+    '&::before, &::after': {
+      content: '""',
+      position: 'absolute',
+      width: '16px',
+      height: '16px',
+      borderRadius: '50%',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      backgroundColor: '#4A63E7',
+    },
+    '&::before': {
+      top: '-8px',
+    },
+    '&::after': {
+      bottom: '-8px',
+      backgroundColor: '#8B5CF6',
+    },
   },
   sliderContainer: {
     position: 'relative',
-    paddingTop: '40px',  // Extra padding for the number circles
+    paddingTop: '40px',
+  },
+  coreSkillsLabel: {
+    position: 'absolute',
+    top: '-5px',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    zIndex: 5,
+    padding: '12px 30px',
+    fontWeight: 'bold',
+    fontSize: '18px',
+    color: 'white',
+    whiteSpace: 'nowrap',
+    background: 'linear-gradient(90deg, #6A5AF9 0%, #9E8DFC 100%)',
+    boxShadow: '0 4px 15px rgba(106, 90, 249, 0.3)',
+    borderRadius: '50px',
   },
   sliderTrack: {
     display: 'flex',
-    transition: 'transform 0.5s ease-in-out',
+    transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
     padding: '10px 0',
   },
   sliderWrapper: {
@@ -51,70 +139,67 @@ const useStyles = makeStyles({
     overflow: 'hidden',
     marginLeft: 'auto',
     marginRight: 'auto',
-    maxWidth: 'calc(100% - 120px)',  // Make room for nav buttons
+    maxWidth: 'calc(100% - 120px)',
   },
-  navButton: {
-    position: 'absolute',
-    top: '50%',
-    transform: 'translateY(-50%)',
-    zIndex: 10,
-    background: 'white !important',
-    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1) !important',
-    width: '44px !important',
-    height: '44px !important',
+  progressContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: '30px',
+    gap: '8px',
+  },
+  progressDot: {
+    width: '10px',
+    height: '10px',
+    borderRadius: '50%',
+    backgroundColor: '#e0e0e0',
+    transition: 'all 0.3s ease',
+    cursor: 'pointer',
+  },
+  progressDotActive: {
+    backgroundColor: '#4A63E7',
+    transform: 'scale(1.2)',
+    boxShadow: '0 0 0 2px rgba(74, 99, 231, 0.2)',
+  },
+  skillChip: {
+    marginTop: '20px',
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    gap: '8px',
+  },
+  chip: {
+    fontSize: '0.85rem !important',
+    fontWeight: '500 !important',
+    borderRadius: '50px !important',
+    transition: 'all 0.3s ease !important',
     '&:hover': {
-      background: 'white !important',
-      boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.15) !important',
-    },
-    '&.Mui-disabled': {
-      background: '#f5f5f5 !important',
-      color: '#ccc !important',
+      transform: 'translateY(-2px)',
+      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
     },
   },
-  leftButton: {
-    left: '20px',
-  },
-  rightButton: {
-    right: '20px',
-  },
-  coreSkillsLabel: {
-    position: 'absolute',
-    top: 0,
-    left: '50%',
-    transform: 'translateX(-50%)',
-    background: 'linear-gradient(90deg, #6A5AF9 0%, #9E8DFC 100%)',
-    color: 'white',
-    padding: '15px 40px',
-    borderRadius: '50px',
-    fontSize: '20px',
-    fontWeight: 'bold',
-    zIndex: 5,
-    whiteSpace: 'nowrap',
-    '&::after': {
-      content: '""',
-      position: 'absolute',
-      left: '-300px',
-      top: '50%',
-      width: '300px',
-      height: '2px',
-      background: '#6A5AF9',
-    },
-    '&::before': {
-      content: '""',
-      position: 'absolute',
-      right: '-300px',
-      top: '50%',
-      width: '300px',
-      height: '2px',
-      background: '#6A5AF9',
-    },
+  chipActive: {
+    background: 'linear-gradient(90deg, #4A63E7 0%, #8B5CF6 100%) !important',
+    color: 'white !important',
+    boxShadow: '0 4px 10px rgba(74, 99, 231, 0.2) !important',
   },
   programTitle: {
     fontSize: '1.8rem !important',
     fontWeight: 'bold !important',
     color: '#4A4A4A !important',
     marginBottom: '30px !important',
-    marginLeft: '60px !important',
+    textAlign: 'center',
+    position: 'relative',
+    '&::after': {
+      content: '""',
+      position: 'absolute',
+      bottom: '-10px',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      width: '50px',
+      height: '3px',
+      background: 'linear-gradient(90deg, #4A63E7 0%, #8B5CF6 100%)',
+      borderRadius: '1.5px',
+    },
   },
 });
 
@@ -123,12 +208,13 @@ const Curriculum = ({
   subtitle,
   programName,
   curriculumData,
-  icons = {} // Map of section keys to icon components
+  icons = {}
 }) => {
   const classes = useStyles();
   const sliderRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
+  const [visibleCategoryId, setVisibleCategoryId] = useState(null);
   
   // Extract cards data from curriculum data
   const [cardsData, setCardsData] = useState([]);
@@ -138,6 +224,7 @@ const Curriculum = ({
     if (curriculumData) {
       const cards = [];
       let cardIndex = 1;
+      const categoryIds = Object.keys(curriculumData);
       
       Object.entries(curriculumData).forEach(([key, section]) => {
         cards.push({
@@ -154,6 +241,9 @@ const Curriculum = ({
       
       setCardsData(cards);
       setTotalItems(cards.length);
+      if (categoryIds.length > 0) {
+        setVisibleCategoryId(categoryIds[0]);
+      }
     }
   }, [curriculumData, icons]);
 
@@ -162,15 +252,19 @@ const Curriculum = ({
     return index === Math.floor(totalItems / 2);
   };
 
-  const handlePrev = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
+  const handleDotClick = (index) => {
+    setCurrentIndex(index);
+    const newVisibleId = cardsData[index]?.id;
+    if (newVisibleId) {
+      setVisibleCategoryId(newVisibleId);
     }
   };
 
-  const handleNext = () => {
-    if (currentIndex < totalItems - 1) {
-      setCurrentIndex(currentIndex + 1);
+  const handleChipClick = (id) => {
+    const index = cardsData.findIndex(card => card.id === id);
+    if (index !== -1) {
+      setCurrentIndex(index);
+      setVisibleCategoryId(id);
     }
   };
 
@@ -192,6 +286,9 @@ const Curriculum = ({
 
   return (
     <Box className={classes.section}>
+      <Box className={classes.bgDecoration + ' ' + classes.bgDecorationTop}></Box>
+      <Box className={classes.bgDecoration + ' ' + classes.bgDecorationBottom}></Box>
+      
       <Container maxWidth="lg" className={classes.container}>
         <Box className={classes.titleContainer}>
           <Typography className={classes.sectionTitle}>
@@ -202,6 +299,17 @@ const Curriculum = ({
           </Typography>
         </Box>
         
+        <Box className={classes.skillChip}>
+          {cardsData.map((card) => (
+            <Chip
+              key={card.id}
+              label={card.title}
+              className={`${classes.chip} ${visibleCategoryId === card.id ? classes.chipActive : ''}`}
+              onClick={() => handleChipClick(card.id)}
+            />
+          ))}
+        </Box>
+        
         <Typography className={classes.programTitle}>
           {programName}
         </Typography>
@@ -210,14 +318,6 @@ const Curriculum = ({
           <Box className={classes.coreSkillsLabel}>
             Core Skills
           </Box>
-          
-          <IconButton 
-            onClick={handlePrev} 
-            disabled={currentIndex === 0}
-            className={`${classes.navButton} ${classes.leftButton}`}
-          >
-            <ArrowBackIosNewIcon fontSize="small" />
-          </IconButton>
           
           <Box className={classes.sliderWrapper}>
             <Box 
@@ -235,18 +335,22 @@ const Curriculum = ({
                   duration={card.duration}
                   icon={card.icon}
                   isScaled={isCardInCoreSkills(index)}
+                  isActive={visibleCategoryId === card.id}
+                  onClick={() => handleChipClick(card.id)}
                 />
               ))}
             </Box>
           </Box>
-          
-          <IconButton 
-            onClick={handleNext} 
-            disabled={currentIndex === totalItems - 1}
-            className={`${classes.navButton} ${classes.rightButton}`}
-          >
-            <ArrowForwardIosIcon fontSize="small" />
-          </IconButton>
+        </Box>
+
+        <Box className={classes.progressContainer}>
+          {cardsData.map((_, index) => (
+            <Box
+              key={index}
+              className={`${classes.progressDot} ${index === currentIndex ? classes.progressDotActive : ''}`}
+              onClick={() => handleDotClick(index)}
+            />
+          ))}
         </Box>
       </Container>
     </Box>
