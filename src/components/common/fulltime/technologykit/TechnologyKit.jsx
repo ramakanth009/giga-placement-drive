@@ -2,7 +2,7 @@
 import React from 'react';
 import { Box, Typography, Container } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import SkillCategory from './SkillCategory';
+import SkillCategory from './SkillCategorycard';
 
 const useStyles = makeStyles({
   section: {
