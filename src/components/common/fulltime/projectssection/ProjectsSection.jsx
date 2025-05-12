@@ -1,13 +1,13 @@
-// src/components/common/projectssection/ProjectsSection.jsx
+// 15. ProjectsSection Component
 import React, { useEffect, useRef } from 'react';
 import { Box, Typography, Container } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import ProjectCard from '../projectcard/ProjectCard';
+import ProjectCard from './ProjectCard';
 
 const useStyles = makeStyles({
   section: {
     position: 'relative',
-    padding: '30px 0',
+    padding: '60px 0',
     backgroundColor: '#2A2B6A',
     backgroundImage: 'linear-gradient(to bottom right, #2A2B6A, #3C3E8D)',
     overflow: 'hidden',
@@ -23,11 +23,20 @@ const useStyles = makeStyles({
       opacity: 0.2,
       zIndex: 1,
     },
+    '@media (max-width: 1200px)': {
+      padding: '55px 0',
+    },
     '@media (max-width: 960px)': {
-      padding: '60px 0',
+      padding: '50px 0',
     },
     '@media (max-width: 600px)': {
       padding: '40px 0',
+    },
+    '@media (max-width: 480px)': {
+      padding: '35px 0',
+    },
+    '@media (max-width: 375px)': {
+      padding: '30px 0',
     },
   },
   networkCanvas: {
@@ -40,64 +49,121 @@ const useStyles = makeStyles({
   },
   content: {
     position: 'relative',
-    zIndex: 3,  // increased z-index to appear above canvas
+    zIndex: 3,
   },
   titleContainer: {
     textAlign: 'center',
-    marginBottom: '10px',
+    marginBottom: '40px',
+    '@media (max-width: 1200px)': {
+      marginBottom: '35px',
+    },
     '@media (max-width: 960px)': {
-      marginBottom: '10px',
+      marginBottom: '30px',
     },
     '@media (max-width: 600px)': {
-      marginBottom: '10px',
+      marginBottom: '25px',
+    },
+    '@media (max-width: 480px)': {
+      marginBottom: '20px',
+    },
+    '@media (max-width: 375px)': {
+      marginBottom: '15px',
     },
   },
   title: {
     fontSize: '2.5rem !important',
     fontWeight: 'bold !important',
     color: 'white !important',
-    marginBottom: '5px !important',
+    marginBottom: '15px !important',
     '& span': {
       color: '#FFC614 !important',
     },
+    '@media (max-width: 1200px)': {
+      fontSize: '2.3rem !important',
+    },
     '@media (max-width: 960px)': {
-      fontSize: '2.2rem !important',
+      fontSize: '2.1rem !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '1.8rem !important',
+      fontSize: '1.9rem !important',
+      marginBottom: '12px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '1.7rem !important',
+      marginBottom: '10px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1.5rem !important',
+      marginBottom: '8px !important',
     },
   },
   subtitle: {
     fontSize: '1.1rem !important',
     color: '#ffffff !important',
     maxWidth: '800px',
-    margin: '0px auto !important',
+    margin: '0 auto !important',
+    '@media (max-width: 1200px)': {
+      fontSize: '1.05rem !important',
+    },
     '@media (max-width: 960px)': {
       fontSize: '1rem !important',
       maxWidth: '95%',
     },
     '@media (max-width: 600px)': {
+      fontSize: '0.95rem !important',
+    },
+    '@media (max-width: 480px)': {
       fontSize: '0.9rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.85rem !important',
     },
   },
   projectsContainer: {
     display: 'flex',
     flexWrap: 'wrap',
-    gap: '15px',
+    gap: '30px',
     justifyContent: 'center',
     marginTop: '40px',
+    '@media (max-width: 1200px)': {
+      gap: '25px',
+      marginTop: '35px',
+    },
     '@media (max-width: 960px)': {
       gap: '20px',
+      marginTop: '30px',
+    },
+    '@media (max-width: 600px)': {
+      gap: '20px',
+      marginTop: '25px',
+    },
+    '@media (max-width: 480px)': {
+      gap: '15px',
+      marginTop: '20px',
+    },
+    '@media (max-width: 375px)': {
+      gap: '12px',
+      marginTop: '15px',
     },
   },
   projectBox: {
-    width: '400px', // increased from 360px
+    width: '400px',
     flexShrink: 0,
     '@media (max-width: 1200px)': {
-      width: 'calc(50% - 15px)',
+      width: '380px',
+    },
+    '@media (max-width: 960px)': {
+      width: '350px',
     },
     '@media (max-width: 768px)': {
       width: '100%',
+      maxWidth: '450px',
+    },
+    '@media (max-width: 480px)': {
+      maxWidth: '350px',
+    },
+    '@media (max-width: 375px)': {
+      maxWidth: '300px',
     },
   }
 });
@@ -112,16 +178,13 @@ const ProjectsSection = ({ projects, subtitle }) => {
 
     const ctx = canvas.getContext('2d');
     
-    // Get section height instead of window height
     const container = canvas.parentElement;
     const width = canvas.width = container.offsetWidth;
     const height = canvas.height = container.offsetHeight;
 
     const particles = [];
-    // Reduce divisor to increase particle count
     const particleCount = Math.floor((width * height) / 12000);
     
-    // Create static particles
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * width,
@@ -131,13 +194,10 @@ const ProjectsSection = ({ projects, subtitle }) => {
       });
     }
 
-    // Shorter connection distance for denser network
     const maxDist = 150;
     
-    // Draw the static network once
     ctx.clearRect(0, 0, width, height);
     
-    // Draw connections
     ctx.lineWidth = 0.6;
     for (let i = 0; i < particles.length; i++) {
       for (let j = i + 1; j < particles.length; j++) {
@@ -156,7 +216,6 @@ const ProjectsSection = ({ projects, subtitle }) => {
       }
     }
     
-    // Draw particles
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
       ctx.beginPath();
@@ -165,48 +224,19 @@ const ProjectsSection = ({ projects, subtitle }) => {
       ctx.fill();
     }
 
-    // Handle resize
     const handleResize = () => {
       canvas.width = container.offsetWidth;
       canvas.height = container.offsetHeight;
-      // Redraw everything on resize
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      // Recalculate and redraw particles and connections
+      
+      particles.length = 0;
       for (let i = 0; i < particleCount; i++) {
         particles.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
           radius: Math.random() * 2 + 1.5,
           opacity: Math.random() * 0.4 + 0.3
         });
-      }
-      
-      // Draw connections
-      ctx.lineWidth = 0.6;
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          
-          if (dist < maxDist) {
-            const opacity = (1 - dist / maxDist) * 0.2;
-            ctx.beginPath();
-            ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
-          }
-        }
-      }
-      
-      // Draw particles
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
-        ctx.fill();
       }
     };
     

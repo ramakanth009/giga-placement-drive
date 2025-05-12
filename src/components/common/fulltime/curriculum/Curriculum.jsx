@@ -1,4 +1,4 @@
-// src/components/common/fulltime/curriculum/Curriculum.jsx
+// 4. Curriculum Component
 import React, { useRef, useState, useEffect } from 'react';
 import { Box, Typography, Container, Chip } from '@mui/material';
 import { makeStyles } from '@mui/styles';
@@ -6,13 +6,27 @@ import CurriculumCard from './CurriculumCard';
 
 const useStyles = makeStyles({
   section: {
-    padding: '20px 0',
+    padding: '70px 0',
     position: 'relative',
     overflow: 'hidden',
     background: 'linear-gradient(180deg, #f8f9ff 0%, #ffffff 100%)',
+    '@media (max-width: 1200px)': {
+      padding: '60px 0',
+    },
+    '@media (max-width: 960px)': {
+      padding: '50px 0',
+    },
+    '@media (max-width: 600px)': {
+      padding: '40px 0',
+    },
+    '@media (max-width: 480px)': {
+      padding: '35px 0',
+    },
+    '@media (max-width: 375px)': {
+      padding: '30px 0',
+    },
   },
   bgDecoration: {
-    display:"none",
     position: 'absolute',
     borderRadius: '50%',
     background: 'radial-gradient(circle, rgba(74, 99, 231, 0.05) 0%, rgba(74, 99, 231, 0.01) 70%)',
@@ -23,12 +37,36 @@ const useStyles = makeStyles({
     height: '600px',
     top: '-200px',
     right: '-100px',
+    '@media (max-width: 960px)': {
+      width: '400px',
+      height: '400px',
+      top: '-150px',
+      right: '-75px',
+    },
+    '@media (max-width: 600px)': {
+      width: '300px',
+      height: '300px',
+      top: '-100px',
+      right: '-50px',
+    },
   },
   bgDecorationBottom: {
     width: '800px',
     height: '800px',
     bottom: '-300px',
     left: '-200px',
+    '@media (max-width: 960px)': {
+      width: '600px',
+      height: '600px',
+      bottom: '-200px',
+      left: '-150px',
+    },
+    '@media (max-width: 600px)': {
+      width: '400px',
+      height: '400px',
+      bottom: '-150px',
+      left: '-100px',
+    },
   },
   container: {
     position: 'relative',
@@ -39,6 +77,18 @@ const useStyles = makeStyles({
     position: 'relative',
     zIndex: 2,
     textAlign: 'center',
+    '@media (max-width: 960px)': {
+      marginBottom: '35px',
+    },
+    '@media (max-width: 600px)': {
+      marginBottom: '30px',
+    },
+    '@media (max-width: 480px)': {
+      marginBottom: '25px',
+    },
+    '@media (max-width: 375px)': {
+      marginBottom: '20px',
+    },
   },
   sectionTitle: {
     fontSize: '2.5rem !important',
@@ -59,6 +109,38 @@ const useStyles = makeStyles({
       background: 'linear-gradient(90deg, #4A63E7 0%, #8B5CF6 100%)',
       borderRadius: '2px',
     },
+    '@media (max-width: 1200px)': {
+      fontSize: '2.3rem !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '2.1rem !important',
+      '&::after': {
+        width: '70px',
+        height: '3px',
+        bottom: '-12px',
+      },
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '1.9rem !important',
+      '&::after': {
+        width: '60px',
+        bottom: '-10px',
+      },
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '1.7rem !important',
+      '&::after': {
+        width: '50px',
+      },
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1.5rem !important',
+      '&::after': {
+        width: '40px',
+        height: '2px',
+        bottom: '-8px',
+      },
+    },
   },
   highlightText: {
     color: '#4A63E7 !important',
@@ -71,6 +153,27 @@ const useStyles = makeStyles({
     textAlign: 'center',
     maxWidth: '700px',
     margin: '25px auto 0 !important',
+    '@media (max-width: 1200px)': {
+      fontSize: '1.05rem !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '1rem !important',
+      maxWidth: '650px',
+      margin: '22px auto 0 !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.95rem !important',
+      maxWidth: '90%',
+      margin: '20px auto 0 !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.9rem !important',
+      margin: '18px auto 0 !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.85rem !important',
+      margin: '15px auto 0 !important',
+    },
   },
   roadmapLine: {
     position: 'absolute',
@@ -99,10 +202,41 @@ const useStyles = makeStyles({
       bottom: '-8px',
       backgroundColor: '#8B5CF6',
     },
+    '@media (max-width: 960px)': {
+      width: '3px',
+      '&::before, &::after': {
+        width: '14px',
+        height: '14px',
+      },
+      '&::before': {
+        top: '-7px',
+      },
+      '&::after': {
+        bottom: '-7px',
+      },
+    },
+    '@media (max-width: 600px)': {
+      '&::before, &::after': {
+        width: '12px',
+        height: '12px',
+      },
+      '&::before': {
+        top: '-6px',
+      },
+      '&::after': {
+        bottom: '-6px',
+      },
+    },
   },
   sliderContainer: {
     position: 'relative',
     paddingTop: '40px',
+    '@media (max-width: 960px)': {
+      paddingTop: '35px',
+    },
+    '@media (max-width: 600px)': {
+      paddingTop: '30px',
+    },
   },
   coreSkillsLabel: {
     position: 'absolute',
@@ -118,6 +252,22 @@ const useStyles = makeStyles({
     background: 'linear-gradient(90deg, #6A5AF9 0%, #9E8DFC 100%)',
     boxShadow: '0 4px 15px rgba(106, 90, 249, 0.3)',
     borderRadius: '50px',
+    '@media (max-width: 960px)': {
+      padding: '10px 25px',
+      fontSize: '16px',
+    },
+    '@media (max-width: 600px)': {
+      padding: '8px 20px',
+      fontSize: '15px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '7px 18px',
+      fontSize: '14px',
+    },
+    '@media (max-width: 375px)': {
+      padding: '6px 15px',
+      fontSize: '13px',
+    },
   },
   sliderTrack: {
     display: 'flex',
@@ -130,12 +280,35 @@ const useStyles = makeStyles({
     marginLeft: 'auto',
     marginRight: 'auto',
     maxWidth: 'calc(100% - 120px)',
+    '@media (max-width: 960px)': {
+      maxWidth: 'calc(100% - 100px)',
+    },
+    '@media (max-width: 600px)': {
+      maxWidth: 'calc(100% - 80px)',
+    },
+    '@media (max-width: 480px)': {
+      maxWidth: 'calc(100% - 60px)',
+    },
   },
   progressContainer: {
     display: 'flex',
     justifyContent: 'center',
     marginTop: '30px',
     gap: '8px',
+    '@media (max-width: 960px)': {
+      marginTop: '25px',
+    },
+    '@media (max-width: 600px)': {
+      marginTop: '20px',
+      gap: '7px',
+    },
+    '@media (max-width: 480px)': {
+      marginTop: '15px',
+      gap: '6px',
+    },
+    '@media (max-width: 375px)': {
+      gap: '5px',
+    },
   },
   progressDot: {
     width: '10px',
@@ -144,6 +317,18 @@ const useStyles = makeStyles({
     backgroundColor: '#e0e0e0',
     transition: 'all 0.3s ease',
     cursor: 'pointer',
+    '@media (max-width: 600px)': {
+      width: '9px',
+      height: '9px',
+    },
+    '@media (max-width: 480px)': {
+      width: '8px',
+      height: '8px',
+    },
+    '@media (max-width: 375px)': {
+      width: '7px',
+      height: '7px',
+    },
   },
   progressDotActive: {
     backgroundColor: '#4A63E7',
@@ -156,6 +341,18 @@ const useStyles = makeStyles({
     flexWrap: 'wrap',
     justifyContent: 'center',
     gap: '8px',
+    '@media (max-width: 960px)': {
+      gap: '7px',
+    },
+    '@media (max-width: 600px)': {
+      gap: '6px',
+    },
+    '@media (max-width: 480px)': {
+      gap: '5px',
+    },
+    '@media (max-width: 375px)': {
+      gap: '4px',
+    },
   },
   chip: {
     fontSize: '0.85rem !important',
@@ -165,6 +362,18 @@ const useStyles = makeStyles({
     '&:hover': {
       transform: 'translateY(-2px)',
       boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '0.8rem !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.75rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.7rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.65rem !important',
     },
   },
   chipActive: {
@@ -189,6 +398,40 @@ const useStyles = makeStyles({
       height: '3px',
       background: 'linear-gradient(90deg, #4A63E7 0%, #8B5CF6 100%)',
       borderRadius: '1.5px',
+    },
+    '@media (max-width: 1200px)': {
+      fontSize: '1.7rem !important',
+      marginBottom: '27px !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '1.6rem !important',
+      marginBottom: '25px !important',
+      '&::after': {
+        width: '45px',
+      },
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '1.5rem !important',
+      marginBottom: '22px !important',
+      '&::after': {
+        width: '40px',
+        height: '2.5px',
+      },
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '1.4rem !important',
+      marginBottom: '20px !important',
+      '&::after': {
+        width: '35px',
+      },
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1.3rem !important',
+      marginBottom: '18px !important',
+      '&::after': {
+        width: '30px',
+        height: '2px',
+      },
     },
   },
 });
@@ -299,10 +542,6 @@ const Curriculum = ({
             />
           ))}
         </Box>
-        
-        {/* <Typography className={classes.programTitle}>
-          {programName}
-        </Typography> */}
 
         <Box className={classes.sliderContainer}>
           <Box className={classes.coreSkillsLabel}>
@@ -347,4 +586,4 @@ const Curriculum = ({
   );
 };
 
-export default Curriculum;
+export default Curriculum   

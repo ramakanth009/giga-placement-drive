@@ -16,19 +16,6 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     paddingTop: '30px',
     paddingBottom: '90px',
-    '&::after': {
-      content: '""',
-      position: 'absolute',
-      left: 0,
-      right: 0,
-      bottom: 0,
-      height: '170px',
-      background: 'white',
-      transform: 'skewY(-4deg)',
-      transformOrigin: 'bottom',
-      marginBottom: '-70px',
-      zIndex: 2,
-    }
   },
   networkCanvas: {
     position: 'absolute',
@@ -37,6 +24,18 @@ const useStyles = makeStyles({
     width: '100%',
     height: '100%',
     zIndex: 1,
+  },
+  shapeDivider: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    height: '170px',
+    background: 'white',
+    transform: 'skewY(-4deg)',
+    transformOrigin: 'bottom',
+    marginBottom: '-70px',
+    zIndex: 2,
   },
   contentContainer: {
     width: '100%',
@@ -265,6 +264,8 @@ const HeroSection = ({
   return (
     <Box className={classes.heroSection}>
       <canvas ref={canvasRef} className={classes.networkCanvas} />
+      <Box className={classes.shapeDivider} />
+      
       <Box className={classes.contentContainer}>
         <Box className={classes.leftSection}>
           <Typography variant="h1" className={classes.title}>

@@ -1,4 +1,4 @@
-// src/components/common/casestudy/IndustryCaseStudies.jsx
+// 3. IndustryCaseStudies Component
 import React from 'react';
 import { Box, Typography, Container } from '@mui/material';
 import { makeStyles } from '@mui/styles';
@@ -8,11 +8,20 @@ const useStyles = makeStyles({
   section: {
     padding: '80px 0',
     backgroundColor: '#FFFFFF',
+    '@media (max-width: 1200px)': {
+      padding: '70px 0',
+    },
     '@media (max-width: 960px)': {
       padding: '60px 0',
     },
     '@media (max-width: 600px)': {
-      padding: '40px 0',
+      padding: '50px 0 40px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '40px 0 30px',
+    },
+    '@media (max-width: 375px)': {
+      padding: '30px 0 25px',
     },
   },
   title: {
@@ -24,11 +33,23 @@ const useStyles = makeStyles({
     '& span': {
       color: '#FFC614',
     },
+    '@media (max-width: 1200px)': {
+      fontSize: '34px !important',
+    },
     '@media (max-width: 960px)': {
       fontSize: '32px !important',
     },
     '@media (max-width: 600px)': {
       fontSize: '28px !important',
+      marginBottom: '14px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '26px !important',
+      marginBottom: '12px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '24px !important',
+      marginBottom: '10px !important',
     },
   },
   subtitle: {
@@ -38,13 +59,27 @@ const useStyles = makeStyles({
     maxWidth: '800px',
     margin: '0 auto 50px auto !important',
     lineHeight: '1.6 !important',
+    '@media (max-width: 1200px)': {
+      fontSize: '17px !important',
+      marginBottom: '45px !important',
+    },
     '@media (max-width: 960px)': {
       fontSize: '16px !important',
-      margin: '0 auto 40px auto !important',
+      marginBottom: '40px !important',
     },
     '@media (max-width: 600px)': {
       fontSize: '15px !important',
-      margin: '0 auto 30px auto !important',
+      marginBottom: '35px !important',
+      maxWidth: '90%',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '14px !important',
+      marginBottom: '30px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '13px !important',
+      marginBottom: '25px !important',
+      lineHeight: '1.5 !important',
     },
   },
 });
