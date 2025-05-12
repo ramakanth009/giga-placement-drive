@@ -12,6 +12,7 @@ import TestimonialComponent from '../../components/common/testimonialcomponent/T
 import Footer from '../../components/common/footer/Footer'
 import FullStackSkillsMaster from '../../components/fulltime/fullstack/skillsmaster/FullStackSkillsMaster'
 import FullStackCurriculumMonths from '../../components/fulltime/fullstack/curriculummonths/FullStackCurriculumMonths'
+import FullStackAIToolkit from '../../components/fulltime/fullstack/aitoolkit/FullStackAIToolkit'
 
 
 const FullstackFulltime = () => {
@@ -20,6 +21,7 @@ const FullstackFulltime = () => {
         <Navbar/>
         <FullStackHero />
         <FullStackProgramHighlights />
+        <FullStackAIToolkit />
         <FullStackCurriculumMonths />
         <FullStackSkillsMaster />
         <FullStackIndustryFacts />

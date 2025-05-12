@@ -19,7 +19,7 @@ const FullStackProgramFee = () => {
       supportText="Free seats for physically challenged individuals, subject to eligibility."
       onEnrollClick={handleEnrollClick}
     />
-  );
+  ); 
 };
 
 export default FullStackProgramFee;
