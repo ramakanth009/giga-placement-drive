@@ -20,10 +20,12 @@ const FullstackFulltime = () => {
     <div>
         <Navbar/>
         <FullStackHero />
+        <FullStackIndustryFacts />
         <FullStackProgramHighlights />
         <FullStackAIToolkit />
         <FullStackCurriculumMonths />
         <FullStackSkillsMaster />
+        {/* <Fullstackcurriculam /> */}
         <FullStackIndustryFacts />
         <FullStackTechnologyKit />
         <FullStackProjectSection />

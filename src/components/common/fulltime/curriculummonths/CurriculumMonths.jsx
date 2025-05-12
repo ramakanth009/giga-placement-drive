@@ -1,6 +1,6 @@
 // src/components/common/fulltime/curriculummonths/CurriculumMonths.jsx
 import React, { useRef } from 'react';
-import { Box, Typography, Container, IconButton } from '@mui/material';
+import { Box, Typography, IconButton } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
@@ -8,13 +8,14 @@ import MonthCard from './MonthCard';
 
 const useStyles = makeStyles({
   section: {
-    padding: '80px 0',
+    padding: '30px 0',
     backgroundColor: '#FFFFFF',
   },
   container: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    padding: '0 40px', // Add padding for content
   },
   titleContainer: {
     textAlign: 'center',
@@ -74,7 +75,7 @@ const useStyles = makeStyles({
   scrollWrapper: {
     position: 'relative',
     width: '100%',
-    maxWidth: 'calc(100% - 100px)',
+    maxWidth: 'calc(100% - 120px)', // Increased width
     margin: '0 auto',
     overflow: 'hidden',
   },
@@ -99,46 +100,44 @@ const CurriculumMonths = ({ title, highlightedText, subtitle, months }) => {
 
   return (
     <Box className={classes.section}>
-      <Container maxWidth="lg">
-        <Box className={classes.container}>
-          <Box className={classes.titleContainer}>
-            <Typography className={classes.title}>
-              {title} <span>{highlightedText}</span>
-            </Typography>
-            <Typography className={classes.subtitle}>
-              {subtitle}
-            </Typography>
+      <Box className={classes.container}>
+        <Box className={classes.titleContainer}>
+          <Typography className={classes.title}>
+            {title} <span>{highlightedText}</span>
+          </Typography>
+          <Typography className={classes.subtitle}>
+            {subtitle}
+          </Typography>
+        </Box>
+        
+        <Box className={classes.monthsContainer}>
+          <IconButton 
+            className={`${classes.navigationButton} ${classes.leftButton}`}
+            onClick={() => handleScroll('left')}
+          >
+            <ArrowBackIosNewIcon />
+          </IconButton>
+          
+          <Box className={classes.scrollWrapper}>
+            <Box className={classes.scrollContainer} ref={scrollRef}>
+              {months.map((month, index) => (
+                <MonthCard 
+                  key={index}
+                  number={index + 1}
+                  topic={month}
+                />
+              ))}
+            </Box>
           </Box>
           
-          <Box className={classes.monthsContainer}>
-            <IconButton 
-              className={`${classes.navigationButton} ${classes.leftButton}`}
-              onClick={() => handleScroll('left')}
-            >
-              <ArrowBackIosNewIcon />
-            </IconButton>
-            
-            <Box className={classes.scrollWrapper}>
-              <Box className={classes.scrollContainer} ref={scrollRef}>
-                {months.map((month, index) => (
-                  <MonthCard 
-                    key={index}
-                    number={index + 1}
-                    topic={month}
-                  />
-                ))}
-              </Box>
-            </Box>
-            
-            <IconButton 
-              className={`${classes.navigationButton} ${classes.rightButton}`}
-              onClick={() => handleScroll('right')}
-            >
-              <ArrowForwardIosIcon />
-            </IconButton>
-          </Box>
+          <IconButton 
+            className={`${classes.navigationButton} ${classes.rightButton}`}
+            onClick={() => handleScroll('right')}
+          >
+            <ArrowForwardIosIcon />
+          </IconButton>
         </Box>
-      </Container>
+      </Box>
     </Box>
   );
 };

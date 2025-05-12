@@ -6,7 +6,7 @@ import { makeStyles } from '@mui/styles';
 const useStyles = makeStyles({
   cardContainer: {
     width: '220px',
-    height: '180px',
+    height: '210px',
     backgroundColor: '#F5F7FF',
     borderRadius: '10px',
     padding: '20px',
@@ -17,9 +17,10 @@ const useStyles = makeStyles({
     boxSizing: 'border-box',
   },
   monthCircle: {
-    width: '60px',
-    height: '60px',
+    width: '70px',
+    height: '70px',
     borderRadius: '50%',
+    minHeight: '70px',
     backgroundColor: '#475AD7',
     display: 'flex',
     justifyContent: 'center',

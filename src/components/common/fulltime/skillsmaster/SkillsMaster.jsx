@@ -6,7 +6,7 @@ import SkillCategory from "./SkillCategory";
 
 const useStyles = makeStyles({
   section: {
-    padding: "80px 0",
+    padding: "30px 0",
     backgroundColor: "#FFFFFF",
     position: "relative",
   },

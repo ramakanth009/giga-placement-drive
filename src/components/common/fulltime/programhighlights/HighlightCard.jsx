@@ -5,8 +5,8 @@ import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles({
   highlightCard: {
-    width: '280px',
-    height: '350px',
+    width: '240px',
+    height: '300px',
     borderRadius: '140px',
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
     display: 'flex',
@@ -19,10 +19,13 @@ const useStyles = makeStyles({
       transform: 'translateY(-5px)',
       backgroundColor: 'rgba(255, 255, 255, 0.9)',
     },
+    '& $iconContainer': {
+        backgroundColor: '#ADAEF64A',
+      },
   },
   iconContainer: {
-    width: '100px',
-    height: '100px',
+    width: '80px',
+    height: '80px',
     borderRadius: '50%',
     backgroundColor: 'rgba(255, 255, 255, 0.2)',
     display: 'flex',
@@ -32,18 +35,19 @@ const useStyles = makeStyles({
     transition: 'background-color 0.3s ease',
     '&:hover': {
       // transform: 'translateY(-5px)',
-      backgroundColor: 'rgba(255, 255, 255, 0.2) !important',
+      backgroundColor: '#ADAEF64A',
     },
   },
   icon: {
-    width: '50px',
-    height: '50px',
+    // width: '50px',
+    // height: '50px',
+    transform: 'scale(1.5)',
     color: 'white',
     transition: 'color 0.3s ease',
   },
   title: {
     color: 'white',
-    fontSize: '1.3rem !important',
+    fontSize: '1rem !important',
     fontWeight: '600 !important',
     textAlign: 'center',
     lineHeight: '1.4 !important',
