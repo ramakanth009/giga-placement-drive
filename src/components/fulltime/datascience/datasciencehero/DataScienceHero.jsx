@@ -1,9 +1,8 @@
-// src/components/fulltime/fullstack/hero/FullStackHero.jsx
 import React from 'react';
 import { Box } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import HeroSection from '../../../common/fulltime/herosection/HeroSection';
-import fullStackHeroImage from '../../../../assets/datascience-hero-img.png';
+import dataScienceImage from '../../../../assets/datascience-hero-img.png';
 
 const useStyles = makeStyles({
   decorX: {
@@ -21,11 +20,12 @@ const useStyles = makeStyles({
   }
 });
 
-const FullStackHero = () => {
+const DataScienceHero = () => {
   const classes = useStyles();
 
+  // Define decorative elements
   const decorElements = [
-    // Add decorative elements here if needed
+    
   ];
 
   const handleApplyClick = () => {
@@ -41,9 +41,9 @@ const FullStackHero = () => {
   return (
     <HeroSection
       titleFirstLine="Comprehensive"
-      highlightedText="Full Stack Development Program"
-      subtitle="Build Dynamic Apps. Architect Robust Systems."
-      heroImage={fullStackHeroImage}
+      highlightedText="Data Science Program"
+      subtitle="Uncover Patterns, Drive Insights. Shape the future with data."
+      heroImage={dataScienceImage}
       onApplyClick={handleApplyClick}
       onBrochureClick={handleBrochureClick}
       decorElements={decorElements}
@@ -51,4 +51,4 @@ const FullStackHero = () => {
   );
 };
 
-export default FullStackHero;
+export default DataScienceHero;
