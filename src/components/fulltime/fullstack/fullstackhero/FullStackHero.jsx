@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import Fullstackhero from "../../../../assets/fulltime-hero-img.png"
 
 const useStyles = makeStyles({
   heroSection: {
@@ -376,9 +377,9 @@ const FullStackHero = () => {
           <Box className={classes.purpleBlobBottom}></Box>
           <Box className={classes.hexagonContainer}>
             <Box className={classes.hexagon}>
-              <img 
-                src="/api/placeholder/600/600" 
-                alt="Developers working together" 
+              <img
+                src={Fullstackhero}
+                alt="Developers working together"
                 className={classes.hexImage}
               />
             </Box>

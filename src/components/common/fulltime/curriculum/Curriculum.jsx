@@ -6,12 +6,13 @@ import CurriculumCard from './CurriculumCard';
 
 const useStyles = makeStyles({
   section: {
-    padding: '80px 0',
+    padding: '20px 0',
     position: 'relative',
     overflow: 'hidden',
     background: 'linear-gradient(180deg, #f8f9ff 0%, #ffffff 100%)',
   },
   bgDecoration: {
+    display:"none",
     position: 'absolute',
     borderRadius: '50%',
     background: 'radial-gradient(circle, rgba(74, 99, 231, 0.05) 0%, rgba(74, 99, 231, 0.01) 70%)',
@@ -34,7 +35,7 @@ const useStyles = makeStyles({
     zIndex: 2,
   },
   titleContainer: {
-    marginBottom: '80px',
+    marginBottom: '40px',
     position: 'relative',
     zIndex: 2,
     textAlign: 'center',
@@ -63,17 +64,6 @@ const useStyles = makeStyles({
     color: '#4A63E7 !important',
     fontWeight: 'bold !important',
     position: 'relative',
-    '&::after': {
-      content: '""',
-      position: 'absolute',
-      bottom: '5px',
-      left: '0',
-      width: '100%',
-      height: '8px',
-      background: 'rgba(255, 198, 20, 0.3)',
-      borderRadius: '4px',
-      zIndex: -1,
-    },
   },
   sectionSubtitle: {
     fontSize: '1.1rem !important',
@@ -310,9 +300,9 @@ const Curriculum = ({
           ))}
         </Box>
         
-        <Typography className={classes.programTitle}>
+        {/* <Typography className={classes.programTitle}>
           {programName}
-        </Typography>
+        </Typography> */}
 
         <Box className={classes.sliderContainer}>
           <Box className={classes.coreSkillsLabel}>

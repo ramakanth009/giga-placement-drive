@@ -27,7 +27,6 @@ const FullstackFulltime = () => {
         <FullStackCurriculumMonths />
         <FullStackSkillsMaster />
         <Fullstackcurriculam />
-        <FullStackIndustryFacts />
         <FullStackTechnologyKit />
         <FullStackProjectSection />
         <FullStackCaseStudies />
