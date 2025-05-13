@@ -9,8 +9,14 @@ import {
   MenuItem,
   useMediaQuery,
   useTheme,
+  Paper,
+  Popper,
+  Grow,
+  ClickAwayListener,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { makeStyles } from "@mui/styles";
 import { ReactComponent as GigaLogo } from "../../../assets/GIGAVERSITY_LOGO.svg";
 import { Link, useLocation } from "react-router-dom";
@@ -143,7 +149,71 @@ const useStyles = makeStyles({
         right: "12px",
       },
     },
-  }
+  },
+  // Dropdown styles
+  dropdown: {
+    position: "relative",
+    "&:hover $dropdownContent": {
+      display: "block",
+      opacity: 1,
+      visibility: "visible",
+      transform: "translateY(0)",
+    },
+    "&:hover $dropdownIcon": {
+      transform: "rotate(180deg)",
+    },
+  },
+  dropdownContent: {
+    position: "absolute",
+    top: "100%",
+    left: "0",
+    minWidth: "220px",
+    backgroundColor: "#fff",
+    boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
+    borderRadius: "8px",
+    padding: "8px 0",
+    zIndex: 1000,
+    opacity: 0,
+    visibility: "hidden",
+    transform: "translateY(10px)",
+    transition: "all 0.3s ease",
+  },
+  dropdownItem: {
+    display: "block",
+    width: "100%",
+    padding: "10px 16px",
+    color: "#2A2B6A",
+    textDecoration: "none",
+    fontSize: "14px",
+    fontWeight: "500",
+    transition: "background-color 0.3s ease",
+    "&:hover": {
+      backgroundColor: "rgba(42, 43, 106, 0.05)",
+    },
+  },
+  // Dropdown icon
+  dropdownIcon: {
+    marginLeft: "4px",
+    fontSize: "18px",
+    transition: "transform 0.3s ease",
+    verticalAlign: "middle",
+  },
+  dropdownText: {
+    display: "flex",
+    alignItems: "center",
+  },
+  // Mobile submenu
+  mobileSubmenu: {
+    paddingLeft: "20px",
+  },
+  mobileSubmenuItem: {
+    padding: "8px 16px",
+    color: "#2A2B6A",
+    fontSize: "14px",
+    "&:hover": {
+      backgroundColor: "rgba(42, 43, 106, 0.05)",
+    },
+  },
 });
 
 const Navbar = () => {
@@ -152,6 +222,10 @@ const Navbar = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+  
+  // State for dropdown menus in mobile view
+  const [mobileFullStackOpen, setMobileFullStackOpen] = useState(false);
+  const [mobileDataScienceOpen, setMobileDataScienceOpen] = useState(false);
   
   // Use location to highlight active link
   const location = useLocation();
@@ -163,6 +237,8 @@ const Navbar = () => {
 
   const handleClose = () => {
     setAnchorEl(null);
+    setMobileFullStackOpen(false);
+    setMobileDataScienceOpen(false);
   };
 
   const handleNavLinkClick = () => {
@@ -170,6 +246,18 @@ const Navbar = () => {
       handleClose();
     }
     scrollToTop();
+  };
+
+  const toggleMobileFullStack = (e) => {
+    e.stopPropagation();
+    setMobileFullStackOpen(!mobileFullStackOpen);
+    setMobileDataScienceOpen(false);
+  };
+
+  const toggleMobileDataScience = (e) => {
+    e.stopPropagation();
+    setMobileDataScienceOpen(!mobileDataScienceOpen);
+    setMobileFullStackOpen(false);
   };
 
   return (
@@ -193,22 +281,69 @@ const Navbar = () => {
               >
                 Home
               </Button>
-              <Button 
-                className={`${classes.navLink} ${currentPath === "/fullstack" ? classes.active : ""}`}
-                component={Link}
-                to="/fullstack"
-                onClick={handleNavLinkClick}
-              >
-                Full Stack
-              </Button>
-              <Button 
-                className={`${classes.navLink} ${currentPath === "/datascience" ? classes.active : ""}`}
-                component={Link}
-                to="/datascience"
-                onClick={handleNavLinkClick}
-              >
-                Data Science
-              </Button>
+              
+              {/* Full Stack Dropdown */}
+              <Box className={classes.dropdown}>
+                <Button 
+                  className={`${classes.navLink} ${
+                    currentPath.includes("/fullstack") || currentPath.includes("/fulltime/fullstack") 
+                    ? classes.active : ""
+                  }`}
+                >
+                  <Box className={classes.dropdownText}>
+                    Full Stack
+                    <KeyboardArrowDownIcon className={classes.dropdownIcon} />
+                  </Box>
+                </Button>
+                <Box className={classes.dropdownContent}>
+                  <Link 
+                    to="/fullstack" 
+                    className={classes.dropdownItem}
+                    onClick={handleNavLinkClick}
+                  >
+                    Full Stack Virtual Placement
+                  </Link>
+                  <Link 
+                    to="/fulltime/fullstack" 
+                    className={classes.dropdownItem}
+                    onClick={handleNavLinkClick}
+                  >
+                    Full Stack Full-Time Program
+                  </Link>
+                </Box>
+              </Box>
+              
+              {/* Data Science Dropdown */}
+              <Box className={classes.dropdown}>
+                <Button 
+                  className={`${classes.navLink} ${
+                    currentPath.includes("/datascience") || currentPath.includes("/fulltime/datascience") 
+                    ? classes.active : ""
+                  }`}
+                >
+                  <Box className={classes.dropdownText}>
+                    Data Science
+                    <KeyboardArrowDownIcon className={classes.dropdownIcon} />
+                  </Box>
+                </Button>
+                <Box className={classes.dropdownContent}>
+                  <Link 
+                    to="/datascience" 
+                    className={classes.dropdownItem}
+                    onClick={handleNavLinkClick}
+                  >
+                    Data Science Virtual Placement
+                  </Link>
+                  <Link 
+                    to="/fulltime/datascience" 
+                    className={classes.dropdownItem}
+                    onClick={handleNavLinkClick}
+                  >
+                    Data Science Full-Time Program
+                  </Link>
+                </Box>
+              </Box>
+              
               <Button 
                 className={`${classes.navLink} ${currentPath === "/about" ? classes.active : ""}`}
                 component={Link}
@@ -268,22 +403,75 @@ const Navbar = () => {
           >
             Home
           </MenuItem>
+          
+          {/* Mobile Full Stack dropdown */}
           <MenuItem 
-            onClick={() => handleNavLinkClick()} 
-            className={classes.menuItem} 
-            component={Link} 
-            to="/fullstack"
+            onClick={toggleMobileFullStack} 
+            className={classes.menuItem}
           >
-            Full Stack
+            <Box className={classes.dropdownText}>
+              Full Stack
+              <KeyboardArrowDownIcon 
+                className={classes.dropdownIcon} 
+                style={{ transform: mobileFullStackOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
+              />
+            </Box>
           </MenuItem>
+          {mobileFullStackOpen && (
+            <Box className={classes.mobileSubmenu}>
+              <MenuItem 
+                onClick={() => handleNavLinkClick()} 
+                className={classes.mobileSubmenuItem} 
+                component={Link} 
+                to="/fullstack"
+              >
+                Full Stack Virtual Placement
+              </MenuItem>
+              <MenuItem 
+                onClick={() => handleNavLinkClick()} 
+                className={classes.mobileSubmenuItem} 
+                component={Link} 
+                to="/fulltime/fullstack"
+              >
+                Full Stack Full-Time Program
+              </MenuItem>
+            </Box>
+          )}
+          
+          {/* Mobile Data Science dropdown */}
           <MenuItem 
-            onClick={() => handleNavLinkClick()} 
-            className={classes.menuItem} 
-            component={Link} 
-            to="/datascience"
+            onClick={toggleMobileDataScience} 
+            className={classes.menuItem}
           >
-            Data Science
+            <Box className={classes.dropdownText}>
+              Data Science
+              <KeyboardArrowDownIcon 
+                className={classes.dropdownIcon} 
+                style={{ transform: mobileDataScienceOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
+              />
+            </Box>
           </MenuItem>
+          {mobileDataScienceOpen && (
+            <Box className={classes.mobileSubmenu}>
+              <MenuItem 
+                onClick={() => handleNavLinkClick()} 
+                className={classes.mobileSubmenuItem} 
+                component={Link} 
+                to="/datascience"
+              >
+                Data Science Virtual Placement
+              </MenuItem>
+              <MenuItem 
+                onClick={() => handleNavLinkClick()} 
+                className={classes.mobileSubmenuItem} 
+                component={Link} 
+                to="/fulltime/datascience"
+              >
+                Data Science Full-Time Program
+              </MenuItem>
+            </Box>
+          )}
+          
           <MenuItem 
             onClick={() => handleNavLinkClick()} 
             className={classes.menuItem} 
