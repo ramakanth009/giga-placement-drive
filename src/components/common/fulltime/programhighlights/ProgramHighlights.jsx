@@ -8,17 +8,17 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const useStyles = makeStyles({
   section: {
-    padding: '80px 0',
-    background: 'radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%)',
+    padding: '30px 0',
+    background: '#2A2B6A', // Updated to dark blue
     position: 'relative',
     overflow: 'hidden',
-    minHeight: '600px',
+    minHeight: '500px', // Reduced height
     '@media (max-width: 960px)': {
-      padding: '60px 0',
-      minHeight: '800px',
+      padding: '50px 0',
+      minHeight: '600px',
     },
     '@media (max-width: 600px)': {
-      padding: '40px 0',
+      padding: '30px 0',
     },
   },
   starsCanvas: {
@@ -31,8 +31,8 @@ const useStyles = makeStyles({
   },
   orbitPath: {
     position: 'absolute',
-    width: '500px',
-    height: '500px',
+    width: '400px', // Reduced size
+    height: '400px', // Reduced size
     borderRadius: '50%',
     border: '2px dashed rgba(255, 255, 255, 0.1)',
     top: '50%',
@@ -40,12 +40,12 @@ const useStyles = makeStyles({
     transform: 'translate(-50%, -50%)',
     zIndex: 2,
     '@media (max-width: 960px)': {
-      width: '300px',
-      height: '300px',
-    },
-    '@media (max-width: 600px)': {
       width: '250px',
       height: '250px',
+    },
+    '@media (max-width: 600px)': {
+      width: '200px',
+      height: '200px',
     },
   },
   container: {
@@ -54,49 +54,33 @@ const useStyles = makeStyles({
   },
   titleContainer: {
     textAlign: 'center',
-    marginBottom: '80px',
+    marginBottom: '20px', // Reduced margin
     position: 'relative',
     zIndex: 5,
     '@media (max-width: 960px)': {
-      marginBottom: '60px',
+      marginBottom: '10px',
     },
     '@media (max-width: 600px)': {
-      marginBottom: '40px',
+      marginBottom: '5px',
     },
   },
   title: {
-    fontSize: '3rem !important',
+    fontSize: '2.5rem !important', // Reduced font size
     fontWeight: 'bold !important',
-    color: 'white !important',
+    color: 'white !important', // Updated text color
     position: 'relative',
     display: 'inline-block',
-    '&::after': {
-      content: '""',
-      position: 'absolute',
-      bottom: '-15px',
-      left: '50%',
-      transform: 'translateX(-50%)',
-      width: '100px',
-      height: '4px',
-      backgroundImage: 'linear-gradient(to right, #FFC614, #FF6347)',
-      borderRadius: '2px',
-    },
     '& span': {
-      background: 'linear-gradient(to right, #FFC614, #FF6347)',
-      WebkitBackgroundClip: 'text',
-      WebkitTextFillColor: 'transparent',
+      color: '#FFC614', // Updated highlighted text color to yellow
       display: 'inline-block',
     },
     '@media (max-width: 960px)': {
-      fontSize: '2.5rem !important',
-      '&::after': {
-        width: '80px',
-      },
+      fontSize: '2rem !important',
+      
     },
     '@media (max-width: 600px)': {
-      fontSize: '2rem !important',
-      '&::after': {
-        width: '60px',
+      fontSize: '1.8rem !important','&::after': {
+        width: '50px',
         height: '3px',
         bottom: '-10px',
       },
@@ -105,39 +89,38 @@ const useStyles = makeStyles({
   cardOrbit: {
     position: 'relative',
     width: '100%',
-    height: '600px',
+    height: '380px', // Reduced height
     perspective: '1000px',
     '@media (max-width: 960px)': {
-      height: '500px',
+      height: '400px',
     },
   },
   orbitContainer: {
     position: 'absolute',
     top: '50%',
     left: '50%',
-    transformStyle: 'preserve-3d',
-    transition: 'transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
     width: '100%',
     height: '100%',
-    transform: 'translate(-50%, -50%) rotateY(0deg)',
+    transform: 'translate(-50%, -50%) translateX(0)',
+    transition: 'transform 0.8s ease-in-out',
   },
   cardPosition: {
     position: 'absolute',
     top: '50%',
     left: '50%',
-    transformStyle: 'preserve-3d',
-    transition: 'all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+    transition: 'all 0.8s ease-in-out',
   },
   centerRing: {
+    display:"none",
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: '150px',
-    height: '150px',
+    width: '120px', // Reduced size
+    height: '120px', // Reduced size
     borderRadius: '50%',
-    background: 'radial-gradient(circle, rgba(255,198,20,0.2) 0%, rgba(255,99,71,0.05) 100%)',
-    boxShadow: '0 0 50px rgba(255, 198, 20, 0.3)',
+    background: 'radial-gradient(circle, rgba(255,198,20,0.2) 0%, rgba(255,198,20,0.05) 100%)', // Updated to yellow
+    boxShadow: '0 0 40px rgba(255, 198, 20, 0.3)',
     zIndex: 4,
     '&::after': {
       content: '""',
@@ -145,18 +128,18 @@ const useStyles = makeStyles({
       top: '50%',
       left: '50%',
       transform: 'translate(-50%, -50%)',
-      width: '50px',
-      height: '50px',
+      width: '40px', // Reduced size
+      height: '40px', // Reduced size
       borderRadius: '50%',
-      background: '#FFC614',
+      background: '#FFC614', // Updated to yellow
       boxShadow: '0 0 30px #FFC614',
     },
     '@media (max-width: 960px)': {
-      width: '100px',
-      height: '100px',
+      width: '80px',
+      height: '80px',
       '&::after': {
-        width: '30px',
-        height: '30px',
+        width: '25px',
+        height: '25px',
       },
     },
   },
@@ -164,7 +147,7 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: '50px',
+    marginTop: '10px', // Reduced margin
     gap: '20px',
     position: 'relative',
     zIndex: 5,
@@ -172,7 +155,7 @@ const useStyles = makeStyles({
   controlButton: {
     backgroundColor: 'rgba(255, 255, 255, 0.1) !important',
     color: 'white !important',
-    padding: '12px !important',
+    padding: '10px !important', // Reduced padding
     transition: 'all 0.3s ease !important',
     '&:hover': {
       backgroundColor: 'rgba(255, 198, 20, 0.2) !important',
@@ -192,29 +175,14 @@ const useStyles = makeStyles({
     width: '10px',
     height: '10px',
     borderRadius: '50%',
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    backgroundColor: 'rgba(255, 255, 255, 0.3)', // Updated to match requested path dot color
     cursor: 'pointer',
     transition: 'all 0.3s ease',
   },
   activeIndicator: {
-    backgroundColor: '#FFC614',
+    backgroundColor: '#FFC614', // Updated to yellow
     transform: 'scale(1.3)',
     boxShadow: '0 0 10px #FFC614',
-  },
-  currentTitle: {
-    position: 'relative',
-    zIndex: 5,
-    textAlign: 'center',
-    marginTop: '30px',
-    fontSize: '1.5rem !important',
-    fontWeight: 'bold !important',
-    color: 'white !important',
-    opacity: 0,
-    transform: 'translateY(20px)',
-    transition: 'all 0.5s ease',
-    '@media (max-width: 600px)': {
-      fontSize: '1.3rem !important',
-    },
   },
   activeTitleAnimation: {
     opacity: 1,
@@ -235,15 +203,32 @@ const useStyles = makeStyles({
 const ProgramHighlights = ({ highlights }) => {
   const classes = useStyles();
   const [activeIndex, setActiveIndex] = useState(0);
-  const [rotation, setRotation] = useState(0);
+  const [slidePosition, setSlidePosition] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const orbitRef = useRef(null);
   const canvasRef = useRef(null);
   const [isTitleVisible, setIsTitleVisible] = useState(false);
 
+  // Add auto-slide effect
   useEffect(() => {
-    // Update rotation based on active index
-    const newRotation = (360 / highlights.length) * activeIndex;
-    setRotation(newRotation);
+    if (highlights.length <= 1) return;
+
+    const interval = setInterval(() => {
+      if (!isPaused) {
+        setActiveIndex((prevIndex) => (prevIndex + 1) % highlights.length);
+      }
+    }, 3000); // Change slide every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [highlights.length, isPaused]);
+
+  // Add mouse enter/leave handlers to container
+  const handleMouseEnter = () => setIsPaused(true);
+  const handleMouseLeave = () => setIsPaused(false);
+
+  useEffect(() => {
+    // Update slide position based on active index
+    setSlidePosition(-activeIndex * 100);
     
     // Trigger title animation
     setIsTitleVisible(false);
@@ -260,14 +245,14 @@ const ProgramHighlights = ({ highlights }) => {
     const height = canvas.height = window.innerHeight;
 
     const stars = [];
-    const starCount = 200;
+    const starCount = 150; // Reduced star count
     
     // Create stars
     for (let i = 0; i < starCount; i++) {
       stars.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        size: Math.random() * 2,
+        size: Math.random() * 1.5, // Reduced size
         opacity: Math.random(),
         speed: Math.random() * 0.05,
         cycle: Math.random() * 100,
@@ -326,21 +311,23 @@ const ProgramHighlights = ({ highlights }) => {
 
   const calculateCardPosition = (index) => {
     const totalCards = highlights.length;
-    const angle = (index * 2 * Math.PI) / totalCards;
-    const radius = totalCards <= 4 ? 230 : 200;
+    // Calculate horizontal position for sliding
+    const xOffset = (index - activeIndex) * 300; // Adjust distance between cards
     
-    const x = Math.sin(angle) * radius;
-    const z = Math.cos(angle) * radius;
-    const rotateY = (index * 360) / totalCards;
-    
-    // Calculate if this card is active or should be visible based on its position relative to activeIndex
+    // Determine if this card is active
     const isActive = index === activeIndex;
     
-    // Adjust the position and rotation of each card
+    // Calculate opacity based on distance from active card
+    const distanceFromActive = Math.abs(index - activeIndex);
+    const opacity = distanceFromActive > 1 ? 0.3 : 1 - (distanceFromActive * 0.3);
+    
+    // Calculate scale based on distance from active card (smaller if further)
+    const scale = isActive ? 1 : 0.85;
+    
     return {
-      transform: `translate(-50%, -50%) translateX(${x}px) translateZ(${z}px) rotateY(${rotateY}deg)`,
+      transform: `translate(-50%, -50%) translateX(${xOffset}px) scale(${scale})`,
       zIndex: isActive ? 10 : 5,
-      opacity: 1,
+      opacity: opacity,
     };
   };
 
@@ -348,7 +335,12 @@ const ProgramHighlights = ({ highlights }) => {
     <Box className={classes.section}>
       <canvas ref={canvasRef} className={classes.starsCanvas} />
       <Box className={classes.orbitPath}></Box>
-      <Container maxWidth="lg" className={classes.container}>
+      <Container 
+        maxWidth="lg" 
+        className={classes.container}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         <Box className={classes.titleContainer}>
           <Typography className={classes.title}>
             Highlights of the <span>Program</span>
@@ -358,8 +350,7 @@ const ProgramHighlights = ({ highlights }) => {
         <Box className={classes.cardOrbit}>
           <Box 
             ref={orbitRef}
-            className={classes.orbitContainer} 
-            style={{ transform: `translate(-50%, -50%) rotateY(${-rotation}deg)` }}
+            className={classes.orbitContainer}
           >
             {highlights.map((highlight, index) => (
               <Box 
@@ -379,11 +370,7 @@ const ProgramHighlights = ({ highlights }) => {
           <Box className={classes.centerRing}></Box>
         </Box>
         
-        <Typography 
-          className={`${classes.currentTitle} ${isTitleVisible ? classes.activeTitleAnimation : ''}`}
-        >
-          {highlights[activeIndex]?.title}
-        </Typography>
+        
         
         <Box className={classes.controls}>
           <IconButton 
