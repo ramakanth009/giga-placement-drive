@@ -1,6 +1,6 @@
 // src/components/common/fulltime/learningpath/LearningPathTimeline.jsx
 import React, { useState } from 'react';
-import { Box, Typography, Button, Paper, Chip, Divider, Grid, IconButton } from '@mui/material';
+import { Box, Typography, Button, Paper, Chip, Divider, IconButton } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -672,23 +672,28 @@ const LearningPathTimeline = ({
           <Typography variant="h4" className={classes.sectionTitle}>
             Key Activities
           </Typography>
-          <Grid container spacing={3}>
+          <Box sx={{ 
+            display: 'flex', 
+            flexWrap: 'wrap', 
+            gap: 3,
+            '& > *': { 
+              flex: { xs: '1 1 100%', md: '1 1 calc(50% - 12px)' }
+            }
+          }}>
             {activePhaseData.highlights.map((highlight, index) => (
-              <Grid item xs={12} md={6} key={index}>
-                <Paper className={classes.activityCard} elevation={0}>
-                  <Box className={classes.activityIcon}>
-                    {highlight.icon}
-                  </Box>
-                  <Typography className={classes.activityTitle}>
-                    {highlight.title}
-                  </Typography>
-                  <Typography className={classes.activityDescription}>
-                    {highlight.description}
-                  </Typography>
-                </Paper>
-              </Grid>
+              <Paper key={index} className={classes.activityCard} elevation={0}>
+                <Box className={classes.activityIcon}>
+                  {highlight.icon}
+                </Box>
+                <Typography className={classes.activityTitle}>
+                  {highlight.title}
+                </Typography>
+                <Typography className={classes.activityDescription}>
+                  {highlight.description}
+                </Typography>
+              </Paper>
             ))}
-          </Grid>
+          </Box>
         </Box>
 
         {/* Modules Section if available */}
@@ -697,18 +702,23 @@ const LearningPathTimeline = ({
             <Typography variant="h4" className={classes.sectionTitle}>
               Core Modules
             </Typography>
-            <Grid container spacing={2}>
+            <Box sx={{ 
+              display: 'flex', 
+              flexWrap: 'wrap', 
+              gap: 2,
+              '& > *': { 
+                flex: { xs: '1 1 100%', sm: '1 1 calc(50% - 8px)', md: '1 1 calc(33.333% - 11px)' }
+              }
+            }}>
               {activePhaseData.modules.map((module, index) => (
-                <Grid item xs={12} sm={6} md={4} key={index}>
-                  <Box className={classes.moduleBox}>
-                    <CheckCircleIcon className={classes.moduleIcon} />
-                    <Typography className={classes.moduleText}>
-                      {module}
-                    </Typography>
-                  </Box>
-                </Grid>
+                <Box key={index} className={classes.moduleBox}>
+                  <CheckCircleIcon className={classes.moduleIcon} />
+                  <Typography className={classes.moduleText}>
+                    {module}
+                  </Typography>
+                </Box>
               ))}
-            </Grid>
+            </Box>
           </Box>
         )}
 
@@ -718,32 +728,37 @@ const LearningPathTimeline = ({
             <Typography variant="h4" className={classes.sectionTitle}>
               Specialization Tracks
             </Typography>
-            <Grid container spacing={3}>
+            <Box sx={{ 
+              display: 'flex', 
+              flexWrap: 'wrap', 
+              gap: 3,
+              '& > *': { 
+                flex: { xs: '1 1 100%', md: '1 1 calc(50% - 12px)' }
+              }
+            }}>
               {activePhaseData.tracks.map((track, index) => (
-                <Grid item xs={12} md={6} key={index}>
-                  <Box className={classes.trackBox}>
-                    <Box className={classes.trackHeader}>
-                      <Box className={classes.trackIcon}>
-                        {track.icon}
-                      </Box>
-                      <Typography className={classes.trackTitle}>
-                        {track.name}
-                      </Typography>
+                <Box key={index} className={classes.trackBox}>
+                  <Box className={classes.trackHeader}>
+                    <Box className={classes.trackIcon}>
+                      {track.icon}
                     </Box>
-                    <Box>
-                      {track.modules.map((module, mIndex) => (
-                        <Box className={classes.moduleBox} key={mIndex}>
-                          <CheckCircleIcon className={classes.moduleIcon} />
-                          <Typography className={classes.moduleText}>
-                            {module}
-                          </Typography>
-                        </Box>
-                      ))}
-                    </Box>
+                    <Typography className={classes.trackTitle}>
+                      {track.name}
+                    </Typography>
                   </Box>
-                </Grid>
+                  <Box>
+                    {track.modules.map((module, mIndex) => (
+                      <Box className={classes.moduleBox} key={mIndex}>
+                        <CheckCircleIcon className={classes.moduleIcon} />
+                        <Typography className={classes.moduleText}>
+                          {module}
+                        </Typography>
+                      </Box>
+                    ))}
+                  </Box>
+                </Box>
               ))}
-            </Grid>
+            </Box>
             {activePhaseData.note && (
               <Box sx={{ 
                 mt: 3, 
@@ -766,18 +781,26 @@ const LearningPathTimeline = ({
             <Typography variant="h4" className={classes.sectionTitle}>
               Program Perks
             </Typography>
-            <Grid container spacing={2}>
+            <Box sx={{ 
+              display: 'flex', 
+              flexWrap: 'wrap', 
+              gap: 2,
+              '& > *': { 
+                flex: { xs: '1 1 100%', sm: '1 1 calc(50% - 8px)' }
+              }
+            }}>
               {activePhaseData.perks.map((perk, index) => (
-                <Grid item xs={12} sm={6} key={index}>
-                  <Box className={classes.moduleBox} sx={{ backgroundColor: 'rgba(255, 198, 20, 0.05)', borderColor: 'rgba(255, 198, 20, 0.1)' }}>
-                    <CheckCircleIcon className={classes.moduleIcon} sx={{ color: '#FFC614' }} />
-                    <Typography className={classes.moduleText}>
-                      {perk}
-                    </Typography>
-                  </Box>
-                </Grid>
+                <Box key={index} className={classes.moduleBox} sx={{ 
+                  backgroundColor: 'rgba(255, 198, 20, 0.05)', 
+                  borderColor: 'rgba(255, 198, 20, 0.1)' 
+                }}>
+                  <CheckCircleIcon className={classes.moduleIcon} sx={{ color: '#FFC614' }} />
+                  <Typography className={classes.moduleText}>
+                    {perk}
+                  </Typography>
+                </Box>
               ))}
-            </Grid>
+            </Box>
           </Box>
         )}
 
@@ -802,18 +825,23 @@ const LearningPathTimeline = ({
                 <StarIcon sx={{ mr: 1, color: '#FFC614' }} />
                 Key Features
               </Typography>
-              <Grid container spacing={2}>
+              <Box sx={{ 
+                display: 'flex', 
+                flexWrap: 'wrap', 
+                gap: 2,
+                '& > *': { 
+                  flex: { xs: '1 1 100%', sm: '1 1 calc(50% - 8px)' }
+                }
+              }}>
                 {activePhaseData.milestone.features.map((feature, index) => (
-                  <Grid item xs={12} sm={6} key={index}>
-                    <Box className={classes.featureItem}>
-                      <ChevronRightIcon className={classes.featureIcon} />
-                      <Typography className={classes.featureText}>
-                        {feature}
-                      </Typography>
-                    </Box>
-                  </Grid>
+                  <Box key={index} className={classes.featureItem}>
+                    <ChevronRightIcon className={classes.featureIcon} />
+                    <Typography className={classes.featureText}>
+                      {feature}
+                    </Typography>
+                  </Box>
                 ))}
-              </Grid>
+              </Box>
             </Box>
             
             {/* Toggle for additional details */}
