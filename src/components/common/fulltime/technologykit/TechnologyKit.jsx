@@ -172,7 +172,7 @@ const useStyles = makeStyles({
   },
 });
 
-const TechnologyKit = ({ programName, categories }) => {
+const TechnologyKit = ({ programName, categories, title, subtitle }) => {
   const classes = useStyles();
 
   return (
@@ -180,10 +180,10 @@ const TechnologyKit = ({ programName, categories }) => {
       <Container maxWidth="lg">
         <Box className={classes.titleContainer}>
           <Typography className={classes.mainTitle}>
-            Your Technology Kit for <span>{programName}</span>
+            {title} <span>{programName}</span>
           </Typography>
           <Typography className={classes.subtitle}>
-            Master tools used in real-world data science projects.
+            {subtitle}
           </Typography>
         </Box>
 

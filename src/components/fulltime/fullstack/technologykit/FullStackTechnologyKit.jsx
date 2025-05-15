@@ -5,7 +5,7 @@ import TechnologyKit from '../../../common/fulltime/technologykit/TechnologyKit'
 const FullStackTechnologyKit = () => {
   const categories = [
     {
-      title: 'Programming Languages',
+      title: 'Programming Languages', 
       skills: [
         { initials: 'JS', name: 'JavaScript' },
         { initials: 'TS', name: 'TypeScript' },
@@ -64,6 +64,8 @@ const FullStackTechnologyKit = () => {
     <TechnologyKit 
       programName="Full Stack Program"
       categories={categories}
+      title="Your Technology Kit for"
+      subtitle="Master modern tools and technologies used in professional full-stack development."
     />
   );
 };

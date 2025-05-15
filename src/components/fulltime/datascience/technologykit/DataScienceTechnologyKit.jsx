@@ -6,7 +6,7 @@ const DataScienceTechnologyKit = () => {
   const categories = [
     {
       title: 'Programming Languages',
-      skills: [
+      skills: [ 
         { initials: 'PY', name: 'Python' },
         { initials: 'R', name: 'R' },
         { initials: 'SQ', name: 'SQL' },
@@ -60,6 +60,8 @@ const DataScienceTechnologyKit = () => {
     <TechnologyKit 
       programName="Data Science Program"
       categories={categories}
+      title="Your Technology Kit for"
+      subtitle="Master cutting-edge tools and frameworks used in real-world data science and AI projects."
     />
   );
 };
