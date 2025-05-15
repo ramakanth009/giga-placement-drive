@@ -5,7 +5,7 @@ import { makeStyles } from '@mui/styles';
 const useStyles = makeStyles({
   card: {
     width: '280px',
-    height: '320px',
+    height: '300px',
     perspective: '1000px',
     cursor: 'pointer',
     transformStyle: 'preserve-3d',
@@ -35,15 +35,15 @@ const useStyles = makeStyles({
       transform: 'rotateY(10deg) scale(1.1)',
     },
     '& $cardFront': {
-      boxShadow: '0 0 30px rgba(42, 43, 106, 0.5)',
-      background: 'linear-gradient(135deg, rgba(42, 43, 106, 0.1) 0%, rgba(42, 43, 106, 0.3) 100%)',
+      boxShadow: '0 0 30px rgba(255, 198, 20, 0.5)',
+      background: 'linear-gradient(135deg, rgba(255, 198, 20, 0.1) 0%, rgba(255, 99, 71, 0.3) 100%)',
       backdropFilter: 'blur(10px)',
       border: '2px solid rgba(255, 198, 20, 0.5)',
     },
     '& $iconWrapper': {
       transform: 'scale(1.2) translateY(-10px)',
-      boxShadow: '0 15px 35px rgba(42, 43, 106, 0.4)',
-      background: 'linear-gradient(135deg, #2A2B6A 0%, #4A4C9B 100%)',
+      boxShadow: '0 15px 35px rgba(255, 198, 20, 0.4)',
+      background: 'linear-gradient(135deg, #FFC614 0%, #FF6347 100%)',
     },
     '& $cardTitle': {
       color: 'white',
@@ -82,7 +82,7 @@ const useStyles = makeStyles({
     width: '80px',
     height: '80px',
     borderRadius: '50%',
-    backgroundColor: 'rgba(42, 43, 106, 0.8)',
+    backgroundColor: 'rgba(255, 255, 255, 0.15)',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -130,7 +130,7 @@ const useStyles = makeStyles({
     width: '150px',
     height: '150px',
     borderRadius: '50%',
-    background: 'radial-gradient(circle, rgba(42, 43, 106, 0.3) 0%, rgba(42, 43, 106, 0) 70%)',
+    background: 'radial-gradient(circle, rgba(255,198,20,0.3) 0%, rgba(255,99,71,0) 70%)',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%) scale(0.5)',
@@ -164,6 +164,7 @@ const useStyles = makeStyles({
       transform: 'translateY(-20px) translateX(10px)',
     },
   },
+  // Animated elements
   orbitalRing: {
     position: 'absolute',
     width: '120%',
@@ -210,7 +211,7 @@ const useStyles = makeStyles({
       left: 0,
       width: '0%',
       height: '100%',
-      background: 'linear-gradient(90deg, #2A2B6A, #FFC614)',
+      background: 'linear-gradient(90deg, #FFC614, #FF6347)',
       transition: 'width 3s linear',
     },
   },
@@ -226,6 +227,7 @@ const HighlightCard = ({ icon, title, isActive, onClick }) => {
   const [particles, setParticles] = useState([]);
   const [orbitalDots, setOrbitalDots] = useState([]);
 
+  // Generate orbital dots when component mounts
   useEffect(() => {
     const newOrbitalDots = [];
     const dotCount = 5;
@@ -245,6 +247,7 @@ const HighlightCard = ({ icon, title, isActive, onClick }) => {
     setOrbitalDots(newOrbitalDots);
   }, []);
 
+  // Generate floating particles when component mounts
   useEffect(() => {
     const newParticles = [];
     const particleCount = 8;
