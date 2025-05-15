@@ -11,7 +11,7 @@ import FulltimeCertificates from '../../components/common/fulltime/fulltimeCerti
 import FullStackProgramFee from '../../components/fulltime/fullstack/programfee/FullStackProgramFee'
 import TestimonialComponent from '../../components/common/testimonialcomponent/TestimonialComponent'
 import Footer from '../../components/common/footer/Footer'
-import FullStackSkillsMaster from '../../components/fulltime/fullstack/skillsmaster/FullStackSkillsMaster'
+// import FullStackSkillsMaster from '../../components/fulltime/fullstack/skillsmaster/FullStackSkillsMaster'
 import FullStackAIToolkit from '../../components/fulltime/fullstack/aitoolkit/FullStackAIToolkit'
 import FullStackLearningPath from '../../components/fulltime/fullstack/learningpathtimeline/FullStackLearningPath';
 
@@ -24,7 +24,7 @@ const FullstackFulltime = () => {
         <FullStackProgramHighlights />
         <FullStackAIToolkit />
         <FullStackIndustryFacts />
-        <FullStackSkillsMaster />
+        {/* <FullStackSkillsMaster /> */}
         <Fullstackcurriculam />
         <FullStackTechnologyKit />
         <FullStackProjectSection />
