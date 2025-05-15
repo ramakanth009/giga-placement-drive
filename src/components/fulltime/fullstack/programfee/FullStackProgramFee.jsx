@@ -1,25 +1,22 @@
-// src/components/fullstackcomponents/programfee/FullStackProgramFee.jsx
+// src/components/fulltime/fullstack/programfee/FullStackProgramFee.jsx
 import React from 'react';
-import ProgramFee from '../../../common/fulltime/programfee/ProgramFee';
+import ProgramFeeNew from '../../../common/fulltime/programfee/ProgramFee';
 
 const FullStackProgramFee = () => {
-  // Handle enroll button click
-  const handleEnrollClick = () => {
+  const handleApplyClick = () => {
     // Implementation for enrollment process
     console.log('Enrolling in Full Stack program');
     // This could navigate to a registration page or open a modal
   };
 
   return (
-    <ProgramFee
-      programName="Full Stack"
+    <ProgramFeeNew
+      programName="Full Stack Development"
       monthlyFee="7,084"
-      maxMonths="24 months"
-      scholarshipText="Apply for financial assistance based on merit and need"
-      supportText="Free seats for physically challenged individuals, subject to eligibility."
-      onEnrollClick={handleEnrollClick}
+      totalFee="84,999"
+      onApplyClick={handleApplyClick}
     />
-  ); 
+  );
 };
 
 export default FullStackProgramFee;
