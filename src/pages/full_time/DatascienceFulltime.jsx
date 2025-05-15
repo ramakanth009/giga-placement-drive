@@ -13,18 +13,17 @@ import DataScienceProjectsSection from "../../components/fulltime/datascience/pr
 import DataScienceTechnologyKit from '../../components/fulltime/datascience/technologykit/DataScienceTechnologyKit'
 import DataScienceCurriculum from "../../components/fulltime/datascience/curriculum/DataScienceCurriculum";
 import DataScienceSkillsMaster from "../../components/fulltime/datascience/skillsmaster/DataScienceSkillsMaster";
-import DataScienceCurriculumMonths from "../../components/fulltime/datascience/curriculummonths/DataScienceCurriculumMonths";
-
+import DataScienceLearningPath from '../../components/fulltime/datascience/learningpathtimeline/DataScienceLearningPath';
 
 const DatascienceFulltime = () => {
   return (
     <div>
       <Navbar />
       <DataScienceHero />
-      <DataScienceIndustryFacts />
+      <DataScienceLearningPath />
       <DataScienceProgramHighlights />
       <DataScienceAIToolkit />
-      <DataScienceCurriculumMonths />
+      <DataScienceIndustryFacts />
       <DataScienceSkillsMaster />
       <DataScienceCurriculum />
       <DataScienceTechnologyKit />

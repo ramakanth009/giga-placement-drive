@@ -12,19 +12,18 @@ import FullStackProgramFee from '../../components/fulltime/fullstack/programfee/
 import TestimonialComponent from '../../components/common/testimonialcomponent/TestimonialComponent'
 import Footer from '../../components/common/footer/Footer'
 import FullStackSkillsMaster from '../../components/fulltime/fullstack/skillsmaster/FullStackSkillsMaster'
-import FullStackCurriculumMonths from '../../components/fulltime/fullstack/curriculummonths/FullStackCurriculumMonths'
 import FullStackAIToolkit from '../../components/fulltime/fullstack/aitoolkit/FullStackAIToolkit'
-
+import FullStackLearningPath from '../../components/fulltime/fullstack/learningpathtimeline/FullStackLearningPath';
 
 const FullstackFulltime = () => {
   return (
     <div>
         <Navbar/>
         <FullStackHero />
-        <FullStackIndustryFacts />
+        <FullStackLearningPath />
         <FullStackProgramHighlights />
         <FullStackAIToolkit />
-        <FullStackCurriculumMonths />
+        <FullStackIndustryFacts />
         <FullStackSkillsMaster />
         <Fullstackcurriculam />
         <FullStackTechnologyKit />

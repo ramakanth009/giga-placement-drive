@@ -10,9 +10,17 @@ const FullStackIndustryFacts = () => {
       source: "LinkedIn Economic Graph, 2024"
     },
     {
-      text: "Full Stack Development Mid-level salaries lie between 8–18 LPA, reflecting high demand for versatile developers.",
+      text: "Full Stack Development Mid-level salaries lie between 8-18 LPA, reflecting high demand for versatile developers.",
       source: "Glassdoor India Salary Report, 2024"
-    }
+    },
+    {
+      text: "Full Stack Development Senior-level salaries lie between 18-30 LPA, showcasing the value of experienced developers.",
+      source: "Glassdoor India Salary Report, 2024"
+    },
+    {
+      text: "Full Stack Development Lead salaries lie between 30-50 LPA, reflecting the demand for leadership skills in tech.",
+      source: "Glassdoor India Salary Report, 2024"
+    },
   ];
 
   return (
