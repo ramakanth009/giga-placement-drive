@@ -4,8 +4,6 @@ import ProjectsSection from '../../../common/fulltime/projectssection/ProjectsSe
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import SchoolIcon from '@mui/icons-material/School';
 import CallIcon from '@mui/icons-material/Call';
-import WorkIcon from '@mui/icons-material/Work';
-import ViewModuleIcon from '@mui/icons-material/ViewModule';
 import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import MicIcon from '@mui/icons-material/Mic';
@@ -13,11 +11,13 @@ import AdjustIcon from '@mui/icons-material/Adjust';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
 import AssessmentIcon from '@mui/icons-material/Assessment';
-import DescriptionIcon from '@mui/icons-material/Description';
 import PeopleIcon from '@mui/icons-material/People';
-import PublicIcon from '@mui/icons-material/Public';
-import BuildIcon from '@mui/icons-material/Build';
-import ScienceIcon from '@mui/icons-material/Science';
+// import DescriptionIcon from '@mui/icons-material/Description';
+// import ViewModuleIcon from '@mui/icons-material/ViewModule';
+// import PublicIcon from '@mui/icons-material/Public';
+// import BuildIcon from '@mui/icons-material/Build';
+// import ScienceIcon from '@mui/icons-material/Science';
+// import WorkIcon from '@mui/icons-material/Work';
 
 // Import sample images for projects
 import aiChatbotImage from '../../../../assets/ai-chatbot.png';
@@ -76,51 +76,6 @@ const DataScienceProjectsSection = () => {
       description: "Revolutionize call analysis! Build intelligent systems that evaluate conversations with speaker diarization, sentiment analysis, and performance scoring.",
       skills: ["Audio Processing", "NLP", "Business Analytics", "Customer Service AI"]
     },
-    {
-      title: "ATS Tools",
-      image: atsToolsImage,
-      icon: {
-        component: <WorkIcon />,
-        bgColor: "#6B4BF3"
-      },
-      features: [
-        { icon: <TextSnippetIcon />, text: "Semantic Analysis" },
-        { icon: <DescriptionIcon />, text: "Resume Parsing" },
-        { icon: <PeopleIcon />, text: "Candidate Matching" }
-      ],
-      description: "Build intelligent recruitment tools! Create systems that analyze resumes, match candidates, and optimize hiring processes with AI-driven insights.",
-      skills: ["Document Processing", "Matching Algorithms", "HR Analytics", "Recruitment Tech"]
-    },
-    {
-      title: "Additional Projects",
-      image: additionalProjectImage,
-      icon: {
-        component: <ViewModuleIcon />,
-        bgColor: "#6B4BF3"
-      },
-      features: [
-        { icon: <PublicIcon />, text: "Domain Expertise" },
-        { icon: <BuildIcon />, text: "End-to-end Development" },
-        { icon: <ScienceIcon />, text: "Specialized Models" }
-      ],
-      description: "Turn learning into a game! Develop interactive, personalized quiz systems that adapt to user performance and provide instant feedback.",
-      skills: ["Domain Expertise", "End-to-end Development", "Specialized ML Models"]
-    },
-    {
-      title: "Additional Projects",
-      image: additionalProjectImage,
-      icon: {
-        component: <ViewModuleIcon />,
-        bgColor: "#6B4BF3"
-      },
-      features: [
-        { icon: <PublicIcon />, text: "Domain Expertise" },
-        { icon: <BuildIcon />, text: "End-to-end Development" },
-        { icon: <ScienceIcon />, text: "Specialized Models" }
-      ],
-      description: "Turn learning into a game! Develop interactive, personalized quiz systems that adapt to user performance and provide instant feedback.",
-      skills: ["Domain Expertise", "End-to-end Development", "Specialized ML Models"]
-    }
   ];
 
   return <ProjectsSection projects={projects} subtitle={subtitle} />;
