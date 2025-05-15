@@ -28,6 +28,11 @@ import additionalProjectImage from '../../../../assets/additional-project.png';
 
 const DataScienceProjectsSection = () => {
   const subtitle = "Build your portfolio with real-world data science applications. Each project is designed to develop industry-relevant skills and solve practical problems.";
+  const title = (
+    <>
+      Products You’ll Build in the <span>Data Science Program</span>
+    </>
+  );
 
   // Project data for Data Science program
   const projects = [
@@ -78,7 +83,7 @@ const DataScienceProjectsSection = () => {
     },
   ];
 
-  return <ProjectsSection projects={projects} subtitle={subtitle} />;
+  return <ProjectsSection projects={projects} subtitle={subtitle} title={title} />;
 };
 
 export default DataScienceProjectsSection;

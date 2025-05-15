@@ -168,7 +168,7 @@ const useStyles = makeStyles({
   }
 });
 
-const ProjectsSection = ({ projects, subtitle }) => {
+const ProjectsSection = ({ projects, subtitle, title }) => {
   const classes = useStyles();
   const canvasRef = useRef(null);
 
@@ -250,7 +250,7 @@ const ProjectsSection = ({ projects, subtitle }) => {
       <Container maxWidth="xl" className={classes.content}>
         <Box className={classes.titleContainer}>
           <Typography variant="h2" className={classes.title}>
-            Hands-On <span>Projects</span>
+            {title}
           </Typography>
           <Typography variant="body1" className={classes.subtitle}>
             {subtitle}

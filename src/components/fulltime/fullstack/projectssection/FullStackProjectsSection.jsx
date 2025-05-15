@@ -21,11 +21,16 @@ import inventoryManagementImage from '../../../../assets/inventory-management.pn
 
 const FullStackProjectsSection = () => {
   const subtitle = "Build your portfolio with real-world full stack applications. Each project is designed to develop industry-relevant skills and solve practical business problems.";
+  const title = (
+    <>
+      Products You’ll Build in the <span>Full Stack Program</span>
+    </>
+  );
   
   // Project data for Full Stack program
   const projects = [
     {
-      title: "Social Media Dashboard",
+      title: "E-commerce",
       image: socialMediaImage,
       icon: {
         component: <ViewModuleIcon />,
@@ -49,7 +54,7 @@ const FullStackProjectsSection = () => {
       skills: ["React/Vue", "Component Design", "State Management", "API Integration"]
     },
     {
-      title: "Task Management System",
+      title: "Quick Commerce",
       image: taskManagementImage,
       icon: {
         component: <AssignmentIcon />,
@@ -73,7 +78,7 @@ const FullStackProjectsSection = () => {
       skills: ["JWT Authentication", "State Management", "Node.js/Express", "MongoDB"]
     },
     {
-      title: "Inventory Management System",
+      title: "Startup Prototype Project/Startup Incubation Build",
       image: inventoryManagementImage,
       icon: {
         component: <InventoryIcon />,
@@ -81,24 +86,24 @@ const FullStackProjectsSection = () => {
       },
       features: [
         {
+          icon: <CodeIcon />,
+          text: "MVP Development"
+        },
+        {
+          icon: <ViewModuleIcon />,
+          text: "Scalable Architecture"
+        },
+        {
           icon: <StorageIcon />,
-          text: "Database Design"
-        },
-        {
-          icon: <CodeIcon />,
-          text: "RESTful APIs"
-        },
-        {
-          icon: <CodeIcon />,
-          text: "Backend Development"
+          text: "Cloud Integration"
         }
       ],
-      description: "Streamline Inventory Management! Build a backend system that tracks products, suppliers, and stock levels with Spring Boot and robust database integration.",
-      skills: ["Spring Boot", "JPA/Hibernate", "SQL", "RESTful APIs"]
+      description: "Launch Your Startup Vision! Build a complete MVP for your startup idea with modern tech stack, scalable architecture, and cloud deployment capabilities.",
+      skills: ["Full Stack Development", "Cloud Services", "System Architecture", "DevOps"]
     }
   ];
 
-  return <ProjectsSection projects={projects} subtitle={subtitle} />;
+  return <ProjectsSection projects={projects} subtitle={subtitle} title={title} />;
 };
 
 export default FullStackProjectsSection;

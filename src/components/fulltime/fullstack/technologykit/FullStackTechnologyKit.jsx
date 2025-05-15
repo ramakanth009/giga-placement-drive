@@ -9,7 +9,6 @@ const FullStackTechnologyKit = () => {
       skills: [
         { initials: 'JS', name: 'JavaScript' },
         { initials: 'TS', name: 'TypeScript' },
-        { initials: 'PY', name: 'Python' },
         { initials: 'JV', name: 'Java' },
       ]
     },

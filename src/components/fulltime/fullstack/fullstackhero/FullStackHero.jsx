@@ -42,7 +42,7 @@ const FullStackHero = () => {
     <HeroSection
       titleFirstLine="Comprehensive"
       highlightedText="Full Stack Development Program"
-      subtitle="Build Dynamic Apps. Architect Robust Systems."
+      subtitle="Build Your Own Product and Launch Your Tech Startup Within a Year"
       heroImage={fullStackHeroImage}
       onApplyClick={handleApplyClick}
       onBrochureClick={handleBrochureClick}

@@ -42,7 +42,7 @@ const DataScienceHero = () => {
     <HeroSection
       titleFirstLine="Comprehensive"
       highlightedText="Data Science Program"
-      subtitle="Uncover Patterns, Drive Insights. Shape the future with data."
+      subtitle="Build Your Own Product and Launch Your Tech Startup Within a Year"
       heroImage={dataScienceImage}
       onApplyClick={handleApplyClick}
       onBrochureClick={handleBrochureClick}

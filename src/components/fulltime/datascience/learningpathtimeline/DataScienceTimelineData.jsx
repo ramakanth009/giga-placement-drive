@@ -23,7 +23,7 @@ import SchoolIcon from '@mui/icons-material/School';
 import ExploreIcon from '@mui/icons-material/Explore';
 
 const dataScienceTimelineData = {
-  title: "The Gigaversity Data Science Learning Path",
+  title: "Explore the 4-Phase Learning Cycle at Gigaversity",
   subtitle: "A revolutionary approach to data science education that puts real-world experience first. Not just another bootcamp.",
   placementStats: {
     percentage: "94%",
