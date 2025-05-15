@@ -34,8 +34,8 @@ const DataScienceHero = () => {
   };
 
   const handleBrochureClick = () => {
-    // Logic for download brochure button click
-    console.log("Download brochure button clicked");
+    // Logic for Book A Demo button click
+    console.log("Book A Demo button clicked");
   };
 
   return (

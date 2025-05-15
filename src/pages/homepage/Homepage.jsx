@@ -3,7 +3,7 @@ import React from "react";
 import { Box } from "@mui/material";
 import Navbar from "../../components/common/navbar/Navbar";
 import Hero from "../../components/homepagecomponets/herosection/Hero";
-// import Background from "../../components/background/Background";
+import PageBackground from "../../components/common/background/PageBackground";
 import HiringPartners from "../../components/common/hiringpartners/HiringPartners";
 import JobKickstart from "../../components/homepagecomponets/jobkickstart/JobKickstart";
 import WhyDifferent from "../../components/homepagecomponets/whydifferent/WhyDifferent";
@@ -25,13 +25,10 @@ const Homepage = () => {
         position: "relative",
         width: "100%",
         minHeight: "100vh",
-        isolation: "isolate", // Creates a new stacking context
+        isolation: "isolate",
       }}
     >
-      {/* Include the Background component */}
-      {/* <Background /> */}
-
-      {/* Content with higher z-index */}
+      {/* <PageBackground /> */}
       <Box sx={{ position: "relative", zIndex: 1 }}>
         <Navbar />
         

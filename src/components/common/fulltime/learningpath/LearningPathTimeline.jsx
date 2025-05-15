@@ -248,22 +248,24 @@ const useStyles = makeStyles({
     borderRadius: '10px',
     backgroundColor: 'rgba(42, 43, 106, 0.1)',
     color: '#2A2B6A',
-    marginBottom: '15px',
+    marginRight: '15px',
+    marginBottom: '0',
     '@media (max-width: 960px)': {
       width: '45px',
       height: '45px',
-      marginBottom: '12px',
+      minHeight: '45px',
     },
     '@media (max-width: 600px)': {
       width: '40px',
       height: '40px',
-      marginBottom: '10px',
+      minHeight: '40px',
     },
   },
   activityTitle: {
     fontSize: '1.1rem !important',
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
+    flex: 1,
     marginBottom: '10px !important',
     '@media (max-width: 960px)': {
       fontSize: '1.05rem !important',
@@ -274,6 +276,7 @@ const useStyles = makeStyles({
   },
   activityDescription: {
     fontSize: '0.95rem !important',
+    minHeight: '90px',
     color: '#555 !important',
     '@media (max-width: 600px)': {
       fontSize: '0.9rem !important',
@@ -674,20 +677,32 @@ const LearningPathTimeline = ({
           </Typography>
           <Box sx={{ 
             display: 'flex', 
-            flexWrap: 'wrap', 
-            gap: 3,
+            flexWrap: 'nowrap', 
+            justifyContent: 'center',
+            gap: 2,
+            overflowX: 'auto',
+            pb: 2,
+            '&::-webkit-scrollbar': {
+              height: '6px',
+            },
+            '&::-webkit-scrollbar-thumb': {
+              backgroundColor: '#e0e0e0',
+              borderRadius: '6px',
+            },
             '& > *': { 
-              flex: { xs: '1 1 100%', md: '1 1 calc(50% - 12px)' }
+              flex: '0 0 330px'
             }
           }}>
             {activePhaseData.highlights.map((highlight, index) => (
               <Paper key={index} className={classes.activityCard} elevation={0}>
-                <Box className={classes.activityIcon}>
-                  {highlight.icon}
+                <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: '10px', minHeight:"60px" }}>
+                  <Box className={classes.activityIcon}>
+                    {highlight.icon}
+                  </Box>
+                  <Typography className={classes.activityTitle}>
+                    {highlight.title}
+                  </Typography>
                 </Box>
-                <Typography className={classes.activityTitle}>
-                  {highlight.title}
-                </Typography>
                 <Typography className={classes.activityDescription}>
                   {highlight.description}
                 </Typography>

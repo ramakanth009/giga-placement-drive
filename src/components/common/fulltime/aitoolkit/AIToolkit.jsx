@@ -407,7 +407,7 @@ const AIToolkit = ({ tools, programName }) => {
       <Container maxWidth="lg" className={classes.content}>
         <Box className={classes.header}>
           <Typography className={classes.title}>
-            Your Complete AI Toolkit - <span>Learn Full Stack Development with Built-In AI Tools</span>
+            Learn Full Stack Development with<span> Built-In AI Tools</span>
           </Typography>
         </Box>
 

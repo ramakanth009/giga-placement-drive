@@ -172,7 +172,7 @@ const HeroSection = ({
   subtitle,
   heroImage,
   applyButtonText = "Apply Now",
-  brochureButtonText = "Download brochure",
+  brochureButtonText = "Book A Demo",
   onApplyClick,
   onBrochureClick,
   decorElements = []
