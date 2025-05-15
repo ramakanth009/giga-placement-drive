@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+// src/components/common/fulltime/programhighlights/HighlightCard.jsx
+import React from 'react';
 import { Box, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
@@ -13,11 +14,9 @@ const useStyles = makeStyles({
     alignItems: 'center',
     justifyContent: 'center',
     padding: '20px',
-    transition: 'transform 0.3s ease, background-color 0.3s ease',
-    '&:hover': {
-      transform: 'translateY(-5px)',
-      backgroundColor: 'rgba(255, 255, 255, 0.9)',
-    },
+    transition: 'transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.8s ease',
+    position: 'relative',
+    overflow: 'hidden',
     '& $iconContainer': {
       backgroundColor: '#ADAEF64A',
     },
@@ -47,6 +46,25 @@ const useStyles = makeStyles({
       padding: '10px',
     },
   },
+  activeCard: {
+    transform: 'translateY(-10px) scale(1.05)',
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    boxShadow: '0 15px 35px rgba(42, 43, 106, 0.3)',
+    '& $title': {
+      color: '#2A2B6A !important',
+    },
+    '& $iconContainer': {
+      backgroundColor: '#2A2B6A',
+      transform: 'scale(1.1) rotate(5deg)',
+    },
+    '& $icon': {
+      color: 'white !important',
+    },
+    '& $ripple': {
+      transform: 'scale(15)',
+      opacity: 0,
+    },
+  },
   iconContainer: {
     width: '80px',
     height: '80px',
@@ -56,10 +74,9 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: '20px',
-    transition: 'background-color 0.3s ease',
-    '&:hover': {
-      backgroundColor: '#ADAEF64A',
-    },
+    transition: 'background-color 0.8s ease, transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+    position: 'relative',
+    zIndex: 2,
     '@media (max-width: 1200px)': {
       width: '75px',
       height: '75px',
@@ -89,7 +106,7 @@ const useStyles = makeStyles({
   icon: {
     transform: 'scale(1.5)',
     color: 'white',
-    transition: 'color 0.3s ease',
+    transition: 'color 0.8s ease',
     '@media (max-width: 1200px)': {
       transform: 'scale(1.45)',
     },
@@ -113,7 +130,9 @@ const useStyles = makeStyles({
     textAlign: 'center',
     lineHeight: '1.4 !important',
     maxWidth: '220px',
-    transition: 'color 0.3s ease',
+    transition: 'color 0.8s ease',
+    position: 'relative',
+    zIndex: 2,
     '@media (max-width: 1200px)': {
       fontSize: '0.95rem !important',
       maxWidth: '210px',
@@ -134,27 +153,64 @@ const useStyles = makeStyles({
       fontSize: '0.75rem !important',
       maxWidth: '140px',
     },
-  }
+  },
+  ripple: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    width: '10px',
+    height: '10px',
+    borderRadius: '50%',
+    backgroundColor: 'rgba(42, 43, 106, 0.2)',
+    transform: 'translate(-50%, -50%) scale(0)',
+    opacity: 1,
+    transition: 'transform 1.5s ease-out, opacity 1.5s ease-out',
+    zIndex: 1,
+  },
+  // Animation keyframes
+  '@keyframes pulse': {
+    '0%': {
+      boxShadow: '0 0 0 0 rgba(42, 43, 106, 0.4)',
+    },
+    '70%': {
+      boxShadow: '0 0 0 15px rgba(42, 43, 106, 0)',
+    },
+    '100%': {
+      boxShadow: '0 0 0 0 rgba(42, 43, 106, 0)',
+    },
+  },
+  '@keyframes rotateIcon': {
+    '0%': {
+      transform: 'scale(1.5) rotate(0deg)',
+    },
+    '50%': {
+      transform: 'scale(1.8) rotate(180deg)',
+    },
+    '100%': {
+      transform: 'scale(1.5) rotate(360deg)',
+    },
+  },
+  pulseAnimation: {
+    animation: '$pulse 2s infinite',
+  },
 });
 
-const HighlightCard = ({ icon, title }) => {
+const HighlightCard = ({ icon, title, isActive }) => {
   const classes = useStyles();
-  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <Box 
-      className={classes.highlightCard}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      className={`${classes.highlightCard} ${isActive ? classes.activeCard : ''} ${isActive ? classes.pulseAnimation : ''}`}
     >
       <Box className={classes.iconContainer}>
         <Box className={classes.icon}>
-          {React.cloneElement(icon, { style: { color: isHovered ? '#2A2B6A' : 'white' } })}
+          {React.cloneElement(icon, { style: { color: isActive ? 'white' : 'white' } })}
         </Box>
       </Box>
-      <Typography className={classes.title} style={{ color: isHovered ? '#2A2B6A' : 'white' }}>
+      <Typography className={classes.title}>
         {title}
       </Typography>
+      <Box className={classes.ripple}></Box>
     </Box>
   );
 };

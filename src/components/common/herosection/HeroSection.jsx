@@ -326,7 +326,7 @@ const useStyles = makeStyles({
     position: 'relative',
     zIndex: 2,
     borderRadius: '12px',
-    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
+    // boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
     '@media (max-width: 1200px)': {
       maxWidth: '100%',
     },

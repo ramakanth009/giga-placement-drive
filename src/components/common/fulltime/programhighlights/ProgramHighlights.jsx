@@ -1,5 +1,5 @@
-
-import React, { useRef, useEffect } from 'react';
+// src/components/common/fulltime/programhighlights/ProgramHighlights.jsx
+import React, { useState, useRef, useEffect } from 'react';
 import { Box, Typography, Container } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import HighlightCard from './HighlightCard';
@@ -122,12 +122,57 @@ const useStyles = makeStyles({
       gap: '15px',
     },
   },
+  // Path indicator styles
+  pathIndicator: {
+    display: 'flex',
+    justifyContent: 'center',
+    gap: '12px',
+    marginTop: '30px',
+    '@media (max-width: 600px)': {
+      marginTop: '25px',
+      gap: '10px',
+    },
+    '@media (max-width: 480px)': {
+      marginTop: '20px',
+      gap: '8px',
+    },
+  },
+  pathDot: {
+    width: '12px',
+    height: '12px',
+    borderRadius: '50%',
+    backgroundColor: 'rgba(255, 255, 255, 0.3)',
+    transition: 'all 0.3s ease',
+    '@media (max-width: 600px)': {
+      width: '10px',
+      height: '10px',
+    },
+    '@media (max-width: 480px)': {
+      width: '8px',
+      height: '8px',
+    },
+  },
+  pathDotActive: {
+    backgroundColor: '#FFC614',
+    transform: 'scale(1.3)',
+  },
 });
 
 const ProgramHighlights = ({ highlights }) => {
   const classes = useStyles();
+  const [activeIndex, setActiveIndex] = useState(0);
   const canvasRef = useRef(null);
+  
+  // Animation interval for cycling through cards
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prevIndex) => (prevIndex + 1) % highlights.length);
+    }, 1500); // Change card every 1.5 seconds
+    
+    return () => clearInterval(interval);
+  }, [highlights.length]);
 
+  // Canvas effect for background network animation
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -185,7 +230,6 @@ const ProgramHighlights = ({ highlights }) => {
       canvas.height = container.offsetHeight;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Recalculate particles
       particles.length = 0;
       for (let i = 0; i < particleCount; i++) {
         particles.push({
@@ -201,6 +245,10 @@ const ProgramHighlights = ({ highlights }) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // Arrange highlights into rows for rendering
+  const firstRow = highlights.slice(0, 4);
+  const secondRow = highlights.slice(4);
+
   return (
     <Box className={classes.section}>
       <canvas ref={canvasRef} className={classes.networkCanvas} />
@@ -212,33 +260,45 @@ const ProgramHighlights = ({ highlights }) => {
         </Box>
         
         <Box className={classes.highlightsContainer}>
-          {/* First row - 4 boxes */}
+          {/* First row */}
           <Box className={classes.highlightsRow}>
-            {highlights.slice(0, 4).map((highlight, index) => (
+            {firstRow.map((highlight, index) => (
               <HighlightCard
                 key={index}
                 icon={highlight.icon}
                 title={highlight.title}
+                isActive={activeIndex === index}
               />
             ))}
           </Box>
           
-          {/* Second row - remaining boxes */}
-          {highlights.length > 4 && (
+          {/* Second row - if needed */}
+          {secondRow.length > 0 && (
             <Box className={classes.highlightsRow}>
-              {highlights.slice(4).map((highlight, index) => (
+              {secondRow.map((highlight, index) => (
                 <HighlightCard
-                  key={index + 4}
+                  key={index + firstRow.length}
                   icon={highlight.icon}
                   title={highlight.title}
+                  isActive={activeIndex === index + firstRow.length}
                 />
               ))}
             </Box>
           )}
         </Box>
+        
+        {/* Path indicator dots */}
+        <Box className={classes.pathIndicator}>
+          {highlights.map((_, index) => (
+            <Box 
+              key={index}
+              className={`${classes.pathDot} ${activeIndex === index ? classes.pathDotActive : ''}`}
+            />
+          ))}
+        </Box>
       </Container>
     </Box>
   );
-};
+};  
 
 export default ProgramHighlights;
