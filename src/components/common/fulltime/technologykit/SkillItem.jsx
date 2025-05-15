@@ -1,103 +1,75 @@
-// 19. SkillItem Component
+// src/components/common/fulltime/technologykit/SkillItem.jsx
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, Tooltip } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles({
   skillItem: {
     display: 'flex',
     alignItems: 'center',
-    padding: '5px 10px',
-    backgroundColor: 'white',
-    borderRadius: '50px',
-    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)',
-    width: 'fit-content',
-    '@media (max-width: 1200px)': {
-      padding: '5px 9px',
+    padding: '8px 16px',
+    backgroundColor: '#f8faff',
+    borderRadius: '12px',
+    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.03)',
+    border: '1px solid rgba(74, 99, 231, 0.1)',
+    transition: 'all 0.3s ease',
+    cursor: 'default',
+    '&:hover': {
+      backgroundColor: 'rgba(74, 99, 231, 0.08)',
+      transform: 'translateY(-3px)',
+      boxShadow: '0 5px 15px rgba(0, 0, 0, 0.08)',
+      '& $iconCircle': {
+        backgroundColor: '#4A63E7',
+        color: 'white',
+        transform: 'rotateY(180deg)',
+      },
     },
     '@media (max-width: 960px)': {
-      padding: '4px 8px',
+      padding: '7px 14px',
     },
     '@media (max-width: 600px)': {
-      padding: '4px 7px',
-    },
-    '@media (max-width: 480px)': {
-      padding: '3px 6px',
-    },
-    '@media (max-width: 375px)': {
-      padding: '2px 5px',
+      padding: '6px 12px',
     },
   },
   iconCircle: {
-    width: '30px',
-    height: '30px',
-    borderRadius: '50%',
-    backgroundColor: '#E0E7FF',
+    width: '34px',
+    height: '34px',
+    borderRadius: '10px',
+    backgroundColor: 'rgba(74, 99, 231, 0.1)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: '12px',
-    '@media (max-width: 1200px)': {
-      width: '28px',
-      height: '28px',
-      marginRight: '11px',
-    },
+    transition: 'all 0.5s ease',
+    backfaceVisibility: 'hidden',
+    transformStyle: 'preserve-3d',
     '@media (max-width: 960px)': {
-      width: '26px',
-      height: '26px',
+      width: '30px',
+      height: '30px',
       marginRight: '10px',
     },
     '@media (max-width: 600px)': {
-      width: '24px',
-      height: '24px',
+      width: '28px',
+      height: '28px',
       marginRight: '8px',
-    },
-    '@media (max-width: 480px)': {
-      width: '22px',
-      height: '22px',
-      marginRight: '7px',
-    },
-    '@media (max-width: 375px)': {
-      width: '20px',
-      height: '20px',
-      marginRight: '6px',
     },
   },
   iconText: {
-    fontSize: '0.7rem !important',
-    fontWeight: '600 !important',
+    fontSize: '0.85rem !important',
+    fontWeight: '700 !important',
     color: '#4A63E7 !important',
-    '@media (max-width: 960px)': {
-      fontSize: '0.65rem !important',
-    },
+    transition: 'color 0.3s ease',
     '@media (max-width: 600px)': {
-      fontSize: '0.6rem !important',
-    },
-    '@media (max-width: 480px)': {
-      fontSize: '0.55rem !important',
-    },
-    '@media (max-width: 375px)': {
-      fontSize: '0.5rem !important',
+      fontSize: '0.8rem !important',
     },
   },
   skillText: {
-    fontSize: '0.9rem !important',
+    fontSize: '0.95rem !important',
     color: '#444 !important',
     fontWeight: '500 !important',
-    '@media (max-width: 1200px)': {
-      fontSize: '0.85rem !important',
-    },
-    '@media (max-width: 960px)': {
-      fontSize: '0.8rem !important',
-    },
+    transition: 'color 0.3s ease',
     '@media (max-width: 600px)': {
-      fontSize: '0.75rem !important',
-    },
-    '@media (max-width: 480px)': {
-      fontSize: '0.7rem !important',
-    },
-    '@media (max-width: 375px)': {
-      fontSize: '0.65rem !important',
+      fontSize: '0.9rem !important',
     },
   },
 });
@@ -106,12 +78,14 @@ const SkillItem = ({ initials, name }) => {
   const classes = useStyles();
 
   return (
-    <Box className={classes.skillItem}>
-      <Box className={classes.iconCircle}>
-        <Typography className={classes.iconText}>{initials}</Typography>
+    <Tooltip title={`Experience with ${name}`} arrow placement="top">
+      <Box className={classes.skillItem}>
+        <Box className={classes.iconCircle}>
+          <Typography className={classes.iconText}>{initials}</Typography>
+        </Box>
+        <Typography className={classes.skillText}>{name}</Typography>
       </Box>
-      <Typography className={classes.skillText}>{name}</Typography>
-    </Box>
+    </Tooltip>
   );
 };
 
