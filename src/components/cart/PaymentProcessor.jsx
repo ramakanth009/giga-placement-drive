@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Button, Typography, CircularProgress } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const useStyles = makeStyles({
   paymentButton: {
@@ -12,6 +13,7 @@ const useStyles = makeStyles({
     fontSize: '1.15rem !important',
     display: 'block !important',
     margin: '0 auto !important',
+    width: '100% !important',
     transition: 'all 0.3s ease !important',
     boxShadow: '0 10px 25px rgba(42, 43, 106, 0.25) !important',
     position: 'relative',
@@ -33,6 +35,7 @@ const useStyles = makeStyles({
     color: '#f44336 !important',
     textAlign: 'center',
     marginTop: '10px !important',
+    fontSize: '0.9rem !important',
   }
 });
 
@@ -47,6 +50,12 @@ const PaymentProcessor = ({
   const [error, setError] = useState(null);
 
   const initiatePayment = async () => {
+    // Validate inputs
+    if (!email.trim() || !mobile.trim()) {
+      setError("Please provide both email and phone number");
+      return;
+    }
+    
     setIsProcessing(true);
     setError(null);
     
@@ -54,9 +63,8 @@ const PaymentProcessor = ({
       // Create payload with correct data
       const payload = {
         amount: amount,
-        // Only include email and mobile if they're provided
-        ...(email && { email }),
-        ...(mobile && { mobile })
+        email: email,
+        mobile: mobile
       };
 
       // Make the API call to initiate payment
@@ -99,7 +107,7 @@ const PaymentProcessor = ({
         className={classes.paymentButton}
         onClick={initiatePayment}
         disabled={isProcessing}
-        startIcon={isProcessing ? <CircularProgress size={20} color="inherit" /> : null}
+        startIcon={isProcessing ? <CircularProgress size={20} color="inherit" /> : <ShoppingCartIcon />}
       >
         {isProcessing ? 'Processing...' : `Pay ₹${amount} Now`}
       </Button>

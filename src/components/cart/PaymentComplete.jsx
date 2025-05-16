@@ -5,15 +5,31 @@ import { makeStyles } from '@mui/styles';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ErrorIcon from '@mui/icons-material/Error';
 import { useNavigate, useLocation } from 'react-router-dom';
+import Navbar from '../common/navbar/Navbar';
+import Footer from '../common/footer/Footer';
 
 const useStyles = makeStyles({
+  pageContainer: {
+    minHeight: '100vh',
+    backgroundColor: '#f9fafc',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  mainContent: {
+    flex: 1,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '60px 20px',
+  },
   statusContainer: {
     padding: '40px 20px',
     textAlign: 'center',
     maxWidth: '600px',
-    margin: '40px auto',
+    width: '100%',
     borderRadius: '16px !important',
     boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1) !important',
+    backgroundColor: 'white',
   },
   icon: {
     fontSize: '64px !important',
@@ -32,6 +48,7 @@ const useStyles = makeStyles({
     fontSize: '1.8rem !important',
     fontWeight: 'bold !important',
     marginBottom: '15px !important',
+    color: '#2A2B6A !important',
   },
   message: {
     fontSize: '1.1rem !important',
@@ -63,6 +80,20 @@ const useStyles = makeStyles({
   homeButton: {
     backgroundColor: '#2A2B6A !important',
     color: 'white !important',
+    padding: '12px 24px !important',
+    borderRadius: '8px !important',
+    '&:hover': {
+      backgroundColor: '#1a1b43 !important',
+    },
+  },
+  tryAgainButton: {
+    borderColor: '#2A2B6A !important',
+    color: '#2A2B6A !important',
+    padding: '12px 24px !important',
+    borderRadius: '8px !important',
+    '&:hover': {
+      backgroundColor: 'rgba(42, 43, 106, 0.04) !important',
+    },
   },
 });
 
@@ -76,11 +107,12 @@ const PaymentComplete = () => {
 
   useEffect(() => {
     const fetchPaymentStatus = async () => {
+      // Get parameters from query string
       const queryParams = new URLSearchParams(location.search);
-      const txnId = queryParams.get('txnId');
+      const transactionId = queryParams.get('txnId');
       const merchantOrderId = queryParams.get('merchantOrderId') || localStorage.getItem('current_order_id');
       
-      if (!merchantOrderId && !txnId) {
+      if (!merchantOrderId && !transactionId) {
         setPaymentStatus('ERROR');
         setLoading(false);
         return;
@@ -88,8 +120,8 @@ const PaymentComplete = () => {
 
       try {
         // Include transactionId in the status check URL if available
-        const statusUrl = txnId 
-          ? `https://gigaversity.in/pay/check-status/${merchantOrderId}?transactionId=${txnId}`
+        const statusUrl = transactionId 
+          ? `https://gigaversity.in/pay/check-status/${merchantOrderId}?transactionId=${transactionId}`
           : `https://gigaversity.in/pay/check-status/${merchantOrderId}`;
 
         const response = await fetch(statusUrl);
@@ -99,7 +131,7 @@ const PaymentComplete = () => {
           setPaymentStatus(data.status);
           setPaymentDetails({
             merchant_order_id: data.merchant_order_id,
-            transaction_id: txnId || data.transaction_id,
+            transaction_id: transactionId || data.transaction_id,
             amount: data.amount,
             order_details: data.order_details
           });
@@ -199,28 +231,35 @@ const PaymentComplete = () => {
   };
 
   return (
-    <Paper className={classes.statusContainer} elevation={0}>
-      {renderStatusContent()}
-      
-      <Box className={classes.buttonsContainer}>
-        <Button 
-          variant="contained" 
-          className={classes.homeButton}
-          onClick={() => navigate('/')}
-        >
-          Return to Home
-        </Button>
-        
-        {paymentStatus === 'ERROR' && (
-          <Button 
-            variant="outlined"
-            onClick={() => navigate('/cart')}
-          >
-            Try Again
-          </Button>
-        )}
+    <Box className={classes.pageContainer}>
+      <Navbar />
+      <Box className={classes.mainContent}>
+        <Paper className={classes.statusContainer} elevation={0}>
+          {renderStatusContent()}
+          
+          <Box className={classes.buttonsContainer}>
+            <Button 
+              variant="contained" 
+              className={classes.homeButton}
+              onClick={() => navigate('/')}
+            >
+              Return to Home
+            </Button>
+            
+            {paymentStatus === 'ERROR' && (
+              <Button 
+                variant="outlined"
+                className={classes.tryAgainButton}
+                onClick={() => navigate('/cart')}
+              >
+                Try Again
+              </Button>
+            )}
+          </Box>
+        </Paper>
       </Box>
-    </Paper>
+      <Footer />
+    </Box>
   );
 };
 

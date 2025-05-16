@@ -51,7 +51,6 @@
 // };
 
 // export default App;
-
 import React, { Suspense } from "react";
 import { HashRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
@@ -71,7 +70,7 @@ const CartPage = React.lazy(() => import('./components/cart/Cart'));
 const PaymentProcess = React.lazy(() => import('./components/payment/PaymentProcess'));
 const FullstackFulltime = React.lazy(() => import('./pages/full_time/FullstackFulltime'));
 const DatascienceFulltime = React.lazy(() => import('./pages/full_time/DatascienceFulltime'));
-const PaymentStatus = React.lazy(() => import('./components/cart/PaymentStatus'));
+const PaymentComplete = React.lazy(() => import('./components/cart/PaymentComplete'));
 
 const LoadingSpinner = () => (
   <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
@@ -104,7 +103,7 @@ const App = () => {
           <Route path="/privacy" element={<Navigate to="/privacy-policy" replace />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/payment-process" element={<PaymentProcess />} />
-          <Route path="/payment-status" element={<PaymentStatus />} />
+          <Route path="/payment-complete" element={<PaymentComplete />} />
           
           {/* 404 catch-all route */}
           <Route path="*" element={<NotFound />} />
