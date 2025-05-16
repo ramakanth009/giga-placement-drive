@@ -1,4 +1,3 @@
-// src/components/cart/PaymentProcessor.jsx - Fix the redirect URL
 import React, { useState } from 'react';
 import { Box, Button, Typography, CircularProgress } from '@mui/material';
 import { makeStyles } from '@mui/styles';
@@ -37,7 +36,12 @@ const useStyles = makeStyles({
   }
 });
 
-const PaymentProcessor = ({ amount = "199.00", onPaymentInitiated }) => {
+const PaymentProcessor = ({ 
+  amount = "1.00", 
+  email = "", 
+  mobile = "", 
+  onPaymentInitiated 
+}) => {
   const classes = useStyles();
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState(null);
@@ -47,31 +51,44 @@ const PaymentProcessor = ({ amount = "199.00", onPaymentInitiated }) => {
     setError(null);
     
     try {
-      // Update redirectUrl to match your React router path using the hash format
+      // Create payload with correct data
+      const payload = {
+        amount: amount,
+        // Only include email and mobile if they're provided
+        ...(email && { email }),
+        ...(mobile && { mobile })
+      };
+
+      // Make the API call to initiate payment
       const response = await fetch('https://gigaversity.in/pay/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          amount: amount,
-          redirectUrl: 'https://gigaversity.in/#/payment-status' // Updated to payment status route
-        })
+        body: JSON.stringify(payload)
       });
       
       const data = await response.json();
       
       if (data.success) {
+        // Store order ID for retrieval later
         localStorage.setItem('current_order_id', data.merchant_order_id);
+        
+        // Notify parent component if callback is provided
         if (onPaymentInitiated) {
           onPaymentInitiated(data.merchant_order_id);
         }
+        
+        // Redirect to the payment gateway URL
         window.location.href = data.payment_url;
       } else {
+        // Handle API error response
         setError(data.error || data.message || 'Payment initialization failed');
         setIsProcessing(false);
       }
     } catch (error) {
+      // Handle network or other errors
       setError('Unable to connect to payment service. Please try again.');
       setIsProcessing(false);
+      console.error('Payment initialization error:', error);
     }
   };
 
