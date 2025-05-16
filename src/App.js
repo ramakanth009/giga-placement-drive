@@ -71,6 +71,7 @@ const CartPage = React.lazy(() => import('./components/cart/Cart'));
 const PaymentProcess = React.lazy(() => import('./components/payment/PaymentProcess'));
 const FullstackFulltime = React.lazy(() => import('./pages/full_time/FullstackFulltime'));
 const DatascienceFulltime = React.lazy(() => import('./pages/full_time/DatascienceFulltime'));
+const PaymentStatus = React.lazy(() => import('./components/cart/PaymentStatus'));
 
 const LoadingSpinner = () => (
   <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
@@ -103,6 +104,7 @@ const App = () => {
           <Route path="/privacy" element={<Navigate to="/privacy-policy" replace />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/payment-process" element={<PaymentProcess />} />
+          <Route path="/payment-complete" element={<PaymentStatus />} />
           
           {/* 404 catch-all route */}
           <Route path="*" element={<NotFound />} />

@@ -25,6 +25,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Footer from '../common/footer/Footer';
 import Navbar from '../common/navbar/Navbar';
+import PaymentProcessor from './PaymentProcessor';
 
 const useStyles = makeStyles({
   pageContainer: {
@@ -463,21 +464,9 @@ const Cart = () => {
     }
   };
 
-  // Update handleBuyNow to include form validation
-  const handleBuyNow = () => {
-    if (!validateForm()) return;
-    
+  const handlePaymentInitiated = (merchantOrderId) => {
+    console.log('Payment initiated with order ID:', merchantOrderId);
     setIsProcessing(true);
-    setTimeout(() => {
-      navigate('/payment-under-construction', { 
-        state: { 
-          course: selectedCourse,
-          price: courses[selectedCourse].discountedPrice,
-          title: courses[selectedCourse].title,
-          userDetails: formData
-        } 
-      });
-    }, 1500);
   };
 
   const courses = {
@@ -486,7 +475,7 @@ const Cart = () => {
       description: 'Learn frontend, backend, databases and more',
       icon: <CodeIcon className={classes.iconSize} />,
       price: 499,
-      discountedPrice: 199,
+      discountedPrice: 0.1,
       duration: '30 Days',
       features: [
         'Daily 1-hour live coding sessions',
@@ -501,7 +490,7 @@ const Cart = () => {
       description: 'Master data analysis, visualization and ML',
       icon: <DataObjectIcon className={classes.iconSize} />,
       price: 499,
-      discountedPrice: 199,
+      discountedPrice: 0.2,
       duration: '30 Days',
       features: [
         'Live project sessions with industry experts',
@@ -672,15 +661,12 @@ const Cart = () => {
                     </Typography>
                   </Box>
 
-                  <Button
-                    variant="contained"
-                    className={classes.buyButton}
-                    onClick={handleBuyNow}
-                    startIcon={isProcessing ? <CircularProgress size={20} color="inherit" /> : <ShoppingCartIcon />}
-                    disabled={isProcessing}
-                  >
-                    {isProcessing ? 'Processing...' : 'Buy Now'}
-                  </Button>
+                  <PaymentProcessor 
+                    amount={selectedCourseData.discountedPrice.toFixed(2)}
+                    email={formData.email}
+                    mobile={formData.phone}
+                    onPaymentInitiated={handlePaymentInitiated}
+                  />
                 </CardContent>
               </Paper>
             </Box>
