@@ -104,7 +104,7 @@ const App = () => {
           <Route path="/privacy" element={<Navigate to="/privacy-policy" replace />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/payment-process" element={<PaymentProcess />} />
-          <Route path="/payment-complete" element={<PaymentStatus />} />
+          <Route path="/payment-status" element={<PaymentStatus />} />
           
           {/* 404 catch-all route */}
           <Route path="*" element={<NotFound />} />

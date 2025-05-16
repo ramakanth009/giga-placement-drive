@@ -475,7 +475,7 @@ const Cart = () => {
       description: 'Learn frontend, backend, databases and more',
       icon: <CodeIcon className={classes.iconSize} />,
       price: 499,
-      discountedPrice: 0.1,
+      discountedPrice: 1,
       duration: '30 Days',
       features: [
         'Daily 1-hour live coding sessions',
@@ -490,7 +490,7 @@ const Cart = () => {
       description: 'Master data analysis, visualization and ML',
       icon: <DataObjectIcon className={classes.iconSize} />,
       price: 499,
-      discountedPrice: 0.2,
+      discountedPrice: 1,
       duration: '30 Days',
       features: [
         'Live project sessions with industry experts',
