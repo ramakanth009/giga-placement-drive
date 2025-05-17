@@ -105,7 +105,7 @@ const App = () => {
           <Route path="/payment-process" element={<PaymentProcess />} />
           <Route path="/payment-complete" element={<PaymentComplete />} />
           
-          {/* 404 catch-all route */}
+          {/* 404 catch-all route */} 
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

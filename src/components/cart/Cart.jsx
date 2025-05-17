@@ -465,7 +465,7 @@ const Cart = () => {
   };
 
   const handlePaymentInitiated = (merchantOrderId) => {
-    console.log('Payment initiated with order ID:', merchantOrderId);
+    // console.log('Payment initiated with order ID:', merchantOrderId);
     setIsProcessing(true);
   };
 
