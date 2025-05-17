@@ -219,7 +219,7 @@ const PaymentProcessor = ({
       };
 
       // Make the API call to initiate payment
-      const response = await fetch('https://gigaversity.in/pay/', {
+      const response = await fetch('https://gigaversity.in/pay', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
