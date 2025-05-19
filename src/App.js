@@ -19,6 +19,7 @@ const FullstackFulltime = React.lazy(() => import('./pages/full_time/FullstackFu
 const DatascienceFulltime = React.lazy(() => import('./pages/full_time/DatascienceFulltime'));
 const PaymentComplete = React.lazy(() => import('./components/cart/PaymentComplete'));
 const Blog = React.lazy(() => import('./pages/blog/Blog'));
+const CampusPage = React.lazy(() => import('./pages/campus/CampusPage'));
 
 const LoadingSpinner = () => (
   <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
@@ -42,6 +43,7 @@ const App = () => {
           <Route path="/register" element={<RegistrationForm />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/payment-under-construction" element={<PaymentUnderConstruction />} />
+          <Route path="/campus" element={<CampusPage />} />
           
           {/* New Full-Time Program routes */}
           <Route path="/fulltime/fullstack" element={<FullstackFulltime />} />

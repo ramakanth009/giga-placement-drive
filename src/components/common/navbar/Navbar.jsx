@@ -361,6 +361,14 @@ const Navbar = () => {
                 Contact Us
               </Button>
               <Button 
+                className={`${classes.navLink} ${currentPath === "/campus" ? classes.active : ""}`}
+                component={Link}
+                to="/campus"
+                onClick={handleNavLinkClick}
+              >
+                Campus
+              </Button>
+              <Button 
                 className={`${classes.navLink} ${currentPath === "/blog" ? classes.active : ""}`}
                 component={Link}
                 to="/blog"
@@ -495,6 +503,14 @@ const Navbar = () => {
             to="/contact"
           >
             Contact Us
+          </MenuItem>
+          <MenuItem 
+            onClick={() => handleNavLinkClick()} 
+            className={classes.menuItem} 
+            component={Link} 
+            to="/campus"
+          >
+            Campus
           </MenuItem>
           <MenuItem 
             onClick={() => handleNavLinkClick()} 
