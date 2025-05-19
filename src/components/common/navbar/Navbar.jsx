@@ -360,6 +360,14 @@ const Navbar = () => {
               >
                 Contact Us
               </Button>
+              <Button 
+                className={`${classes.navLink} ${currentPath === "/blog" ? classes.active : ""}`}
+                component={Link}
+                to="/blog"
+                onClick={handleNavLinkClick}
+              >
+                Blog
+              </Button>
             </Box>
 
             {/* Auth Container */}
@@ -487,6 +495,14 @@ const Navbar = () => {
             to="/contact"
           >
             Contact Us
+          </MenuItem>
+          <MenuItem 
+            onClick={() => handleNavLinkClick()} 
+            className={classes.menuItem} 
+            component={Link} 
+            to="/blog"
+          >
+            Blog
           </MenuItem>
           <MenuItem 
             onClick={() => handleNavLinkClick()} 
