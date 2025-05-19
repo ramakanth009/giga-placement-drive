@@ -196,7 +196,7 @@ const BlogPostCard = ({ post }) => {
         </Box>
         
         <Button 
-          component={Link}
+          // component={Link}
           to={`/blog/${post.slug}`}
           className={classes.readMoreButton}
           endIcon={<ArrowForwardIcon />}
