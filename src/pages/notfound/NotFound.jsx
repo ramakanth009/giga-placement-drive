@@ -21,6 +21,13 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     padding: '40px 20px',
     background: 'linear-gradient(135deg, #f5f7fa 0%, #e4ecfb 100%)',
+    width: '100%',
+  },
+  container: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
   },
   paper: {
     padding: '40px',
@@ -136,7 +143,7 @@ const NotFound = () => {
       <Navbar />
       
       <Box className={classes.contentWrapper}>
-        <Container maxWidth="lg">
+        <Container maxWidth="lg" className={classes.container}>
           <Paper className={classes.paper} elevation={0}>
             <Box className={classes.patternBackground} />
             <Box className={`${classes.decorCircle} ${classes.circle1}`} />
