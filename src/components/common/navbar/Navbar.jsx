@@ -20,7 +20,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { makeStyles } from "@mui/styles";
 import { ReactComponent as GigaLogo } from "../../../assets/GIGAVERSITY_LOGO.svg";
 import { Link, useLocation } from "react-router-dom";
-import { scrollToTop } from '../../../utils/scrollUtils';
+import { scrollToTop } from "../../../utils/scrollUtils";
 
 // Define styles using makeStyles
 const useStyles = makeStyles({
@@ -222,11 +222,11 @@ const Navbar = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-  
+
   // State for dropdown menus in mobile view
   const [mobileFullStackOpen, setMobileFullStackOpen] = useState(false);
   const [mobileDataScienceOpen, setMobileDataScienceOpen] = useState(false);
-  
+
   // Use location to highlight active link
   const location = useLocation();
   const currentPath = location.pathname;
@@ -264,7 +264,12 @@ const Navbar = () => {
     <AppBar position="static" className={classes.appBar}>
       <Toolbar className={classes.toolbar}>
         {/* Logo with Link to home */}
-        <Box className={classes.logo} component={Link} to="/" onClick={scrollToTop}>
+        <Box
+          className={classes.logo}
+          component={Link}
+          to="/"
+          onClick={scrollToTop}
+        >
           <GigaLogo className={classes.logoSvg} />
         </Box>
 
@@ -273,21 +278,25 @@ const Navbar = () => {
           <>
             {/* Navigation links - centered */}
             <Box className={classes.navContainer}>
-              <Button 
-                className={`${classes.navLink} ${currentPath === "/" ? classes.active : ""}`}
+              <Button
+                className={`${classes.navLink} ${
+                  currentPath === "/" ? classes.active : ""
+                }`}
                 component={Link}
                 to="/"
                 onClick={handleNavLinkClick}
               >
                 Home
               </Button>
-              
+
               {/* Full Stack Dropdown */}
               <Box className={classes.dropdown}>
-                <Button 
+                <Button
                   className={`${classes.navLink} ${
-                    currentPath.includes("/fullstack") || currentPath.includes("/fulltime/fullstack") 
-                    ? classes.active : ""
+                    currentPath.includes("/fullstack") ||
+                    currentPath.includes("/fulltime/fullstack")
+                      ? classes.active
+                      : ""
                   }`}
                 >
                   <Box className={classes.dropdownText}>
@@ -296,15 +305,15 @@ const Navbar = () => {
                   </Box>
                 </Button>
                 <Box className={classes.dropdownContent}>
-                  <Link 
-                    to="/fullstack" 
+                  <Link
+                    to="/fullstack"
                     className={classes.dropdownItem}
                     onClick={handleNavLinkClick}
                   >
                     Full Stack
                   </Link>
-                  <Link 
-                    to="/datascience" 
+                  <Link
+                    to="/datascience"
                     className={classes.dropdownItem}
                     onClick={handleNavLinkClick}
                   >
@@ -312,13 +321,15 @@ const Navbar = () => {
                   </Link>
                 </Box>
               </Box>
-              
+
               {/* Data Science Dropdown */}
               <Box className={classes.dropdown}>
-                <Button 
+                <Button
                   className={`${classes.navLink} ${
-                    currentPath.includes("/datascience") || currentPath.includes("/fulltime/datascience") 
-                    ? classes.active : ""
+                    currentPath.includes("/datascience") ||
+                    currentPath.includes("/fulltime/datascience")
+                      ? classes.active
+                      : ""
                   }`}
                 >
                   <Box className={classes.dropdownText}>
@@ -327,16 +338,15 @@ const Navbar = () => {
                   </Box>
                 </Button>
                 <Box className={classes.dropdownContent}>
-                  
-                  <Link 
-                    to="/fulltime/fullstack" 
+                  <Link
+                    to="/fulltime/fullstack"
                     className={classes.dropdownItem}
                     onClick={handleNavLinkClick}
                   >
                     Full Stack Program
                   </Link>
-                  <Link 
-                    to="/fulltime/datascience" 
+                  <Link
+                    to="/fulltime/datascience"
                     className={classes.dropdownItem}
                     onClick={handleNavLinkClick}
                   >
@@ -344,47 +354,54 @@ const Navbar = () => {
                   </Link>
                 </Box>
               </Box>
-              
-              <Button 
-                className={`${classes.navLink} ${currentPath === "/about" ? classes.active : ""}`}
-                component={Link}
-                to="/about"
-                onClick={handleNavLinkClick}
-              >
-                About Us
-              </Button>
-              <Button 
-                className={`${classes.navLink} ${currentPath === "/contact" ? classes.active : ""}`}
-                component={Link}
-                to="/contact"
-                onClick={handleNavLinkClick}
-              >
-                Contact Us
-              </Button>
-              <Button 
-                className={`${classes.navLink} ${currentPath === "/campus" ? classes.active : ""}`}
+              <Button
+                className={`${classes.navLink} ${
+                  currentPath === "/campus" ? classes.active : ""
+                }`}
                 component={Link}
                 to="/campus"
                 onClick={handleNavLinkClick}
               >
                 Campus
               </Button>
-              <Button 
-                className={`${classes.navLink} ${currentPath === "/blog" ? classes.active : ""}`}
+              <Button
+                className={`${classes.navLink} ${
+                  currentPath === "/blog" ? classes.active : ""
+                }`}
                 component={Link}
                 to="/blog"
                 onClick={handleNavLinkClick}
               >
                 Blog
               </Button>
+              <Button
+                className={`${classes.navLink} ${
+                  currentPath === "/about" ? classes.active : ""
+                }`}
+                component={Link}
+                to="/about"
+                onClick={handleNavLinkClick}
+              >
+                About Us
+              </Button>
+              <Button
+                className={`${classes.navLink} ${
+                  currentPath === "/contact" ? classes.active : ""
+                }`}
+                component={Link}
+                to="/contact"
+                onClick={handleNavLinkClick}
+              >
+                Contact Us
+              </Button>
             </Box>
 
             {/* Auth Container */}
             <Box className={classes.authContainer}>
-              <Button 
-                variant="contained" 
-                className={classes.signUpButton} 
-                component={Link} 
+              <Button
+                variant="contained"
+                className={classes.signUpButton}
+                component={Link}
                 to="/cart"
                 onClick={scrollToTop}
               >
@@ -406,125 +423,133 @@ const Navbar = () => {
         )}
 
         {/* Mobile Menu */}
-        <Menu 
-          anchorEl={anchorEl} 
-          open={open} 
+        <Menu
+          anchorEl={anchorEl}
+          open={open}
           onClose={handleClose}
           className={classes.mobileMenu}
         >
-          <MenuItem 
-            onClick={() => handleNavLinkClick()} 
-            className={classes.menuItem} 
-            component={Link} 
+          <MenuItem
+            onClick={() => handleNavLinkClick()}
+            className={classes.menuItem}
+            component={Link}
             to="/"
           >
             Home
           </MenuItem>
-          
+
           {/* Mobile Full Stack dropdown */}
-          <MenuItem 
-            onClick={toggleMobileFullStack} 
+          <MenuItem
+            onClick={toggleMobileFullStack}
             className={classes.menuItem}
           >
             <Box className={classes.dropdownText}>
               Full Stack
-              <KeyboardArrowDownIcon 
-                className={classes.dropdownIcon} 
-                style={{ transform: mobileFullStackOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
+              <KeyboardArrowDownIcon
+                className={classes.dropdownIcon}
+                style={{
+                  transform: mobileFullStackOpen
+                    ? "rotate(180deg)"
+                    : "rotate(0deg)",
+                }}
               />
             </Box>
           </MenuItem>
           {mobileFullStackOpen && (
             <Box className={classes.mobileSubmenu}>
-              <MenuItem 
-                onClick={() => handleNavLinkClick()} 
-                className={classes.mobileSubmenuItem} 
-                component={Link} 
+              <MenuItem
+                onClick={() => handleNavLinkClick()}
+                className={classes.mobileSubmenuItem}
+                component={Link}
                 to="/fullstack"
               >
                 Full Stack Virtual Placement
               </MenuItem>
-              <MenuItem 
-                onClick={() => handleNavLinkClick()} 
-                className={classes.mobileSubmenuItem} 
-                component={Link} 
+              <MenuItem
+                onClick={() => handleNavLinkClick()}
+                className={classes.mobileSubmenuItem}
+                component={Link}
                 to="/fulltime/fullstack"
               >
                 Full Stack Full-Time Program
               </MenuItem>
             </Box>
           )}
-          
+
           {/* Mobile Data Science dropdown */}
-          <MenuItem 
-            onClick={toggleMobileDataScience} 
+          <MenuItem
+            onClick={toggleMobileDataScience}
             className={classes.menuItem}
           >
             <Box className={classes.dropdownText}>
               Data Science
-              <KeyboardArrowDownIcon 
-                className={classes.dropdownIcon} 
-                style={{ transform: mobileDataScienceOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
+              <KeyboardArrowDownIcon
+                className={classes.dropdownIcon}
+                style={{
+                  transform: mobileDataScienceOpen
+                    ? "rotate(180deg)"
+                    : "rotate(0deg)",
+                }}
               />
             </Box>
           </MenuItem>
           {mobileDataScienceOpen && (
             <Box className={classes.mobileSubmenu}>
-              <MenuItem 
-                onClick={() => handleNavLinkClick()} 
-                className={classes.mobileSubmenuItem} 
-                component={Link} 
+              <MenuItem
+                onClick={() => handleNavLinkClick()}
+                className={classes.mobileSubmenuItem}
+                component={Link}
                 to="/datascience"
               >
                 Data Science Virtual Placement
               </MenuItem>
-              <MenuItem 
-                onClick={() => handleNavLinkClick()} 
-                className={classes.mobileSubmenuItem} 
-                component={Link} 
+              <MenuItem
+                onClick={() => handleNavLinkClick()}
+                className={classes.mobileSubmenuItem}
+                component={Link}
                 to="/fulltime/datascience"
               >
                 Data Science Full-Time Program
               </MenuItem>
             </Box>
           )}
-          
-          <MenuItem 
-            onClick={() => handleNavLinkClick()} 
-            className={classes.menuItem} 
-            component={Link} 
+
+          <MenuItem
+            onClick={() => handleNavLinkClick()}
+            className={classes.menuItem}
+            component={Link}
             to="/about"
           >
             About Us
           </MenuItem>
-          <MenuItem 
-            onClick={() => handleNavLinkClick()} 
-            className={classes.menuItem} 
-            component={Link} 
+          <MenuItem
+            onClick={() => handleNavLinkClick()}
+            className={classes.menuItem}
+            component={Link}
             to="/contact"
           >
             Contact Us
           </MenuItem>
-          <MenuItem 
-            onClick={() => handleNavLinkClick()} 
-            className={classes.menuItem} 
-            component={Link} 
+          <MenuItem
+            onClick={() => handleNavLinkClick()}
+            className={classes.menuItem}
+            component={Link}
             to="/campus"
           >
             Campus
           </MenuItem>
-          <MenuItem 
-            onClick={() => handleNavLinkClick()} 
-            className={classes.menuItem} 
-            component={Link} 
+          <MenuItem
+            onClick={() => handleNavLinkClick()}
+            className={classes.menuItem}
+            component={Link}
             to="/blog"
           >
             Blog
           </MenuItem>
-          <MenuItem 
-            onClick={() => handleNavLinkClick()} 
-            className={`${classes.menuItem} ${classes.signUpMenuItem}`} 
-            component={Link} 
+          <MenuItem
+            onClick={() => handleNavLinkClick()}
+            className={`${classes.menuItem} ${classes.signUpMenuItem}`}
+            component={Link}
             to="/cart"
           >
             Apply Now

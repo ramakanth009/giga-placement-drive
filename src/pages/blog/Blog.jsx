@@ -21,17 +21,17 @@ const useStyles = makeStyles({
     minHeight: "100vh",
     isolation: "isolate",
   },
-  content: {
-    position: 'relative',
-    zIndex: 1,
-    padding: '40px 0 80px',
-    '@media (max-width: 960px)': {
-      padding: '30px 0 60px',
-    },
-    '@media (max-width: 600px)': {
-      padding: '20px 0 40px',
-    },
-  },
+  // content: {
+  //   position: 'relative',
+  //   zIndex: 1,
+  //   padding: '40px 0 80px',
+  //   '@media (max-width: 960px)': {
+  //     padding: '30px 0 60px',
+  //   },
+  //   '@media (max-width: 600px)': {
+  //     padding: '20px 0 40px',
+  //   },
+  // },
   sectionTitle: {
     fontSize: '2.5rem !important',
     fontWeight: 'bold !important',
