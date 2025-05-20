@@ -17,8 +17,6 @@ import CodeIcon from '@mui/icons-material/Code';
 import DataObjectIcon from '@mui/icons-material/DataObject';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import Footer from '../common/footer/Footer';
-import Navbar from '../common/navbar/Navbar';
 import PaymentProcessor from './PaymentProcessor';
 
 const useStyles = makeStyles({
@@ -454,7 +452,6 @@ const Cart = () => {
 
   return (
     <Box className={classes.pageContainer}>
-      <Navbar />
       <Container maxWidth="lg">
         <Box className={classes.mainContent}>
           <Typography variant="h1" className={classes.pageTitle}>
@@ -618,7 +615,6 @@ const Cart = () => {
           </Box>
         </Box>
       </Container>
-      <Footer />
     </Box>
   );
 };

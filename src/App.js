@@ -15,7 +15,6 @@ const DataScience = React.lazy(() => import("./pages/datascience/DataScience"));
 const RegistrationForm = React.lazy(() => import('./pages/register/RegistrationForm'));
 const NotFound = React.lazy(() => import('./pages/notfound/NotFound'));
 const CartPage = React.lazy(() => import('./components/cart/Cart'));
-const PaymentProcess = React.lazy(() => import('./components/payment/PaymentProcess'));
 const FullstackFulltime = React.lazy(() => import('./pages/full_time/FullstackFulltime'));
 const DatascienceFulltime = React.lazy(() => import('./pages/full_time/DatascienceFulltime'));
 const PaymentComplete = React.lazy(() => import('./components/cart/PaymentComplete'));
@@ -56,7 +55,6 @@ const App = () => {
           <Route path="/terms" element={<Navigate to="/terms-and-conditions" replace />} />
           <Route path="/privacy" element={<Navigate to="/privacy-policy" replace />} />
           <Route path="/cart" element={<CartPage />} />
-          <Route path="/payment-process" element={<PaymentProcess />} />
           <Route path="/payment-complete" element={<PaymentComplete />} />
           
           {/* 404 catch-all route */} 
