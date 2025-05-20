@@ -19,19 +19,31 @@ const useStyles = makeStyles({
     position: "relative",
     width: "100%",
     minHeight: "100vh",
-    isolation: "isolate",
+    "&::before": {
+      content: '""',
+      position: "absolute",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      zIndex: -1,
+    }
   },
-  // content: {
-  //   position: 'relative',
-  //   zIndex: 1,
-  //   padding: '40px 0 80px',
-  //   '@media (max-width: 960px)': {
-  //     padding: '30px 0 60px',
-  //   },
-  //   '@media (max-width: 600px)': {
-  //     padding: '20px 0 40px',
-  //   },
-  // },
+  mainContent: {
+    position: "relative",
+    zIndex: 1,
+  },
+  content: {
+    position: 'relative',
+    zIndex: 1,
+    padding: '40px 0 80px',
+    '@media (max-width: 960px)': {
+      padding: '30px 0 60px',
+    },
+    '@media (max-width: 600px)': {
+      padding: '20px 0 40px',
+    },
+  },
   sectionTitle: {
     fontSize: '2.5rem !important',
     fontWeight: 'bold !important',
@@ -167,57 +179,56 @@ const Blog = () => {
   }, []);
 
   return (
-    <Box className={classes.pageContainer}>
-      <PageBackground />
-      <Box sx={{ position: 'relative', zIndex: 1 }}>
-        
-        <BlogHero />
-        
-        <Box className={classes.content}>
-          <Container maxWidth="lg">
-            <Typography variant="h2" className={classes.sectionTitle}>
-              Insights for Your <span>Tech Journey</span>
-            </Typography>
-            <Typography variant="body1" className={classes.sectionDescription}>
-              Explore our latest articles, guides, and insights on project-based learning, tech careers, and industry trends
-            </Typography>
-            
-            {/* Category Filters */}
-            <Box className={classes.filterContainer}>
-              {categories.map((category) => (
-                <Chip
-                  key={category.id}
-                  icon={category.icon}
-                  label={category.label}
-                  onClick={() => handleCategoryChange(category.id)}
-                  className={`${classes.filterChip} ${
-                    selectedCategory === category.id ? classes.activeFilterChip : ''
-                  }`}
-                />
-              ))}
-            </Box>
-            
-            {/* Blog Posts Grid */}
-            <Box className={classes.blogGrid}>
-              {filteredPosts.slice(0, visiblePosts).map((post) => (
-                <BlogPostCard key={post.id} post={post} />
-              ))}
-            </Box>
-            
-            {/* Load More Button */}
-            {hasMorePosts && (
-              <Button 
-                className={classes.loadMoreButton}
-                onClick={loadMorePosts}
-              >
-                Load More Articles
-              </Button>
-            )}
-          </Container>
+    <>
+      <Box className={classes.pageContainer}>
+        <PageBackground sx={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 0 }} />
+        <Box className={classes.mainContent}>
+          <BlogHero />
+          <Box className={classes.content}>
+            <Container maxWidth="lg">
+              <Typography variant="h2" className={classes.sectionTitle}>
+                Insights for Your <span>Tech Journey</span>
+              </Typography>
+              <Typography variant="body1" className={classes.sectionDescription}>
+                Explore our latest articles, guides, and insights on project-based learning, tech careers, and industry trends
+              </Typography>
+              
+              {/* Category Filters */}
+              <Box className={classes.filterContainer}>
+                {categories.map((category) => (
+                  <Chip
+                    key={category.id}
+                    icon={category.icon}
+                    label={category.label}
+                    onClick={() => handleCategoryChange(category.id)}
+                    className={`${classes.filterChip} ${
+                      selectedCategory === category.id ? classes.activeFilterChip : ''
+                    }`}
+                  />
+                ))}
+              </Box>
+              
+              {/* Blog Posts Grid */}
+              <Box className={classes.blogGrid}>
+                {filteredPosts.slice(0, visiblePosts).map((post) => (
+                  <BlogPostCard key={post.id} post={post} />
+                ))}
+              </Box>
+              
+              {/* Load More Button */}
+              {hasMorePosts && (
+                <Button 
+                  className={classes.loadMoreButton}
+                  onClick={loadMorePosts}
+                >
+                  Load More Articles
+                </Button>
+              )}
+            </Container>
+          </Box>
         </Box>
-        
       </Box>
-    </Box>
+    </>
   );
 };
 

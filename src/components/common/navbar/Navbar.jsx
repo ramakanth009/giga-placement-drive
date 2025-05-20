@@ -29,7 +29,7 @@ const useStyles = makeStyles({
     boxShadow: "none !important",
     backgroundImage: "none !important",
     position: "relative",
-    zIndex: 10,
+    zIndex: 9999, // Increased z-index to ensure it's above other elements
   },
   toolbar: {
     display: "flex",
@@ -172,7 +172,7 @@ const useStyles = makeStyles({
     boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
     borderRadius: "8px",
     padding: "8px 0",
-    zIndex: 1000,
+    zIndex: 10000,
     opacity: 0,
     visibility: "hidden",
     transform: "translateY(10px)",
@@ -261,7 +261,7 @@ const Navbar = () => {
   };
 
   return (
-    <AppBar position="static" className={classes.appBar}>
+    <AppBar position="relative" className={classes.appBar} sx={{ zIndex: 9999 }}>
       <Toolbar className={classes.toolbar}>
         {/* Logo with Link to home */}
         <Box

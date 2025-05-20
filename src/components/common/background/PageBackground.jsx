@@ -53,11 +53,24 @@ const useStyles = makeStyles({
   },
 });
 
-const PageBackground = () => {
+const PageBackground = (props) => {
   const classes = useStyles();
-  
+
   return (
-    <Box className={classes.wrapper}>
+    <Box
+      {...props}
+      className={classes.wrapper}
+      sx={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 0,
+        pointerEvents: 'none',
+        ...props.sx
+      }}
+    >
       <Box className={`${classes.bgElement} ${classes.bgElement1}`} />
       <Box className={`${classes.bgElement} ${classes.bgElement2}`} />
       <Box className={classes.bgGrid} />
