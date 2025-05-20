@@ -1,6 +1,8 @@
 import React, { Suspense } from "react";
 import { HashRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
+import BlogPostDetail from './components/blog/blogdetail/BlogPostDetail';
+import BlogDetailPage from './components/blog/blogdetail/BlogDetailPage';
 
 // Lazy loaded components
 const Homepage = React.lazy(() => import("./pages/homepage/Homepage"));
@@ -42,6 +44,8 @@ const App = () => {
           <Route path="/datascience" element={<DataScience />} />
           <Route path="/register" element={<RegistrationForm />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPostDetail />} />
+          <Route path="/blog/:slug" element={<BlogDetailPage />} />
           <Route path="/payment-under-construction" element={<PaymentUnderConstruction />} />
           <Route path="/campus" element={<CampusPage />} />
           

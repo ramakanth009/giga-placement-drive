@@ -1,4 +1,4 @@
-// src/data/blogData.js (continued)
+// src/data/blogData.js
 export const blogPosts = [
   {
     id: 1,
@@ -2039,5 +2039,8 @@ export const blogPosts = [
   }
 ];
 
+export const getPostById = (slug) => {
+  return blogPosts.find(post => post.slug === slug || post.id.toString() === slug);
+};
 
 export default blogPosts;

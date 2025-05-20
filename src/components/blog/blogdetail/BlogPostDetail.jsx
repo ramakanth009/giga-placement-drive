@@ -6,10 +6,10 @@ import { useParams, useNavigate } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import PersonIcon from '@mui/icons-material/Person';
-import { getPostById } from '../../data/blogData';
-import Navbar from '../common/navbar/Navbar';
-import Footer from '../common/footer/Footer';
-import PageBackground from '../common/background/PageBackground';
+import { getPostById } from '../../../data/blogData'; // Adjust the import based on your data structure
+import Navbar from '../../common/navbar/Navbar';
+import Footer from '../../common/footer/Footer';
+import PageBackground from '../../common/background/PageBackground';
 
 const useStyles = makeStyles({
   pageContainer: {
@@ -256,32 +256,10 @@ const BlogPostDetail = () => {
     navigate('/blog');
   };
 
-  // Function to convert simple markdown-like content to proper JSX
+  // Function to render HTML content
   const formatContent = (content) => {
     if (!content) return null;
-
-    // Split the content by paragraphs
-    return content.split('\n\n').map((paragraph, index) => {
-      // Check if paragraph is a heading
-      if (paragraph.startsWith('## ')) {
-        return <h2 key={index}>{paragraph.substring(3)}</h2>;
-      } else if (paragraph.startsWith('### ')) {
-        return <h3 key={index}>{paragraph.substring(4)}</h3>;
-      } else if (paragraph.startsWith('- ')) {
-        // Convert bullet lists
-        const items = paragraph.split('\n- ').map(item => item.replace('- ', ''));
-        return (
-          <ul key={index}>
-            {items.map((item, i) => (
-              <li key={i}>{item}</li>
-            ))}
-          </ul>
-        );
-      } else {
-        // Regular paragraph
-        return <p key={index}>{paragraph}</p>;
-      }
-    });
+    return <div dangerouslySetInnerHTML={{ __html: content }} />;
   };
 
   if (loading) {
