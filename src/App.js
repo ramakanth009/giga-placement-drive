@@ -14,10 +14,10 @@ const TermsAndConditions = React.lazy(() => import("./pages/termsandconditions/T
 const DataScience = React.lazy(() => import("./pages/datascience/DataScience"));
 const RegistrationForm = React.lazy(() => import('./pages/register/RegistrationForm'));
 const NotFound = React.lazy(() => import('./pages/notfound/NotFound'));
-const CartPage = React.lazy(() => import('./components/cart/Cart'));
+const CartPage = React.lazy(() => import('./pages/cart/Cart'));
 const FullstackFulltime = React.lazy(() => import('./pages/full_time/FullstackFulltime'));
 const DatascienceFulltime = React.lazy(() => import('./pages/full_time/DatascienceFulltime'));
-const PaymentComplete = React.lazy(() => import('./components/cart/PaymentComplete'));
+const PaymentComplete = React.lazy(() => import('./pages/cart/PaymentComplete'));
 const Blog = React.lazy(() => import('./pages/blog/Blog'));
 const BlogDetailPage = React.lazy(() => import('./components/blog/blogdetail/BlogDetailPage'));
 const CampusPage = React.lazy(() => import('./pages/campus/CampusPage'));

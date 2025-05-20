@@ -7,8 +7,6 @@ import ErrorIcon from '@mui/icons-material/Error';
 import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { checkPaymentStatus } from '../../services/paymentService';
-import Navbar from '../common/navbar/Navbar';
-import Footer from '../common/footer/Footer';
 
 const useStyles = makeStyles({
   pageContainer: {
@@ -290,7 +288,6 @@ const PaymentComplete = () => {
 
   return (
     <Box className={classes.pageContainer}>
-      <Navbar />
       <Box className={classes.mainContent}>
         <Paper className={classes.statusContainer} elevation={0}>
           {renderStatusContent()}
@@ -330,7 +327,6 @@ const PaymentComplete = () => {
           </Box>
         </Paper>
       </Box>
-      <Footer />
     </Box>
   );
 };
