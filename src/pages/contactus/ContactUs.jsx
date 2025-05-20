@@ -1,4 +1,4 @@
-// src/pages/contactus/Contact.jsx
+// src/pages/contactus/ContactUs.jsx
 import React from 'react';
 import { Box } from '@mui/material';
 import { makeStyles } from '@mui/styles';
@@ -14,15 +14,20 @@ const useStyles = makeStyles({
     minHeight: "100vh",
     isolation: "isolate",
   },
+  contentContainer: {
+    position: "relative",
+    zIndex: 2, // Ensure proper z-index
+  }
 });
 
-const Contact = () => {
+// Changed component name from Contact to ContactUs to match import in App.js
+const ContactUs = () => {
   const classes = useStyles();
 
   return (
     <Box className={classes.pageContainer}>
       <Background />
-      <Box sx={{ position: 'relative', zIndex: 1 }}>
+      <Box className={classes.contentContainer}>
         <ContactHeroSection />
         <ContactFormSection />
         <MapSection />
@@ -31,4 +36,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default ContactUs;
