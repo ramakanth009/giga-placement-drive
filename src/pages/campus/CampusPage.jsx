@@ -82,6 +82,7 @@ const useStyles = makeStyles({
     left: 0,
     width: '100%',
     height: '100%',
+    background: 'linear-gradient(rgba(42, 43, 106, 0.75), rgba(42, 43, 106, 0.75))',
     zIndex: 1,
   },
   videoIframe: {

@@ -291,7 +291,7 @@ const Navbar = () => {
                   }`}
                 >
                   <Box className={classes.dropdownText}>
-                    Full Stack
+                    Vitrual Placement
                     <KeyboardArrowDownIcon className={classes.dropdownIcon} />
                   </Box>
                 </Button>
@@ -301,14 +301,14 @@ const Navbar = () => {
                     className={classes.dropdownItem}
                     onClick={handleNavLinkClick}
                   >
-                    Full Stack Virtual Placement
+                    Full Stack
                   </Link>
                   <Link 
-                    to="/fulltime/fullstack" 
+                    to="/datascience" 
                     className={classes.dropdownItem}
                     onClick={handleNavLinkClick}
                   >
-                    Full Stack Full-Time Program
+                    Data Science
                   </Link>
                 </Box>
               </Box>
@@ -322,24 +322,25 @@ const Navbar = () => {
                   }`}
                 >
                   <Box className={classes.dropdownText}>
-                    Data Science
+                    full time Programs
                     <KeyboardArrowDownIcon className={classes.dropdownIcon} />
                   </Box>
                 </Button>
                 <Box className={classes.dropdownContent}>
+                  
                   <Link 
-                    to="/datascience" 
+                    to="/fulltime/fullstack" 
                     className={classes.dropdownItem}
                     onClick={handleNavLinkClick}
                   >
-                    Data Science Virtual Placement
+                    Full Stack Program
                   </Link>
                   <Link 
                     to="/fulltime/datascience" 
                     className={classes.dropdownItem}
                     onClick={handleNavLinkClick}
                   >
-                    Data Science Full-Time Program
+                    Data Science Program
                   </Link>
                 </Box>
               </Box>
