@@ -30,7 +30,7 @@ const FullStackProjectsSection = () => {
   // Project data for Full Stack program
   const projects = [
     {
-      title: "E-commerce",
+      title: "Social Media",
       image: socialMediaImage,
       icon: {
         component: <ViewModuleIcon />,
@@ -54,7 +54,7 @@ const FullStackProjectsSection = () => {
       skills: ["React/Vue", "Component Design", "State Management", "API Integration"]
     },
     {
-      title: "Quick Commerce",
+      title: "Quick Commerce / Rider app",
       image: taskManagementImage,
       icon: {
         component: <AssignmentIcon />,

@@ -726,6 +726,28 @@ const Footer = () => {
                   </MuiLink>
                 </li>
                 <li className={classes.linkItem}>
+                  <BusinessCenterIcon className={classes.linkIcon} />
+                  <MuiLink
+                    component={Link}
+                    to="/campus"
+                    className={classes.linkText}
+                    onClick={scrollToTop}
+                  >
+                    Campus
+                  </MuiLink>
+                </li>
+                <li className={classes.linkItem}>
+                  <InfoIcon className={classes.linkIcon} />
+                  <MuiLink
+                    component={Link}
+                    to="/blog"
+                    className={classes.linkText}
+                    onClick={scrollToTop}
+                  >
+                    Blog
+                  </MuiLink>
+                </li>
+                <li className={classes.linkItem}>
                   <ContactsIcon className={classes.linkIcon} />
                   <MuiLink
                     component={Link}
