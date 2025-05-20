@@ -1,7 +1,6 @@
 // src/pages/homepage/Homepage.jsx
 import React from "react";
 import { Box } from "@mui/material";
-import Navbar from "../../components/common/navbar/Navbar";
 import Hero from "../../components/homepagecomponets/herosection/Hero";
 import PageBackground from "../../components/common/background/PageBackground";
 import HiringPartners from "../../components/common/hiringpartners/HiringPartners";
@@ -15,7 +14,6 @@ import WhoShouldJoin from "../../components/homepagecomponets/whoshouldjoin/WhoS
 import LimitedTimeOffer from "../../components/common/limitedtimeoffer/LimitedTimeOffer";
 import OtherPrograms from "../../components/homepagecomponets/otherprograms/OtherPrograms";
 import Faq from "../../components/homepagecomponets/faqhomepage/FaqHomepage";
-import Footer from "../../components/common/footer/Footer";
 import ResumeBuilderSection from "../../components/homepagecomponets/resumebuilder/ResumeBuilderSection";
 
 const Homepage = () => {
@@ -30,7 +28,6 @@ const Homepage = () => {
     >
       {/* <PageBackground /> */}
       <Box sx={{ position: "relative", zIndex: 1 }}>
-        <Navbar />
         
         {/* Hero Section */}
         <Hero />
@@ -58,7 +55,6 @@ const Homepage = () => {
 
         <OtherPrograms />
         <Faq />
-        <Footer />
       </Box>
     </Box>
   );

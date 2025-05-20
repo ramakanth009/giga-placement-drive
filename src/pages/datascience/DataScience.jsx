@@ -1,8 +1,6 @@
 import React from "react";
-import Navbar from "../../components/common/navbar/Navbar";
 import Hero from "../../components/datasciencecomponents/hero/Hero";
 import DataScienceImportance from "../../components/datasciencecomponents/datascienceimportance/DataScienceImportance";
-import Footer from "../../components/common/footer/Footer";
 import DataScienceFaq from "../../components/datasciencecomponents/datasciencefaq/DatascienceFaq";
 import ProgramWorksSection from "../../components/common/programworks/ProgramWorksSection";
 import LimitedTimeOffer from "../../components/common/limitedtimeoffer/LimitedTimeOffer";
@@ -19,7 +17,6 @@ import DataScienceCertificationsSection from "../../components/datasciencecompon
 const DataScience = () => {
   return (
     <div>
-      <Navbar />
       <Hero />
       <DataScienceImportance />
       <HiringRolesBoxes />
@@ -33,7 +30,6 @@ const DataScience = () => {
       <TestimonialComponent />
       <DataScienceFaq />
       <CareerBanner />
-      <Footer />
     </div>
   );
 };

@@ -2,8 +2,6 @@
 import React from 'react';
 import { Box } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import Navbar from "../../components/common/navbar/Navbar";
-import Footer from "../../components/common/footer/Footer";
 import Background from '../../components/homepagecomponets/background/Background';
 import ContactHeroSection from '../../components/contactcomponents/ContactHeroSection';
 import ContactFormSection from '../../components/contactcomponents/ContactFormSection';
@@ -25,11 +23,9 @@ const Contact = () => {
     <Box className={classes.pageContainer}>
       <Background />
       <Box sx={{ position: 'relative', zIndex: 1 }}>
-        <Navbar />
         <ContactHeroSection />
         <ContactFormSection />
         <MapSection />
-        <Footer />
       </Box>
     </Box>
   );

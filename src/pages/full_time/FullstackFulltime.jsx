@@ -1,5 +1,4 @@
 import React from 'react'
-import Navbar from '../../components/common/navbar/Navbar'
 import FullStackHero from '../../components/fulltime/fullstack/fullstackhero/FullStackHero'
 import FullStackIndustryFacts from '../../components/fulltime/fullstack/industryfacts/FullStackIndustryFacts'
 import FullStackProgramHighlights from '../../components/fulltime/fullstack/programhighlights/FullStackProgramHighlights'
@@ -10,7 +9,6 @@ import FullStackCaseStudies from '../../components/fulltime/fullstack/fullStackc
 import FulltimeCertificates from '../../components/common/fulltime/fulltimeCertificates/FulltimeCertificates';
 import FullStackProgramFee from '../../components/fulltime/fullstack/programfee/FullStackProgramFee'
 import TestimonialComponent from '../../components/common/testimonialcomponent/TestimonialComponent'
-import Footer from '../../components/common/footer/Footer'
 // import FullStackSkillsMaster from '../../components/fulltime/fullstack/skillsmaster/FullStackSkillsMaster'
 import FullStackAIToolkit from '../../components/fulltime/fullstack/aitoolkit/FullStackAIToolkit'
 import FullStackLearningPath from '../../components/fulltime/fullstack/learningpathtimeline/FullStackLearningPath';
@@ -18,7 +16,6 @@ import FullStackLearningPath from '../../components/fulltime/fullstack/learningp
 const FullstackFulltime = () => {
   return (
     <div>
-        <Navbar/>
         <FullStackHero />
         <FullStackLearningPath />
         <FullStackProgramHighlights />
@@ -32,7 +29,6 @@ const FullstackFulltime = () => {
         <FulltimeCertificates />
         <FullStackProgramFee />
         <TestimonialComponent />
-        <Footer />
     </div>
   )
 }

@@ -10,8 +10,6 @@ import {
   Divider
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import Navbar from "../../components/common/navbar/Navbar";
-import Footer from "../../components/common/footer/Footer";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import GavelIcon from '@mui/icons-material/Gavel';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -346,7 +344,6 @@ const TermsAndConditions = () => {
 
   return (
     <Box className={classes.termsPage}>
-      <Navbar />
       
       {/* Header Section */}
       <Box className={classes.headerSection}>
@@ -390,7 +387,6 @@ const TermsAndConditions = () => {
         </Box>
       </Container>
       
-      <Footer />
     </Box>
   );
 };

@@ -5,8 +5,6 @@ import { makeStyles } from '@mui/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import { getAllPosts } from '../../data/blogData';
 import BlogCard from '../../components/blog/BlogCard';
-import Navbar from '../../components/common/navbar/Navbar';
-import Footer from '../../components/common/footer/Footer';
 import PageBackground from '../../components/common/background/PageBackground';
 import BlogHero from '../../components/blog/BlogHero';
 
@@ -138,7 +136,6 @@ const BlogPage = () => {
   return (
     <Box className={classes.pageContainer}>
       <PageBackground />
-      <Navbar />
       <BlogHero />
       
       <Container maxWidth="lg" className={classes.mainContent}>
@@ -180,7 +177,6 @@ const BlogPage = () => {
         </Box>
       </Container>
       
-      <Footer />
     </Box>
   );
 };

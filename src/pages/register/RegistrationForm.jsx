@@ -19,8 +19,6 @@ import {
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { useNavigate } from 'react-router-dom';
-import Navbar from '../../components/common/navbar/Navbar';
-import Footer from '../../components/common/footer/Footer';
 
 const useStyles = makeStyles({
   formContainer: {
@@ -315,7 +313,6 @@ const RegistrationForm = () => {
   
   return (
     <>
-      <Navbar />
       <Container maxWidth="lg" className={classes.formContainer}>
         <Paper elevation={0} className={classes.paper}>
           <Typography variant="h1" className={classes.pageTitle}>
@@ -721,7 +718,6 @@ const RegistrationForm = () => {
           </form>
         </Paper>
       </Container>
-      <Footer />
     </>
   );
 };

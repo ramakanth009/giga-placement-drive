@@ -3,8 +3,6 @@ import React from 'react';
 import { Box } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import BlogPostDetail from './BlogPostDetail';
-import Navbar from '../../common/navbar/Navbar';
-import Footer from '../../common/footer/Footer';
 import PageBackground from '../../common/background/PageBackground';
 
 const useStyles = makeStyles({
@@ -22,9 +20,7 @@ const BlogDetailPage = () => {
   return (
     <Box className={classes.pageContainer}>
       <PageBackground />
-      <Navbar />
       <BlogPostDetail />
-      <Footer />
     </Box>
   );
 };

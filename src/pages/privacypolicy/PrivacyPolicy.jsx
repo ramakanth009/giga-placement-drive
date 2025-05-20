@@ -14,8 +14,6 @@ import {
   ListItemIcon 
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import Navbar from "../../components/common/navbar/Navbar";
-import Footer from "../../components/common/footer/Footer";
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import InfoIcon from '@mui/icons-material/Info';
@@ -593,7 +591,6 @@ const PrivacyPolicy = () => {
 
   return (
     <Box className={classes.privacyPage}>
-      <Navbar />
       
       {/* Header Section */}
       <Box className={classes.headerSection}>
@@ -637,7 +634,6 @@ const PrivacyPolicy = () => {
         </Box>
       </Container>
       
-      <Footer />
     </Box>
   );
 };

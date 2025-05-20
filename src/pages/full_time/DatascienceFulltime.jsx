@@ -1,6 +1,4 @@
 import React from "react";
-import Navbar from "../../components/common/navbar/Navbar";
-import Footer from "../../components/common/footer/Footer";
 import DataScienceHero from "../../components/fulltime/datascience/datasciencehero/DataScienceHero";
 import TestimonialComponent from "../../components/common/testimonialcomponent/TestimonialComponent";
 import DataScienceProgramHighlights from "../../components/fulltime/datascience/programhighlights/DataScienceProgramHighlights";
@@ -18,7 +16,6 @@ import DataScienceLearningPath from '../../components/fulltime/datascience/learn
 const DatascienceFulltime = () => {
   return (
     <div>
-      <Navbar />
       <DataScienceHero />
       <DataScienceLearningPath />
       <DataScienceProgramHighlights />
@@ -32,7 +29,6 @@ const DatascienceFulltime = () => {
       <FulltimeCertificates />
       <DataScienceProgramFee />
       <TestimonialComponent />
-      <Footer />
     </div>
   );
 };

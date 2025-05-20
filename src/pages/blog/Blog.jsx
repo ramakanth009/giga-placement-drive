@@ -8,8 +8,6 @@ import WorkIcon from '@mui/icons-material/Work';
 import CodeIcon from '@mui/icons-material/Code';
 import DataIcon from '@mui/icons-material/Storage';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-import Navbar from '../../components/common/navbar/Navbar';
-import Footer from '../../components/common/footer/Footer';
 import PageBackground from '../../components/common/background/PageBackground';
 import { scrollToTop } from '../../utils/scrollUtils';
 import BlogPostCard from '../../components/blog/BlogPostCard';
@@ -172,7 +170,6 @@ const Blog = () => {
     <Box className={classes.pageContainer}>
       <PageBackground />
       <Box sx={{ position: 'relative', zIndex: 1 }}>
-        <Navbar />
         
         <BlogHero />
         
@@ -219,7 +216,6 @@ const Blog = () => {
           </Container>
         </Box>
         
-        <Footer />
       </Box>
     </Box>
   );

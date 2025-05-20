@@ -3,8 +3,6 @@ import React from 'react';
 import { Box, Typography, Container, Button, Grid, Paper } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import Navbar from '../../components/common/navbar/Navbar';
-import Footer from '../../components/common/footer/Footer';
 import { scrollToTop } from '../../utils/scrollUtils';
 
 // Demo data for campus features
@@ -526,7 +524,6 @@ const CampusPage = () => {
 
   return (
     <Box className={classes.pageContainer}>
-      <Navbar />
       
       {/* Hero Section */}
       <Box className={classes.heroSection}>
@@ -586,7 +583,6 @@ const CampusPage = () => {
         </Container>
       </Box>
       
-      <Footer />
     </Box>
   );
 };

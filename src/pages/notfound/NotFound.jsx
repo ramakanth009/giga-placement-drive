@@ -3,8 +3,6 @@ import React from 'react';
 import { Box, Typography, Button, Container, Paper } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { Link } from 'react-router-dom';
-import Navbar from '../../components/common/navbar/Navbar';
-import Footer from '../../components/common/footer/Footer';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
@@ -140,7 +138,6 @@ const NotFound = () => {
 
   return (
     <Box className={classes.notFoundContainer}>
-      <Navbar />
       
       <Box className={classes.contentWrapper}>
         <Container maxWidth="lg" className={classes.container}>
@@ -174,7 +171,6 @@ const NotFound = () => {
         </Container>
       </Box>
       
-      <Footer />
     </Box>
   );
 };

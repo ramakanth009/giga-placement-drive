@@ -1,6 +1,8 @@
 import React, { Suspense } from "react";
 import { HashRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
+import Navbar from "./components/common/navbar/Navbar";
+import Footer from "./components/common/footer/Footer";
 
 // Lazy loaded components
 const Homepage = React.lazy(() => import("./pages/homepage/Homepage"));
@@ -11,7 +13,6 @@ const PrivacyPolicy = React.lazy(() => import("./pages/privacypolicy/PrivacyPoli
 const TermsAndConditions = React.lazy(() => import("./pages/termsandconditions/TermsAndConditions"));
 const DataScience = React.lazy(() => import("./pages/datascience/DataScience"));
 const RegistrationForm = React.lazy(() => import('./pages/register/RegistrationForm'));
-const PaymentUnderConstruction = React.lazy(() => import('./pages/payment/PaymentUnderConstruction'));
 const NotFound = React.lazy(() => import('./pages/notfound/NotFound'));
 const CartPage = React.lazy(() => import('./components/cart/Cart'));
 const PaymentProcess = React.lazy(() => import('./components/payment/PaymentProcess'));
@@ -31,6 +32,7 @@ const LoadingSpinner = () => (
 const App = () => {
   return (
     <Router>
+      <Navbar />
       <Suspense fallback={<LoadingSpinner />}>
         <Routes>
           {/* Main routes */}
@@ -44,7 +46,6 @@ const App = () => {
           <Route path="/register" element={<RegistrationForm />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogDetailPage />} /> 
-          <Route path="/payment-under-construction" element={<PaymentUnderConstruction />} />
           <Route path="/campus" element={<CampusPage />} />
           
           {/* New Full-Time Program routes */}
@@ -62,6 +63,7 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
+      <Footer />
     </Router>
   );
 };

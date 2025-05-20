@@ -2,8 +2,6 @@
 import React from "react";
 import { Box } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import Navbar from "../../components/common/navbar/Navbar";
-import Footer from "../../components/common/footer/Footer";
 import HeroSection from "../../components/aboutcomponents/HeroSection";
 import WhyStartSection from "../../components/aboutcomponents//WhyStartSection";
 import CoreValuesSection from "../../components/aboutcomponents//CoreValuesSection";
@@ -23,12 +21,10 @@ const About = () => {
 
   return (
     <Box className={classes.pageContainer}>
-      <Navbar />
       <HeroSection />
       <WhyStartSection />
       <CoreValuesSection />
       <WhatSetsUsApartSection />
-      <Footer />
     </Box>
   );
 };

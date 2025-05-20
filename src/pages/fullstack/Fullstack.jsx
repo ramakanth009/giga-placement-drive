@@ -1,10 +1,8 @@
 import React from "react";
-import Navbar from "../../components/common/navbar/Navbar";
 import Hero from "../../components/fullstackcomponents/hero/hero";
 import FullstackImportance from "../../components/fullstackcomponents/fullstackimportance/FullstackImportance";
 import HiringRolesBoxes from "../../components/fullstackcomponents/hiringrolesboxes/HiringRolesBoxes";
 import ProgramWorksSection from "../../components/common/programworks/ProgramWorksSection";
-import Footer from "../../components/common/footer/Footer";
 import FullStackFaq from "../../components/fullstackcomponents/faqfullstack/FaqFullstack";
 import { fullStackItems } from "../../data/programWorksData";
 import LimitedTimeOffer from "../../components/common/limitedtimeoffer/LimitedTimeOffer";
@@ -20,7 +18,6 @@ import FullStackCertificationsSection from "../../components/fullstackcomponents
 const Fullstack = () => {
   return (
     <div>
-      <Navbar />
       <Hero /> 
       <FullstackImportance />
       <HiringRolesBoxes />
@@ -34,7 +31,6 @@ const Fullstack = () => {
       <TestimonialComponent />
       <FullStackFaq />
       <CareerBanner />
-      <Footer />
     </div>
   );
 };
