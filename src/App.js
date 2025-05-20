@@ -1,8 +1,6 @@
 import React, { Suspense } from "react";
 import { HashRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
-import BlogPostDetail from './components/blog/blogdetail/BlogPostDetail';
-import BlogDetailPage from './components/blog/blogdetail/BlogDetailPage';
 
 // Lazy loaded components
 const Homepage = React.lazy(() => import("./pages/homepage/Homepage"));
@@ -21,6 +19,7 @@ const FullstackFulltime = React.lazy(() => import('./pages/full_time/FullstackFu
 const DatascienceFulltime = React.lazy(() => import('./pages/full_time/DatascienceFulltime'));
 const PaymentComplete = React.lazy(() => import('./components/cart/PaymentComplete'));
 const Blog = React.lazy(() => import('./pages/blog/Blog'));
+const BlogDetailPage = React.lazy(() => import('./components/blog/blogdetail/BlogDetailPage'));
 const CampusPage = React.lazy(() => import('./pages/campus/CampusPage'));
 
 const LoadingSpinner = () => (
@@ -44,23 +43,22 @@ const App = () => {
           <Route path="/datascience" element={<DataScience />} />
           <Route path="/register" element={<RegistrationForm />} />
           <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogPostDetail />} />
-          <Route path="/blog/:slug" element={<BlogDetailPage />} />
+          <Route path="/blog/:slug" element={<BlogDetailPage />} /> 
           <Route path="/payment-under-construction" element={<PaymentUnderConstruction />} />
           <Route path="/campus" element={<CampusPage />} />
-
+          
           {/* New Full-Time Program routes */}
           <Route path="/fulltime/fullstack" element={<FullstackFulltime />} />
           <Route path="/fulltime/datascience" element={<DatascienceFulltime />} />
-
+          
           {/* Redirect for old/alternative routes */}
           <Route path="/terms" element={<Navigate to="/terms-and-conditions" replace />} />
           <Route path="/privacy" element={<Navigate to="/privacy-policy" replace />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/payment-process" element={<PaymentProcess />} />
           <Route path="/payment-complete" element={<PaymentComplete />} />
-
-          {/* 404 catch-all route */}
+          
+          {/* 404 catch-all route */} 
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

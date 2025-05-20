@@ -1,8 +1,8 @@
-// src/pages/blog/BlogDetailPage.jsx
+// src/components/blog/blogdetail/BlogDetailPage.jsx
 import React from 'react';
 import { Box } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import BlogPostDetail from '../blogdetail/BlogPostDetail';
+import BlogPostDetail from './BlogPostDetail';
 import Navbar from '../../common/navbar/Navbar';
 import Footer from '../../common/footer/Footer';
 import PageBackground from '../../common/background/PageBackground';

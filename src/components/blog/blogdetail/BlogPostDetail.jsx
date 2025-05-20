@@ -1,4 +1,4 @@
-// src/components/blog/BlogPostDetail.jsx
+// src/components/blog/blogdetail/BlogPostDetail.jsx
 import React, { useEffect, useState } from 'react';
 import { Box, Typography, Container, Chip, Divider, Button } from '@mui/material';
 import { makeStyles } from '@mui/styles';
@@ -6,18 +6,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import PersonIcon from '@mui/icons-material/Person';
-import { getPostById } from '../../../data/blogData'; // Adjust the import based on your data structure
-import Navbar from '../../common/navbar/Navbar';
-import Footer from '../../common/footer/Footer';
-import PageBackground from '../../common/background/PageBackground';
+import { getPostById } from '../../../data/blogData';
 
 const useStyles = makeStyles({
-  pageContainer: {
-    position: "relative",
-    width: "100%",
-    minHeight: "100vh",
-    isolation: "isolate",
-  },
   mainContent: {
     position: 'relative',
     zIndex: 1,
@@ -177,25 +168,6 @@ const useStyles = makeStyles({
       margin: '30px 0 !important',
     },
   },
-  relatedPostsSection: {
-    marginTop: '50px',
-  },
-  sectionTitle: {
-    fontSize: '1.8rem !important',
-    fontWeight: 'bold !important',
-    color: '#2A2B6A !important',
-    marginBottom: '30px !important',
-    position: 'relative',
-    '&::after': {
-      content: '""',
-      position: 'absolute',
-      bottom: '-10px',
-      left: '0',
-      width: '60px',
-      height: '3px',
-      backgroundColor: '#FFC614',
-    },
-  },
   notFoundContainer: {
     display: 'flex',
     flexDirection: 'column',
@@ -230,17 +202,19 @@ const useStyles = makeStyles({
 
 const BlogPostDetail = () => {
   const classes = useStyles();
-  const { postId } = useParams();
+  const { slug } = useParams(); // Get the slug parameter from the URL
   const navigate = useNavigate();
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate API call to get post data
+    // Fetch post data
     const fetchPost = () => {
       setLoading(true);
       try {
-        const postData = getPostById(postId);
+        console.log("Fetching post with slug:", slug);
+        const postData = getPostById(slug);
+        console.log("Post data:", postData);
         setPost(postData);
       } catch (error) {
         console.error("Error fetching post:", error);
@@ -250,7 +224,7 @@ const BlogPostDetail = () => {
     };
 
     fetchPost();
-  }, [postId]);
+  }, [slug]);
 
   const handleBack = () => {
     navigate('/blog');
@@ -264,97 +238,82 @@ const BlogPostDetail = () => {
 
   if (loading) {
     return (
-      <Box className={classes.pageContainer}>
-        <PageBackground />
-        <Navbar />
-        <Container maxWidth="lg">
-          <Box sx={{ padding: '100px 0', textAlign: 'center' }}>
-            <Typography variant="h5">Loading post...</Typography>
-          </Box>
-        </Container>
-        <Footer />
-      </Box>
+      <Container maxWidth="lg">
+        <Box sx={{ padding: '100px 0', textAlign: 'center' }}>
+          <Typography variant="h5">Loading post...</Typography>
+        </Box>
+      </Container>
     );
   }
 
   if (!post) {
     return (
-      <Box className={classes.pageContainer}>
-        <PageBackground />
-        <Navbar />
-        <Container maxWidth="lg">
-          <Box className={classes.notFoundContainer}>
-            <Typography variant="h3" className={classes.notFoundTitle}>
-              Blog Post Not Found
-            </Typography>
-            <Typography variant="body1" className={classes.notFoundText}>
-              The blog post you're looking for doesn't exist or has been removed.
-            </Typography>
-            <Button 
-              variant="contained" 
-              className={classes.backToBlogButton}
-              onClick={handleBack}
-            >
-              Back to Blog
-            </Button>
-          </Box>
-        </Container>
-        <Footer />
-      </Box>
+      <Container maxWidth="lg">
+        <Box className={classes.notFoundContainer}>
+          <Typography variant="h3" className={classes.notFoundTitle}>
+            Blog Post Not Found
+          </Typography>
+          <Typography variant="body1" className={classes.notFoundText}>
+            The blog post you're looking for doesn't exist or has been removed.
+          </Typography>
+          <Button 
+            variant="contained" 
+            className={classes.backToBlogButton}
+            onClick={handleBack}
+          >
+            Back to Blog
+          </Button>
+        </Box>
+      </Container>
     );
   }
 
   return (
-    <Box className={classes.pageContainer}>
-      <PageBackground />
-      <Navbar />
-      <Container maxWidth="lg" className={classes.mainContent}>
-        <Box className={classes.header}>
-          <Box className={classes.breadcrumbs}>
-            <Button 
-              className={classes.backButton}
-              startIcon={<ArrowBackIcon />}
-              onClick={handleBack}
-            >
-              Back to Blog
-            </Button>
+    <Container maxWidth="lg" className={classes.mainContent}>
+      <Box className={classes.header}>
+        <Box className={classes.breadcrumbs}>
+          <Button 
+            className={classes.backButton}
+            startIcon={<ArrowBackIcon />}
+            onClick={handleBack}
+          >
+            Back to Blog
+          </Button>
+        </Box>
+
+        <Typography variant="h1" className={classes.title}>
+          {post.title}
+        </Typography>
+
+        <Box className={classes.metaContainer}>
+          <Box className={classes.meta}>
+            <CalendarTodayIcon />
+            <Typography>{post.date}</Typography>
           </Box>
-
-          <Typography variant="h1" className={classes.title}>
-            {post.title}
-          </Typography>
-
-          <Box className={classes.metaContainer}>
-            <Box className={classes.meta}>
-              <CalendarTodayIcon />
-              <Typography>{post.date}</Typography>
-            </Box>
-            <Box className={classes.meta}>
-              <PersonIcon />
-              <Typography>{post.author}</Typography>
-            </Box>
-            {post.category && (
-              <Chip label={post.category} className={classes.categoryChip} />
-            )}
+          <Box className={classes.meta}>
+            <PersonIcon />
+            <Typography>{post.author}</Typography>
           </Box>
+          {post.featuredCategory && (
+            <Chip label={post.featuredCategory} className={classes.categoryChip} />
+          )}
         </Box>
+      </Box>
 
-        <Box className={classes.featuredImageContainer}>
-          <img 
-            src={post.image} 
-            alt={post.title} 
-            className={classes.featuredImage} 
-          />
-        </Box>
+      <Box className={classes.featuredImageContainer}>
+        <img 
+          src={post.image} 
+          alt={post.title} 
+          className={classes.featuredImage} 
+        />
+      </Box>
 
-        <Box className={classes.contentContainer}>
-          {formatContent(post.content)}
-        </Box>
+      <Box className={classes.contentContainer}>
+        {formatContent(post.content)}
+      </Box>
 
-        <Divider className={classes.divider} />
-      </Container>
-      <Footer />
-    </Box>
+      <Divider className={classes.divider} />
+    </Container>
   );
 };
 
