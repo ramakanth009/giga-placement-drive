@@ -2040,7 +2040,15 @@ export const blogPosts = [
 ];
 
 export const getPostById = (slug) => {
-  return blogPosts.find(post => post.slug === slug || post.id.toString() === slug);
+  console.log("Looking for post with slug/id:", slug);
+  console.log("Available posts:", blogPosts.map(post => ({
+    id: post.id,
+    slug: post.slug,
+    title: post.title
+  })));
+  const post = blogPosts.find(post => post.slug === slug || post.id.toString() === slug);
+  console.log("Found post:", post ? `${post.title} (${post.slug})` : "No post found");
+  return post;
 };
 
 export default blogPosts;

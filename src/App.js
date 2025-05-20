@@ -48,19 +48,19 @@ const App = () => {
           <Route path="/blog/:slug" element={<BlogDetailPage />} />
           <Route path="/payment-under-construction" element={<PaymentUnderConstruction />} />
           <Route path="/campus" element={<CampusPage />} />
-          
+
           {/* New Full-Time Program routes */}
           <Route path="/fulltime/fullstack" element={<FullstackFulltime />} />
           <Route path="/fulltime/datascience" element={<DatascienceFulltime />} />
-          
+
           {/* Redirect for old/alternative routes */}
           <Route path="/terms" element={<Navigate to="/terms-and-conditions" replace />} />
           <Route path="/privacy" element={<Navigate to="/privacy-policy" replace />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/payment-process" element={<PaymentProcess />} />
           <Route path="/payment-complete" element={<PaymentComplete />} />
-          
-          {/* 404 catch-all route */} 
+
+          {/* 404 catch-all route */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
