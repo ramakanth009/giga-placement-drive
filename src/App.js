@@ -21,6 +21,7 @@ const PaymentComplete = React.lazy(() => import('./pages/cart/PaymentComplete'))
 const Blog = React.lazy(() => import('./pages/blog/Blog'));
 const BlogDetailPage = React.lazy(() => import('./components/blog/blogdetail/BlogDetailPage'));
 const CampusPage = React.lazy(() => import('./pages/campus/CampusPage'));
+const PreScreeningTest = React.lazy(() => import('./components/homepagecomponets/prescreeningtest/PreScreeningTest'));
 
 const LoadingSpinner = () => (
   <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
@@ -56,6 +57,8 @@ const App = () => {
           <Route path="/privacy" element={<Navigate to="/privacy-policy" replace />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/payment-complete" element={<PaymentComplete />} />
+
+          <Route path="/pre-screening-test" element={<PreScreeningTest />} />
           
           {/* 404 catch-all route */} 
           <Route path="*" element={<NotFound />} />

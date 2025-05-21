@@ -5,12 +5,12 @@ import { useNavigate } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 // Import test step components
-import PersonalInfoStep from '../../components/prescreeningtest/PersonalInfoStep';
-import MotivationAcademicStep from '../../components/prescreeningtest/MotivationAcademicStep';
-import AchievementsStep from '../../components/prescreeningtest/AchievementsStep';
-import TechnicalProficiencyStep from '../../components/prescreeningtest/TechnicalProficiencyStep';
-import CommunicationLearningStep from '../../components/prescreeningtest/CommunicationLearningStep';
-import ResultsStep from '../../components/prescreeningtest/ResultsStep';
+import PersonalInfoStep from './PersonalInfoStep';
+import MotivationAcademicStep from './MotivationAcademicStep';
+import AchievementsStep from './AchievementsStep';
+import TechnicalProficiencyStep from './TechnicalProficiencyStep';
+import CommunicationLearningStep from './CommunicationLearningStep';
+import ResultsStep from './ResultsStep';
 
 const useStyles = makeStyles({
   root: {
@@ -278,7 +278,7 @@ const PreScreeningTest = () => {
     setIsSubmitting(true);
     
     try {
-      // Replace with your actual API endpoint
+      // API endpoint for submission
       const response = await fetch('https://gigaversity.in/prescreening_test', {
         method: 'POST',
         headers: {
