@@ -7,6 +7,7 @@ import HiringPartners from "../../components/common/hiringpartners/HiringPartner
 import OtherPrograms from "../../components/homepagecomponets/otherprograms/OtherPrograms";
 import Faq from "../../components/homepagecomponets/faqhomepage/FaqHomepage";
 import ResumeBuilderSection from "../../components/homepagecomponets/resumebuilder/ResumeBuilderSection";
+import PreScreeningBanner from "../../components/homepagecomponets/prescreening/PreScreeningBanner";
 
 const Homepage = () => {
   return (
@@ -25,18 +26,13 @@ const Homepage = () => {
         <Hero />
         
         <ResumeBuilderSection />
+        
+        {/* PreScreeningBanner Test */}
+        <PreScreeningBanner />
+        
         {/* Hiring Partners as separate section */}
         <HiringPartners />
         
-        {/* Add the WhyDifferent component */}
-
-        {/* Your other homepage content will go here */}
-
-
-
-
-
-
         <OtherPrograms />
         <Faq />
       </Box>
