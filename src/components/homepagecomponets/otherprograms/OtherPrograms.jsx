@@ -5,18 +5,24 @@ import {
   Button, 
   IconButton, 
   Container,
-  Menu, 
-  MenuItem, 
   Card, 
   CardMedia, 
   Tooltip, 
   Chip, 
   Tabs,
   Tab,
-  Divider
+  Divider,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  TextField
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import StarIcon from '@mui/icons-material/Star';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import CommentIcon from '@mui/icons-material/Comment';
+import SendIcon from '@mui/icons-material/Send';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
@@ -31,7 +37,6 @@ const useStyles = makeStyles({
     position: 'relative',
     overflow: 'hidden',
     background: 'linear-gradient(180deg, #101138 0%, #1e1c44 100%)',
-    // Creates a mesh grid pattern in the background
     '&:before': {
       content: '""',
       position: 'absolute',
@@ -763,7 +768,8 @@ const useStyles = makeStyles({
       fontSize: '0.75rem !important',
     },
   },
-  statsContainer: {
+  // New styles for love and comment system
+  engagementContainer: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -784,72 +790,62 @@ const useStyles = makeStyles({
       marginTop: '10px',
     },
   },
-  stats: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '15px',
-    "@media (max-width: 1200px)": {
-      gap: '14px',
-    },
-    "@media (max-width: 960px)": {
-      gap: '12px',
-    },
-    "@media (max-width: 600px)": {
-      gap: '10px',
-    },
-    "@media (max-width: 480px)": {
-      gap: '8px',
-    },
-    "@media (max-width: 375px)": {
-      gap: '6px',
-    },
-  },
-  statItem: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  statIcon: {
+  engagementText: {
+    fontSize: '0.85rem !important',
     color: 'rgba(255, 255, 255, 0.7) !important',
-    fontSize: '1.1rem !important',
-    marginRight: '8px !important',
-    "@media (max-width: 1200px)": {
-      fontSize: '1.05rem !important',
-      marginRight: '7px !important',
-    },
-    "@media (max-width: 960px)": {
-      fontSize: '1rem !important',
-      marginRight: '6px !important',
-    },
-    "@media (max-width: 600px)": {
-      fontSize: '0.95rem !important',
-      marginRight: '5px !important',
-    },
-    "@media (max-width: 480px)": {
-      fontSize: '0.9rem !important',
-      marginRight: '4px !important',
-    },
-    "@media (max-width: 375px)": {
-      fontSize: '0.85rem !important',
-      marginRight: '3px !important',
-    },
-  },
-  statText: {
-    fontSize: '0.9rem !important',
-    color: 'rgba(255, 255, 255, 0.8) !important',
-    "@media (max-width: 1200px)": {
-      fontSize: '0.88rem !important',
-    },
-    "@media (max-width: 960px)": {
-      fontSize: '0.85rem !important',
-    },
+    marginBottom: '10px !important',
+    textAlign: 'center',
     "@media (max-width: 600px)": {
       fontSize: '0.8rem !important',
+      marginBottom: '8px !important',
     },
     "@media (max-width: 480px)": {
       fontSize: '0.75rem !important',
     },
-    "@media (max-width: 375px)": {
-      fontSize: '0.7rem !important',
+  },
+  engagementActions: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: '15px',
+    "@media (max-width: 600px)": {
+      gap: '12px',
+    },
+    "@media (max-width: 480px)": {
+      gap: '10px',
+    },
+  },
+  loveButton: {
+    color: 'rgba(255, 255, 255, 0.7) !important',
+    transition: 'all 0.3s ease !important',
+    '&:hover': {
+      color: '#ff4757 !important',
+      transform: 'scale(1.1)',
+    },
+  },
+  loveButtonActive: {
+    color: '#ff4757 !important',
+    animation: '$heartBeat 0.6s ease-in-out',
+  },
+  commentButton: {
+    color: 'rgba(255, 255, 255, 0.7) !important',
+    transition: 'all 0.3s ease !important',
+    '&:hover': {
+      color: '#FFC614 !important',
+      transform: 'scale(1.1)',
+    },
+  },
+  studentCount: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '5px',
+    color: 'rgba(255, 255, 255, 0.8) !important',
+    fontSize: '0.9rem !important',
+    "@media (max-width: 600px)": {
+      fontSize: '0.85rem !important',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '0.8rem !important',
     },
   },
   pulseDot: {
@@ -909,6 +905,23 @@ const useStyles = makeStyles({
     '100%': {
       transform: 'scale(2.5)',
       opacity: 0,
+    },
+  },
+  '@keyframes heartBeat': {
+    '0%': {
+      transform: 'scale(1)',
+    },
+    '14%': {
+      transform: 'scale(1.3)',
+    },
+    '28%': {
+      transform: 'scale(1)',
+    },
+    '42%': {
+      transform: 'scale(1.3)',
+    },
+    '70%': {
+      transform: 'scale(1)',
     },
   },
   moreButton: {
@@ -1016,21 +1029,83 @@ const useStyles = makeStyles({
       right: '-50px',
     },
   },
+  // Comment Dialog Styles
+  commentDialog: {
+    '& .MuiDialog-paper': {
+      borderRadius: '15px !important',
+      minWidth: '400px',
+      "@media (max-width: 600px)": {
+        minWidth: '90%',
+        margin: '20px',
+      },
+    },
+  },
+  commentDialogTitle: {
+    color: '#2A2B6A !important',
+    fontWeight: 'bold !important',
+    borderBottom: '1px solid #eee',
+    paddingBottom: '10px !important',
+  },
+  commentField: {
+    marginTop: '15px !important',
+    '& .MuiOutlinedInput-root': {
+      '&:hover fieldset': {
+        borderColor: '#2A2B6A',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: '#2A2B6A',
+      },
+    },
+  },
+  submitCommentButton: {
+    backgroundColor: '#2A2B6A !important',
+    color: 'white !important',
+    '&:hover': {
+      backgroundColor: '#1A1B4A !important',
+    },
+  },
 });
 
 const OtherPrograms = () => {
   const classes = useStyles();
   const [tabValue, setTabValue] = useState(0);
+  const [lovedPrograms, setLovedPrograms] = useState({});
+  const [commentDialog, setCommentDialog] = useState({ open: false, programId: null });
+  const [comment, setComment] = useState('');
 
   const handleTabChange = (event, newValue) => {
     setTabValue(newValue);
+  };
+
+  const handleLove = (programId) => {
+    setLovedPrograms(prev => ({
+      ...prev,
+      [programId]: !prev[programId]
+    }));
+  };
+
+  const handleCommentOpen = (programId) => {
+    setCommentDialog({ open: true, programId });
+  };
+
+  const handleCommentClose = () => {
+    setCommentDialog({ open: false, programId: null });
+    setComment('');
+  };
+
+  const handleCommentSubmit = () => {
+    if (comment.trim()) {
+      // Here you would typically send the comment to your backend
+      console.log('Comment submitted for program:', commentDialog.programId, 'Comment:', comment);
+      handleCommentClose();
+    }
   };
 
   // Using Unsplash images that represent student opportunity in respective fields
   const programs = [
     {
       id: 1,
-      title: 'Master Internship Program In Full Stack',
+      title: 'Master Internship In Full Stack',
       duration: '3 Months',
       features: [
         'Build Real Products with Industry Standards',
@@ -1038,17 +1113,15 @@ const OtherPrograms = () => {
         'API Integration & Backend Architecture',
         'Performance Optimization Techniques'
       ],
-      rating: 4.8,
       students: 2854,
       tag: 'Full Stack',
-      // Image showing collaboration and coding - represents opportunity in full stack
       image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
       level: 'Intermediate',
       category: 'development'
     },
     {
       id: 2,
-      title: 'Master Internship Program In Data Science',
+      title: 'Master Internship In Data Science',
       duration: '3 Months',
       features: [
         'Build Production-Ready ML Models',
@@ -1056,10 +1129,8 @@ const OtherPrograms = () => {
         'AI Chatbot & Recommendation Systems',
         'Predictive Analytics Implementation'
       ],
-      rating: 4.7,
       students: 2960,
       tag: 'Data Science',
-      // Image showing data visualization and analytics - represents opportunity in data science
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
       level: 'Advanced',
       category: 'datascience'
@@ -1179,35 +1250,50 @@ const OtherPrograms = () => {
                       ))}
                     </Box>
                     
-                    {/* Stats */}
-                    <Box className={classes.statsContainer}>
-                      <Box className={classes.stats}>
-                        <Box className={classes.statItem}>
-                          <StarIcon className={classes.statIcon} />
-                          <Typography className={classes.statText}>
-                            {program.rating}
-                          </Typography>
-                        </Box>
+                    {/* Engagement Section */}
+                    <Typography className={classes.engagementText}>
+                      If you love our curriculum, just drop a love and share what you find exciting
+                    </Typography>
+                    
+                    <Box className={classes.engagementContainer}>
+                      <Box className={classes.engagementActions}>
+                        <Tooltip title="Love this program">
+                          <IconButton 
+                            className={`${classes.loveButton} ${lovedPrograms[program.id] ? classes.loveButtonActive : ''}`}
+                            onClick={() => handleLove(program.id)}
+                          >
+                            {lovedPrograms[program.id] ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                          </IconButton>
+                        </Tooltip>
                         
-                        <Box className={classes.statItem}>
-                          <PeopleAltOutlinedIcon className={classes.statIcon} />
-                          <Typography className={classes.statText}>
-                            {program.students} Interested Students 
-                          </Typography>
-                        </Box>
+                        <Tooltip title="Share your thoughts">
+                          <IconButton 
+                            className={classes.commentButton}
+                            onClick={() => handleCommentOpen(program.id)}
+                          >
+                            <CommentIcon />
+                          </IconButton>
+                        </Tooltip>
                       </Box>
                       
-                      <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                        <Box className={classes.pulseDot} />
-                        <Typography sx={{ 
-                          fontSize: { xs: '0.8rem', sm: '0.85rem' }, 
-                          fontWeight: 500, 
-                          color: '#2ecc71' 
-                        }}>
-                          Enrolling Now
+                      <Box className={classes.studentCount}>
+                        <PeopleAltOutlinedIcon sx={{ fontSize: '1rem' }} />
+                        <Typography sx={{ fontSize: 'inherit' }}>
+                          {program.students} Interested Students
                         </Typography>
                       </Box>
                     </Box>
+                    
+                    {/* <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '15px' }}>
+                      <Box className={classes.pulseDot} />
+                      <Typography sx={{ 
+                        fontSize: { xs: '0.8rem', sm: '0.85rem' }, 
+                        fontWeight: 500, 
+                        color: '#2ecc71' 
+                      }}>
+                        Enrolling Now
+                      </Typography>
+                    </Box> */}
                   </Box>
                 </Card>
               </Box>
@@ -1218,6 +1304,51 @@ const OtherPrograms = () => {
           View All Programs
         </Button>
       </Container>
+
+      {/* Comment Dialog */}
+      <Dialog 
+        open={commentDialog.open} 
+        onClose={handleCommentClose}
+        className={classes.commentDialog}
+        maxWidth="sm"
+        fullWidth
+      >
+        <DialogTitle className={classes.commentDialogTitle}>
+          Share Your Thoughts
+        </DialogTitle>
+        <DialogContent>
+          <Typography variant="body2" sx={{ color: '#666', marginBottom: '10px' }}>
+            What excites you most about this program? Your feedback helps us improve!
+          </Typography>
+          <TextField
+            autoFocus
+            margin="dense"
+            label="Your comment"
+            fullWidth
+            multiline
+            rows={4}
+            variant="outlined"
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+            placeholder="e.g. I love the hands-on approach and real-world projects..."
+            className={classes.commentField}
+          />
+        </DialogContent>
+        <DialogActions sx={{ padding: '16px 24px' }}>
+          <Button onClick={handleCommentClose} sx={{ color: '#666' }}>
+            Cancel
+          </Button>
+          <Button 
+            onClick={handleCommentSubmit}
+            className={classes.submitCommentButton}
+            variant="contained"
+            startIcon={<SendIcon />}
+            disabled={!comment.trim()}
+          >
+            Share
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   );
 };
