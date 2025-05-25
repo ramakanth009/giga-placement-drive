@@ -323,7 +323,7 @@ const HiringPartners = () => {
       <Box className={classes.titleContainer}>
         <Box sx={{ textAlign: 'center' }}>
           <Typography variant="h2" className={classes.sectionTitle}>
-            Our Hiring Partners
+            Backed by our Hiring Partners
           </Typography>
           
         </Box>

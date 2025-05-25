@@ -9,52 +9,59 @@ import { scrollToTop } from '../../utils/scrollUtils';
 const campusFeatures = [
   {
     id: 1,
-    title: "Collaborative Seating",
-    description: "Our campus features ergonomically designed seating areas that foster collaboration and idea-sharing. These spaces are strategically placed throughout the campus to encourage spontaneous discussions and team brainstorming sessions.",
+    title: "The Foundation Hall",
+    description: "A dynamic and inclusive space where students from all backgrounds come together for the first time. Through collaborative learning, high-energy sessions, peer-to-peer interactions, and hands-on problem solving, this is where confidence begins to build. Students tackle challenges they never imagined they could, setting the stage for a strong learning journey ahead.",
     image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c",
-    alt: "Collaborative Seating Areas"
+    alt: "he Foundation Hall"
   },
   {
     id: 2,
-    title: "Modern Workstations",
-    description: "Equipped with the latest technology, our workstations provide students with everything they need to excel in their projects. Each station includes high-performance computers, adjustable desks, and industry-standard software to ensure students are prepared for real-world challenges.",
+    title: "The Product Chamber",
+    description: "The Product Chamber is where real tech products are envisioned, developed, and brought to life by collaborative student teams. Designed to simulate a real-world tech environment, this space encourages creativity, technical excellence, and teamwork. Students gain end-to-end product experience—from ideation to final execution—making them truly product-ready.",
     image: "https://images.unsplash.com/photo-1497215842964-222b430dc094",
-    alt: "Modern Workstations"
+    alt: "The Product Chamber"
   },
   {
     id: 3,
-    title: "High-tech Classrooms",
-    description: "Our classrooms are designed for dynamic learning experiences with interactive smartboards, surround sound systems, and flexible seating arrangements. These spaces adapt to various teaching methodologies and learning styles to maximize student engagement and knowledge retention.",
+    title: "The Startup Studio",
+    description: "Fuel innovative ideas with hands-on support, personalized mentorship, and direct guidance from successful founders. The Startup Studio empowers students to build, launch, and scale their own products from the ground up. Selected creators can secure up to ₹1 lakh in funding—not as a reward, but as real backing to bring startup ideas to life with confidence.",
     image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4",
-    alt: "High-tech Classrooms"
+    alt: "The Startup Studio"
   },
   {
     id: 4,
-    title: "Advanced Projectors",
-    description: "Our 4K ultra-HD projectors deliver crystal-clear visuals that enhance the learning experience. With smart connectivity features, instructors can seamlessly share content from various devices, making presentations more engaging and effective.",
+    title: "Campus Café",
+    description: "Students gather at the Campus Café—a space built for thinkers, makers, and innovators to connect and recharge. Designed for conversation and collaboration, it’s where ideas flow freely and bonds are built over brews. After all, some of the world’s most successful startups began with a simple coffee chat—and we’re not leaving that to chance.",
     image: "https://images.unsplash.com/photo-1551818255-e6e10975bc17",
-    alt: "Advanced Projectors"
+    alt: "Campus Café"
   },
   {
     id: 5,
-    title: "Expert Faculty",
-    description: "Our instructors come from diverse industry backgrounds, bringing real-world experience and insights to the classroom. With a perfect blend of academic excellence and practical knowledge, they mentor students to develop both theoretical understanding and applied skills.",
+    title: "The Mentor Hub",
+    description: "Connect with experienced industry professionals and expert mentors who offer personalized support tailored to individual learning paths. The Mentor Hub facilitates 1:1 sessions, expert reviews, and career advice that accelerates both technical and professional growth. It's the space where doubts are cleared, confidence is nurtured, and ambitions are shaped into reality.",
     image: "https://images.unsplash.com/photo-1543269865-cbf427effbad",
-    alt: "Expert Faculty"
+    alt: "The Mentor Hub"
   },
   {
     id: 6,
-    title: "Engaging Learning Activities",
-    description: "Beyond traditional lectures, our curriculum includes hands-on workshops, hackathons, industry projects, and peer learning sessions. These activities help students apply theoretical knowledge to solve real problems while developing crucial soft skills like teamwork and communication.",
+    title: "The Play Arena",
+    description: "A space to step away from screens and into real play. From cricket to badminton, chess to table tennis—The Play Arena is where confidence grows, teams bond, and leadership begins to form—on the field and beyond. With regular matches, recreational sessions, and team activities, it brings balance to high-performance learning while energizing both mind and body.",
     image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644",
-    alt: "Learning Activities"
+    alt: "The Play Arena"
   },
   {
     id: 7,
-    title: "Project-Based Learning Approach",
-    description: "Our unique learning methodology emphasizes learning by doing. Students work on real industry projects from day one, receiving guidance from mentors and feedback from peers. This approach ensures that theory is immediately applied to practice, resulting in deeper understanding and skill mastery.",
+    title: "The Venture Hall",
+    description: "Venture Hall is where the entrepreneurial spirit of Gigaversity comes alive. This space hosts exclusive startup events, bringing together founders, investors, VCs, and industry leaders. Students pitch their startup ideas, receive expert feedback, and showcase live demos—getting real exposure, valuable insights, and potential investor attention to take their vision forward.",
     image: "https://images.unsplash.com/photo-1531482615713-2afd69097998",
-    alt: "Learning Approach"
+    alt: "The Venture Hall"
+  },
+  {
+    id: 8,
+    title: "Startup Mela → Innovation Connect",
+    description: "A vibrant monthly gathering where students, startup founders, co-founders, tech innovators, and industry professionals come together to network, pitch, and collaborate. Innovation Connect goes beyond traditional meetups—it's a launchpad for new ideas, early product demos, strategic partnerships, and community-driven innovation. Whether showcasing a new product, seeking co-founders, or discovering breakthrough technologies, this event fuels meaningful connections and inspires entrepreneurial growth across all levels of experience.",
+    image: "https://images.unsplash.com/photo-1531482615713-2afd69097998",
+    alt: "Startup Mela → Innovation Connect"
   }
 ];
 
@@ -546,7 +553,7 @@ const CampusPage = () => {
             Experience the ultimate learning environment designed for innovation, collaboration, and success
           </Typography>
           <Button variant="contained" className={classes.bookTourBtn} onClick={scrollToTop}>
-            Book a Campus Tour <ArrowForwardIcon />
+            Book a call with us today <ArrowForwardIcon />
           </Button>
         </Box>
       </Box>

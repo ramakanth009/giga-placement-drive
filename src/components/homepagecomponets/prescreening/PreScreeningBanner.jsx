@@ -4,6 +4,7 @@ import { makeStyles } from '@mui/styles';
 import { useNavigate } from 'react-router-dom';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import AssessmentIcon from '@mui/icons-material/Assessment';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 const useStyles = makeStyles({
   bannerContainer: {
@@ -24,65 +25,101 @@ const useStyles = makeStyles({
   },
   contentWrapper: {
     display: 'flex',
-    justifyContent: 'space-between',
+    flexDirection: 'column',
     alignItems: 'center',
     width: '90%',
     maxWidth: '1200px',
     margin: '0 auto',
     position: 'relative',
     zIndex: 2,
-    '@media (max-width: 960px)': {
-      flexDirection: 'column',
-      gap: '20px',
-      textAlign: 'center',
-    },
-  },
-  textContent: {
-    '@media (max-width: 960px)': {
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-    },
+    textAlign: 'center',
   },
   title: {
-    fontSize: '2.2rem !important',
+    fontSize: '2.5rem !important',
     fontWeight: 'bold !important',
     color: 'white !important',
-    marginBottom: '10px !important',
-    '& span': {
-      color: '#FFC614',
-    },
+    marginBottom: '15px !important',
     '@media (max-width: 1200px)': {
-      fontSize: '2rem !important',
+      fontSize: '2.2rem !important',
     },
     '@media (max-width: 960px)': {
-      fontSize: '1.8rem !important',
+      fontSize: '2rem !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '1.5rem !important',
+      fontSize: '1.6rem !important',
     },
   },
   subtitle: {
-    fontSize: '1.1rem !important',
+    fontSize: '1.2rem !important',
     color: 'rgba(255, 255, 255, 0.9) !important',
-    maxWidth: '600px',
-    marginBottom: '20px !important',
+    maxWidth: '700px',
+    marginBottom: '40px !important',
+    lineHeight: '1.5 !important',
     '@media (max-width: 1200px)': {
-      fontSize: '1rem !important',
-      maxWidth: '500px',
+      fontSize: '1.1rem !important',
+      maxWidth: '600px',
     },
     '@media (max-width: 960px)': {
-      fontSize: '0.95rem !important',
+      fontSize: '1rem !important',
       maxWidth: '100%',
+      marginBottom: '30px !important',
     },
+    '@media (max-width: 600px)': {
+      fontSize: '0.95rem !important',
+    },
+  },
+  targetAudienceGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(2, 1fr)',
+    gap: '20px',
+    maxWidth: '800px',
+    marginBottom: '40px',
+    '@media (max-width: 768px)': {
+      gridTemplateColumns: '1fr',
+      gap: '15px',
+      marginBottom: '30px',
+    },
+  },
+  targetItem: {
+    display: 'flex',
+    alignItems: 'flex-start',
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    borderRadius: '12px',
+    padding: '20px',
+    textAlign: 'left',
+    transition: 'all 0.3s ease',
+    '&:hover': {
+      backgroundColor: 'rgba(255, 255, 255, 0.15)',
+      transform: 'translateY(-2px)',
+    },
+    '@media (max-width: 600px)': {
+      padding: '15px',
+    },
+  },
+  checkIcon: {
+    color: '#FFC614 !important',
+    fontSize: '24px !important',
+    marginRight: '12px !important',
+    marginTop: '2px !important',
+    flexShrink: 0,
+    '@media (max-width: 600px)': {
+      fontSize: '20px !important',
+      marginRight: '10px !important',
+    },
+  },
+  targetText: {
+    color: 'white !important',
+    fontSize: '1rem !important',
+    fontWeight: '500 !important',
+    lineHeight: '1.4 !important',
     '@media (max-width: 600px)': {
       fontSize: '0.9rem !important',
     },
   },
-  takeTestButton: {
+  applyButton: {
     backgroundColor: '#FFC614 !important',
     color: '#2A2B6A !important',
-    padding: '12px 25px !important',
+    padding: '15px 35px !important',
     borderRadius: '50px !important',
     fontWeight: 'bold !important',
     fontSize: '1.1rem !important',
@@ -96,34 +133,29 @@ const useStyles = makeStyles({
       boxShadow: '0 10px 20px rgba(255, 198, 20, 0.4) !important',
     },
     '@media (max-width: 600px)': {
-      padding: '10px 20px !important',
+      padding: '12px 25px !important',
       fontSize: '1rem !important',
     },
   },
   iconContainer: {
-    width: '120px',
-    height: '120px',
+    width: '100px',
+    height: '100px',
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
     borderRadius: '50%',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     animation: '$pulse 2s infinite',
-    '@media (max-width: 1200px)': {
-      width: '100px',
-      height: '100px',
-    },
+    marginBottom: '20px',
     '@media (max-width: 600px)': {
       width: '80px',
       height: '80px',
+      marginBottom: '15px',
     },
   },
   icon: {
-    fontSize: '60px !important',
+    fontSize: '50px !important',
     color: '#FFC614',
-    '@media (max-width: 1200px)': {
-      fontSize: '50px !important',
-    },
     '@media (max-width: 600px)': {
       fontSize: '40px !important',
     },
@@ -171,51 +203,8 @@ const useStyles = makeStyles({
   buttonArrow: {
     marginLeft: '8px !important',
     transition: 'transform 0.3s ease',
-    '$takeTestButton:hover &': {
+    '$applyButton:hover &': {
       transform: 'translateX(3px)',
-    },
-  },
-  highPoints: {
-    display: 'flex',
-    gap: '20px',
-    marginTop: '20px',
-    '@media (max-width: 960px)': {
-      justifyContent: 'center',
-      flexWrap: 'wrap',
-      gap: '10px',
-    },
-    '@media (max-width: 600px)': {
-      gap: '8px',
-    },
-  },
-  point: {
-    display: 'flex',
-    alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-    borderRadius: '50px',
-    padding: '8px 16px',
-    '@media (max-width: 600px)': {
-      padding: '6px 12px',
-    },
-  },
-  pointText: {
-    color: 'white !important',
-    fontSize: '0.9rem !important',
-    fontWeight: '500 !important',
-    '@media (max-width: 600px)': {
-      fontSize: '0.8rem !important',
-    },
-  },
-  dot: {
-    width: '8px',
-    height: '8px',
-    backgroundColor: '#FFC614',
-    borderRadius: '50%',
-    marginRight: '8px',
-    '@media (max-width: 600px)': {
-      width: '6px',
-      height: '6px',
-      marginRight: '6px',
     },
   },
 });
@@ -229,12 +218,19 @@ const PreScreeningBanner = () => {
     setAnimated(true);
   }, []);
 
-  const handleTakeTest = () => {
+  const handleApplyNow = () => {
     // Redirect to pre-screening test page
     navigate('/pre-screening-test');
     // Alternative: if using an external link
     // window.open('https://gigaversity.in/prescreening_test', '_blank');
   };
+
+  const targetAudience = [
+    "Graduates before 2021 looking for a career reboot",
+    "Professionals wanting to switch into tech roles",
+    "Individuals with career gaps due to personal reasons",
+    "Passionate learners who never got the right tech start"
+  ];
 
   return (
     <Container maxWidth="xl">
@@ -249,45 +245,40 @@ const PreScreeningBanner = () => {
         <Box className={classes.backgroundPattern} />
         
         <Box className={classes.badge}>
-          <span>✓</span> IT Talent Assessment
+          <span>✓</span> Pre-Screener Test
         </Box>
         
         <Box className={classes.contentWrapper}>
-          <Box className={classes.textContent}>
-            <Typography className={classes.title}>
-              Fast-Track Your IT Career <span>Evaluation</span>
-            </Typography>
-            <Typography className={classes.subtitle}>
-              Take our comprehensive pre-screening test to assess your IT skills, motivation, and technical proficiency in just 15 minutes.
-            </Typography>
-            
-            <Button 
-              className={classes.takeTestButton}
-              onClick={handleTakeTest}
-              endIcon={<ArrowForwardIcon className={classes.buttonArrow} />}
-            >
-              Take Pre-Screening Test
-            </Button>
-            
-            <Box className={classes.highPoints}>
-              <Box className={classes.point}>
-                <Box className={classes.dot} />
-                <Typography className={classes.pointText}>15 Min Assessment</Typography>
-              </Box>
-              <Box className={classes.point}>
-                <Box className={classes.dot} />
-                <Typography className={classes.pointText}>Instant Results</Typography>
-              </Box>
-              <Box className={classes.point}>
-                <Box className={classes.dot} />
-                <Typography className={classes.pointText}>Career Insights</Typography>
-              </Box>
-            </Box>
-          </Box>
-          
           <Box className={classes.iconContainer}>
             <AssessmentIcon className={classes.icon} />
           </Box>
+          
+          <Typography className={classes.title}>
+            Gigaversity Pre-Screener Test
+          </Typography>
+          
+          <Typography className={classes.subtitle}>
+            Your first step towards a transformative tech education experience.
+          </Typography>
+          
+          <Box className={classes.targetAudienceGrid}>
+            {targetAudience.map((text, index) => (
+              <Box key={index} className={classes.targetItem}>
+                <CheckCircleIcon className={classes.checkIcon} />
+                <Typography className={classes.targetText}>
+                  {text}
+                </Typography>
+              </Box>
+            ))}
+          </Box>
+          
+          <Button 
+            className={classes.applyButton}
+            onClick={handleApplyNow}
+            endIcon={<ArrowForwardIcon className={classes.buttonArrow} />}
+          >
+            Evaluate Your Readiness
+          </Button>
         </Box>
       </Box>
     </Container>
