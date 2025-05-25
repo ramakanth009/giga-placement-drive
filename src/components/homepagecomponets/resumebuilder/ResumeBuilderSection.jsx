@@ -411,7 +411,22 @@ const ResumeBuilderSection = () => {
               }}
             >
               <Typography variant="h1" className={classes.title}>
-                Build Your <span className={classes.highlightText}>ATS-Optimized</span> Resume
+                Write your first career chapter with Gigaversity{" "}
+                <Typography
+                  component="span"
+                  variant="subtitle1"
+                  sx={{
+                    display: 'block',
+                    fontStyle: 'italic',
+                    fontWeight: 400,
+                    color: 'text.secondary',
+                    fontSize: { xs: '1.1rem', sm: '1.3rem' },
+                    mt: 1,
+                  }}
+                  className={classes.highlightText}
+                >
+                  Build your ATS Optimized Resume
+                </Typography>
               </Typography>
               
               <Typography variant="body1" className={classes.subtitle}>

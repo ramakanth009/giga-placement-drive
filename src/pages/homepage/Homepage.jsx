@@ -8,6 +8,7 @@ import OtherPrograms from "../../components/homepagecomponets/otherprograms/Othe
 import Faq from "../../components/homepagecomponets/faqhomepage/FaqHomepage";
 import ResumeBuilderSection from "../../components/homepagecomponets/resumebuilder/ResumeBuilderSection";
 import PreScreeningBanner from "../../components/homepagecomponets/prescreening/PreScreeningBanner";
+import CampusSection from "../../components/homepagecomponets/campussection/CampusSection";
 
 const Homepage = () => {
   return (
@@ -29,7 +30,7 @@ const Homepage = () => {
         
         {/* PreScreeningBanner Test */}
         <PreScreeningBanner />
-        
+        <CampusSection />
         {/* Hiring Partners as separate section */}
         <HiringPartners />
         

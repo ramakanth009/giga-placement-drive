@@ -725,7 +725,7 @@ const Footer = () => {
                     About Us
                   </MuiLink>
                 </li>
-                <li className={classes.linkItem}>
+                {/* <li className={classes.linkItem}>
                   <BusinessCenterIcon className={classes.linkIcon} />
                   <MuiLink
                     component={Link}
@@ -735,7 +735,7 @@ const Footer = () => {
                   >
                     Campus
                   </MuiLink>
-                </li>
+                </li> */}
                 <li className={classes.linkItem}>
                   <InfoIcon className={classes.linkIcon} />
                   <MuiLink
@@ -820,7 +820,7 @@ const Footer = () => {
                   </MuiLink>
                 </li> */}
 
-                <Typography className={classes.sectionTitle} style={{ marginTop: '30px' }}>
+                {/* <Typography className={classes.sectionTitle} style={{ marginTop: '30px' }}>
                   Full-Time Programs
                 </Typography>
                 <li className={classes.linkItem}>
@@ -844,7 +844,7 @@ const Footer = () => {
                   >
                     Data Science Full Time
                   </MuiLink>
-                </li>
+                </li> */}
               </ul>
             </Box>
 

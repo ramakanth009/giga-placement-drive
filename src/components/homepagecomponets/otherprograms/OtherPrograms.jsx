@@ -1144,7 +1144,7 @@ const OtherPrograms = () => {
                         className={classes.viewButton}
                         endIcon={<LaunchIcon />}
                       >
-                        Explore Program
+                        Launching soon
                       </Button>
                     </Box>
                   </Box>
@@ -1192,7 +1192,7 @@ const OtherPrograms = () => {
                         <Box className={classes.statItem}>
                           <PeopleAltOutlinedIcon className={classes.statIcon} />
                           <Typography className={classes.statText}>
-                            {program.students}+ students
+                            {program.students} Interested Students 
                           </Typography>
                         </Box>
                       </Box>

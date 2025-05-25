@@ -394,7 +394,7 @@ const HeroSection = ({
               component={Link} 
               to="/cart"
             >
-              Join Us Now
+              Launching Soon
             </Button>
 
             <Typography className={classes.eligibilityText}>

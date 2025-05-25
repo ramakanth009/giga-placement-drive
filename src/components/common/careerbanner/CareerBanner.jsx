@@ -200,7 +200,7 @@ const CareerBanner = () => {
             window.scrollTo({ top: 0, behavior: 'smooth' }); // Ensure scroll to top
           }}
         >
-          JOIN NOW FOR JUST ₹199
+          Launching Soon
         </Button>
         
         <Typography variant="body1" className={classes.supportText}>

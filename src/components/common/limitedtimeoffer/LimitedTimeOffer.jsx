@@ -1219,7 +1219,7 @@ const LimitedTimeOffer = () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' }); // Ensure scroll to top
               }}
             >
-              Apply Now
+              Launching Soon
             </Button>
           </Box>
         </Paper>
