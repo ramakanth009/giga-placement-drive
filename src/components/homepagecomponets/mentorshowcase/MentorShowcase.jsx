@@ -5,14 +5,13 @@ import { makeStyles } from '@mui/styles';
 const useStyles = makeStyles({
   section: {
     padding: '60px 0',
-    backgroundColor: '#f8f9ff',
     borderRadius: '12px',
     margin: '40px 0',
   },
   title: {
     fontSize: '2.2rem !important',
     fontWeight: '700 !important',
-    color: '#5465FF !important',
+    color: '#2A2B6A !important',
     textAlign: 'center',
     marginBottom: '16px !important',
     '@media (max-width: 600px)': {

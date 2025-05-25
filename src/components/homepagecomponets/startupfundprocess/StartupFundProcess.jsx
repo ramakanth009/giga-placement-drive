@@ -5,11 +5,37 @@ import { makeStyles } from '@mui/styles';
 const useStyles = makeStyles({
   section: {
     padding: '40px 0',
-    backgroundColor: '#111827',
-    color: 'white',
+    position: 'relative',
     overflow: 'hidden',
+    background: 'linear-gradient(180deg, #101138 0%, #1e1c44 100%)',
+    '&:before': {
+      content: '""',
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundImage: 
+        'linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px)',
+      backgroundSize: '30px 30px',
+      zIndex: 1,
+    },
+  },
+  glowEffect: {
+    position: 'absolute',
+    width: '500px',
+    height: '500px',
+    borderRadius: '50%',
+    zIndex: 1,
+    opacity: 0.3,
+    filter: 'blur(150px)',
+    background: '#8a5cf7',
+    top: '-200px',
+    right: '-100px',
   },
   container: {
+    position: 'relative',
+    zIndex: 2,
     textAlign: 'center',
   },
   title: {
@@ -138,6 +164,7 @@ const StartupFundProcess = () => {
 
   return (
     <Box className={classes.section}>
+      <Box className={classes.glowEffect} />
       <Container maxWidth="lg" className={classes.container}>
         <Typography variant="h2" className={classes.title}>
           Get Access to the Gigaversity ₹1 Lakh Startup Fund

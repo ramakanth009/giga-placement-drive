@@ -10,7 +10,7 @@ const useStyles = makeStyles({
   section: {
     padding: '80px 0',
     position: 'relative',
-    backgroundColor: '#f8f9ff',
+    backgroundColor: 'transparent',
     overflow: 'hidden',
     '@media (max-width: 960px)': {
       padding: '60px 0',
@@ -21,7 +21,7 @@ const useStyles = makeStyles({
   },
   container: {
     position: 'relative',
-    zIndex: 2,
+    zIndex: 3,
   },
   header: {
     textAlign: 'center',

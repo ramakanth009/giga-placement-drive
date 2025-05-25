@@ -11,7 +11,7 @@ import EventIcon from '@mui/icons-material/Event';
 const useStyles = makeStyles({
   section: {
     padding: '80px 0',
-    backgroundColor: '#ffffff',
+    backgroundColor: 'transparent',
     position: 'relative',
     overflow: 'hidden',
     '@media (max-width: 1200px)': {
@@ -30,20 +30,9 @@ const useStyles = makeStyles({
       padding: '30px 0',
     },
   },
-  backgroundPattern: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    backgroundImage: 'radial-gradient(rgba(42, 43, 106, 0.05) 2px, transparent 2px)',
-    backgroundSize: '40px 40px',
-    opacity: 0.6,
-    zIndex: 1,
-  },
   container: {
     position: 'relative',
-    zIndex: 2,
+    zIndex: 3,
   },
   titleContainer: {
     textAlign: 'center',
@@ -389,7 +378,6 @@ const CampusSection = () => {
 
   return (
     <Box className={classes.section}>
-      <Box className={classes.backgroundPattern} />
       <Box className={`${classes.decorativeElement} ${classes.topRightDecor}`} />
       <Box className={`${classes.decorativeElement} ${classes.bottomLeftDecor}`} />
       
