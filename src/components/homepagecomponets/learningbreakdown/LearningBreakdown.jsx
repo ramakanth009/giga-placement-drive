@@ -8,9 +8,9 @@ import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 
 const useStyles = makeStyles({
   section: {
-    padding: '40px 0',
+    padding: '80px 0',
     position: 'relative',
-    backgroundColor: 'transparent',
+    background: 'linear-gradient(135deg, #f8fafc 0%, #eef4ff 100%)',
     overflow: 'hidden',
     '@media (max-width: 960px)': {
       padding: '60px 0',
@@ -25,212 +25,302 @@ const useStyles = makeStyles({
   },
   header: {
     textAlign: 'center',
-    marginBottom: '50px',
+    marginBottom: '80px',
     '@media (max-width: 600px)': {
-      marginBottom: '30px',
+      marginBottom: '50px',
     },
   },
   title: {
-    fontSize: '2.5rem !important',
-    fontWeight: 'bold !important',
-    color: '#2A2B6A !important',
-    marginBottom: '16px !important',
+    fontSize: '3rem !important',
+    fontWeight: '700 !important',
+    color: '#1e293b !important',
+    marginBottom: '20px !important',
+    background: 'linear-gradient(135deg, #2A2B6A 0%, #4338ca 100%)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    backgroundClip: 'text',
     '@media (max-width: 960px)': {
-      fontSize: '2.2rem !important',
+      fontSize: '2.5rem !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '1.8rem !important',
+      fontSize: '2rem !important',
     },
   },
   subtitle: {
-    fontSize: '1.1rem !important',
-    color: '#666 !important',
-    maxWidth: '800px',
+    fontSize: '1.2rem !important',
+    color: '#64748b !important',
+    maxWidth: '600px',
     margin: '0 auto !important',
     '@media (max-width: 600px)': {
       fontSize: '1rem !important',
       maxWidth: '90%',
     },
   },
-  pathway: {
+  timelineContainer: {
     position: 'relative',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'stretch',
-    '@media (max-width: 960px)': {
-      flexDirection: 'column',
-      alignItems: 'center',
+    maxWidth: '1000px',
+    margin: '0 auto',
+  },
+  timelineLine: {
+    position: 'absolute',
+    left: '50%',
+    top: '0',
+    bottom: '0',
+    width: '4px',
+    background: 'linear-gradient(180deg, #2A2B6A 0%, #4338ca 50%, #FFC614 100%)',
+    borderRadius: '2px',
+    transform: 'translateX(-50%)',
+    '@media (max-width: 768px)': {
+      left: '30px',
+      transform: 'none',
     },
   },
-  pathwayLine: {
-    position: 'absolute',
-    top: '80px',
-    left: '0',
-    right: '0',
-    height: '6px',
-    background: 'linear-gradient(90deg, #2A2B6A 0%, #4A63E7 50%, #FFC614 100%)',
-    borderRadius: '6px',
-    zIndex: 1,
-    '@media (max-width: 960px)': {
-      top: '0',
-      bottom: '0',
-      left: '80px',
-      right: 'auto',
-      width: '6px',
-      height: 'auto',
+  timelineItem: {
+    position: 'relative',
+    marginBottom: '60px',
+    '&:last-child': {
+      marginBottom: '0',
     },
-    '@media (max-width: 600px)': {
-      left: '60px',
+    '@media (max-width: 768px)': {
+      marginBottom: '40px',
+    },
+  },
+  timelineItemLeft: {
+    paddingRight: '60px',
+    textAlign: 'right',
+    '@media (max-width: 768px)': {
+      paddingRight: '0',
+      paddingLeft: '80px',
+      textAlign: 'left',
+    },
+  },
+  timelineItemRight: {
+    paddingLeft: '60px',
+    textAlign: 'left',
+    '@media (max-width: 768px)': {
+      paddingLeft: '80px',
     },
   },
   phaseCard: {
-    width: 'calc(25% - 24px)',
-    padding: '24px',
-    borderRadius: '16px !important',
-    position: 'relative',
-    zIndex: 2,
+    padding: '30px',
+    borderRadius: '20px !important',
     backgroundColor: 'white !important',
-    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.08) !important',
-    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-    display: 'flex',
-    flexDirection: 'column',
-    height: '100%',
-    '&:hover': {
-      transform: 'translateY(-10px)',
-      boxShadow: '0 15px 40px rgba(0, 0, 0, 0.12) !important',
-    },
-    '@media (max-width: 1200px)': {
-      padding: '20px',
-    },
-    '@media (max-width: 960px)': {
-      width: 'calc(100% - 90px)',
-      marginLeft: '90px',
-      marginBottom: '30px',
-      minHeight: 'auto',
-    },
-    '@media (max-width: 600px)': {
-      width: 'calc(100% - 70px)',
-      marginLeft: '70px',
-      padding: '16px',
-    },
-  },
-  phaseIconContainer: {
-    width: '60px',
-    height: '60px',
-    borderRadius: '50%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#F0F3FF',
-    marginBottom: '16px',
+    boxShadow: '0 20px 40px rgba(0, 0, 0, 0.08) !important',
+    border: '1px solid rgba(148, 163, 184, 0.1)',
+    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
     position: 'relative',
-    marginTop: '-50px',
-    border: '4px solid white',
-    boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1)',
-    '@media (max-width: 1200px)': {
-      width: '55px',
-      height: '55px',
+    overflow: 'hidden',
+    '&:hover': {
+      transform: 'translateY(-8px) scale(1.02)',
+      boxShadow: '0 25px 50px rgba(42, 43, 106, 0.15) !important',
     },
-    '@media (max-width: 960px)': {
+    '&::before': {
+      content: '""',
       position: 'absolute',
-      left: '-90px',
-      top: '20px',
-      marginTop: '0',
+      top: '0',
+      left: '0',
+      right: '0',
+      height: '4px',
+      background: 'linear-gradient(90deg, #2A2B6A 0%, #FFC614 100%)',
     },
-    '@media (max-width: 600px)': {
-      width: '50px',
-      height: '50px',
-      left: '-70px',
-    },
-  },
-  phaseIcon: {
-    fontSize: '28px !important',
-    color: '#2A2B6A',
-    '@media (max-width: 600px)': {
-      fontSize: '24px !important',
+    '@media (max-width: 768px)': {
+      padding: '24px',
+      borderRadius: '16px !important',
     },
   },
   phaseNumber: {
     position: 'absolute',
-    top: '-5px',
-    right: '-5px',
-    width: '24px',
-    height: '24px',
+    top: '50%',
+    transform: 'translateY(-50%)',
+    width: '50px',
+    height: '50px',
     borderRadius: '50%',
-    backgroundColor: '#FFC614',
-    color: '#2A2B6A',
+    background: 'linear-gradient(135deg, #2A2B6A 0%, #4338ca 100%)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    color: 'white',
     fontWeight: 'bold',
-    fontSize: '14px',
-    boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
-    '@media (max-width: 600px)': {
-      width: '20px',
-      height: '20px',
-      fontSize: '12px',
+    fontSize: '1.2rem',
+    boxShadow: '0 8px 20px rgba(42, 43, 106, 0.3)',
+    border: '4px solid white',
+    zIndex: 2,
+    '@media (max-width: 768px)': {
+      left: '5px',
+      width: '40px',
+      height: '40px',
+      fontSize: '1rem',
+    },
+  },
+  phaseNumberLeft: {
+    right: '-85px',
+    '@media (max-width: 768px)': {
+      right: 'auto',
+      left: '5px',
+    },
+  },
+  phaseNumberRight: {
+    left: '-85px',
+    '@media (max-width: 768px)': {
+      left: '5px',
+    },
+  },
+  phaseHeader: {
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: '20px',
+    '@media (max-width: 768px)': {
+      marginBottom: '16px',
+    },
+  },
+  phaseHeaderLeft: {
+    justifyContent: 'flex-end',
+    '@media (max-width: 768px)': {
+      justifyContent: 'flex-start',
+    },
+  },
+  phaseHeaderRight: {
+    justifyContent: 'flex-start',
+  },
+  iconContainer: {
+    width: '60px',
+    height: '60px',
+    borderRadius: '16px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: '20px',
+    transition: 'all 0.3s ease',
+    '@media (max-width: 768px)': {
+      width: '50px',
+      height: '50px',
+      marginRight: '16px',
+    },
+  },
+  iconContainerLeft: {
+    order: 2,
+    marginRight: '0',
+    marginLeft: '20px',
+    '@media (max-width: 768px)': {
+      order: 0,
+      marginLeft: '0',
+      marginRight: '16px',
+    },
+  },
+  phaseIcon: {
+    fontSize: '28px !important',
+    color: 'white',
+    '@media (max-width: 768px)': {
+      fontSize: '24px !important',
+    },
+  },
+  phaseHeaderText: {
+    flex: 1,
+  },
+  phaseHeaderTextLeft: {
+    order: 1,
+    textAlign: 'right',
+    '@media (max-width: 768px)': {
+      order: 1,
+      textAlign: 'left',
     },
   },
   phaseTitle: {
-    fontSize: '1.25rem !important',
-    fontWeight: 'bold !important',
-    color: '#2A2B6A !important',
+    fontSize: '1.5rem !important',
+    fontWeight: '700 !important',
+    color: '#1e293b !important',
     marginBottom: '8px !important',
-    '@media (max-width: 600px)': {
-      fontSize: '1.1rem !important',
+    '@media (max-width: 768px)': {
+      fontSize: '1.3rem !important',
     },
   },
   phaseMonths: {
-    fontSize: '0.9rem !important',
+    fontSize: '1rem !important',
     fontWeight: '600 !important',
-    color: '#FFC614 !important',
-    marginBottom: '12px !important',
-    display: 'inline-block',
-    padding: '4px 12px',
-    borderRadius: '20px',
-    backgroundColor: 'rgba(255, 198, 20, 0.1)',
-    '@media (max-width: 600px)': {
-      fontSize: '0.8rem !important',
-      padding: '3px 10px',
+    color: '#2A2B6A !important',
+    '@media (max-width: 768px)': {
+      fontSize: '0.9rem !important',
     },
   },
   phaseDescription: {
-    fontSize: '0.95rem !important',
-    color: '#666 !important',
-    lineHeight: '1.6 !important',
-    '@media (max-width: 600px)': {
-      fontSize: '0.9rem !important',
-      lineHeight: '1.5 !important',
+    fontSize: '1rem !important',
+    color: '#64748b !important',
+    lineHeight: '1.7 !important',
+    '@media (max-width: 768px)': {
+      fontSize: '0.95rem !important',
+      lineHeight: '1.6 !important',
+    },
+  },
+  decorativeBlob: {
+    position: 'absolute',
+    borderRadius: '50%',
+    opacity: 0.1,
+    zIndex: 1,
+  },
+  blob1: {
+    width: '300px',
+    height: '300px',
+    background: 'linear-gradient(135deg, #2A2B6A 0%, #4338ca 100%)',
+    top: '100px',
+    right: '-150px',
+    animation: '$float 8s ease-in-out infinite',
+  },
+  blob2: {
+    width: '250px',
+    height: '250px',
+    background: 'linear-gradient(135deg, #FFC614 0%, #f59e0b 100%)',
+    bottom: '100px',
+    left: '-125px',
+    animation: '$float 8s ease-in-out infinite 4s',
+  },
+  '@keyframes float': {
+    '0%, 100%': {
+      transform: 'translateY(0) rotate(0deg)',
+    },
+    '50%': {
+      transform: 'translateY(-20px) rotate(10deg)',
     },
   },
   phaseIconColors: {
     0: {
-      bg: '#E6F7FF',
-      color: '#0288D1',
+      bg: 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)',
     },
     1: {
-      bg: '#FFF3E0',
-      color: '#FF9800',
+      bg: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
     },
     2: {
-      bg: '#E8F5E9',
-      color: '#4CAF50',
+      bg: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
     },
     3: {
-      bg: '#F3E5F5',
-      color: '#9C27B0',
+      bg: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)',
     },
   },
 });
 
 const LearningBreakdown = () => {
   const classes = useStyles();
-  const isMobile = useMediaQuery('(max-width:960px)');
-  const [animated, setAnimated] = useState(false);
-  
+  const isMobile = useMediaQuery('(max-width:768px)');
+  const [visibleItems, setVisibleItems] = useState([]);
+
   useEffect(() => {
-    setAnimated(true);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = parseInt(entry.target.dataset.index, 10);
+            setVisibleItems(prev => [...new Set([...prev, index])]);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const items = document.querySelectorAll('[data-timeline-item]');
+    items.forEach((item) => observer.observe(item));
+
+    return () => {
+      items.forEach((item) => observer.unobserve(item));
+    };
   }, []);
 
   const phases = [
@@ -266,6 +356,9 @@ const LearningBreakdown = () => {
 
   return (
     <Box className={classes.section}>
+      <Box className={classes.decorativeBlob} sx={classes.blob1} />
+      <Box className={classes.decorativeBlob} sx={classes.blob2} />
+      
       <Container maxWidth="lg" className={classes.container}>
         <Box className={classes.header}>
           <Typography variant="h2" className={classes.title}>
@@ -276,45 +369,62 @@ const LearningBreakdown = () => {
           </Typography>
         </Box>
 
-        <Box className={classes.pathway}>
-          <Box className={classes.pathwayLine}></Box>
+        <Box className={classes.timelineContainer}>
+          <Box className={classes.timelineLine} />
           
-          {phases.map((phase, index) => (
-            <Paper 
-              key={index} 
-              className={classes.phaseCard}
-              sx={{
-                opacity: animated ? 1 : 0,
-                transform: animated ? (isMobile ? 'translateX(0)' : 'translateY(0)') : (isMobile ? 'translateX(-30px)' : 'translateY(30px)'),
-                transition: 'opacity 0.6s ease, transform 0.6s ease',
-                transitionDelay: `${index * 0.2}s`,
-              }}
-              elevation={0}
-            >
-              <Box 
-                className={classes.phaseIconContainer}
-                sx={{ 
-                  backgroundColor: classes.phaseIconColors[index].bg,
-                  '& .MuiSvgIcon-root': { color: classes.phaseIconColors[index].color }
+          {phases.map((phase, index) => {
+            const isLeft = index % 2 === 0;
+            const isVisible = visibleItems.includes(index);
+            
+            return (
+              <Box
+                key={index}
+                className={`${classes.timelineItem} ${isLeft ? classes.timelineItemLeft : classes.timelineItemRight}`}
+                data-timeline-item
+                data-index={index}
+                sx={{
+                  opacity: isVisible ? 1 : 0,
+                  transform: isVisible 
+                    ? 'translateX(0)' 
+                    : `translateX(${isLeft && !isMobile ? '-50px' : '50px'})`,
+                  transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
+                  transitionDelay: `${index * 0.2}s`,
                 }}
               >
-                {phase.icon}
-                <Box className={classes.phaseNumber}>{phase.number}</Box>
+                <Paper className={classes.phaseCard} elevation={0}>
+                  <Box 
+                    className={`${classes.phaseNumber} ${isLeft ? classes.phaseNumberLeft : classes.phaseNumberRight}`}
+                  >
+                    {phase.number}
+                  </Box>
+                  
+                  <Box className={`${classes.phaseHeader} ${isLeft ? classes.phaseHeaderLeft : classes.phaseHeaderRight}`}>
+                    <Box 
+                      className={`${classes.iconContainer} ${isLeft ? classes.iconContainerLeft : ''}`}
+                      sx={{ 
+                        background: classes.phaseIconColors[index].bg,
+                      }}
+                    >
+                      {phase.icon}
+                    </Box>
+                    
+                    <Box className={`${classes.phaseHeaderText} ${isLeft ? classes.phaseHeaderTextLeft : ''}`}>
+                      <Typography className={classes.phaseTitle}>
+                        {phase.title}
+                      </Typography>
+                      <Typography className={classes.phaseMonths}>
+                        {phase.months}
+                      </Typography>
+                    </Box>
+                  </Box>
+                  
+                  <Typography className={classes.phaseDescription}>
+                    {phase.description}
+                  </Typography>
+                </Paper>
               </Box>
-              
-              <Typography className={classes.phaseTitle}>
-                {phase.title}
-              </Typography>
-              
-              <Typography className={classes.phaseMonths}>
-                {phase.months}
-              </Typography>
-              
-              <Typography className={classes.phaseDescription}>
-                {phase.description}
-              </Typography>
-            </Paper>
-          ))}
+            );
+          })}
         </Box>
       </Container>
     </Box>

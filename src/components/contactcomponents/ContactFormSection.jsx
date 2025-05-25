@@ -575,7 +575,7 @@ const ContactFormSection = () => {
               <Box className={classes.contactInfoItem}>
                 <PhoneIcon className={classes.contactIcon} />
                 <Typography className={classes.contactText}>
-                  <Link href="tel:+919849048999">9849048999</Link>
+                  <Link href="tel:+919849048999">8062179357</Link>
                 </Typography>
               </Box>
 
@@ -598,7 +598,7 @@ const ContactFormSection = () => {
               <Box className={classes.contactInfoItem}>
                 <LocationOnIcon className={classes.contactIcon} />
                 <Typography className={classes.contactText}>
-                  The Headquarters, Dwaraka Pride, Hitech City, 500018, Hyderabad, Telangana, India
+                  The Headquarters, Hitech city, Hyderabad, Telangana 
                 </Typography>
               </Box>
             </Box>
