@@ -10,7 +10,7 @@ import TimelineIcon from '@mui/icons-material/Timeline';
 
 const useStyles = makeStyles({
   section: {
-    padding: '80px 0',
+    padding: '20px 0',
     minHeight: '100vh',
     position: 'relative',
     overflow: 'hidden',

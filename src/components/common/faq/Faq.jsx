@@ -6,7 +6,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const useStyles = makeStyles({
   faqContainer: {
-    padding: '60px 40px',
+    padding: '20px 40px',
     maxWidth: '100%',
     margin: '0 auto',
     boxSizing: 'border-box',

@@ -8,7 +8,7 @@ import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 
 const useStyles = makeStyles({
   section: {
-    padding: '60px 0',
+    padding: '50px 0',
     position: 'relative',
     overflow: 'hidden',
     background: 'linear-gradient(135deg, #f6f9ff 0%, #edf5ff 100%)',

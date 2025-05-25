@@ -4,7 +4,7 @@ import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles({
   section: {
-    padding: '60px 0',
+    padding: '20px 0',
     borderRadius: '12px',
     margin: '40px 0',
   },

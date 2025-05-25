@@ -8,7 +8,7 @@ import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 
 const useStyles = makeStyles({
   section: {
-    padding: '80px 0',
+    padding: '40px 0',
     position: 'relative',
     backgroundColor: 'transparent',
     overflow: 'hidden',
