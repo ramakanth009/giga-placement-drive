@@ -13,6 +13,7 @@ import LearningBreakdown from "../../components/homepagecomponets/learningbreakd
 import StartupFundProcess from "../../components/homepagecomponets/startupfundprocess/StartupFundProcess";
 import TechFutureSection from "../../components/homepagecomponets/techfuturesection/TechFutureSection";
 import PlacementPortalSection from "../../components/homepagecomponets/placementportalsection/PlacementPortalSection";
+import MentorShowcase from "../../components/homepagecomponets/mentorshowcase/MentorShowcase";
 
 const Homepage = () => {
   return (
@@ -38,6 +39,7 @@ const Homepage = () => {
         <HiringPartners />
         <StartupFundProcess />
         <TechFutureSection />
+        <MentorShowcase />
         <PlacementPortalSection />
         <Faq />
       </Box>

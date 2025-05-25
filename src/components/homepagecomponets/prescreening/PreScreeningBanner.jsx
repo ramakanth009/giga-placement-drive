@@ -5,11 +5,15 @@ import { useNavigate } from 'react-router-dom';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import SchoolIcon from '@mui/icons-material/School';
+import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
+import RestartAltIcon from '@mui/icons-material/RestartAlt';
+import EmojiObjectsIcon from '@mui/icons-material/EmojiObjects';
 
 const useStyles = makeStyles({
   bannerContainer: {
     position: 'relative',
-    padding: '40px 0',
+    padding: '20px 0',
     overflow: 'hidden',
     background: 'linear-gradient(135deg, #2A2B6A 0%, #3c3e8f 100%)',
     borderRadius: '15px',
@@ -70,10 +74,14 @@ const useStyles = makeStyles({
   },
   targetAudienceGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: '20px',
-    maxWidth: '800px',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: '15px',
+    maxWidth: '1200px',
     marginBottom: '40px',
+    '@media (max-width: 1200px)': {
+      gridTemplateColumns: 'repeat(2, 1fr)',
+      maxWidth: '800px',
+    },
     '@media (max-width: 768px)': {
       gridTemplateColumns: '1fr',
       gap: '15px',
@@ -85,7 +93,7 @@ const useStyles = makeStyles({
     alignItems: 'flex-start',
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
     borderRadius: '12px',
-    padding: '20px',
+    padding: '15px',
     textAlign: 'left',
     transition: 'all 0.3s ease',
     '&:hover': {
@@ -93,7 +101,7 @@ const useStyles = makeStyles({
       transform: 'translateY(-2px)',
     },
     '@media (max-width: 600px)': {
-      padding: '15px',
+      padding: '12px',
     },
   },
   checkIcon: {
@@ -182,24 +190,7 @@ const useStyles = makeStyles({
       boxShadow: '0 0 0 0 rgba(255, 198, 20, 0)',
     },
   },
-  badge: {
-    position: 'absolute',
-    top: '15px',
-    right: '15px',
-    backgroundColor: 'rgba(255, 255, 255, 0.15) !important',
-    borderRadius: '30px !important',
-    padding: '8px 16px !important',
-    color: 'white !important',
-    fontSize: '0.9rem !important',
-    fontWeight: 'bold !important',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '5px',
-    '@media (max-width: 600px)': {
-      fontSize: '0.8rem !important',
-      padding: '6px 12px !important',
-    },
-  },
+ 
   buttonArrow: {
     marginLeft: '8px !important',
     transition: 'transform 0.3s ease',
@@ -225,11 +216,23 @@ const PreScreeningBanner = () => {
     // window.open('https://gigaversity.in/prescreening_test', '_blank');
   };
 
-  const targetAudience = [
-    "Graduates before 2021 looking for a career reboot",
-    "Professionals wanting to switch into tech roles",
-    "Individuals with career gaps due to personal reasons",
-    "Passionate learners who never got the right tech start"
+  const targetAudienceWithIcons = [
+    {
+      text: "Graduates before 2021 looking for a career reboot",
+      icon: SchoolIcon
+    },
+    {
+      text: "Professionals wanting to switch into tech roles",
+      icon: BusinessCenterIcon
+    },
+    {
+      text: "Individuals with career gaps due to personal reasons",
+      icon: RestartAltIcon
+    },
+    {
+      text: "Passionate learners who never got the right tech start",
+      icon: EmojiObjectsIcon
+    }
   ];
 
   return (
@@ -243,10 +246,6 @@ const PreScreeningBanner = () => {
         }}
       >
         <Box className={classes.backgroundPattern} />
-        
-        <Box className={classes.badge}>
-          <span>✓</span> Pre-Screener Test
-        </Box>
         
         <Box className={classes.contentWrapper}>
           <Box className={classes.iconContainer}>
@@ -262,9 +261,9 @@ const PreScreeningBanner = () => {
           </Typography>
           
           <Box className={classes.targetAudienceGrid}>
-            {targetAudience.map((text, index) => (
+            {targetAudienceWithIcons.map(({ text, icon: IconComponent }, index) => (
               <Box key={index} className={classes.targetItem}>
-                <CheckCircleIcon className={classes.checkIcon} />
+                <IconComponent className={classes.checkIcon} />
                 <Typography className={classes.targetText}>
                   {text}
                 </Typography>
