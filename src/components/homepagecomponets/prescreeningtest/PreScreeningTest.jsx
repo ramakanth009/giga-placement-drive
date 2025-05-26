@@ -279,7 +279,7 @@ const PreScreeningTest = () => {
     
     try {
       // API endpoint for submission
-      const response = await fetch('http://127.0.0.1:5000/prescreening_test', {
+      const response = await fetch('https://gigaversity.in/screening_test/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

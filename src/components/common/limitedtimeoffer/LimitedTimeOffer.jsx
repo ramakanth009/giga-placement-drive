@@ -1047,44 +1047,30 @@ const CountdownTimer = () => {
     seconds: 0
   });
 
-  // Initialize with all zeros as requested
-  
   useEffect(() => {
+    const calculateTimeLeft = () => {
+      const targetDate = new Date(2023, 8, 30, 23, 59, 59); // September 30th (month is 0-based)
+      const now = new Date();
+      const difference = targetDate - now;
+
+      if (difference <= 0) {
+        return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+      }
+
+      return {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60)
+      };
+    };
+
     const timer = setInterval(() => {
-      setTimeLeft(prev => {
-        let { days, hours, minutes, seconds } = prev;
-        
-        if (seconds > 0) {
-          seconds -= 1;
-        } else {
-          seconds = 59;
-          
-          if (minutes > 0) {
-            minutes -= 1;
-          } else {
-            minutes = 59;
-            
-            if (hours > 0) {
-              hours -= 1;
-            } else {
-              hours = 23;
-              
-              if (days > 0) {
-                days -= 1;
-              } else {
-                // Timer completed - reset to zeros as requested
-                days = 0;
-                hours = 0;
-                minutes = 0;
-                seconds = 0;
-              }
-            }
-          }
-        }
-        
-        return { days, hours, minutes, seconds };
-      });
+      setTimeLeft(calculateTimeLeft());
     }, 1000);
+    
+    // Initial calculation
+    setTimeLeft(calculateTimeLeft());
     
     return () => clearInterval(timer);
   }, []);
@@ -1169,26 +1155,27 @@ const LimitedTimeOffer = () => {
             <Box className={classes.leftColumn}>
               <Box className={classes.priceBox}>
                 <Box className={classes.priceBadge}>Special Offer</Box>
-                <Typography className={classes.regularPrice}>
+                {/* <Typography className={classes.regularPrice}>
                   Regular Price: <span>₹499</span>
-                </Typography>
-                <Chip 
+                </Typography> */}
+                {/* <Chip 
                   label="Save ₹300" 
                   size="small" 
                   className={classes.discountChip}
-                />
+                /> */}
                 
                 <Typography className={classes.limitedPrice}>
-                  Limited Time Price - INR <span className={classes.priceHighlight}>199</span>
+                  Pre-registration starts at<span className={classes.priceHighlight}>₹0</span>
                 </Typography>
-                
+                <Typography className={classes.limitedPrice}>
+                  Prebook your slot now</Typography>
                 <CountdownTimer />
               </Box>
               
               <Box className={classes.socialProof}>
                 <PeopleIcon className={classes.socialProofIcon} />
                 <Typography className={classes.socialProofText}>
-                  <strong>253+ students</strong> enrolled in the last week
+                  <strong>200+ students</strong> showed interest in this program
                 </Typography>
               </Box>
             </Box>
