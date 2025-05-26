@@ -31,7 +31,6 @@ const Homepage = () => {
         <Hero />
         <ResumeBuilderSection />
         {/* PreScreeningBanner Test */}
-        <PreScreeningBanner />
         <CampusSection />
         {/* Hiring Partners as separate section */}
         <OtherPrograms />
@@ -41,6 +40,7 @@ const Homepage = () => {
         <TechFutureSection />
         <MentorShowcase />
         <PlacementPortalSection />
+        <PreScreeningBanner />
         <Faq />
       </Box>
     </Box>
