@@ -1046,17 +1046,60 @@ const CountdownTimer = () => {
     minutes: 0,
     seconds: 0
   });
-
+  
+  // Get or set the end date from localStorage to ensure persistence
   useEffect(() => {
+    const getEndDate = () => {
+      // Check if we have an end date in localStorage
+      const storedEndDate = localStorage.getItem('offerEndDate');
+      
+      if (storedEndDate) {
+        const endDate = new Date(parseInt(storedEndDate, 10));
+        const now = new Date();
+        
+        // If the stored date is in the past, create a new one
+        if (endDate <= now) {
+          return setNewEndDate();
+        }
+        
+        return endDate;
+      } else {
+        // No stored date, create a new one
+        return setNewEndDate();
+      }
+    };
+    
+    const setNewEndDate = () => {
+      // Set end date to 7 days from now
+      const now = new Date();
+      const endDate = new Date(now);
+      endDate.setDate(now.getDate() + 7);
+      
+      // Store in localStorage for persistence
+      localStorage.setItem('offerEndDate', endDate.getTime().toString());
+      
+      return endDate;
+    };
+    
+    const endDate = getEndDate();
+    
     const calculateTimeLeft = () => {
-      const targetDate = new Date(2023, 8, 30, 23, 59, 59); // September 30th (month is 0-based)
+      const now = new Date();
+      const difference = endDate - now;
+      
+      if (difference <= 0) {
+        // If time is up, set a new end date
+        const newEndDate = setNewEndDate();
+        return calculateTimeRemaining(newEndDate);
+      }
+      
+      return calculateTimeRemaining(endDate);
+    };
+    
+    const calculateTimeRemaining = (targetDate) => {
       const now = new Date();
       const difference = targetDate - now;
-
-      if (difference <= 0) {
-        return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-      }
-
+      
       return {
         days: Math.floor(difference / (1000 * 60 * 60 * 24)),
         hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
@@ -1064,7 +1107,7 @@ const CountdownTimer = () => {
         seconds: Math.floor((difference / 1000) % 60)
       };
     };
-
+    
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
