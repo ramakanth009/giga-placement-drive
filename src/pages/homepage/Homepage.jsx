@@ -14,6 +14,7 @@ import StartupFundProcess from "../../components/homepagecomponets/startupfundpr
 import TechFutureSection from "../../components/homepagecomponets/techfuturesection/TechFutureSection";
 import PlacementPortalSection from "../../components/homepagecomponets/placementportalsection/PlacementPortalSection";
 import MentorShowcase from "../../components/homepagecomponets/mentorshowcase/MentorShowcase";
+import ContactDetailsForm from "../../components/common/contactform/ContactDetailsForm";
 
 const Homepage = () => {
   return (
@@ -41,6 +42,7 @@ const Homepage = () => {
         <MentorShowcase />
         <PlacementPortalSection />
         <PreScreeningBanner />
+        <ContactDetailsForm />
         <Faq />
       </Box>
     </Box>
