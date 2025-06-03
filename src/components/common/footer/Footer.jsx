@@ -863,7 +863,7 @@ const Footer = () => {
               <Box className={classes.contactItem}>
                 <PhoneIcon className={classes.contactIcon} />
                 <Typography className={classes.contactText}>
-                  9849048999
+                  8062179357
                 </Typography>
               </Box>
               <Box className={classes.contactItem}>

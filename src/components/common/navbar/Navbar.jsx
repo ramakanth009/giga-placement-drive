@@ -323,7 +323,7 @@ const Navbar = () => {
               </Box>
 
               {/* Data Science Dropdown */}
-              <Box className={classes.dropdown}>
+              {/* <Box className={classes.dropdown}>
                 <Button
                   className={`${classes.navLink} ${
                     currentPath.includes("/datascience") ||
@@ -353,7 +353,7 @@ const Navbar = () => {
                     Data Science Program
                   </Link>
                 </Box>
-              </Box>
+              </Box> */}
               <Button
                 className={`${classes.navLink} ${
                   currentPath === "/campus" ? classes.active : ""

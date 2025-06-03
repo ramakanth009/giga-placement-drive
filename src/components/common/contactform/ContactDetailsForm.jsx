@@ -18,6 +18,7 @@ import SendIcon from '@mui/icons-material/Send';
 
 const useStyles = makeStyles({
   formContainer: {
+    margin: '0 auto',  // Add this line to center horizontally
     padding: '30px',
     maxWidth: '700px',
     borderRadius: '16px !important',

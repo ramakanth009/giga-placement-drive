@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Typography, Button, Container } from '@mui/material';
+import { Box, Typography, Button, Container, Grid } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { useNavigate } from 'react-router-dom';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
@@ -9,6 +9,7 @@ import SchoolIcon from '@mui/icons-material/School';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import EmojiObjectsIcon from '@mui/icons-material/EmojiObjects';
+import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 
 const useStyles = makeStyles({
   bannerContainer: {
@@ -73,19 +74,48 @@ const useStyles = makeStyles({
     },
   },
   targetAudienceGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(4, 1fr)',
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
     gap: '15px',
+    width: '100%',
     maxWidth: '1200px',
     marginBottom: '40px',
     '@media (max-width: 1200px)': {
-      gridTemplateColumns: 'repeat(2, 1fr)',
-      maxWidth: '800px',
+      maxWidth: '900px',
+    },
+    '@media (max-width: 960px)': {
+      gap: '12px',
+      maxWidth: '700px',
     },
     '@media (max-width: 768px)': {
-      gridTemplateColumns: '1fr',
       gap: '15px',
       marginBottom: '30px',
+    },
+    '@media (max-width: 600px)': {
+      flexDirection: 'column',
+      alignItems: 'center',
+      gap: '12px',
+    },
+  },
+  targetItemWrapper: {
+    width: 'calc(33.33% - 10px)',
+    '@media (max-width: 960px)': {
+      width: 'calc(50% - 6px)',
+    },
+    '@media (max-width: 600px)': {
+      width: '100%',
+      maxWidth: '400px',
+    },
+  },
+  targetItemWrapperSecondRow: {
+    width: 'calc(50% - 7.5px)',
+    '@media (max-width: 960px)': {
+      width: 'calc(50% - 6px)',
+    },
+    '@media (max-width: 600px)': {
+      width: '100%',
+      maxWidth: '400px',
     },
   },
   targetItem: {
@@ -96,6 +126,7 @@ const useStyles = makeStyles({
     padding: '15px',
     textAlign: 'left',
     transition: 'all 0.3s ease',
+    height: '100%',
     '&:hover': {
       backgroundColor: 'rgba(255, 255, 255, 0.15)',
       transform: 'translateY(-2px)',
@@ -232,8 +263,17 @@ const PreScreeningBanner = () => {
     {
       text: "Passionate learners who never got the right tech start",
       icon: EmojiObjectsIcon
+    },
+    {
+      text: "People who have been cheated by backdoor jobs in IT — promised false placements or fake offer letters",
+      icon: WarningAmberIcon
     }
   ];
+
+  // First 3 items go in the first row
+  const firstRowItems = targetAudienceWithIcons.slice(0, 3);
+  // Remaining items go in the second row
+  const secondRowItems = targetAudienceWithIcons.slice(3);
 
   return (
     <Container maxWidth="xl">
@@ -261,12 +301,27 @@ const PreScreeningBanner = () => {
           </Typography>
           
           <Box className={classes.targetAudienceGrid}>
-            {targetAudienceWithIcons.map(({ text, icon: IconComponent }, index) => (
-              <Box key={index} className={classes.targetItem}>
-                <IconComponent className={classes.checkIcon} />
-                <Typography className={classes.targetText}>
-                  {text}
-                </Typography>
+            {/* First row with 3 items */}
+            {firstRowItems.map(({ text, icon: IconComponent }, index) => (
+              <Box key={index} className={classes.targetItemWrapper}>
+                <Box className={classes.targetItem}>
+                  <IconComponent className={classes.checkIcon} />
+                  <Typography className={classes.targetText}>
+                    {text}
+                  </Typography>
+                </Box>
+              </Box>
+            ))}
+
+            {/* Second row with 2 items */}
+            {secondRowItems.map(({ text, icon: IconComponent }, index) => (
+              <Box key={index + 3} className={classes.targetItemWrapperSecondRow}>
+                <Box className={classes.targetItem}>
+                  <IconComponent className={classes.checkIcon} />
+                  <Typography className={classes.targetText}>
+                    {text}
+                  </Typography>
+                </Box>
               </Box>
             ))}
           </Box>

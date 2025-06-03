@@ -30,6 +30,7 @@ import LaunchIcon from '@mui/icons-material/Launch';
 import SchoolIcon from '@mui/icons-material/School';
 import CodeIcon from '@mui/icons-material/Code';
 import DataUsageIcon from '@mui/icons-material/DataUsage';
+import EnhancedEngagementSection from './EnhancedEngagementSection'; // Import the new component
 
 const useStyles = makeStyles({
   section: {
@@ -768,73 +769,7 @@ const useStyles = makeStyles({
       fontSize: '0.75rem !important',
     },
   },
-  // New styles for love and comment system
-  engagementContainer: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginTop: '20px',
-    "@media (max-width: 1200px)": {
-      marginTop: '18px',
-    },
-    "@media (max-width: 960px)": {
-      marginTop: '16px',
-    },
-    "@media (max-width: 600px)": {
-      marginTop: '14px',
-    },
-    "@media (max-width: 480px)": {
-      marginTop: '12px',
-    },
-    "@media (max-width: 375px)": {
-      marginTop: '10px',
-    },
-  },
-  engagementText: {
-    fontSize: '0.85rem !important',
-    color: 'rgba(255, 255, 255, 0.7) !important',
-    marginBottom: '10px !important',
-    textAlign: 'center',
-    "@media (max-width: 600px)": {
-      fontSize: '0.8rem !important',
-      marginBottom: '8px !important',
-    },
-    "@media (max-width: 480px)": {
-      fontSize: '0.75rem !important',
-    },
-  },
-  engagementActions: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: '15px',
-    "@media (max-width: 600px)": {
-      gap: '12px',
-    },
-    "@media (max-width: 480px)": {
-      gap: '10px',
-    },
-  },
-  loveButton: {
-    color: 'rgba(255, 255, 255, 0.7) !important',
-    transition: 'all 0.3s ease !important',
-    '&:hover': {
-      color: '#ff4757 !important',
-      transform: 'scale(1.1)',
-    },
-  },
-  loveButtonActive: {
-    color: '#ff4757 !important',
-    animation: '$heartBeat 0.6s ease-in-out',
-  },
-  commentButton: {
-    color: 'rgba(255, 255, 255, 0.7) !important',
-    transition: 'all 0.3s ease !important',
-    '&:hover': {
-      color: '#FFC614 !important',
-      transform: 'scale(1.1)',
-    },
-  },
+  // Removed the original engagementText and engagementContainer classes since we're using the new component
   studentCount: {
     display: 'flex',
     alignItems: 'center',
@@ -905,23 +840,6 @@ const useStyles = makeStyles({
     '100%': {
       transform: 'scale(2.5)',
       opacity: 0,
-    },
-  },
-  '@keyframes heartBeat': {
-    '0%': {
-      transform: 'scale(1)',
-    },
-    '14%': {
-      transform: 'scale(1.3)',
-    },
-    '28%': {
-      transform: 'scale(1)',
-    },
-    '42%': {
-      transform: 'scale(1.3)',
-    },
-    '70%': {
-      transform: 'scale(1)',
     },
   },
   moreButton: {
@@ -1250,50 +1168,24 @@ const OtherPrograms = () => {
                       ))}
                     </Box>
                     
-                    {/* Engagement Section */}
-                    <Typography className={classes.engagementText}>
-                      If you love our curriculum, just drop a love and share what you find exciting
-                    </Typography>
+                    {/* Enhanced Engagement Section - Using the new component */}
+                    <EnhancedEngagementSection 
+                      onLoveClick={() => handleLove(program.id)}
+                      onCommentClick={() => handleCommentOpen(program.id)}
+                    />
                     
                     <Box className={classes.engagementContainer}>
-                      <Box className={classes.engagementActions}>
-                        <Tooltip title="Love this program">
-                          <IconButton 
-                            className={`${classes.loveButton} ${lovedPrograms[program.id] ? classes.loveButtonActive : ''}`}
-                            onClick={() => handleLove(program.id)}
-                          >
-                            {lovedPrograms[program.id] ? <FavoriteIcon /> : <FavoriteBorderIcon />}
-                          </IconButton>
-                        </Tooltip>
-                        
-                        <Tooltip title="Share your thoughts">
-                          <IconButton 
-                            className={classes.commentButton}
-                            onClick={() => handleCommentOpen(program.id)}
-                          >
-                            <CommentIcon />
-                          </IconButton>
-                        </Tooltip>
-                      </Box>
-                      
-                      <Box className={classes.studentCount}>
-                        <PeopleAltOutlinedIcon sx={{ fontSize: '1rem' }} />
-                        <Typography sx={{ fontSize: 'inherit' }}>
-                          {program.students} Interested Students
+                      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '15px' }}>
+                        <Box className={classes.pulseDot} />
+                        <Typography sx={{ 
+                          fontSize: { xs: '0.8rem', sm: '0.85rem' }, 
+                          fontWeight: 500, 
+                          color: '#2ecc71' 
+                        }}>
+                          Enrolling Now
                         </Typography>
                       </Box>
                     </Box>
-                    
-                    {/* <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '15px' }}>
-                      <Box className={classes.pulseDot} />
-                      <Typography sx={{ 
-                        fontSize: { xs: '0.8rem', sm: '0.85rem' }, 
-                        fontWeight: 500, 
-                        color: '#2ecc71' 
-                      }}>
-                        Enrolling Now
-                      </Typography>
-                    </Box> */}
                   </Box>
                 </Card>
               </Box>
