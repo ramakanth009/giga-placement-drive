@@ -46,7 +46,7 @@ const useStyles = makeStyles({
   },
   headerSection: {
     textAlign: 'center',
-    marginBottom: '40px',
+    marginBottom: '10px',
     '@media (max-width: 600px)': {
       marginBottom: '30px',
     },
@@ -66,7 +66,7 @@ const useStyles = makeStyles({
     },
   },
   highlight: {
-    color: '#4F46E5 !important',
+    color: '#FFC614 !important',
     position: 'relative',
   },
   questionTitle: {
@@ -102,7 +102,7 @@ const useStyles = makeStyles({
     fontSize: '2.2rem !important',
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
-    marginBottom: '30px !important',
+    marginBottom: '20px !important',
     textAlign: 'center',
     '@media (max-width: 960px)': {
       fontSize: '2rem !important',
@@ -116,7 +116,7 @@ const useStyles = makeStyles({
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 1fr)',
     gap: '30px',
-    marginBottom: '60px',
+    marginBottom: '10px',
     '@media (max-width: 960px)': {
       gridTemplateColumns: '1fr',
       gap: '25px',
@@ -143,7 +143,7 @@ const useStyles = makeStyles({
     },
   },
   featureIcon: {
-    color: '#4F46E5 !important',
+    color: '#FFC614 !important',
     fontSize: '1.5rem !important',
     marginRight: '12px !important',
   },
@@ -167,16 +167,16 @@ const useStyles = makeStyles({
     },
   },
   toolsSection: {
-    marginTop: '60px',
+    marginTop: '20px',
     '@media (max-width: 600px)': {
-      marginTop: '40px',
+      marginTop: '10px',
     },
   },
   categoryFilters: {
     display: 'flex',
     justifyContent: 'center',
     gap: '15px',
-    marginBottom: '40px',
+    marginBottom: '10px',
     flexWrap: 'wrap',
     '@media (max-width: 600px)': {
       gap: '10px',
