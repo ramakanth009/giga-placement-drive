@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Box, Typography, Container, Card, CardContent, Chip } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
@@ -6,6 +6,14 @@ import CodeIcon from '@mui/icons-material/Code';
 import DataUsageIcon from '@mui/icons-material/DataUsage';
 import BuildIcon from '@mui/icons-material/Build';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/effect-cards';
+import 'swiper/css/autoplay';
+// Import required modules
+import { EffectCards, Autoplay } from 'swiper/modules';
 
 const useStyles = makeStyles({
   section: {
@@ -37,7 +45,7 @@ const useStyles = makeStyles({
   },
   headerSection: {
     textAlign: 'center',
-    marginBottom: '60px',
+    marginBottom: '20px',
     '@media (max-width: 600px)': {
       marginBottom: '40px',
     },
@@ -57,7 +65,7 @@ const useStyles = makeStyles({
     },
   },
   highlight: {
-    color: '#FFC614 !important',
+    color: '#4F46E5 !important',  // Changed from #FFC614 to a modern indigo
     position: 'relative',
   },
   questionTitle: {
@@ -76,7 +84,7 @@ const useStyles = makeStyles({
   answerText: {
     fontSize: '1.2rem !important',
     color: '#666 !important',
-    marginBottom: '50px !important',
+    marginBottom: '20px !important',
     maxWidth: '700px',
     margin: '0 auto 50px auto !important',
     '@media (max-width: 960px)': {
@@ -134,7 +142,7 @@ const useStyles = makeStyles({
     },
   },
   featureIcon: {
-    color: '#FFC614 !important',
+    color: '#4F46E5 !important',  // Changed from #FFC614
     fontSize: '1.5rem !important',
     marginRight: '12px !important',
   },
@@ -157,126 +165,136 @@ const useStyles = makeStyles({
       fontSize: '0.95rem !important',
     },
   },
-  cardsContainer: {
+  slidersContainer: {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
-    gap: '40px',
+    gap: '60px',
     '@media (max-width: 960px)': {
-      gap: '30px',
+      gap: '40px',
     },
-    '@media (max-width: 600px)': {
+    '@media (max-width: 768px)': {
       gridTemplateColumns: '1fr',
-      gap: '25px',
+      gap: '50px',
     },
   },
-  cardSection: {
+  sliderSection: {
     textAlign: 'center',
   },
   sectionLabel: {
     fontSize: '1.4rem !important',
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
-    marginBottom: '20px !important',
+    marginBottom: '30px !important',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     gap: '10px',
     '@media (max-width: 600px)': {
       fontSize: '1.2rem !important',
-      marginBottom: '15px !important',
+      marginBottom: '20px !important',
     },
   },
   labelIcon: {
     color: '#FFC614 !important',
     fontSize: '1.8rem !important',
   },
-  toolCard: {
+  swiperContainer: {
     width: '100%',
-    height: '300px',
-    perspective: '1000px',
+    maxWidth: '400px',
+    height: '350px',
+    margin: '0 auto',
     '@media (max-width: 600px)': {
-      height: '280px',
+      maxWidth: '320px',
+      height: '300px',
     },
   },
-  cardInner: {
-    position: 'relative',
+  toolCard: {
     width: '100%',
     height: '100%',
-    textAlign: 'center',
-    transition: 'transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-    transformStyle: 'preserve-3d',
-  },
-  cardFlipped: {
-    transform: 'rotateY(180deg)',
-  },
-  cardFace: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-    backfaceVisibility: 'hidden',
-    borderRadius: '20px !important',
-    background: 'white',
-    border: '1px solid rgba(42, 43, 106, 0.1)',
-    boxShadow: '0 15px 35px rgba(0, 0, 0, 0.1)',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    padding: '25px',
+    borderRadius: '16px !important',
+    background: 'linear-gradient(145deg, #ffffff 0%, #f8faff 100%)',
+    border: '1px solid rgba(79, 70, 229, 0.1)',
+    boxShadow: '0 10px 25px rgba(79, 70, 229, 0.08) !important',
     position: 'relative',
     overflow: 'hidden',
+    transition: 'all 0.3s ease-in-out',
+    '&:hover': {
+      transform: 'translateY(-5px)',
+      boxShadow: '0 20px 40px rgba(79, 70, 229, 0.12) !important',
+    },
     '&::before': {
       content: '""',
       position: 'absolute',
       top: 0,
       left: 0,
       width: '100%',
-      height: '4px',
-      background: 'linear-gradient(90deg, #2A2B6A 0%, #FFC614 100%)',
+      height: '5px',
+      background: 'linear-gradient(90deg, #4F46E5 0%, #818CF8 100%)',
     },
+  },
+  toolCardContent: {
+    padding: '30px !important',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+    gap: '12px',
     '@media (max-width: 600px)': {
-      padding: '20px',
+      padding: '25px !important',
     },
   },
   toolName: {
-    fontSize: '1.4rem !important',
-    fontWeight: 'bold !important',
-    color: '#2A2B6A !important',
-    marginBottom: '8px !important',
+    fontSize: '1.5rem !important',
+    fontWeight: '700 !important',
+    color: '#2D3748 !important',
+    marginBottom: '4px !important',
     '@media (max-width: 600px)': {
-      fontSize: '1.2rem !important',
+      fontSize: '1.3rem !important',
     },
   },
   toolCategory: {
-    fontSize: '0.9rem !important',
-    color: '#FFC614 !important',
-    marginBottom: '15px !important',
+    fontSize: '0.875rem !important',
+    color: '#4F46E5 !important',
+    marginBottom: '12px !important',
     textTransform: 'uppercase',
-    letterSpacing: '1px',
+    letterSpacing: '1.5px',
     fontWeight: '600 !important',
+    background: 'rgba(79, 70, 229, 0.08)',
+    padding: '4px 12px',
+    borderRadius: '12px',
   },
   toolDescription: {
     fontSize: '1rem !important',
-    color: '#666 !important',
-    lineHeight: '1.5 !important',
-    marginBottom: '15px !important',
+    color: '#4A5568 !important',
+    lineHeight: '1.6 !important',
+    marginBottom: '12px !important',
     '@media (max-width: 600px)': {
       fontSize: '0.95rem !important',
     },
   },
   toolFeatures: {
     fontSize: '0.9rem !important',
-    color: '#888 !important',
-    fontStyle: 'italic',
-    lineHeight: '1.4 !important',
+    color: '#718096 !important',
+    fontStyle: 'normal',
+    lineHeight: '1.5 !important',
+    background: 'rgba(79, 70, 229, 0.04)',
+    padding: '8px 16px',
+    borderRadius: '8px',
+    width: '100%',
   },
   pricingChip: {
     position: 'absolute',
-    top: '15px',
-    right: '15px',
-    backgroundColor: '#FFC614 !important',
-    color: '#2A2B6A !important',
-    fontSize: '0.75rem !important',
-    fontWeight: 'bold !important',
+    top: '20px',
+    right: '20px',
+    backgroundColor: 'rgba(79, 70, 229, 0.1) !important',
+    color: '#4F46E5 !important',
+    fontSize: '0.8rem !important',
+    fontWeight: '600 !important',
+    padding: '4px 12px !important',
+    borderRadius: '20px !important',
+    border: '1px solid rgba(79, 70, 229, 0.2)',
     zIndex: 2,
   },
   decorativeBlob: {
@@ -309,14 +327,32 @@ const useStyles = makeStyles({
       transform: 'translateY(-20px) rotate(10deg)',
     },
   },
+  // Custom Swiper styles
+  '& .swiper': {
+    paddingTop: '20px',
+    paddingBottom: '20px',
+  },
+  '& .swiper-slide': {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: '16px',
+    fontSize: '22px',
+    fontWeight: 'bold',
+    color: '#fff',
+    transform: 'scale(0.9)',
+    transition: 'transform 0.3s ease-in-out',
+  },
+  '& .swiper-slide-active': {
+    transform: 'scale(1) !important',
+  },
+  '& .swiper-slide-next, & .swiper-slide-prev': {
+    transform: 'scale(0.85) !important',
+  },
 });
 
 const AIIntegrationSection = () => {
   const classes = useStyles();
-  const [fullstackFlipped, setFullstackFlipped] = useState(false);
-  const [dataScienceFlipped, setDataScienceFlipped] = useState(false);
-  const [fullstackIndex, setFullstackIndex] = useState(0);
-  const [dataScienceIndex, setDataScienceIndex] = useState(0);
 
   const fullstackTools = [
     {
@@ -450,28 +486,6 @@ const AIIntegrationSection = () => {
     }
   ];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      // Flip fullstack card
-      setFullstackFlipped(true);
-      setTimeout(() => {
-        setFullstackIndex((prev) => (prev + 1) % fullstackTools.length);
-        setFullstackFlipped(false);
-      }, 400);
-
-      // Flip data science card with slight delay
-      setTimeout(() => {
-        setDataScienceFlipped(true);
-        setTimeout(() => {
-          setDataScienceIndex((prev) => (prev + 1) % dataScienceTools.length);
-          setDataScienceFlipped(false);
-        }, 400);
-      }, 500);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, [fullstackTools.length, dataScienceTools.length]);
-
   const features = [
     {
       icon: <AutoAwesomeIcon />,
@@ -529,68 +543,96 @@ const AIIntegrationSection = () => {
           ))}
         </Box>
 
-        <Box className={classes.cardsContainer}>
-          {/* Fullstack Tools Card */}
-          <Box className={classes.cardSection}>
+        <Box className={classes.slidersContainer}>
+          {/* Fullstack Tools Slider */}
+          <Box className={classes.sliderSection}>
             <Typography className={classes.sectionLabel}>
               <CodeIcon className={classes.labelIcon} />
               Full Stack Development AI Tools
             </Typography>
-            <Box className={classes.toolCard}>
-              <Box className={`${classes.cardInner} ${fullstackFlipped ? classes.cardFlipped : ''}`}>
-                <Card className={classes.cardFace}>
-                  <Chip 
-                    label={fullstackTools[fullstackIndex].pricing}
-                    className={classes.pricingChip}
-                  />
-                  <CardContent>
-                    <Typography className={classes.toolName}>
-                      {fullstackTools[fullstackIndex].name}
-                    </Typography>
-                    <Typography className={classes.toolCategory}>
-                      {fullstackTools[fullstackIndex].category}
-                    </Typography>
-                    <Typography className={classes.toolDescription}>
-                      {fullstackTools[fullstackIndex].description}
-                    </Typography>
-                    <Typography className={classes.toolFeatures}>
-                      {fullstackTools[fullstackIndex].features}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Box>
+            <Box className={classes.swiperContainer}>
+              <Swiper
+                effect={'cards'}
+                grabCursor={true}
+                modules={[EffectCards, Autoplay]}
+                autoplay={{
+                  delay: 3000,
+                  disableOnInteraction: false,
+                }}
+                loop={true}
+                className={classes.swiperContainer}
+              >
+                {fullstackTools.map((tool, index) => (
+                  <SwiperSlide key={index}>
+                    <Card className={classes.toolCard}>
+                      <Chip 
+                        label={tool.pricing}
+                        className={classes.pricingChip}
+                      />
+                      <CardContent className={classes.toolCardContent}>
+                        <Typography className={classes.toolName}>
+                          {tool.name}
+                        </Typography>
+                        <Typography className={classes.toolCategory}>
+                          {tool.category}
+                        </Typography>
+                        <Typography className={classes.toolDescription}>
+                          {tool.description}
+                        </Typography>
+                        <Typography className={classes.toolFeatures}>
+                          {tool.features}
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </Box>
           </Box>
 
-          {/* Data Science Tools Card */}
-          <Box className={classes.cardSection}>
+          {/* Data Science Tools Slider */}
+          <Box className={classes.sliderSection}>
             <Typography className={classes.sectionLabel}>
               <DataUsageIcon className={classes.labelIcon} />
               Data Science AI Tools
             </Typography>
-            <Box className={classes.toolCard}>
-              <Box className={`${classes.cardInner} ${dataScienceFlipped ? classes.cardFlipped : ''}`}>
-                <Card className={classes.cardFace}>
-                  <Chip 
-                    label={dataScienceTools[dataScienceIndex].pricing}
-                    className={classes.pricingChip}
-                  />
-                  <CardContent>
-                    <Typography className={classes.toolName}>
-                      {dataScienceTools[dataScienceIndex].name}
-                    </Typography>
-                    <Typography className={classes.toolCategory}>
-                      {dataScienceTools[dataScienceIndex].category}
-                    </Typography>
-                    <Typography className={classes.toolDescription}>
-                      {dataScienceTools[dataScienceIndex].description}
-                    </Typography>
-                    <Typography className={classes.toolFeatures}>
-                      {dataScienceTools[dataScienceIndex].features}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Box>
+            <Box className={classes.swiperContainer}>
+              <Swiper
+                effect={'cards'}
+                grabCursor={true}
+                modules={[EffectCards, Autoplay]}
+                autoplay={{
+                  delay: 3500,
+                  disableOnInteraction: false,
+                }}
+                loop={true}
+                className={classes.swiperContainer}
+              >
+                {dataScienceTools.map((tool, index) => (
+                  <SwiperSlide key={index}>
+                    <Card className={classes.toolCard}>
+                      <Chip 
+                        label={tool.pricing}
+                        className={classes.pricingChip}
+                      />
+                      <CardContent className={classes.toolCardContent}>
+                        <Typography className={classes.toolName}>
+                          {tool.name}
+                        </Typography>
+                        <Typography className={classes.toolCategory}>
+                          {tool.category}
+                        </Typography>
+                        <Typography className={classes.toolDescription}>
+                          {tool.description}
+                        </Typography>
+                        <Typography className={classes.toolFeatures}>
+                          {tool.features}
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </Box>
           </Box>
         </Box>

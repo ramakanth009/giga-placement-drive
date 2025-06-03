@@ -314,7 +314,7 @@ const PodcastShowcaseSection = () => {
       <Container maxWidth="lg" className={classes.container}>
         <Box className={classes.contentWrapper}>
           {/* Video Side */}
-          <Box className={classes.videoWrapper}>
+          {/* <Box className={classes.videoWrapper}>
             <iframe
               className={classes.videoIframe}
               src="https://www.youtube.com/embed/IxRVa1DbSAg?si=eZ7wKjpvpVlOlrVU&autoplay=1&mute=1&loop=1&controls=0&playlist=IxRVa1DbSAg"
@@ -340,7 +340,7 @@ const PodcastShowcaseSection = () => {
                 Watch on YouTube
               </Button>
             </Box>
-          </Box>
+          </Box> */}
 
           {/* Content Side */}
           <Box className={classes.contentBox}>

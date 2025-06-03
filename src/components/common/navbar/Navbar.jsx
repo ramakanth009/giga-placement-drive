@@ -444,7 +444,7 @@ const Navbar = () => {
             className={classes.menuItem}
           >
             <Box className={classes.dropdownText}>
-              Full Stack
+              Vitrual Placement
               <KeyboardArrowDownIcon
                 className={classes.dropdownIcon}
                 style={{
@@ -463,16 +463,17 @@ const Navbar = () => {
                 component={Link}
                 to="/fullstack"
               >
-                Full Stack Virtual Placement
+                Full Stack
               </MenuItem>
               <MenuItem
                 onClick={() => handleNavLinkClick()}
                 className={classes.mobileSubmenuItem}
                 component={Link}
-                to="/fulltime/fullstack"
+                to="/datascience"
               >
-                Full Stack Full-Time Program
+                Data Science
               </MenuItem>
+              
             </Box>
           )}
 
@@ -482,7 +483,7 @@ const Navbar = () => {
             className={classes.menuItem}
           >
             <Box className={classes.dropdownText}>
-              Data Science
+              Vitrual Placement
               <KeyboardArrowDownIcon
                 className={classes.dropdownIcon}
                 style={{
@@ -495,21 +496,22 @@ const Navbar = () => {
           </MenuItem>
           {mobileDataScienceOpen && (
             <Box className={classes.mobileSubmenu}>
-              <MenuItem
-                onClick={() => handleNavLinkClick()}
-                className={classes.mobileSubmenuItem}
-                component={Link}
-                to="/datascience"
-              >
-                Data Science Virtual Placement
-              </MenuItem>
+              
               <MenuItem
                 onClick={() => handleNavLinkClick()}
                 className={classes.mobileSubmenuItem}
                 component={Link}
                 to="/fulltime/datascience"
               >
-                Data Science Full-Time Program
+                Data Science Program
+              </MenuItem>
+              <MenuItem
+                onClick={() => handleNavLinkClick()}
+                className={classes.mobileSubmenuItem}
+                component={Link}
+                to="/fulltime/fullstack"
+              >
+                Full Stack Program
               </MenuItem>
             </Box>
           )}
