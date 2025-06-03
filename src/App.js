@@ -22,6 +22,7 @@ const Blog = React.lazy(() => import('./pages/blog/Blog'));
 const BlogDetailPage = React.lazy(() => import('./components/blog/blogdetail/BlogDetailPage'));
 const CampusPage = React.lazy(() => import('./pages/campus/CampusPage'));
 const PreScreeningTest = React.lazy(() => import('./components/homepagecomponets/prescreeningtest/PreScreeningTest'));
+const SitemapPage = React.lazy(() => import('./pages/sitemap/SitemapPage')); // NEW SITEMAP PAGE
 
 const LoadingSpinner = () => (
   <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
@@ -55,10 +56,16 @@ const App = () => {
           {/* Redirect for old/alternative routes */}
           <Route path="/terms" element={<Navigate to="/terms-and-conditions" replace />} />
           <Route path="/privacy" element={<Navigate to="/privacy-policy" replace />} />
+          
+          {/* Commerce routes - These might be hidden from main navigation */}
           <Route path="/cart" element={<CartPage />} />
           <Route path="/payment-complete" element={<PaymentComplete />} />
 
+          {/* Assessment route */}
           <Route path="/pre-screening-test" element={<PreScreeningTest />} />
+          
+          {/* NEW SITEMAP ROUTE */}
+          <Route path="/sitemap" element={<SitemapPage />} />
           
           {/* 404 catch-all route */} 
           <Route path="*" element={<NotFound />} />

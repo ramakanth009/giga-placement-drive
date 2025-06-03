@@ -6,6 +6,7 @@ import {
   Container, 
   Link as MuiLink 
 } from "@mui/material";
+import { Link as RouterLink } from 'react-router-dom';
 import { makeStyles } from "@mui/styles";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -780,6 +781,9 @@ const Footer = () => {
                     Terms & Conditions
                   </MuiLink>
                 </li>
+                <Link component={RouterLink} to="/sitemap" className={classes.sitemapLink}>
+                🗺️ Sitemap
+              </Link>
               </ul>
             </Box>
 
