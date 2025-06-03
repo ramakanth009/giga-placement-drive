@@ -59,11 +59,12 @@ const useStyles = makeStyles({
     fontSize: '0.9rem !important',
     fontWeight: 'bold !important',
     display: 'inline-block !important',
-    marginBottom: '40px !important',
+    marginBottom: '20px !important',
   },
   stepsContainer: {
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
+    gap: '2%',
     position: 'relative',
     marginTop: '20px',
     '@media (max-width: 1000px)': {
@@ -76,7 +77,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    width: '16%',
+    width: '14%',
     position: 'relative',
     zIndex: 2,
     '@media (max-width: 1000px)': {
@@ -103,6 +104,7 @@ const useStyles = makeStyles({
   },
   stepTitle: {
     fontSize: '1rem !important',
+    minWidth: '400px !important',
     fontWeight: '600 !important',
     marginBottom: '8px !important',
     color: 'white !important',
@@ -117,8 +119,8 @@ const useStyles = makeStyles({
     height: '2px',
     backgroundColor: 'rgba(255, 255, 255, 0.2)',
     top: '20px',
-    left: '8%',
-    right: '8%',
+    left: '10%',
+    right: '10%',
     zIndex: 1,
     '@media (max-width: 1000px)': {
       display: 'none',
@@ -158,7 +160,7 @@ const StartupFundProcess = () => {
     {
       number: 6,
       title: "Scale your Tech Product",
-      description: "Expand your MVP into a market-ready solution. With expert guidance, grow your product, improve user experience, and explore go-to-market strategies."
+      description: "Grow your MVP into a market-ready product with expert guidance, UX improvements, and go-to-market strategies."
     }
   ];
 

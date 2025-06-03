@@ -1056,7 +1056,7 @@ const OtherPrograms = () => {
       <Container maxWidth="lg" className={classes.container}>
         <Box className={classes.titleContainer}>
           <Typography variant="h2" className={classes.title}>
-            Explore Our <span className={classes.highlight}>Other Programs</span>
+            Explore Our <span className={classes.highlight}>Programs</span>
           <Box className={classes.topBar}></Box>
           </Typography>
           <Typography variant="body1" className={classes.subtitle}>
