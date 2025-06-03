@@ -247,9 +247,13 @@ const PreScreeningBanner = () => {
     // window.open('https://gigaversity.in/prescreening_test', '_blank');
   };
 
+  const handleClick = () => {
+    navigate('/pre-screening-test');
+  };
+
   const targetAudienceWithIcons = [
     {
-      text: "People who have been cheated by backdoor jobs in IT — promised false placements or fake offer letters",
+      text: "People who got Cheated by backdoor IT jobs with fake offers and false placement promises",
       icon: WarningAmberIcon
     },
     {
@@ -275,6 +279,36 @@ const PreScreeningBanner = () => {
   const firstRowItems = targetAudienceWithIcons.slice(0, 3);
   // Remaining items go in the second row
   const secondRowItems = targetAudienceWithIcons.slice(3);
+
+  const hoverStyles = {
+    cursor: 'pointer',
+    transition: 'all 0.3s ease',
+    '&:hover': {
+      transform: 'translateY(-4px)',
+      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    },
+    position: 'relative',
+    '&::after': {
+      content: '"Click to start"',
+      position: 'absolute',
+      bottom: '-20px',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      backgroundColor: '#FFC614',
+      color: '#2A2B6A',
+      padding: '6px 12px',
+      borderRadius: '20px',
+      fontSize: '12px',
+      fontWeight: 'bold',
+      opacity: 0,
+      transition: 'opacity 0.2s ease',
+      boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+    },
+    '&:hover::after': {
+      opacity: 1
+    }
+  };
 
   return (
     <Container maxWidth="xl">
@@ -304,7 +338,12 @@ const PreScreeningBanner = () => {
           <Box className={classes.targetAudienceGrid}>
             {/* First row with 3 items */}
             {firstRowItems.map(({ text, icon: IconComponent }, index) => (
-              <Box key={index} className={classes.targetItemWrapper}>
+              <Box 
+                key={index} 
+                className={classes.targetItemWrapper}
+                onClick={handleClick}
+                sx={{ ...hoverStyles }}
+              >
                 <Box className={classes.targetItem}>
                   <IconComponent className={classes.checkIcon} />
                   <Typography className={classes.targetText}>
@@ -316,7 +355,12 @@ const PreScreeningBanner = () => {
 
             {/* Second row with 2 items */}
             {secondRowItems.map(({ text, icon: IconComponent }, index) => (
-              <Box key={index + 3} className={classes.targetItemWrapperSecondRow}>
+              <Box 
+                key={index + 3} 
+                className={classes.targetItemWrapperSecondRow}
+                onClick={handleClick}
+                sx={{ ...hoverStyles }}
+              >
                 <Box className={classes.targetItem}>
                   <IconComponent className={classes.checkIcon} />
                   <Typography className={classes.targetText}>

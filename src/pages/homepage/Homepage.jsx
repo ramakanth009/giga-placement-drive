@@ -16,7 +16,7 @@ import PlacementPortalSection from "../../components/homepagecomponets/placement
 import MentorShowcase from "../../components/homepagecomponets/mentorshowcase/MentorShowcase";
 import ContactDetailsForm from "../../components/common/contactform/ContactDetailsForm";
 import PodcastShowcaseSection from "../../components/homepagecomponets/podcastshowcase/PodcastShowcaseSection";
-
+import AIIntegrationSection from "../../components/homepagecomponets/aiintegrationsection/AIIntegrationSection";
 const Homepage = () => {
   return (
     <Box
@@ -40,6 +40,7 @@ const Homepage = () => {
         <PodcastShowcaseSection />
         <HiringPartners />
         <StartupFundProcess />
+        <AIIntegrationSection />
         <TechFutureSection />
         <MentorShowcase />
         <PlacementPortalSection />
