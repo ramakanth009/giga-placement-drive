@@ -1,19 +1,20 @@
-import React from 'react';
-import { Box, Typography, Container, Card, CardContent, Chip } from '@mui/material';
+import React, { useState } from 'react';
+import { Box, Typography, Container, Card, CardContent, Chip, Button } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import CodeIcon from '@mui/icons-material/Code';
 import DataUsageIcon from '@mui/icons-material/DataUsage';
 import BuildIcon from '@mui/icons-material/Build';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
+import AllInclusiveIcon from '@mui/icons-material/AllInclusive';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
-import 'swiper/css/effect-cards';
-import 'swiper/css/autoplay';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 // Import required modules
-import { EffectCards, Autoplay } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 
 const useStyles = makeStyles({
   section: {
@@ -45,9 +46,9 @@ const useStyles = makeStyles({
   },
   headerSection: {
     textAlign: 'center',
-    marginBottom: '20px',
+    marginBottom: '40px',
     '@media (max-width: 600px)': {
-      marginBottom: '40px',
+      marginBottom: '30px',
     },
   },
   mainTitle: {
@@ -65,7 +66,7 @@ const useStyles = makeStyles({
     },
   },
   highlight: {
-    color: '#4F46E5 !important',  // Changed from #FFC614 to a modern indigo
+    color: '#4F46E5 !important',
     position: 'relative',
   },
   questionTitle: {
@@ -142,7 +143,7 @@ const useStyles = makeStyles({
     },
   },
   featureIcon: {
-    color: '#4F46E5 !important',  // Changed from #FFC614
+    color: '#4F46E5 !important',
     fontSize: '1.5rem !important',
     marginRight: '12px !important',
   },
@@ -165,52 +166,105 @@ const useStyles = makeStyles({
       fontSize: '0.95rem !important',
     },
   },
-  slidersContainer: {
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    gap: '60px',
-    '@media (max-width: 960px)': {
-      gap: '40px',
-    },
-    '@media (max-width: 768px)': {
-      gridTemplateColumns: '1fr',
-      gap: '50px',
-    },
-  },
-  sliderSection: {
-    textAlign: 'center',
-  },
-  sectionLabel: {
-    fontSize: '1.4rem !important',
-    fontWeight: 'bold !important',
-    color: '#2A2B6A !important',
-    marginBottom: '30px !important',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '10px',
+  toolsSection: {
+    marginTop: '60px',
     '@media (max-width: 600px)': {
-      fontSize: '1.2rem !important',
-      marginBottom: '20px !important',
+      marginTop: '40px',
     },
   },
-  labelIcon: {
-    color: '#FFC614 !important',
-    fontSize: '1.8rem !important',
+  categoryFilters: {
+    display: 'flex',
+    justifyContent: 'center',
+    gap: '15px',
+    marginBottom: '40px',
+    flexWrap: 'wrap',
+    '@media (max-width: 600px)': {
+      gap: '10px',
+      marginBottom: '30px',
+    },
+  },
+  filterButton: {
+    padding: '12px 24px !important',
+    borderRadius: '30px !important',
+    textTransform: 'none !important',
+    fontSize: '1rem !important',
+    fontWeight: '600 !important',
+    transition: 'all 0.3s ease !important',
+    display: 'flex !important',
+    alignItems: 'center !important',
+    gap: '8px !important',
+    '@media (max-width: 600px)': {
+      padding: '10px 18px !important',
+      fontSize: '0.9rem !important',
+    },
+  },
+  activeFilter: {
+    backgroundColor: '#4F46E5 !important',
+    color: 'white !important',
+    '&:hover': {
+      backgroundColor: '#3730a3 !important',
+    },
+  },
+  inactiveFilter: {
+    backgroundColor: 'white !important',
+    color: '#4F46E5 !important',
+    border: '2px solid #4F46E5 !important',
+    '&:hover': {
+      backgroundColor: 'rgba(79, 70, 229, 0.1) !important',
+    },
   },
   swiperContainer: {
-    width: '100%',
-    maxWidth: '400px',
-    height: '350px',
-    margin: '0 auto',
-    '@media (max-width: 600px)': {
-      maxWidth: '320px',
-      height: '300px',
+    padding: '20px 0 40px 0',
+    '& .swiper': {
+      overflow: 'visible',
+      paddingBottom: '20px',
+    },
+    '& .swiper-slide': {
+      height: 'auto',
+      display: 'flex',
+    },
+    '& .swiper-pagination': {
+      bottom: '0px !important',
+      '& .swiper-pagination-bullet': {
+        backgroundColor: 'rgba(79, 70, 229, 0.3) !important',
+        opacity: '1 !important',
+        '&.swiper-pagination-bullet-active': {
+          backgroundColor: '#4F46E5 !important',
+        },
+      },
+    },
+    '& .swiper-button-next, & .swiper-button-prev': {
+      color: '#4F46E5 !important',
+      backgroundColor: 'rgba(255, 255, 255, 0.9) !important',
+      borderRadius: '50% !important',
+      width: '44px !important',
+      height: '44px !important',
+      marginTop: '-22px !important',
+      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15) !important',
+      '&:after': {
+        fontSize: '18px !important',
+        fontWeight: 'bold !important',
+      },
+      '&:hover': {
+        backgroundColor: 'white !important',
+        boxShadow: '0 6px 16px rgba(0, 0, 0, 0.2) !important',
+      },
+    },
+    '& .swiper-button-prev': {
+      left: '-22px !important',
+    },
+    '& .swiper-button-next': {
+      right: '-22px !important',
+    },
+    '@media (max-width: 960px)': {
+      '& .swiper-button-next, & .swiper-button-prev': {
+        display: 'none !important',
+      },
     },
   },
   toolCard: {
     width: '100%',
-    height: '100%',
+    height: '250px',
     borderRadius: '16px !important',
     background: 'linear-gradient(145deg, #ffffff 0%, #f8faff 100%)',
     border: '1px solid rgba(79, 70, 229, 0.1)',
@@ -218,9 +272,11 @@ const useStyles = makeStyles({
     position: 'relative',
     overflow: 'hidden',
     transition: 'all 0.3s ease-in-out',
+    display: 'flex',
+    flexDirection: 'column',
     '&:hover': {
-      transform: 'translateY(-5px)',
-      boxShadow: '0 20px 40px rgba(79, 70, 229, 0.12) !important',
+      transform: 'translateY(-8px)',
+      boxShadow: '0 20px 40px rgba(79, 70, 229, 0.15) !important',
     },
     '&::before': {
       content: '""',
@@ -231,58 +287,64 @@ const useStyles = makeStyles({
       height: '5px',
       background: 'linear-gradient(90deg, #4F46E5 0%, #818CF8 100%)',
     },
+    '@media (max-width: 600px)': {
+      height: '300px',
+    },
   },
   toolCardContent: {
-    padding: '30px !important',
+    padding: '25px !important',
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    textAlign: 'center',
-    gap: '12px',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    textAlign: 'left',
+    gap: '8px',
     '@media (max-width: 600px)': {
-      padding: '25px !important',
+      padding: '20px !important',
     },
   },
   toolName: {
-    fontSize: '1.5rem !important',
+    fontSize: '1.3rem !important',
     fontWeight: '700 !important',
     color: '#2D3748 !important',
     marginBottom: '4px !important',
     '@media (max-width: 600px)': {
-      fontSize: '1.3rem !important',
+      fontSize: '1.2rem !important',
     },
   },
   toolCategory: {
-    fontSize: '0.875rem !important',
+    fontSize: '0.75rem !important',
     color: '#4F46E5 !important',
-    marginBottom: '12px !important',
+    marginBottom: '8px !important',
     textTransform: 'uppercase',
     letterSpacing: '1.5px',
     fontWeight: '600 !important',
     background: 'rgba(79, 70, 229, 0.08)',
     padding: '4px 12px',
     borderRadius: '12px',
+    alignSelf: 'flex-start',
   },
   toolDescription: {
-    fontSize: '1rem !important',
+    fontSize: '0.95rem !important',
     color: '#4A5568 !important',
-    lineHeight: '1.6 !important',
-    marginBottom: '12px !important',
+    lineHeight: '1.5 !important',
+    marginBottom: '8px !important',
+    flex: 1,
     '@media (max-width: 600px)': {
-      fontSize: '0.95rem !important',
+      fontSize: '0.9rem !important',
     },
   },
   toolFeatures: {
-    fontSize: '0.9rem !important',
+    fontSize: '0.85rem !important',
     color: '#718096 !important',
     fontStyle: 'normal',
-    lineHeight: '1.5 !important',
+    lineHeight: '1.4 !important',
     background: 'rgba(79, 70, 229, 0.04)',
-    padding: '8px 16px',
+    padding: '8px 12px',
     borderRadius: '8px',
     width: '100%',
+    marginTop: 'auto',
   },
   pricingChip: {
     position: 'absolute',
@@ -290,7 +352,7 @@ const useStyles = makeStyles({
     right: '20px',
     backgroundColor: 'rgba(79, 70, 229, 0.1) !important',
     color: '#4F46E5 !important',
-    fontSize: '0.8rem !important',
+    fontSize: '0.75rem !important',
     fontWeight: '600 !important',
     padding: '4px 12px !important',
     borderRadius: '20px !important',
@@ -327,164 +389,164 @@ const useStyles = makeStyles({
       transform: 'translateY(-20px) rotate(10deg)',
     },
   },
-  // Custom Swiper styles
-  '& .swiper': {
-    paddingTop: '20px',
-    paddingBottom: '20px',
-  },
-  '& .swiper-slide': {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: '16px',
-    fontSize: '22px',
-    fontWeight: 'bold',
-    color: '#fff',
-    transform: 'scale(0.9)',
-    transition: 'transform 0.3s ease-in-out',
-  },
-  '& .swiper-slide-active': {
-    transform: 'scale(1) !important',
-  },
-  '& .swiper-slide-next, & .swiper-slide-prev': {
-    transform: 'scale(0.85) !important',
-  },
 });
 
 const AIIntegrationSection = () => {
   const classes = useStyles();
+  const [selectedCategory, setSelectedCategory] = useState('all');
 
-  const fullstackTools = [
+  const allTools = [
+    // Full Stack Tools
     {
       name: 'GitHub Copilot',
-      category: 'Code Generation',
+      category: 'fullstack',
+      subCategory: 'Code Generation',
       description: 'Auto-complete code for frontend and backend development',
       features: 'Context-aware code suggestions for JS, Python, SQL',
       pricing: 'Paid'
     },
     {
       name: 'Vercel v0',
-      category: 'Frontend UI Generation', 
+      category: 'fullstack',
+      subCategory: 'Frontend UI Generation', 
       description: 'Generate React/UIs from text prompts',
       features: 'AI-driven UI scaffolding, component customization',
       pricing: 'Freemium'
     },
     {
       name: 'AWS CodeWhisperer',
-      category: 'Code Generation',
+      category: 'fullstack',
+      subCategory: 'Code Generation',
       description: 'Full-stack code suggestions in your IDE',
       features: 'IDE-integrated completions (JS, Python, Java)',
       pricing: 'Free'
     },
     {
       name: 'DhiWise',
-      category: 'Low-Code Dev',
+      category: 'fullstack',
+      subCategory: 'Low-Code Dev',
       description: 'Convert Figma designs to React/Flutter code',
       features: 'AI-powered design-to-code conversion',
       pricing: 'Freemium'
     },
     {
       name: 'Tabnine',
-      category: 'Code Completion',
+      category: 'fullstack',
+      subCategory: 'Code Completion',
       description: 'Predictive code completion for all languages',
       features: 'Local/cloud-based AI models for faster coding',
       pricing: 'Freemium'
     },
     {
       name: 'Postman API GPT',
-      category: 'API Development',
+      category: 'fullstack',
+      subCategory: 'API Development',
       description: 'Generate API documentation and test cases',
       features: 'AI-driven API testing, mock server setup',
       pricing: 'Freemium'
     },
     {
       name: 'Figma AI',
-      category: 'Design-to-Code',
+      category: 'fullstack',
+      subCategory: 'Design-to-Code',
       description: 'Generate CSS, React code from designs',
       features: 'Auto-extract design tokens, responsive code',
       pricing: 'Freemium'
     },
     {
       name: 'GPT Engineer',
-      category: 'Code Generation',
+      category: 'fullstack',
+      subCategory: 'Code Generation',
       description: 'Build apps from natural language prompts',
       features: 'Generates full-stack code (Next.js, FastAPI, etc.)',
       pricing: 'Free'
     },
     {
       name: 'Codium',
-      category: 'Code Quality',
+      category: 'fullstack',
+      subCategory: 'Code Quality',
       description: 'Auto-write unit tests, detect bugs',
       features: 'AI reviews PRs, suggests fixes',
       pricing: 'Freemium'
-    }
-  ];
-
-  const dataScienceTools = [
+    },
+    // Data Science Tools
     {
       name: 'Google Colab',
-      category: 'Cloud Notebooks',
+      category: 'datascience',
+      subCategory: 'Cloud Notebooks',
       description: 'Prototyping with free GPU/TPU access',
       features: 'Free GPU, integrates with Gemini',
       pricing: 'Free'
     },
     {
       name: 'Hugging Face',
-      category: 'NLP/LLMs',
+      category: 'datascience',
+      subCategory: 'NLP/LLMs',
       description: 'Model hosting and fine-tuning platform',
       features: 'Massive model library (Transformers, Diffusers)',
       pricing: 'Freemium'
     },
     {
       name: 'LangChain',
-      category: 'LLM App Development',
+      category: 'datascience',
+      subCategory: 'LLM App Development',
       description: 'Build complex AI workflows and RAG systems',
       features: 'Modular design, tool integrations',
       pricing: 'Free'
     },
     {
       name: 'Streamlit',
-      category: 'Visualization/Apps',
+      category: 'datascience',
+      subCategory: 'Visualization/Apps',
       description: 'Turn scripts into interactive web dashboards',
       features: 'Turn scripts into web apps instantly',
       pricing: 'Free'
     },
     {
       name: 'MLflow',
-      category: 'MLOps',
+      category: 'datascience',
+      subCategory: 'MLOps',
       description: 'Complete model lifecycle management',
       features: 'Track experiments, deploy models',
       pricing: 'Free'
     },
     {
       name: 'Groq',
-      category: 'LLM Inference',
+      category: 'datascience',
+      subCategory: 'LLM Inference',
       description: 'High-speed model API responses',
       features: 'Blazing-fast response times',
       pricing: 'Freemium'
     },
     {
       name: 'Ollama',
-      category: 'Local LLMs',
+      category: 'datascience',
+      subCategory: 'Local LLMs',
       description: 'Running models offline (Llama, Mistral)',
       features: 'Privacy-focused, lightweight',
       pricing: 'Free'
     },
     {
       name: 'Perplexity AI',
-      category: 'AI Search',
+      category: 'datascience',
+      subCategory: 'AI Search',
       description: 'Research with quick, cited answers',
       features: 'Cited sources, fast results',
       pricing: 'Freemium'
     },
     {
       name: 'DuckDB',
-      category: 'Analytics',
+      category: 'datascience',
+      subCategory: 'Analytics',
       description: 'SQL on local files for data analysis',
       features: 'Faster than pandas for large datasets',
       pricing: 'Free'
     }
   ];
+
+  const filteredTools = selectedCategory === 'all' 
+    ? allTools 
+    : allTools.filter(tool => tool.category === selectedCategory);
 
   const features = [
     {
@@ -502,6 +564,12 @@ const AIIntegrationSection = () => {
       title: 'Use AI to Solve Problems—Not Avoid Them',
       description: "You'll learn how to prompt, validate, and fine-tune AI outputs for accuracy and real business needs."
     }
+  ];
+
+  const categories = [
+    { id: 'all', label: 'All AI Tools', icon: <AllInclusiveIcon /> },
+    { id: 'fullstack', label: 'Full Stack Development', icon: <CodeIcon /> },
+    { id: 'datascience', label: 'Data Science', icon: <DataUsageIcon /> }
   ];
 
   return (
@@ -543,97 +611,90 @@ const AIIntegrationSection = () => {
           ))}
         </Box>
 
-        <Box className={classes.slidersContainer}>
-          {/* Fullstack Tools Slider */}
-          <Box className={classes.sliderSection}>
-            <Typography className={classes.sectionLabel}>
-              <CodeIcon className={classes.labelIcon} />
-              Full Stack Development AI Tools
-            </Typography>
-            <Box className={classes.swiperContainer}>
-              <Swiper
-                effect={'cards'}
-                grabCursor={true}
-                modules={[EffectCards, Autoplay]}
-                autoplay={{
-                  delay: 3000,
-                  disableOnInteraction: false,
-                }}
-                loop={true}
-                className={classes.swiperContainer}
+        <Box className={classes.toolsSection}>
+          {/* <Typography variant="h3" className={classes.integrationsTitle}>
+            AI Tools We Use in Our Curriculum
+          </Typography> */}
+
+          <Box className={classes.categoryFilters}>
+            {categories.map((category) => (
+              <Button
+                key={category.id}
+                onClick={() => setSelectedCategory(category.id)}
+                className={`${classes.filterButton} ${
+                  selectedCategory === category.id ? classes.activeFilter : classes.inactiveFilter
+                }`}
+                startIcon={category.icon}
               >
-                {fullstackTools.map((tool, index) => (
-                  <SwiperSlide key={index}>
-                    <Card className={classes.toolCard}>
-                      <Chip 
-                        label={tool.pricing}
-                        className={classes.pricingChip}
-                      />
-                      <CardContent className={classes.toolCardContent}>
-                        <Typography className={classes.toolName}>
-                          {tool.name}
-                        </Typography>
-                        <Typography className={classes.toolCategory}>
-                          {tool.category}
-                        </Typography>
-                        <Typography className={classes.toolDescription}>
-                          {tool.description}
-                        </Typography>
-                        <Typography className={classes.toolFeatures}>
-                          {tool.features}
-                        </Typography>
-                      </CardContent>
-                    </Card>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </Box>
+                {category.label}
+              </Button>
+            ))}
           </Box>
 
-          {/* Data Science Tools Slider */}
-          <Box className={classes.sliderSection}>
-            <Typography className={classes.sectionLabel}>
-              <DataUsageIcon className={classes.labelIcon} />
-              Data Science AI Tools
-            </Typography>
-            <Box className={classes.swiperContainer}>
-              <Swiper
-                effect={'cards'}
-                grabCursor={true}
-                modules={[EffectCards, Autoplay]}
-                autoplay={{
-                  delay: 3500,
-                  disableOnInteraction: false,
-                }}
-                loop={true}
-                className={classes.swiperContainer}
-              >
-                {dataScienceTools.map((tool, index) => (
-                  <SwiperSlide key={index}>
-                    <Card className={classes.toolCard}>
-                      <Chip 
-                        label={tool.pricing}
-                        className={classes.pricingChip}
-                      />
-                      <CardContent className={classes.toolCardContent}>
-                        <Typography className={classes.toolName}>
-                          {tool.name}
-                        </Typography>
-                        <Typography className={classes.toolCategory}>
-                          {tool.category}
-                        </Typography>
-                        <Typography className={classes.toolDescription}>
-                          {tool.description}
-                        </Typography>
-                        <Typography className={classes.toolFeatures}>
-                          {tool.features}
-                        </Typography>
-                      </CardContent>
-                    </Card>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </Box>
+          <Box className={classes.swiperContainer}>
+            <Swiper
+              slidesPerView={2}
+              slidesPerGroup={2}
+              spaceBetween={30}
+              navigation={true}
+              pagination={{
+                clickable: true,
+              }}
+              autoplay={{
+                delay: 4000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+              }}
+              modules={[Navigation, Pagination, Autoplay]}
+              breakpoints={{
+                320: {
+                  slidesPerView: 1,
+                  slidesPerGroup: 1,
+                  spaceBetween: 20,
+                },
+                768: {
+                  slidesPerView: 1.5,
+                  slidesPerGroup: 1,
+                  spaceBetween: 25,
+                },
+                1024: {
+                  slidesPerView: 2,
+                  slidesPerGroup: 2,
+                  spaceBetween: 30,
+                },
+                1200: {
+                  slidesPerView: 3,
+                  slidesPerGroup: 2,
+                  spaceBetween: 30,
+                },
+              }}
+              key={selectedCategory} // Force re-render when category changes
+            >
+              {filteredTools.map((tool, index) => (
+                <SwiperSlide key={`${selectedCategory}-${index}`}>
+                  <Card className={classes.toolCard}>
+                    <Chip 
+                      label={tool.pricing}
+                      className={classes.pricingChip}
+                    />
+                    <CardContent className={classes.toolCardContent}>
+                      <Typography className={classes.toolName}>
+                        {tool.name}
+                      </Typography>
+                      <Typography className={classes.toolCategory}>
+                        {tool.subCategory}
+                      </Typography>
+                      <Typography className={classes.toolDescription}>
+                        {tool.description}
+                      </Typography>
+                      <Typography className={classes.toolFeatures}>
+                        {tool.features}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </Box>
         </Box>
       </Container>
