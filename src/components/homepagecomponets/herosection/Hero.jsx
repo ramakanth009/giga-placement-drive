@@ -51,7 +51,7 @@
 //           <Grid item xs={12} md={7} lg={8}>
 //             <HeroLeftSection />
 //           </Grid>
-          
+
 //           <Grid item xs={12} md={5} lg={4}>
 //             <HeroRightSection />
 //           </Grid>
@@ -67,15 +67,15 @@ import React, { useState, useEffect } from "react";
 import { Box, Typography, Button, Container, IconButton } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { useNavigate } from "react-router-dom";
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
-import EditIcon from '@mui/icons-material/Edit';
-import LightbulbIcon from '@mui/icons-material/Lightbulb';
-import SchoolIcon from '@mui/icons-material/School';
-import CodeIcon from '@mui/icons-material/Code';
-import AssessmentIcon from '@mui/icons-material/Assessment';
-import HandshakeIcon from '@mui/icons-material/Handshake';
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
+import EditIcon from "@mui/icons-material/Edit";
+import LightbulbIcon from "@mui/icons-material/Lightbulb";
+import SchoolIcon from "@mui/icons-material/School";
+import CodeIcon from "@mui/icons-material/Code";
+import AssessmentIcon from "@mui/icons-material/Assessment";
+import HandshakeIcon from "@mui/icons-material/Handshake";
 
 const useStyles = makeStyles({
   heroContainer: {
@@ -317,7 +317,8 @@ const useStyles = makeStyles({
       left: "-20%",
       width: "140%",
       height: "140%",
-      background: "linear-gradient(45deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%)",
+      background:
+        "linear-gradient(45deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%)",
       transform: "rotate(45deg)",
       animation: "$shimmer 3s infinite",
     },
@@ -410,39 +411,46 @@ const HeroCarousel = () => {
   const banners = [
     {
       headline: "Write your First Career Chapter with Gigaversity",
-      subheadline: "Create a standout resume in minutes that passes through ATS systems and impresses hiring managers in both tech and non-tech roles.",
+      subheadline:
+        "Build a professional ATS-compliant resume that stands out to recruiters in tech, finance, marketing, and other high-growth industries. Get hired faster with our proven resume templates.",
       ctaText: "Build your free resume now",
-      ctaAction: () => window.open('http://resume.gigaversity.in/', '_blank'),
+      ctaAction: () => window.open("http://resume.gigaversity.in/", "_blank"),
       icon: <EditIcon className={classes.icon} />,
       highlightWord: "Career Chapter",
     },
     {
-      headline: "From Idea to Prototype: Build Your Own Startup",
-      subheadline: "Access up to ₹1 Lakh Innovation Grant to transform your tech idea into a viable product with mentor support and resources.",
+      headline:
+        "From Idea to Prototype: Build Your Own Startup with Up to ₹1 Lakh Innovation Grant",
+      subheadline:
+        "Transform your startup idea into reality with funding up to ₹1 Lakh, expert mentorship, and comprehensive business development support. Join India's fastest-growing startup incubator.",
       ctaText: "Apply for funding",
       ctaAction: () => navigate("/startup-program"),
       icon: <LightbulbIcon className={classes.icon} />,
-      highlightWord: "Startup",
+      highlightWord: "₹1 Lakh Innovation Grant",
     },
     {
-      headline: "Experience the Learning in Tech Ecosystem",
-      subheadline: "Discover our state-of-the-art campus designed to foster collaboration, innovation, and hands-on learning in a supportive environment.",
+      headline: "Experience the Learning in Tech Ecosystem like never before",
+      subheadline:
+        "Immerse yourself in India's most advanced tech campus featuring cutting-edge labs, collaborative workspaces, and industry-standard infrastructure designed for next-generation learning.",
       ctaText: "Visit Campus",
       ctaAction: () => navigate("/campus"),
       icon: <SchoolIcon className={classes.icon} />,
       highlightWord: "Tech Ecosystem",
     },
     {
-      headline: "Turn Concepts into Code, Code into Careers",
-      subheadline: "Explore our comprehensive programs designed to equip you with in-demand skills that employers are actively seeking.",
+      headline: "Turn Concepts into Code, Code into careers",
+      subheadline:
+        "Master in-demand programming skills through hands-on projects, real-world applications, and industry-relevant curriculum that guarantees job readiness in today's competitive tech market.",
       ctaText: "View our courses",
       ctaAction: () => navigate("/courses"),
       icon: <CodeIcon className={classes.icon} />,
-      highlightWord: "Careers",
+      highlightWord: "careers",
     },
     {
-      headline: "10 Lakh Students Apply for IT Jobs Every Year",
-      subheadline: "Wondering if IT is the right career path for you? Take our assessment to discover your tech potential and get personalized recommendations.",
+      headline:
+        "10 Lakh Students Apply for IT Jobs Every Year — check if IT as a career Suits You?",
+      subheadline:
+        "Stand out from millions of IT job applicants with our comprehensive career assessment. Discover your coding aptitude, technical strengths, and personalized learning path for IT success.",
       ctaText: "Check if IT suits you",
       ctaAction: () => navigate("/pre-screening-test"),
       icon: <AssessmentIcon className={classes.icon} />,
@@ -450,7 +458,8 @@ const HeroCarousel = () => {
     },
     {
       headline: "Meet the Startup Founders Who Began Like You",
-      subheadline: "Connect with successful tech entrepreneurs who started their journey at Gigaversity and learn how they built thriving businesses.",
+      subheadline:
+        "Learn from successful tech entrepreneurs and startup founders who launched their companies from Gigaversity. Access exclusive networking events, mentorship programs, and collaboration opportunities.",
       ctaText: "Join collaboration network",
       ctaAction: () => navigate("/collaboration"),
       icon: <HandshakeIcon className={classes.icon} />,
@@ -483,7 +492,7 @@ const HeroCarousel = () => {
   // Process headline to highlight specific words
   const renderHighlightedHeadline = (headline, highlightWord) => {
     if (!highlightWord) return headline;
-    
+
     const parts = headline.split(highlightWord);
     return (
       <>
@@ -497,8 +506,12 @@ const HeroCarousel = () => {
   return (
     <Box className={classes.heroContainer}>
       {/* Background elements */}
-      <Box className={`${classes.backgroundElement} ${classes.backgroundElement1}`} />
-      <Box className={`${classes.backgroundElement} ${classes.backgroundElement2}`} />
+      <Box
+        className={`${classes.backgroundElement} ${classes.backgroundElement1}`}
+      />
+      <Box
+        className={`${classes.backgroundElement} ${classes.backgroundElement2}`}
+      />
 
       {/* Slide indicator */}
       <Box className={classes.slideIndicator}>
