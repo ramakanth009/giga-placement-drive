@@ -513,7 +513,7 @@ const AIIntegrationSection = () => {
       <Container maxWidth="lg" className={classes.container}>
         <Box className={classes.headerSection}>
           <Typography variant="h2" className={classes.mainTitle}>
-            AI is Not the Future—It's <span className={classes.highlight}>Already in Our Classrooms</span>
+            AI is Not the Future - It's <span className={classes.highlight}>Already in Our Classrooms</span>
           </Typography>
           
           <Typography variant="h3" className={classes.questionTitle}>
