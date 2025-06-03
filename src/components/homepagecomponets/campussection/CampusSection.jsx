@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, Container, Paper } from '@mui/material';
+import { Box, Typography, Container } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import SchoolIcon from '@mui/icons-material/School';
 import BuildIcon from '@mui/icons-material/Build';
@@ -130,32 +130,45 @@ const useStyles = makeStyles({
       gap: '15px',
     },
   },
-  campusCard: {
-    padding: '35px',
-    borderRadius: '20px !important',
-    background: 'white',
-    boxShadow: '0 8px 30px rgba(0, 0, 0, 0.08) !important',
-    border: '1px solid rgba(42, 43, 106, 0.1)',
-    transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+  flipCardContainer: {
+    backgroundColor: 'transparent',
+    width: '100%',
+    height: '350px',
+    perspective: '1000px',
+    cursor: 'pointer',
+    '@media (max-width: 600px)': {
+      height: '320px',
+    },
+    '@media (max-width: 480px)': {
+      height: '300px',
+    },
+  },
+  flipCardInner: {
     position: 'relative',
-    overflow: 'hidden',
+    width: '100%',
     height: '100%',
+    textAlign: 'center',
+    transition: 'transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+    transformStyle: 'preserve-3d',
+    '$flipCardContainer:hover &': {
+      transform: 'rotateY(180deg)',
+    },
+  },
+  flipCardFront: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    backfaceVisibility: 'hidden',
+    padding: '35px',
+    borderRadius: '20px',
+    background: 'white',
+    boxShadow: '0 8px 30px rgba(0, 0, 0, 0.08)',
+    border: '1px solid rgba(42, 43, 106, 0.1)',
     display: 'flex',
     flexDirection: 'column',
-    '&:hover': {
-      transform: 'translateY(-12px)',
-      boxShadow: '0 20px 40px rgba(0, 0, 0, 0.15) !important',
-      '& $iconContainer': {
-        transform: 'scale(1.1) rotate(5deg)',
-        backgroundColor: '#2A2B6A',
-        '& svg': {
-          color: 'white',
-        },
-      },
-      '& $cardTitle': {
-        color: '#2A2B6A',
-      },
-    },
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    textAlign: 'left',
     '&::before': {
       content: '""',
       position: 'absolute',
@@ -167,7 +180,7 @@ const useStyles = makeStyles({
       opacity: 0,
       transition: 'opacity 0.3s ease',
     },
-    '&:hover::before': {
+    '$flipCardContainer:hover &::before': {
       opacity: 1,
     },
     '@media (max-width: 1200px)': {
@@ -178,19 +191,74 @@ const useStyles = makeStyles({
     },
     '@media (max-width: 600px)': {
       padding: '20px',
-      borderRadius: '15px !important',
+      borderRadius: '15px',
     },
     '@media (max-width: 480px)': {
       padding: '18px',
     },
     '@media (max-width: 375px)': {
       padding: '15px',
-      borderRadius: '12px !important',
+      borderRadius: '12px',
+    },
+  },
+  flipCardBack: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    backfaceVisibility: 'hidden',
+    transform: 'rotateY(180deg)',
+    borderRadius: '20px',
+    overflow: 'hidden',
+    boxShadow: '0 8px 30px rgba(0, 0, 0, 0.15)',
+    '@media (max-width: 600px)': {
+      borderRadius: '15px',
+    },
+    '@media (max-width: 375px)': {
+      borderRadius: '12px',
+    },
+  },
+  campusImage: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    transition: 'transform 0.3s ease',
+    '$flipCardContainer:hover &': {
+      transform: 'scale(1.05)',
+    },
+  },
+  imageOverlay: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    background: 'linear-gradient(transparent, rgba(0, 0, 0, 0.8))',
+    color: 'white',
+    padding: '20px',
+    display: 'flex',
+    alignItems: 'center',
+    '@media (max-width: 600px)': {
+      padding: '15px',
+    },
+  },
+  overlayIcon: {
+    marginRight: '15px',
+    fontSize: '24px !important',
+    color: '#FFC614',
+    '@media (max-width: 600px)': {
+      marginRight: '12px',
+      fontSize: '20px !important',
+    },
+  },
+  overlayTitle: {
+    fontSize: '1.2rem !important',
+    fontWeight: 'bold !important',
+    '@media (max-width: 600px)': {
+      fontSize: '1rem !important',
     },
   },
   iconContainer: {
-    width: '80px',
-    height: '80px',
+    width: '64px',
+    height: '64px',
     borderRadius: '50%',
     backgroundColor: 'rgba(42, 43, 106, 0.1)',
     display: 'flex',
@@ -201,48 +269,55 @@ const useStyles = makeStyles({
     position: 'relative',
     boxShadow: '0 8px 20px rgba(42, 43, 106, 0.15)',
     '& svg': {
-      fontSize: '36px',
+      fontSize: '32px',
       color: '#2A2B6A',
       transition: 'color 0.3s ease',
     },
+    '$flipCardContainer:hover &': {
+      transform: 'scale(1.1) rotate(5deg)',
+      backgroundColor: '#2A2B6A',
+      '& svg': {
+        color: 'white',
+      },
+    },
     '@media (max-width: 1200px)': {
-      width: '75px',
-      height: '75px',
+      width: '64px',
+      height: '64px',
       marginBottom: '22px',
       '& svg': {
-        fontSize: '34px',
+        fontSize: '32px',
       },
     },
     '@media (max-width: 960px)': {
-      width: '70px',
-      height: '70px',
+      width: '64px',
+      height: '64px',
       marginBottom: '20px',
       '& svg': {
         fontSize: '32px',
       },
     },
     '@media (max-width: 600px)': {
-      width: '65px',
-      height: '65px',
+      width: '56px',
+      height: '56px',
       marginBottom: '18px',
       '& svg': {
-        fontSize: '30px',
+        fontSize: '28px',
       },
     },
     '@media (max-width: 480px)': {
-      width: '60px',
-      height: '60px',
+      width: '56px',
+      height: '56px',
       marginBottom: '16px',
       '& svg': {
         fontSize: '28px',
       },
     },
     '@media (max-width: 375px)': {
-      width: '55px',
-      height: '55px',
+      width: '48px',
+      height: '48px',
       marginBottom: '14px',
       '& svg': {
-        fontSize: '26px',
+        fontSize: '24px',
       },
     },
   },
@@ -252,6 +327,9 @@ const useStyles = makeStyles({
     color: '#333333 !important',
     marginBottom: '15px !important',
     transition: 'color 0.3s ease',
+    '$flipCardContainer:hover &': {
+      color: '#2A2B6A',
+    },
     '@media (max-width: 1200px)': {
       fontSize: '1.4rem !important',
       marginBottom: '14px !important',
@@ -347,32 +425,38 @@ const CampusSection = () => {
     {
       icon: <SchoolIcon />,
       title: "The Foundation Hall",
-      description: "A Dynamic Space Where Students From All Backgrounds Come Together For The First Time. Through Collaborative Learning, High-Energy Sessions, Peer Interactions, and solving problems you never thought you could."
+      description: "A Dynamic Space Where Students From All Backgrounds Come Together For The First Time. Through Collaborative Learning, High-Energy Sessions, Peer Interactions, and solving problems you never thought you could.",
+      image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
     {
       icon: <BuildIcon />,
       title: "The Product Chamber",
-      description: "The Product Chamber is where real tech products are built and executed collaboratively by teams. It’s a dynamic space designed to engage, inspire, and prepare you to become product-ready."
+      description: "The Product Chamber is where real tech products are built and executed collaboratively by teams. It's a dynamic space designed to engage, inspire, and prepare you to become product-ready.",
+      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
     {
       icon: <RocketLaunchIcon />,
       title: "The Startup Studio",
-      description: "Fuel your ideas with personalized mentorship and founder guidance to build, launch, and scale your product. This is where the most creative students secure up to ₹1 lakh in funding, not as a prize, but as real support to turn their tech startup ideas into reality."
+      description: "Fuel your ideas with personalized mentorship and founder guidance to build, launch, and scale your product. This is where the most creative students secure up to ₹1 lakh in funding, not as a prize, but as real support to turn their tech startup ideas into reality.",
+      image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
     {
       icon: <PersonIcon />,
       title: "The Mentor Hub (1on1)",
-      description: "Connect with industry experts and experienced guides who provide personalized support to accelerate your learning and career growth. The Mentor Hub is where your questions find answers, and your potential takes shape with a 1:1 session."
+      description: "Connect with industry experts and experienced guides who provide personalized support to accelerate your learning and career growth. The Mentor Hub is where your questions find answers, and your potential takes shape with a 1:1 session.",
+      image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
     {
       icon: <BusinessCenterIcon />,
       title: "The Venture Hall",
-      description: "At Venture Hall, Gigaversity hosts exclusive startup events where founders, venture capitalists (VCs), industry leaders, and investors come together. Students pitch their ideas, receive expert feedback, and present live demos."
+      description: "At Venture Hall, Gigaversity hosts exclusive startup events where founders, venture capitalists (VCs), industry leaders, and investors come together. Students pitch their ideas, receive expert feedback, and present live demos.",
+      image: "https://images.unsplash.com/photo-1591115765373-5207764f72e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
     {
       icon: <EventIcon />,
       title: "Monthly networking event - Startup Mela",
-      description: "Monthly networking event where students, alumni, industry professionals, and startup founders come together to share ideas, collaborate on projects, and build meaningful connections that last beyond the program."
+      description: "Monthly networking event where students, alumni, industry professionals, and startup founders come together to share ideas, collaborate on projects, and build meaningful connections that last beyond the program.",
+      image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     }
   ];
 
@@ -393,17 +477,37 @@ const CampusSection = () => {
 
         <Box className={classes.campusGrid}>
           {campusAreas.map((area, index) => (
-            <Paper key={index} className={classes.campusCard} elevation={0}>
-              <Box className={classes.iconContainer}>
-                {area.icon}
+            <Box key={index} className={classes.flipCardContainer}>
+              <Box className={classes.flipCardInner}>
+                {/* Front of the card */}
+                <Box className={classes.flipCardFront}>
+                  <Box className={classes.iconContainer}>
+                    {area.icon}
+                  </Box>
+                  <Typography className={classes.cardTitle}>
+                    {area.title}
+                  </Typography>
+                  <Typography className={classes.cardDescription}>
+                    {area.description}
+                  </Typography>
+                </Box>
+                
+                {/* Back of the card */}
+                <Box className={classes.flipCardBack}>
+                  <img
+                    src={area.image}
+                    alt={area.title}
+                    className={classes.campusImage}
+                  />
+                  <Box className={classes.imageOverlay}>
+                    {React.cloneElement(area.icon, { className: classes.overlayIcon })}
+                    <Typography className={classes.overlayTitle}>
+                      {area.title}
+                    </Typography>
+                  </Box>
+                </Box>
               </Box>
-              <Typography className={classes.cardTitle}>
-                {area.title}
-              </Typography>
-              <Typography className={classes.cardDescription}>
-                {area.description}
-              </Typography>
-            </Paper>
+            </Box>
           ))}
         </Box>
       </Container>
