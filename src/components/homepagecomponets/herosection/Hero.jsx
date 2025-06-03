@@ -271,31 +271,7 @@ const useStyles = makeStyles({
       fontSize: "80px !important",
     },
   },
-  slideIndicator: {
-    position: "absolute",
-    top: "20px",
-    right: "20px",
-    display: "flex",
-    alignItems: "center",
-    padding: "8px 16px",
-    backgroundColor: "rgba(255, 255, 255, 0.8)",
-    borderRadius: "50px",
-    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-    "& p": {
-      margin: "0 !important",
-      fontSize: "0.9rem !important",
-      fontWeight: "600 !important",
-      color: "#2A2B6A !important",
-    },
-    "@media (max-width: 600px)": {
-      top: "10px",
-      right: "10px",
-      padding: "6px 12px",
-      "& p": {
-        fontSize: "0.8rem !important",
-      },
-    },
-  },
+
   "@keyframes float": {
     "0%": {
       transform: "translateY(0) rotate(0deg)",
