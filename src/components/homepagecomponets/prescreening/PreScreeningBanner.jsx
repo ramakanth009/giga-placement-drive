@@ -249,6 +249,10 @@ const PreScreeningBanner = () => {
 
   const targetAudienceWithIcons = [
     {
+      text: "People who have been cheated by backdoor jobs in IT — promised false placements or fake offer letters",
+      icon: WarningAmberIcon
+    },
+    {
       text: "Graduates before 2021 looking for a career reboot",
       icon: SchoolIcon
     },
@@ -264,10 +268,7 @@ const PreScreeningBanner = () => {
       text: "Passionate learners who never got the right tech start",
       icon: EmojiObjectsIcon
     },
-    {
-      text: "People who have been cheated by backdoor jobs in IT — promised false placements or fake offer letters",
-      icon: WarningAmberIcon
-    }
+    
   ];
 
   // First 3 items go in the first row
