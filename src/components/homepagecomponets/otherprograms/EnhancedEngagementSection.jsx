@@ -5,6 +5,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import CommentIcon from '@mui/icons-material/Comment';
 import StarIcon from '@mui/icons-material/Star';
+import PeopleIcon from '@mui/icons-material/People';
 
 const useStyles = makeStyles({
   engagementContainer: {
@@ -74,9 +75,21 @@ const useStyles = makeStyles({
     marginTop: '5px',
     '@media (max-width: 600px)': {
       gap: '15px',
+      flexWrap: 'wrap',
     },
     '@media (max-width: 480px)': {
       gap: '12px',
+    },
+  },
+  actionsContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: '40px',
+    marginTop: '5px',
+    flexWrap: 'wrap',
+    '@media (max-width: 600px)': {
+      gap: '20px',
     },
   },
   actionButton: {
@@ -119,6 +132,23 @@ const useStyles = makeStyles({
       fontSize: '0.75rem !important',
     },
   },
+  interestedCount: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+    backgroundColor: 'rgba(255, 198, 20, 0.15)',
+    padding: '8px 15px',
+    borderRadius: '20px',
+  },
+  countIcon: {
+    color: '#FFC614',
+    fontSize: '20px !important',
+  },
+  countText: {
+    color: '#FFC614 !important',
+    fontSize: '0.9rem !important',
+    fontWeight: '600 !important',
+  },
   '@keyframes glow': {
     '0%': {
       boxShadow: '0 0 5px rgba(255, 198, 20, 0.3)',
@@ -157,19 +187,28 @@ const EnhancedEngagementSection = ({ onLoveClick, onCommentClick }) => {
         </Box>
       </Typography>
       
-      <Box className={classes.engagementActions}>
-        <Box className={classes.actionButton} onClick={handleLoveClick}>
-          {loved ? (
-            <FavoriteIcon className={`${classes.actionIcon} ${classes.loveIcon}`} style={{ color: '#ff4757' }} />
-          ) : (
-            <FavoriteBorderIcon className={`${classes.actionIcon} ${classes.loveIcon}`} />
-          )}
-          <Typography className={classes.actionText}>Love</Typography>
+      <Box className={classes.actionsContainer}>
+        <Box className={classes.engagementActions}>
+          <Box className={classes.actionButton} onClick={handleLoveClick}>
+            {loved ? (
+              <FavoriteIcon className={`${classes.actionIcon} ${classes.loveIcon}`} style={{ color: '#ff4757' }} />
+            ) : (
+              <FavoriteBorderIcon className={`${classes.actionIcon} ${classes.loveIcon}`} />
+            )}
+            <Typography className={classes.actionText}>Love</Typography>
+          </Box>
+          
+          <Box className={classes.actionButton} onClick={onCommentClick}>
+            <CommentIcon className={`${classes.actionIcon} ${classes.commentIcon}`} />
+            <Typography className={classes.actionText}>Comment</Typography>
+          </Box>
         </Box>
-        
-        <Box className={classes.actionButton} onClick={onCommentClick}>
-          <CommentIcon className={`${classes.actionIcon} ${classes.commentIcon}`} />
-          <Typography className={classes.actionText}>Comment</Typography>
+
+        <Box className={classes.interestedCount}>
+          <PeopleIcon className={classes.countIcon} />
+          <Typography className={classes.countText}>
+            Interested Students - 2584
+          </Typography>
         </Box>
       </Box>
     </Box>

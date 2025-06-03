@@ -347,12 +347,12 @@ const CampusSection = () => {
     {
       icon: <SchoolIcon />,
       title: "The Foundation Hall",
-      description: "A Dynamic Space Where Students From All Backgrounds Come Together For The First Time. Through Collaborative Learning, High-Energy Sessions, Peer Interactions, and Solving Problems You Never Thought You Could."
+      description: "A Dynamic Space Where Students From All Backgrounds Come Together For The First Time. Through Collaborative Learning, High-Energy Sessions, Peer Interactions, and solving problems you never thought you could."
     },
     {
       icon: <BuildIcon />,
       title: "The Product Chamber",
-      description: "The Product Chamber is where real tech products are built and executed collaboratively by teams. It's a dynamic space designed to engage, inspire, and prepare you to become product-ready."
+      description: "The Product Chamber is where real tech products are built and executed collaboratively by teams. It’s a dynamic space designed to engage, inspire, and prepare you to become product-ready."
     },
     {
       icon: <RocketLaunchIcon />,
@@ -371,7 +371,7 @@ const CampusSection = () => {
     },
     {
       icon: <EventIcon />,
-      title: "Tech Connect Mela",
+      title: "Monthly networking event - Startup Mela",
       description: "Monthly networking event where students, alumni, industry professionals, and startup founders come together to share ideas, collaborate on projects, and build meaningful connections that last beyond the program."
     }
   ];
@@ -384,10 +384,10 @@ const CampusSection = () => {
       <Container maxWidth="lg" className={classes.container}>
         <Box className={classes.titleContainer}>
           <Typography variant="h2" className={classes.title}>
-            State of the Art <span>Campus</span>
+            Gigaversity State of the Art <span>Campus</span>
           </Typography>
           <Typography variant="body1" className={classes.subtitle}>
-            Learn, build, and grow in a dynamic space equipped with everything you need to thrive in tech.
+            Learn, build, and grow in a dynamic environment equipped with everything you need to thrive in the tech industry
           </Typography>
         </Box>
 

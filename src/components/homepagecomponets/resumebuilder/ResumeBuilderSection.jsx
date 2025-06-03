@@ -2,14 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Typography, Button } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import { useNavigate } from "react-router-dom";
 import DoneIcon from "@mui/icons-material/Done";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import CodeIcon from "@mui/icons-material/Code";
-import SchoolIcon from "@mui/icons-material/School";
-import PsychologyIcon from "@mui/icons-material/Psychology";
-import SettingsIcon from "@mui/icons-material/Settings";
-import DesignServicesIcon from "@mui/icons-material/DesignServices";
 
 // Import the ResumeCard component
 import ResumeCard from './ResumeCard';
@@ -50,12 +44,12 @@ const useStyles = makeStyles({
     },
   },
   contentWrapper: {
-    padding: '60px 40px',
+    padding: '30px 20px',
     display: 'flex',
     gap: '30px',
     justifyContent: 'space-between',
     position: 'relative',
-    minHeight: '740px', // Increased to accommodate content
+    minHeight: '620px', // Increased to accommodate content
     height: '100%',
     overflow: 'hidden', // Prevent scrolling
     '@media (max-width: 1100px)': {
@@ -76,7 +70,8 @@ const useStyles = makeStyles({
     },
   },
   leftContent: {
-    flex: '1',
+    flex: '1.5',
+    minWidth: '500px',
     // position: 'relative',
     // zIndex: 2,
     // display: 'flex',
@@ -87,6 +82,7 @@ const useStyles = makeStyles({
       alignItems: 'center',
       textAlign: 'center',
       width: '100%',
+      minWidth: 'unset',
     },
   },
   title: {
@@ -118,8 +114,8 @@ const useStyles = makeStyles({
   subtitle: {
     fontSize: '1rem !important',
     color: 'rgba(255, 255, 255, 0.9) !important',
-    marginBottom: '30px !important',
-    maxWidth: '600px',
+    marginBottom: '15px !important',
+    maxWidth: '700px',
     '@media (max-width: 960px)': {
       fontSize: '0.95rem !important',
       textAlign: 'center',
@@ -210,10 +206,8 @@ const useStyles = makeStyles({
     '@media (max-width: 960px)': {
       padding: '12px 15px',
       minWidth: '100px',
-    },
-    '@media (max-width: 480px)': {
+    },    '@media (max-width: 480px)': {
       padding: '10px 12px',
-      minWidth: '80px',
       flex: '1',
       minWidth: '40%',
       maxWidth: 'calc(50% - 5px)',
@@ -318,40 +312,11 @@ const useStyles = makeStyles({
     opacity: 0.3,
     zIndex: 1,
   },
-  floatingIcons: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-    zIndex: 1,
-    '@media (max-width: 600px)': {
-      opacity: 0.4,
-    },
-  },
-  floatingIcon: {
-    position: 'absolute',
-    color: 'rgba(255, 255, 255, 0.05)',
-    animation: '$float 8s infinite ease-in-out',
-    '@media (max-width: 480px)': {
-      // Make floating icons smaller on mobile
-      fontSize: '80% !important',
-    },
-  },
-  '@keyframes float': {
-    '0%': {
-      transform: 'translateY(0) rotate(0deg)',
-    },
-    '50%': {
-      transform: 'translateY(-20px) rotate(10deg)',
-    },
-    '100%': {
-      transform: 'translateY(0) rotate(0deg)',
-    },
-  },
+  
 });
 
 const ResumeBuilderSection = () => {
   const classes = useStyles();
-  const navigate = useNavigate();
   const [animated, setAnimated] = useState(false);
 
   useEffect(() => {
@@ -367,39 +332,13 @@ const ResumeBuilderSection = () => {
   };
   
   // Floating icons for background effect with responsive positioning
-  const floatingIcons = [
-    { icon: <CodeIcon />, top: '15%', left: '10%', size: '40px', delay: '0s' },
-    { icon: <SchoolIcon />, top: '25%', right: '15%', size: '35px', delay: '1s' },
-    { icon: <PsychologyIcon />, bottom: '20%', left: '20%', size: '45px', delay: '2s' },
-    { icon: <SettingsIcon />, top: '70%', right: '25%', size: '30px', delay: '3s' },
-    { icon: <DesignServicesIcon />, top: '40%', left: '25%', size: '35px', delay: '4s' },
-  ];
+
   
   return (
     <Box className={classes.section}>
       <Box className={classes.container}>
         <Box className={classes.outerBox}>
           <Box className={classes.backgroundPattern} />
-          
-          {/* Floating icons in the background */}
-          <Box className={classes.floatingIcons}>
-            {floatingIcons.map((icon, index) => (
-              <Box
-                key={index}
-                className={classes.floatingIcon}
-                sx={{
-                  top: icon.top,
-                  left: icon.left,
-                  right: icon.right,
-                  bottom: icon.bottom,
-                  fontSize: icon.size,
-                  animationDelay: icon.delay,
-                }}
-              >
-                {icon.icon}
-              </Box>
-            ))}
-          </Box>
           
           <Box className={classes.contentWrapper}>
             <Box 

@@ -3,11 +3,9 @@ import {
   Box, 
   Typography, 
   Button, 
-  IconButton, 
   Container,
   Card, 
   CardMedia, 
-  Tooltip, 
   Chip, 
   Tabs,
   Tab,
@@ -19,12 +17,7 @@ import {
   TextField
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import CommentIcon from '@mui/icons-material/Comment';
 import SendIcon from '@mui/icons-material/Send';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import LaunchIcon from '@mui/icons-material/Launch';
 import SchoolIcon from '@mui/icons-material/School';
@@ -704,7 +697,7 @@ const useStyles = makeStyles({
   },
   featureItem: {
     display: 'flex',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     marginBottom: '12px',
     '&:last-child': {
       marginBottom: 0

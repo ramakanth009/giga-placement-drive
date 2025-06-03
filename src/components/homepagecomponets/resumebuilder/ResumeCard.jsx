@@ -21,7 +21,7 @@ const useStyles = makeStyles({
     margin: '0 auto',
     perspective: '2000px',
     height: 'auto',
-    minHeight: '620px',
+    minHeight: '530px',
     '@media (max-width: 1200px)': {
       maxWidth: '450px',
       minHeight: '600px',
@@ -95,14 +95,11 @@ const useStyles = makeStyles({
   },
   resumeHeader: {
     borderBottom: '1px solid #eee',
-    paddingBottom: '15px',
-    marginBottom: '15px',
+    marginBottom: '10px',
     '@media (max-width: 600px)': {
-      paddingBottom: '12px',
       marginBottom: '12px',
     },
     '@media (max-width: 480px)': {
-      paddingBottom: '10px',
       marginBottom: '10px',
     },
   },
@@ -206,8 +203,6 @@ const useStyles = makeStyles({
   },
   experienceItem: {
     marginBottom: '12px',
-    paddingBottom: '12px',
-    borderBottom: '1px dashed #eee',
     '&:last-child': {
       marginBottom: '0',
       paddingBottom: '0',
@@ -215,11 +210,9 @@ const useStyles = makeStyles({
     },
     '@media (max-width: 480px)': {
       marginBottom: '10px',
-      paddingBottom: '10px',
     },
     '@media (max-width: 375px)': {
       marginBottom: '8px',
-      paddingBottom: '8px',
     },
   },
   expCompany: {
@@ -328,8 +321,8 @@ const useStyles = makeStyles({
   },
   resumeVisualContainer: {
     position: 'absolute',
-    top: '-40px',
-    right: '-40px',
+    top: '-10px',
+    right: '-10px',
     zIndex: 3,
     '@media (max-width: 960px)': {
       top: '-30px',
@@ -349,8 +342,8 @@ const useStyles = makeStyles({
     },
   },
   resumeVisual: {
-    width: '80px',
-    height: '80px',
+    width: '50px',
+    height: '50px',
     borderRadius: '50%',
     backgroundColor: '#FFC614',
     display: 'flex',
@@ -436,7 +429,7 @@ const useStyles = makeStyles({
     color: '#2A2B6A !important',
     fontWeight: 'bold !important',
     boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1) !important',
-    fontSize: '0.75rem !important',
+    fontSize: '0.5rem !important',
     whiteSpace: 'nowrap !important',
     '@media (max-width: 960px)': {
       fontSize: '0.7rem !important',
@@ -613,7 +606,7 @@ const useStyles = makeStyles({
     },
   },
   projectTech: {
-    fontSize: '0.75rem !important',
+    fontSize: '0.6rem !important',
     color: '#555 !important',
     marginBottom: '6px !important',
     '@media (max-width: 600px)': {
@@ -642,7 +635,7 @@ const useStyles = makeStyles({
     },
   },
   projectPoint: {
-    fontSize: '0.75rem !important',
+    fontSize: '0.6rem !important',
     color: '#555 !important',
     marginBottom: '4px !important',
     lineHeight: '1.4 !important',
@@ -708,7 +701,7 @@ const ResumeCard = ({ animated }) => {
       
       {/* Flip indicator */}
       <Box className={classes.flipIndicator} onClick={handleFlip}>
-        <AutoAwesomeIcon sx={{ fontSize: { xs: '0.8rem', sm: '0.9rem', md: '1rem' } }} />
+        <AutoAwesomeIcon sx={{ fontSize: { xs: '0.6rem', sm: '0.7rem', md: '0.8rem' } }} />
         <Typography variant="body2" sx={{ fontSize: { xs: '0.7rem', sm: '0.75rem', md: '0.8rem' } }}>
           Click to flip
         </Typography>
@@ -737,7 +730,7 @@ const ResumeCard = ({ animated }) => {
             </Box>
           </Box>
           
-          <Box mb={2}>
+          <Box mb={1}>
             <Typography className={classes.sectionTitle}>
               <SummarizeIcon className={classes.sectionIcon} />
               Professional Summary
@@ -747,7 +740,7 @@ const ResumeCard = ({ animated }) => {
             </Typography>
           </Box>
           
-          <Box mb={2}>
+          <Box mb={1}>
             <Typography className={classes.sectionTitle}>
               <WorkIcon className={classes.sectionIcon} />
               Experience
@@ -826,7 +819,7 @@ const ResumeCard = ({ animated }) => {
             </Box>
           </Box>
           
-          <Box mb={2}>
+          <Box mb={1}>
             <Typography className={classes.sectionTitle}>
               <PersonIcon className={classes.sectionIcon} />
               Professional Profile
@@ -836,7 +829,7 @@ const ResumeCard = ({ animated }) => {
             </Typography>
           </Box>
           
-          <Box mb={2}>
+          <Box mb={1}>
             <Typography className={classes.sectionTitle}>
               <WorkIcon className={classes.sectionIcon} />
               Work Experience
@@ -859,7 +852,7 @@ const ResumeCard = ({ animated }) => {
             </Box>
           </Box>
           
-          <Box mb={2}>
+          <Box mb={1}>
             <Typography className={classes.sectionTitle}>
               <SchoolIcon className={classes.sectionIcon} />
               Education
