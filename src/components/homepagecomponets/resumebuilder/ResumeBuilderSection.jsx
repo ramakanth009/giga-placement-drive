@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     marginBottom: '5px',
     position: 'relative',
     overflow: 'visible',
-    padding: '20px 0',
+    padding: '10px 0',
     '@media (max-width: 960px)': {
       padding: '40px 0',
     },
@@ -55,7 +55,7 @@ const useStyles = makeStyles({
     gap: '30px',
     justifyContent: 'space-between',
     position: 'relative',
-    minHeight: '850px', // Increased to accommodate content
+    minHeight: '740px', // Increased to accommodate content
     height: '100%',
     overflow: 'hidden', // Prevent scrolling
     '@media (max-width: 1100px)': {
@@ -77,12 +77,12 @@ const useStyles = makeStyles({
   },
   leftContent: {
     flex: '1',
-    position: 'relative',
-    zIndex: 2,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'flex-start',
+    // position: 'relative',
+    // zIndex: 2,
+    // display: 'flex',
+    // flexDirection: 'column',
+    // justifyContent: 'center',
+    // alignItems: 'flex-start',
     '@media (max-width: 960px)': {
       alignItems: 'center',
       textAlign: 'center',
@@ -90,25 +90,25 @@ const useStyles = makeStyles({
     },
   },
   title: {
-    fontSize: '2.5rem !important',
+    fontSize: '2rem !important',
     fontWeight: 'bold !important',
     color: 'white !important',
     lineHeight: '1.2 !important',
     marginBottom: '20px !important',
     '@media (max-width: 1200px)': {
-      fontSize: '2.3rem !important',
+      fontSize: '1.8rem !important',
     },
     '@media (max-width: 960px)': {
-      fontSize: '2.2rem !important',
+      fontSize: '1.7rem !important',
       textAlign: 'center',
     },
     '@media (max-width: 600px)': {
-      fontSize: '1.8rem !important',
+      fontSize: '1.5rem !important',
       marginBottom: '15px !important',
       lineHeight: '1.3 !important',
     },
     '@media (max-width: 400px)': {
-      fontSize: '1.6rem !important',
+      fontSize: '1.3rem !important',
     },
   },
   highlightText: {
@@ -116,17 +116,17 @@ const useStyles = makeStyles({
     position: 'relative',
   },
   subtitle: {
-    fontSize: '1.2rem !important',
+    fontSize: '1rem !important',
     color: 'rgba(255, 255, 255, 0.9) !important',
     marginBottom: '30px !important',
     maxWidth: '600px',
     '@media (max-width: 960px)': {
-      fontSize: '1.1rem !important',
+      fontSize: '0.95rem !important',
       textAlign: 'center',
       margin: '0 auto 25px auto !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '1rem !important',
+      fontSize: '0.9rem !important',
       marginBottom: '20px !important',
       lineHeight: '1.5 !important',
     },
@@ -176,12 +176,12 @@ const useStyles = makeStyles({
     },
   },
   featureText: {
-    fontSize: '1rem !important',
+    fontSize: '0.9rem !important',
     color: 'rgba(255, 255, 255, 0.9) !important',
     fontWeight: '500 !important',
-    paddingLeft: '0', // Explicit padding to maintain alignment
+    paddingLeft: '0',
     '@media (max-width: 600px)': {
-      fontSize: '0.9rem !important',
+      fontSize: '0.85rem !important',
       lineHeight: '1.4 !important',
       textAlign: 'left',
     },

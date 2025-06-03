@@ -1,6 +1,6 @@
 // src/components/homepagecomponets/resumebuilder/ResumeCard.jsx
 import React, { useState, useEffect } from 'react';
-import { Box, Typography, Chip, Paper } from "@mui/material";
+import { Box, Typography, Chip } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import WorkIcon from "@mui/icons-material/Work";
@@ -8,7 +8,6 @@ import SummarizeIcon from "@mui/icons-material/Summarize";
 import CodeIcon from "@mui/icons-material/Code";
 import BuildIcon from "@mui/icons-material/Build";
 import SchoolIcon from "@mui/icons-material/School";
-import VolunteerActivismIcon from "@mui/icons-material/VolunteerActivism";
 import LanguageIcon from "@mui/icons-material/Language";
 import SettingsIcon from "@mui/icons-material/Settings";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
@@ -22,7 +21,7 @@ const useStyles = makeStyles({
     margin: '0 auto',
     perspective: '2000px',
     height: 'auto',
-    minHeight: '700px',
+    minHeight: '620px',
     '@media (max-width: 1200px)': {
       maxWidth: '450px',
       minHeight: '600px',
@@ -108,29 +107,12 @@ const useStyles = makeStyles({
     },
   },
   resumeName: {
-    fontSize: '1.2rem !important',
+    fontSize: '0.85rem !important',
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
     marginBottom: '3px !important',
     '@media (max-width: 960px)': {
-      fontSize: '0.85rem !important',
-    },
-    '@media (max-width: 600px)': {
-      fontSize: '0.85rem !important',
-    },
-    '@media (max-width: 480px)': {
-      fontSize: '0.75rem !important',
-    },
-    '@media (max-width: 375px)': {
       fontSize: '0.7rem !important',
-    },
-  },
-  resumeTitle: {
-    fontSize: '0.8rem !important',
-    color: '#555 !important',
-    marginBottom: '8px !important',
-    '@media (max-width: 960px)': {
-      fontSize: '0.65rem !important',
     },
     '@media (max-width: 600px)': {
       fontSize: '0.65rem !important',
@@ -140,6 +122,23 @@ const useStyles = makeStyles({
     },
     '@media (max-width: 375px)': {
       fontSize: '0.55rem !important',
+    },
+  },
+  resumeTitle: {
+    fontSize: '0.65rem !important',
+    color: '#555 !important',
+    marginBottom: '8px !important',
+    '@media (max-width: 960px)': {
+      fontSize: '0.55rem !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.5rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.45rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.4rem !important',
     },
   },
   contactInfo: {
@@ -151,41 +150,41 @@ const useStyles = makeStyles({
     },
   },
   contactChip: {
-    fontSize: '0.65rem !important',
-    height: '22px !important',
+    fontSize: '0.5rem !important',
+    height: '18px !important',
     '@media (max-width: 600px)': {
-      fontSize: '0.55rem !important',
-      height: '18px !important',
-    },
-    '@media (max-width: 480px)': {
-      fontSize: '0.5rem !important',
-      height: '16px !important',
-    },
-    '@media (max-width: 375px)': {
       fontSize: '0.45rem !important',
       height: '14px !important',
     },
+    '@media (max-width: 480px)': {
+      fontSize: '0.4rem !important',
+      height: '12px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.35rem !important',
+      height: '10px !important',
+    },
   },
   sectionTitle: {
-    fontSize: '0.9rem !important',
+    fontSize: '0.7rem !important',
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
-    marginBottom: '8px !important',
+    marginBottom: '6px !important',
     display: 'flex',
     alignItems: 'center',
     '@media (max-width: 960px)': {
-      fontSize: '0.7rem !important',
-      marginBottom: '6px !important',
-    },
-    '@media (max-width: 600px)': {
-      fontSize: '0.7rem !important',
-    },
-    '@media (max-width: 480px)': {
-      fontSize: '0.65rem !important',
-    },
-    '@media (max-width: 375px)': {
       fontSize: '0.6rem !important',
       marginBottom: '5px !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.55rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.5rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.45rem !important',
+      marginBottom: '4px !important',
     },
   },
   sectionIcon: {
@@ -224,7 +223,7 @@ const useStyles = makeStyles({
     },
   },
   expCompany: {
-    fontSize: '0.8rem !important',
+    fontSize: '0.65rem !important',
     fontWeight: 'bold !important',
     color: '#333 !important',
     marginBottom: '2px !important',
@@ -232,49 +231,48 @@ const useStyles = makeStyles({
     alignItems: 'center',
     justifyContent: 'space-between',
     '@media (max-width: 960px)': {
-      fontSize: '0.6rem !important',
+      fontSize: '0.5rem !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '0.65rem !important',
+      fontSize: '0.5rem !important',
     },
     '@media (max-width: 480px)': {
-      fontSize: '0.6rem !important',
+      fontSize: '0.45rem !important',
     },
     '@media (max-width: 375px)': {
-      fontSize: '0.55rem !important',
+      fontSize: '0.4rem !important',
     },
   },
   expRole: {
-    fontSize: '0.75rem !important',
+    fontSize: '0.6rem !important',
     color: '#555 !important',
-    marginBottom: '3px !important',
+    marginBottom: '2px !important',
     '@media (max-width: 960px)': {
-      fontSize: '0.55rem !important',
+      fontSize: '0.45rem !important',
       marginBottom: '2px !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '0.6rem !important',
+      fontSize: '0.45rem !important',
     },
     '@media (max-width: 480px)': {
-      fontSize: '0.55rem !important',
-      marginBottom: '2px !important',
+      fontSize: '0.4rem !important',
     },
     '@media (max-width: 375px)': {
-      fontSize: '0.5rem !important',
+      fontSize: '0.35rem !important',
     },
   },
   expDate: {
-    fontSize: '0.65rem !important',
+    fontSize: '0.5rem !important',
     color: '#777 !important',
     fontStyle: 'italic !important',
     '@media (max-width: 960px)': {
-      fontSize: '0.5rem !important',
+      fontSize: '0.4rem !important',
     },
     '@media (max-width: 480px)': {
-      fontSize: '0.6rem !important',
+      fontSize: '0.45rem !important',
     },
     '@media (max-width: 375px)': {
-      fontSize: '0.55rem !important',
+      fontSize: '0.4rem !important',
     },
   },
   skillsContainer: {
@@ -294,14 +292,11 @@ const useStyles = makeStyles({
   skillChip: {
     backgroundColor: 'rgba(42, 43, 106, 0.1) !important',
     color: '#2A2B6A !important',
-    fontSize: '0.7rem !important',
-    height: '24px !important',
+    fontSize: '0.55rem !important',
+    height: '20px !important',
     '@media (max-width: 960px)': {
-      fontSize: '0.55rem !important',
-      height: '18px !important',
-      '& .MuiChip-label': {
-        padding: '0 6px !important',
-      },
+      fontSize: '0.45rem !important',
+      height: '14px !important',
     },
     '@media (max-width: 600px)': {
       fontSize: '0.55rem !important',
