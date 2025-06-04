@@ -412,10 +412,6 @@ const HeroCarousel = () => {
         className={`${classes.backgroundElement} ${classes.backgroundElement2}`}
       />
 
-      {/* Slide indicator */}
-      <Box className={classes.slideIndicator}>
-        <Typography>{`${activeSlide + 1}/${banners.length}`}</Typography>
-      </Box>
 
       <Container maxWidth="xl">
         <Box className={classes.slideContainer}>
