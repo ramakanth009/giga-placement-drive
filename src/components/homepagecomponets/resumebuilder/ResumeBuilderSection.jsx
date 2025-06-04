@@ -44,31 +44,43 @@ const useStyles = makeStyles({
     },
   },
   contentWrapper: {
-    padding: '30px 20px',
+    padding: '20px 20px', // Reduced top padding since title moves out
     display: 'flex',
     gap: '30px',
     justifyContent: 'space-between',
     position: 'relative',
-    minHeight: '620px', // Increased to accommodate content
+    minHeight: '620px',
     height: '100%',
-    overflow: 'hidden', // Prevent scrolling
+    overflow: 'hidden',
     '@media (max-width: 1100px)': {
-      padding: '50px 30px',
+      padding: '30px 30px', // Reduced padding
       gap: '40px',
       minHeight: '800px',
     },
     '@media (max-width: 960px)': {
       flexDirection: 'column',
-      padding: '40px 30px',
+      padding: '30px 30px', // Reduced padding
       alignItems: 'center',
       height: 'auto',
       minHeight: 'unset',
     },
     '@media (max-width: 600px)': {
-      padding: '30px 16px',
+      padding: '20px 16px', // Reduced padding
       gap: '30px',
     },
   },
+  
+  // Add new style for centered title container
+  titleContainer: {
+    textAlign: 'center',
+    padding: '30px 20px 0',
+    position: 'relative',
+    zIndex: 2,
+    '@media (max-width: 600px)': {
+      padding: '20px 16px 0',
+    },
+  },
+
   leftContent: {
     flex: '1.5',
     minWidth: '500px',
@@ -112,17 +124,17 @@ const useStyles = makeStyles({
     position: 'relative',
   },
   subtitle: {
-    fontSize: '1rem !important',
+    fontSize: '1.2rem !important', // Increased from 1rem
     color: 'rgba(255, 255, 255, 0.9) !important',
     marginBottom: '15px !important',
     maxWidth: '700px',
     '@media (max-width: 960px)': {
-      fontSize: '0.95rem !important',
+      fontSize: '1.1rem !important', // Increased from 0.95rem
       textAlign: 'center',
       margin: '0 auto 25px auto !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '0.9rem !important',
+      fontSize: '1rem !important', // Increased from 0.9rem
       marginBottom: '20px !important',
       lineHeight: '1.5 !important',
     },
@@ -172,12 +184,12 @@ const useStyles = makeStyles({
     },
   },
   featureText: {
-    fontSize: '0.9rem !important',
+    fontSize: '1.1rem !important', // Increased from 0.9rem
     color: 'rgba(255, 255, 255, 0.9) !important',
     fontWeight: '500 !important',
     paddingLeft: '0',
     '@media (max-width: 600px)': {
-      fontSize: '0.85rem !important',
+      fontSize: '1rem !important', // Increased from 0.85rem
       lineHeight: '1.4 !important',
       textAlign: 'left',
     },
@@ -214,23 +226,23 @@ const useStyles = makeStyles({
     },
   },
   statNumber: {
-    fontSize: '1.8rem !important',
+    fontSize: '2rem !important', // Increased from 1.8rem
     fontWeight: 'bold !important',
     color: '#FFC614 !important',
     marginBottom: '5px !important',
     '@media (max-width: 960px)': {
-      fontSize: '1.6rem !important',
+      fontSize: '1.8rem !important', // Increased from 1.6rem
     },
     '@media (max-width: 480px)': {
-      fontSize: '1.4rem !important',
+      fontSize: '1.6rem !important', // Increased from 1.4rem
       marginBottom: '3px !important',
     },
   },
   statLabel: {
-    fontSize: '0.85rem !important',
+    fontSize: '1rem !important', // Increased from 0.85rem
     color: 'rgba(255, 255, 255, 0.8) !important',
     '@media (max-width: 480px)': {
-      fontSize: '0.75rem !important',
+      fontSize: '0.9rem !important', // Increased from 0.75rem
     },
   },
   buildButton: {
@@ -340,6 +352,35 @@ const ResumeBuilderSection = () => {
         <Box className={classes.outerBox}>
           <Box className={classes.backgroundPattern} />
           
+          {/* Add centered title section */}
+          <Box 
+            className={classes.titleContainer}
+            sx={{
+              opacity: animated ? 1 : 0,
+              transform: animated ? 'translateY(0)' : 'translateY(30px)',
+              transition: 'opacity 0.8s ease, transform 0.8s ease',
+            }}
+          >
+            <Typography variant="h1" className={classes.title}>
+              Write your first career chapter with Gigaversity{" "}
+              <Typography
+                component="span"
+                variant="subtitle1"
+                sx={{
+                  display: 'block',
+                  fontStyle: 'italic',
+                  fontWeight: 400,
+                  color: 'text.secondary',
+                  fontSize: { xs: '1.1rem', sm: '1.3rem' },
+                  mt: 1,
+                }}
+                className={classes.highlightText}
+              >
+                Build your ATS Optimized Resume
+              </Typography>
+            </Typography>
+          </Box>
+          
           <Box className={classes.contentWrapper}>
             <Box 
               className={classes.leftContent}
@@ -349,25 +390,6 @@ const ResumeBuilderSection = () => {
                 transition: 'opacity 0.8s ease, transform 0.8s ease',
               }}
             >
-              <Typography variant="h1" className={classes.title}>
-                Write your first career chapter with Gigaversity{" "}
-                <Typography
-                  component="span"
-                  variant="subtitle1"
-                  sx={{
-                    display: 'block',
-                    fontStyle: 'italic',
-                    fontWeight: 400,
-                    color: 'text.secondary',
-                    fontSize: { xs: '1.1rem', sm: '1.3rem' },
-                    mt: 1,
-                  }}
-                  className={classes.highlightText}
-                >
-                  Build your ATS Optimized Resume
-                </Typography>
-              </Typography>
-              
               <Typography variant="body1" className={classes.subtitle}>
                 Create a standout resume in minutes that passes through Applicant Tracking Systems and impresses hiring managers in both tech and non-tech roles.
               </Typography>

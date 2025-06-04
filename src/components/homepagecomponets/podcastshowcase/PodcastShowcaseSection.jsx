@@ -363,7 +363,7 @@ const PodcastShowcaseSection = () => {
                 sx={{ color: "#fff" }}
               >
                 <QuestionAnswerIcon className={classes.questionIcon} />
-                Have a question for hiring managers or recruiters?
+                Have a Question for Founders, Co-Founders, or Recruiters?
               </Typography>
 
               <Typography

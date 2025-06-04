@@ -1,223 +1,3 @@
-// // src/components/homepagecomponets/mentorshowcase/MentorShowcase.jsx
-// import React from 'react';
-// import { Box, Typography, Card, CardContent, Container } from '@mui/material';
-// import { makeStyles } from '@mui/styles';
-// // Import Swiper React components
-// import { Swiper, SwiperSlide } from 'swiper/react';
-// // Import Swiper styles
-// import 'swiper/css';
-// import 'swiper/css/pagination';
-// import 'swiper/css/navigation';
-// // Import required modules
-// import { Pagination, Navigation, Autoplay } from 'swiper/modules';
-
-// // Import trainer images - Update with your correct path structure if needed
-// import hemanthImg from '../../../assets/trainers/Hemanth_sairsm.jpg';
-// import jaiImg from '../../../assets/trainers/Jai_shankar_reddy.jpg';
-// import laxmanImg from '../../../assets/trainers/Laxman_eadala.jpg';
-// import vinodImg from '../../../assets/trainers/Vinod_kumar.jpg';
-
-// const useStyles = makeStyles({
-//   section: {
-//     padding: '60px 0',
-//     borderRadius: '12px',
-//     margin: '40px 0',
-//   },
-//   title: {
-//     fontSize: '2.5rem !important',
-//     fontWeight: '700 !important',
-//     color: '#2A2B6A !important',
-//     textAlign: 'center',
-//     marginBottom: '16px !important',
-//     '@media (max-width: 600px)': {
-//       fontSize: '1.8rem !important',
-//     },
-//   },
-//   subtitle: {
-//     fontSize: '1.1rem !important',
-//     color: '#666 !important',
-//     textAlign: 'center',
-//     maxWidth: '700px',
-//     margin: '0 auto 40px auto !important',
-//     '@media (max-width: 600px)': {
-//       fontSize: '1rem !important',
-//       maxWidth: '90%',
-//       marginBottom: '30px !important',
-//     },
-//   },
-//   card: {
-//     borderRadius: '12px !important',
-//     boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1) !important',
-//     height: '100%',
-//     display: 'flex',
-//     flexDirection: 'column',
-//     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-//     overflow: 'hidden',
-//     '&:hover': {
-//       transform: 'translateY(-8px)',
-//       boxShadow: '0 15px 40px rgba(0, 0, 0, 0.15) !important',
-//     },
-//   },
-//   mediaContainer: {
-//     position: 'relative',
-//     paddingTop: '100%', // 1:1 Aspect ratio
-//     overflow: 'hidden',
-//     backgroundColor: '#f5f5f5',
-//   },
-//   media: {
-//     position: 'absolute',
-//     top: 0,
-//     left: 0,
-//     width: '100%',
-//     height: '100%',
-//     objectFit: 'cover',
-//     transition: 'transform 0.5s ease',
-//     '&:hover': {
-//       transform: 'scale(1.05)',
-//     },
-//   },
-//   cardContent: {
-//     padding: '20px !important',
-//     flexGrow: 1,
-//     display: 'flex',
-//     flexDirection: 'column',
-//     justifyContent: 'space-between',
-//     backgroundColor: '#fff',
-//   },
-//   mentorName: {
-//     fontSize: '1.2rem !important',
-//     fontWeight: 'bold !important',
-//     color: '#333 !important',
-//     marginBottom: '6px !important',
-//   },
-//   mentorTitle: {
-//     fontSize: '0.9rem !important',
-//     color: '#666 !important',
-//     lineHeight: '1.4 !important',
-//   },
-//   swiperContainer: {
-//     padding: '20px 50px !important',
-//     '& .swiper-pagination': {
-//       bottom: '-5px !important',
-//     },
-//     '& .swiper-pagination-bullet': {
-//       backgroundColor: '#2A2B6A !important',
-//       opacity: '0.5 !important',
-//       '&.swiper-pagination-bullet-active': {
-//         opacity: '1 !important',
-//       },
-//     },
-//     '& .swiper-button-next, & .swiper-button-prev': {
-//       color: '#2A2B6A !important',
-//       '&:after': {
-//         fontSize: '24px !important',
-//         fontWeight: 'bold !important',
-//       },
-//     },
-//     '@media (max-width: 600px)': {
-//       padding: '20px 30px !important',
-//     },
-//   },
-// });
-
-// const MentorShowcase = () => {
-//   const classes = useStyles();
-
-//   // Trainers data with imported images
-//   const trainers = [
-//     {
-//       id: 1,
-//       name: 'Hemanth Sairsm',
-//       title: 'Lead Instructor, Full Stack Development',
-//       image: hemanthImg,
-//     },
-//     {
-//       id: 2,
-//       name: 'Jai Shankar Reddy',
-//       title: 'Senior Technical Mentor, Backend Development',
-//       image: jaiImg,
-//     },
-//     {
-//       id: 4,
-//       name: 'Laxman Eadala',
-//       title: 'DevOps & Cloud Infrastructure Expert',
-//       image: laxmanImg,
-//     },
-//     {
-//       id: 5,
-//       name: 'Vinod Kumar',
-//       title: 'Industry Relations & Career Development Coach',
-//       image: vinodImg,
-//     },
-//   ];
-
-//   return (
-//     <Box className={classes.section}>
-//       <Container maxWidth="lg">
-//         <Typography variant="h2" className={classes.title}>
-//           Learn from Industry Experts and Startup Leaders
-//         </Typography>
-//         <Typography variant="body1" className={classes.subtitle}>
-//           Get mentored by professionals who have built and scaled successful tech ventures.
-//         </Typography>
-
-//         <Box className={classes.swiperContainer}>
-//           <Swiper
-//             slidesPerView={1}
-//             spaceBetween={30}
-//             pagination={{
-//               clickable: true,
-//             }}
-//             navigation={true}
-//             autoplay={{
-//               delay: 3000,
-//               disableOnInteraction: false,
-//             }}
-//             breakpoints={{
-//               640: {
-//                 slidesPerView: 2,
-//                 spaceBetween: 20,
-//               },
-//               1024: {
-//                 slidesPerView: 3,
-//                 spaceBetween: 30,
-//               },
-//               1280: {
-//                 slidesPerView: 4,
-//                 spaceBetween: 40,
-//               },
-//             }}
-//             modules={[Pagination, Navigation, Autoplay]}
-//           >
-//             {trainers.map((trainer) => (
-//               <SwiperSlide key={trainer.id}>
-//                 <Card className={classes.card}>
-//                   <Box className={classes.mediaContainer}>
-//                     <img
-//                       src={trainer.image}
-//                       alt={`Trainer ${trainer.name}`}
-//                       className={classes.media}
-//                     />
-//                   </Box>
-//                   <CardContent className={classes.cardContent}>
-//                     <Typography className={classes.mentorName}>
-//                       {trainer.name}
-//                     </Typography>
-//                     <Typography className={classes.mentorTitle}>
-//                       {trainer.title}
-//                     </Typography>
-//                   </CardContent>
-//                 </Card>
-//               </SwiperSlide>
-//             ))}
-//           </Swiper>
-//         </Box>
-//       </Container>
-//     </Box>
-//   );
-// };
-
-// export default MentorShowcase;
 // src/components/homepagecomponets/mentorshowcase/MentorShowcase.jsx
 import React from 'react';
 import { Box, Typography, Card, CardContent, Container, Chip, IconButton } from '@mui/material';
@@ -238,11 +18,12 @@ import hemanthImg from '../../../assets/trainers/Hemanth_sairsm.jpg';
 import jaiImg from '../../../assets/trainers/Jai_shankar_reddy.jpg';
 import laxmanImg from '../../../assets/trainers/Laxman_eadala.jpg';
 import vinodImg from '../../../assets/trainers/Vinod_kumar.jpg';
+import jaideepImg from '../../../assets/trainers/jaideep.png';
 
 const useStyles = makeStyles({
   section: {
     padding: '40px 0',
-    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    background: `linear-gradient(135deg, #233f94 0%, #27286c 100%)`,
     position: 'relative',
     overflow: 'hidden',
     '&::before': {
@@ -298,14 +79,14 @@ const useStyles = makeStyles({
     position: 'relative',
     '&:hover': {
       transform: 'translateY(-15px) scale(1.02)',
-      boxShadow: '0 35px 70px rgba(0, 0, 0, 0.25) !important',
+      boxShadow: '0 35px 70px rgba(39, 40, 108, 0.25) !important',
       '& $profileImage': {
         transform: 'scale(1.1)',
       },
-      '& $socialLinks': {
-        opacity: 1,
-        transform: 'translateY(0)',
-      },
+      // '& $socialLinks': {
+      //   opacity: 1,
+      //   transform: 'translateY(0)',
+      // },
       '& $gradientOverlay': {
         opacity: 0.8,
       },
@@ -318,7 +99,7 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+    background: `linear-gradient(135deg, #427bbf 0%, #233f94 100%)`,
   },
   profileImage: {
     width: '140px',
@@ -336,11 +117,12 @@ const useStyles = makeStyles({
     left: 0,
     right: 0,
     bottom: 0,
-    background: 'linear-gradient(135deg, rgba(102, 126, 234, 0.7) 0%, rgba(118, 75, 162, 0.7) 100%)',
+    background: `linear-gradient(135deg, #233f94 0.7), #27286c 100%)`,
     opacity: 0.6,
     transition: 'opacity 0.3s ease',
     zIndex: 1,
   },
+  /* Commented out social styles
   socialLinks: {
     position: 'absolute',
     bottom: '15px',
@@ -354,7 +136,7 @@ const useStyles = makeStyles({
   },
   socialIcon: {
     backgroundColor: 'rgba(255, 255, 255, 0.9) !important',
-    color: '#667eea !important',
+    color: '#233f94 !important',
     width: '32px !important',
     height: '32px !important',
     '&:hover': {
@@ -362,6 +144,8 @@ const useStyles = makeStyles({
       transform: 'scale(1.1)',
     },
   },
+  */
+
   cardContent: {
     padding: '24px !important',
     flexGrow: 1,
@@ -374,26 +158,26 @@ const useStyles = makeStyles({
   mentorName: {
     fontSize: '1.4rem !important',
     fontWeight: '700 !important',
-    color: '#2d3748 !important',
+    color: '#27286c !important',
     marginBottom: '8px !important',
-    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    background: `linear-gradient(135deg, #233f94 0%, #27286c 100%)`,
     backgroundClip: 'text',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
   },
   mentorTitle: {
     fontSize: '0.95rem !important',
-    color: '#718096 !important',
+    color: '#427bbf !important',
     lineHeight: '1.5 !important',
     marginBottom: '12px !important',
   },
   expertiseChip: {
-    backgroundColor: 'rgba(102, 126, 234, 0.1) !important',
-    color: '#667eea !important',
+    backgroundColor: 'rgba(35, 63, 148, 0.1) !important',
+    color: '#233f94 !important',
     fontSize: '0.8rem !important',
     height: '24px !important',
     borderRadius: '12px !important',
-    border: '1px solid rgba(102, 126, 234, 0.2) !important',
+    border: '1px solid rgba(35, 63, 148, 0.2) !important',
   },
   swiperContainer: {
     padding: '20px 60px 10px 60px !important',
@@ -410,13 +194,13 @@ const useStyles = makeStyles({
       opacity: '1 !important',
       transition: 'all 0.3s ease !important',
       '&.swiper-pagination-bullet-active': {
-        backgroundColor: '#ffffff !important',
+        backgroundColor: '#ffc615 !important',
         transform: 'scale(1.2)',
       },
     },
     '& .swiper-button-next, & .swiper-button-prev': {
-      color: 'rgba(255,255,255,0.8) !important',
-      backgroundColor: 'rgba(255,255,255,0.1) !important',
+      color: '#ffc615 !important',
+      backgroundColor: 'rgba(39, 40, 108, 0.1) !important',
       width: '50px !important',
       height: '50px !important',
       borderRadius: '50% !important',
@@ -428,8 +212,8 @@ const useStyles = makeStyles({
         fontWeight: 'bold !important',
       },
       '&:hover': {
-        backgroundColor: 'rgba(255,255,255,0.2) !important',
-        color: '#ffffff !important',
+        backgroundColor: 'rgba(39, 40, 108, 0.2) !important',
+        color: '#ffc615 !important',
         transform: 'scale(1.1)',
       },
     },
@@ -446,51 +230,63 @@ const MentorShowcase = () => {
   const trainers = [
     {
       id: 1,
-      name: 'Hemanth Sairsm',
-      title: 'Lead Instructor & Full Stack Architect',
-      expertise: 'React & Node.js',
+      name: 'Hemanth Sai Ram',
+      title: 'Senior Software Engineer & Tech Lead (5+ Years)',
+      expertise: 'Full Stack',
       image: hemanthImg,
-      social: {
-        linkedin: '#',
-        twitter: '#',
-        github: '#'
-      }
+      // social: {
+      //   linkedin: '#',
+      //   twitter: '#',
+      //   github: '#'
+      // }
     },
     {
       id: 2,
-      name: 'Jai Shankar Reddy',
-      title: 'Senior Technical Mentor & Backend Specialist',
-      expertise: 'System Design',
+      name: 'Jay Shankar Reddy',
+      title: 'Full Stack Developer at Virtusa (5+ Years)',
+      expertise: 'Full Stack',
       image: jaiImg,
-      social: {
-        linkedin: '#',
-        twitter: '#',
-        github: '#'
-      }
+      // social: {
+      //   linkedin: '#',
+      //   twitter: '#',
+      //   github: '#'
+      // }
     },
     {
       id: 3,
       name: 'Laxman Eadala',
-      title: 'DevOps & Cloud Infrastructure Expert',
-      expertise: 'AWS & Docker',
+      title: 'Full Stack Developer at Reliance (6+ Years)',
+      expertise: 'Full Stack',
       image: laxmanImg,
-      social: {
-        linkedin: '#',
-        twitter: '#',
-        github: '#'
-      }
+      // social: {
+      //   linkedin: '#',
+      //   twitter: '#',
+      //   github: '#'
+      // }
     },
     {
       id: 4,
       name: 'Vinod Kumar',
+      title: 'Engineer II at Masimo & TA at NYIT Vancouver',
+      expertise: 'Full Stack',
+      image: vinodImg,
+      // social: {
+      //   linkedin: '#',
+      //   twitter: '#',
+      //   github: '#'
+      // }
+    },
+    {
+      id: 5,
+      name: 'Jaideep',
       title: 'Career Development & Industry Relations Coach',
       expertise: 'Leadership',
-      image: vinodImg,
-      social: {
-        linkedin: '#',
-        twitter: '#',
-        github: '#'
-      }
+      image: jaideepImg,
+      // social: {
+      //   linkedin: '#',
+      //   twitter: '#',
+      //   github: '#'
+      // }
     },
   ];
 
@@ -555,6 +351,7 @@ const MentorShowcase = () => {
                       alt={`Mentor ${trainer.name}`}
                       className={classes.profileImage}
                     />
+                    {/* Commented out social links section
                     <Box className={classes.socialLinks}>
                       <IconButton className={classes.socialIcon} size="small">
                         <LinkedIn fontSize="small" />
@@ -566,6 +363,7 @@ const MentorShowcase = () => {
                         <GitHub fontSize="small" />
                       </IconButton>
                     </Box>
+                    */}
                   </Box>
                   <CardContent className={classes.cardContent}>
                     <Typography className={classes.mentorName}>

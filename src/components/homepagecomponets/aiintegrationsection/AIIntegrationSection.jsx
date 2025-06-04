@@ -7,6 +7,9 @@ import DataUsageIcon from '@mui/icons-material/DataUsage';
 import BuildIcon from '@mui/icons-material/Build';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
 import AllInclusiveIcon from '@mui/icons-material/AllInclusive';
+import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
+import PsychologyIcon from '@mui/icons-material/Psychology';
+import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
@@ -46,9 +49,9 @@ const useStyles = makeStyles({
   },
   headerSection: {
     textAlign: 'center',
-    marginBottom: '10px',
+    marginBottom: '60px',
     '@media (max-width: 600px)': {
-      marginBottom: '30px',
+      marginBottom: '40px',
     },
   },
   mainTitle: {
@@ -85,7 +88,7 @@ const useStyles = makeStyles({
   answerText: {
     fontSize: '1.2rem !important',
     color: '#666 !important',
-    marginBottom: '20px !important',
+    marginBottom: '50px !important',
     maxWidth: '700px',
     margin: '0 auto 50px auto !important',
     '@media (max-width: 960px)': {
@@ -102,21 +105,21 @@ const useStyles = makeStyles({
     fontSize: '2.2rem !important',
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
-    marginBottom: '20px !important',
+    marginBottom: '40px !important',
     textAlign: 'center',
     '@media (max-width: 960px)': {
       fontSize: '2rem !important',
     },
     '@media (max-width: 600px)': {
       fontSize: '1.6rem !important',
-      marginBottom: '25px !important',
+      marginBottom: '30px !important',
     },
   },
   featuresGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
     gap: '30px',
-    marginBottom: '10px',
+    marginBottom: '60px',
     '@media (max-width: 960px)': {
       gridTemplateColumns: '1fr',
       gap: '25px',
@@ -127,35 +130,92 @@ const useStyles = makeStyles({
       marginBottom: '40px',
     },
   },
-  featureItem: {
-    padding: '25px',
+  featureCard: {
+    padding: '35px 30px',
     backgroundColor: 'white',
-    borderRadius: '15px',
+    borderRadius: '20px',
     border: '1px solid rgba(42, 43, 106, 0.1)',
-    boxShadow: '0 8px 30px rgba(0, 0, 0, 0.08)',
-    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+    boxShadow: '0 10px 40px rgba(0, 0, 0, 0.08)',
+    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+    position: 'relative',
+    overflow: 'hidden',
     '&:hover': {
-      transform: 'translateY(-5px)',
-      boxShadow: '0 15px 40px rgba(42, 43, 106, 0.15)',
+      transform: 'translateY(-8px)',
+      boxShadow: '0 20px 60px rgba(42, 43, 106, 0.15)',
+      '& $featureIconContainer': {
+        transform: 'scale(1.1) rotate(5deg)',
+        backgroundColor: '#2A2B6A',
+        '& svg': {
+          color: '#FFC614',
+        },
+      },
+      '& $featureGlow': {
+        opacity: 1,
+      },
+    },
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      top: 0,
+      left: '-100%',
+      width: '100%',
+      height: '100%',
+      background: 'linear-gradient(90deg, transparent, rgba(255, 198, 20, 0.1), transparent)',
+      transition: 'left 0.6s',
+    },
+    '&:hover::before': {
+      left: '100%',
     },
     '@media (max-width: 600px)': {
-      padding: '20px',
+      padding: '25px 20px',
+      borderRadius: '16px',
     },
   },
-  featureIcon: {
-    color: '#FFC614 !important',
-    fontSize: '1.5rem !important',
-    marginRight: '12px !important',
-  },
-  featureTitle: {
-    fontSize: '1.2rem !important',
-    fontWeight: 'bold !important',
-    color: '#2A2B6A !important',
-    marginBottom: '10px !important',
+  featureIconContainer: {
+    width: '70px',
+    height: '70px',
+    borderRadius: '20px',
+    backgroundColor: 'rgba(42, 43, 106, 0.1)',
     display: 'flex',
     alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: '25px',
+    transition: 'all 0.4s ease',
+    position: 'relative',
+    '& svg': {
+      fontSize: '36px',
+      color: '#2A2B6A',
+      transition: 'color 0.3s ease',
+    },
     '@media (max-width: 600px)': {
-      fontSize: '1.1rem !important',
+      width: '60px',
+      height: '60px',
+      marginBottom: '20px',
+      '& svg': {
+        fontSize: '30px',
+      },
+    },
+  },
+  featureGlow: {
+    position: 'absolute',
+    top: '-50%',
+    left: '-50%',
+    width: '200%',
+    height: '200%',
+    background: 'radial-gradient(circle, rgba(255, 198, 20, 0.1) 0%, transparent 60%)',
+    opacity: 0,
+    transition: 'opacity 0.4s ease',
+    zIndex: -1,
+  },
+  featureTitle: {
+    fontSize: '1.4rem !important',
+    fontWeight: 'bold !important',
+    color: '#2A2B6A !important',
+    marginBottom: '15px !important',
+    lineHeight: '1.3 !important',
+    '@media (max-width: 600px)': {
+      fontSize: '1.2rem !important',
+      marginBottom: '12px !important',
     },
   },
   featureDescription: {
@@ -167,16 +227,16 @@ const useStyles = makeStyles({
     },
   },
   toolsSection: {
-    marginTop: '20px',
+    marginTop: '60px',
     '@media (max-width: 600px)': {
-      marginTop: '10px',
+      marginTop: '40px',
     },
   },
   categoryFilters: {
     display: 'flex',
     justifyContent: 'center',
     gap: '15px',
-    marginBottom: '10px',
+    marginBottom: '40px',
     flexWrap: 'wrap',
     '@media (max-width: 600px)': {
       gap: '10px',
@@ -184,7 +244,7 @@ const useStyles = makeStyles({
     },
   },
   filterButton: {
-    padding: '12px 24px !important',
+    padding: '14px 28px !important',
     borderRadius: '30px !important',
     textTransform: 'none !important',
     fontSize: '1rem !important',
@@ -192,25 +252,36 @@ const useStyles = makeStyles({
     transition: 'all 0.3s ease !important',
     display: 'flex !important',
     alignItems: 'center !important',
-    gap: '8px !important',
+    gap: '10px !important',
+    border: '2px solid transparent !important',
     '@media (max-width: 600px)': {
-      padding: '10px 18px !important',
+      padding: '12px 20px !important',
       fontSize: '0.9rem !important',
+      gap: '8px !important',
     },
   },
   activeFilter: {
-    backgroundColor: '#4F46E5 !important',
+    backgroundColor: '#2A2B6A !important',
     color: 'white !important',
+    borderColor: '#2A2B6A !important',
+    boxShadow: '0 8px 25px rgba(42, 43, 106, 0.3) !important',
+    transform: 'translateY(-2px)',
     '&:hover': {
-      backgroundColor: '#3730a3 !important',
+      backgroundColor: '#1A1B4A !important',
+      transform: 'translateY(-3px)',
+      boxShadow: '0 12px 30px rgba(42, 43, 106, 0.4) !important',
     },
   },
   inactiveFilter: {
     backgroundColor: 'white !important',
-    color: '#4F46E5 !important',
-    border: '2px solid #4F46E5 !important',
+    color: '#2A2B6A !important',
+    borderColor: 'rgba(42, 43, 106, 0.2) !important',
+    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.08) !important',
     '&:hover': {
-      backgroundColor: 'rgba(79, 70, 229, 0.1) !important',
+      backgroundColor: 'rgba(42, 43, 106, 0.05) !important',
+      borderColor: '#2A2B6A !important',
+      transform: 'translateY(-2px)',
+      boxShadow: '0 8px 20px rgba(42, 43, 106, 0.15) !important',
     },
   },
   swiperContainer: {
@@ -226,35 +297,41 @@ const useStyles = makeStyles({
     '& .swiper-pagination': {
       bottom: '0px !important',
       '& .swiper-pagination-bullet': {
-        backgroundColor: 'rgba(79, 70, 229, 0.3) !important',
+        backgroundColor: 'rgba(42, 43, 106, 0.3) !important',
         opacity: '1 !important',
+        transition: 'all 0.3s ease !important',
         '&.swiper-pagination-bullet-active': {
-          backgroundColor: '#4F46E5 !important',
+          backgroundColor: '#2A2B6A !important',
+          transform: 'scale(1.2)',
         },
       },
     },
     '& .swiper-button-next, & .swiper-button-prev': {
-      color: '#4F46E5 !important',
+      color: '#2A2B6A !important',
       backgroundColor: 'rgba(255, 255, 255, 0.9) !important',
       borderRadius: '50% !important',
-      width: '44px !important',
-      height: '44px !important',
-      marginTop: '-22px !important',
-      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15) !important',
+      width: '50px !important',
+      height: '50px !important',
+      marginTop: '-25px !important',
+      boxShadow: '0 6px 20px rgba(0, 0, 0, 0.15) !important',
+      border: '2px solid rgba(42, 43, 106, 0.1) !important',
+      transition: 'all 0.3s ease !important',
       '&:after': {
         fontSize: '18px !important',
         fontWeight: 'bold !important',
       },
       '&:hover': {
-        backgroundColor: 'white !important',
-        boxShadow: '0 6px 16px rgba(0, 0, 0, 0.2) !important',
+        backgroundColor: '#2A2B6A !important',
+        color: 'white !important',
+        transform: 'scale(1.1)',
+        boxShadow: '0 8px 25px rgba(42, 43, 106, 0.3) !important',
       },
     },
     '& .swiper-button-prev': {
-      left: '-22px !important',
+      left: '-25px !important',
     },
     '& .swiper-button-next': {
-      right: '-22px !important',
+      right: '-25px !important',
     },
     '@media (max-width: 960px)': {
       '& .swiper-button-next, & .swiper-button-prev': {
@@ -264,19 +341,22 @@ const useStyles = makeStyles({
   },
   toolCard: {
     width: '100%',
-    height: '250px',
-    borderRadius: '16px !important',
+    height: '280px',
+    borderRadius: '20px !important',
     background: 'linear-gradient(145deg, #ffffff 0%, #f8faff 100%)',
-    border: '1px solid rgba(79, 70, 229, 0.1)',
-    boxShadow: '0 10px 25px rgba(79, 70, 229, 0.08) !important',
+    border: '1px solid rgba(42, 43, 106, 0.1)',
+    boxShadow: '0 10px 30px rgba(42, 43, 106, 0.08) !important',
     position: 'relative',
     overflow: 'hidden',
-    transition: 'all 0.3s ease-in-out',
+    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
     display: 'flex',
     flexDirection: 'column',
     '&:hover': {
-      transform: 'translateY(-8px)',
-      boxShadow: '0 20px 40px rgba(79, 70, 229, 0.15) !important',
+      transform: 'translateY(-10px)',
+      boxShadow: '0 25px 50px rgba(42, 43, 106, 0.15) !important',
+      '& $toolCardGlow': {
+        opacity: 1,
+      },
     },
     '&::before': {
       content: '""',
@@ -284,80 +364,110 @@ const useStyles = makeStyles({
       top: 0,
       left: 0,
       width: '100%',
-      height: '5px',
-      background: 'linear-gradient(90deg, #4F46E5 0%, #818CF8 100%)',
+      height: '4px',
+      background: 'linear-gradient(90deg, #2A2B6A 0%, #FFC614 100%)',
     },
     '@media (max-width: 600px)': {
-      height: '300px',
+      height: '320px',
+      borderRadius: '16px !important',
     },
   },
+  toolCardGlow: {
+    position: 'absolute',
+    top: '-50%',
+    left: '-50%',
+    width: '200%',
+    height: '200%',
+    background: 'radial-gradient(circle, rgba(255, 198, 20, 0.08) 0%, transparent 60%)',
+    opacity: 0,
+    transition: 'opacity 0.4s ease',
+    zIndex: 0,
+  },
   toolCardContent: {
-    padding: '25px !important',
+    padding: '30px !important',
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
     textAlign: 'left',
-    gap: '8px',
+    gap: '12px',
+    position: 'relative',
+    zIndex: 1,
     '@media (max-width: 600px)': {
-      padding: '20px !important',
+      padding: '24px !important',
+      gap: '10px',
     },
   },
   toolName: {
-    fontSize: '1.3rem !important',
+    fontSize: '1.4rem !important',
     fontWeight: '700 !important',
-    color: '#2D3748 !important',
-    marginBottom: '4px !important',
+    color: '#2A2B6A !important',
+    marginBottom: '6px !important',
     '@media (max-width: 600px)': {
-      fontSize: '1.2rem !important',
+      fontSize: '1.3rem !important',
     },
   },
   toolCategory: {
-    fontSize: '0.75rem !important',
-    color: '#4F46E5 !important',
-    marginBottom: '8px !important',
+    fontSize: '0.8rem !important',
+    color: '#2A2B6A !important',
+    marginBottom: '12px !important',
     textTransform: 'uppercase',
-    letterSpacing: '1.5px',
+    letterSpacing: '1.2px',
     fontWeight: '600 !important',
-    background: 'rgba(79, 70, 229, 0.08)',
-    padding: '4px 12px',
+    background: 'rgba(42, 43, 106, 0.1)',
+    padding: '6px 12px',
     borderRadius: '12px',
     alignSelf: 'flex-start',
+    '@media (max-width: 600px)': {
+      fontSize: '0.75rem !important',
+      padding: '5px 10px',
+    },
   },
   toolDescription: {
-    fontSize: '0.95rem !important',
+    fontSize: '1rem !important',
     color: '#4A5568 !important',
     lineHeight: '1.5 !important',
-    marginBottom: '8px !important',
+    marginBottom: '12px !important',
     flex: 1,
     '@media (max-width: 600px)': {
-      fontSize: '0.9rem !important',
+      fontSize: '0.95rem !important',
     },
   },
   toolFeatures: {
-    fontSize: '0.85rem !important',
+    fontSize: '0.9rem !important',
     color: '#718096 !important',
     fontStyle: 'normal',
     lineHeight: '1.4 !important',
-    background: 'rgba(79, 70, 229, 0.04)',
-    padding: '8px 12px',
-    borderRadius: '8px',
+    background: 'rgba(42, 43, 106, 0.05)',
+    padding: '12px 16px',
+    borderRadius: '10px',
     width: '100%',
     marginTop: 'auto',
+    border: '1px solid rgba(42, 43, 106, 0.1)',
+    '@media (max-width: 600px)': {
+      fontSize: '0.85rem !important',
+      padding: '10px 14px',
+    },
   },
   pricingChip: {
     position: 'absolute',
     top: '20px',
     right: '20px',
-    backgroundColor: 'rgba(79, 70, 229, 0.1) !important',
-    color: '#4F46E5 !important',
-    fontSize: '0.75rem !important',
+    backgroundColor: 'rgba(42, 43, 106, 0.1) !important',
+    color: '#2A2B6A !important',
+    fontSize: '0.8rem !important',
     fontWeight: '600 !important',
-    padding: '4px 12px !important',
+    padding: '6px 14px !important',
     borderRadius: '20px !important',
-    border: '1px solid rgba(79, 70, 229, 0.2)',
+    border: '1px solid rgba(42, 43, 106, 0.2)',
     zIndex: 2,
+    '@media (max-width: 600px)': {
+      fontSize: '0.75rem !important',
+      padding: '5px 12px !important',
+      top: '16px',
+      right: '16px',
+    },
   },
   decorativeBlob: {
     position: 'absolute',
@@ -471,6 +581,14 @@ const AIIntegrationSection = () => {
     },
     // Data Science Tools
     {
+      name: 'Claude',
+      category: 'datascience',
+      subCategory: 'AI Assistant',
+      description: 'Advanced AI assistant for data analysis and coding',
+      features: 'Data analysis, code generation, research assistance',
+      pricing: 'Freemium'
+    },
+    {
       name: 'Google Colab',
       category: 'datascience',
       subCategory: 'Cloud Notebooks',
@@ -550,19 +668,19 @@ const AIIntegrationSection = () => {
 
   const features = [
     {
-      icon: <AutoAwesomeIcon />,
-      title: 'AI-First Approach in Every Module',
-      description: 'From project planning to coding, students learn how to co-work with AI tools across real-world tasks.'
+      icon: <RocketLaunchIcon />,
+      title: 'AI-Powered Project Development',
+      description: 'Every project integrates cutting-edge AI tools to solve real-world problems. Students learn to leverage AI for faster development, smarter solutions, and innovative approaches to complex challenges.'
     },
     {
-      icon: <BuildIcon />,
-      title: 'Learn to Build & Use AI Tools',
-      description: 'Hands-on experience in creating AI-powered features, writing AI-assisted code, and automating tasks smartly.'
+      icon: <PsychologyIcon />,
+      title: 'Strategic AI Implementation',
+      description: 'Learn when and how to use AI effectively. Our curriculum teaches critical thinking about AI deployment, ensuring students become strategic AI users rather than passive consumers.'
     },
     {
-      icon: <SmartToyIcon />,
-      title: 'Use AI to Solve Problems—Not Avoid Them',
-      description: "You'll learn how to prompt, validate, and fine-tune AI outputs for accuracy and real business needs."
+      icon: <AutoFixHighIcon />,
+      title: 'Future-Ready AI Skills',
+      description: 'Master both current AI tools and emerging technologies. Students gain hands-on experience with the latest AI platforms while developing adaptability for future innovations.'
     }
   ];
 
@@ -599,9 +717,12 @@ const AIIntegrationSection = () => {
 
         <Box className={classes.featuresGrid}>
           {features.map((feature, index) => (
-            <Box key={index} className={classes.featureItem}>
+            <Box key={index} className={classes.featureCard}>
+              <Box className={classes.featureGlow} />
+              <Box className={classes.featureIconContainer}>
+                {feature.icon}
+              </Box>
               <Typography className={classes.featureTitle}>
-                {React.cloneElement(feature.icon, { className: classes.featureIcon })}
                 {feature.title}
               </Typography>
               <Typography className={classes.featureDescription}>
@@ -612,10 +733,6 @@ const AIIntegrationSection = () => {
         </Box>
 
         <Box className={classes.toolsSection}>
-          {/* <Typography variant="h3" className={classes.integrationsTitle}>
-            AI Tools We Use in Our Curriculum
-          </Typography> */}
-
           <Box className={classes.categoryFilters}>
             {categories.map((category) => (
               <Button
@@ -633,8 +750,8 @@ const AIIntegrationSection = () => {
 
           <Box className={classes.swiperContainer}>
             <Swiper
-              slidesPerView={2}
-              slidesPerGroup={2}
+              slidesPerView={3}
+              slidesPerGroup={3}
               spaceBetween={30}
               navigation={true}
               pagination={{
@@ -653,18 +770,13 @@ const AIIntegrationSection = () => {
                   spaceBetween: 20,
                 },
                 768: {
-                  slidesPerView: 1.5,
-                  slidesPerGroup: 1,
+                  slidesPerView: 2,
+                  slidesPerGroup: 2,
                   spaceBetween: 25,
                 },
                 1024: {
-                  slidesPerView: 2,
-                  slidesPerGroup: 2,
-                  spaceBetween: 30,
-                },
-                1200: {
                   slidesPerView: 3,
-                  slidesPerGroup: 2,
+                  slidesPerGroup: 3,
                   spaceBetween: 30,
                 },
               }}
@@ -673,6 +785,7 @@ const AIIntegrationSection = () => {
               {filteredTools.map((tool, index) => (
                 <SwiperSlide key={`${selectedCategory}-${index}`}>
                   <Card className={classes.toolCard}>
+                    <Box className={classes.toolCardGlow} />
                     <Chip 
                       label={tool.pricing}
                       className={classes.pricingChip}
