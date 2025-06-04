@@ -84,15 +84,13 @@ const useStyles = makeStyles({
   leftContent: {
     flex: '1.5',
     minWidth: '500px',
-    // position: 'relative',
-    // zIndex: 2,
-    // display: 'flex',
-    // flexDirection: 'column',
-    // justifyContent: 'center',
-    // alignItems: 'flex-start',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+    gap: '20px',
     '@media (max-width: 960px)': {
-      alignItems: 'center',
-      textAlign: 'center',
       width: '100%',
       minWidth: 'unset',
     },
@@ -143,15 +141,12 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     gap: '10px',
-    marginBottom: '30px',
+    marginBottom: '0', // Remove margin since parent has gap
     width: '100%',
     maxWidth: '600px',
-    '@media (max-width: 960px)': {
-      margin: '0 auto 25px auto',
-    },
+    alignItems: 'center',
     '@media (max-width: 600px)': {
       gap: '8px',
-      marginBottom: '20px',
     },
   },
   featureItem: {
@@ -197,16 +192,14 @@ const useStyles = makeStyles({
   statsContainer: {
     display: 'flex',
     gap: '20px',
-    marginBottom: '30px',
+    marginBottom: '0', // Remove margin since parent has gap
     flexWrap: 'wrap',
+    justifyContent: 'center',
     '@media (max-width: 960px)': {
-      justifyContent: 'center',
       gap: '15px',
-      margin: '0 auto 25px auto',
     },
     '@media (max-width: 480px)': {
       gap: '10px',
-      marginBottom: '20px',
     },
   },
   statItem: {
