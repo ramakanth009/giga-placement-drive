@@ -517,7 +517,7 @@
 
 // export default CampusSection;
 import React from 'react';
-import { Box, Typography, Container } from '@mui/material';
+import { Box, Typography, Container, Button } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import SchoolIcon from '@mui/icons-material/School';
 import BuildIcon from '@mui/icons-material/Build';
@@ -525,6 +525,7 @@ import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import PersonIcon from '@mui/icons-material/Person';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import EventIcon from '@mui/icons-material/Event';
+import { useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles({
   section: {
@@ -565,7 +566,7 @@ const useStyles = makeStyles({
   },
   header: {
     textAlign: 'center',
-    marginBottom: '60px',
+    marginBottom: '20px',
     '@media (max-width: 960px)': {
       marginBottom: '40px',
     },
@@ -836,10 +837,47 @@ const useStyles = makeStyles({
       opacity: 0.6,
     },
   },
+  ctaContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: '20px',
+    marginBottom: '20px',
+    '@media (max-width: 960px)': {
+      marginTop: '40px',
+    },
+  },
+  ctaButton: {
+    backgroundColor: '#FFC614 !important',
+    color: '#2A2B6A !important',
+    padding: '12px 32px !important',
+    borderRadius: '30px !important',
+    fontSize: '1.1rem !important',
+    fontWeight: '700 !important',
+    textTransform: 'none !important',
+    boxShadow: '0 8px 20px rgba(255, 198, 20, 0.3) !important',
+    transition: 'all 0.3s ease !important',
+    border: '2px solid transparent !important',
+    '&:hover': {
+      backgroundColor: 'transparent !important',
+      color: '#FFC614 !important',
+      border: '2px solid #FFC614 !important',
+      transform: 'translateY(-3px)',
+      boxShadow: '0 12px 25px rgba(255, 198, 20, 0.4) !important',
+    },
+    '@media (max-width: 600px)': {
+      padding: '10px 24px !important',
+      fontSize: '1rem !important',
+    },
+  },
 });
 
 const CampusSection = () => {
   const classes = useStyles();
+  const navigate = useNavigate(); // Add this near the top of your component
+
+  const handleCTAClick = () => {
+    navigate('/campus'); // Adjust the route according to your routing setup
+  };
 
   const campusAreas = [
     {
@@ -915,6 +953,17 @@ const CampusSection = () => {
               </Typography>
             </Box>
           ))}
+        </Box>
+
+        {/* Add the CTA button section */}
+        <Box className={classes.ctaContainer}>
+          <Button
+            variant="contained"
+            className={classes.ctaButton}
+            onClick={handleCTAClick}
+          >
+            Explore Our Campus
+          </Button>
         </Box>
       </Container>
     </Box>
