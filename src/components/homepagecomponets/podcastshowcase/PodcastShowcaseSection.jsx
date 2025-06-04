@@ -299,8 +299,8 @@ const PodcastShowcaseSection = () => {
     <Box className={classes.section}>
       <Box className={classes.titleContainer}>
         <Typography variant="h2" className={classes.sectionTitle}>
-          Real Voices. {" "}
-          <span className={classes.highlight}>Real Insights.</span>
+          Post Your Questions & Get Featured on the  {" "}
+          <span className={classes.highlight}>Gigaversity Podcast.</span>
         </Typography>
       </Box>
 

@@ -533,7 +533,7 @@ const useStyles = makeStyles({
     overflow: 'hidden',
     display: 'flex',
     alignItems: 'center',
-    background: 'linear-gradient(135deg, rgba(42, 43, 106, 0.95) 0%, rgba(26, 27, 74, 0.9) 100%)',
+    // background: 'linear-gradient(135deg, rgba(42, 43, 106, 0.95) 0%, rgba(26, 27, 74, 0.9) 100%)',
     '&::before': {
       content: '""',
       position: 'absolute',
@@ -545,6 +545,7 @@ const useStyles = makeStyles({
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundAttachment: 'fixed',
+      filter: 'brightness(0.4)', // Darken the background
       zIndex: -1,
     },
     '@media (max-width: 960px)': {
@@ -575,8 +576,10 @@ const useStyles = makeStyles({
     color: 'white !important',
     marginBottom: '20px !important',
     textShadow: '0 4px 20px rgba(0, 0, 0, 0.5)',
+    letterSpacing: '1px !important',
     '& span': {
       color: '#FFC614 !important',
+      textShadow: '0 4px 24px rgba(255, 198, 20, 0.5)',
     },
     '@media (max-width: 1200px)': {
       fontSize: '3rem !important',
@@ -590,11 +593,13 @@ const useStyles = makeStyles({
   },
   subtitle: {
     fontSize: '1.3rem !important',
-    color: 'rgba(255, 255, 255, 0.9) !important',
+    color: 'rgba(255, 255, 255, 0.95) !important',
     maxWidth: '800px',
     margin: '0 auto !important',
     lineHeight: '1.6 !important',
-    textShadow: '0 2px 10px rgba(0, 0, 0, 0.3)',
+    textShadow: '0 2px 12px rgba(0, 0, 0, 0.5)',
+    letterSpacing: '0.5px !important',
+    fontWeight: '500 !important',
     '@media (max-width: 960px)': {
       fontSize: '1.1rem !important',
       maxWidth: '90%',
@@ -626,11 +631,11 @@ const useStyles = makeStyles({
     },
   },
   campusCard: {
-    background: 'rgba(255, 255, 255, 0.1)',
+    background: 'rgba(42, 43, 106, 0.4)', // Adjusted to match theme color with transparency
     backdropFilter: 'blur(20px)',
     borderRadius: '16px',
-    border: '1px solid rgba(255, 255, 255, 0.2)',
-    padding: '24px',
+    border: '1px solid rgba(255, 255, 255, 0.15)',
+    padding: '15px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -642,14 +647,17 @@ const useStyles = makeStyles({
     overflow: 'hidden',
     '&:hover': {
       transform: 'translateY(-8px) scale(1.02)',
-      background: 'rgba(255, 255, 255, 0.15)',
-      boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)',
+      background: 'rgba(42, 43, 106, 0.8)', // Darker on hover
+      boxShadow: '0 20px 40px rgba(0, 0, 0, 0.5)',
       '& $cardIcon': {
         transform: 'scale(1.2) rotate(10deg)',
         color: '#FFC614',
       },
       '& $cardTitle': {
         color: '#FFC614',
+      },
+      '& $cardDescription': {
+        color: 'rgba(255, 255, 255, 0.95) !important',
       },
     },
     '&::before': {
@@ -659,7 +667,7 @@ const useStyles = makeStyles({
       left: '-100%',
       width: '100%',
       height: '100%',
-      background: 'linear-gradient(90deg, transparent, rgba(255, 198, 20, 0.1), transparent)',
+      background: 'linear-gradient(90deg, transparent, rgba(255, 198, 20, 0.2), transparent)',
       transition: 'left 0.6s',
     },
     '&:hover::before': {
@@ -725,10 +733,10 @@ const useStyles = makeStyles({
   },
   cardIcon: {
     fontSize: '2.5rem !important',
-    color: 'white !important',
+    color: '#FFC614 !important', // Changed to theme color
     marginBottom: '16px !important',
     transition: 'all 0.3s ease',
-    filter: 'drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3))',
+    filter: 'drop-shadow(0 2px 12px rgba(255, 198, 20, 0.3))',
     '@media (max-width: 960px)': {
       fontSize: '2rem !important',
       marginBottom: '12px !important',
@@ -744,7 +752,8 @@ const useStyles = makeStyles({
     color: 'white !important',
     marginBottom: '8px !important',
     transition: 'color 0.3s ease',
-    textShadow: '0 2px 8px rgba(0, 0, 0, 0.3)',
+    textShadow: '0 2px 12px rgba(0, 0, 0, 0.5)',
+    letterSpacing: '0.5px !important',
     '@media (max-width: 960px)': {
       fontSize: '1rem !important',
       marginBottom: '6px !important',
@@ -755,14 +764,16 @@ const useStyles = makeStyles({
   },
   cardDescription: {
     fontSize: '0.85rem !important',
-    color: 'rgba(255, 255, 255, 0.8) !important',
+    color: 'rgba(255, 255, 255, 0.9) !important',
     lineHeight: '1.4 !important',
     display: '-webkit-box',
     WebkitLineClamp: 3,
     WebkitBoxOrient: 'vertical',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
-    textShadow: '0 1px 4px rgba(0, 0, 0, 0.3)',
+    textShadow: '0 2px 8px rgba(0, 0, 0, 0.5)',
+    fontWeight: '500 !important',
+    letterSpacing: '0.3px !important',
     '@media (max-width: 960px)': {
       fontSize: '0.8rem !important',
       WebkitLineClamp: 2,
@@ -784,7 +795,7 @@ const useStyles = makeStyles({
   floatingShape: {
     position: 'absolute',
     borderRadius: '50%',
-    background: 'rgba(255, 198, 20, 0.1)',
+    background: 'linear-gradient(135deg, rgba(42, 43, 106, 0.2), rgba(255, 198, 20, 0.1))',
     animation: '$float 8s ease-in-out infinite',
   },
   shape1: {

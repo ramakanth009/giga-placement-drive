@@ -615,38 +615,6 @@ const OtherPrograms = () => {
   const programs = [
     {
       id: 1,
-      title: 'Master Internship In Full Stack',
-      duration: '3 Months',
-      features: [
-        'Build Real Products with Industry Standards',
-        'Ecommerce & Marketplace Development',
-        'API Integration & Backend Architecture',
-        'Performance Optimization Techniques'
-      ],
-      students: 2854,
-      tag: 'Internship',
-      image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      level: 'Intermediate',
-      category: 'development'
-    },
-    {
-      id: 2,
-      title: 'Master Internship In Data Science',
-      duration: '3 Months',
-      features: [
-        'Build Production-Ready ML Models',
-        'Advanced Data Visualization & Analysis',
-        'AI Chatbot & Recommendation Systems',
-        'Predictive Analytics Implementation'
-      ],
-      students: 2960,
-      tag: 'Internship',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      level: 'Advanced',
-      category: 'datascience'
-    },
-    {
-      id: 3,
       title: 'Full Stack Development - Full Time',
       duration: '12 Months',
       features: [
@@ -662,7 +630,7 @@ const OtherPrograms = () => {
       category: 'development'
     },
     {
-      id: 4,
+      id: 2,
       title: 'Data Science & AI - Full Time',
       duration: '12 Months',
       features: [
@@ -676,7 +644,40 @@ const OtherPrograms = () => {
       image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
       level: 'Advanced',
       category: 'datascience'
-    }
+    },
+    {
+      id: 3,
+      title: 'Master Internship In Full Stack',
+      duration: '3 Months',
+      features: [
+        'Build Real Products with Industry Standards',
+        'Ecommerce & Marketplace Development',
+        'API Integration & Backend Architecture',
+        'Performance Optimization Techniques'
+      ],
+      students: 2854,
+      tag: 'Internship',
+      image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      level: 'Intermediate',
+      category: 'development'
+    },
+    {
+      id: 4,
+      title: 'Master Internship In Data Science',
+      duration: '3 Months',
+      features: [
+        'Build Production-Ready ML Models',
+        'Advanced Data Visualization & Analysis',
+        'AI Chatbot & Recommendation Systems',
+        'Predictive Analytics Implementation'
+      ],
+      students: 2960,
+      tag: 'Internship',
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      level: 'Advanced',
+      category: 'datascience'
+    },
+    
   ];
 
   return (
@@ -708,20 +709,15 @@ const OtherPrograms = () => {
               className={classes.tab}
               icon={<SchoolIcon />}
             />
+              <Tab 
+                label="Full Time" 
+                className={classes.tab}
+                icon={<WorkIcon />}
+              />
             <Tab 
-              label="Development" 
-              className={classes.tab} 
+              label="Master Internships" 
+              className={classes.tab}
               icon={<CodeIcon />}
-            />
-            <Tab 
-              label="Data Science" 
-              className={classes.tab}
-              icon={<DataUsageIcon />}
-            />
-            <Tab 
-              label="Full-Time" 
-              className={classes.tab}
-              icon={<WorkIcon />}
             />
           </Tabs>
         </Box>
@@ -763,9 +759,8 @@ const OtherPrograms = () => {
               {programs
                 .filter(program => {
                   if (tabValue === 0) return true;
-                  if (tabValue === 1) return program.category === 'development';
-                  if (tabValue === 2) return program.category === 'datascience';
-                  if (tabValue === 3) return program.tag === 'Full Time';
+                  if (tabValue === 1) return program.tag === 'Internship';
+                  if (tabValue === 2) return program.tag === 'Full Time';
                   return true;
                 })
                 .map((program) => (
