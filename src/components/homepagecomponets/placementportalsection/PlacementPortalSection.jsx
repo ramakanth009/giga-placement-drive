@@ -193,12 +193,12 @@ const PlacementPortalSection = () => {
     },
     {
       title: "Proctored Testing & Employer Access",
-      description: "Participate in secure, monitored evaluations where your performance speaks for you. High scores enhance your visibility to potential employers, enabling companies to identify and connect directly through the platform.",
+      description: "Provides you with secure, monitored tests based on the job role, skills, or resume that validate and provides you complete insight.",
       icon: <VerifiedUserIcon className={classes.icon} />,
     },
     {
-      title: "Application Progress Tracker",
-      description: "Gain real-time insights into the status of every job application. From resume selection to review and final decision, stay informed at every stage, ensuring complete transparency throughout your hiring journey.",
+      title: "Detailed Feedback and insights report ",
+      description: "Delivers detailed feedback on body language, tone of voice, and answer quality — including concept-level insights and how to improve each response.",
       icon: <TimelineIcon className={classes.icon} />,
     },
   ];

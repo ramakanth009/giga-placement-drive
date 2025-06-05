@@ -283,7 +283,7 @@ const PreScreeningTest = () => {
     try {
       // API endpoint for submission
       // const response = await fetch('https://gigaversity.in/screening_test/', {
-      const response = await fetch('https://prescreening-tool.onrender.com/', {
+      const response = await fetch('https://prescreening-tool.onrender.com/prescreening_test', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

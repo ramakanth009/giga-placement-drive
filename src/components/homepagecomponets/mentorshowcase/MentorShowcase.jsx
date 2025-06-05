@@ -246,8 +246,8 @@ const MentorShowcase = () => {
     {
       id: 1,
       name: "Akhil Lanka",
-      title: "Cybersecurity Expert (4+ Years)",
-      expertise: "Cybersecurity",
+      title: "Product specialist",
+      expertise: "security",
       image: akhilImg,
     },
     {

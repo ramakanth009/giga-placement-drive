@@ -48,6 +48,8 @@ const useStyles = makeStyles({
   boxesContainer: {
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
     gap: '20px',
     "@media (max-width: 600px)": {
       gap: '15px',

@@ -734,8 +734,7 @@ const OtherPrograms = () => {
       image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80',
       level: 'Intermediate',
       category: 'datascience'
-    },
-    
+    }
   ];
 
   return (
@@ -766,15 +765,20 @@ const OtherPrograms = () => {
               className={classes.tab}
               icon={<SchoolIcon />}
             />
-              <Tab 
-                label="Full Time" 
-                className={classes.tab}
-                icon={<WorkIcon />}
-              />
+            <Tab 
+              label="Full Time" 
+              className={classes.tab}
+              icon={<WorkIcon />}
+            />
             <Tab 
               label="Master Internships" 
               className={classes.tab}
               icon={<CodeIcon />}
+            />
+            <Tab 
+              label="Virtual Placement" 
+              className={classes.tab}
+              icon={<DataUsageIcon />}
             />
           </Tabs>
         </Box>
@@ -816,8 +820,9 @@ const OtherPrograms = () => {
               {programs
                 .filter(program => {
                   if (tabValue === 0) return true;
-                  if (tabValue === 1) return program.tag === 'Internship';
-                  if (tabValue === 2) return program.tag === 'Full Time';
+                  if (tabValue === 1) return program.tag === 'Full Time';
+                  if (tabValue === 2) return program.tag === 'Internship';
+                  if (tabValue === 3) return program.tag === 'Placement Drive';
                   return true;
                 })
                 .map((program) => (

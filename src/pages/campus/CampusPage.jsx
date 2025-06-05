@@ -7,10 +7,12 @@ import { scrollToTop } from '../../utils/scrollUtils';
 
 // Import images
 import foundationHallImg from '../../assets/mentor-room/Foundation-hall.png';
-import productRoomImg from '../../assets/mentor-room/Product-room.png';
+import productRoomImg from '../../assets/mentor-room/Product-room.jpg';
 import startupRoomImg from '../../assets/mentor-room/Startup-room.png';
 import mentorRoomImg from '../../assets/mentor-room/mentor-room .png';
 import ventureHallImg from '../../assets/mentor-room/venture-hall.png';
+import caffe from '../../assets/mentor-room/cafe.jpg';
+import sportsarena from '../../assets/mentor-room/sports-arena.jpg';
 
 // Demo data for campus features
 const campusFeatures = [
@@ -39,7 +41,7 @@ const campusFeatures = [
     id: 4,
     title: "Campus Café",
     description: "Students gather at the Campus Café—a space built for thinkers, makers, and innovators to connect and recharge. Designed for conversation and collaboration, it’s where ideas flow freely and bonds are built over brews. After all, some of the world’s most successful startups began with a simple coffee chat—and we’re not leaving that to chance.",
-    image: "https://placehold.co/600x400", // Placeholder for missing image
+    image: caffe, // Placeholder for missing image
     alt: "Campus Café"
   },
   {
@@ -53,7 +55,7 @@ const campusFeatures = [
     id: 6,
     title: "The Play Arena",
     description: "A space to step away from screens and into real play. From cricket to badminton, chess to table tennis—The Play Arena is where confidence grows, teams bond, and leadership begins to form—on the field and beyond. With regular matches, recreational sessions, and team activities, it brings balance to high-performance learning while energizing both mind and body.",
-    image: "https://placehold.co/600x400", // Placeholder for missing image
+    image: "sportsarena", // Placeholder for missing image
     alt: "The Play Arena"
   },
   {

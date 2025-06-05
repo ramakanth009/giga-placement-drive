@@ -231,19 +231,19 @@ const PreScreeningBanner = () => {
       icon: WarningAmberIcon
     },
     {
-      text: "Graduates before 2021 looking for a career reboot",
+      text: "Graduates before 2021 aiming to restart their careers with practical skills and structured Method",
       icon: SchoolIcon
     },
     {
-      text: "Professionals wanting to switch into tech roles",
+      text: "Professionals from non-tech roles looking to switch into tech with job-specific training and guidance",
       icon: BusinessCenterIcon
     },
     {
-      text: "Individuals with career gaps due to personal reasons",
+      text: "Individuals with personal career gaps, now ready to return to the workforce through expert-led tech programs.",
       icon: RestartAltIcon
     },
     {
-      text: "Passionate learners who never got the right tech start",
+      text: "Passionate learners who lacked mentorship and path, now determined to begin their tech journey.",
       icon: EmojiObjectsIcon
     },
     
