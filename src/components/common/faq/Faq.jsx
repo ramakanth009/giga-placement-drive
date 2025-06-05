@@ -215,7 +215,7 @@ const useStyles = makeStyles({
     fontSize: '1.1rem !important',
     fontWeight: '600 !important',
     color: '#2A2B6A !important',
-    flexGrow: 1,
+    flex: '1 1 auto',
     "@media (max-width: 1200px)": {
       fontSize: '1.05rem !important',
     },
@@ -235,21 +235,22 @@ const useStyles = makeStyles({
   questionNumber: {
     color: '#FFC614 !important',
     fontWeight: 'bold !important',
-    marginRight: '10px !important',
+    paddingRight: '10px !important',
+    flex: '0 0 auto',
     "@media (max-width: 1200px)": {
-      marginRight: '9px !important',
+      paddingRight: '9px !important',
     },
     "@media (max-width: 960px)": {
-      marginRight: '9px !important',
+      paddingRight: '9px !important',
     },
     "@media (max-width: 600px)": {
-      marginRight: '8px !important',
+      paddingRight: '8px !important',
     },
     "@media (max-width: 480px)": {
-      marginRight: '7px !important',
+      paddingRight: '7px !important',
     },
     "@media (max-width: 375px)": {
-      marginRight: '6px !important',
+      paddingRight: '6px !important',
     },
   },
   expandIcon: {
@@ -354,6 +355,11 @@ const useStyles = makeStyles({
       minWidth: '100%',
     },
   },
+  questionContainer: {
+    display: 'flex !important',
+    width: '100% !important',
+    alignItems: 'flex-start !important',
+  },
 });
 
 const Faq = ({ faqData, title, subtitle }) => {
@@ -409,9 +415,11 @@ const Faq = ({ faqData, title, subtitle }) => {
                 aria-controls={`${faq.id}-content`}
                 id={`${faq.id}-header`}
               >
-                <Box display="flex" alignItems="center" width="100%">
+                <Box className={classes.questionContainer}>
+                  <Typography className={classes.questionNumber}>
+                    {faq.number}.
+                  </Typography>
                   <Typography className={classes.question}>
-                    <span className={classes.questionNumber}>{faq.number}.</span>
                     {faq.question}
                   </Typography>
                 </Box>
@@ -443,9 +451,11 @@ const Faq = ({ faqData, title, subtitle }) => {
                 aria-controls={`${faq.id}-content`}
                 id={`${faq.id}-header`}
               >
-                <Box display="flex" alignItems="center" width="100%">
+                <Box className={classes.questionContainer}>
+                  <Typography className={classes.questionNumber}>
+                    {faq.number}.
+                  </Typography>
                   <Typography className={classes.question}>
-                    <span className={classes.questionNumber}>{faq.number}.</span>
                     {faq.question}
                   </Typography>
                 </Box>

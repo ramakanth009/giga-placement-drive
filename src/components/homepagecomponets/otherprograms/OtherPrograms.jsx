@@ -37,7 +37,7 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 
 const useStyles = makeStyles({
   section: {
-    padding: '20px 0',
+    padding: '10px 0', // Reduced from 20px
     position: 'relative',
     overflow: 'hidden',
     background: 'linear-gradient(180deg, #101138 0%, #1e1c44 100%)',
@@ -108,13 +108,13 @@ const useStyles = makeStyles({
     },
   },
   title: {
-    fontSize: '2.5rem !important',
+    fontSize: '2rem !important', // Reduced from 2.5rem
     fontWeight: 'bold !important',
     color: 'white !important',
     position: 'relative',
     display: 'inline-block',
     "@media (max-width: 600px)": {
-      fontSize: '1.8rem !important',
+      fontSize: '1.5rem !important', // Reduced from 1.8rem
     },
   },
   highlight: {
@@ -122,26 +122,26 @@ const useStyles = makeStyles({
     position: 'relative',
   },
   subtitle: {
-    fontSize: '1.1rem !important',
+    fontSize: '1rem !important', // Reduced from 1.1rem
     color: 'rgba(255, 255, 255, 0.7) !important',
-    maxWidth: '700px',
-    margin: '20px auto 0 !important',
+    maxWidth: '900px',
+    margin: '5px auto 0 !important', // Reduced from 20px
     "@media (max-width: 600px)": {
-      fontSize: '0.95rem !important',
+      fontSize: '0.9rem !important',
       maxWidth: '90%',
-      margin: '12px auto 0 !important',
+      margin: '8px auto 0 !important', // Reduced from 12px
     },
   },
   tabsContainer: {
-    marginBottom: '20px',
+    marginBottom: '15px', // Reduced from 20px
     "@media (max-width: 600px)": {
-      marginBottom: '25px',
+      marginBottom: '20px',
     },
   },
   tabsRoot: {
-    minHeight: '60px',
-    borderRadius: '30px',
-    padding: '5px',
+    minHeight: '50px', // Reduced from 60px
+    borderRadius: '25px', // Reduced from 30px
+    padding: '4px', // Reduced from 5px
     backgroundColor: 'rgba(255, 255, 255, 0.08)',
     width: 'fit-content',
     margin: '0 auto',
@@ -150,20 +150,20 @@ const useStyles = makeStyles({
       display: 'none',
     },
     "@media (max-width: 600px)": {
-      minHeight: '45px',
-      borderRadius: '22px',
-      padding: '4px',
+      minHeight: '40px', // Reduced from 45px
+      borderRadius: '20px', // Reduced from 22px
+      padding: '3px', // Reduced from 4px
       width: '100%',
       maxWidth: '400px',
     },
   },
   tab: {
     color: 'rgba(255, 255, 255, 0.7) !important',
-    padding: '0 30px !important',
-    minHeight: '50px !important',
-    borderRadius: '25px !important',
+    padding: '0 25px !important', // Reduced from 30px
+    minHeight: '42px !important', // Reduced from 50px
+    borderRadius: '21px !important', // Reduced from 25px
     textTransform: 'none !important',
-    fontSize: '1rem !important',
+    fontSize: '0.95rem !important', // Reduced from 1rem
     fontWeight: '500 !important',
     transition: 'all 0.3s ease !important',
     '&.Mui-selected': {
@@ -175,17 +175,18 @@ const useStyles = makeStyles({
       justifyContent: 'center',
     },
     '& svg': {
-      marginRight: '10px',
+      marginRight: '8px', // Reduced from 10px
+      fontSize: '1.1rem', // Added to reduce icon size
     },
     "@media (max-width: 600px)": {
-      padding: '0 15px !important',
-      minHeight: '40px !important',
-      fontSize: '0.9rem !important',
-      borderRadius: '20px !important',
+      padding: '0 12px !important', // Reduced from 15px
+      minHeight: '34px !important', // Reduced from 40px
+      fontSize: '0.85rem !important', // Reduced from 0.9rem
+      borderRadius: '17px !important', // Reduced from 20px
       flexGrow: 1,
       '& svg': {
-        marginRight: '6px',
-        fontSize: '1.2rem',
+        marginRight: '4px', // Reduced from 6px
+        fontSize: '1rem', // Reduced from 1.2rem
       },
     },
   },
@@ -198,10 +199,9 @@ const useStyles = makeStyles({
     },
   },
   swiperContainer: {
-    padding: '20px 0 10px 0',
+    padding: '10px 0 5px 0', // Reduced padding
     '& .swiper': {
-      overflow: 'visible',
-      paddingBottom: '20px',
+      paddingBottom: '10px', // Reduced from 20px
     },
     '& .swiper-slide': {
       height: 'auto',
@@ -281,12 +281,12 @@ const useStyles = makeStyles({
     },
   },
   cardMedia: {
-    height: '200px',
+    height: '160px', // Reduced from 200px
     transition: 'transform 0.6s',
     objectFit: 'cover',
     objectPosition: 'center',
     "@media (max-width: 600px)": {
-      height: '170px',
+      height: '140px', // Reduced from 170px
     },
   },
   hoverOverlay: {
@@ -294,7 +294,7 @@ const useStyles = makeStyles({
     top: 0,
     left: 0,
     right: 0,
-    height: '200px',
+    height: '160px', // Reduced from 200px
     background: 'linear-gradient(0deg, rgba(42, 43, 106, 0.1) 0%, rgba(255, 255, 255, 0) 50%)',
     opacity: 0,
     transition: 'opacity 0.4s ease',
@@ -302,10 +302,10 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'flex-end',
     justifyContent: 'center',
-    padding: '0 0 20px 0',
+    padding: '0 0 10px 0', // Reduced padding
     "@media (max-width: 600px)": {
-      height: '170px',
-      padding: '0 0 15px 0',
+      height: '140px', // Reduced from 170px
+      padding: '0 0 10px 0', // Reduced padding
     },
   },
   viewButton: {
@@ -329,10 +329,10 @@ const useStyles = makeStyles({
     },
   },
   cardContent: {
-    padding: '25px !important',
+    padding: '15px !important', // Reduced from 25px
     color: 'white',
     "@media (max-width: 600px)": {
-      padding: '18px !important',
+      padding: '12px !important', // Reduced from 18px
     },
   },
   programTag: {
@@ -382,38 +382,38 @@ const useStyles = makeStyles({
     },
   },
   programTitle: {
-    fontSize: '1.5rem !important',
+    fontSize: '1.2rem !important', // Reduced from 1.5rem
     fontWeight: 'bold !important',
     color: 'white !important',
-    marginBottom: '15px !important',
+    marginBottom: '10px !important', // Reduced from 15px
     lineHeight: '1.3 !important',
     "@media (max-width: 600px)": {
-      fontSize: '1.3rem !important',
-      marginBottom: '12px !important',
+      fontSize: '1.1rem !important', // Reduced from 1.3rem
+      marginBottom: '8px !important', // Reduced from 12px
     },
   },
   divider: {
     backgroundColor: 'rgba(255, 255, 255, 0.1) !important',
-    margin: '15px 0 20px !important',
+    margin: '10px 0 15px !important', // Reduced from 15px 0 20px
     "@media (max-width: 600px)": {
-      margin: '12px 0 16px !important',
+      margin: '8px 0 12px !important', // Reduced from 12px 0 16px
     },
   },
   featuresContainer: {
-    marginBottom: '20px',
+    marginBottom: '15px', // Reduced from 20px
     "@media (max-width: 600px)": {
-      marginBottom: '14px',
+      marginBottom: '10px', // Reduced from 14px
     },
   },
   featureItem: {
     display: 'flex',
     alignItems: 'center',
-    marginBottom: '12px',
+    marginBottom: '8px', // Reduced from 12px
     '&:last-child': {
       marginBottom: 0
     },
     "@media (max-width: 600px)": {
-      marginBottom: '9px',
+      marginBottom: '6px', // Reduced from 9px
     },
   },
   featureIcon: {
@@ -426,10 +426,10 @@ const useStyles = makeStyles({
     },
   },
   featureText: {
-    fontSize: '0.95rem !important',
+    fontSize: '0.85rem !important', // Reduced from 0.95rem
     color: 'rgba(255, 255, 255, 0.8) !important',
     "@media (max-width: 600px)": {
-      fontSize: '0.85rem !important',
+      fontSize: '0.8rem !important', // Reduced from 0.85rem
     },
   },
   studentCount: {
@@ -440,6 +440,44 @@ const useStyles = makeStyles({
     fontSize: '0.9rem !important',
     "@media (max-width: 600px)": {
       fontSize: '0.85rem !important',
+    },
+  },
+  enrollButton: {
+    backgroundColor: 'rgba(46, 204, 113, 0.15) !important',
+    color: '#2ecc71 !important',
+    padding: '8px 16px !important',
+    borderRadius: '20px !important',
+    fontSize: '0.85rem !important',
+    fontWeight: '500 !important',
+    marginTop: '15px !important',
+    transition: 'all 0.3s ease !important',
+    border: '1px solid rgba(46, 204, 113, 0.3) !important',
+    '&:hover': {
+      backgroundColor: 'rgba(46, 204, 113, 0.25) !important',
+      borderColor: 'rgba(46, 204, 113, 0.5) !important',
+    },
+    '& .MuiButton-startIcon': {
+      marginRight: '6px !important',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '0.8rem !important',
+      padding: '6px 12px !important',
+    },
+  },
+  enrollIcon: {
+    width: '8px !important',
+    height: '8px !important',
+    backgroundColor: '#2ecc71',
+    borderRadius: '50%',
+    position: 'relative',
+    '&:before': {
+      content: '""',
+      position: 'absolute',
+      width: '100%',
+      height: '100%',
+      borderRadius: '50%',
+      backgroundColor: 'inherit',
+      animation: '$pulse 1.5s infinite',
     },
   },
   pulseDot: {
@@ -828,15 +866,15 @@ const OtherPrograms = () => {
                           />
                           
                           <Box className={classes.engagementContainer}>
-                            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '15px' }}>
-                              <Box className={classes.pulseDot} />
-                              <Typography sx={{ 
-                                fontSize: { xs: '0.8rem', sm: '0.85rem' }, 
-                                fontWeight: 500, 
-                                color: '#2ecc71' 
-                              }}>
+                            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                              <Button
+                                variant="contained"
+                                className={classes.enrollButton}
+                                startIcon={<Box className={classes.enrollIcon} />}
+                                onClick={() => handleViewProgram(program.id)}
+                              >
                                 Enrolling Now
-                              </Typography>
+                              </Button>
                             </Box>
                           </Box>
                         </Box>

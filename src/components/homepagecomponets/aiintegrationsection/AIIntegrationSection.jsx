@@ -6,7 +6,6 @@ import CodeIcon from '@mui/icons-material/Code';
 import DataUsageIcon from '@mui/icons-material/DataUsage';
 import BuildIcon from '@mui/icons-material/Build';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
-import AllInclusiveIcon from '@mui/icons-material/AllInclusive';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import PsychologyIcon from '@mui/icons-material/Psychology';
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
@@ -49,7 +48,6 @@ const useStyles = makeStyles({
   },
   headerSection: {
     textAlign: 'center',
-    marginBottom: '60px',
     '@media (max-width: 600px)': {
       marginBottom: '40px',
     },
@@ -58,7 +56,7 @@ const useStyles = makeStyles({
     fontSize: '2.8rem !important',
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
-    marginBottom: '20px !important',
+    marginBottom: '10px !important',
     lineHeight: '1.2 !important',
     '@media (max-width: 960px)': {
       fontSize: '2.4rem !important',
@@ -88,9 +86,8 @@ const useStyles = makeStyles({
   answerText: {
     fontSize: '1.2rem !important',
     color: '#666 !important',
-    marginBottom: '50px !important',
     maxWidth: '700px',
-    margin: '0 auto 50px auto !important',
+    margin: '0 auto 10px auto !important',
     '@media (max-width: 960px)': {
       fontSize: '1.1rem !important',
       marginBottom: '40px !important',
@@ -503,7 +500,7 @@ const useStyles = makeStyles({
 
 const AIIntegrationSection = () => {
   const classes = useStyles();
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState('fullstack');
 
   const allTools = [
     // Full Stack Tools
@@ -662,9 +659,7 @@ const AIIntegrationSection = () => {
     }
   ];
 
-  const filteredTools = selectedCategory === 'all' 
-    ? allTools 
-    : allTools.filter(tool => tool.category === selectedCategory);
+  const filteredTools = allTools.filter(tool => tool.category === selectedCategory);
 
   const features = [
     {
@@ -685,7 +680,6 @@ const AIIntegrationSection = () => {
   ];
 
   const categories = [
-    { id: 'all', label: 'All AI Tools', icon: <AllInclusiveIcon /> },
     { id: 'fullstack', label: 'Full Stack Development', icon: <CodeIcon /> },
     { id: 'datascience', label: 'Data Science', icon: <DataUsageIcon /> }
   ];

@@ -576,7 +576,7 @@ const useStyles = makeStyles({
     fontWeight: 'bold !important',
     color: 'white !important',
     marginBottom: '20px !important',
-    textShadow: '0 4px 20px rgba(0, 0, 0, 0.5)',
+    // textShadow: '0 4px 20px rgba(0, 0, 0, 0.5)',
     letterSpacing: '1px !important',
     '& span': {
       color: '#FFC614 !important',
@@ -594,7 +594,7 @@ const useStyles = makeStyles({
   },
   subtitle: {
     fontSize: '1.3rem !important',
-    color: 'rgba(255, 255, 255, 0.95) !important',
+    color: '#ffffff',
     maxWidth: '800px',
     margin: '0 auto !important',
     lineHeight: '1.6 !important',
@@ -750,10 +750,9 @@ const useStyles = makeStyles({
   cardTitle: {
     fontSize: '1.1rem !important',
     fontWeight: '700 !important',
-    color: 'white !important',
+    color: '#ffffff !important',
     marginBottom: '8px !important',
     transition: 'color 0.3s ease',
-    textShadow: '0 2px 12px rgba(0, 0, 0, 0.5)',
     letterSpacing: '0.5px !important',
     '@media (max-width: 960px)': {
       fontSize: '1rem !important',
@@ -765,14 +764,13 @@ const useStyles = makeStyles({
   },
   cardDescription: {
     fontSize: '0.85rem !important',
-    color: 'rgba(255, 255, 255, 0.9) !important',
+    color: '#ffffff !important',
     lineHeight: '1.4 !important',
     display: '-webkit-box',
     WebkitLineClamp: 3,
     WebkitBoxOrient: 'vertical',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
-    textShadow: '0 2px 8px rgba(0, 0, 0, 0.5)',
     fontWeight: '500 !important',
     letterSpacing: '0.3px !important',
     '@media (max-width: 960px)': {

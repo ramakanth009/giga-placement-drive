@@ -96,11 +96,11 @@ const useStyles = makeStyles({
     },
   },
   title: {
-    fontSize: '2rem !important',
+    fontSize: '3rem !important',
     fontWeight: 'bold !important',
     color: 'white !important',
     lineHeight: '1.2 !important',
-    marginBottom: '20px !important',
+    // marginBottom: '10px !important',
     '@media (max-width: 1200px)': {
       fontSize: '1.8rem !important',
     },
@@ -118,13 +118,14 @@ const useStyles = makeStyles({
     },
   },
   highlightText: {
+    fontSize: '1.5rem !important', // Increased from 1.2rem
     color: '#FFC614 !important',
     position: 'relative',
   },
   subtitle: {
     fontSize: '1.2rem !important', // Increased from 1rem
     color: 'rgba(255, 255, 255, 0.9) !important',
-    marginBottom: '15px !important',
+    // marginBottom: '15px !important',
     maxWidth: '700px',
     '@media (max-width: 960px)': {
       fontSize: '1.1rem !important', // Increased from 0.95rem
@@ -144,23 +145,27 @@ const useStyles = makeStyles({
     marginBottom: '0', // Remove margin since parent has gap
     width: '100%',
     maxWidth: '600px',
-    alignItems: 'center',
+    alignItems: 'flex-start',
+    background: 'rgba(255, 255, 255, 0.1)',
+    borderRadius: '15px',
+    padding: '20px',
     '@media (max-width: 600px)': {
       gap: '8px',
+      padding: '15px',
     },
   },
   featureItem: {
     display: 'flex',
     alignItems: 'center',
     color: 'white',
+    width: '100%',
     // Add fixed width for the icon wrapper to ensure consistent text alignment
     '& > svg': {
       width: '24px',
       textAlign: 'center',
     },
     '@media (max-width: 960px)': {
-      width: 'fit-content',
-      margin: '0 auto',
+      width: '100%',
     },
     '@media (max-width: 600px)': {
       alignItems: 'flex-start',
