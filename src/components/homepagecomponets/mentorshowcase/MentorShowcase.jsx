@@ -39,7 +39,7 @@ import uttamImg from "../../../assets/trainers/Uttam-Grade.jpeg";
 const useStyles = makeStyles({
   section: {
     padding: "40px 0",
-    background: `linear-gradient(135deg, #233f94 0%, #27286c 100%)`,
+    background: "linear-gradient(180deg, #101138 0%, #1e1c44 100%)",
     position: "relative",
     overflow: "hidden",
     "&::before": {
@@ -49,9 +49,10 @@ const useStyles = makeStyles({
       left: 0,
       right: 0,
       bottom: 0,
-      background:
-        "radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%)",
-      pointerEvents: "none",
+      backgroundImage:
+        'linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px)',
+      backgroundSize: "30px 30px",
+      zIndex: 1,
     },
   },
   container: {
@@ -63,11 +64,13 @@ const useStyles = makeStyles({
     fontWeight: "800 !important",
     color: "#ffffff !important",
     textAlign: "center",
-    // marginBottom: '16px !important',
     textShadow: "0 2px 4px rgba(0,0,0,0.3)",
     "@media (max-width: 600px)": {
       fontSize: "2.2rem !important",
     },
+  },
+  titleYellow: {
+    color: "#FFC614 !important",
   },
   subtitle: {
     fontSize: "1.2rem !important",
@@ -84,26 +87,23 @@ const useStyles = makeStyles({
   },
   card: {
     borderRadius: "20px !important",
-    background: "rgba(255, 255, 255, 0.95) !important",
-    backdropFilter: "blur(20px)",
-    border: "1px solid rgba(255, 255, 255, 0.2)",
-    boxShadow: "0 25px 50px rgba(0, 0, 0, 0.15) !important",
-    height: "480px", // Increased from 420px
+    background: "rgba(255, 255, 255, 0.03) !important",
+    backdropFilter: "blur(10px)",
+    border: "1px solid rgba(255, 255, 255, 0.1)",
+    boxShadow: "0 15px 35px rgba(0, 0, 0, 0.2) !important",
+    height: "480px",
     display: "flex",
     flexDirection: "column",
     transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
     overflow: "hidden",
     position: "relative",
     "&:hover": {
-      transform: "translateY(-15px) scale(1.02)",
-      boxShadow: "0 35px 70px rgba(39, 40, 108, 0.25) !important",
+      transform: "translateY(-10px)",
+      boxShadow:
+        "0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 198, 20, 0.1) !important",
       "& $profileImage": {
-        transform: "scale(1.1)",
+        transform: "scale(1.05)",
       },
-      // '& $socialLinks': {
-      //   opacity: 1,
-      //   transform: 'translateY(0)',
-      // },
       "& $gradientOverlay": {
         opacity: 0.8,
       },
@@ -111,12 +111,12 @@ const useStyles = makeStyles({
   },
   profileSection: {
     position: "relative",
-    height: "280px", // Increased from 240px
+    height: "280px",
     overflow: "hidden",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    background: `linear-gradient(135deg, #427bbf 0%, #233f94 100%)`,
+    background: "linear-gradient(180deg, #101138 0%, #1e1c44 100%)",
   },
   profileImage: {
     width: "180px",
@@ -170,31 +170,28 @@ const useStyles = makeStyles({
     flexDirection: "column",
     justifyContent: "center",
     textAlign: "center",
-    background: "rgba(255, 255, 255, 0.95)",
+    background: "rgba(255, 255, 255, 0.03)",
+    backdropFilter: "blur(10px)",
   },
   mentorName: {
     fontSize: "1.4rem !important",
     fontWeight: "700 !important",
-    color: "#27286c !important",
+    color: "white !important",
     marginBottom: "8px !important",
-    background: `linear-gradient(135deg, #233f94 0%, #27286c 100%)`,
-    backgroundClip: "text",
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent",
   },
   mentorTitle: {
     fontSize: "0.95rem !important",
-    color: "#427bbf !important",
+    color: "rgba(255, 255, 255, 0.8) !important",
     lineHeight: "1.5 !important",
     marginBottom: "12px !important",
   },
   expertiseChip: {
-    backgroundColor: "rgba(35, 63, 148, 0.1) !important",
-    color: "#233f94 !important",
+    backgroundColor: "rgba(255, 198, 20, 0.15) !important",
+    color: "#FFC614 !important",
     fontSize: "0.8rem !important",
     height: "24px !important",
     borderRadius: "12px !important",
-    border: "1px solid rgba(35, 63, 148, 0.2) !important",
+    border: "1px solid rgba(255, 198, 20, 0.3) !important",
   },
   swiperContainer: {
     padding: "20px 60px 10px 60px !important",
@@ -205,32 +202,32 @@ const useStyles = makeStyles({
       bottom: "0 !important",
     },
     "& .swiper-pagination-bullet": {
-      backgroundColor: "rgba(255,255,255,0.5) !important",
+      backgroundColor: "rgba(255, 255, 255, 0.5) !important",
       width: "12px !important",
       height: "12px !important",
       opacity: "1 !important",
       transition: "all 0.3s ease !important",
       "&.swiper-pagination-bullet-active": {
-        backgroundColor: "#ffc615 !important",
+        backgroundColor: "#FFC614 !important",
         transform: "scale(1.2)",
       },
     },
     "& .swiper-button-next, & .swiper-button-prev": {
-      color: "#ffc615 !important",
-      backgroundColor: "rgba(39, 40, 108, 0.1) !important",
+      color: "#FFC614 !important",
+      backgroundColor: "rgba(255, 255, 255, 0.03) !important",
       width: "50px !important",
       height: "50px !important",
       borderRadius: "50% !important",
       backdropFilter: "blur(10px)",
-      border: "1px solid rgba(255,255,255,0.2) !important",
+      border: "1px solid rgba(255, 255, 255, 0.1) !important",
       transition: "all 0.3s ease !important",
       "&:after": {
         fontSize: "20px !important",
         fontWeight: "bold !important",
       },
       "&:hover": {
-        backgroundColor: "rgba(39, 40, 108, 0.2) !important",
-        color: "#ffc615 !important",
+        backgroundColor: "rgba(255, 255, 255, 0.08) !important",
+        color: "#FFC614 !important",
         transform: "scale(1.1)",
       },
     },
@@ -238,6 +235,7 @@ const useStyles = makeStyles({
       padding: "20px 30px 50px 30px !important",
     },
   },
+
 });
 
 const MentorShowcase = () => {
@@ -306,9 +304,15 @@ const MentorShowcase = () => {
   return (
     <Box className={classes.section}>
       <Container maxWidth="lg" className={classes.container}>
-        <Typography variant="h2" className={classes.title}>
-          Meet the Giga Crew
-        </Typography>
+        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 1 }}>
+          <Typography variant="h2" className={classes.title}>
+            Meet Our
+          </Typography>
+          <Typography variant="h2" className={`${classes.title} ${classes.titleYellow}`}>
+            Giga Crew
+          </Typography>
+        </Box>
+        
         <Typography variant="body1" className={classes.subtitle}>
           Mentorship & Training Team
         </Typography>

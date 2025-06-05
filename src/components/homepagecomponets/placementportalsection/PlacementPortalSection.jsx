@@ -42,17 +42,6 @@ const useStyles = makeStyles({
     color: '#2A2B6A !important',
     marginBottom: '20px !important',
     position: 'relative',
-    '&::after': {
-      content: '""',
-      position: 'absolute',
-      bottom: '-10px',
-      left: '50%',
-      transform: 'translateX(-50%)',
-      width: '80px',
-      height: '3px',
-      background: 'linear-gradient(90deg, #2A2B6A, #FFC614)',
-      borderRadius: '2px',
-    },
     '@media (max-width: 960px)': {
       fontSize: '2.2rem !important',
     },

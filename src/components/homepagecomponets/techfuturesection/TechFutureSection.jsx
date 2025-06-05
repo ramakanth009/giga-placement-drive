@@ -21,17 +21,6 @@ const useStyles = makeStyles({
     textAlign: 'center',
     marginBottom: '15px !important',
     position: 'relative',
-    '&::after': {
-      content: '""',
-      position: 'absolute',
-      bottom: '-10px',
-      left: '50%',
-      transform: 'translateX(-50%)',
-      width: '80px',
-      height: '4px',
-      background: 'linear-gradient(90deg, #5E72E4, #825EE4)',
-      borderRadius: '2px',
-    },
   },
   subtitle: {
     fontSize: '1.1rem !important',

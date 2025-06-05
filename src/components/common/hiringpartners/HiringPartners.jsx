@@ -59,16 +59,6 @@ const useStyles = makeStyles({
     textAlign: 'center !important',
     fontSize: "2.5rem !important",
     position: 'relative',
-    '&:after': {
-      content: '""',
-      position: 'absolute',
-      width: '60px',
-      height: '3px',
-      backgroundColor: '#FFC614',
-      bottom: '-12px',
-      left: '50%',
-      transform: 'translateX(-50%)',
-    },
     '@media (max-width: 960px)': {
       fontSize: '2rem !important',
     },

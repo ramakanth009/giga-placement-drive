@@ -86,18 +86,6 @@ const useStyles = makeStyles({
       padding: '0 20px',
     },
   },
-  topBar: {
-    background: 'linear-gradient(90deg, rgba(255, 198, 20, 0.1) 0%, rgba(255, 198, 20, 0.3) 50%, rgba(255, 198, 20, 0.1) 100%)',
-    height: '4px',
-    width: '100px',
-    margin: '0 auto 15px auto',
-    borderRadius: '2px',
-    "@media (max-width: 600px)": {
-      width: '70px',
-      height: '3px',
-      margin: '0 auto 10px auto',
-    },
-  },
   titleContainer: {
     textAlign: 'center',
     marginBottom: '20px',
@@ -758,7 +746,6 @@ const OtherPrograms = () => {
         <Box className={classes.titleContainer}>
           <Typography variant="h2" className={classes.title}>
             Explore Our <span className={classes.highlight}>Programs</span>
-          <Box className={classes.topBar}></Box>
           </Typography>
           <Typography variant="body1" className={classes.subtitle}>
             Immersive learning experiences designed to transform beginners into industry-ready professionals
