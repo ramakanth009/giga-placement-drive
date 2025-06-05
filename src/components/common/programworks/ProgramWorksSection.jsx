@@ -3,6 +3,13 @@ import React from 'react';
 import { Box, Typography, Container, Paper } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
+const cardColors = [
+  '#E3F2FD', // Light Blue
+  '#F3E5F5', // Light Purple
+  '#E8F5E9', // Light Green
+  '#FFF3E0', // Light Orange
+];
+
 const useStyles = makeStyles({
   section: {
     padding: '40px 0',
@@ -11,6 +18,7 @@ const useStyles = makeStyles({
   },
   titleContainer: {
     marginBottom: '30px',
+    textAlign: 'center',
     "@media (max-width: 960px)": {
       marginBottom: '25px',
     },
@@ -65,7 +73,6 @@ const useStyles = makeStyles({
   },
   box: {
     padding: '24px',
-    backgroundColor: '#FFFFFF',
     borderRadius: '10px',
     boxShadow: '0 4px 20px rgba(0, 0, 0, 0.05)',
     height: '100%',
@@ -130,7 +137,11 @@ const ProgramWorksSection = ({ items, isPrimaryPage = true }) => {
 
   const renderCard = (item, index) => (
     <Box className={classes.boxWrapper} key={index}>
-      <Paper className={classes.box} elevation={0}>
+      <Paper 
+        className={classes.box} 
+        elevation={0}
+        sx={{ backgroundColor: cardColors[index % cardColors.length] }}
+      >
         <Box className={classes.circleNumber}>
           {index + 1}
         </Box>
