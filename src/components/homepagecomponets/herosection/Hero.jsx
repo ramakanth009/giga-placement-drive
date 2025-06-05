@@ -571,11 +571,11 @@ import 'swiper/css/pagination';
 import HeroImage1 from '../../../assets/hero/Banner1.jpg';
 import HeroImage2 from '../../../assets/hero/Banner2.jpg';
 import HeroImage3 from '../../../assets/hero/Banner3.jpg';
-import HeroImage4 from '../../../assets/hero/Banner3.jpg';
-import HeroImage5 from '../../../assets/hero/Banner4.jpg';
-import HeroImage6 from '../../../assets/hero/Banner5.jpg';
-import HeroImage7 from '../../../assets/hero/Banner6.jpg';
-import HeroImage8 from '../../../assets/hero/Banner7.jpg';
+import HeroImage4 from '../../../assets/hero/Banner4.jpg';
+import HeroImage5 from '../../../assets/hero/Banner5.jpg';
+import HeroImage6 from '../../../assets/hero/Banner6.jpg';
+import HeroImage7 from '../../../assets/hero/Banner7.jpg';
+import HeroImage8 from '../../../assets/hero/Banner8.jpg';
 
 const useStyles = makeStyles({
   heroSection: {
@@ -618,9 +618,9 @@ const Hero = () => {
   const classes = useStyles();
 
   const heroImages = [
-    { src: HeroImage1, alt: 'Hero Banner 1' },
-    { src: HeroImage2, alt: 'Hero Banner 2' },
-    { src: HeroImage3, alt: 'Hero Banner 3' },
+    // { src: HeroImage1, alt: 'Hero Banner 1' },
+    // { src: HeroImage2, alt: 'Hero Banner 2' },
+    // { src: HeroImage3, alt: 'Hero Banner 3' },
     { src: HeroImage4, alt: 'Hero Banner 4' },
     { src: HeroImage5, alt: 'Hero Banner 5' },
     { src: HeroImage6, alt: 'Hero Banner 6' },
