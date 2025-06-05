@@ -86,8 +86,8 @@ const useStyles = makeStyles({
     },
   },
   stepNumberContainer: {
-    width: '40px',
-    height: '40px',
+    width: '60px',
+    height: '60px',
     borderRadius: '50%',
     backgroundColor: '#4263EB',
     display: 'flex',
@@ -96,11 +96,35 @@ const useStyles = makeStyles({
     marginBottom: '15px',
     position: 'relative',
     zIndex: 2,
+    transition: 'all 0.3s ease',
+    boxShadow: '0 4px 15px rgba(66, 99, 235, 0.3)',
+    overflow: 'hidden',
+    '&:hover': {
+      transform: 'scale(1.1)',
+      boxShadow: '0 6px 20px rgba(66, 99, 235, 0.4)',
+    },
+    '&::after': {
+      content: '""',
+      position: 'absolute',
+      width: '30px',
+      height: '100%',
+      background: 'rgba(255, 255, 255, 0.3)',
+      transform: 'skewX(-30deg) translateX(-150px)',
+      animation: '$shine 3s infinite',
+    },
+    '@media (max-width: 960px)': {
+      width: '50px',
+      height: '50px',
+    },
   },
   stepNumber: {
     color: 'white',
-    fontWeight: 'bold',
-    fontSize: '1.1rem',
+    fontWeight: 'bold !important',
+    fontSize: '1.8rem !important',
+    animation: '$pulse 2s infinite',
+    '@media (max-width: 960px)': {
+      fontSize: '1.5rem',
+    },
   },
   stepTitle: {
     fontSize: '1rem !important',
@@ -124,6 +148,25 @@ const useStyles = makeStyles({
     zIndex: 1,
     '@media (max-width: 1000px)': {
       display: 'none',
+    },
+  },
+  '@keyframes shine': {
+    '0%': {
+      transform: 'skewX(-30deg) translateX(-150px)',
+    },
+    '100%': {
+      transform: 'skewX(-30deg) translateX(350px)',
+    },
+  },
+  '@keyframes pulse': {
+    '0%': {
+      transform: 'scale(1)',
+    },
+    '50%': {
+      transform: 'scale(1.1)',
+    },
+    '100%': {
+      transform: 'scale(1)',
     },
   },
 });

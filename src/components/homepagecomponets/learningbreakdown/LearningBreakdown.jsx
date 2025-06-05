@@ -1,5 +1,4 @@
-
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Typography,
@@ -16,11 +15,11 @@ import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 
 const useStyles = makeStyles({
   section: {
-    padding: "120px 0",
+    padding: "30px 0",
     position: "relative",
     background: "radial-gradient(ellipse at center, #0a0a1f 0%, #000000 70%)",
     overflow: "hidden",
-    minHeight: "100vh",
+    minHeight: "60vh",
   },
   container: {
     position: "relative",
@@ -28,51 +27,46 @@ const useStyles = makeStyles({
   },
   header: {
     textAlign: "center",
-    marginBottom: "60px",
+    marginBottom: "30px",
   },
   title: {
-    fontSize: "4rem !important",
+    fontSize: "2rem !important",
     fontWeight: "900 !important",
     background: "linear-gradient(45deg, #00d4ff 0%, #ff0080 50%, #ffeb3b 100%)",
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
     backgroundClip: "text",
-    marginBottom: "20px !important",
+    marginBottom: "15px !important",
     animation: "$glow 3s ease-in-out infinite alternate",
     "@media (max-width: 960px)": {
-      fontSize: "3rem !important",
+      fontSize: "2.5rem !important",
     },
     "@media (max-width: 600px)": {
-      fontSize: "2.5rem !important",
+      fontSize: "2rem !important",
     },
   },
   subtitle: {
-    fontSize: "1.4rem !important",
+    fontSize: "1rem !important",
     color: "rgba(255, 255, 255, 0.8) !important",
-    maxWidth: "800px",
+    maxWidth: "600px",
     margin: "0 auto !important",
   },
   solarSystem: {
     position: "relative",
-    width: "800px",
-    height: "800px",
-    margin: "80px auto",
-    "@media (max-width: 900px)": {
-      width: "600px",
-      height: "600px",
-    },
-    "@media (max-width: 700px)": {
-      width: "400px",
-      height: "400px",
-    },
+    width: "400px",
+    height: "400px",
+    margin: "20px auto",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
   sun: {
     position: "absolute",
     top: "38%",
     left: "38%",
     transform: "translate(-50%, -50%)",
-    width: "200px",
-    height: "200px",
+    width: "80px",
+    height: "80px",
     borderRadius: "50%",
     background: "conic-gradient(from 0deg, #ffeb3b, #ff9800, #ff5722, #ffeb3b)",
     display: "flex",
@@ -83,8 +77,8 @@ const useStyles = makeStyles({
     boxShadow: "0 0 100px rgba(255, 235, 59, 0.8), inset 0 0 50px rgba(255, 152, 0, 0.6)",
     zIndex: 10,
     "@media (max-width: 700px)": {
-      width: "120px",
-      height: "120px",
+      width: "100px",
+      height: "100px",
     },
   },
   sunContent: {
@@ -93,7 +87,7 @@ const useStyles = makeStyles({
     position: "relative",
   },
   sunTitle: {
-    fontSize: "1.5rem !important",
+    fontSize: "1rem !important",
     fontWeight: "900 !important",
     color: "white !important",
     textShadow: "0 0 10px rgba(0, 0, 0, 0.8)",
@@ -102,7 +96,7 @@ const useStyles = makeStyles({
     },
   },
   sunSubtitle: {
-    fontSize: "0.9rem !important",
+    fontSize: "0.7rem !important",
     color: "rgba(255, 255, 255, 0.9) !important",
     marginTop: "5px !important",
     "@media (max-width: 700px)": {
@@ -119,64 +113,44 @@ const useStyles = makeStyles({
     animation: "$orbitRotate 20s linear infinite",
   },
   orbit1: {
-    width: "300px",
-    height: "300px",
-    animationDuration: "15s",
-    "@media (max-width: 700px)": {
-      width: "200px",
-      height: "200px",
-    },
+    width: "160px",
+    height: "160px",
   },
   orbit2: {
-    width: "450px",
-    height: "450px",
-    animationDuration: "25s",
-    "@media (max-width: 700px)": {
-      width: "280px",
-      height: "280px",
-    },
+    width: "230px",
+    height: "230px",
   },
   orbit3: {
-    width: "600px",
-    height: "600px",
-    animationDuration: "35s",
-    "@media (max-width: 700px)": {
-      width: "360px",
-      height: "360px",
-    },
+    width: "300px",
+    height: "300px",
   },
   orbit4: {
-    width: "750px",
-    height: "750px",
-    animationDuration: "45s",
-    "@media (max-width: 700px)": {
-      width: "400px",
-      height: "400px",
-    },
+    width: "370px",
+    height: "370px",
   },
   planet: {
     position: "absolute",
-    width: "120px",
-    height: "120px",
+    width: "60px",
+    height: "60px",
     cursor: "pointer",
     zIndex: 5,
     transition: "all 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
     animation: "$counterRotate 20s linear infinite",
     "&:hover": {
-      transform: "scale(1.3)",
-      zIndex: 15,
+      transform: "scale(1.1)",
+      zIndex: 999,
       "& $planetCore": {
         boxShadow: "0 0 80px rgba(0, 212, 255, 0.8), 0 0 120px rgba(255, 0, 128, 0.6)",
       },
       "& $planetContent": {
         opacity: 1,
         visibility: "visible",
-        transform: "translateX(-50%) scale(1)",
+        transform: "translate(-50%, -50%) scale(1)",
       },
     },
     "@media (max-width: 700px)": {
-      width: "80px",
-      height: "80px",
+      width: "60px",
+      height: "60px",
     },
   },
   planet1: {
@@ -226,8 +200,8 @@ const useStyles = makeStyles({
   planetInner: {
     position: "relative",
     zIndex: 2,
-    width: "80px",
-    height: "80px",
+    width: "40px",
+    height: "40px",
     borderRadius: "50%",
     background: "rgba(255, 255, 255, 0.05)",
     backdropFilter: "blur(20px)",
@@ -237,12 +211,12 @@ const useStyles = makeStyles({
     justifyContent: "center",
     border: "1px solid rgba(255, 255, 255, 0.2)",
     "@media (max-width: 700px)": {
-      width: "60px",
-      height: "60px",
+      width: "40px",
+      height: "40px",
     },
   },
   planetNumber: {
-    fontSize: "1.5rem !important",
+    fontSize: "1rem !important",
     fontWeight: "900 !important",
     color: "#00d4ff !important",
     marginBottom: "4px !important",
@@ -251,7 +225,7 @@ const useStyles = makeStyles({
     },
   },
   planetTitle: {
-    fontSize: "0.7rem !important",
+    fontSize: "0.5rem !important",
     color: "white !important",
     textAlign: "center !important",
     fontWeight: "600 !important",
@@ -261,12 +235,12 @@ const useStyles = makeStyles({
     },
   },
   planetContent: {
-    position: "absolute",
-    top: "140px",
+    position: "fixed",
+    top: "50%",
     left: "50%",
-    transform: "translateX(-50%) scale(0.8)",
-    width: "320px",
-    padding: "24px",
+    transform: "translate(-50%, -50%) scale(0.8)",
+    width: "200px",
+    padding: "15px",
     background: "rgba(0, 0, 0, 0.95)",
     backdropFilter: "blur(20px)",
     borderRadius: "20px",
@@ -274,28 +248,24 @@ const useStyles = makeStyles({
     opacity: 0,
     visibility: "hidden",
     transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
-    zIndex: 20,
+    zIndex: 999,
     boxShadow: "0 20px 40px rgba(0, 0, 0, 0.8)",
-    "@media (max-width: 768px)": {
-      width: "280px",
-      top: "100px",
-      padding: "20px",
-    },
+    pointerEvents: "none",
   },
   contentTitle: {
-    fontSize: "1.3rem !important",
+    fontSize: "1rem !important",
     fontWeight: "700 !important",
     color: "#00d4ff !important",
     marginBottom: "8px !important",
   },
   contentMonths: {
-    fontSize: "0.85rem !important",
+    fontSize: "0.75rem !important",
     color: "#ff0080 !important",
     fontWeight: "600 !important",
     marginBottom: "12px !important",
   },
   contentDescription: {
-    fontSize: "0.95rem !important",
+    fontSize: "0.8rem !important",
     color: "rgba(255, 255, 255, 0.9) !important",
     lineHeight: "1.6 !important",
     marginBottom: "16px !important",
@@ -342,83 +312,16 @@ const useStyles = makeStyles({
     animation: "$rocketOrbit 20s linear infinite",
   },
   rocket: {
-    fontSize: "40px !important",
+    fontSize: "24px !important",
     color: "#ff0080 !important",
     filter: "drop-shadow(0 0 15px #ff0080)",
     animation: "$rocketFloat 3s ease-in-out infinite",
   },
-  launchButton: {
-    position: "fixed",
-    bottom: "40px",
-    right: "40px",
-    width: "80px !important",
-    height: "80px !important",
-    borderRadius: "50% !important",
-    background: "conic-gradient(from 0deg, #00d4ff, #ff0080, #ffeb3b, #00d4ff) !important",
-    border: "none !important",
-    zIndex: 100,
-    animation: "$pulse 2s infinite",
-    "&:hover": {
-      transform: "scale(1.1)",
-    },
-    "@media (max-width: 768px)": {
-      bottom: "20px",
-      right: "20px",
-      width: "60px !important",
-      height: "60px !important",
-    },
-  },
-  launchIcon: {
-    color: "white !important",
-    fontSize: "2rem !important",
-  },
-  statsContainer: {
-    position: "absolute",
-    bottom: "-80px",
-    left: "50%",
-    transform: "translateX(-50%)",
-    display: "flex",
-    gap: "40px",
-    "@media (max-width: 768px)": {
-      gap: "20px",
-      bottom: "-60px",
-    },
-  },
-  statPlanet: {
-    width: "100px",
-    height: "100px",
-    borderRadius: "50%",
-    background: "radial-gradient(circle, rgba(255, 235, 59, 0.8) 0%, rgba(255, 152, 0, 0.4) 100%)",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    animation: "$statFloat 4s ease-in-out infinite",
-    backdropFilter: "blur(10px)",
-    border: "2px solid rgba(255, 235, 59, 0.6)",
-    boxShadow: "0 0 30px rgba(255, 235, 59, 0.4)",
-    "@media (max-width: 768px)": {
-      width: "70px",
-      height: "70px",
-    },
-  },
-  statNumber: {
-    fontSize: "1.4rem !important",
-    fontWeight: "900 !important",
-    color: "white !important",
-    textShadow: "0 0 10px rgba(0, 0, 0, 0.8)",
-    "@media (max-width: 768px)": {
-      fontSize: "1rem !important",
-    },
-  },
-  statLabel: {
-    fontSize: "0.7rem !important",
-    color: "white !important",
-    textAlign: "center !important",
-    fontWeight: "600 !important",
-    "@media (max-width: 768px)": {
-      fontSize: "0.6rem !important",
-    },
+  "@media (max-width: 768px)": {
+    bottom: "20px",
+    right: "20px",
+    width: "60px !important",
+    height: "60px !important",
   },
   "@keyframes glow": {
     "0%": {
@@ -551,12 +454,6 @@ const LearningBreakdown = () => {
     },
   ];
 
-  const stats = [
-    { number: "12", label: "Months" },
-    { number: "90%", label: "Placement" },
-    { number: "500+", label: "Alumni" },
-  ];
-
   useEffect(() => {
     // Create stars
     const starArray = [];
@@ -571,11 +468,6 @@ const LearningBreakdown = () => {
     }
     setStars(starArray);
   }, []);
-
-  const handleLaunchJourney = () => {
-    // Smooth scroll to top or navigate to enrollment
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
 
   return (
     <Box className={classes.section}>
@@ -674,36 +566,7 @@ const LearningBreakdown = () => {
           <Box className={classes.rocketContainer}>
             <RocketLaunchIcon className={classes.rocket} />
           </Box>
-
-          {/* Stats Planets */}
-          <Box className={classes.statsContainer}>
-            {stats.map((stat, index) => (
-              <Box
-                key={index}
-                className={classes.statPlanet}
-                style={{
-                  animationDelay: `${index * 0.5}s`,
-                }}
-              >
-                <Typography className={classes.statNumber}>
-                  {stat.number}
-                </Typography>
-                <Typography className={classes.statLabel}>
-                  {stat.label}
-                </Typography>
-              </Box>
-            ))}
-          </Box>
         </Box>
-
-        {/* Launch Button */}
-        <Button
-          className={classes.launchButton}
-          onClick={handleLaunchJourney}
-          aria-label="Launch Your Journey"
-        >
-          <AutoAwesomeIcon className={classes.launchIcon} />
-        </Button>
       </Container>
     </Box>
   );
