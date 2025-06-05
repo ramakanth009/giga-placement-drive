@@ -256,6 +256,11 @@ const useStyles = makeStyles({
     color: "#2A2B6A !important",
     fontWeight: "bold !important",
     marginBottom: "15px !important",
+    "& .gigaversity": {
+      color: "#FFC614 !important",
+      display: "inline !important",
+      marginLeft: "10px",
+    },
     "@media (max-width: 1200px)": {
       fontSize: "3rem !important",
     },
@@ -367,8 +372,7 @@ const LaptopSection = () => {
             <Box className={classes.laptopTopBezel} />
             <Box className={classes.screenContent}>
               <Typography variant="h2" className={classes.aboutTitle}>
-                About
-                <span className={classes.gigaversityText}>Gigaversity</span>
+                About <span className="gigaversity">Gigaversity</span>
               </Typography>
 
               <Typography variant="body1" className={classes.aboutDescription}>

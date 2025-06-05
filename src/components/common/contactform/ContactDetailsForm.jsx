@@ -175,7 +175,7 @@ const useStyles = makeStyles({
   heading: {
     fontSize: '1.8rem !important',
     fontWeight: 'bold !important',
-    color: '#2A2B6A !important',
+    color: '#2A2B6A',
     marginBottom: '25px !important',
     textAlign: 'center',
     position: 'relative',
@@ -401,7 +401,7 @@ const ContactFormLayout = ({ onSubmit, isSubmitting = false }) => {
       <Container maxWidth="lg">
         <Box sx={{ textAlign: 'center', marginBottom: '10px' }}>
           <Typography variant="h1" className={classes.leftTitle} style={{ marginBottom: '20px' }}>
-            Get In Touch
+            Get In <span style={{ color: '#FFC614' }}>Touch</span>
           </Typography>
           <Typography variant="h3" className={classes.leftSubtitle} style={{ maxWidth: '800px', margin: '0 auto' }}>
             We'd love to hear from you. Connect with us and let's start a conversation.

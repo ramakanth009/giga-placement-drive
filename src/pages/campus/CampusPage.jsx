@@ -5,62 +5,69 @@ import { makeStyles } from '@mui/styles';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { scrollToTop } from '../../utils/scrollUtils';
 
+// Import images
+import foundationHallImg from '../../assets/mentor-room/Foundation-hall.png';
+import productRoomImg from '../../assets/mentor-room/Product-room.png';
+import startupRoomImg from '../../assets/mentor-room/Startup-room.png';
+import mentorRoomImg from '../../assets/mentor-room/mentor-room .png';
+import ventureHallImg from '../../assets/mentor-room/venture-hall.png';
+
 // Demo data for campus features
 const campusFeatures = [
   {
     id: 1,
     title: "The Foundation Hall",
     description: "A dynamic and inclusive space where students from all backgrounds come together for the first time. Through collaborative learning, high-energy sessions, peer-to-peer interactions, and hands-on problem solving, this is where confidence begins to build. Students tackle challenges they never imagined they could, setting the stage for a strong learning journey ahead.",
-    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c",
-    alt: "he Foundation Hall"
+    image: foundationHallImg,
+    alt: "The Foundation Hall"
   },
   {
     id: 2,
     title: "The Product Chamber",
     description: "The Product Chamber is where real tech products are envisioned, developed, and brought to life by collaborative student teams. Designed to simulate a real-world tech environment, this space encourages creativity, technical excellence, and teamwork. Students gain end-to-end product experience—from ideation to final execution—making them truly product-ready.",
-    image: "https://images.unsplash.com/photo-1497215842964-222b430dc094",
+    image: productRoomImg,
     alt: "The Product Chamber"
   },
   {
     id: 3,
     title: "The Startup Studio",
     description: "Fuel innovative ideas with hands-on support, personalized mentorship, and direct guidance from successful founders. The Startup Studio empowers students to build, launch, and scale their own products from the ground up. Selected creators can secure up to ₹1 lakh in funding—not as a reward, but as real backing to bring startup ideas to life with confidence.",
-    image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4",
+    image: startupRoomImg,
     alt: "The Startup Studio"
   },
   {
     id: 4,
     title: "Campus Café",
     description: "Students gather at the Campus Café—a space built for thinkers, makers, and innovators to connect and recharge. Designed for conversation and collaboration, it’s where ideas flow freely and bonds are built over brews. After all, some of the world’s most successful startups began with a simple coffee chat—and we’re not leaving that to chance.",
-    image: "https://images.unsplash.com/photo-1551818255-e6e10975bc17",
+    image: "https://placehold.co/600x400", // Placeholder for missing image
     alt: "Campus Café"
   },
   {
     id: 5,
     title: "The Mentor Hub",
     description: "Connect with experienced industry professionals and expert mentors who offer personalized support tailored to individual learning paths. The Mentor Hub facilitates 1:1 sessions, expert reviews, and career advice that accelerates both technical and professional growth. It's the space where doubts are cleared, confidence is nurtured, and ambitions are shaped into reality.",
-    image: "https://images.unsplash.com/photo-1543269865-cbf427effbad",
+    image: mentorRoomImg,
     alt: "The Mentor Hub"
   },
   {
     id: 6,
     title: "The Play Arena",
     description: "A space to step away from screens and into real play. From cricket to badminton, chess to table tennis—The Play Arena is where confidence grows, teams bond, and leadership begins to form—on the field and beyond. With regular matches, recreational sessions, and team activities, it brings balance to high-performance learning while energizing both mind and body.",
-    image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644",
+    image: "https://placehold.co/600x400", // Placeholder for missing image
     alt: "The Play Arena"
   },
   {
     id: 7,
     title: "The Venture Hall",
     description: "Venture Hall is where the entrepreneurial spirit of Gigaversity comes alive. This space hosts exclusive startup events, bringing together founders, investors, VCs, and industry leaders. Students pitch their startup ideas, receive expert feedback, and showcase live demos—getting real exposure, valuable insights, and potential investor attention to take their vision forward.",
-    image: "https://images.unsplash.com/photo-1531482615713-2afd69097998",
+    image: ventureHallImg,
     alt: "The Venture Hall"
   },
   {
     id: 8,
     title: "Startup Mela → Innovation Connect",
     description: "A vibrant monthly gathering where students, startup founders, co-founders, tech innovators, and industry professionals come together to network, pitch, and collaborate. Innovation Connect goes beyond traditional meetups—it's a launchpad for new ideas, early product demos, strategic partnerships, and community-driven innovation. Whether showcasing a new product, seeking co-founders, or discovering breakthrough technologies, this event fuels meaningful connections and inspires entrepreneurial growth across all levels of experience.",
-    image: "https://images.unsplash.com/photo-1531482615713-2afd69097998",
+    image: "https://placehold.co/600x400", // Placeholder for missing image
     alt: "Startup Mela → Innovation Connect"
   }
 ];
@@ -109,8 +116,9 @@ const useStyles = makeStyles({
     maxWidth: '800px',
   },
   heroTitle: {
-    fontSize: '3.5rem !important',
-    fontWeight: '700 !important',
+    color: '#FFFFFF !important',
+    fontSize: '4rem !important',
+    fontWeight: '800 !important',
     marginBottom: '20px !important',
     lineHeight: '1.2 !important',
     '@media (max-width: 960px)': {
@@ -124,9 +132,10 @@ const useStyles = makeStyles({
     color: '#FFC614 !important',
   },
   heroSubtitle: {
+    color: '#FFFFFF !important',
+    fontWeight: 'bold !important',
     fontSize: '1.5rem !important',
     marginBottom: '30px !important',
-    fontWeight: '300 !important',
     '@media (max-width: 960px)': {
       fontSize: '1.3rem !important',
     },
@@ -153,7 +162,7 @@ const useStyles = makeStyles({
     },
   },
   featureSectionContainer: {
-    padding: '80px 0',
+    padding: '80px 0 0px 0',
     position: 'relative',
     maxWidth: '1200px',
     margin: '0 auto',
@@ -171,6 +180,9 @@ const useStyles = makeStyles({
     textAlign: 'center',
     marginBottom: '60px !important',
     position: 'relative',
+    '& span': {
+      color: '#FFC614 !important',
+    },
     '&::after': {
       content: '""',
       position: 'absolute',
@@ -194,7 +206,7 @@ const useStyles = makeStyles({
   featureContainer: {
     display: 'flex',
     alignItems: 'center',
-    marginBottom: '120px',
+    marginBottom: '40px',
     padding: '0 20px',
     '@media (max-width: 960px)': {
       marginBottom: '80px',
@@ -255,66 +267,25 @@ const useStyles = makeStyles({
       marginBottom: '20px !important',
     },
   },
-  learnMoreLink: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    color: '#2A2B6A !important',
+  learnMoreBtn: {
+    backgroundColor: '#2A2B6A !important',
+    color: '#FFFFFF !important',
+    padding: '8px 20px !important',
+    borderRadius: '50px !important',
+    fontSize: '1rem !important',
     fontWeight: '600 !important',
-    textDecoration: 'none',
-    transition: 'all 0.3s ease',
-    cursor: 'pointer',
+    transition: 'all 0.3s ease !important',
     '&:hover': {
-      color: '#FFC614 !important',
-    },
-  },
-  arrowIcon: {
-    marginLeft: '8px',
-    transition: 'all 0.3s ease',
-  },
-  arrowIconHover: {
-    transform: 'translateX(5px)',
-  },
-  statsSection: {
-    backgroundColor: '#2A2B6A',
-    padding: '80px 0',
-    color: 'white',
-    textAlign: 'center',
-    '@media (max-width: 960px)': {
-      padding: '60px 0',
-    },
-    '@media (max-width: 600px)': {
-      padding: '40px 0',
-    },
-  },
-  statContainer: {
-    padding: '20px',
-    '@media (max-width: 600px)': {
-      padding: '10px',
-    },
-  },
-  statNumber: {
-    fontSize: '3.5rem !important',
-    fontWeight: 'bold !important',
-    color: '#FFC614 !important',
-    marginBottom: '10px !important',
-    '@media (max-width: 960px)': {
-      fontSize: '3rem !important',
-    },
-    '@media (max-width: 600px)': {
-      fontSize: '2.5rem !important',
-    },
-  },
-  statLabel: {
-    fontSize: '1.2rem !important',
-    opacity: '0.9',
-    '@media (max-width: 600px)': {
-      fontSize: '1rem !important',
+      backgroundColor: '#FFC614 !important',
+      color: '#2A2B6A !important',
+      transform: 'translateY(-3px)',
+      boxShadow: '0 10px 20px rgba(0, 0, 0, 0.1) !important',
     },
   },
   callToActionSection: {
-    padding: '100px 0',
+    padding: '0px 0 40px 0',
     textAlign: 'center',
-    background: 'linear-gradient(rgba(42, 43, 106, 0.03), rgba(42, 43, 106, 0.07))',
+    // background: 'linear-gradient(rgba(42, 43, 106, 0.03), rgba(42, 43, 106, 0.07))',
     '@media (max-width: 960px)': {
       padding: '80px 0',
     },
@@ -344,61 +315,6 @@ const useStyles = makeStyles({
       margin: '0 auto 30px auto !important',
     },
   },
-  testimonialSection: {
-    padding: '80px 0',
-    backgroundColor: '#fff',
-    '@media (max-width: 960px)': {
-      padding: '60px 0',
-    },
-    '@media (max-width: 600px)': {
-      padding: '40px 0',
-    },
-  },
-  testimonialCard: {
-    padding: '30px',
-    borderRadius: '15px',
-    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.05)',
-    transition: 'all 0.3s ease',
-    height: '100%',
-    position: 'relative',
-    '@media (max-width: 600px)': {
-      padding: '20px',
-    },
-    '&:hover': {
-      transform: 'translateY(-10px)',
-      boxShadow: '0 20px 40px rgba(0, 0, 0, 0.1)',
-    },
-    '&::before': {
-      content: '"""',
-      position: 'absolute',
-      top: '20px',
-      left: '20px',
-      fontSize: '5rem',
-      color: 'rgba(42, 43, 106, 0.1)',
-      fontFamily: 'serif',
-      lineHeight: '1',
-    },
-  },
-  testimonialText: {
-    fontSize: '1.1rem !important',
-    fontStyle: 'italic',
-    color: '#555 !important',
-    marginBottom: '20px !important',
-    position: 'relative',
-    zIndex: 1,
-    paddingTop: '20px',
-    '@media (max-width: 600px)': {
-      fontSize: '1rem !important',
-    },
-  },
-  testimonialAuthor: {
-    fontWeight: 'bold !important',
-    color: '#2A2B6A !important',
-  },
-  testimonialRole: {
-    color: '#777 !important',
-    fontSize: '0.9rem !important',
-  },
 });
 
 // Component for individual feature
@@ -427,101 +343,14 @@ const FeatureItem = ({ feature, index }) => {
         <Typography variant="body1" className={classes.featureDescription}>
           {feature.description}
         </Typography>
-        <Typography 
-          className={classes.learnMoreLink}
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
+        <Button 
+          variant="contained"
+          className={classes.learnMoreBtn}
+          endIcon={<ArrowForwardIcon />}
         >
-          Learn more 
-          <ArrowForwardIcon 
-            className={`${classes.arrowIcon} ${hovered ? classes.arrowIconHover : ''}`} 
-          />
-        </Typography>
+          Learn more
+        </Button>
       </Box>
-    </Box>
-  );
-};
-
-// Component for stats
-const StatsSection = () => {
-  const classes = useStyles();
-  
-  const stats = [
-    { number: "500+", label: "Students Enrolled" },
-    { number: "50+", label: "Expert Faculty" },
-    { number: "98%", label: "Placement Rate" },
-    { number: "150+", label: "Industry Partners" }
-  ];
-  
-  return (
-    <Box className={classes.statsSection}>
-      <Container>
-        <Grid container spacing={3}>
-          {stats.map((stat, index) => (
-            <Grid item xs={6} md={3} key={index}>
-              <Box className={classes.statContainer}>
-                <Typography variant="h3" className={classes.statNumber}>
-                  {stat.number}
-                </Typography>
-                <Typography variant="body1" className={classes.statLabel}>
-                  {stat.label}
-                </Typography>
-              </Box>
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
-    </Box>
-  );
-};
-
-// Component for testimonials
-const TestimonialSection = () => {
-  const classes = useStyles();
-  
-  const testimonials = [
-    {
-      text: "The campus environment at Gigaversity is unlike any other. The collaborative spaces and advanced technology truly enable me to excel in my studies and projects.",
-      author: "Riya Sharma",
-      role: "Full Stack Development Student"
-    },
-    {
-      text: "What sets this campus apart is the combination of industry-leading facilities and expert faculty who are always available to help. The project-based learning approach has given me real-world skills.",
-      author: "Ajay Kumar",
-      role: "Data Science Student"
-    },
-    {
-      text: "I transferred here from another university, and the difference is night and day. The high-tech classrooms and hands-on learning activities have made learning more engaging and effective.",
-      author: "Priya Patel",
-      role: "Web Development Student"
-    }
-  ];
-  
-  return (
-    <Box className={classes.testimonialSection}>
-      <Container>
-        <Typography variant="h2" className={classes.sectionTitle}>
-          What Our Students Say
-        </Typography>
-        
-        <Grid container spacing={4}>
-          {testimonials.map((testimonial, index) => (
-            <Grid item xs={12} md={4} key={index}>
-              <Paper className={classes.testimonialCard} elevation={0}>
-                <Typography variant="body1" className={classes.testimonialText}>
-                  {testimonial.text}
-                </Typography>
-                <Typography variant="h6" className={classes.testimonialAuthor}>
-                  {testimonial.author}
-                </Typography>
-                <Typography variant="body2" className={classes.testimonialRole}>
-                  {testimonial.role}
-                </Typography>
-              </Paper>
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
     </Box>
   );
 };
@@ -547,7 +376,7 @@ const CampusPage = () => {
         
         <Box className={classes.heroContent}>
           <Typography variant="h1" className={classes.heroTitle}>
-            Welcome to our <span className={classes.heroTitleHighlight}>State-of-the-Art Campus</span>
+            Welcome to our <span className={classes.heroTitleHighlight}>State of the Art Campus</span>
           </Typography>
           <Typography variant="h6" className={classes.heroSubtitle}>
             Experience the ultimate learning environment designed for innovation, collaboration, and success
@@ -561,7 +390,7 @@ const CampusPage = () => {
       {/* Campus Features Section */}
       <Box className={classes.featureSectionContainer}>
         <Typography variant="h2" className={classes.sectionTitle}>
-          Explore Our Campus Features
+          Explore Our <span>Campus</span> Features
         </Typography>
         
         {campusFeatures.map((feature, index) => (
@@ -569,17 +398,11 @@ const CampusPage = () => {
         ))}
       </Box>
       
-      {/* Stats Section */}
-      <StatsSection />
-      
-      {/* Testimonial Section */}
-      <TestimonialSection />
-      
       {/* Call to Action Section */}
       <Box className={classes.callToActionSection}>
         <Container>
           <Typography variant="h2" className={classes.ctaTitle}>
-            Ready to Experience Our Campus?
+            Ready to Experience <span className={classes.heroTitleHighlight}>Our Campus?</span>
           </Typography>
           <Typography variant="h6" className={classes.ctaSubtitle}>
             Join us for a personalized campus tour and discover the perfect environment for your educational journey

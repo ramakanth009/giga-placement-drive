@@ -46,7 +46,7 @@ const useStyles = makeStyles({
   title: {
     fontSize: '2.5rem !important',
     fontWeight: 'bold !important',
-    color: '#FFC614 !important',
+    color: '#ffffff !important',
     marginBottom: '15px !important',
     textShadow: '0 2px 4px rgba(0, 0, 0, 0.2) !important',
     '@media (max-width: 960px)': {
@@ -298,7 +298,7 @@ const PreScreeningBanner = () => {
         
         <Box className={classes.contentWrapper}>
           <Typography className={classes.title}>
-            Gigaversity Pre-Screener Test
+            Gigaversity <span style={{ color: '#FFC614' }}>Pre-Screener</span> Test
           </Typography>
           
           <Typography className={classes.subtitle}>

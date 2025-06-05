@@ -242,7 +242,7 @@ const useStyles = makeStyles({
     fontSize: "0.95rem",
     lineHeight: 1.5,
     marginBottom: "25px",
-    maxWidth: "93%",
+    maxWidth: "100%",
     textAlign: "center",
     "@media (max-width: 1200px)": {
       fontSize: "0.93rem",

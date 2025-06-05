@@ -1208,7 +1208,7 @@ const LimitedTimeOffer = () => {
                 /> */}
                 
                 <Typography className={classes.limitedPrice}>
-                  Pre-registration starts at<span className={classes.priceHighlight}>₹0</span>
+                  Pre-registration starts at<span className={classes.priceHighlight}>₹_ _ 9</span>
                 </Typography>
                 <Typography className={classes.limitedPrice}>
                   Prebook your slot now</Typography>

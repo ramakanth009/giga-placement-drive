@@ -26,11 +26,10 @@ const useStyles = makeStyles({
     fontSize: '3.5rem !important',
     fontWeight: 'bold !important',
     marginBottom: '20px !important',
-    background: 'linear-gradient(45deg, #FFFFFF 30%, #FFC614 90%)',
-    backgroundClip: 'text !important',
-    textFillColor: 'transparent !important',
-    WebkitBackgroundClip: 'text !important',
-    WebkitTextFillColor: 'transparent !important',
+    color: '#FFFFFF !important',
+    '& span': {
+      color: '#FFC614 !important',
+    },
     '@media (max-width: 960px)': {
       fontSize: '2.8rem !important',
     },
@@ -114,7 +113,7 @@ const BlogHero = () => {
       
       <Container maxWidth="lg" className={classes.contentContainer}>
         <Typography variant="h1" className={classes.title}>
-          Gigaversity Blog
+          Gigaversity <span>Blog</span>
         </Typography>
         <Typography variant="h6" className={classes.subtitle}>
           Insights, guides, and resources to help you master your tech career through project-based learning and hands-on experience

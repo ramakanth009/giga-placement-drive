@@ -98,6 +98,9 @@ const useStyles = makeStyles({
     borderRadius: '50px !important',
     transition: 'all 0.3s ease !important',
     boxShadow: '0 2px 6px rgba(0, 0, 0, 0.05) !important',
+    '& .MuiChip-icon': {
+      color: '#2A2B6A !important',
+    },
     '&:hover': {
       boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1) !important',
       transform: 'translateY(-2px)',
@@ -107,6 +110,9 @@ const useStyles = makeStyles({
     background: 'linear-gradient(45deg, #2A2B6A 0%, #4A4C9B 100%) !important',
     color: 'white !important',
     boxShadow: '0 4px 10px rgba(42, 43, 106, 0.25) !important',
+    '& .MuiChip-icon': {
+      color: 'white !important',
+    },
   },
   blogGrid: {
     display: 'flex',

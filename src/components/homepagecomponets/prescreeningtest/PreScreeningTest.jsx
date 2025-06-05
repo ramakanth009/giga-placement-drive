@@ -31,6 +31,9 @@ const useStyles = makeStyles({
     color: '#2A2B6A !important',
     marginBottom: '10px !important',
     textAlign: 'center',
+    '& span': {
+      color: '#FFC614 !important',
+    },
     '@media (max-width: 960px)': {
       fontSize: '1.8rem !important',
     },
@@ -374,7 +377,7 @@ const PreScreeningTest = () => {
       
       <Container maxWidth="lg">
         <Typography variant="h1" className={classes.pageTitle}>
-          IT Talent Pre-Screening Test
+          IT Talent <span>Pre-Screening</span> Test
         </Typography>
         
         <Typography variant="body1" className={classes.subtitle}>
