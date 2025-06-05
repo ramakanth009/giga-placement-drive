@@ -5,17 +5,17 @@ import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles({
   section: {
-    padding: '60px 0',
+    padding: '40px 0',
     backgroundColor: '#ffffff',
     position: 'relative',
   },
   titleContainer: {
-    marginBottom: '50px',
+    marginBottom: '30px',
     "@media (max-width: 960px)": {
-      marginBottom: '40px',
+      marginBottom: '25px',
     },
     "@media (max-width: 600px)": {
-      marginBottom: '30px',
+      marginBottom: '20px',
     },
   },
   titleWrapper: {
@@ -23,105 +23,100 @@ const useStyles = makeStyles({
     display: 'inline-block',
   },
   title: {
-    fontSize: '2.5rem !important',
+    fontSize: '2.2rem !important',
     fontWeight: 'bold !important',
     color: '#0A1929 !important',
-    marginBottom: '10px !important',
+    marginBottom: '8px !important',
     '& span': {
       color: '#FFC614 !important',
     },
     "@media (max-width: 960px)": {
-      fontSize: '2.2rem !important',
+      fontSize: '2rem !important',
     },
     "@media (max-width: 600px)": {
-      fontSize: '1.8rem !important',
+      fontSize: '1.6rem !important',
     },
   },
   boxesContainer: {
     display: 'flex',
-    flexWrap: 'wrap',
-    gap: '30px',
-    justifyContent: 'center',
-    "@media (max-width: 960px)": {
-      gap: '25px',
-    },
+    flexDirection: 'column',
+    gap: '20px',
     "@media (max-width: 600px)": {
-      gap: '20px',
-      flexDirection: 'column',
-      alignItems: 'center',
+      gap: '15px',
     },
   },
   boxRow: {
     display: 'flex',
-    gap: '30px',
+    gap: '20px',
     width: '100%',
     "@media (max-width: 960px)": {
-      gap: '25px',
+      gap: '15px',
     },
     "@media (max-width: 600px)": {
       flexDirection: 'column',
-      gap: '20px',
-      width: '100%',
     },
   },
   boxWrapper: {
-    flex: '1',
-    maxWidth: 'calc(50% - 15px)',
+    flex: 1,
+    maxWidth: 'calc(50% - 10px)',
     "@media (max-width: 600px)": {
       maxWidth: '100%',
-      width: '100%',
     },
   },
   box: {
-    padding: '30px',
+    padding: '24px',
     backgroundColor: '#FFFFFF',
     borderRadius: '10px',
     boxShadow: '0 4px 20px rgba(0, 0, 0, 0.05)',
     height: '100%',
+    display: 'flex',
+    alignItems: 'flex-start',
+    gap: '20px',
     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
     '&:hover': {
       transform: 'translateY(-5px)',
-      boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
-    },
-    "@media (max-width: 960px)": {
-      padding: '25px',
+      boxShadow: '0 8px 25px rgba(0, 0, 0, 0.1)',
     },
     "@media (max-width: 600px)": {
-      padding: '20px',
+      padding: '18px',
+      gap: '15px',
     },
   },
   circleNumber: {
-    width: '60px',
-    height: '60px',
+    minWidth: '45px',
+    height: '45px',
     borderRadius: '50%',
     backgroundColor: '#001F3F',
     color: 'white',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    fontSize: '1.8rem',
+    fontSize: '1.3rem',
     fontWeight: 'bold',
-    marginBottom: '20px',
     "@media (max-width: 600px)": {
-      width: '50px',
-      height: '50px',
-      fontSize: '1.5rem',
-      marginBottom: '15px',
+      minWidth: '40px',
+      height: '40px',
+      fontSize: '1.2rem',
     },
   },
+  contentWrapper: {
+    flex: 1,
+  },
   boxTitle: {
-    fontSize: '1.3rem !important',
+    fontSize: '1.2rem !important',
     fontWeight: 'bold !important',
     color: '#0A1929 !important',
-    marginBottom: '10px !important',
+    marginBottom: '8px !important',
     "@media (max-width: 600px)": {
       fontSize: '1.1rem !important',
+      marginBottom: '6px !important',
     },
   },
   boxDescription: {
-    fontSize: '1rem !important',
+    fontSize: '0.95rem !important',
     color: '#4A4A4A !important',
-    lineHeight: '1.6 !important',
+    lineHeight: '1.5 !important',
+    margin: 0,
     "@media (max-width: 600px)": {
       fontSize: '0.9rem !important',
     },
@@ -130,10 +125,26 @@ const useStyles = makeStyles({
 
 const ProgramWorksSection = ({ items, isPrimaryPage = true }) => {
   const classes = useStyles();
-
-  // Split items into rows of 2
   const firstRow = items.slice(0, 2);
   const secondRow = items.slice(2);
+
+  const renderCard = (item, index) => (
+    <Box className={classes.boxWrapper} key={index}>
+      <Paper className={classes.box} elevation={0}>
+        <Box className={classes.circleNumber}>
+          {index + 1}
+        </Box>
+        <Box className={classes.contentWrapper}>
+          <Typography variant="h5" className={classes.boxTitle}>
+            {item.title}
+          </Typography>
+          <Typography variant="body1" className={classes.boxDescription}>
+            {item.description}
+          </Typography>
+        </Box>
+      </Paper>
+    </Box>
+  );
 
   return (
     <Box className={classes.section}>
@@ -145,42 +156,11 @@ const ProgramWorksSection = ({ items, isPrimaryPage = true }) => {
         </Box>
 
         <Box className={classes.boxesContainer}>
-          {/* First Row */}
           <Box className={classes.boxRow}>
-            {firstRow.map((item, index) => (
-              <Box className={classes.boxWrapper} key={index}>
-                <Paper className={classes.box} elevation={0}>
-                  <Box className={classes.circleNumber}>
-                    {index + 1}
-                  </Box>
-                  <Typography variant="h5" className={classes.boxTitle}>
-                    {item.title}
-                  </Typography>
-                  <Typography variant="body1" className={classes.boxDescription}>
-                    {item.description}
-                  </Typography>
-                </Paper>
-              </Box>
-            ))}
+            {firstRow.map((item, index) => renderCard(item, index))}
           </Box>
-
-          {/* Second Row */}
           <Box className={classes.boxRow}>
-            {secondRow.map((item, index) => (
-              <Box className={classes.boxWrapper} key={index}>
-                <Paper className={classes.box} elevation={0}>
-                  <Box className={classes.circleNumber}>
-                    {index + 3} {/* Start numbering from 3 */}
-                  </Box>
-                  <Typography variant="h5" className={classes.boxTitle}>
-                    {item.title}
-                  </Typography>
-                  <Typography variant="body1" className={classes.boxDescription}>
-                    {item.description}
-                  </Typography>
-                </Paper>
-              </Box>
-            ))}
+            {secondRow.map((item, index) => renderCard(item, index + 2))}
           </Box>
         </Box>
       </Container>

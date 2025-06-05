@@ -42,6 +42,9 @@ const useStyles = makeStyles({
     color: '#2A2B6A !important',
     marginBottom: '20px !important',
     position: 'relative',
+    '& span': {
+      color: '#FFC614 !important',
+    },
     '@media (max-width: 960px)': {
       fontSize: '2.2rem !important',
     },
@@ -207,7 +210,7 @@ const PlacementPortalSection = () => {
       <Container maxWidth="lg" className={classes.container}>
         <Box className={classes.titleContainer}>
           <Typography variant="h2" className={classes.title}>
-            Gigaversity Placement Portal & Smart Tracking
+            Gigaversity <span>Portal</span> & <span>Smart Tracking</span>
           </Typography>
           <Typography variant="body1" className={classes.subtitle}>
             Everything you need to launch your career, track your progress, and connect with top employers—all in one place.

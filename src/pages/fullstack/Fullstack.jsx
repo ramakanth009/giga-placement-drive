@@ -9,7 +9,7 @@ import LimitedTimeOffer from "../../components/common/limitedtimeoffer/LimitedTi
 import HiringPartners from "../../components/common/hiringpartners/HiringPartners";
 import FullStackCurriculum from "../../components/fullstackcomponents/curriculum/FullStackCurriculum";
 import CareerBanner from "../../components/common/careerbanner/CareerBanner";
-import TestimonialComponent from "../../components/common/testimonialcomponent/TestimonialComponent";
+// import TestimonialComponent from "../../components/common/testimonialcomponent/TestimonialComponent";
 import ProjectsSection from "../../components/fullstackcomponents/projectssection/ProjectsSection";
 import ProjectHigh from "../../components/common/projecthighlightimg/ProgramHighlights";
 import FullStackCertificationsSection from "../../components/fullstackcomponents/certificationsection/FullStackCertificationsSection";
@@ -28,7 +28,7 @@ const Fullstack = () => {
       <HiringPartners />
       <LimitedTimeOffer />
       <ProgramWorksSection items={fullStackItems} />
-      <TestimonialComponent />
+      {/* <TestimonialComponent /> */}
       <FullStackFaq />
       <CareerBanner />
     </div>

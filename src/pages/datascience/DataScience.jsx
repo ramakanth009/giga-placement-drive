@@ -8,7 +8,7 @@ import { dataScienceItems } from "../../data/programWorksData";
 import HiringPartners from "../../components/common/hiringpartners/HiringPartners";
 import DataScienceCurriculum from "../../components/datasciencecomponents/curriculum/DataScienceCurriculum";
 import CareerBanner from "../../components/common/careerbanner/CareerBanner";
-import TestimonialComponent from "../../components/common/testimonialcomponent/TestimonialComponent";
+// import TestimonialComponent from "../../components/common/testimonialcomponent/TestimonialComponent";
 import ProjectsSection from "../../components/datasciencecomponents/projectssection/ProjectsSection";
 import ProjectHigh from "../../components/common/projecthighlightimg/ProgramHighlights";
 import HiringRolesBoxes from "../../components/datasciencecomponents/hiringrolesboxes/HiringRolesBoxes";
@@ -27,7 +27,7 @@ const DataScience = () => {
       <HiringPartners />
       <LimitedTimeOffer />
       <ProgramWorksSection items={dataScienceItems} />
-      <TestimonialComponent />
+      {/* <TestimonialComponent /> */}
       <DataScienceFaq />
       <CareerBanner />
     </div>
