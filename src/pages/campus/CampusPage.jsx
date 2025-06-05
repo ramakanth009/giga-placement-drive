@@ -55,7 +55,7 @@ const campusFeatures = [
     id: 6,
     title: "The Play Arena",
     description: "A space to step away from screens and into real play. From cricket to badminton, chess to table tennis—The Play Arena is where confidence grows, teams bond, and leadership begins to form—on the field and beyond. With regular matches, recreational sessions, and team activities, it brings balance to high-performance learning while energizing both mind and body.",
-    image: "sportsarena", // Placeholder for missing image
+    image: sportsarena, // Placeholder for missing image
     alt: "The Play Arena"
   },
   {
