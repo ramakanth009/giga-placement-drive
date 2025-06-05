@@ -452,7 +452,7 @@ const ContactFormLayout = ({ onSubmit, isSubmitting = false }) => {
                       error={Boolean(errors.name)}
                       helperText={errors.name}
                       className={classes.textField}
-                      placeholder="e.g. John Smith"
+                      // placeholder="e.g. John Smith"
                       required
                       InputProps={{
                         startAdornment: (
@@ -471,7 +471,7 @@ const ContactFormLayout = ({ onSubmit, isSubmitting = false }) => {
                       error={Boolean(errors.contactNo)}
                       helperText={errors.contactNo}
                       className={classes.textField}
-                      placeholder="e.g. 9876543210"
+                      // placeholder="e.g. 9876543210"
                       required
                       inputProps={{
                         maxLength: 10,
@@ -495,7 +495,7 @@ const ContactFormLayout = ({ onSubmit, isSubmitting = false }) => {
                       error={Boolean(errors.email)}
                       helperText={errors.email}
                       className={classes.textField}
-                      placeholder="e.g. john.smith@example.com"
+                      // placeholder="e.g. john.smith@example.com"
                       required
                       InputProps={{
                         startAdornment: (
@@ -544,7 +544,7 @@ const ContactFormLayout = ({ onSubmit, isSubmitting = false }) => {
                       error={Boolean(errors.message)}
                       helperText={errors.message}
                       className={classes.textField}
-                      placeholder="Type your message here..."
+                      // placeholder="Type your message here..."
                       required
                       InputProps={{
                         startAdornment: (

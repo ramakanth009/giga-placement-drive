@@ -226,7 +226,7 @@ const TechFutureSection = () => {
       
       <Container maxWidth="lg">
         <Typography variant="h2" className={classes.sectionTitle}>
-          Tech is the Future
+          Tech is the <span style={{ color: '#FFC614' }}>Future</span>
         </Typography>
         <Typography variant="body1" className={classes.subtitle}>
           The world runs on code and data. Here's why your timing is perfect:

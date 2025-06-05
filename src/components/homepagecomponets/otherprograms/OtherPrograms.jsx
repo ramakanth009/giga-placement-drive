@@ -715,6 +715,38 @@ const OtherPrograms = () => {
       level: 'Advanced',
       category: 'datascience'
     },
+    {
+      id: 5,
+      title: 'Virtual Placement Drive in Full Stack',
+      duration: '6 Months',
+      features: [
+        'Get Job-Specific Training in Full Stack Domains',
+        'Apply to 15+ Verified Openings Every Week',
+        'Build Communication & Technical Skills Together',
+        'Create Weekly Projects to Strengthen Your Portfolio'
+      ],
+      students: 1245,
+      tag: 'Placement Drive',
+      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      level: 'Intermediate',
+      category: 'development'
+    },
+    {
+      id: 6,
+      title: 'Virtual Placement Drive in Data Science',
+      duration: '6 Months',
+      features: [
+        'Get Job-Specific Training in Data Science Domains',
+        'Apply to 15+ Verified Openings Every Week',
+        'Master AI Tools Aligned with Real Job Roles',
+        'Boost Communication & Analytical Skillsets'
+      ],
+      students: 1198,
+      tag: 'Placement Drive',
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80',
+      level: 'Intermediate',
+      category: 'datascience'
+    },
     
   ];
 

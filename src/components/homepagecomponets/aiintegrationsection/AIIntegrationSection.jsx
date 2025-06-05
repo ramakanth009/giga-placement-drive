@@ -20,15 +20,15 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 
 const useStyles = makeStyles({
   section: {
-    padding: '80px 0',
+    padding: '20px 0',
     position: 'relative',
     background: 'linear-gradient(135deg, #f8fafc 0%, #eef4ff 100%)',
     overflow: 'hidden',
     '@media (max-width: 960px)': {
-      padding: '60px 0',
+      padding: '15px 0',
     },
     '@media (max-width: 600px)': {
-      padding: '50px 0',
+      padding: '10px 0',
     },
   },
   container: {

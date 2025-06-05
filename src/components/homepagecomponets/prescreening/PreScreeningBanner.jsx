@@ -16,15 +16,18 @@ const useStyles = makeStyles({
     position: 'relative',
     padding: '20px 0',
     overflow: 'hidden',
-    background: 'linear-gradient(135deg, #2A2B6A 0%, #3c3e8f 100%)',
+    background: `linear-gradient(135deg, #232459 0%, #2d2e6e 100%)`,
     borderRadius: '15px',
-    boxShadow: '0 10px 30px rgba(42, 43, 106, 0.2)',
-    margin: '30px 0',
+    boxShadow: '0 10px 30px rgba(35, 36, 89, 0.2)',
+    margin: '30px 15px',
+    maxWidth: '1800px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
     '@media (max-width: 960px)': {
-      padding: '30px 0',
+      padding: '25px 0',
     },
     '@media (max-width: 600px)': {
-      padding: '25px 20px',
+      padding: '20px 15px',
       borderRadius: '10px',
     },
   },
@@ -32,45 +35,42 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    width: '90%',
-    maxWidth: '1200px',
+    width: '100%',
+    maxWidth: '1400px',
     margin: '0 auto',
     position: 'relative',
     zIndex: 2,
     textAlign: 'center',
+    padding: '0 20px',
   },
   title: {
     fontSize: '2.5rem !important',
     fontWeight: 'bold !important',
-    color: 'white !important',
+    color: '#FFC614 !important',
     marginBottom: '15px !important',
-    '@media (max-width: 1200px)': {
-      fontSize: '2.2rem !important',
-    },
+    textShadow: '0 2px 4px rgba(0, 0, 0, 0.2) !important',
     '@media (max-width: 960px)': {
       fontSize: '2rem !important',
+      marginBottom: '12px !important',
     },
     '@media (max-width: 600px)': {
       fontSize: '1.6rem !important',
+      marginBottom: '10px !important',
     },
   },
   subtitle: {
     fontSize: '1.2rem !important',
     color: 'rgba(255, 255, 255, 0.9) !important',
     maxWidth: '700px',
-    marginBottom: '40px !important',
+    marginBottom: '30px !important',
     lineHeight: '1.5 !important',
-    '@media (max-width: 1200px)': {
-      fontSize: '1.1rem !important',
-      maxWidth: '600px',
-    },
     '@media (max-width: 960px)': {
       fontSize: '1rem !important',
-      maxWidth: '100%',
-      marginBottom: '30px !important',
+      marginBottom: '25px !important',
     },
     '@media (max-width: 600px)': {
       fontSize: '0.95rem !important',
+      marginBottom: '20px !important',
     },
   },
   targetAudienceGrid: {
@@ -79,124 +79,94 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     gap: '15px',
     width: '100%',
-    maxWidth: '1200px',
-    marginBottom: '40px',
-    '@media (max-width: 1200px)': {
-      maxWidth: '900px',
-    },
+    maxWidth: '1400px',
+    marginBottom: '30px',
     '@media (max-width: 960px)': {
       gap: '12px',
-      maxWidth: '700px',
-    },
-    '@media (max-width: 768px)': {
-      gap: '15px',
-      marginBottom: '30px',
+      marginBottom: '25px',
     },
     '@media (max-width: 600px)': {
-      flexDirection: 'column',
-      alignItems: 'center',
-      gap: '12px',
+      gap: '10px',
+      marginBottom: '20px',
     },
   },
-  targetItemWrapper: {
-    width: 'calc(33.33% - 10px)',
-    '@media (max-width: 960px)': {
-      width: 'calc(50% - 6px)',
+  targetItemWrapperFirstRow: {
+    width: 'calc(50% - 7.5px)',
+    minWidth: '300px',
+    '@media (max-width: 1200px)': {
+      width: 'calc(50% - 10px)',
     },
-    '@media (max-width: 600px)': {
+    '@media (max-width: 680px)': {
       width: '100%',
-      maxWidth: '400px',
+      minWidth: 'unset',
     },
   },
   targetItemWrapperSecondRow: {
-    width: 'calc(50% - 7.5px)',
-    '@media (max-width: 960px)': {
-      width: 'calc(50% - 6px)',
+    width: 'calc(33.33% - 10px)',
+    minWidth: '300px',
+    '@media (max-width: 1200px)': {
+      width: 'calc(50% - 10px)',
     },
-    '@media (max-width: 600px)': {
+    '@media (max-width: 680px)': {
       width: '100%',
-      maxWidth: '400px',
+      minWidth: 'unset',
     },
   },
   targetItem: {
     display: 'flex',
     alignItems: 'flex-start',
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    backgroundColor: 'rgba(255, 255, 255, 0.08)',
     borderRadius: '12px',
-    padding: '15px',
+    padding: '20px',
     textAlign: 'left',
     transition: 'all 0.3s ease',
     height: '100%',
+    border: '1px solid rgba(255, 255, 255, 0.1)',
+    minHeight: '75px',
     '&:hover': {
-      backgroundColor: 'rgba(255, 255, 255, 0.15)',
+      backgroundColor: 'rgba(255, 255, 255, 0.12)',
       transform: 'translateY(-2px)',
-    },
-    '@media (max-width: 600px)': {
-      padding: '12px',
+      boxShadow: '0 5px 15px rgba(0, 0, 0, 0.2)',
     },
   },
   checkIcon: {
     color: '#FFC614 !important',
-    fontSize: '24px !important',
-    marginRight: '12px !important',
+    fontSize: '32px !important',
+    marginRight: '15px !important',
     marginTop: '2px !important',
     flexShrink: 0,
+    '@media (max-width: 960px)': {
+      fontSize: '28px !important',
+    },
     '@media (max-width: 600px)': {
-      fontSize: '20px !important',
-      marginRight: '10px !important',
+      fontSize: '24px !important',
+      marginRight: '12px !important',
     },
   },
   targetText: {
     color: 'white !important',
-    fontSize: '1rem !important',
+    fontSize: '0.95rem !important',
     fontWeight: '500 !important',
     lineHeight: '1.4 !important',
-    '@media (max-width: 600px)': {
-      fontSize: '0.9rem !important',
-    },
   },
   applyButton: {
     backgroundColor: '#FFC614 !important',
-    color: '#2A2B6A !important',
-    padding: '15px 35px !important',
+    color: '#232459 !important',
+    padding: '12px 30px !important',
     borderRadius: '50px !important',
     fontWeight: 'bold !important',
     fontSize: '1.1rem !important',
     textTransform: 'none !important',
     boxShadow: '0 5px 15px rgba(255, 198, 20, 0.3) !important',
     transition: 'all 0.3s ease !important',
-    position: 'relative',
     '&:hover': {
       backgroundColor: '#FFD344 !important',
-      transform: 'translateY(-3px)',
-      boxShadow: '0 10px 20px rgba(255, 198, 20, 0.4) !important',
+      transform: 'translateY(-2px)',
+      boxShadow: '0 8px 20px rgba(255, 198, 20, 0.4) !important',
     },
     '@media (max-width: 600px)': {
-      padding: '12px 25px !important',
+      padding: '10px 25px !important',
       fontSize: '1rem !important',
-    },
-  },
-  iconContainer: {
-    width: '100px',
-    height: '100px',
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-    borderRadius: '50%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    animation: '$pulse 2s infinite',
-    marginBottom: '20px',
-    '@media (max-width: 600px)': {
-      width: '80px',
-      height: '80px',
-      marginBottom: '15px',
-    },
-  },
-  icon: {
-    fontSize: '50px !important',
-    color: '#FFC614',
-    '@media (max-width: 600px)': {
-      fontSize: '40px !important',
     },
   },
   backgroundPattern: {
@@ -205,23 +175,27 @@ const useStyles = makeStyles({
     left: 0,
     width: '100%',
     height: '100%',
-    backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.1) 2px, transparent 2px)',
-    backgroundSize: '30px 30px',
-    opacity: 0.3,
+    backgroundImage: `
+      radial-gradient(circle at 20% 20%, rgba(255, 198, 20, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(255, 198, 20, 0.05) 0%, transparent 50%),
+      radial-gradient(rgba(255, 255, 255, 0.1) 2px, transparent 2px)
+    `,
+    backgroundSize: '100% 100%, 100% 100%, 30px 30px',
+    opacity: 0.6,
     zIndex: 1,
+    animation: '$backgroundFloat 20s ease-in-out infinite',
+    pointerEvents: 'none',
   },
-  '@keyframes pulse': {
-    '0%': {
-      boxShadow: '0 0 0 0 rgba(255, 198, 20, 0.4)',
+  '@keyframes backgroundFloat': {
+    '0%, 100%': {
+      transform: 'translateY(0) scale(1)',
+      opacity: 0.6,
     },
-    '70%': {
-      boxShadow: '0 0 0 15px rgba(255, 198, 20, 0)',
-    },
-    '100%': {
-      boxShadow: '0 0 0 0 rgba(255, 198, 20, 0)',
+    '50%': {
+      transform: 'translateY(-10px) scale(1.02)',
+      opacity: 0.8,
     },
   },
- 
   buttonArrow: {
     marginLeft: '8px !important',
     transition: 'transform 0.3s ease',
@@ -275,10 +249,10 @@ const PreScreeningBanner = () => {
     
   ];
 
-  // First 3 items go in the first row
-  const firstRowItems = targetAudienceWithIcons.slice(0, 3);
-  // Remaining items go in the second row
-  const secondRowItems = targetAudienceWithIcons.slice(3);
+  // First 2 items go in the first row (changed from 3)
+  const firstRowItems = targetAudienceWithIcons.slice(0, 2);
+  // Remaining 3 items go in the second row (changed from 2)
+  const secondRowItems = targetAudienceWithIcons.slice(2);
 
   const hoverStyles = {
     cursor: 'pointer',
@@ -323,10 +297,6 @@ const PreScreeningBanner = () => {
         <Box className={classes.backgroundPattern} />
         
         <Box className={classes.contentWrapper}>
-          <Box className={classes.iconContainer}>
-            <AssessmentIcon className={classes.icon} />
-          </Box>
-          
           <Typography className={classes.title}>
             Gigaversity Pre-Screener Test
           </Typography>
@@ -336,11 +306,11 @@ const PreScreeningBanner = () => {
           </Typography>
           
           <Box className={classes.targetAudienceGrid}>
-            {/* First row with 3 items */}
+            {/* First row with 2 items */}
             {firstRowItems.map(({ text, icon: IconComponent }, index) => (
               <Box 
                 key={index} 
-                className={classes.targetItemWrapper}
+                className={classes.targetItemWrapperFirstRow}
                 onClick={handleClick}
                 sx={{ ...hoverStyles }}
               >
@@ -353,10 +323,10 @@ const PreScreeningBanner = () => {
               </Box>
             ))}
 
-            {/* Second row with 2 items */}
+            {/* Second row with 3 items */}
             {secondRowItems.map(({ text, icon: IconComponent }, index) => (
               <Box 
-                key={index + 3} 
+                key={index + 2} 
                 className={classes.targetItemWrapperSecondRow}
                 onClick={handleClick}
                 sx={{ ...hoverStyles }}

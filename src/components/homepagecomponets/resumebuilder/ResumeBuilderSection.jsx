@@ -360,7 +360,7 @@ const ResumeBuilderSection = () => {
             }}
           >
             <Typography variant="h1" className={classes.title}>
-              Write your first career chapter with Gigaversity{" "}
+              Write your first career chapter with <span style={{ color: '#FFC614' }}>Gigaversity</span>{" "}
               <Typography
                 component="span"
                 variant="subtitle1"

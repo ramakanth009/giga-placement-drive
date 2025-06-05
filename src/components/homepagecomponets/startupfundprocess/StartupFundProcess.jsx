@@ -212,7 +212,7 @@ const StartupFundProcess = () => {
       <Box className={classes.glowEffect} />
       <Container maxWidth="lg" className={classes.container}>
         <Typography variant="h2" className={classes.title}>
-          Get Access to the Gigaversity ₹1 Lakh Startup Fund
+          Get Access to the <span style={{ color: '#FFC614' }}>₹1 Lakh Startup </span>Fund
         </Typography>
         <Typography variant="body1" className={classes.subtitle}>
           Turn your tech idea into reality — right from campus.

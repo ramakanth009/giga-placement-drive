@@ -618,7 +618,7 @@ const Hero = () => {
   const classes = useStyles();
 
   const heroImages = [
-    // { src: HeroImage1, alt: 'Hero Banner 1' },
+    { src: HeroImage1, alt: 'Hero Banner 1' },
     // { src: HeroImage2, alt: 'Hero Banner 2' },
     // { src: HeroImage3, alt: 'Hero Banner 3' },
     { src: HeroImage4, alt: 'Hero Banner 4' },
