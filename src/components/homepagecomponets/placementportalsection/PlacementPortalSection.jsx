@@ -8,6 +8,14 @@ import VideocamIcon from '@mui/icons-material/Videocam';
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import TimelineIcon from '@mui/icons-material/Timeline';
 
+// Import images
+import curatedOpportunitiesImg from '../../../assets/Job-Portal-website/1000+curated-Opportunities.png';
+import jobAnnouncementImg from '../../../assets/Job-Portal-website/Job-Announcement.png';
+import skillAssessmentsImg from '../../../assets/Job-Portal-website/Skill-Based-Assessments.png';
+import mockInterviewImg from '../../../assets/Job-Portal-website/Mock-Interview-Coach.png';
+import proctoredTestingImg from '../../../assets/Job-Portal-website/Proctored-Testing-Employer-Access.png';
+import detailedFeedbackImg from '../../../assets/Job-Portal-website/Detailed-Feedback-and-insights-report.png';
+
 const useStyles = makeStyles({
   section: {
     padding: '20px 0',
@@ -63,41 +71,26 @@ const useStyles = makeStyles({
       maxWidth: '90%',
     },
   },
-  cardsContainer: {
-    display: 'flex',
-    flexWrap: 'wrap',
+  featuresGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
     gap: '30px',
-    justifyContent: 'center',
     '@media (max-width: 960px)': {
+      gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
       gap: '25px',
     },
     '@media (max-width: 600px)': {
+      gridTemplateColumns: '1fr',
       gap: '20px',
     },
   },
-  cardWrapper: {
-    flex: '1 1 calc(33.333% - 20px)',
-    minWidth: '280px',
-    maxWidth: '380px',
-    display: 'flex',
-    justifyContent: 'center',
-    '@media (max-width: 960px)': {
-      flex: '1 1 calc(50% - 20px)',
-    },
-    '@media (max-width: 600px)': {
-      flex: '1 1 100%',
-      maxWidth: '100%',
-    },
-  },
-  card: {
-    padding: '35px 25px !important',
+  featureCard: {
+    padding: '0 !important',
     borderRadius: '16px !important',
     boxShadow: '0 10px 30px rgba(42, 43, 106, 0.08) !important',
     height: '100%',
-    width: '100%',
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
     backgroundColor: '#fff !important',
     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
     position: 'relative',
@@ -107,31 +100,68 @@ const useStyles = makeStyles({
       boxShadow: '0 15px 40px rgba(42, 43, 106, 0.12) !important',
     },
     '@media (max-width: 600px)': {
-      padding: '30px 20px !important',
       borderRadius: '12px !important',
     },
   },
+  imageContainer: {
+    position: 'relative',
+    height: '200px',
+    overflow: 'hidden',
+    '@media (max-width: 600px)': {
+      height: '180px',
+    },
+  },
+  featureImage: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    transition: 'transform 0.3s ease',
+    '$featureCard:hover &': {
+      transform: 'scale(1.05)',
+    },
+  },
+  imageOverlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    background: 'linear-gradient(180deg, rgba(42, 43, 106, 0.1) 0%, rgba(42, 43, 106, 0.3) 100%)',
+    display: 'flex',
+    alignItems: 'flex-end',
+    padding: '20px',
+    '@media (max-width: 600px)': {
+      padding: '15px',
+    },
+  },
   iconContainer: {
-    width: '70px',
-    height: '70px',
+    width: '50px',
+    height: '50px',
     borderRadius: '50%',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: '25px',
-    backgroundColor: '#f0f3ff',
-    boxShadow: '0 8px 20px rgba(42, 43, 106, 0.1)',
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
     '@media (max-width: 600px)': {
-      width: '60px',
-      height: '60px',
-      marginBottom: '20px',
+      width: '45px',
+      height: '45px',
     },
   },
   icon: {
-    fontSize: '30px !important',
+    fontSize: '24px !important',
     color: '#2A2B6A !important',
     '@media (max-width: 600px)': {
-      fontSize: '26px !important',
+      fontSize: '20px !important',
+    },
+  },
+  cardContent: {
+    padding: '25px !important',
+    display: 'flex',
+    flexDirection: 'column',
+    flexGrow: 1,
+    '@media (max-width: 600px)': {
+      padding: '20px !important',
     },
   },
   cardTitle: {
@@ -139,7 +169,6 @@ const useStyles = makeStyles({
     fontWeight: '600 !important',
     color: '#2A2B6A !important',
     marginBottom: '15px !important',
-    textAlign: 'center',
     '@media (max-width: 600px)': {
       fontSize: '1.1rem !important',
       marginBottom: '12px !important',
@@ -148,8 +177,8 @@ const useStyles = makeStyles({
   cardDescription: {
     fontSize: '0.95rem !important',
     color: '#666666 !important',
-    textAlign: 'center',
     lineHeight: '1.6 !important',
+    flexGrow: 1,
     '@media (max-width: 600px)': {
       fontSize: '0.9rem !important',
     },
@@ -165,6 +194,37 @@ const useStyles = makeStyles({
     opacity: 0.5,
     zIndex: 1,
   },
+  decorativeElement: {
+    position: 'absolute',
+    borderRadius: '50%',
+    background: 'radial-gradient(circle, rgba(255, 198, 20, 0.1) 0%, rgba(255, 198, 20, 0) 70%)',
+    zIndex: 1,
+  },
+  topRightDecor: {
+    width: '300px',
+    height: '300px',
+    top: '-150px',
+    right: '-150px',
+    '@media (max-width: 960px)': {
+      width: '200px',
+      height: '200px',
+      top: '-100px',
+      right: '-100px',
+    },
+  },
+  bottomLeftDecor: {
+    width: '400px',
+    height: '400px',
+    bottom: '-200px',
+    left: '-200px',
+    background: 'radial-gradient(circle, rgba(42, 43, 106, 0.08) 0%, rgba(42, 43, 106, 0) 70%)',
+    '@media (max-width: 960px)': {
+      width: '250px',
+      height: '250px',
+      bottom: '-125px',
+      left: '-125px',
+    },
+  },
 });
 
 const PlacementPortalSection = () => {
@@ -175,37 +235,45 @@ const PlacementPortalSection = () => {
       title: "1000+ Curated Opportunities",
       description: "Access a wide range of verified roles from top startups and leading tech companies actively hiring fresh talent like you.",
       icon: <WorkIcon className={classes.icon} />,
+      image: curatedOpportunitiesImg,
     },
     {
       title: "Custom Job Alerts",
       description: "Get personalized job alerts based on your skills, interests, and career goals—sourced from India's top job platforms, all in one place.",
       icon: <NotificationsActiveIcon className={classes.icon} />,
+      image: jobAnnouncementImg,
     },
     {
       title: "Skill-Based Assessments",
       description: "Demonstrate your expertise with real-time coding tasks and domain-specific evaluations designed to match industry expectations.",
       icon: <AssignmentIcon className={classes.icon} />,
+      image: skillAssessmentsImg,
     },
     {
       title: "Mock Interview Coach",
       description: "Prepare with AI-powered and expert-led mock interviews. Receive actionable insights and performance analysis to build interview confidence.",
       icon: <VideocamIcon className={classes.icon} />,
+      image: mockInterviewImg,
     },
     {
       title: "Proctored Testing & Employer Access",
       description: "Provides you with secure, monitored tests based on the job role, skills, or resume that validate and provides you complete insight.",
       icon: <VerifiedUserIcon className={classes.icon} />,
+      image: proctoredTestingImg,
     },
     {
-      title: "Detailed Feedback and insights report ",
+      title: "Detailed Feedback and insights report",
       description: "Delivers detailed feedback on body language, tone of voice, and answer quality — including concept-level insights and how to improve each response.",
       icon: <TimelineIcon className={classes.icon} />,
+      image: detailedFeedbackImg,
     },
   ];
 
   return (
     <Box className={classes.section}>
       <Box className={classes.backgroundPattern} />
+      <Box className={`${classes.decorativeElement} ${classes.topRightDecor}`} />
+      <Box className={`${classes.decorativeElement} ${classes.bottomLeftDecor}`} />
       
       <Container maxWidth="lg" className={classes.container}>
         <Box className={classes.titleContainer}>
@@ -217,21 +285,31 @@ const PlacementPortalSection = () => {
           </Typography>
         </Box>
         
-        <Box className={classes.cardsContainer}>
+        <Box className={classes.featuresGrid}>
           {features.map((feature, idx) => (
-            <Box key={idx} className={classes.cardWrapper}>
-              <Paper className={classes.card} elevation={0}>
-                <Box className={classes.iconContainer}>
-                  {feature.icon}
+            <Paper key={idx} className={classes.featureCard} elevation={0}>
+              <Box className={classes.imageContainer}>
+                <img 
+                  src={feature.image} 
+                  alt={feature.title}
+                  className={classes.featureImage}
+                />
+                <Box className={classes.imageOverlay}>
+                  <Box className={classes.iconContainer}>
+                    {feature.icon}
+                  </Box>
                 </Box>
+              </Box>
+              
+              <Box className={classes.cardContent}>
                 <Typography className={classes.cardTitle}>
                   {feature.title}
                 </Typography>
                 <Typography className={classes.cardDescription}>
                   {feature.description}
                 </Typography>
-              </Paper>
-            </Box>
+              </Box>
+            </Paper>
           ))}
         </Box>
       </Container>
