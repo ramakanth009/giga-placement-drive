@@ -1,6 +1,10 @@
-import React from 'react';
-import { Box, Typography, Container, Paper } from '@mui/material';
+import React, { useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Keyboard, A11y, EffectFade } from 'swiper/modules';
+import { Box, Typography, Container, Button, IconButton } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import WorkIcon from '@mui/icons-material/Work';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import AssignmentIcon from '@mui/icons-material/Assignment';
@@ -8,117 +12,37 @@ import VideocamIcon from '@mui/icons-material/Videocam';
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import TimelineIcon from '@mui/icons-material/Timeline';
 
-// Import images
-import curatedOpportunitiesImg from '../../../assets/Job-Portal-website/1000+curated-Opportunities.png';
-import jobAnnouncementImg from '../../../assets/Job-Portal-website/Job-Announcement.png';
-import skillAssessmentsImg from '../../../assets/Job-Portal-website/Skill-Based-Assessments.png';
-import mockInterviewImg from '../../../assets/Job-Portal-website/Mock-Interview-Coach.png';
-import proctoredTestingImg from '../../../assets/Job-Portal-website/Proctored-Testing-Employer-Access.png';
-import detailedFeedbackImg from '../../../assets/Job-Portal-website/Detailed-Feedback-and-insights-report.png';
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
+
+import image1 from "../../../assets/Job-Portal-website/1000+curated-Opportunities.png"
+import image2 from "../../../assets/Job-Portal-website/Job-Announcement.png"
+import image3 from "../../../assets/Job-Portal-website/Skill-Based-Assessments.png"
+import image4 from "../../../assets/Job-Portal-website/Mock-Interview-Coach.png"
+import image5 from "../../../assets/Job-Portal-website/Proctored-Testing-Employer-Access.png"
+import image6 from "../../../assets/Job-Portal-website/Detailed-Feedback-and-insights-report.png"
 
 const useStyles = makeStyles({
-  section: {
-    padding: '20px 0',
-    minHeight: '100vh',
+  swiperContainer: {
+    width: '80%',
+    height: '80vh', // Reduced from 100vh
     position: 'relative',
-    overflow: 'hidden',
-    '@media (max-width: 1200px)': {
-      padding: '70px 0',
-    },
-    '@media (max-width: 960px)': {
-      padding: '60px 0',
-    },
-    '@media (max-width: 600px)': {
-      padding: '50px 0',
-    },
+    margin: '0 auto',
   },
-  container: {
+  slide: {
     position: 'relative',
-    zIndex: 2,
-  },
-  titleContainer: {
-    textAlign: 'center',
-    marginBottom: '50px',
-    position: 'relative',
-    '@media (max-width: 600px)': {
-      marginBottom: '40px',
-    },
-  },
-  title: {
-    fontSize: '2.5rem !important',
-    fontWeight: 'bold !important',
-    color: '#2A2B6A !important',
-    marginBottom: '20px !important',
-    position: 'relative',
-    '& span': {
-      color: '#FFC614 !important',
-    },
-    '@media (max-width: 960px)': {
-      fontSize: '2.2rem !important',
-    },
-    '@media (max-width: 600px)': {
-      fontSize: '1.8rem !important',
-    },
-  },
-  subtitle: {
-    fontSize: '1.1rem !important',
-    color: '#666666 !important',
-    maxWidth: '700px',
-    margin: '0 auto !important',
-    marginTop: '20px !important',
-    '@media (max-width: 600px)': {
-      fontSize: '1rem !important',
-      maxWidth: '90%',
-    },
-  },
-  featuresGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
-    gap: '30px',
-    '@media (max-width: 960px)': {
-      gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-      gap: '25px',
-    },
-    '@media (max-width: 600px)': {
-      gridTemplateColumns: '1fr',
-      gap: '20px',
-    },
-  },
-  featureCard: {
-    padding: '0 !important',
-    borderRadius: '16px !important',
-    boxShadow: '0 10px 30px rgba(42, 43, 106, 0.08) !important',
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    backgroundColor: '#fff !important',
-    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-    position: 'relative',
-    overflow: 'hidden',
-    '&:hover': {
-      transform: 'translateY(-8px)',
-      boxShadow: '0 15px 40px rgba(42, 43, 106, 0.12) !important',
-    },
-    '@media (max-width: 600px)': {
-      borderRadius: '12px !important',
-    },
-  },
-  imageContainer: {
-    position: 'relative',
-    height: '200px',
-    overflow: 'hidden',
-    '@media (max-width: 600px)': {
-      height: '180px',
-    },
-  },
-  featureImage: {
     width: '100%',
     height: '100%',
-    objectFit: 'cover',
-    transition: 'transform 0.3s ease',
-    '$featureCard:hover &': {
-      transform: 'scale(1.05)',
-    },
+    overflow: 'hidden',
+  },
+  slideImage: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'fill',
+    display: 'block',
   },
   imageOverlay: {
     position: 'absolute',
@@ -126,194 +50,288 @@ const useStyles = makeStyles({
     left: 0,
     width: '100%',
     height: '100%',
-    background: 'linear-gradient(180deg, rgba(42, 43, 106, 0.1) 0%, rgba(42, 43, 106, 0.3) 100%)',
-    display: 'flex',
-    alignItems: 'flex-end',
-    padding: '20px',
+    background: 'linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.6) 100%)',
+    zIndex: 1,
+  },
+  contentSection: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    zIndex: 2,
+    padding: '20px 0 10px',
+    background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%)',
+    color: 'white',
+    '@media (max-width: 768px)': {
+      padding: '30px 0 40px',
+    },
+  },
+  contentContainer: {
+    maxWidth: '1200px',
+    margin: '0 auto',
+    padding: '0 20px',
+    textAlign: 'center',
+  },
+  slideTitle: {
+    fontSize: '2rem !important', // Reduced from 2.5rem
+    fontWeight: 'bold !important',
+    marginBottom: '10px !important',
+    color: 'white !important',
+    textShadow: '0 2px 4px rgba(0,0,0,0.5)',
+    '@media (max-width: 968px)': {
+      fontSize: '1.7rem !important', // Reduced from 2rem
+    },
     '@media (max-width: 600px)': {
-      padding: '15px',
+      fontSize: '1.3rem !important', // Reduced from 1.5rem
+      marginBottom: '15px !important',
+    },
+  },
+  slideDescription: {
+    fontSize: '1rem !important', // Reduced from 1.1rem
+    lineHeight: '1.6 !important',
+    marginBottom: '10px !important',
+    maxWidth: '800px',
+    margin: '0 auto 30px !important',
+    color: 'rgba(255,255,255,0.9) !important',
+    textShadow: '0 1px 2px rgba(0,0,0,0.5)',
+    '@media (max-width: 600px)': {
+      fontSize: '0.9rem !important', // Reduced from 1rem
+      marginBottom: '25px !important',
+    },
+  },
+  ctaButton: {
+    backgroundColor: '#FFC614 !important',
+    color: '#2A2B6A !important',
+    padding: '12px 40px !important',
+    fontSize: '1rem !important',
+    fontWeight: '600 !important',
+    borderRadius: '25px !important',
+    textTransform: 'none !important',
+    boxShadow: '0 4px 15px rgba(255, 198, 20, 0.3) !important',
+    transition: 'all 0.3s ease !important',
+    '&:hover': {
+      backgroundColor: '#FFD700 !important',
+      transform: 'translateY(-2px)',
+      boxShadow: '0 6px 20px rgba(255, 198, 20, 0.4) !important',
+    },
+    '@media (max-width: 600px)': {
+      padding: '10px 30px !important',
+      fontSize: '0.9rem !important',
     },
   },
   iconContainer: {
-    width: '50px',
-    height: '50px',
+    width: '80px',
+    height: '80px',
     borderRadius: '50%',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    margin: '0 auto 25px',
     backgroundColor: 'rgba(255, 255, 255, 0.9)',
-    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+    backdropFilter: 'blur(10px)',
+    border: '2px solid rgba(42, 43, 106, 0.2)',
     '@media (max-width: 600px)': {
-      width: '45px',
-      height: '45px',
+      width: '60px',
+      height: '60px',
+      marginBottom: '20px',
     },
   },
   icon: {
-    fontSize: '24px !important',
+    fontSize: '35px !important',
     color: '#2A2B6A !important',
     '@media (max-width: 600px)': {
-      fontSize: '20px !important',
+      fontSize: '28px !important',
     },
   },
-  cardContent: {
-    padding: '25px !important',
-    display: 'flex',
-    flexDirection: 'column',
-    flexGrow: 1,
-    '@media (max-width: 600px)': {
-      padding: '20px !important',
+  navigationButton: {
+    position: 'absolute !important',
+    top: '60% !important', // Changed from 50% to move below the slider
+    transform: 'translateY(-150%) !important', // Adjusted transform
+    zIndex: 10,
+    backgroundColor: 'rgba(42, 43, 106, 0.8) !important', // Changed for better visibility
+    backdropFilter: 'blur(10px) !important',
+    color: 'white !important',
+    width: '50px !important',
+    height: '50px !important',
+    borderRadius: '50% !important',
+    transition: 'all 0.3s ease !important',
+    '&:hover': {
+      backgroundColor: 'rgba(42, 43, 106, 1) !important',
+      transform: 'translateY(-150%) scale(1.1) !important',
+    },
+    '@media (max-width: 768px)': {
+      width: '40px !important',
+      height: '40px !important',
+      display: 'block !important', // Changed from none to make visible on mobile
+      transform: 'translateY(-120%) !important',
     },
   },
-  cardTitle: {
-    fontSize: '1.25rem !important',
-    fontWeight: '600 !important',
-    color: '#2A2B6A !important',
-    marginBottom: '15px !important',
-    '@media (max-width: 600px)': {
-      fontSize: '1.1rem !important',
-      marginBottom: '12px !important',
+  prevButton: {
+    left: '-60px !important', // Adjusted position
+  },
+  nextButton: {
+    right: '-60px !important', // Adjusted position
+  },
+  pagination: {
+    '& .swiper-pagination-bullet': {
+      backgroundColor: 'rgba(255, 255, 255, 0.5)',
+      opacity: 1,
+      width: '12px',
+      height: '12px',
+      margin: '0 6px',
+      transition: 'all 0.3s ease',
+    },
+    '& .swiper-pagination-bullet-active': {
+      backgroundColor: '#FFC614',
+      transform: 'scale(1.2)',
     },
   },
-  cardDescription: {
-    fontSize: '0.95rem !important',
-    color: '#666666 !important',
-    lineHeight: '1.6 !important',
-    flexGrow: 1,
-    '@media (max-width: 600px)': {
-      fontSize: '0.9rem !important',
-    },
-  },
-  backgroundPattern: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    backgroundImage: 'radial-gradient(rgba(42, 43, 106, 0.05) 2px, transparent 2px)',
-    backgroundSize: '30px 30px',
-    opacity: 0.5,
-    zIndex: 1,
-  },
-  decorativeElement: {
-    position: 'absolute',
-    borderRadius: '50%',
-    background: 'radial-gradient(circle, rgba(255, 198, 20, 0.1) 0%, rgba(255, 198, 20, 0) 70%)',
-    zIndex: 1,
-  },
-  topRightDecor: {
-    width: '300px',
-    height: '300px',
-    top: '-150px',
-    right: '-150px',
-    '@media (max-width: 960px)': {
-      width: '200px',
-      height: '200px',
-      top: '-100px',
-      right: '-100px',
-    },
-  },
-  bottomLeftDecor: {
-    width: '400px',
-    height: '400px',
-    bottom: '-200px',
-    left: '-200px',
-    background: 'radial-gradient(circle, rgba(42, 43, 106, 0.08) 0%, rgba(42, 43, 106, 0) 70%)',
-    '@media (max-width: 960px)': {
-      width: '250px',
-      height: '250px',
-      bottom: '-125px',
-      left: '-125px',
-    },
+  mainHeading: {
+    // backgroundColor: '#2A2B6A',
+    padding: '2rem 1rem',
+    textAlign: 'center',
+    color: 'white',
+    '& h1': {
+      fontSize: '2.5rem !important', // Reduced from 3rem
+      fontWeight: 'bold !important',
+      '@media (max-width: 768px)': {
+        fontSize: '1.8rem !important', // Reduced from 2rem
+      },
+    }
   },
 });
 
 const PlacementPortalSection = () => {
   const classes = useStyles();
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  const features = [
+  const slides = [
     {
       title: "1000+ Curated Opportunities",
       description: "Access a wide range of verified roles from top startups and leading tech companies actively hiring fresh talent like you.",
       icon: <WorkIcon className={classes.icon} />,
-      image: curatedOpportunitiesImg,
+      image: image1,
+      cta: "Explore Opportunities"
     },
     {
-      title: "Custom Job Alerts",
+      title: "Custom Job Announcements",
       description: "Get personalized job alerts based on your skills, interests, and career goals—sourced from India's top job platforms, all in one place.",
       icon: <NotificationsActiveIcon className={classes.icon} />,
-      image: jobAnnouncementImg,
+      image: image2,
+      cta: "Set Up Alerts"
     },
     {
       title: "Skill-Based Assessments",
       description: "Demonstrate your expertise with real-time coding tasks and domain-specific evaluations designed to match industry expectations.",
       icon: <AssignmentIcon className={classes.icon} />,
-      image: skillAssessmentsImg,
+      image: image3,
+      cta: "Take Assessment"
     },
     {
       title: "Mock Interview Coach",
       description: "Prepare with AI-powered and expert-led mock interviews. Receive actionable insights and performance analysis to build interview confidence.",
       icon: <VideocamIcon className={classes.icon} />,
-      image: mockInterviewImg,
+      image: image4,
+      cta: "Start Practice"
     },
     {
       title: "Proctored Testing & Employer Access",
       description: "Provides you with secure, monitored tests based on the job role, skills, or resume that validate and provides you complete insight.",
       icon: <VerifiedUserIcon className={classes.icon} />,
-      image: proctoredTestingImg,
+      image: image5,
+      cta: "Verify Skills"
     },
     {
-      title: "Detailed Feedback and insights report",
+      title: "Detailed Feedback and Insights Report",
       description: "Delivers detailed feedback on body language, tone of voice, and answer quality — including concept-level insights and how to improve each response.",
       icon: <TimelineIcon className={classes.icon} />,
-      image: detailedFeedbackImg,
+      image: image6,
+      cta: "View Insights"
     },
   ];
 
   return (
-    <Box className={classes.section}>
-      <Box className={classes.backgroundPattern} />
-      <Box className={`${classes.decorativeElement} ${classes.topRightDecor}`} />
-      <Box className={`${classes.decorativeElement} ${classes.bottomLeftDecor}`} />
-      
-      <Container maxWidth="lg" className={classes.container}>
-        <Box className={classes.titleContainer}>
-          <Typography variant="h2" className={classes.title}>
-            Gigaversity <span>Portal</span> & <span>Smart Tracking</span>
-          </Typography>
-          <Typography variant="body1" className={classes.subtitle}>
-            Everything you need to launch your career, track your progress, and connect with top employers—all in one place.
-          </Typography>
-        </Box>
-        
-        <Box className={classes.featuresGrid}>
-          {features.map((feature, idx) => (
-            <Paper key={idx} className={classes.featureCard} elevation={0}>
-              <Box className={classes.imageContainer}>
-                <img 
-                  src={feature.image} 
-                  alt={feature.title}
-                  className={classes.featureImage}
+    <>
+      <Box className={classes.mainHeading}>
+        <Typography variant="h1">
+          Unlock Career Opportunities with <span style={{ color: '#FFC614' }}>Gigaversity Smart Job Portal</span>
+        </Typography>
+      </Box>
+      <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+        <Box className={classes.swiperContainer}>
+          <Swiper
+            modules={[Navigation, Keyboard, A11y, EffectFade]}
+            spaceBetween={0}
+            slidesPerView={1}
+            navigation={{
+              prevEl: '.swiper-button-prev-custom',
+              nextEl: '.swiper-button-next-custom',
+            }}
+            keyboard={{
+              enabled: true,
+              onlyInViewport: true,
+            }}
+            a11y={{
+              prevSlideMessage: 'Previous slide',
+              nextSlideMessage: 'Next slide',
+            }}
+            effect="fade"
+            fadeEffect={{
+              crossFade: true,
+            }}
+            speed={600}
+            onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+            style={{ height: '100%' }}
+          >
+            {slides.map((slide, index) => (
+              <SwiperSlide key={index} className={classes.slide}>
+                <img
+                  src={slide.image}
+                  alt={slide.title}
+                  className={classes.slideImage}
+                  loading={index <= 1 ? 'eager' : 'lazy'}
                 />
-                <Box className={classes.imageOverlay}>
-                  <Box className={classes.iconContainer}>
-                    {feature.icon}
-                  </Box>
+                <Box className={classes.imageOverlay} />
+                
+                <Box className={classes.contentSection}>
+                  <Container className={classes.contentContainer}>
+                    <Box className={classes.iconContainer}>
+                      {slide.icon}
+                    </Box>
+                    <Typography variant="h2" className={classes.slideTitle}>
+                      {slide.title}
+                    </Typography>
+                    <Typography variant="body1" className={classes.slideDescription}>
+                      {slide.description}
+                    </Typography>
+                    <Button 
+                      className={classes.ctaButton}
+                      aria-label={`${slide.cta} - ${slide.title}`}
+                    >
+                      {slide.cta}
+                    </Button>
+                  </Container>
                 </Box>
-              </Box>
-              
-              <Box className={classes.cardContent}>
-                <Typography className={classes.cardTitle}>
-                  {feature.title}
-                </Typography>
-                <Typography className={classes.cardDescription}>
-                  {feature.description}
-                </Typography>
-              </Box>
-            </Paper>
-          ))}
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          <IconButton
+            className={`${classes.navigationButton} ${classes.prevButton} swiper-button-prev-custom`}
+            aria-label="Previous slide"
+          >
+            <ArrowBackIosIcon />
+          </IconButton>
+
+          <IconButton
+            className={`${classes.navigationButton} ${classes.nextButton} swiper-button-next-custom`}
+            aria-label="Next slide"
+          >
+            <ArrowForwardIosIcon />
+          </IconButton>
         </Box>
-      </Container>
-    </Box>
+      </Box>
+    </>
   );
 };
 

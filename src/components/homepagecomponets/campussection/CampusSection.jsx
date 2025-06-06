@@ -1298,11 +1298,11 @@ const CampusSection = () => {
       description: "Connect with industry experts for personalized 1:1 support to accelerate learning and career growth.",
       image: mentorRoomImg,
     },
-    {
-      title: "Venture Hall",
-      description: "Exclusive startup events where founders, VCs, and investors gather for pitches and live demos.",
-      image: ventureHallImg,
-    },
+    // {
+    //   title: "Venture Hall",
+    //   description: "Exclusive startup events where founders, VCs, and investors gather for pitches and live demos.",
+    //   image: ventureHallImg,
+    // },
     {
       title: "Campus Café",
       description: "A vibrant space for thinkers and innovators to connect, recharge, and build meaningful relationships.",
