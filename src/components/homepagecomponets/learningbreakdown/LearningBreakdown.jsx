@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Typography, Container, Button, Card, CardContent, Chip } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const useStyles = makeStyles({
   section: {
-    padding: '40px 0',
-    minHeight: '100vh',
+    padding: '20px 0',
+    // minHeight: '100vh',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -187,6 +187,15 @@ const useStyles = makeStyles({
 
 const LearningJourney = () => {
   const classes = useStyles();
+  const [currentHighlight, setCurrentHighlight] = useState(3); // Start with phase 4 highlighted
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentHighlight((prev) => (prev + 1) % phases.length);
+    }, 2000); // Switch every 3 seconds
+
+    return () => clearInterval(interval);
+  }, []);
 
   const phases = [
     {
@@ -195,7 +204,6 @@ const LearningJourney = () => {
       months: 'Months 1 - 3',
       description: 'Develop essential core skills through practical tasks and focused coding exercises. Build a strong technical foundation.',
       keyPoints: ['Essential coding fundamentals', 'Practical task completion', 'L1 Assessment preparation', 'Technology specialization guidance'],
-      highlight: false,
     },
     {
       number: '02',
@@ -203,7 +211,6 @@ const LearningJourney = () => {
       months: 'Months 4 - 6',
       description: 'Focus on your chosen technology area by working on real product features and building your professional portfolio.',
       keyPoints: ['Real product feature development', 'Professional portfolio building', 'Specialized skill mastery', 'L2 Assessment preparation'],
-      highlight: false,
     },
     {
       number: '03',
@@ -211,7 +218,6 @@ const LearningJourney = () => {
       months: 'Months 7 - 9',
       description: 'Collaborate in teams to develop complete tech products from MVP to deployment. Explore startup opportunities.',
       keyPoints: ['Team collaboration projects', 'MVP to deployment cycle', 'Real-world solution building', 'Startup idea pitching'],
-      highlight: false,
     },
     {
       number: '04',
@@ -219,8 +225,6 @@ const LearningJourney = () => {
       months: 'Months 10 - 12',
       description: 'Career Readiness Training with internships, technical assessments, and job placement through 300+ hiring partners.',
       keyPoints: ['Career Readiness Training (CRT)', 'Mock interviews & assessments', 'Communication skill development', 'Job placement support'],
-      highlight: true,
-      stats: ['300+ Partners', '2000+ Jobs'],
     },
   ];
 
@@ -242,7 +246,7 @@ const LearningJourney = () => {
           {phases.map((phase, index) => (
             <Card 
               key={phase.number} 
-              className={`${classes.phaseCard} ${phase.highlight ? classes.highlightCard : ''}`}
+              className={`${classes.phaseCard} ${index === currentHighlight ? classes.highlightCard : ''}`}
             >
               <CardContent className={classes.cardContent}>
                 <Typography className={classes.phaseTitle}>
@@ -265,26 +269,6 @@ const LearningJourney = () => {
                       {point}
                     </Box>
                   ))}
-                  
-                  {phase.stats && (
-                    <Box sx={{ mt: 1, display: 'flex', gap: 1 }}>
-                      {phase.stats.map((stat, idx) => (
-                        <Box 
-                          key={idx} 
-                          sx={{ 
-                            backgroundColor: '#FFC614', 
-                            color: '#2A2B6A', 
-                            padding: '4px 8px', 
-                            borderRadius: '12px',
-                            fontSize: '0.75rem',
-                            fontWeight: 'bold'
-                          }}
-                        >
-                          {stat}
-                        </Box>
-                      ))}
-                    </Box>
-                  )}
                 </Box>
               </CardContent>
             </Card>
