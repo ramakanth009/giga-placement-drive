@@ -403,7 +403,7 @@ const useStyles = makeStyles({
     height: '100%',
     backfaceVisibility: 'hidden',
     borderRadius: '20px',
-    background: 'linear-gradient(135deg, rgba(37, 38, 89, 0.95) 0%, rgba(74, 21, 131, 0.95) 100%)',
+    background: 'linear-gradient(135deg, rgba(37, 38, 89, 0.95) 0%, rgba(74, 21, 131, 0.95) 100%)!important',
     backdropFilter: 'blur(20px)',
     display: 'flex',
     flexDirection: 'column',
@@ -414,7 +414,6 @@ const useStyles = makeStyles({
     transform: 'rotateY(180deg)',
     transition: 'transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
     border: '1px solid rgba(147, 112, 219, 0.3)',
-    color: '#000000',  // Add this line to ensure text is white
   },
   
   // Enhanced tool icon with glow effect
@@ -496,23 +495,25 @@ const useStyles = makeStyles({
   },
   
   featureItem: {
-    fontSize: '0.8rem !important',
-    color: 'rgba(255, 255, 255, 0.9) !important',  // Increased opacity for better visibility
+    fontSize: '0.85rem !important', // Slightly increased for better readability
+    color: 'rgba(255, 255, 255, 0.95) !important', // Increased opacity for better visibility
     margin: '8px 0 !important',
     display: 'flex',
     alignItems: 'center',
     transition: 'all 0.3s ease',
+    textAlign: 'left !important', // Ensure left alignment
     '&:before': {
       content: '"◆"',
       color: '#9370DB',
       fontWeight: 'bold',
       marginRight: '10px',
       transition: 'all 0.3s ease',
+      flexShrink: 0, // Prevent shrinking
     },
     '$stackCard:hover &': {
-      color: 'rgba(255, 255, 255, 1) !important',  // Full opacity on hover
+      color: 'rgba(255, 255, 255, 1) !important', // Full opacity on hover
       '&:before': {
-        color: '#b19cd9',  // Lighter purple for better contrast
+        color: '#b19cd9', // Lighter purple for better contrast
         transform: 'scale(1.2)',
       },
     },
@@ -526,14 +527,25 @@ const useStyles = makeStyles({
     animation: '$orbFloat 8s ease-in-out infinite',
     zIndex: 1,
     transition: 'all 0.5s ease',
-    '& .orb1': {
+    width: '200px',
+    height: '200px',
+    '&.orb1': {
       background: 'radial-gradient(circle, rgba(255, 198, 20, 0.3) 0%, transparent 70%)',
+      top: '10%',
+      left: '5%',
+      animationDelay: '0s',
     },
-    '& .orb2': {
+    '&.orb2': {
       background: 'radial-gradient(circle, rgba(46, 204, 113, 0.3) 0%, transparent 70%)',
+      top: '60%',
+      right: '8%',
+      animationDelay: '2s',
     },
-    '& .orb3': {
+    '&.orb3': {
       background: 'radial-gradient(circle, rgba(42, 43, 106, 0.3) 0%, transparent 70%)',
+      bottom: '20%',
+      left: '15%',
+      animationDelay: '4s',
     },
   },
   
@@ -862,9 +874,9 @@ const AIIntegrationSection = () => {
       <Box className={classes.backgroundGrid} />
       
       {/* Enhanced glowing orbs */}
-      <Box className={`${classes.glowOrb} ${classes.orb1}`} />
-      <Box className={`${classes.glowOrb} ${classes.orb2}`} />
-      <Box className={`${classes.glowOrb} ${classes.orb3}`} />
+      <Box className={`${classes.glowOrb} orb1`} />
+      <Box className={`${classes.glowOrb} orb2`} />
+      <Box className={`${classes.glowOrb} orb3`} />
       
       <Container maxWidth="xl" className={classes.container}>
         {/* Enhanced header */}
@@ -930,7 +942,7 @@ const AIIntegrationSection = () => {
                       </Box>
                       
                       <Box className={classes.cardBack}>
-                        <Typography className={classes.toolName}>
+                        <Typography className={classes.toolName} >
                           {tool.name} Features
                         </Typography>
                         <Box className={classes.toolFeatures}>
@@ -991,7 +1003,7 @@ const AIIntegrationSection = () => {
                       </Box>
                       
                       <Box className={classes.cardBack}>
-                        <Typography className={classes.toolName}>
+                        <Typography className={classes.toolName} sx={{ color: 'white !important' }}>
                           {tool.name} Features
                         </Typography>
                         <Box className={classes.toolFeatures}>
