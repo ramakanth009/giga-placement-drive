@@ -399,7 +399,6 @@ const AIIntegrationCardSliders = () => {
   // State for current card indices
   const [fullstackIndex, setFullstackIndex] = useState(0);
   const [dataScienceIndex, setDataScienceIndex] = useState(0);
-  const [flippedCards, setFlippedCards] = useState({});
 
   // Full Stack development tools
   const fullstackTools = [
@@ -593,13 +592,6 @@ const AIIntegrationCardSliders = () => {
     };
   };
 
-  const handleCardFlip = (index) => {
-    setFlippedCards(prev => ({
-      ...prev,
-      [index]: !prev[index]
-    }));
-  };
-
   return (
     <Box className={classes.section}>
       {/* Animated background grid */}
@@ -656,35 +648,32 @@ const AIIntegrationCardSliders = () => {
                       key={`fullstack-${index}`} 
                       className={classes.stackCard}
                       style={getCardStyle(index, fullstackIndex, fullstackTools.length)}
-                      onClick={() => handleCardFlip(index)}
                     >
-                      <Box className={classes.cardInner}>
-                        <Box className={classes.cardFront}>
-                          <Box className={classes.toolIconWrapper}>
-                            {tool.icon}
-                          </Box>
-                          <Typography className={classes.toolName}>
-                            {tool.name}
-                          </Typography>
-                          <Typography className={classes.toolCategory}>
-                            {tool.category}
-                          </Typography>
-                          <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.7)' }}>
-                            (Hover to see features)
-                          </Typography>
+                      <Box className={classes.cardFront}>
+                        <Box className={classes.toolIconWrapper}>
+                          {tool.icon}
                         </Box>
-                        
-                        <Box className={classes.cardBack}>
-                          <Typography className={classes.toolName}>
-                            {tool.name} Features
-                          </Typography>
-                          <Box className={classes.toolFeatures}>
-                            {tool.features.map((feature, idx) => (
-                              <Typography key={idx} className={classes.featureItem}>
-                                {feature}
-                              </Typography>
-                            ))}
-                          </Box>
+                        <Typography className={classes.toolName}>
+                          {tool.name}
+                        </Typography>
+                        <Typography className={classes.toolCategory}>
+                          {tool.category}
+                        </Typography>
+                        <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.7)' }}>
+                          (Hover to see features)
+                        </Typography>
+                      </Box>
+                      
+                      <Box className={classes.cardBack}>
+                        <Typography className={classes.toolName}>
+                          {tool.name} Features
+                        </Typography>
+                        <Box className={classes.toolFeatures}>
+                          {tool.features.map((feature, idx) => (
+                            <Typography key={idx} className={classes.featureItem}>
+                              {feature}
+                            </Typography>
+                          ))}
                         </Box>
                       </Box>
                     </Card>
@@ -719,35 +708,32 @@ const AIIntegrationCardSliders = () => {
                       key={`datascience-${index}`} 
                       className={classes.stackCard}
                       style={getCardStyle(index, dataScienceIndex, dataScienceTools.length)}
-                      onClick={() => handleCardFlip(index)}
                     >
-                      <Box className={classes.cardInner}>
-                        <Box className={classes.cardFront}>
-                          <Box className={classes.toolIconWrapper}>
-                            {tool.icon}
-                          </Box>
-                          <Typography className={classes.toolName}>
-                            {tool.name}
-                          </Typography>
-                          <Typography className={classes.toolCategory}>
-                            {tool.category}
-                          </Typography>
-                          <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.7)' }}>
-                            (Hover to see features)
-                          </Typography>
+                      <Box className={classes.cardFront}>
+                        <Box className={classes.toolIconWrapper}>
+                          {tool.icon}
                         </Box>
-                        
-                        <Box className={classes.cardBack}>
-                          <Typography className={classes.toolName}>
-                            {tool.name} Features
-                          </Typography>
-                          <Box className={classes.toolFeatures}>
-                            {tool.features.map((feature, idx) => (
-                              <Typography key={idx} className={classes.featureItem}>
-                                {feature}
-                              </Typography>
-                            ))}
-                          </Box>
+                        <Typography className={classes.toolName}>
+                          {tool.name}
+                        </Typography>
+                        <Typography className={classes.toolCategory}>
+                          {tool.category}
+                        </Typography>
+                        <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.7)' }}>
+                          (Hover to see features)
+                        </Typography>
+                      </Box>
+                      
+                      <Box className={classes.cardBack}>
+                        <Typography className={classes.toolName}>
+                          {tool.name} Features
+                        </Typography>
+                        <Box className={classes.toolFeatures}>
+                          {tool.features.map((feature, idx) => (
+                            <Typography key={idx} className={classes.featureItem}>
+                              {feature}
+                            </Typography>
+                          ))}
                         </Box>
                       </Box>
                     </Card>
