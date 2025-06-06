@@ -408,7 +408,7 @@ const useStyles = makeStyles({
     borderBottom: '1px solid #eaeaea',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     '@media (max-width: 768px)': {
       padding: '15px 20px',
     },
@@ -419,18 +419,6 @@ const useStyles = makeStyles({
     fontWeight: '600 !important',
     '@media (max-width: 768px)': {
       fontSize: '1.2rem !important',
-    },
-  },
-  categoryCount: {
-    backgroundColor: '#FFC614',
-    color: '#2A2B6A',
-    borderRadius: '20px',
-    padding: '4px 12px',
-    fontSize: '14px',
-    fontWeight: '600',
-    '@media (max-width: 768px)': {
-      padding: '3px 10px',
-      fontSize: '12px',
     },
   },
   logoGrid: {
@@ -466,9 +454,6 @@ const useStyles = makeStyles({
     '&:hover': {
       transform: 'translateY(-5px)',
       boxShadow: '0 8px 20px rgba(0,0,0,0.08)',
-      '& $logoOverlay': {
-        opacity: 1,
-      },
     },
     '@media (max-width: 768px)': {
       padding: '15px 10px',
@@ -486,26 +471,6 @@ const useStyles = makeStyles({
       height: '40px',
     },
   },
-  logoOverlay: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    backgroundColor: 'rgba(42,43,106,0.9)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    opacity: 0,
-    transition: 'all 0.3s ease',
-  },
-  logoOverlayText: {
-    color: 'white !important',
-    fontSize: '13px !important',
-    fontWeight: '500 !important',
-    textAlign: 'center !important',
-    padding: '0 10px !important',
-  },
   emptyState: {
     textAlign: 'center',
     padding: '50px 20px',
@@ -518,44 +483,51 @@ const useStyles = makeStyles({
 
 const HiringPartners = () => {
   const classes = useStyles();
-  const [activeFilter, setActiveFilter] = useState('All');
+  const [activeFilter, setActiveFilter] = useState('Software & IT');
 
   // Define categories and company data
   const categories = [
-    { id: 'technology', name: 'Technology', color: '#4285F4' },
+    { id: 'software', name: 'Software & IT', color: '#4285F4' },
+    { id: 'enterprise', name: 'Enterprise Tech', color: '#9334EA' },  // New category
     { id: 'finance', name: 'Finance & Fintech', color: '#34A853' },
     { id: 'consulting', name: 'Consulting', color: '#FBBC05' },
     { id: 'retail', name: 'Retail & E-commerce', color: '#EA4335' },
   ];
   
-  const filters = ['All', ...categories.map(cat => cat.name)];
+  const filters = categories.map(cat => cat.name);
 
   // Companies data with category assignment
   const companies = [
-    { name: 'Amazon', Logo: AmazonLogo, category: 'Technology', roles: '15+ roles' },
-    { name: 'Flipkart', Logo: FlipkartLogo, category: 'Retail & E-commerce', roles: '12+ roles' },
-    { name: 'Accenture', Logo: AccentureLogo, category: 'Consulting', roles: '20+ roles' },
-    { name: 'Deloitte', Logo: DeloitteLogo, category: 'Consulting', roles: '18+ roles' },
-    { name: 'Goldman Sachs', Logo: GoldmanSachsLogo, category: 'Finance & Fintech', roles: '8+ roles' },
-    { name: 'Paytm', Logo: PaytmLogo, category: 'Finance & Fintech', roles: '10+ roles' },
-    { name: 'PhonePe', Logo: PhonePeLogo, category: 'Finance & Fintech', roles: '8+ roles' },
-    { name: 'BharatPe', Logo: BharatPeLogo, category: 'Finance & Fintech', roles: '5+ roles' },
-    { name: 'CRED', Logo: CredLogo, category: 'Finance & Fintech', roles: '6+ roles' },
-    { name: 'TCS', Logo: TcsLogo, category: 'Technology', roles: '25+ roles' },
-    { name: 'Infosys', Logo: InfosysLogo, category: 'Technology', roles: '22+ roles' },
-    { name: 'Wipro', Logo: WiproLogo, category: 'Technology', roles: '18+ roles' },
-    { name: 'Capgemini', Logo: CapgeminiLogo, category: 'Consulting', roles: '15+ roles' },
-    { name: 'Dell', Logo: DellLogo, category: 'Technology', roles: '10+ roles' },
-    { name: 'Tech Mahindra', Logo: TechMahindraLogo, category: 'Technology', roles: '12+ roles' },
-    { name: 'Zoho', Logo: ZohoLogo, category: 'Technology', roles: '9+ roles' },
-    { name: 'PharmEasy', Logo: PharmEasyLogo, category: 'Retail & E-commerce', roles: '7+ roles' },
-    { name: 'Mu Sigma', Logo: MuSigmaLogo, category: 'Consulting', roles: '8+ roles' },
-    { name: 'Adidas', Logo: AdidasLogo, category: 'Retail & E-commerce', roles: '6+ roles' },
-    { name: 'Caterpillar', Logo: CaterpillarLogo, category: 'Technology', roles: '5+ roles' },
-    { name: 'Infrrt', Logo: InfrrtLogo, category: 'Technology', roles: '4+ roles' },
-    { name: 'Medplus', Logo: MedplusLogo, category: 'Retail & E-commerce', roles: '5+ roles' },
-    { name: 'HappyFox', Logo: HappyFoxLogo, category: 'Technology', roles: '3+ roles' },
-    { name: 'Synopsys', Logo: SynopsysLogo, category: 'Technology', roles: '7+ roles' },
+    // Software & IT Companies
+    { name: 'Amazon', Logo: AmazonLogo, category: 'Retail & E-commerce' },
+    { name: 'CRED', Logo: CredLogo, category: 'Software & IT' },
+    { name: 'Zoho', Logo: ZohoLogo, category: 'Software & IT' },
+    { name: 'HappyFox', Logo: HappyFoxLogo, category: 'Software & IT' },
+    { name: 'Infrrt', Logo: InfrrtLogo, category: 'Software & IT' },
+    
+    // Enterprise Tech Companies
+    { name: 'TCS', Logo: TcsLogo, category: 'Enterprise Tech' },
+    { name: 'Wipro', Logo: WiproLogo, category: 'Enterprise Tech' },
+    { name: 'Tech Mahindra', Logo: TechMahindraLogo, category: 'Enterprise Tech' },
+    { name: 'Dell', Logo: DellLogo, category: 'Software & IT' },
+    { name: 'Synopsys', Logo: SynopsysLogo, category: 'Enterprise Tech' },
+    { name: 'Caterpillar', Logo: CaterpillarLogo, category: 'Enterprise Tech' },
+
+    // Existing other categories remain unchanged
+    { name: 'Flipkart', Logo: FlipkartLogo, category: 'Retail & E-commerce' },
+    { name: 'Infosys', Logo: InfosysLogo, category: 'Consulting' },
+
+    { name: 'Accenture', Logo: AccentureLogo, category: 'Consulting' },
+    { name: 'Deloitte', Logo: DeloitteLogo, category: 'Consulting' },
+    { name: 'Goldman Sachs', Logo: GoldmanSachsLogo, category: 'Finance & Fintech' },
+    { name: 'Paytm', Logo: PaytmLogo, category: 'Finance & Fintech' },
+    { name: 'PhonePe', Logo: PhonePeLogo, category: 'Finance & Fintech' },
+    { name: 'BharatPe', Logo: BharatPeLogo, category: 'Finance & Fintech' },
+    { name: 'Capgemini', Logo: CapgeminiLogo, category: 'Consulting' },
+    { name: 'PharmEasy', Logo: PharmEasyLogo, category: 'Retail & E-commerce' },
+    { name: 'Mu Sigma', Logo: MuSigmaLogo, category: 'Consulting' },
+    { name: 'Adidas', Logo: AdidasLogo, category: 'Retail & E-commerce' },
+    { name: 'Medplus', Logo: MedplusLogo, category: 'Retail & E-commerce' },
   ];
 
   // Filter companies based on selected category
@@ -614,9 +586,6 @@ const HiringPartners = () => {
                   <Typography variant="h5" className={classes.categoryTitle}>
                     {category.name}
                   </Typography>
-                  <Box className={classes.categoryCount}>
-                    {category.count} Partners
-                  </Box>
                 </Box>
                 
                 {/* Logos grid */}
@@ -624,15 +593,6 @@ const HiringPartners = () => {
                   {category.companies.map((company, index) => (
                     <Box key={index} className={classes.logoWrapper}>
                       <company.Logo className={classes.logoSvg} aria-label={company.name} />
-                      
-                      {/* Overlay with info on hover */}
-                      <Box className={classes.logoOverlay}>
-                        <Typography variant="body2" className={classes.logoOverlayText}>
-                          {company.name}
-                          <br />
-                          {company.roles}
-                        </Typography>
-                      </Box>
                     </Box>
                   ))}
                 </Box>

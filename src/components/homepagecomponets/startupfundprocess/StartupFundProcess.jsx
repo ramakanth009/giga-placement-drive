@@ -142,7 +142,7 @@ const useStyles = makeStyles({
     position: 'absolute',
     height: '2px',
     backgroundColor: 'rgba(255, 255, 255, 0.2)',
-    top: '20px',
+    top: '30px',
     left: '10%',
     right: '10%',
     zIndex: 1,
