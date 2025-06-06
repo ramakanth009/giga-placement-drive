@@ -26,6 +26,36 @@ const useStyles = makeStyles({
     background: 'linear-gradient(180deg, #101138 0%, #1e1c44 100%)',
     display: 'flex',
     flexDirection: 'column',
+    '&:before': {
+      content: '""',
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundImage: 
+        'linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px)',
+      backgroundSize: '30px 30px',
+      zIndex: 1,
+    },
+    "@media (max-width: 1200px)": {
+      padding: '50px 0',
+      '&:before': {
+        backgroundSize: '25px 25px',
+      },
+    },
+    "@media (max-width: 960px)": {
+      padding: '60px 0',
+      '&:before': {
+        backgroundSize: '20px 20px',
+      },
+    },
+    "@media (max-width: 600px)": {
+      padding: '40px 0',
+      '&:before': {
+        backgroundSize: '15px 15px',
+      },
+    },
   },
   container: {
     height: '100vh',
@@ -33,55 +63,33 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     position: 'relative',
     zIndex: 2,
+    padding: '0 40px',
+    "@media (max-width: 1200px)": {
+      padding: '0 30px',
+    },
+    "@media (max-width: 960px)": {
+      padding: '0 25px',
+    },
+    "@media (max-width: 600px)": {
+      padding: '0 20px',
+    },
   },
-  
-  // Enhanced animated background
-  backgroundGrid: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    backgroundImage: `
-      linear-gradient(rgba(100, 181, 246, 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(100, 181, 246, 0.05) 1px, transparent 1px)
-    `,
-    backgroundSize: '50px 50px',
-    animation: '$gridMove 20s linear infinite',
-    zIndex: 1,
-  },
-  
-  // Header animations
-  headerSection: {
+  titleContainer: {
     textAlign: 'center',
-    padding: '40px 0 20px',
+    marginBottom: '20px',
     position: 'relative',
-    opacity: 0,
-    transform: 'translateY(30px)',
-    animation: '$fadeInUp 1s ease-out forwards',
+    zIndex: 2,
+    "@media (max-width: 600px)": {
+      marginBottom: '30px',
+    },
   },
-  
   mainTitle: {
     fontSize: '3.5rem !important',
     fontWeight: '800 !important',
-    background: 'linear-gradient(135deg, #ffffff 0%, #FFC614 50%, #fdb347 100%)',
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'transparent',
-    backgroundClip: 'text',
     marginBottom: '10px !important',
     letterSpacing: '-0.02em',
+    color: 'white !important',
     position: 'relative',
-    '&::after': {
-      content: '""',
-      position: 'absolute',
-      bottom: '-10px',
-      left: '50%',
-      transform: 'translateX(-50%)',
-      width: '0',
-      height: '3px',
-      background: 'linear-gradient(90deg, #FFC614, #fdb347)',
-      animation: '$expandLine 1.5s ease-out 0.5s forwards',
-    },
     '@media (max-width: 960px)': {
       fontSize: '2.8rem !important',
     },
@@ -89,17 +97,19 @@ const useStyles = makeStyles({
       fontSize: '2.2rem !important',
     },
   },
-  
+  highlight: {
+    color: '#FFC614 !important',
+    position: 'relative',
+  },
   subtitle: {
-    fontSize: '1.2rem !important',
-    color: 'rgba(255, 255, 255, 0.8) !important',
-    maxWidth: '600px',
-    margin: '0 auto !important',
-    opacity: 0,
-    animation: '$fadeIn 1s ease-out 0.3s forwards',
-    '@media (max-width: 600px)': {
-      fontSize: '1rem !important',
+    fontSize: '1rem !important',
+    color: 'rgba(255, 255, 255, 0.7) !important',
+    maxWidth: '900px',
+    margin: '5px auto 0 !important',
+    "@media (max-width: 600px)": {
+      fontSize: '0.9rem !important',
       maxWidth: '90%',
+      margin: '8px auto 0 !important',
     },
   },
   
@@ -225,26 +235,15 @@ const useStyles = makeStyles({
   
   toolsHeader: {
     textAlign: 'center',
-    marginBottom: '20px',
+    marginBottom: '10px',
   },
   
   toolsTitle: {
     fontSize: '1.5rem !important',
     fontWeight: '600 !important',
     color: 'white !important',
-    marginBottom: '30px !important',
+    marginBottom: '10px !important',
     position: 'relative',
-    '&::after': {
-      content: '""',
-      position: 'absolute',
-      bottom: '-10px',
-      left: '50%',
-      transform: 'translateX(-50%)',
-      width: '0',
-      height: '2px',
-      background: 'linear-gradient(90deg, #FFC614, #fdb347)',
-      animation: '$expandLine 1s ease-out 1.2s forwards',
-    },
     '@media (max-width: 600px)': {
       fontSize: '1.3rem !important',
     },
@@ -271,6 +270,7 @@ const useStyles = makeStyles({
     textAlign: 'center',
     position: 'relative',
     display: 'inline-block',
+    alignItems: 'center',
     opacity: 0,
     transform: 'translateY(20px)',
     animation: '$fadeInUp 0.8s ease-out 1.4s forwards',
@@ -289,13 +289,13 @@ const useStyles = makeStyles({
   // Enhanced stack container with perspective
   stackContainer: {
     position: 'relative',
-    width: '320px',
-    height: '400px',
+    width: '380px',    // Increased from 320px
+    height: '500px',   // Increased from 400px
     perspective: '1200px',
     transformStyle: 'preserve-3d',
     '@media (max-width: 600px)': {
-      width: '280px',
-      height: '350px',
+      width: '320px',  // Increased from 280px
+      height: '450px', // Increased from 350px
     },
   },
   
@@ -346,7 +346,7 @@ const useStyles = makeStyles({
   stackCard: {
     position: 'absolute',
     width: '100%',
-    height: '60%',
+    height: '75%',     // Increased from 60%
     borderRadius: '20px !important',
     backfaceVisibility: 'hidden',
     transition: 'all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
@@ -355,12 +355,8 @@ const useStyles = makeStyles({
     cursor: 'pointer',
     willChange: 'transform, opacity',
     '&:hover': {
-      '& $cardFront': {
-        transform: 'rotateY(180deg)',
-      },
-      '& $cardBack': {
-        transform: 'rotateY(0deg)',
-      },
+      transform: 'scale(1.02)',
+      boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',
     },
   },
   
@@ -368,17 +364,15 @@ const useStyles = makeStyles({
     position: 'absolute',
     width: '100%',
     height: '100%',
-    backfaceVisibility: 'hidden',
     borderRadius: '20px',
     background: 'linear-gradient(135deg, rgba(37, 38, 89, 0.9) 0%, rgba(74, 21, 131, 0.95) 100%)',
     backdropFilter: 'blur(20px)',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
-    padding: '30px',
+    padding: '20px',
     textAlign: 'center',
-    transition: 'transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
     border: '1px solid rgba(147, 112, 219, 0.2)',
     position: 'relative',
     overflow: 'hidden',
@@ -395,25 +389,6 @@ const useStyles = makeStyles({
     '$stackCard:hover &::before': {
       left: '100%',
     },
-  },
-  
-  cardBack: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-    backfaceVisibility: 'hidden',
-    borderRadius: '20px',
-    background: 'linear-gradient(135deg, rgba(37, 38, 89, 0.95) 0%, rgba(74, 21, 131, 0.95) 100%)!important',
-    backdropFilter: 'blur(20px)',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: '30px',
-    textAlign: 'center',
-    transform: 'rotateY(180deg)',
-    transition: 'transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-    border: '1px solid rgba(147, 112, 219, 0.3)',
   },
   
   // Enhanced tool icon with glow effect
@@ -468,10 +443,6 @@ const useStyles = makeStyles({
     marginBottom: '15px !important',
     textShadow: '0 2px 10px rgba(0, 0, 0, 0.3)',
     transition: 'all 0.3s ease',
-    '$stackCard:hover &': {
-      color: '#9370DB !important',
-      textShadow: '0 0 15px rgba(147, 112, 219, 0.5)',
-    },
   },
   
   toolCategory: {
@@ -495,29 +466,30 @@ const useStyles = makeStyles({
   },
   
   featureItem: {
-    fontSize: '0.85rem !important', // Slightly increased for better readability
-    color: 'rgba(255, 255, 255, 0.95) !important', // Increased opacity for better visibility
-    margin: '8px 0 !important',
-    display: 'flex',
-    alignItems: 'center',
+  fontSize: '0.9rem !important',
+  color: '#ffffff !important', // Pure white for better contrast
+  margin: '8px 0 !important',
+  display: 'flex',
+  alignItems: 'center',
+  transition: 'all 0.3s ease',
+  textAlign: 'left !important',
+  '&:before': {
+    content: '"◆"',
+    color: '#FFC614', // Changed to yellow for better contrast
+    fontWeight: 'bold',
+    marginRight: '10px',
     transition: 'all 0.3s ease',
-    textAlign: 'left !important', // Ensure left alignment
+    flexShrink: 0,
+  },
+  '$stackCard:hover &': {
+    color: '#ffffff !important',
+    textShadow: '0 1px 3px rgba(0, 0, 0, 0.5)', // Add shadow for better readability
     '&:before': {
-      content: '"◆"',
-      color: '#9370DB',
-      fontWeight: 'bold',
-      marginRight: '10px',
-      transition: 'all 0.3s ease',
-      flexShrink: 0, // Prevent shrinking
-    },
-    '$stackCard:hover &': {
-      color: 'rgba(255, 255, 255, 1) !important', // Full opacity on hover
-      '&:before': {
-        color: '#b19cd9', // Lighter purple for better contrast
-        transform: 'scale(1.2)',
-      },
+      color: '#FFD23F', // Brighter yellow on hover
+      transform: 'scale(1.2)',
     },
   },
+},
   
   // Enhanced glowing orbs with interaction
   glowOrb: {
@@ -880,9 +852,9 @@ const AIIntegrationSection = () => {
       
       <Container maxWidth="xl" className={classes.container}>
         {/* Enhanced header */}
-        <Box className={classes.headerSection}>
+        <Box className={classes.titleContainer}>
           <Typography variant="h2" className={classes.mainTitle}>
-            AI is Already in Our Classrooms
+            AI is Already in Our <span className={classes.highlight}>Classrooms</span>
           </Typography>
           <Typography variant="body1" className={classes.subtitle}>
             Experience the future of learning with integrated AI tools and technologies
@@ -912,7 +884,7 @@ const AIIntegrationSection = () => {
             </Box>
 
             <Box className={classes.cardStacksContainer}>
-              {/* Enhanced Fullstack Development Tools Stack */}
+              {/* Fullstack Development Tools Stack */}
               <Box>
                 <Typography className={classes.categoryLabel}>
                   Full Stack Development
@@ -935,15 +907,6 @@ const AIIntegrationSection = () => {
                         </Typography>
                         <Typography className={classes.toolCategory}>
                           {tool.category}
-                        </Typography>
-                        <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.75rem' }}>
-                          (Hover to see features)
-                        </Typography>
-                      </Box>
-                      
-                      <Box className={classes.cardBack}>
-                        <Typography className={classes.toolName} >
-                          {tool.name} Features
                         </Typography>
                         <Box className={classes.toolFeatures}>
                           {tool.features.map((feature, idx) => (
@@ -973,7 +936,7 @@ const AIIntegrationSection = () => {
                 </Box>
               </Box>
               
-              {/* Enhanced Data Science Tools Stack */}
+              {/* Data Science Tools Stack */}
               <Box>
                 <Typography className={classes.categoryLabel}>
                   Data Science
@@ -996,15 +959,6 @@ const AIIntegrationSection = () => {
                         </Typography>
                         <Typography className={classes.toolCategory}>
                           {tool.category}
-                        </Typography>
-                        <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.75rem' }}>
-                          (Hover to see features)
-                        </Typography>
-                      </Box>
-                      
-                      <Box className={classes.cardBack}>
-                        <Typography className={classes.toolName} sx={{ color: 'white !important' }}>
-                          {tool.name} Features
                         </Typography>
                         <Box className={classes.toolFeatures}>
                           {tool.features.map((feature, idx) => (

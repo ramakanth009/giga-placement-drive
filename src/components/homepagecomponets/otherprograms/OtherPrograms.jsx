@@ -530,29 +530,6 @@ const useStyles = makeStyles({
       borderRadius: '25px !important',
     },
   },
-  glowEffect: {
-    position: 'absolute',
-    width: '500px',
-    height: '500px',
-    borderRadius: '50%',
-    zIndex: 1,
-    opacity: 0.3,
-    filter: 'blur(150px)',
-    "@media (max-width: 600px)": {
-      width: '350px',
-      height: '350px',
-      filter: 'blur(120px)',
-    },
-  },
-  purpleGlow: {
-    background: '#8a5cf7',
-    top: '-200px',
-    right: '-100px',
-    "@media (max-width: 600px)": {
-      top: '-140px',
-      right: '-70px',
-    },
-  },
   commentDialog: {
     '& .MuiDialog-paper': {
       borderRadius: '15px !important',
@@ -739,7 +716,6 @@ const OtherPrograms = () => {
 
   return (
     <Box className={classes.section}>
-      <Box className={`${classes.glowEffect} ${classes.purpleGlow}`} />
       
       <Container maxWidth="lg" className={classes.container}>
         <Box className={classes.titleContainer}>
