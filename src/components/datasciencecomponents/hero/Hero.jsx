@@ -17,7 +17,7 @@ const Hero = () => {
       highlightText="Data Science"
       subtitle="India's Premier Virtual Hiring & Learning Experience"
       features={features}
-      heroImage={fullstackhero2}
+      // heroImage={fullstackhero2}
       backgroundImage={fullstackHeroImage}
       displayAsBlock={true}
     />

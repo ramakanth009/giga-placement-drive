@@ -17,7 +17,7 @@ const Hero = () => {
       highlightText="Full Stack Development"
       subtitle="India's Premier Virtual Hiring & Learning Experience"
       features={features}
-      heroImage={fullstackhero}
+      // heroImage={fullstackhero}
       backgroundImage={fullstackHeroImage}
       displayAsBlock={true}
     />

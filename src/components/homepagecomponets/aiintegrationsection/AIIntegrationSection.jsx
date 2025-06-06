@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Typography, Container, Card, CardContent, Chip, IconButton } from '@mui/material';
+import { Box, Typography, Container, Card, CardContent, IconButton } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+
+// Import icons
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import CodeIcon from '@mui/icons-material/Code';
 import DataUsageIcon from '@mui/icons-material/DataUsage';
@@ -8,9 +10,19 @@ import PsychologyIcon from '@mui/icons-material/Psychology';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-import FlashOnIcon from '@mui/icons-material/FlashOn';
 import BuildIcon from '@mui/icons-material/Build';
+import LanguageIcon from '@mui/icons-material/Language';
+import StorageIcon from '@mui/icons-material/Storage';
+import ApiIcon from '@mui/icons-material/Api';
+import IntegrationInstructionsIcon from '@mui/icons-material/IntegrationInstructions';
+import BarChartIcon from '@mui/icons-material/BarChart';
+import ShowChartIcon from '@mui/icons-material/ShowChart';
+import FlashOnIcon from '@mui/icons-material/FlashOn';
+import AssessmentIcon from '@mui/icons-material/Assessment';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import LaptopIcon from '@mui/icons-material/Laptop';
+import FunctionsIcon from '@mui/icons-material/Functions';
 
 const useStyles = makeStyles({
   section: {
@@ -167,106 +179,170 @@ const useStyles = makeStyles({
     fontSize: '1.5rem !important',
     fontWeight: '600 !important',
     color: 'white !important',
-    marginBottom: '10px !important',
+    marginBottom: '30px !important',
     '@media (max-width: 600px)': {
       fontSize: '1.3rem !important',
     },
   },
   
-  // Floating AI tools grid
-  floatingToolsContainer: {
-    position: 'relative',
+  // Card stacks container
+  cardStacksContainer: {
+    display: 'flex',
+    justifyContent: 'space-around',
     height: '100%',
-    overflow: 'hidden',
-  },
-  
-  toolCard: {
-    position: 'absolute',
-    width: '200px',
-    background: 'rgba(255, 255, 255, 0.08) !important',
-    backdropFilter: 'blur(15px)',
-    borderRadius: '15px !important',
-    border: '1px solid rgba(255, 255, 255, 0.2)',
-    padding: '15px !important',
-    cursor: 'pointer',
-    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-    animation: '$float 6s ease-in-out infinite',
-    '&:hover': {
-      transform: 'scale(1.05) translateY(-10px) !important',
-      background: 'rgba(255, 255, 255, 0.15) !important',
-      boxShadow: '0 15px 35px rgba(64, 181, 246, 0.3)',
-    },
     '@media (max-width: 960px)': {
-      width: '160px',
-      padding: '12px !important',
+      flexDirection: 'column',
+      gap: '50px',
+      alignItems: 'center',
     },
+  },
+  
+  // Category label
+  categoryLabel: {
+    fontSize: '1.2rem !important',
+    color: 'white !important',
+    marginBottom: '20px !important',
+    textAlign: 'center',
+    position: 'relative',
+    display: 'inline-block',
+    '&:after': {
+      content: '""',
+      position: 'absolute',
+      bottom: '-8px',
+      left: '0',
+      width: '100%',
+      height: '2px',
+      background: 'linear-gradient(90deg, transparent, rgba(100, 181, 246, 0.8), transparent)',
+    },
+  },
+  
+  // Card stack
+  stackContainer: {
+    position: 'relative',
+    width: '320px',
+    height: '400px',
+    perspective: '1000px',
     '@media (max-width: 600px)': {
-      width: '140px',
-      padding: '10px !important',
+      width: '280px',
+      height: '350px',
     },
   },
   
-  // Positioning for floating cards
-  tool1: {
-    top: '10%',
-    left: '5%',
-    animationDelay: '0s',
-  },
-  tool2: {
-    top: '25%',
-    right: '15%',
-    animationDelay: '1s',
-  },
-  tool3: {
-    top: '45%',
-    left: '20%',
-    animationDelay: '2s',
-  },
-  tool4: {
-    top: '60%',
-    right: '5%',
-    animationDelay: '3s',
-  },
-  tool5: {
-    bottom: '20%',
-    left: '10%',
-    animationDelay: '4s',
-  },
-  tool6: {
-    bottom: '5%',
-    right: '25%',
-    animationDelay: '5s',
+  // Navigation buttons
+  navigationButtons: {
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: '20px',
+    gap: '10px',
   },
   
-  toolIcon: {
-    width: '40px !important',
-    height: '40px !important',
+  navButton: {
+    backgroundColor: 'rgba(255, 255, 255, 0.1) !important',
+    color: 'white !important',
+    border: '1px solid rgba(255, 255, 255, 0.2) !important',
+    '&:hover': {
+      backgroundColor: 'rgba(100, 181, 246, 0.2) !important',
+    },
+  },
+  
+  // Stack card
+  stackCard: {
+    position: 'absolute',
+    width: '100%',
+    height: '60%',
+    borderRadius: '20px !important',
+    backfaceVisibility: 'hidden',
+    transition: 'all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+    transformStyle: 'preserve-3d',
+    border: '1px solid rgba(255, 255, 255, 0.1)',
+    '&:hover': {
+      transform: 'rotateY(180deg)',
+    },
+  },
+  
+  cardFront: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    backfaceVisibility: 'hidden',
+    borderRadius: '20px',
+    background: 'linear-gradient(135deg, rgba(66, 165, 245, 0.2) 0%, rgba(21, 101, 192, 0.3) 100%)',
+    backdropFilter: 'blur(20px)',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: '30px',
+    textAlign: 'center',
+  },
+  
+  cardBack: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    backfaceVisibility: 'hidden',
+    borderRadius: '20px',
+    background: 'linear-gradient(135deg, rgba(66, 165, 245, 0.3) 0%, rgba(21, 101, 192, 0.4) 100%)',
+    backdropFilter: 'blur(20px)',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: '30px',
+    textAlign: 'center',
+    transform: 'rotateY(180deg)',
+  },
+  
+  toolIconWrapper: {
+    width: '40px',
+    height: '40px',
     borderRadius: '50%',
-    background: 'linear-gradient(135deg, #64b5f6 0%, #42a5f5 100%)',
-    display: 'flex !important',
+    background: 'linear-gradient(135deg, rgba(100, 181, 246, 0.8) 0%, rgba(30, 136, 229, 0.8) 100%)',
+    display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: '10px',
+    marginBottom: '20px',
+    boxShadow: '0 10px 20px rgba(0, 0, 0, 0.2)',
     '& svg': {
-      fontSize: '20px',
+      fontSize: '40px',
       color: 'white',
     },
   },
   
   toolName: {
-    fontSize: '0.9rem !important',
-    fontWeight: '600 !important',
+    fontSize: '1.5rem !important',
+    fontWeight: '700 !important',
     color: 'white !important',
-    marginBottom: '5px !important',
+    marginBottom: '15px !important',
+    textShadow: '0 2px 10px rgba(0, 0, 0, 0.3)',
   },
   
   toolCategory: {
-    fontSize: '0.7rem !important',
-    color: 'rgba(255, 255, 255, 0.6) !important',
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-    padding: '2px 6px',
-    borderRadius: '8px',
-    alignSelf: 'flex-start',
+    fontSize: '0.9rem !important',
+    color: 'rgba(255, 255, 255, 0.9) !important',
+    padding: '5px 12px',
+    background: 'rgba(255, 255, 255, 0.1)',
+    borderRadius: '20px',
+    marginBottom: '30px', // Increased margin to compensate for removed description
+  },
+  
+  toolFeatures: {
+    width: '100%',
+    marginTop: 'auto',
+  },
+  
+  featureItem: {
+    fontSize: '0.8rem !important',
+    color: 'rgba(255, 255, 255, 0.8) !important',
+    margin: '5px 0 !important',
+    display: 'flex',
+    alignItems: 'center',
+    '&:before': {
+      content: '"•"',
+      color: '#64b5f6',
+      fontWeight: 'bold',
+      marginRight: '8px',
+    },
   },
   
   // Glowing orbs
@@ -305,87 +381,224 @@ const useStyles = makeStyles({
     animationDelay: '2s',
   },
   
-  // Pulse effect for featured tools
-  pulseEffect: {
-    '&::before': {
-      content: '""',
-      position: 'absolute',
-      top: '-2px',
-      left: '-2px',
-      right: '-2px',
-      bottom: '-2px',
-      borderRadius: '17px',
-      background: 'linear-gradient(45deg, #64b5f6, #42a5f5, #1e88e5, #64b5f6)',
-      animation: '$pulse 2s linear infinite',
-      zIndex: -1,
-    },
-  },
-  
-  // Connection lines
-  connectionLine: {
-    position: 'absolute',
-    height: '1px',
-    background: 'linear-gradient(90deg, transparent, rgba(100, 181, 246, 0.5), transparent)',
-    animation: '$lineGlow 3s ease-in-out infinite',
-  },
-  
-  line1: {
-    width: '150px',
-    top: '30%',
-    left: '25%',
-    transform: 'rotate(25deg)',
-    animationDelay: '0s',
-  },
-  
-  line2: {
-    width: '120px',
-    bottom: '35%',
-    right: '30%',
-    transform: 'rotate(-15deg)',
-    animationDelay: '1.5s',
-  },
-  
   // Animations
   '@keyframes gridMove': {
     '0%': { transform: 'translate(0, 0)' },
     '100%': { transform: 'translate(50px, 50px)' },
   },
   
-  '@keyframes float': {
-    '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
-    '33%': { transform: 'translateY(-20px) rotate(2deg)' },
-    '66%': { transform: 'translateY(10px) rotate(-1deg)' },
-  },
-  
   '@keyframes orbFloat': {
     '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
     '50%': { transform: 'translate(30px, -30px) scale(1.1)' },
   },
-  
-  '@keyframes pulse': {
-    '0%': { transform: 'scale(1)' },
-    '50%': { transform: 'scale(1.05)' },
-    '100%': { transform: 'scale(1)' },
-  },
-  
-  '@keyframes lineGlow': {
-    '0%, 100%': { opacity: 0.3 },
-    '50%': { opacity: 0.8 },
-  },
 });
 
-const AIIntegrationInspiration = () => {
+const AIIntegrationCardSliders = () => {
   const classes = useStyles();
-  const [hoveredTool, setHoveredTool] = useState(null);
+  
+  // State for current card indices
+  const [fullstackIndex, setFullstackIndex] = useState(0);
+  const [dataScienceIndex, setDataScienceIndex] = useState(0);
+  const [flippedCards, setFlippedCards] = useState({});
 
-  const aiTools = [
-    { name: 'Claude', category: 'AI Assistant', icon: <SmartToyIcon />, featured: true },
-    { name: 'GitHub Copilot', category: 'Code Gen', icon: <CodeIcon />, featured: false },
-    { name: 'Hugging Face', category: 'ML Models', icon: <PsychologyIcon />, featured: true },
-    { name: 'LangChain', category: 'LLM Apps', icon: <BuildIcon />, featured: false },
-    { name: 'Streamlit', category: 'Data Apps', icon: <DataUsageIcon />, featured: false },
-    { name: 'Groq', category: 'Fast AI', icon: <FlashOnIcon />, featured: true },
+  // Full Stack development tools
+  const fullstackTools = [
+    {
+      name: 'GitHub Copilot',
+      category: 'Code Generation',
+      icon: <CodeIcon />,
+      description: 'AI pair programmer that helps you write code faster with smart completions and suggestions.',
+      features: [
+        'Context-aware code suggestions',
+        'Supports multiple languages',
+        'Integrated in your IDE',
+        'Learns from your coding style'
+      ]
+    },
+    {
+      name: 'Vercel v0',
+      category: 'UI Generation',
+      icon: <LaptopIcon />,
+      description: 'AI-powered interface that turns natural language into production-ready frontend code.',
+      features: [
+        'Text to React components',
+        'Responsive design generation',
+        'Real-time preview',
+        'Tailwind CSS integration'
+      ]
+    },
+    {
+      name: 'AWS CodeWhisperer',
+      category: 'Code Suggestions',
+      icon: <IntegrationInstructionsIcon />,
+      description: "Amazon's AI coding companion that generates code suggestions based on your comments and code.",
+      features: [
+        'Security scanning',
+        'Reference tracking',
+        'Multiple IDE support',
+        'AWS service integration'
+      ]
+    },
+    {
+      name: 'Tabnine',
+      category: 'Code Completion',
+      icon: <AutoFixHighIcon />,
+      description: 'AI assistant that predicts and suggests code completions based on context and patterns.',
+      features: [
+        'Whole-line completions',
+        'Local & cloud models',
+        'Team learning capabilities',
+        'Privacy-focused options'
+      ]
+    },
+    {
+      name: 'Postman API GPT',
+      category: 'API Development',
+      icon: <ApiIcon />,
+      description: 'AI-powered assistant for API development that helps with testing, documentation, and debugging.',
+      features: [
+        'Test case generation',
+        'Documentation writing',
+        'API request recommendations',
+        'Troubleshooting assistance'
+      ]
+    },
+    {
+      name: 'GPT Engineer',
+      category: 'App Generation',
+      icon: <RocketLaunchIcon />,
+      description: 'Open-source project that allows you to specify what you want to build, and an AI agent builds it for you.',
+      features: [
+        'Full app generation',
+        'Natural language instructions',
+        'Project structure creation',
+        'Iterative refinement'
+      ]
+    }
   ];
+  
+  // Data Science tools
+  const dataScienceTools = [
+    {
+      name: 'Claude',
+      category: 'AI Assistant',
+      icon: <SmartToyIcon />,
+      description: 'Advanced AI assistant that can help with data analysis, research, and code generation.',
+      features: [
+        'Data analysis assistance',
+        'Research summarization',
+        'Code explanation',
+        'Context understanding'
+      ]
+    },
+    {
+      name: 'Hugging Face',
+      category: 'ML Models',
+      icon: <PsychologyIcon />,
+      description: 'Platform that provides access to thousands of pre-trained models for various ML tasks.',
+      features: [
+        'Model hosting & sharing',
+        'Fine-tuning capabilities',
+        'Inference API',
+        'Dataset hosting'
+      ]
+    },
+    {
+      name: 'LangChain',
+      category: 'LLM App Development',
+      icon: <BuildIcon />,
+      description: 'Framework for developing applications powered by language models through composability.',
+      features: [
+        'Document loading & processing',
+        'Retrieval augmented generation',
+        'Agent frameworks',
+        'Memory management'
+      ]
+    },
+    {
+      name: 'Streamlit',
+      category: 'Data Visualization',
+      icon: <ShowChartIcon />,
+      description: 'Framework that turns data scripts into shareable web apps in minutes, no front-end experience required.',
+      features: [
+        'Interactive visualizations',
+        'Quick prototyping',
+        'Simple deployment',
+        'Widget support'
+      ]
+    },
+    {
+      name: 'MLflow',
+      category: 'MLOps',
+      icon: <StorageIcon />,
+      description: 'Open-source platform for managing the end-to-end machine learning lifecycle.',
+      features: [
+        'Experiment tracking',
+        'Model registry',
+        'Model deployment',
+        'Project packaging'
+      ]
+    },
+    {
+      name: 'Groq',
+      category: 'Fast AI Inference',
+      icon: <FlashOnIcon />,
+      description: 'Ultra-fast language processing with unprecedented inference speeds for LLM applications.',
+      features: [
+        'Low-latency inference',
+        'High throughput APIs',
+        'Easy integration',
+        'Various model support'
+      ]
+    }
+  ];
+
+  // Navigation handlers
+  const handleFullstackPrev = () => {
+    setFullstackIndex((prev) => (prev === 0 ? fullstackTools.length - 1 : prev - 1));
+  };
+
+  const handleFullstackNext = () => {
+    setFullstackIndex((prev) => (prev === fullstackTools.length - 1 ? 0 : prev + 1));
+  };
+
+  const handleDataSciencePrev = () => {
+    setDataScienceIndex((prev) => (prev === 0 ? dataScienceTools.length - 1 : prev - 1));
+  };
+
+  const handleDataScienceNext = () => {
+    setDataScienceIndex((prev) => (prev === dataScienceTools.length - 1 ? 0 : prev + 1));
+  };
+
+  // Calculate stack positions and styles
+  const getCardStyle = (index, activeIndex, totalCards) => {
+    // Calculate relative position in stack
+    const position = (index - activeIndex + totalCards) % totalCards;
+    
+    // Define z-index and transform based on position
+    let zIndex = totalCards - position;
+    let translateY = position * 15;
+    let scale = 1 - position * 0.07;
+    let opacity = 1 - position * 0.2;
+    
+    // Only show top 3 cards
+    if (position > 2) {
+      return { display: 'none' };
+    }
+    
+    return {
+      zIndex,
+      transform: `translateY(${translateY}px) scale(${scale})`,
+      opacity: opacity > 0 ? opacity : 0
+    };
+  };
+
+  const handleCardFlip = (index) => {
+    setFlippedCards(prev => ({
+      ...prev,
+      [index]: !prev[index]
+    }));
+  };
 
   return (
     <Box className={classes.section}>
@@ -422,7 +635,7 @@ const AIIntegrationInspiration = () => {
             </Card>
           </Box>
 
-          {/* Right panel - AI Tools showcase */}
+          {/* Right panel - Card stacks */}
           <Box className={classes.rightPanel}>
             <Box className={classes.toolsHeader}>
               <Typography className={classes.toolsTitle}>
@@ -430,34 +643,132 @@ const AIIntegrationInspiration = () => {
               </Typography>
             </Box>
 
-            <Box className={classes.floatingToolsContainer}>
-              {/* Connection lines */}
-              <Box className={`${classes.connectionLine} ${classes.line1}`} />
-              <Box className={`${classes.connectionLine} ${classes.line2}`} />
+            <Box className={classes.cardStacksContainer}>
+              {/* Fullstack Development Tools Stack */}
+              <Box>
+                <Typography className={classes.categoryLabel}>
+                  Full Stack Development
+                </Typography>
+                
+                <Box className={classes.stackContainer}>
+                  {fullstackTools.map((tool, index) => (
+                    <Card 
+                      key={`fullstack-${index}`} 
+                      className={classes.stackCard}
+                      style={getCardStyle(index, fullstackIndex, fullstackTools.length)}
+                      onClick={() => handleCardFlip(index)}
+                    >
+                      <Box className={classes.cardInner}>
+                        <Box className={classes.cardFront}>
+                          <Box className={classes.toolIconWrapper}>
+                            {tool.icon}
+                          </Box>
+                          <Typography className={classes.toolName}>
+                            {tool.name}
+                          </Typography>
+                          <Typography className={classes.toolCategory}>
+                            {tool.category}
+                          </Typography>
+                          <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.7)' }}>
+                            (Hover to see features)
+                          </Typography>
+                        </Box>
+                        
+                        <Box className={classes.cardBack}>
+                          <Typography className={classes.toolName}>
+                            {tool.name} Features
+                          </Typography>
+                          <Box className={classes.toolFeatures}>
+                            {tool.features.map((feature, idx) => (
+                              <Typography key={idx} className={classes.featureItem}>
+                                {feature}
+                              </Typography>
+                            ))}
+                          </Box>
+                        </Box>
+                      </Box>
+                    </Card>
+                  ))}
+                </Box>
+                
+                <Box className={classes.navigationButtons}>
+                  <IconButton 
+                    className={classes.navButton}
+                    onClick={handleFullstackPrev}
+                  >
+                    <KeyboardArrowUpIcon />
+                  </IconButton>
+                  <IconButton 
+                    className={classes.navButton}
+                    onClick={handleFullstackNext}
+                  >
+                    <KeyboardArrowDownIcon />
+                  </IconButton>
+                </Box>
+              </Box>
               
-              {/* Floating AI tool cards */}
-              {aiTools.map((tool, index) => (
-                <Card
-                  key={tool.name}
-                  className={`${classes.toolCard} ${classes[`tool${index + 1}`]} ${
-                    tool.featured ? classes.pulseEffect : ''
-                  }`}
-                  onMouseEnter={() => setHoveredTool(index)}
-                  onMouseLeave={() => setHoveredTool(null)}
-                >
-                  <CardContent style={{ padding: '0' }}>
-                    <Box className={classes.toolIcon}>
-                      {tool.icon}
-                    </Box>
-                    <Typography className={classes.toolName}>
-                      {tool.name}
-                    </Typography>
-                    <Box className={classes.toolCategory}>
-                      {tool.category}
-                    </Box>
-                  </CardContent>
-                </Card>
-              ))}
+              {/* Data Science Tools Stack */}
+              <Box>
+                <Typography className={classes.categoryLabel}>
+                  Data Science
+                </Typography>
+                
+                <Box className={classes.stackContainer}>
+                  {dataScienceTools.map((tool, index) => (
+                    <Card 
+                      key={`datascience-${index}`} 
+                      className={classes.stackCard}
+                      style={getCardStyle(index, dataScienceIndex, dataScienceTools.length)}
+                      onClick={() => handleCardFlip(index)}
+                    >
+                      <Box className={classes.cardInner}>
+                        <Box className={classes.cardFront}>
+                          <Box className={classes.toolIconWrapper}>
+                            {tool.icon}
+                          </Box>
+                          <Typography className={classes.toolName}>
+                            {tool.name}
+                          </Typography>
+                          <Typography className={classes.toolCategory}>
+                            {tool.category}
+                          </Typography>
+                          <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.7)' }}>
+                            (Hover to see features)
+                          </Typography>
+                        </Box>
+                        
+                        <Box className={classes.cardBack}>
+                          <Typography className={classes.toolName}>
+                            {tool.name} Features
+                          </Typography>
+                          <Box className={classes.toolFeatures}>
+                            {tool.features.map((feature, idx) => (
+                              <Typography key={idx} className={classes.featureItem}>
+                                {feature}
+                              </Typography>
+                            ))}
+                          </Box>
+                        </Box>
+                      </Box>
+                    </Card>
+                  ))}
+                </Box>
+                
+                <Box className={classes.navigationButtons}>
+                  <IconButton 
+                    className={classes.navButton}
+                    onClick={handleDataSciencePrev}
+                  >
+                    <KeyboardArrowUpIcon />
+                  </IconButton>
+                  <IconButton 
+                    className={classes.navButton}
+                    onClick={handleDataScienceNext}
+                  >
+                    <KeyboardArrowDownIcon />
+                  </IconButton>
+                </Box>
+              </Box>
             </Box>
           </Box>
         </Box>
@@ -466,4 +777,4 @@ const AIIntegrationInspiration = () => {
   );
 };
 
-export default AIIntegrationInspiration;
+export default AIIntegrationCardSliders;
