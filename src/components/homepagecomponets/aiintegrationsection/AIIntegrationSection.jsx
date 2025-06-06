@@ -1,35 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import { Box, Typography, Container, Card, CardContent, IconButton } from '@mui/material';
+import React, { useState, useEffect, useRef } from 'react';
+import { Box, Typography, Container, Card, IconButton } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
 // Import icons
-import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import CodeIcon from '@mui/icons-material/Code';
-import DataUsageIcon from '@mui/icons-material/DataUsage';
+import SmartToyIcon from '@mui/icons-material/SmartToy';
 import PsychologyIcon from '@mui/icons-material/Psychology';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
-import SmartToyIcon from '@mui/icons-material/SmartToy';
 import BuildIcon from '@mui/icons-material/Build';
-import LanguageIcon from '@mui/icons-material/Language';
 import StorageIcon from '@mui/icons-material/Storage';
 import ApiIcon from '@mui/icons-material/Api';
 import IntegrationInstructionsIcon from '@mui/icons-material/IntegrationInstructions';
-import BarChartIcon from '@mui/icons-material/BarChart';
 import ShowChartIcon from '@mui/icons-material/ShowChart';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
-import AssessmentIcon from '@mui/icons-material/Assessment';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import LaptopIcon from '@mui/icons-material/Laptop';
-import FunctionsIcon from '@mui/icons-material/Functions';
 
 const useStyles = makeStyles({
   section: {
     minHeight: '100vh',
     position: 'relative',
     overflow: 'hidden',
-    background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%)',
+    background: 'linear-gradient(180deg, #101138 0%, #1e1c44 100%)',
     display: 'flex',
     flexDirection: 'column',
   },
@@ -41,7 +35,7 @@ const useStyles = makeStyles({
     zIndex: 2,
   },
   
-  // Animated background
+  // Enhanced animated background
   backgroundGrid: {
     position: 'absolute',
     top: 0,
@@ -49,30 +43,45 @@ const useStyles = makeStyles({
     width: '100%',
     height: '100%',
     backgroundImage: `
-      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px)
+      linear-gradient(rgba(100, 181, 246, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(100, 181, 246, 0.05) 1px, transparent 1px)
     `,
     backgroundSize: '50px 50px',
     animation: '$gridMove 20s linear infinite',
     zIndex: 1,
   },
   
-  // Header section
+  // Header animations
   headerSection: {
     textAlign: 'center',
     padding: '40px 0 20px',
     position: 'relative',
+    opacity: 0,
+    transform: 'translateY(30px)',
+    animation: '$fadeInUp 1s ease-out forwards',
   },
   
   mainTitle: {
     fontSize: '3.5rem !important',
     fontWeight: '800 !important',
-    background: 'linear-gradient(135deg, #ffffff 0%, #64b5f6 50%, #42a5f5 100%)',
+    background: 'linear-gradient(135deg, #ffffff 0%, #FFC614 50%, #fdb347 100%)',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
     backgroundClip: 'text',
     marginBottom: '10px !important',
     letterSpacing: '-0.02em',
+    position: 'relative',
+    '&::after': {
+      content: '""',
+      position: 'absolute',
+      bottom: '-10px',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      width: '0',
+      height: '3px',
+      background: 'linear-gradient(90deg, #FFC614, #fdb347)',
+      animation: '$expandLine 1.5s ease-out 0.5s forwards',
+    },
     '@media (max-width: 960px)': {
       fontSize: '2.8rem !important',
     },
@@ -86,13 +95,15 @@ const useStyles = makeStyles({
     color: 'rgba(255, 255, 255, 0.8) !important',
     maxWidth: '600px',
     margin: '0 auto !important',
+    opacity: 0,
+    animation: '$fadeIn 1s ease-out 0.3s forwards',
     '@media (max-width: 600px)': {
       fontSize: '1rem !important',
       maxWidth: '90%',
     },
   },
   
-  // Main content area
+  // Enhanced main content area
   contentArea: {
     flex: 1,
     display: 'flex',
@@ -102,13 +113,16 @@ const useStyles = makeStyles({
     },
   },
   
-  // Left side - Question & Answer
+  // Enhanced left panel with interaction animations
   leftPanel: {
     flex: '0 0 35%',
     padding: '20px',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
+    opacity: 0,
+    transform: 'translateX(-50px)',
+    animation: '$slideInLeft 1s ease-out 0.6s forwards',
     '@media (max-width: 960px)': {
       flex: 'none',
       padding: '20px 40px',
@@ -125,10 +139,40 @@ const useStyles = makeStyles({
     border: '1px solid rgba(255, 255, 255, 0.1)',
     padding: '30px !important',
     marginBottom: '20px',
-    transition: 'all 0.3s ease',
+    transition: 'all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+    cursor: 'pointer',
+    position: 'relative',
+    overflow: 'hidden',
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      top: '-50%',
+      left: '-50%',
+      width: '200%',
+      height: '200%',
+      background: 'conic-gradient(from 0deg, transparent, rgba(100, 181, 246, 0.1), transparent)',
+      opacity: 0,
+      animation: '$rotate 4s linear infinite',
+      transition: 'opacity 0.3s ease',
+    },
     '&:hover': {
-      transform: 'translateY(-5px)',
-      boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)',
+      transform: 'translateY(-10px) scale(1.02)',
+      boxShadow: '0 25px 50px rgba(0, 0, 0, 0.4), 0 0 40px rgba(255, 198, 20, 0.2)',
+      borderColor: 'rgba(255, 198, 20, 0.3)',
+      '&::before': {
+        opacity: 1,
+      },
+      '& $questionText': {
+        color: '#FFC614 !important',
+        textShadow: '0 0 20px rgba(255, 198, 20, 0.5)',
+      },
+      '& $answerText': {
+        color: '#2ecc71 !important',
+        textShadow: '0 0 20px rgba(46, 204, 113, 0.5)',
+      },
+    },
+    '&:active': {
+      transform: 'translateY(-5px) scale(0.98)',
     },
     '@media (max-width: 600px)': {
       padding: '20px !important',
@@ -138,9 +182,12 @@ const useStyles = makeStyles({
   questionText: {
     fontSize: '1.8rem !important',
     fontWeight: '600 !important',
-    color: '#ff4757 !important',
+    color: '#fdb347 !important',
     marginBottom: '20px !important',
     lineHeight: '1.3 !important',
+    transition: 'all 0.4s ease',
+    position: 'relative',
+    zIndex: 2,
     '@media (max-width: 960px)': {
       fontSize: '1.5rem !important',
     },
@@ -152,7 +199,10 @@ const useStyles = makeStyles({
   answerText: {
     fontSize: '1.4rem !important',
     fontWeight: '700 !important',
-    color: '#2ed573 !important',
+    color: '#2ecc71 !important',
+    transition: 'all 0.4s ease',
+    position: 'relative',
+    zIndex: 2,
     '@media (max-width: 960px)': {
       fontSize: '1.2rem !important',
     },
@@ -161,13 +211,16 @@ const useStyles = makeStyles({
     },
   },
   
-  // Right side - AI Tools showcase
+  // Enhanced right panel
   rightPanel: {
     flex: 1,
     position: 'relative',
     padding: '20px',
     display: 'flex',
     flexDirection: 'column',
+    opacity: 0,
+    transform: 'translateX(50px)',
+    animation: '$slideInRight 1s ease-out 0.8s forwards',
   },
   
   toolsHeader: {
@@ -180,16 +233,29 @@ const useStyles = makeStyles({
     fontWeight: '600 !important',
     color: 'white !important',
     marginBottom: '30px !important',
+    position: 'relative',
+    '&::after': {
+      content: '""',
+      position: 'absolute',
+      bottom: '-10px',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      width: '0',
+      height: '2px',
+      background: 'linear-gradient(90deg, #FFC614, #fdb347)',
+      animation: '$expandLine 1s ease-out 1.2s forwards',
+    },
     '@media (max-width: 600px)': {
       fontSize: '1.3rem !important',
     },
   },
   
-  // Card stacks container
+  // Enhanced card stacks container
   cardStacksContainer: {
     display: 'flex',
     justifyContent: 'space-around',
     height: '100%',
+    gap: '40px',
     '@media (max-width: 960px)': {
       flexDirection: 'column',
       gap: '50px',
@@ -197,7 +263,7 @@ const useStyles = makeStyles({
     },
   },
   
-  // Category label
+  // Enhanced category label
   categoryLabel: {
     fontSize: '1.2rem !important',
     color: 'white !important',
@@ -205,47 +271,78 @@ const useStyles = makeStyles({
     textAlign: 'center',
     position: 'relative',
     display: 'inline-block',
+    opacity: 0,
+    transform: 'translateY(20px)',
+    animation: '$fadeInUp 0.8s ease-out 1.4s forwards',
     '&:after': {
       content: '""',
       position: 'absolute',
       bottom: '-8px',
       left: '0',
-      width: '100%',
+      width: '0',
       height: '2px',
-      background: 'linear-gradient(90deg, transparent, rgba(100, 181, 246, 0.8), transparent)',
+      background: 'linear-gradient(90deg, transparent, rgba(255, 198, 20, 0.8), transparent)',
+      animation: '$expandLine 1s ease-out 1.6s forwards',
     },
   },
   
-  // Card stack
+  // Enhanced stack container with perspective
   stackContainer: {
     position: 'relative',
     width: '320px',
     height: '400px',
-    perspective: '1000px',
+    perspective: '1200px',
+    transformStyle: 'preserve-3d',
     '@media (max-width: 600px)': {
       width: '280px',
       height: '350px',
     },
   },
   
-  // Navigation buttons
+  // Enhanced navigation buttons
   navigationButtons: {
     display: 'flex',
     justifyContent: 'center',
     marginTop: '20px',
     gap: '10px',
+    opacity: 0,
+    animation: '$fadeIn 0.8s ease-out 1.8s forwards',
   },
   
   navButton: {
     backgroundColor: 'rgba(255, 255, 255, 0.1) !important',
     color: 'white !important',
     border: '1px solid rgba(255, 255, 255, 0.2) !important',
+    position: 'relative',
+    overflow: 'hidden',
+    transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      width: '0',
+      height: '0',
+      borderRadius: '50%',
+      background: 'rgba(100, 181, 246, 0.3)',
+      transition: 'all 0.3s ease',
+    },
     '&:hover': {
-      backgroundColor: 'rgba(100, 181, 246, 0.2) !important',
+      backgroundColor: 'rgba(255, 198, 20, 0.2) !important',
+      transform: 'translateY(-3px)',
+      boxShadow: '0 10px 25px rgba(0, 0, 0, 0.3)',
+      '&::before': {
+        width: '100%',
+        height: '100%',
+      },
+    },
+    '&:active': {
+      transform: 'translateY(-1px) scale(0.95)',
     },
   },
   
-  // Stack card
+  // Enhanced stack card with advanced animations
   stackCard: {
     position: 'absolute',
     width: '100%',
@@ -255,8 +352,15 @@ const useStyles = makeStyles({
     transition: 'all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
     transformStyle: 'preserve-3d',
     border: '1px solid rgba(255, 255, 255, 0.1)',
+    cursor: 'pointer',
+    willChange: 'transform, opacity',
     '&:hover': {
-      transform: 'rotateY(180deg)',
+      '& $cardFront': {
+        transform: 'rotateY(180deg)',
+      },
+      '& $cardBack': {
+        transform: 'rotateY(0deg)',
+      },
     },
   },
   
@@ -266,7 +370,7 @@ const useStyles = makeStyles({
     height: '100%',
     backfaceVisibility: 'hidden',
     borderRadius: '20px',
-    background: 'linear-gradient(135deg, rgba(66, 165, 245, 0.2) 0%, rgba(21, 101, 192, 0.3) 100%)',
+    background: 'linear-gradient(135deg, rgba(37, 38, 89, 0.9) 0%, rgba(74, 21, 131, 0.95) 100%)',
     backdropFilter: 'blur(20px)',
     display: 'flex',
     flexDirection: 'column',
@@ -274,6 +378,23 @@ const useStyles = makeStyles({
     alignItems: 'center',
     padding: '30px',
     textAlign: 'center',
+    transition: 'transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+    border: '1px solid rgba(147, 112, 219, 0.2)',
+    position: 'relative',
+    overflow: 'hidden',
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      top: '0',
+      left: '-100%',
+      width: '100%',
+      height: '100%',
+      background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent)',
+      transition: 'left 0.6s',
+    },
+    '$stackCard:hover &::before': {
+      left: '100%',
+    },
   },
   
   cardBack: {
@@ -282,7 +403,7 @@ const useStyles = makeStyles({
     height: '100%',
     backfaceVisibility: 'hidden',
     borderRadius: '20px',
-    background: 'linear-gradient(135deg, rgba(66, 165, 245, 0.3) 0%, rgba(21, 101, 192, 0.4) 100%)',
+    background: 'linear-gradient(135deg, rgba(37, 38, 89, 0.95) 0%, rgba(74, 21, 131, 0.95) 100%)',
     backdropFilter: 'blur(20px)',
     display: 'flex',
     flexDirection: 'column',
@@ -291,39 +412,82 @@ const useStyles = makeStyles({
     padding: '30px',
     textAlign: 'center',
     transform: 'rotateY(180deg)',
+    transition: 'transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+    border: '1px solid rgba(147, 112, 219, 0.3)',
+    color: '#000000',  // Add this line to ensure text is white
   },
   
+  // Enhanced tool icon with glow effect
   toolIconWrapper: {
-    width: '40px',
-    height: '40px',
+    width: '50px',
+    height: '50px',
     borderRadius: '50%',
-    background: 'linear-gradient(135deg, rgba(100, 181, 246, 0.8) 0%, rgba(30, 136, 229, 0.8) 100%)',
+    background: 'linear-gradient(135deg, #9370DB 0%, #483D8B 100%)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: '20px',
-    boxShadow: '0 10px 20px rgba(0, 0, 0, 0.2)',
+    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(147, 112, 219, 0.5)',
+    transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+    position: 'relative',
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      inset: '-3px',
+      borderRadius: '50%',
+      background: 'conic-gradient(from 0deg, #9370DB, #483D8B, #9370DB)',
+      opacity: 0,
+      transition: 'opacity 0.4s ease',
+      animation: '$rotate 3s linear infinite',
+    },
+    '&::after': {
+      content: '""',
+      position: 'absolute',
+      inset: '0',
+      borderRadius: '50%',
+      background: 'linear-gradient(135deg, #9370DB 0%, #483D8B 100%)',
+    },
+    '$stackCard:hover &': {
+      transform: 'scale(1.1)',
+      '&::before': {
+        opacity: 1,
+      },
+    },
     '& svg': {
-      fontSize: '40px',
+      fontSize: '30px',
       color: 'white',
+      position: 'relative',
+      zIndex: 2,
+      transition: 'all 0.3s ease',
     },
   },
   
   toolName: {
-    fontSize: '1.5rem !important',
+    fontSize: '1.3rem !important',
     fontWeight: '700 !important',
     color: 'white !important',
     marginBottom: '15px !important',
     textShadow: '0 2px 10px rgba(0, 0, 0, 0.3)',
+    transition: 'all 0.3s ease',
+    '$stackCard:hover &': {
+      color: '#9370DB !important',
+      textShadow: '0 0 15px rgba(147, 112, 219, 0.5)',
+    },
   },
   
   toolCategory: {
-    fontSize: '0.9rem !important',
+    fontSize: '0.85rem !important',
     color: 'rgba(255, 255, 255, 0.9) !important',
-    padding: '5px 12px',
+    padding: '6px 14px',
     background: 'rgba(255, 255, 255, 0.1)',
     borderRadius: '20px',
-    marginBottom: '30px', // Increased margin to compensate for removed description
+    marginBottom: '20px',
+    border: '1px solid rgba(255, 255, 255, 0.2)',
+    transition: 'all 0.3s ease',
+    '$stackCard:hover &': {
+      background: 'rgba(147, 112, 219, 0.2)',
+      borderColor: 'rgba(147, 112, 219, 0.4)',
+    },
   },
   
   toolFeatures: {
@@ -333,72 +497,122 @@ const useStyles = makeStyles({
   
   featureItem: {
     fontSize: '0.8rem !important',
-    color: 'rgba(255, 255, 255, 0.8) !important',
-    margin: '5px 0 !important',
+    color: 'rgba(255, 255, 255, 0.9) !important',  // Increased opacity for better visibility
+    margin: '8px 0 !important',
     display: 'flex',
     alignItems: 'center',
+    transition: 'all 0.3s ease',
     '&:before': {
-      content: '"•"',
-      color: '#64b5f6',
+      content: '"◆"',
+      color: '#9370DB',
       fontWeight: 'bold',
-      marginRight: '8px',
+      marginRight: '10px',
+      transition: 'all 0.3s ease',
+    },
+    '$stackCard:hover &': {
+      color: 'rgba(255, 255, 255, 1) !important',  // Full opacity on hover
+      '&:before': {
+        color: '#b19cd9',  // Lighter purple for better contrast
+        transform: 'scale(1.2)',
+      },
     },
   },
   
-  // Glowing orbs
+  // Enhanced glowing orbs with interaction
   glowOrb: {
     position: 'absolute',
     borderRadius: '50%',
     filter: 'blur(40px)',
     animation: '$orbFloat 8s ease-in-out infinite',
     zIndex: 1,
+    transition: 'all 0.5s ease',
+    '& .orb1': {
+      background: 'radial-gradient(circle, rgba(255, 198, 20, 0.3) 0%, transparent 70%)',
+    },
+    '& .orb2': {
+      background: 'radial-gradient(circle, rgba(46, 204, 113, 0.3) 0%, transparent 70%)',
+    },
+    '& .orb3': {
+      background: 'radial-gradient(circle, rgba(42, 43, 106, 0.3) 0%, transparent 70%)',
+    },
   },
   
-  orb1: {
-    width: '300px',
-    height: '300px',
-    background: 'radial-gradient(circle, rgba(100, 181, 246, 0.3) 0%, transparent 70%)',
-    top: '10%',
-    left: '10%',
-    animationDelay: '0s',
-  },
-  
-  orb2: {
-    width: '200px',
-    height: '200px',
-    background: 'radial-gradient(circle, rgba(255, 71, 87, 0.3) 0%, transparent 70%)',
-    bottom: '20%',
-    right: '15%',
-    animationDelay: '4s',
-  },
-  
-  orb3: {
-    width: '150px',
-    height: '150px',
-    background: 'radial-gradient(circle, rgba(46, 213, 115, 0.3) 0%, transparent 70%)',
-    top: '60%',
-    left: '50%',
-    animationDelay: '2s',
-  },
-  
-  // Animations
+  // Enhanced animations
   '@keyframes gridMove': {
     '0%': { transform: 'translate(0, 0)' },
     '100%': { transform: 'translate(50px, 50px)' },
   },
   
   '@keyframes orbFloat': {
-    '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
-    '50%': { transform: 'translate(30px, -30px) scale(1.1)' },
+    '0%, 100%': { 
+      transform: 'translate(0, 0) scale(1)',
+      opacity: 0.3,
+    },
+    '50%': { 
+      transform: 'translate(30px, -30px) scale(1.1)',
+      opacity: 0.6,
+    },
+  },
+  
+  '@keyframes fadeInUp': {
+    'to': {
+      opacity: 1,
+      transform: 'translateY(0)',
+    },
+  },
+  
+  '@keyframes fadeIn': {
+    'to': {
+      opacity: 1,
+    },
+  },
+  
+  '@keyframes slideInLeft': {
+    'to': {
+      opacity: 1,
+      transform: 'translateX(0)',
+    },
+  },
+  
+  '@keyframes slideInRight': {
+    'to': {
+      opacity: 1,
+      transform: 'translateX(0)',
+    },
+  },
+  
+  '@keyframes expandLine': {
+    'to': {
+      width: '60px',
+    },
+  },
+  
+  '@keyframes rotate': {
+    'from': { transform: 'rotate(0deg)' },
+    'to': { transform: 'rotate(360deg)' },
+  },
+  
+  // Touch gesture animations for mobile
+  '@media (max-width: 768px)': {
+    stackCard: {
+      '&:active': {
+        transform: 'scale(0.95)',
+        transition: 'transform 0.1s ease',
+      },
+    },
   },
 });
 
-const AIIntegrationCardSliders = () => {
+const AIIntegrationSection = () => {
   const classes = useStyles();
   
   // State for current card indices
   const [fullstackIndex, setFullstackIndex] = useState(0);
   const [dataScienceIndex, setDataScienceIndex] = useState(0);
+  
+  // Refs for intersection observer
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   // Full Stack development tools
   const fullstackTools = [
@@ -406,7 +620,6 @@ const AIIntegrationCardSliders = () => {
       name: 'GitHub Copilot',
       category: 'Code Generation',
       icon: <CodeIcon />,
-      description: 'AI pair programmer that helps you write code faster with smart completions and suggestions.',
       features: [
         'Context-aware code suggestions',
         'Supports multiple languages',
@@ -418,7 +631,6 @@ const AIIntegrationCardSliders = () => {
       name: 'Vercel v0',
       category: 'UI Generation',
       icon: <LaptopIcon />,
-      description: 'AI-powered interface that turns natural language into production-ready frontend code.',
       features: [
         'Text to React components',
         'Responsive design generation',
@@ -430,7 +642,6 @@ const AIIntegrationCardSliders = () => {
       name: 'AWS CodeWhisperer',
       category: 'Code Suggestions',
       icon: <IntegrationInstructionsIcon />,
-      description: "Amazon's AI coding companion that generates code suggestions based on your comments and code.",
       features: [
         'Security scanning',
         'Reference tracking',
@@ -442,7 +653,6 @@ const AIIntegrationCardSliders = () => {
       name: 'Tabnine',
       category: 'Code Completion',
       icon: <AutoFixHighIcon />,
-      description: 'AI assistant that predicts and suggests code completions based on context and patterns.',
       features: [
         'Whole-line completions',
         'Local & cloud models',
@@ -454,7 +664,6 @@ const AIIntegrationCardSliders = () => {
       name: 'Postman API GPT',
       category: 'API Development',
       icon: <ApiIcon />,
-      description: 'AI-powered assistant for API development that helps with testing, documentation, and debugging.',
       features: [
         'Test case generation',
         'Documentation writing',
@@ -466,7 +675,6 @@ const AIIntegrationCardSliders = () => {
       name: 'GPT Engineer',
       category: 'App Generation',
       icon: <RocketLaunchIcon />,
-      description: 'Open-source project that allows you to specify what you want to build, and an AI agent builds it for you.',
       features: [
         'Full app generation',
         'Natural language instructions',
@@ -482,7 +690,6 @@ const AIIntegrationCardSliders = () => {
       name: 'Claude',
       category: 'AI Assistant',
       icon: <SmartToyIcon />,
-      description: 'Advanced AI assistant that can help with data analysis, research, and code generation.',
       features: [
         'Data analysis assistance',
         'Research summarization',
@@ -494,7 +701,6 @@ const AIIntegrationCardSliders = () => {
       name: 'Hugging Face',
       category: 'ML Models',
       icon: <PsychologyIcon />,
-      description: 'Platform that provides access to thousands of pre-trained models for various ML tasks.',
       features: [
         'Model hosting & sharing',
         'Fine-tuning capabilities',
@@ -506,7 +712,6 @@ const AIIntegrationCardSliders = () => {
       name: 'LangChain',
       category: 'LLM App Development',
       icon: <BuildIcon />,
-      description: 'Framework for developing applications powered by language models through composability.',
       features: [
         'Document loading & processing',
         'Retrieval augmented generation',
@@ -518,7 +723,6 @@ const AIIntegrationCardSliders = () => {
       name: 'Streamlit',
       category: 'Data Visualization',
       icon: <ShowChartIcon />,
-      description: 'Framework that turns data scripts into shareable web apps in minutes, no front-end experience required.',
       features: [
         'Interactive visualizations',
         'Quick prototyping',
@@ -530,7 +734,6 @@ const AIIntegrationCardSliders = () => {
       name: 'MLflow',
       category: 'MLOps',
       icon: <StorageIcon />,
-      description: 'Open-source platform for managing the end-to-end machine learning lifecycle.',
       features: [
         'Experiment tracking',
         'Model registry',
@@ -542,7 +745,6 @@ const AIIntegrationCardSliders = () => {
       name: 'Groq',
       category: 'Fast AI Inference',
       icon: <FlashOnIcon />,
-      description: 'Ultra-fast language processing with unprecedented inference speeds for LLM applications.',
       features: [
         'Low-latency inference',
         'High throughput APIs',
@@ -552,7 +754,39 @@ const AIIntegrationCardSliders = () => {
     }
   ];
 
-  // Navigation handlers
+  // Intersection observer for scroll animations
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  // Auto-rotation effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFullstackIndex((prev) => (prev + 1) % fullstackTools.length);
+      setTimeout(() => {
+        setDataScienceIndex((prev) => (prev + 1) % dataScienceTools.length);
+      }, 1000);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [fullstackTools.length, dataScienceTools.length]);
+
+  // Navigation handlers with haptic feedback simulation
   const handleFullstackPrev = () => {
     setFullstackIndex((prev) => (prev === 0 ? fullstackTools.length - 1 : prev - 1));
   };
@@ -569,41 +803,71 @@ const AIIntegrationCardSliders = () => {
     setDataScienceIndex((prev) => (prev === dataScienceTools.length - 1 ? 0 : prev + 1));
   };
 
-  // Calculate stack positions and styles
+  // Enhanced card style calculation with smoother transitions
   const getCardStyle = (index, activeIndex, totalCards) => {
-    // Calculate relative position in stack
     const position = (index - activeIndex + totalCards) % totalCards;
     
-    // Define z-index and transform based on position
     let zIndex = totalCards - position;
-    let translateY = position * 15;
-    let scale = 1 - position * 0.07;
-    let opacity = 1 - position * 0.2;
+    let translateY = position * 12;
+    let translateZ = -position * 20;
+    let scale = 1 - position * 0.05;
+    let opacity = 1 - position * 0.15;
+    let rotateX = position * 2;
     
-    // Only show top 3 cards
     if (position > 2) {
       return { display: 'none' };
     }
     
     return {
       zIndex,
-      transform: `translateY(${translateY}px) scale(${scale})`,
-      opacity: opacity > 0 ? opacity : 0
+      transform: `translateY(${translateY}px) translateZ(${translateZ}px) scale(${scale}) rotateX(${rotateX}deg)`,
+      opacity: opacity > 0 ? opacity : 0,
+      transition: 'all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
     };
   };
 
+  // Handle card click with ripple effect
+  const handleCardClick = (e, toolName) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    // Create ripple effect
+    const ripple = document.createElement('div');
+    ripple.style.position = 'absolute';
+    ripple.style.borderRadius = '50%';
+    ripple.style.background = 'rgba(100, 181, 246, 0.6)';
+    ripple.style.transform = 'scale(0)';
+    ripple.style.animation = 'ripple 0.6s ease-out';
+    ripple.style.left = `${x}px`;
+    ripple.style.top = `${y}px`;
+    ripple.style.width = '20px';
+    ripple.style.height = '20px';
+    ripple.style.marginLeft = '-10px';
+    ripple.style.marginTop = '-10px';
+    ripple.style.pointerEvents = 'none';
+    
+    e.currentTarget.appendChild(ripple);
+    
+    setTimeout(() => {
+      ripple.remove();
+    }, 600);
+
+    console.log(`Clicked on ${toolName}`);
+  };
+
   return (
-    <Box className={classes.section}>
-      {/* Animated background grid */}
+    <Box className={classes.section} ref={sectionRef}>
+      {/* Enhanced animated background grid */}
       <Box className={classes.backgroundGrid} />
       
-      {/* Glowing orbs */}
+      {/* Enhanced glowing orbs */}
       <Box className={`${classes.glowOrb} ${classes.orb1}`} />
       <Box className={`${classes.glowOrb} ${classes.orb2}`} />
       <Box className={`${classes.glowOrb} ${classes.orb3}`} />
       
       <Container maxWidth="xl" className={classes.container}>
-        {/* Header */}
+        {/* Enhanced header */}
         <Box className={classes.headerSection}>
           <Typography variant="h2" className={classes.mainTitle}>
             AI is Already in Our Classrooms
@@ -613,9 +877,9 @@ const AIIntegrationCardSliders = () => {
           </Typography>
         </Box>
 
-        {/* Main content area */}
+        {/* Enhanced main content area */}
         <Box className={classes.contentArea}>
-          {/* Left panel - Question & Answer */}
+          {/* Enhanced left panel */}
           <Box className={classes.leftPanel}>
             <Card className={classes.questionCard}>
               <Typography className={classes.questionText}>
@@ -627,7 +891,7 @@ const AIIntegrationCardSliders = () => {
             </Card>
           </Box>
 
-          {/* Right panel - Card stacks */}
+          {/* Enhanced right panel */}
           <Box className={classes.rightPanel}>
             <Box className={classes.toolsHeader}>
               <Typography className={classes.toolsTitle}>
@@ -636,7 +900,7 @@ const AIIntegrationCardSliders = () => {
             </Box>
 
             <Box className={classes.cardStacksContainer}>
-              {/* Fullstack Development Tools Stack */}
+              {/* Enhanced Fullstack Development Tools Stack */}
               <Box>
                 <Typography className={classes.categoryLabel}>
                   Full Stack Development
@@ -648,6 +912,7 @@ const AIIntegrationCardSliders = () => {
                       key={`fullstack-${index}`} 
                       className={classes.stackCard}
                       style={getCardStyle(index, fullstackIndex, fullstackTools.length)}
+                      onClick={(e) => handleCardClick(e, tool.name)}
                     >
                       <Box className={classes.cardFront}>
                         <Box className={classes.toolIconWrapper}>
@@ -659,7 +924,7 @@ const AIIntegrationCardSliders = () => {
                         <Typography className={classes.toolCategory}>
                           {tool.category}
                         </Typography>
-                        <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.7)' }}>
+                        <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.75rem' }}>
                           (Hover to see features)
                         </Typography>
                       </Box>
@@ -696,7 +961,7 @@ const AIIntegrationCardSliders = () => {
                 </Box>
               </Box>
               
-              {/* Data Science Tools Stack */}
+              {/* Enhanced Data Science Tools Stack */}
               <Box>
                 <Typography className={classes.categoryLabel}>
                   Data Science
@@ -708,6 +973,7 @@ const AIIntegrationCardSliders = () => {
                       key={`datascience-${index}`} 
                       className={classes.stackCard}
                       style={getCardStyle(index, dataScienceIndex, dataScienceTools.length)}
+                      onClick={(e) => handleCardClick(e, tool.name)}
                     >
                       <Box className={classes.cardFront}>
                         <Box className={classes.toolIconWrapper}>
@@ -719,7 +985,7 @@ const AIIntegrationCardSliders = () => {
                         <Typography className={classes.toolCategory}>
                           {tool.category}
                         </Typography>
-                        <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.7)' }}>
+                        <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.75rem' }}>
                           (Hover to see features)
                         </Typography>
                       </Box>
@@ -759,8 +1025,17 @@ const AIIntegrationCardSliders = () => {
           </Box>
         </Box>
       </Container>
+      
+      <style jsx>{`
+        @keyframes ripple {
+          to {
+            transform: scale(4);
+            opacity: 0;
+          }
+        }
+      `}</style>
     </Box>
   );
 };
 
-export default AIIntegrationCardSliders;
+export default AIIntegrationSection;

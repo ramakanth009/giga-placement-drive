@@ -40,8 +40,8 @@ const Homepage = () => {
         <PodcastShowcaseSection />
         <HiringPartners />
         <StartupFundProcess />
-        <AIIntegrationSection />
         <TechFutureSection />
+        <AIIntegrationSection />
         <MentorShowcase />
         <PlacementPortalSection />
         <PreScreeningBanner />
