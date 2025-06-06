@@ -365,7 +365,7 @@ const useStyles = makeStyles({
     width: '100%',
     height: '100%',
     borderRadius: '20px',
-    background: 'linear-gradient(135deg, rgba(37, 38, 89, 0.9) 0%, rgba(74, 21, 131, 0.95) 100%)',
+    background: 'linear-gradient(135deg, rgba(16, 17, 56, 0.9) 0%, rgba(30, 28, 68, 0.95) 100%)',
     backdropFilter: 'blur(20px)',
     display: 'flex',
     flexDirection: 'column',
@@ -373,7 +373,7 @@ const useStyles = makeStyles({
     alignItems: 'center',
     padding: '20px',
     textAlign: 'center',
-    border: '1px solid rgba(147, 112, 219, 0.2)',
+    border: '1px solid rgba(255, 255, 255, 0.1)',
     position: 'relative',
     overflow: 'hidden',
     '&::before': {
