@@ -12,11 +12,17 @@ const useStyles = makeStylesWithTheme((theme) => ({
     position: 'relative',
     overflow: 'hidden',
     textAlign: 'center',
+    '@media (max-width: 1200px)': {
+      padding: '70px 0',
+    },
     '@media (max-width: 960px)': {
       padding: '60px 0',
     },
     '@media (max-width: 600px)': {
       padding: '40px 0',
+    },
+    '@media (max-width: 375px)': {
+      padding: '30px 0',
     },
   },
   finalTitle: {
@@ -26,6 +32,9 @@ const useStyles = makeStylesWithTheme((theme) => ({
     marginBottom: '30px !important',
     position: 'relative',
     zIndex: 2,
+    '@media (max-width: 1200px)': {
+      fontSize: '2.8rem !important',
+    },
     '@media (max-width: 960px)': {
       fontSize: '2.5rem !important',
     },
@@ -34,6 +43,9 @@ const useStyles = makeStylesWithTheme((theme) => ({
     },
     '@media (max-width: 480px)': {
       fontSize: '1.8rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1.6rem !important',
     },
   },
   finalDescription: {
@@ -44,6 +56,10 @@ const useStyles = makeStylesWithTheme((theme) => ({
     margin: '0 auto 50px !important',
     position: 'relative',
     zIndex: 2,
+    '@media (max-width: 1200px)': {
+      fontSize: '1.15rem !important',
+      margin: '0 auto 45px !important',
+    },
     '@media (max-width: 960px)': {
       fontSize: '1.1rem !important',
       margin: '0 auto 40px !important',
@@ -51,6 +67,10 @@ const useStyles = makeStylesWithTheme((theme) => ({
     '@media (max-width: 600px)': {
       fontSize: '1rem !important',
       margin: '0 auto 30px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.9rem !important',
+      margin: '0 auto 25px !important',
     },
   },
   finalCTA: {
@@ -70,9 +90,21 @@ const useStyles = makeStylesWithTheme((theme) => ({
       transform: 'translateY(-5px) scale(1.05)',
       boxShadow: '0 20px 50px rgba(255, 198, 20, 0.6) !important',
     },
-    '@media (max-width: 600px)': {
+    '@media (max-width: 1200px)': {
+      padding: '18px 45px !important',
+      fontSize: '1.2rem !important',
+    },
+    '@media (max-width: 960px)': {
       padding: '15px 35px !important',
       fontSize: '1.1rem !important',
+    },
+    '@media (max-width: 600px)': {
+      padding: '12px 30px !important',
+      fontSize: '1rem !important',
+    },
+    '@media (max-width: 375px)': {
+      padding: '10px 20px !important',
+      fontSize: '0.9rem !important',
     },
     '@media (max-width: 480px)': {
       padding: '12px 25px !important',

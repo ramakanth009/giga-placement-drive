@@ -13,11 +13,20 @@ const useStyles = makeStyles({
     background: 'linear-gradient(135deg, #0f0f3a 0%, #1a1a4a 100%)',
     position: 'relative',
     overflow: 'hidden',
+    '@media (max-width: 1200px)': {
+      padding: '60px 28px',
+    },
     '@media (max-width: 960px)': {
       padding: '80px 24px',
-    }, 
+    },
     '@media (max-width: 600px)': {
       padding: '60px 16px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '50px 12px',
+    },
+    '@media (max-width: 375px)': {
+      padding: '40px 8px',
     },
   },
   container: {
@@ -32,22 +41,54 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    '@media (max-width: 1200px)': {
+      marginBottom: '40px',
+    },
+    '@media (max-width: 960px)': {
+      marginBottom: '50px',
+    },
     '@media (max-width: 600px)': {
       marginBottom: '50px',
+    },
+    '@media (max-width: 480px)': {
+      marginBottom: '40px',
+    },
+    '@media (max-width: 375px)': {
+      marginBottom: '30px',
     },
   },
   title: {
     fontSize: '2.5rem !important',
     fontWeight: 'bold !important',
     color: '#ffffff',
-    marginBottom: '20px !important',
+    marginBottom: '10px !important',
     letterSpacing: '-0.02em',
     textAlign: 'center',
+    borderRadius: '18px',
+    display: 'inline-block',
+    position: 'relative',
+    zIndex: 2,
+    '& span': {
+      color: '#FFC614 !important',
+    },
+    '@media (max-width: 1200px)': {
+      fontSize: '2.3rem !important',
+    },
     '@media (max-width: 960px)': {
       fontSize: '2.8rem !important',
+      marginBottom: '30px !important',
+      padding: '14px 20px',
     },
     '@media (max-width: 600px)': {
       fontSize: '2.2rem !important',
+      padding: '10px 8px',
+      borderRadius: '12px',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '2rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1.8rem !important',
     },
   },
   subtitle: {
@@ -57,9 +98,21 @@ const useStyles = makeStyles({
     maxWidth: '800px',
     lineHeight: '1.6 !important',
     margin: '0 !important',
-    '@media (max-width: 600px)': {
+    '@media (max-width: 1200px)': {
+      fontSize: '1.1rem !important',
+    },
+    '@media (max-width: 960px)': {
       fontSize: '1rem !important',
       maxWidth: '90%',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.95rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.9rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.85rem !important',
     },
   },
   templatesGrid: {
@@ -99,9 +152,25 @@ const useStyles = makeStyles({
       transform: 'translateY(-8px)',
       boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)',
     },
+    '@media (max-width: 1200px)': {
+      flex: '0 0 260px',
+      height: '320px',
+    },
+    '@media (max-width: 960px)': {
+      flex: '0 0 240px',
+      height: '300px',
+    },
     '@media (max-width: 600px)': {
       flex: '0 0 220px',
       height: '280px',
+    },
+    '@media (max-width: 480px)': {
+      flex: '0 0 200px',
+      height: '260px',
+    },
+    '@media (max-width: 375px)': {
+      flex: '0 0 180px',
+      height: '240px',
     },
   },
   templateImage: {
@@ -171,7 +240,7 @@ const TemplatesGallerySection = () => {
       <Box className={classes.container}>
         <Box className={classes.titleSection}>
           <Typography variant="h2" className={classes.title}>
-            Explore Our Collection of Professional Templates
+            Explore Our Collection of <span>Professional Templates</span>
           </Typography>
           <Typography className={classes.subtitle}>
             A wide range of professionally designed, ATS-compatible templates tailored for different roles, industries, and experience levels.

@@ -79,14 +79,24 @@ const useStyles = makeStylesWithTheme((theme) => ({
     '& span': {
       color: '#FFC614 !important',
     },
+    '@media (max-width: 1200px)': {
+      fontSize: '2.3rem !important',
+    },
     '@media (max-width: 960px)': {
       fontSize: '2rem !important',
       marginBottom: '30px !important',
       padding: '14px 20px',
     },
     '@media (max-width: 600px)': {
+      fontSize: '1.8rem !important',
       padding: '10px 8px',
       borderRadius: '12px',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '1.6rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1.4rem !important',
     },
   },
   tableContainer: {
@@ -112,9 +122,21 @@ const useStyles = makeStylesWithTheme((theme) => ({
     padding: '1.25rem 1rem',
     textAlign: 'left',
     background: 'transparent',
-    '@media (max-width: 600px)': {
+    '@media (max-width: 1200px)': {
+      fontSize: '1rem',
+    },
+    '@media (max-width: 960px)': {
       fontSize: '0.95rem',
       padding: '1rem 0.5rem',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.9rem',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.85rem',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.8rem',
     },
   },
   tableRow: {
@@ -133,9 +155,21 @@ const useStyles = makeStylesWithTheme((theme) => ({
     padding: '1.1rem 1rem',
     textAlign: 'left',
     verticalAlign: 'middle',
-    '@media (max-width: 600px)': {
+    '@media (max-width: 1200px)': {
+      fontSize: '0.95rem',
+    },
+    '@media (max-width: 960px)': {
       fontSize: '0.85rem',
       padding: '1rem 0.5rem',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.8rem',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.75rem',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.7rem',
     },
   },
   featureCell: {
@@ -182,8 +216,20 @@ const useStyles = makeStylesWithTheme((theme) => ({
     fontSize: '1.3rem',
     fontWeight: 600,
     color: '#ffc614',
-    '@media (max-width: 600px)': {
+    '@media (max-width: 1200px)': {
+      fontSize: '1.2rem',
+    },
+    '@media (max-width: 960px)': {
       fontSize: '1.1rem',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '1rem',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.95rem',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.9rem',
     },
   },
   backgroundDecor: {

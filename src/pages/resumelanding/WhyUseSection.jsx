@@ -44,14 +44,30 @@ const useStyles = makeStylesWithTheme((theme) => ({
     '& span': {
       color: '#FFC614 !important',
     },
+    '@media (max-width: 1200px)': {
+      fontSize: '2.2rem !important',
+      marginBottom: '35px !important',
+      padding: '16px 30px',
+    },
     '@media (max-width: 960px)': {
       fontSize: '2rem !important',
       marginBottom: '30px !important',
       padding: '14px 20px',
     },
     '@media (max-width: 600px)': {
-      padding: '10px 8px',
-      borderRadius: '12px',
+      fontSize: '1.8rem !important',
+      marginBottom: '25px !important',
+      padding: '12px 16px',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '1.6rem !important',
+      marginBottom: '20px !important',
+      padding: '10px 12px',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1.4rem !important',
+      marginBottom: '15px !important',
+      padding: '8px 10px',
     },
   },
   cardsContainer: {
@@ -61,11 +77,24 @@ const useStyles = makeStylesWithTheme((theme) => ({
     maxHeight: '500px',
     '@media (max-width: 1200px)': {
       gridTemplateColumns: 'repeat(2, 1fr)',
+      gap: '20px',
       maxHeight: 'none',
     },
-    '@media (max-width: 768px)': {
+    '@media (max-width: 960px)': {
       gridTemplateColumns: '1fr',
-      gap: '20px',
+      gap: '18px',
+    },
+    '@media (max-width: 600px)': {
+      gridTemplateColumns: '1fr',
+      gap: '15px',
+    },
+    '@media (max-width: 480px)': {
+      gridTemplateColumns: '1fr',
+      gap: '12px',
+    },
+    '@media (max-width: 375px)': {
+      gridTemplateColumns: '1fr',
+      gap: '10px',
     },
   },
   featureCard: {
@@ -108,6 +137,21 @@ const useStyles = makeStylesWithTheme((theme) => ({
       height: 'auto !important',
       zIndex: 10,
       boxShadow: '0 24px 60px rgba(42, 43, 106, 0.22) !important',
+    },
+    '@media (max-width: 1200px)': {
+      height: '450px !important',
+    },
+    '@media (max-width: 960px)': {
+      height: '400px !important',
+    },
+    '@media (max-width: 600px)': {
+      height: '350px !important',
+    },
+    '@media (max-width: 480px)': {
+      height: '300px !important',
+    },
+    '@media (max-width: 375px)': {
+      height: '280px !important',
     },
   },
   cardImageContainer: {
@@ -228,6 +272,21 @@ const useStyles = makeStylesWithTheme((theme) => ({
       textOverflow: 'unset',
       whiteSpace: 'normal',
     },
+    '@media (max-width: 1200px)': {
+      fontSize: '0.85rem !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '0.8rem !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.75rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.7rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.65rem !important',
+    },
   },
   expandButton: {
     color: '#2A2B6A',
@@ -265,6 +324,26 @@ const useStyles = makeStylesWithTheme((theme) => ({
       background: 'linear-gradient(45deg, #2A2B6A, #FFC614) !important',
       color: '#fff !important',
       transform: 'translateY(-1px) !important',
+    },
+    '@media (max-width: 1200px)': {
+      fontSize: '0.7rem !important',
+      height: '22px !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '0.65rem !important',
+      height: '20px !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.6rem !important',
+      height: '18px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.55rem !important',
+      height: '16px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.5rem !important',
+      height: '14px !important',
     },
   },
   floatingElement: {

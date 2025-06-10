@@ -14,11 +14,20 @@ const useStyles = makeStyles({
   section: {
     padding: '40px 0',
     background: 'linear-gradient(135deg, #101138 0%, #2A2B6A 100%)',
+    '@media (max-width: 1200px)': {
+      padding: '70px 0',
+    },
     '@media (max-width: 960px)': {
       padding: '80px 0',
     },
     '@media (max-width: 600px)': {
       padding: '60px 0',
+    },
+    '@media (max-width: 480px)': {
+      padding: '50px 0',
+    },
+    '@media (max-width: 375px)': {
+      padding: '40px 0',
     },
   },
   container: {
@@ -31,8 +40,20 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    '@media (max-width: 1200px)': {
+      marginBottom: '45px',
+    },
+    '@media (max-width: 960px)': {
+      marginBottom: '50px',
+    },
     '@media (max-width: 600px)': {
       marginBottom: '50px',
+    },
+    '@media (max-width: 480px)': {
+      marginBottom: '40px',
+    },
+    '@media (max-width: 375px)': {
+      marginBottom: '30px',
     },
   },
   mainTitle: {
@@ -42,11 +63,20 @@ const useStyles = makeStyles({
     marginBottom: '20px !important',
     letterSpacing: '-0.02em',
     textAlign: 'center',
+    '@media (max-width: 1200px)': {
+      fontSize: '3rem !important',
+    },
     '@media (max-width: 960px)': {
       fontSize: '2.8rem !important',
     },
     '@media (max-width: 600px)': {
       fontSize: '2.2rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '2rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1.8rem !important',
     },
   },
   brandHighlight: {
@@ -60,9 +90,21 @@ const useStyles = makeStyles({
     maxWidth: '600px',
     lineHeight: '1.6 !important',
     margin: '0 !important',
-    '@media (max-width: 600px)': {
+    '@media (max-width: 1200px)': {
+      fontSize: '1.1rem !important',
+    },
+    '@media (max-width: 960px)': {
       fontSize: '1rem !important',
       maxWidth: '90%',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.95rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.9rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.85rem !important',
     },
   },
   highlightsGrid: {
@@ -101,9 +143,21 @@ const useStyles = makeStyles({
     overflow: 'hidden',
     boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.10)',
     backdropFilter: 'blur(8px)',
-    '@media (max-width: 600px)': {
+    '@media (max-width: 1200px)': {
+      flex: '0 0 280px',
+    },
+    '@media (max-width: 960px)': {
       padding: '30px 25px',
       flex: '0 0 250px',
+    },
+    '@media (max-width: 600px)': {
+      flex: '0 0 220px',
+    },
+    '@media (max-width: 480px)': {
+      flex: '0 0 200px',
+    },
+    '@media (max-width: 375px)': {
+      flex: '0 0 180px',
     },
   },
   iconContainer: {
@@ -123,11 +177,39 @@ const useStyles = makeStyles({
       fontSize: '32px',
       color: '#ffc614',
     },
-    '@media (max-width: 600px)': {
+    '@media (max-width: 1200px)': {
+      width: '65px',
+      height: '65px',
+      '& svg': {
+        fontSize: '30px',
+      },
+    },
+    '@media (max-width: 960px)': {
       width: '60px',
       height: '60px',
       '& svg': {
         fontSize: '28px',
+      },
+    },
+    '@media (max-width: 600px)': {
+      width: '55px',
+      height: '55px',
+      '& svg': {
+        fontSize: '26px',
+      },
+    },
+    '@media (max-width: 480px)': {
+      width: '50px',
+      height: '50px',
+      '& svg': {
+        fontSize: '24px',
+      },
+    },
+    '@media (max-width: 375px)': {
+      width: '45px',
+      height: '45px',
+      '& svg': {
+        fontSize: '22px',
       },
     },
   },

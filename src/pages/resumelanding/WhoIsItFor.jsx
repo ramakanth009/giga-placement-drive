@@ -25,11 +25,20 @@ const useStyles = makeStylesWithTheme((theme) => ({
       opacity: 1,
     },
     zIndex: 1,
+    '@media (max-width: 1200px)': {
+      padding: '5rem 1.5rem',
+    },
     '@media (max-width: 960px)': {
       padding: '4rem 1.5rem',
     },
     '@media (max-width: 600px)': {
       padding: '3rem 0.5rem',
+    },
+    '@media (max-width: 480px)': {
+      padding: '2.5rem 0.3rem',
+    },
+    '@media (max-width: 375px)': {
+      padding: '2rem 0.2rem',
     },
   },
   sectionTitle: {
@@ -47,14 +56,24 @@ const useStyles = makeStylesWithTheme((theme) => ({
     '& span': {
       color: '#FFC614 !important',
     },
+    '@media (max-width: 1200px)': {
+      fontSize: '2.3rem !important',
+    },
     '@media (max-width: 960px)': {
       fontSize: '2rem !important',
       marginBottom: '30px !important',
       padding: '14px 20px',
     },
     '@media (max-width: 600px)': {
+      fontSize: '1.8rem !important',
       padding: '10px 8px',
       borderRadius: '12px',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '1.6rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1.4rem !important',
     },
   },
   wheelContainer: {
@@ -84,7 +103,10 @@ const useStyles = makeStylesWithTheme((theme) => ({
       zIndex: 1,
       transform: 'translateY(-50%)',
     },
-    '@media (max-width: 900px)': {
+    '@media (max-width: 1200px)': {
+      gap: '1.8rem',
+    },
+    '@media (max-width: 960px)': {
       gap: '1.5rem',
       '&::before': {
         left: '5%',
@@ -103,6 +125,12 @@ const useStyles = makeStylesWithTheme((theme) => ({
         height: 'auto',
         transform: 'translateX(-50%)',
       },
+    },
+    '@media (max-width: 480px)': {
+      gap: '0.8rem',
+    },
+    '@media (max-width: 375px)': {
+      gap: '0.6rem',
     },
   },
   wheelItem: {
@@ -125,7 +153,12 @@ const useStyles = makeStylesWithTheme((theme) => ({
       boxShadow: '0 8px 32px 0 #ffc61455, 0 0 0 4px #fff',
       borderColor: '#2A2B6A',
     },
-    '@media (max-width: 900px)': {
+    '@media (max-width: 1200px)': {
+      width: 150,
+      height: 150,
+      padding: '14px',
+    },
+    '@media (max-width: 960px)': {
       width: 130,
       height: 130,
       padding: '12px',
@@ -134,6 +167,16 @@ const useStyles = makeStylesWithTheme((theme) => ({
       width: 90,
       height: 90,
       padding: '8px',
+    },
+    '@media (max-width: 480px)': {
+      width: 80,
+      height: 80,
+      padding: '6px',
+    },
+    '@media (max-width: 375px)': {
+      width: 70,
+      height: 70,
+      padding: '4px',
     },
   },
   wheelText: {
@@ -145,11 +188,20 @@ const useStyles = makeStylesWithTheme((theme) => ({
     zIndex: 3,
     wordBreak: 'break-word',
     maxWidth: '100%',
-    '@media (max-width: 900px)': {
+    '@media (max-width: 1200px)': {
+      fontSize: '0.9rem',
+    },
+    '@media (max-width: 960px)': {
       fontSize: '0.85rem',
     },
     '@media (max-width: 600px)': {
       fontSize: '0.7rem',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.65rem',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.6rem',
     },
   },
   wheelCenter: {
@@ -167,7 +219,11 @@ const useStyles = makeStylesWithTheme((theme) => ({
     transform: 'none',
     left: 'auto',
     top: 'auto',
-    '@media (max-width: 900px)': {
+    '@media (max-width: 1200px)': {
+      width: 140,
+      height: 140,
+    },
+    '@media (max-width: 960px)': {
       width: 130,
       height: 130,
     },
@@ -175,17 +231,34 @@ const useStyles = makeStylesWithTheme((theme) => ({
       width: 90,
       height: 90,
     },
+    '@media (max-width: 480px)': {
+      width: 80,
+      height: 80,
+    },
+    '@media (max-width: 375px)': {
+      width: 70,
+      height: 70,
+    },
   },
   wheelCenterText: {
     color: '#2A2B6A',
     fontWeight: 700,
     fontSize: '1.2rem',
     textAlign: 'center',
-    '@media (max-width: 900px)': {
+    '@media (max-width: 1200px)': {
+      fontSize: '1rem',
+    },
+    '@media (max-width: 960px)': {
       fontSize: '0.9rem',
     },
     '@media (max-width: 600px)': {
       fontSize: '0.7rem',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.65rem',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.6rem',
     },
   },
 }));
