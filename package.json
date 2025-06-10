@@ -17,7 +17,7 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "@testing-library/user-event": "^13.5.0",
-    "animejs": "^4.0.1",
+    "animejs": "^4.0.2",
     "chart.js": "^4.4.8",
     "date-fns": "^4.1.0",
     "lucide-react": "^0.511.0",
@@ -28,7 +28,7 @@
     "react-scripts": "5.0.1",
     "react-slick": "^0.30.3",
     "slick-carousel": "^1.8.1",
-    "swiper": "^11.2.6",
+    "swiper": "^11.2.8",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
