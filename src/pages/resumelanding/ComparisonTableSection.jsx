@@ -5,7 +5,7 @@ import makeStylesWithTheme from '../../styles/makeStylesAdapter';
 
 const useStyles = makeStylesWithTheme((theme) => ({
   root: {
-    padding: '2rem 2rem',
+    padding: '3rem 1.5rem',
     background: '#fff',
     position: 'relative',
     overflow: 'hidden',
@@ -25,250 +25,463 @@ const useStyles = makeStylesWithTheme((theme) => ({
     },
     zIndex: 1,
     '@media (max-width: 1200px)': {
-      padding: '5rem 1.5rem',
+      padding: '2.5rem 1rem',
     },
     '@media (max-width: 960px)': {
-      padding: '4rem 1rem',
+      padding: '2rem 0.8rem',
     },
     '@media (max-width: 600px)': {
-      padding: '2.5rem 0.5rem',
+      padding: '1.5rem 0.5rem',
     },
     '@media (max-width: 480px)': {
-      padding: '1.5rem 0.2rem',
+      padding: '1.2rem 0.3rem',
     },
     '@media (max-width: 375px)': {
-      padding: '1rem 0.1rem',
+      padding: '1rem 0.2rem',
     },
   },
   container: {
-    maxWidth: '1400px',
     width: '100%',
+    maxWidth: '1400px',
     margin: '0 auto',
     position: 'relative',
     zIndex: 2,
     '@media (max-width: 1200px)': {
-      maxWidth: '1000px',
+      maxWidth: '100%',
     },
     '@media (max-width: 960px)': {
-      maxWidth: '100%',
-      padding: '0 0.5rem',
+      padding: '0 0.3rem',
     },
     '@media (max-width: 600px)': {
-      padding: '0',
+      padding: '0 0.2rem',
     },
     '@media (max-width: 480px)': {
-      padding: '0',
+      padding: '0 0.1rem',
     },
     '@media (max-width: 375px)': {
       padding: '0',
     },
   },
+  titleWrapper: {
+    display: 'block',
+    textAlign: 'center',
+    width: '100%',
+    marginBottom: '2rem',
+    '@media (max-width: 1200px)': {
+      marginBottom: '1.5rem',
+    },
+    '@media (max-width: 960px)': {
+      marginBottom: '1.2rem',
+    },
+    '@media (max-width: 600px)': {
+      marginBottom: '1rem',
+    },
+    '@media (max-width: 480px)': {
+      marginBottom: '0.8rem',
+    },
+    '@media (max-width: 375px)': {
+      marginBottom: '0.6rem',
+    },
+  },
   title: {
-    // Match WhyUseSection.jsx sectionTitle styles
-    fontSize: '2.5rem !important',
+    fontSize: '2.4rem !important',
     fontWeight: '800 !important',
     color: '#2A2B6A !important',
     textAlign: 'center',
-    marginBottom: '10px !important',
+    marginBottom: '0 !important',
     background: '#fff',
     borderRadius: '18px',
     display: 'inline-block',
-    padding: '18px 36px',
+    padding: '18px 35px',
     position: 'relative',
     zIndex: 2,
+    boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+    border: '1px solid #f0f0f0',
     '& span': {
       color: '#FFC614 !important',
     },
     '@media (max-width: 1200px)': {
-      fontSize: '2.3rem !important',
+      fontSize: '2.1rem !important',
+      padding: '16px 30px',
     },
     '@media (max-width: 960px)': {
-      fontSize: '2rem !important',
-      marginBottom: '30px !important',
-      padding: '14px 20px',
+      fontSize: '1.8rem !important',
+      padding: '14px 25px',
+      borderRadius: '15px',
     },
     '@media (max-width: 600px)': {
-      fontSize: '1.8rem !important',
-      padding: '10px 8px',
+      fontSize: '1.5rem !important',
+      padding: '12px 20px',
       borderRadius: '12px',
     },
     '@media (max-width: 480px)': {
-      fontSize: '1.6rem !important',
+      fontSize: '1.2rem !important',
+      padding: '8px 15px',
+      borderRadius: '10px',
     },
     '@media (max-width: 375px)': {
-      fontSize: '1.4rem !important',
+      fontSize: '1rem !important',
+      padding: '6px 12px',
+      borderRadius: '8px',
     },
   },
   tableContainer: {
     background: '#fff',
-    borderRadius: '18px',
+    borderRadius: '20px',
     overflow: 'hidden',
     marginBottom: '2rem',
-    boxShadow: '0 6px 32px 0 rgba(0,0,0,0.10)',
+    boxShadow: '0 8px 40px 0 rgba(0,0,0,0.12)',
     border: '1px solid #e5e7eb',
-    transition: 'box-shadow 0.2s',
+    transition: 'all 0.3s ease',
+    width: '100%',
     '&:hover': {
-      boxShadow: '0 10px 40px 0 rgba(0,0,0,0.13)',
+      boxShadow: '0 12px 50px 0 rgba(0,0,0,0.15)',
+      transform: 'translateY(-2px)',
+    },
+    '@media (max-width: 1200px)': {
+      borderRadius: '15px',
+      marginBottom: '1.5rem',
+    },
+    '@media (max-width: 960px)': {
+      borderRadius: '12px',
+      marginBottom: '1.2rem',
+    },
+    '@media (max-width: 600px)': {
+      borderRadius: '10px',
+      marginBottom: '1rem',
+    },
+    '@media (max-width: 480px)': {
+      borderRadius: '8px',
+      marginBottom: '0.8rem',
+    },
+    '@media (max-width: 375px)': {
+      borderRadius: '6px',
+      marginBottom: '0.6rem',
     },
   },
+  tableWrapper: {
+    width: '100%',
+    overflow: 'visible',
+  },
+  table: {
+    width: '100%',
+    tableLayout: 'fixed', // Forces equal column distribution
+  },
   tableHead: {
-    background: 'linear-gradient(90deg, #f9fafb 60%, #ffe082 100%)',
+    background: 'linear-gradient(135deg, #f8fafc 0%, #e3f2fd 50%, #fff3c4 100%)',
   },
   headerCell: {
     color: '#1a202c',
     fontWeight: '700 !important',
-    fontSize: '1.1rem',
+    fontSize: '1rem !important',
     borderBottom: '2px solid #e5e7eb',
-    padding: '1.25rem 1rem',
-    textAlign: 'left',
+    padding: '1rem 0.5rem',
+    textAlign: 'center',
     background: 'transparent',
+    lineHeight: '1.2',
+    wordWrap: 'break-word',
+    '&:first-child': {
+      width: '40%',
+      textAlign: 'left',
+    },
+    '&:nth-child(2)': {
+      width: '30%',
+    },
+    '&:nth-child(3)': {
+      width: '30%',
+    },
     '@media (max-width: 1200px)': {
-      fontSize: '1rem',
+      fontSize: '0.9rem !important',
+      padding: '0.8rem 0.4rem',
     },
     '@media (max-width: 960px)': {
-      fontSize: '0.95rem',
-      padding: '1rem 0.5rem',
+      fontSize: '0.8rem !important',
+      padding: '0.7rem 0.3rem',
     },
     '@media (max-width: 600px)': {
-      fontSize: '0.9rem',
+      fontSize: '0.65rem !important',
+      padding: '0.5rem 0.2rem',
+      lineHeight: '1.1',
     },
     '@media (max-width: 480px)': {
-      fontSize: '0.85rem',
+      fontSize: '0.6rem !important',
+      padding: '0.4rem 0.15rem',
     },
     '@media (max-width: 375px)': {
-      fontSize: '0.8rem',
+      fontSize: '0.55rem !important',
+      padding: '0.3rem 0.1rem',
     },
   },
   tableRow: {
     '&:nth-of-type(even)': {
-      background: '#f7fafc',
+      background: '#f8fafc',
     },
     '&:hover': {
-      background: '#fffde7',
+      background: 'linear-gradient(135deg, #fffde7 0%, #f3e5f5 100%)',
     },
-    transition: 'background 0.2s',
+    transition: 'all 0.2s ease',
   },
   tableCell: {
     color: '#374151',
-    fontSize: '1rem',
+    fontSize: '0.85rem !important',
     borderBottom: '1px solid #e5e7eb',
-    padding: '1.1rem 1rem',
-    textAlign: 'left',
+    padding: '0.8rem 0.5rem',
+    textAlign: 'center',
     verticalAlign: 'middle',
+    lineHeight: '1.3',
+    wordWrap: 'break-word',
     '@media (max-width: 1200px)': {
-      fontSize: '0.95rem',
+      fontSize: '0.8rem !important',
+      padding: '0.7rem 0.4rem',
     },
     '@media (max-width: 960px)': {
-      fontSize: '0.85rem',
-      padding: '1rem 0.5rem',
+      fontSize: '0.7rem !important',
+      padding: '0.6rem 0.3rem',
     },
     '@media (max-width: 600px)': {
-      fontSize: '0.8rem',
+      fontSize: '0.6rem !important',
+      padding: '0.4rem 0.2rem',
+      lineHeight: '1.2',
     },
     '@media (max-width: 480px)': {
-      fontSize: '0.75rem',
+      fontSize: '0.55rem !important',
+      padding: '0.3rem 0.15rem',
     },
     '@media (max-width: 375px)': {
-      fontSize: '0.7rem',
+      fontSize: '0.5rem !important',
+      padding: '0.25rem 0.1rem',
     },
   },
   featureCell: {
-    fontWeight: '500 !important',
-    color: '#1a202c',
+    fontWeight: '600 !important',
+    color: '#1a202c !important',
+    fontSize: '0.85rem !important',
+    textAlign: 'left !important',
+    '@media (max-width: 1200px)': {
+      fontSize: '0.8rem !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '0.7rem !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.6rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.55rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.5rem !important',
+    },
   },
   iconCell: {
-    textAlign: 'left',
-    minWidth: 180,
+    textAlign: 'center !important',
+    minWidth: 'auto',
+    width: 'auto',
   },
   successIcon: {
     color: '#10b981',
-    fontSize: '1.5rem',
+    fontSize: '1.2rem !important',
+    '@media (max-width: 1200px)': {
+      fontSize: '1.1rem !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '1rem !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.8rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.7rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.6rem !important',
+    },
   },
   errorIcon: {
     color: '#ef4444',
-    fontSize: '1.5rem',
+    fontSize: '1.2rem !important',
+    '@media (max-width: 1200px)': {
+      fontSize: '1.1rem !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '1rem !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.8rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.7rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.6rem !important',
+    },
   },
   warningIcon: {
     color: '#f59e0b',
-    fontSize: '1.5rem',
+    fontSize: '1.2rem !important',
+    '@media (max-width: 1200px)': {
+      fontSize: '1.1rem !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '1rem !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.8rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.7rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.6rem !important',
+    },
   },
   statusText: {
     display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
-    gap: '0.5rem',
-    fontWeight: 500,
-    fontSize: '1rem',
+    justifyContent: 'center',
+    gap: '0.3rem',
+    fontWeight: '600 !important',
+    fontSize: '0.75rem !important',
+    textAlign: 'center',
+    '@media (max-width: 1200px)': {
+      gap: '0.25rem',
+      fontSize: '0.7rem !important',
+    },
+    '@media (max-width: 960px)': {
+      gap: '0.2rem',
+      fontSize: '0.65rem !important',
+    },
+    '@media (max-width: 600px)': {
+      gap: '0.15rem',
+      fontSize: '0.5rem !important',
+    },
+    '@media (max-width: 480px)': {
+      gap: '0.1rem',
+      fontSize: '0.45rem !important',
+    },
+    '@media (max-width: 375px)': {
+      gap: '0.05rem',
+      fontSize: '0.4rem !important',
+    },
   },
   successText: {
-    color: '#10b981',
+    color: '#10b981 !important',
+    fontWeight: '600 !important',
   },
   errorText: {
-    color: '#ef4444',
+    color: '#ef4444 !important',
+    fontWeight: '600 !important',
   },
   warningText: {
-    color: '#f59e0b',
+    color: '#f59e0b !important',
+    fontWeight: '600 !important',
   },
   ctaContainer: {
     textAlign: 'center',
     marginTop: '2rem',
-  },
-  ctaText: {
-    fontSize: '1.3rem',
-    fontWeight: 600,
-    color: '#ffc614',
     '@media (max-width: 1200px)': {
-      fontSize: '1.2rem',
+      marginTop: '1.5rem',
     },
     '@media (max-width: 960px)': {
-      fontSize: '1.1rem',
+      marginTop: '1.2rem',
     },
     '@media (max-width: 600px)': {
-      fontSize: '1rem',
+      marginTop: '1rem',
     },
     '@media (max-width: 480px)': {
-      fontSize: '0.95rem',
+      marginTop: '0.8rem',
     },
     '@media (max-width: 375px)': {
-      fontSize: '0.9rem',
+      marginTop: '0.6rem',
     },
   },
-  backgroundDecor: {
-    display: 'none', // Hide old decor circles, background now handled by ::before
+  ctaText: {
+    fontSize: '1.4rem !important',
+    fontWeight: '700 !important',
+    color: '#ffc614 !important',
+    textShadow: '0 2px 4px rgba(255, 198, 20, 0.3)',
+    '@media (max-width: 1200px)': {
+      fontSize: '1.2rem !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '1.1rem !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '1rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.9rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.8rem !important',
+    },
+  },
+  // Responsive table features text shortening
+  featureTextShort: {
+    '@media (max-width: 600px)': {
+      '& .full-text': {
+        display: 'none',
+      },
+      '& .short-text': {
+        display: 'inline',
+      },
+    },
+  },
+  featureTextFull: {
+    '@media (max-width: 600px)': {
+      '& .full-text': {
+        display: 'inline',
+      },
+      '& .short-text': {
+        display: 'none',
+      },
+    },
+    '@media (min-width: 601px)': {
+      '& .short-text': {
+        display: 'none',
+      },
+    },
   },
 }));
 
 const comparisonData = [
   {
     feature: 'Free to Use',
+    featureShort: 'Free',
     giga: { status: 'success', text: '100% Free' },
-    others: { status: 'warning', text: 'Limited Access' }
+    others: { status: 'warning', text: 'Limited' }
   },
   {
     feature: 'Built for Freshers & Tech Roles',
-    giga: { status: 'success', text: 'Specifically Designed' },
+    featureShort: 'Tech Focused',
+    giga: { status: 'success', text: 'Specialized' },
     others: { status: 'warning', text: 'Generic' }
   },
   {
     feature: 'ATS Compatibility Tested',
-    giga: { status: 'success', text: 'Yes' },
+    featureShort: 'ATS Ready',
+    giga: { status: 'success', text: 'Tested' },
     others: { status: 'warning', text: 'Limited' }
   },
   {
     feature: 'Gen AI Skill Recommendations',
+    featureShort: 'AI Skills',
     giga: { status: 'success', text: 'Yes' },
     others: { status: 'error', text: 'No' }
   },
   {
     feature: 'Real-Time Project Suggestions',
+    featureShort: 'Projects',
     giga: { status: 'success', text: 'Yes' },
     others: { status: 'error', text: 'No' }
   },
   {
     feature: 'One-Click GitHub Projects',
+    featureShort: 'GitHub',
     giga: { status: 'success', text: 'Yes' },
     others: { status: 'error', text: 'No' }
   },
-  
 ];
 
 const ComparisonTableSection = () => {
@@ -309,37 +522,42 @@ const ComparisonTableSection = () => {
   return (
     <Box className={classes.root}>
       <Box className={classes.container}>
-        <Box display="flex" justifyContent="center" alignItems="center" width="100%" mb={4}>
+        <Box className={classes.titleWrapper}>
           <Typography className={classes.title}>
             Why <span>Giga Resume Builder?</span> Stands Out
           </Typography>
         </Box>
 
         <TableContainer component={Paper} className={classes.tableContainer}>
-          <Table>
-            <TableHead className={classes.tableHead}>
-              <TableRow>
-                <TableCell className={classes.headerCell}>Feature</TableCell>
-                <TableCell className={classes.headerCell}>Giga Resume Builder</TableCell>
-                <TableCell className={classes.headerCell}>Other Resume Builders</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {comparisonData.map((row, index) => (
-                <TableRow key={index} className={classes.tableRow}>
-                  <TableCell className={`${classes.tableCell} ${classes.featureCell}`}>
-                    {row.feature}
-                  </TableCell>
-                  <TableCell className={`${classes.tableCell} ${classes.iconCell}`}>
-                    {renderStatusCell(row.giga)}
-                  </TableCell>
-                  <TableCell className={`${classes.tableCell} ${classes.iconCell}`}>
-                    {renderStatusCell(row.others)}
-                  </TableCell>
+          <Box className={classes.tableWrapper}>
+            <Table className={classes.table}>
+              <TableHead className={classes.tableHead}>
+                <TableRow>
+                  <TableCell className={classes.headerCell}>Feature</TableCell>
+                  <TableCell className={classes.headerCell}>Giga Resume</TableCell>
+                  <TableCell className={classes.headerCell}>Others</TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+              </TableHead>
+              <TableBody>
+                {comparisonData.map((row, index) => (
+                  <TableRow key={index} className={classes.tableRow}>
+                    <TableCell className={`${classes.tableCell} ${classes.featureCell}`}>
+                      <span className={`${classes.featureTextFull}`}>
+                        <span className="full-text">{row.feature}</span>
+                        <span className="short-text">{row.featureShort}</span>
+                      </span>
+                    </TableCell>
+                    <TableCell className={`${classes.tableCell} ${classes.iconCell}`}>
+                      {renderStatusCell(row.giga)}
+                    </TableCell>
+                    <TableCell className={`${classes.tableCell} ${classes.iconCell}`}>
+                      {renderStatusCell(row.others)}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </Box>
         </TableContainer>
 
         {/* <Box className={classes.ctaContainer}>

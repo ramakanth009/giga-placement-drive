@@ -9,59 +9,63 @@ import Template5 from "../../assets/templates/ramakanth_kannuri_page-0005.jpg"
 
 const useStyles = makeStyles({
   root: {
-    padding: '40px 32px',
+    padding: '3rem 1.5rem',
     background: 'linear-gradient(135deg, #0f0f3a 0%, #1a1a4a 100%)',
     position: 'relative',
     overflow: 'hidden',
     '@media (max-width: 1200px)': {
-      padding: '60px 28px',
+      padding: '2.5rem 1.2rem',
     },
     '@media (max-width: 960px)': {
-      padding: '80px 24px',
+      padding: '2rem 1rem',
     },
     '@media (max-width: 600px)': {
-      padding: '60px 16px',
+      padding: '1.8rem 0.8rem',
     },
     '@media (max-width: 480px)': {
-      padding: '50px 12px',
+      padding: '1.5rem 0.5rem',
     },
     '@media (max-width: 375px)': {
-      padding: '40px 8px',
+      padding: '1.2rem 0.3rem',
     },
   },
   container: {
+    width: '100%',
     maxWidth: '1200px',
     margin: '0 auto',
     position: 'relative',
     zIndex: 2,
+    '@media (max-width: 1200px)': {
+      maxWidth: '100%',
+    },
   },
   titleSection: {
     textAlign: 'center',
-    marginBottom: '30px',
+    marginBottom: '2rem',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     '@media (max-width: 1200px)': {
-      marginBottom: '40px',
+      marginBottom: '1.8rem',
     },
     '@media (max-width: 960px)': {
-      marginBottom: '50px',
+      marginBottom: '1.5rem',
     },
     '@media (max-width: 600px)': {
-      marginBottom: '50px',
+      marginBottom: '1.2rem',
     },
     '@media (max-width: 480px)': {
-      marginBottom: '40px',
+      marginBottom: '1rem',
     },
     '@media (max-width: 375px)': {
-      marginBottom: '30px',
+      marginBottom: '0.8rem',
     },
   },
   title: {
-    fontSize: '2.5rem !important',
+    fontSize: '2.2rem !important',
     fontWeight: 'bold !important',
     color: '#ffffff',
-    marginBottom: '10px !important',
+    marginBottom: '1rem !important',
     letterSpacing: '-0.02em',
     textAlign: 'center',
     borderRadius: '18px',
@@ -72,47 +76,52 @@ const useStyles = makeStyles({
       color: '#FFC614 !important',
     },
     '@media (max-width: 1200px)': {
-      fontSize: '2.3rem !important',
+      fontSize: '2rem !important',
+      marginBottom: '0.8rem !important',
     },
     '@media (max-width: 960px)': {
-      fontSize: '2.8rem !important',
-      marginBottom: '30px !important',
-      padding: '14px 20px',
+      fontSize: '1.8rem !important',
+      marginBottom: '0.7rem !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '2.2rem !important',
-      padding: '10px 8px',
-      borderRadius: '12px',
+      fontSize: '1.6rem !important',
+      marginBottom: '0.6rem !important',
     },
     '@media (max-width: 480px)': {
-      fontSize: '2rem !important',
+      fontSize: '1.4rem !important',
+      marginBottom: '0.5rem !important',
     },
     '@media (max-width: 375px)': {
-      fontSize: '1.8rem !important',
+      fontSize: '1.2rem !important',
+      marginBottom: '0.4rem !important',
     },
   },
   subtitle: {
-    fontSize: '1.2rem !important',
+    fontSize: '1rem !important',
     color: '#a0a0a0 !important',
     textAlign: 'center !important',
     maxWidth: '800px',
     lineHeight: '1.6 !important',
     margin: '0 !important',
     '@media (max-width: 1200px)': {
-      fontSize: '1.1rem !important',
+      fontSize: '0.95rem !important',
+      maxWidth: '700px',
     },
     '@media (max-width: 960px)': {
-      fontSize: '1rem !important',
+      fontSize: '0.9rem !important',
       maxWidth: '90%',
     },
     '@media (max-width: 600px)': {
-      fontSize: '0.95rem !important',
+      fontSize: '0.85rem !important',
+      maxWidth: '100%',
     },
     '@media (max-width: 480px)': {
-      fontSize: '0.9rem !important',
+      fontSize: '0.8rem !important',
+      lineHeight: '1.5 !important',
     },
     '@media (max-width: 375px)': {
-      fontSize: '0.85rem !important',
+      fontSize: '0.75rem !important',
+      lineHeight: '1.4 !important',
     },
   },
   templatesGrid: {
@@ -124,13 +133,40 @@ const useStyles = makeStyles({
     padding: '20px 0',
     marginLeft: 'calc(-50vw + 50%)',
     marginRight: 'calc(-50vw + 50%)',
+    '@media (max-width: 960px)': {
+      padding: '15px 0',
+    },
+    '@media (max-width: 600px)': {
+      padding: '12px 0',
+    },
+    '@media (max-width: 480px)': {
+      padding: '10px 0',
+    },
+    '@media (max-width: 375px)': {
+      padding: '8px 0',
+    },
   },
   slider: {
     display: 'flex',
-    gap: '30px',
+    gap: '25px',
     animation: '$slide 30s linear infinite',
     '&:hover': {
       animationPlayState: 'paused',
+    },
+    '@media (max-width: 1200px)': {
+      gap: '20px',
+    },
+    '@media (max-width: 960px)': {
+      gap: '18px',
+    },
+    '@media (max-width: 600px)': {
+      gap: '15px',
+    },
+    '@media (max-width: 480px)': {
+      gap: '12px',
+    },
+    '@media (max-width: 375px)': {
+      gap: '10px',
     },
   },
   '@keyframes slide': {
@@ -142,35 +178,36 @@ const useStyles = makeStyles({
     },
   },
   templateSlide: {
-    flex: '0 0 280px',
-    height: '350px',
     borderRadius: '16px',
     overflow: 'hidden',
     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
     cursor: 'pointer',
+    flexShrink: 0,
+    width: '250px',
+    height: '320px',
     '&:hover': {
       transform: 'translateY(-8px)',
       boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)',
     },
     '@media (max-width: 1200px)': {
-      flex: '0 0 260px',
-      height: '320px',
+      width: '230px',
+      height: '290px',
     },
     '@media (max-width: 960px)': {
-      flex: '0 0 240px',
-      height: '300px',
+      width: '210px',
+      height: '270px',
     },
     '@media (max-width: 600px)': {
-      flex: '0 0 220px',
-      height: '280px',
+      width: '190px',
+      height: '240px',
     },
     '@media (max-width: 480px)': {
-      flex: '0 0 200px',
-      height: '260px',
+      width: '170px',
+      height: '220px',
     },
     '@media (max-width: 375px)': {
-      flex: '0 0 180px',
-      height: '240px',
+      width: '150px',
+      height: '200px',
     },
   },
   templateImage: {
@@ -180,6 +217,15 @@ const useStyles = makeStyles({
     borderRadius: '16px',
     border: '2px solid rgba(255, 255, 255, 0.1)',
     transition: 'border-color 0.3s ease',
+    '@media (max-width: 600px)': {
+      borderRadius: '12px',
+    },
+    '@media (max-width: 480px)': {
+      borderRadius: '10px',
+    },
+    '@media (max-width: 375px)': {
+      borderRadius: '8px',
+    },
   },
   templateSlideHover: {
     '&:hover $templateImage': {
@@ -218,21 +264,6 @@ const TemplatesGallerySection = () => {
       image: Template5,
       name: 'Minimalist Template'
     },
-    // {
-    //   id: 'template6',
-    //   image: 'https://via.placeholder.com/280x320/38a169/ffffff?text=Template+6',
-    //   name: 'Tech Template'
-    // },
-    // {
-    //   id: 'template7',
-    //   image: 'https://via.placeholder.com/280x320/d69e2e/ffffff?text=Template+7',
-    //   name: 'Design Template'
-    // },
-    // {
-    //   id: 'template8',
-    //   image: 'https://via.placeholder.com/280x320/e53e3e/ffffff?text=Template+8',
-    //   name: 'Sales Template'
-    // },
   ];
 
   return (

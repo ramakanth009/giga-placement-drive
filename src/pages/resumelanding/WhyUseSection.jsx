@@ -1,4 +1,3 @@
-// // src/components/landing/WhyUseSection.jsx
 // src/components/landing/WhyUseSection.jsx
 import React, { useState } from 'react';
 import { Box, Typography, Container, Card, CardContent, Chip, IconButton } from '@mui/material';
@@ -8,13 +7,13 @@ import makeStylesWithTheme from '../../styles/makeStylesAdapter';
 const useStyles = makeStylesWithTheme((theme) => ({
   featuresSection: {
     background: '#ffffff',
-    padding: '20px 0',
+    padding: '3rem 1.5rem',
     position: 'relative',
     overflow: 'hidden',
     minHeight: '100vh',
     display: 'flex',
     alignItems: 'center',
-    zIndex: 1, // Ensure main content is above background
+    zIndex: 1,
     '&::before': {
       content: '""',
       position: 'absolute',
@@ -22,79 +21,91 @@ const useStyles = makeStylesWithTheme((theme) => ({
       left: 0,
       right: 0,
       bottom: 0,
-      zIndex: -1, // Move background behind everything
+      zIndex: -1,
       background: `url("data:image/svg+xml,%3Csvg width='800' height='600' viewBox='0 0 800 600' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0L100 80L200 40L300 120L400 60L500 140L600 100L700 180L800 120' stroke='%23F3F3F3' stroke-width='1'/%3E%3Cpath d='M0 200L100 120L200 180L300 100L400 160L500 80L600 140L700 60L800 100' stroke='%23F3F3F3' stroke-width='1'/%3E%3Cpath d='M0 400L100 320L200 380L300 300L400 360L500 280L600 340L700 260L800 300' stroke='%23F3F3F3' stroke-width='1'/%3E%3Cpath d='M0 600L100 520L200 580L300 500L400 560L500 480L600 540L700 460L800 500' stroke='%23F3F3F3' stroke-width='1'/%3E%3Cpath d='M0 0L0 200L0 400L0 600' stroke='%23F3F3F3' stroke-width='1'/%3E%3Cpath d='M100 80L100 120L100 320L100 520' stroke='%23F3F3F3' stroke-width='1'/%3E%3Cpath d='M200 40L200 180L200 380L200 580' stroke='%23F3F3F3' stroke-width='1'/%3E%3Cpath d='M300 120L300 100L300 300L300 500' stroke='%23F3F3F3' stroke-width='1'/%3E%3Cpath d='M400 60L400 160L400 360L400 560' stroke='%23F3F3F3' stroke-width='1'/%3E%3Cpath d='M500 140L500 80L500 280L500 480' stroke='%23F3F3F3' stroke-width='1'/%3E%3Cpath d='M600 100L600 140L600 340L600 540' stroke='%23F3F3F3' stroke-width='1'/%3E%3Cpath d='M700 180L700 60L700 260L700 460' stroke='%23F3F3F3' stroke-width='1'/%3E%3Cpath d='M800 120L800 100L800 300L800 500' stroke='%23F3F3F3' stroke-width='1'/%3E%3C/svg%3E") repeat`,
       backgroundSize: 'cover',
       pointerEvents: 'none',
     },
+    '@media (max-width: 1200px)': {
+      padding: '2.5rem 1.2rem',
+    },
+    '@media (max-width: 960px)': {
+      padding: '2rem 1rem',
+      minHeight: 'auto',
+    },
+    '@media (max-width: 600px)': {
+      padding: '1.8rem 0.8rem',
+    },
+    '@media (max-width: 480px)': {
+      padding: '1.5rem 0.5rem',
+    },
+    '@media (max-width: 375px)': {
+      padding: '1.2rem 0.3rem',
+    },
   },
   sectionTitle: {
-    fontSize: '2.5rem !important',
+    fontSize: '2.2rem !important',
     fontWeight: '800 !important',
     color: '#2A2B6A !important',
     textAlign: 'center',
-    marginBottom: '40px !important',
+    marginBottom: '2.5rem !important',
     background: '#fff',
     borderRadius: '18px',
-
     display: 'inline-block',
-    padding: '18px 36px',
+    padding: '16px 32px',
     position: 'relative',
     zIndex: 2,
+    boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+    border: '1px solid #f0f0f0',
     '& span': {
       color: '#FFC614 !important',
     },
     '@media (max-width: 1200px)': {
-      fontSize: '2.2rem !important',
-      marginBottom: '35px !important',
-      padding: '16px 30px',
+      fontSize: '2rem !important',
+      marginBottom: '2rem !important',
+      padding: '14px 28px',
     },
     '@media (max-width: 960px)': {
-      fontSize: '2rem !important',
-      marginBottom: '30px !important',
-      padding: '14px 20px',
+      fontSize: '1.8rem !important',
+      marginBottom: '1.8rem !important',
+      padding: '12px 24px',
     },
     '@media (max-width: 600px)': {
-      fontSize: '1.8rem !important',
-      marginBottom: '25px !important',
-      padding: '12px 16px',
+      fontSize: '1.6rem !important',
+      marginBottom: '1.5rem !important',
+      padding: '10px 20px',
     },
     '@media (max-width: 480px)': {
-      fontSize: '1.6rem !important',
-      marginBottom: '20px !important',
-      padding: '10px 12px',
+      fontSize: '1.4rem !important',
+      marginBottom: '1.2rem !important',
+      padding: '8px 16px',
     },
     '@media (max-width: 375px)': {
-      fontSize: '1.4rem !important',
-      marginBottom: '15px !important',
-      padding: '8px 10px',
+      fontSize: '1.2rem !important',
+      marginBottom: '1rem !important',
+      padding: '6px 12px',
     },
   },
   cardsContainer: {
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 1fr)',
-    gap: '25px',
-    maxHeight: '500px',
+    gap: '2rem',
     '@media (max-width: 1200px)': {
       gridTemplateColumns: 'repeat(2, 1fr)',
-      gap: '20px',
-      maxHeight: 'none',
+      gap: '1.8rem',
     },
     '@media (max-width: 960px)': {
       gridTemplateColumns: '1fr',
-      gap: '18px',
+      gap: '1.5rem',
     },
     '@media (max-width: 600px)': {
-      gridTemplateColumns: '1fr',
-      gap: '15px',
+      gap: '1.2rem',
     },
     '@media (max-width: 480px)': {
-      gridTemplateColumns: '1fr',
-      gap: '12px',
+      gap: '1rem',
     },
     '@media (max-width: 375px)': {
-      gridTemplateColumns: '1fr',
-      gap: '10px',
+      gap: '0.8rem',
     },
   },
   featureCard: {
@@ -107,7 +118,7 @@ const useStyles = makeStylesWithTheme((theme) => ({
     transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important',
     border: '2px solid #f0f2ff !important',
     boxShadow: '0 8px 30px rgba(42, 43, 106, 0.08) !important',
-    height: '480px !important',
+    height: '420px !important',
     display: 'flex !important',
     flexDirection: 'column !important',
     '&::before': {
@@ -139,27 +150,47 @@ const useStyles = makeStylesWithTheme((theme) => ({
       boxShadow: '0 24px 60px rgba(42, 43, 106, 0.22) !important',
     },
     '@media (max-width: 1200px)': {
-      height: '450px !important',
+      height: '380px !important',
+      borderRadius: '18px !important',
     },
     '@media (max-width: 960px)': {
-      height: '400px !important',
+      height: '350px !important',
+      borderRadius: '15px !important',
     },
     '@media (max-width: 600px)': {
-      height: '350px !important',
+      height: '320px !important',
+      borderRadius: '12px !important',
     },
     '@media (max-width: 480px)': {
-      height: '300px !important',
+      height: '290px !important',
+      borderRadius: '10px !important',
     },
     '@media (max-width: 375px)': {
-      height: '280px !important',
+      height: '270px !important',
+      borderRadius: '8px !important',
     },
   },
   cardImageContainer: {
-    height: '200px',
+    height: '170px',
     position: 'relative',
     overflow: 'hidden',
     borderRadius: '18px 18px 0 0',
     flexShrink: 0,
+    '@media (max-width: 1200px)': {
+      height: '150px',
+    },
+    '@media (max-width: 960px)': {
+      height: '140px',
+    },
+    '@media (max-width: 600px)': {
+      height: '120px',
+    },
+    '@media (max-width: 480px)': {
+      height: '110px',
+    },
+    '@media (max-width: 375px)': {
+      height: '100px',
+    },
   },
   cardImage: {
     width: '100%',
@@ -181,72 +212,174 @@ const useStyles = makeStylesWithTheme((theme) => ({
     justifyContent: 'center',
   },
   playButton: {
-    width: '50px',
-    height: '50px',
+    width: '40px',
+    height: '40px',
     borderRadius: '50%',
     background: 'rgba(255, 255, 255, 0.95)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     color: '#2A2B6A',
-    fontSize: '1.5rem',
-    opacity: 0, // always hidden
+    fontSize: '1.2rem',
+    opacity: 0,
     transform: 'scale(0.5)',
     transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
     boxShadow: '0 5px 20px rgba(0, 0, 0, 0.2)',
+    '@media (max-width: 600px)': {
+      width: '35px',
+      height: '35px',
+      fontSize: '1rem',
+    },
+    '@media (max-width: 480px)': {
+      width: '30px',
+      height: '30px',
+      fontSize: '0.9rem',
+    },
+    '@media (max-width: 375px)': {
+      width: '25px',
+      height: '25px',
+      fontSize: '0.8rem',
+    },
   },
   cardContent: {
-    padding: '28px !important',
+    padding: '1.5rem !important',
     display: 'flex !important',
     flexDirection: 'column !important',
     flex: 1,
-    minHeight: 0, // Important for flex children
+    minHeight: 0,
+    '@media (max-width: 1200px)': {
+      padding: '1.3rem !important',
+    },
+    '@media (max-width: 960px)': {
+      padding: '1.2rem !important',
+    },
+    '@media (max-width: 600px)': {
+      padding: '1rem !important',
+    },
+    '@media (max-width: 480px)': {
+      padding: '0.8rem !important',
+    },
+    '@media (max-width: 375px)': {
+      padding: '0.6rem !important',
+    },
   },
   numberBadge: {
     position: 'absolute !important',
-    top: '-15px !important',
-    right: '20px !important',
-    width: '35px !important',
-    height: '35px !important',
+    top: '-12px !important',
+    right: '15px !important',
+    width: '30px !important',
+    height: '30px !important',
     borderRadius: '50% !important',
     background: 'linear-gradient(135deg, #FFC614, #2A2B6A) !important',
     color: '#fff !important',
     fontWeight: '800 !important',
-    fontSize: '1.1rem !important',
+    fontSize: '0.9rem !important',
     display: 'flex !important',
     alignItems: 'center !important',
     justifyContent: 'center !important',
     boxShadow: '0 6px 20px rgba(255, 198, 20, 0.3) !important',
     zIndex: 2,
+    '@media (max-width: 600px)': {
+      width: '25px !important',
+      height: '25px !important',
+      fontSize: '0.8rem !important',
+      top: '-10px !important',
+      right: '12px !important',
+    },
+    '@media (max-width: 480px)': {
+      width: '22px !important',
+      height: '22px !important',
+      fontSize: '0.7rem !important',
+    },
+    '@media (max-width: 375px)': {
+      width: '20px !important',
+      height: '20px !important',
+      fontSize: '0.65rem !important',
+    },
   },
   iconContainer: {
-    width: '50px',
-    height: '50px',
-    borderRadius: '12px',
+    width: '40px',
+    height: '40px',
+    borderRadius: '10px',
     background: 'linear-gradient(135deg, #2A2B6A, #4a4d9e)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     color: '#fff',
-    fontSize: '1.5rem',
-    marginBottom: '15px',
+    fontSize: '1.2rem',
+    marginBottom: '0.8rem',
     transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
     boxShadow: '0 8px 25px rgba(42, 43, 106, 0.2)',
     flexShrink: 0,
+    '@media (max-width: 1200px)': {
+      width: '35px',
+      height: '35px',
+      fontSize: '1.1rem',
+    },
+    '@media (max-width: 960px)': {
+      width: '32px',
+      height: '32px',
+      fontSize: '1rem',
+    },
+    '@media (max-width: 600px)': {
+      width: '28px',
+      height: '28px',
+      fontSize: '0.9rem',
+      marginBottom: '0.6rem',
+    },
+    '@media (max-width: 480px)': {
+      width: '25px',
+      height: '25px',
+      fontSize: '0.8rem',
+      marginBottom: '0.5rem',
+    },
+    '@media (max-width: 375px)': {
+      width: '22px',
+      height: '22px',
+      fontSize: '0.7rem',
+      marginBottom: '0.4rem',
+    },
   },
   titleContainer: {
     display: 'flex',
     alignItems: 'flex-start',
-    gap: '16px',
-    marginBottom: '12px',
+    gap: '0.8rem',
+    marginBottom: '0.8rem',
+    '@media (max-width: 600px)': {
+      gap: '0.6rem',
+      marginBottom: '0.6rem',
+    },
+    '@media (max-width: 480px)': {
+      gap: '0.5rem',
+      marginBottom: '0.5rem',
+    },
+    '@media (max-width: 375px)': {
+      gap: '0.4rem',
+      marginBottom: '0.4rem',
+    },
   },
   cardTitle: {
-    fontSize: '1.2rem !important',
+    fontSize: '1.1rem !important',
     fontWeight: '700 !important',
     color: '#2A2B6A !important',
     lineHeight: '1.3 !important',
     margin: '0 !important',
     flex: 1,
+    '@media (max-width: 1200px)': {
+      fontSize: '1rem !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '0.95rem !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.9rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.85rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.8rem !important',
+    },
   },
   contentArea: {
     display: 'flex',
@@ -255,12 +388,12 @@ const useStyles = makeStylesWithTheme((theme) => ({
     minHeight: 0,
   },
   cardDescription: {
-    fontSize: '0.9rem !important',
+    fontSize: '0.85rem !important',
     color: '#666 !important',
     lineHeight: '1.5 !important',
-    marginBottom: '12px !important',
+    marginBottom: '0.8rem !important',
     display: '-webkit-box !important',
-    WebkitLineClamp: 3, // Show 3 lines when collapsed
+    WebkitLineClamp: 3,
     WebkitBoxOrient: 'vertical',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
@@ -273,52 +406,77 @@ const useStyles = makeStylesWithTheme((theme) => ({
       whiteSpace: 'normal',
     },
     '@media (max-width: 1200px)': {
-      fontSize: '0.85rem !important',
+      fontSize: '0.8rem !important',
+      marginBottom: '0.7rem !important',
     },
     '@media (max-width: 960px)': {
-      fontSize: '0.8rem !important',
+      fontSize: '0.75rem !important',
+      marginBottom: '0.6rem !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '0.75rem !important',
+      fontSize: '0.7rem !important',
+      marginBottom: '0.5rem !important',
     },
     '@media (max-width: 480px)': {
-      fontSize: '0.7rem !important',
+      fontSize: '0.65rem !important',
+      marginBottom: '0.4rem !important',
     },
     '@media (max-width: 375px)': {
-      fontSize: '0.65rem !important',
+      fontSize: '0.6rem !important',
+      marginBottom: '0.3rem !important',
     },
   },
   expandButton: {
     color: '#2A2B6A',
     fontWeight: 600,
-    fontSize: '0.85rem',
+    fontSize: '0.75rem',
     background: 'none',
     border: 'none',
     cursor: 'pointer',
     padding: 0,
-    marginBottom: '12px',
+    marginBottom: '0.8rem',
     alignSelf: 'flex-start',
     flexShrink: 0,
     '&:hover': {
       textDecoration: 'underline',
       color: '#FFC614',
     },
+    '@media (max-width: 600px)': {
+      fontSize: '0.7rem',
+      marginBottom: '0.6rem',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.65rem',
+      marginBottom: '0.5rem',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.6rem',
+      marginBottom: '0.4rem',
+    },
   },
   tagContainer: {
     display: 'flex',
     flexWrap: 'wrap',
-    gap: '6px',
-    // marginTop: 'auto', // Push to bottom
-    paddingTop: '2px',
+    gap: '0.4rem',
+    paddingTop: '0.2rem',
     flexShrink: 0,
+    '@media (max-width: 600px)': {
+      gap: '0.3rem',
+    },
+    '@media (max-width: 480px)': {
+      gap: '0.25rem',
+    },
+    '@media (max-width: 375px)': {
+      gap: '0.2rem',
+    },
   },
   tag: {
     background: 'rgba(42, 43, 106, 0.08) !important',
     color: '#2A2B6A !important',
     fontWeight: '600 !important',
-    borderRadius: '12px !important',
-    fontSize: '0.75rem !important',
-    height: '24px !important',
+    borderRadius: '10px !important',
+    fontSize: '0.65rem !important',
+    height: '20px !important',
     transition: 'all 0.2s ease !important',
     '&:hover': {
       background: 'linear-gradient(45deg, #2A2B6A, #FFC614) !important',
@@ -326,30 +484,30 @@ const useStyles = makeStylesWithTheme((theme) => ({
       transform: 'translateY(-1px) !important',
     },
     '@media (max-width: 1200px)': {
-      fontSize: '0.7rem !important',
-      height: '22px !important',
-    },
-    '@media (max-width: 960px)': {
-      fontSize: '0.65rem !important',
-      height: '20px !important',
-    },
-    '@media (max-width: 600px)': {
       fontSize: '0.6rem !important',
       height: '18px !important',
     },
-    '@media (max-width: 480px)': {
+    '@media (max-width: 960px)': {
       fontSize: '0.55rem !important',
       height: '16px !important',
     },
-    '@media (max-width: 375px)': {
+    '@media (max-width: 600px)': {
       fontSize: '0.5rem !important',
       height: '14px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.45rem !important',
+      height: '12px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.4rem !important',
+      height: '10px !important',
     },
   },
   floatingElement: {
     position: 'absolute',
-    width: '80px',
-    height: '80px',
+    width: '60px',
+    height: '60px',
     borderRadius: '50%',
     background: 'rgba(255, 198, 20, 0.05)',
     animation: '$float 8s ease-in-out infinite',
@@ -367,6 +525,18 @@ const useStyles = makeStylesWithTheme((theme) => ({
       bottom: '20%',
       left: '15%',
       animationDelay: '6s',
+    },
+    '@media (max-width: 600px)': {
+      width: '40px',
+      height: '40px',
+    },
+    '@media (max-width: 480px)': {
+      width: '30px',
+      height: '30px',
+    },
+    '@media (max-width: 375px)': {
+      width: '25px',
+      height: '25px',
     },
   },
   '@keyframes gradientShift': {
@@ -389,21 +559,21 @@ const WhyUseSection = () => {
     {
       title: "Gen AI Skill Suggestions With Real-World Use Cases",
       description: "Our resume builder analyzes your job role and recommends relevant Gen AI tools like ChatGPT, Midjourney, Figma AI, Bard, and more. Based on your profile, it automatically generates context on how these tools are commonly used—like automating workflows, enhancing design, or improving productivity so you can showcase practical, real-world impact without writing it from scratch.",
-      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80", // AI/Chatbot interface
       icon: <AutoAwesome />,
       tags: ["AI Tools", "Real-world", "Automation", "Productivity"]
     },
     {
       title: "Build Projects Straight From Your Resume", 
       description: "Gigaversity's resume builder recommends job-specific projects aligned with your target role such as full stack development, data science, UI/UX, or product management. You get direct access to GitHub repositories containing real-time projects with step-by-step instructions and code. This allows you to build relevant projects and showcase practical skills directly from your resume, enhancing your credibility with employers.",
-      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      image: "https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80", // GitHub/Code repository
       icon: <Code />,
       tags: ["GitHub", "Projects", "Skills", "Portfolio"]
     },
     {
       title: "Smart Resume Content That Writes Itself",
       description: "Easily create a standout resume with AI-powered suggestions tailored to your job role. Get pre-written summaries, impactful bullet points, internship descriptions, and relevant keywords—all optimized for ATS systems. Especially helpful for freshers, the content is structured to highlight your strengths and match recruiter expectations, ensuring better visibility and higher chances of selection.",
-      image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80", // Resume/Document editing
       icon: <Visibility />,
       tags: ["ATS Ready", "Keywords", "AI Content", "Job Match"]
     }

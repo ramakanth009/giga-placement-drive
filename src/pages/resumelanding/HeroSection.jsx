@@ -3,10 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { 
   Box, 
   Typography, 
-  Button, 
-  // Fade, 
-  // Grow,
-  // Slide 
+  Button
 } from '@mui/material';
 import { 
   PlayArrowRounded,
@@ -20,32 +17,42 @@ import {
 } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import makeStylesWithTheme from '../../styles/makeStylesAdapter';
-// import { Bold } from 'lucide-react';
+import { display } from '@mui/system';
 
 const useStyles = makeStylesWithTheme((theme) => ({
   heroContainer: {
     width: '100%',
-    // minHeight: '100vh',
     display: 'flex',
     alignItems: 'center',
     position: 'relative',
     overflow: 'hidden',
     padding: '3rem 5rem',
     background: 'linear-gradient(135deg, #101138 0%, #2A2B6A 100%) !important',
+    minHeight: '100vh',
     '@media (max-width: 1200px)': {
-      padding: '2rem 3rem',
+      padding: '2.5rem 3rem',
+      minHeight: '90vh',
     },
     '@media (max-width: 960px)': {
-      padding: '1.5rem 2.5rem',
+      padding: '2rem 2.5rem',
+      minHeight: 'auto',
+      paddingTop: '3rem',
+      paddingBottom: '3rem',
     },
     '@media (max-width: 600px)': {
-      padding: '1rem 1.5rem',
+      padding: '1.5rem 1.5rem',
+      paddingTop: '2rem',
+      paddingBottom: '2rem',
     },
     '@media (max-width: 480px)': {
-      padding: '0.8rem 1rem',
+      padding: '1rem 1rem',
+      paddingTop: '1.5rem',
+      paddingBottom: '1.5rem',
     },
     '@media (max-width: 375px)': {
-      padding: '0.5rem 0.8rem',
+      padding: '0.8rem 0.8rem',
+      paddingTop: '1rem',
+      paddingBottom: '1rem',
     },
   },
   heroContent: {
@@ -69,23 +76,27 @@ const useStyles = makeStylesWithTheme((theme) => ({
       gap: '1.5rem',
     },
     '@media (max-width: 375px)': {
-      gap: '1rem',
+      gap: '1.2rem',
     },
   },
 
   // ===== LEFT SECTION STYLES =====
   leftSection: {
-    flex: '1 1 55%',
+    width: '55%',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
     paddingRight: '2rem',
-    position: 'relative', // Added for positioning the circle
+    position: 'relative',
+    '@media (max-width: 1200px)': {
+      paddingRight: '1.5rem',
+    },
     '@media (max-width: 960px)': {
       alignItems: 'center',
       textAlign: 'center',
       paddingRight: 0,
       order: 1,
+      width: '100%',
     },
     '&::before': {
       content: '""',
@@ -98,26 +109,35 @@ const useStyles = makeStylesWithTheme((theme) => ({
       borderRadius: '50%',
       transform: 'translate(-50%, -50%)',
       zIndex: -1,
+      '@media (max-width: 1200px)': {
+        width: '280px',
+        height: '280px',
+      },
       '@media (max-width: 960px)': {
         width: '250px',
         height: '250px',
+        top: '80%',
+        left: '50%',
       },
       '@media (max-width: 600px)': {
         width: '200px',
         height: '200px',
+        top: '70%',
       },
       '@media (max-width: 480px)': {
         width: '150px',
         height: '150px',
+        top: '60%',
       },
       '@media (max-width: 375px)': {
-        width: '100px',
-        height: '100px',
+        width: '120px',
+        height: '120px',
+        top: '50%',
       },
     },
   },
   mainHeadline: {
-    fontSize: '2.8rem !important',
+    fontSize: '2.2rem !important',
     fontWeight: "bold !important",
     lineHeight: "1.1 !important",
     marginBottom: '1.5rem !important',
@@ -125,19 +145,28 @@ const useStyles = makeStylesWithTheme((theme) => ({
     opacity: 0,
     animation: '$slideInLeft 1s ease-out 0.2s forwards',
     '@media (max-width: 1200px)': {
-      fontSize: '3rem !important',
+      fontSize: '1.8rem !important',
+      marginBottom: '1.2rem !important',
     },
     '@media (max-width: 960px)': {
-      fontSize: '2.5rem !important',
+      fontSize: '1.5rem !important',
+      marginBottom: '1rem !important',
+      maxWidth: '100%',
     },
     '@media (max-width: 600px)': {
       fontSize: '2rem !important',
+      marginBottom: '0.8rem !important',
+      lineHeight: '1.2 !important',
     },
     '@media (max-width: 480px)': {
       fontSize: '1.8rem !important',
+      marginBottom: '0.7rem !important',
+      lineHeight: '1.3 !important',
     },
     '@media (max-width: 375px)': {
-      fontSize: '1.5rem !important',
+      fontSize: '1.6rem !important',
+      marginBottom: '0.6rem !important',
+      lineHeight: '1.3 !important',
     },
   },
   typewriterText: {
@@ -146,6 +175,18 @@ const useStyles = makeStylesWithTheme((theme) => ({
     borderRight: '3px solid #ffc615',
     paddingRight: '5px',
     animation: '$blink 1s infinite',
+    '@media (max-width: 600px)': {
+      borderRight: '2px solid #ffc615',
+      paddingRight: '3px',
+    },
+    '@media (max-width: 480px)': {
+      borderRight: '2px solid #ffc615',
+      paddingRight: '2px',
+    },
+    '@media (max-width: 375px)': {
+      borderRight: '1px solid #ffc615',
+      paddingRight: '2px',
+    },
   },
   '@keyframes blink': {
     '0%, 50%': { borderColor: 'transparent' },
@@ -169,18 +210,31 @@ const useStyles = makeStylesWithTheme((theme) => ({
     maxWidth: '900px !important',
     opacity: 0,
     animation: '$fadeInUp 1s ease-out 0.4s forwards',
+    '@media (max-width: 1200px)': {
+      fontSize: '1rem !important',
+      maxWidth: '800px !important',
+      marginBottom: '0.8rem !important',
+    },
     '@media (max-width: 960px)': {
-      fontSize: '1rem',
-      maxWidth: '500px',
+      fontSize: '1rem !important',
+      maxWidth: '600px !important',
+      marginBottom: '0.8rem !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '0.9rem',
+      fontSize: '0.9rem !important',
+      maxWidth: '100% !important',
+      marginBottom: '0.7rem !important',
+      lineHeight: 1.5,
     },
     '@media (max-width: 480px)': {
-      fontSize: '0.85rem',
+      fontSize: '0.85rem !important',
+      marginBottom: '0.6rem !important',
+      lineHeight: 1.4,
     },
     '@media (max-width: 375px)': {
-      fontSize: '0.8rem',
+      fontSize: '0.8rem !important',
+      marginBottom: '0.5rem !important',
+      lineHeight: 1.4,
     },
   },
   '@keyframes fadeInUp': {
@@ -195,14 +249,32 @@ const useStyles = makeStylesWithTheme((theme) => ({
   },
   ctaContainer: {
     display: 'flex',
-    gap: '1.5rem  !important',
-    marginBottom: '1rem !important',
+    gap: '1.5rem !important',
+    marginBottom: '2rem !important',
     opacity: 0,
     animation: '$scaleIn 0.8s ease-out 0.6s forwards',
+    '@media (max-width: 1200px)': {
+      gap: '1.2rem !important',
+      marginBottom: '1.8rem !important',
+    },
+    '@media (max-width: 960px)': {
+      gap: '1rem !important',
+      marginBottom: '1.5rem !important',
+      justifyContent: 'center',
+    },
     '@media (max-width: 600px)': {
       flexDirection: 'column',
-      gap: '0.8rem',
+      gap: '0.8rem !important',
       width: '100%',
+      marginBottom: '1.2rem !important',
+    },
+    '@media (max-width: 480px)': {
+      gap: '0.7rem !important',
+      marginBottom: '1rem !important',
+    },
+    '@media (max-width: 375px)': {
+      gap: '0.6rem !important',
+      marginBottom: '0.8rem !important',
     },
   },
   '@keyframes scaleIn': {
@@ -230,9 +302,26 @@ const useStyles = makeStylesWithTheme((theme) => ({
       boxShadow: '0 12px 40px rgba(255, 198, 21, 0.6)',
       background: 'linear-gradient(135deg, #ffb700 0%, #ffa000 100%)',
     },
+    '@media (max-width: 1200px)': {
+      padding: '0.9rem 2.2rem !important',
+      fontSize: '1.2rem !important',
+    },
+    '@media (max-width: 960px)': {
+      padding: '0.8rem 2rem !important',
+      fontSize: '1.1rem !important',
+    },
     '@media (max-width: 600px)': {
       width: '100%',
-      padding: '1rem 2rem',
+      padding: '1rem 2rem !important',
+      fontSize: '1rem !important',
+    },
+    '@media (max-width: 480px)': {
+      padding: '0.9rem 1.8rem !important',
+      fontSize: '0.95rem !important',
+    },
+    '@media (max-width: 375px)': {
+      padding: '0.8rem 1.5rem !important',
+      fontSize: '0.9rem !important',
     },
   },
   secondaryCTA: {
@@ -251,9 +340,26 @@ const useStyles = makeStylesWithTheme((theme) => ({
       borderColor: 'rgba(255, 255, 255, 0.5)',
       transform: 'translateY(-2px)',
     },
+    '@media (max-width: 1200px)': {
+      padding: '0.9rem 1.8rem',
+      fontSize: '0.95rem',
+    },
+    '@media (max-width: 960px)': {
+      padding: '0.8rem 1.6rem',
+      fontSize: '0.9rem',
+    },
     '@media (max-width: 600px)': {
       width: '100%',
       padding: '1rem 2rem',
+      fontSize: '0.9rem',
+    },
+    '@media (max-width: 480px)': {
+      padding: '0.9rem 1.8rem',
+      fontSize: '0.85rem',
+    },
+    '@media (max-width: 375px)': {
+      padding: '0.8rem 1.5rem',
+      fontSize: '0.8rem',
     },
   },
   statsContainer: {
@@ -261,9 +367,25 @@ const useStyles = makeStylesWithTheme((theme) => ({
     gap: '2rem !important',
     opacity: 0,
     animation: '$slideInStagger 1s ease-out 0.8s forwards',
-    '@media (max-width: 600px)': {
+    '@media (max-width: 1200px)': {
+      gap: '1.8rem !important',
+    },
+    '@media (max-width: 960px)': {
       justifyContent: 'center',
-      gap: '1rem',
+      gap: '1.5rem !important',
+    },
+    '@media (max-width: 600px)': {
+      gap: '1.2rem !important',
+      flexWrap: 'wrap',
+      justifyContent: 'center',
+    },
+    '@media (max-width: 480px)': {
+      gap: '1rem !important',
+    },
+    '@media (max-width: 375px)': {
+      gap: '0.5rem !important',
+      flexDirection: 'column',
+      alignItems: 'center',
     },
   },
   '@keyframes slideInStagger': {
@@ -285,6 +407,10 @@ const useStyles = makeStylesWithTheme((theme) => ({
     '@media (max-width: 960px)': {
       textAlign: 'center',
     },
+    '@media (max-width: 375px)': {
+      textAlign: 'center',
+      width: '100%',
+    },
   },
   '@keyframes bounceIn': {
     '0%': {
@@ -303,36 +429,76 @@ const useStyles = makeStylesWithTheme((theme) => ({
   statNumber: {
     fontSize: '2.5rem !important',
     fontWeight: "800 !important",
-    color: '#ffc615  !important',
+    color: '#ffc615 !important',
     lineHeight: 1,
+    '@media (max-width: 1200px)': {
+      fontSize: '2.3rem !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '2.2rem !important',
+    },
     '@media (max-width: 600px)': {
-      fontSize: '2rem',
+      fontSize: '2rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '1.8rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1.6rem !important',
     },
   },
   statLabel: {
     fontSize: '0.9rem !important',
     color: 'rgba(255, 255, 255, 0.8) !important',
     fontWeight: 500,
+    '@media (max-width: 1200px)': {
+      fontSize: '0.85rem !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '0.8rem !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.75rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.7rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.65rem !important',
+    },
   },
 
   // ===== RIGHT SECTION STYLES =====
   rightSection: {
-    flex: '1 1 45%',
+    width: '45%',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     position: 'relative',
     paddingLeft: '2rem',
+    '@media (max-width: 1200px)': {
+      paddingLeft: '1.5rem',
+    },
     '@media (max-width: 960px)': {
       paddingLeft: 0,
       order: 0,
+      width: '100%',
+      justifyContent: 'center',
     },
+    '@media (max-width: 600px)': {display: 'none'},
+    '@media (max-width: 480px)': {display: 'none'},
+    '@media (max-width: 375px)': {display: 'none'},
   },
   resumePreviewContainer: {
     position: 'relative',
     perspective: '1000px',
     animation: '$floatIn 1.2s ease-out 0.5s forwards',
     opacity: 0,
+    '@media (max-width: 960px)': {
+      width: '100%',
+      display: 'flex',
+      justifyContent: 'center',
+    },
   },
   '@keyframes floatIn': {
     'from': {
@@ -360,17 +526,29 @@ const useStyles = makeStylesWithTheme((theme) => ({
       boxShadow: '0 30px 80px rgba(0, 0, 0, 0.4)',
       animation: 'none',
     },
+    '@media (max-width: 1200px)': {
+      width: '320px',
+      padding: '1.8rem',
+    },
+    '@media (max-width: 960px)': {
+      width: '300px',
+      padding: '1.5rem',
+      transform: 'rotateY(0deg) rotateX(0deg)',
+    },
     '@media (max-width: 600px)': {
       width: '280px',
       padding: '1.2rem',
+      borderRadius: '15px',
     },
     '@media (max-width: 480px)': {
-      width: '240px',
+      width: '260px',
       padding: '1rem',
+      borderRadius: '12px',
     },
     '@media (max-width: 375px)': {
-      width: '200px',
+      width: '240px',
       padding: '0.8rem',
+      borderRadius: '10px',
     },
   },
   '@keyframes morphCard': {
@@ -389,6 +567,21 @@ const useStyles = makeStylesWithTheme((theme) => ({
     '&:nth-child(2)': { animationDelay: '1.8s' },
     '&:nth-child(3)': { animationDelay: '2.1s' },
     '&:nth-child(4)': { animationDelay: '2.4s' },
+    '@media (max-width: 1200px)': {
+      marginBottom: '1.3rem',
+    },
+    '@media (max-width: 960px)': {
+      marginBottom: '1.2rem',
+    },
+    '@media (max-width: 600px)': {
+      marginBottom: '1rem',
+    },
+    '@media (max-width: 480px)': {
+      marginBottom: '0.8rem',
+    },
+    '@media (max-width: 375px)': {
+      marginBottom: '0.7rem',
+    },
   },
   '@keyframes buildSection': {
     'from': {
@@ -409,6 +602,24 @@ const useStyles = makeStylesWithTheme((theme) => ({
     fontWeight: 600,
     fontSize: '0.9rem',
     animation: '$iconSpin 2s ease-in-out infinite',
+    '@media (max-width: 1200px)': {
+      fontSize: '0.85rem',
+      gap: '0.4rem',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '0.8rem',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.75rem',
+      gap: '0.3rem',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.7rem',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.65rem',
+      gap: '0.2rem',
+    },
   },
   '@keyframes iconSpin': {
     '0%, 90%, 100%': {
@@ -435,6 +646,24 @@ const useStyles = makeStylesWithTheme((theme) => ({
       background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent)',
       animation: '$shimmer 2.5s infinite',
     },
+    '@media (max-width: 1200px)': {
+      height: '7px',
+    },
+    '@media (max-width: 960px)': {
+      height: '6px',
+    },
+    '@media (max-width: 600px)': {
+      height: '5px',
+      borderRadius: '3px',
+    },
+    '@media (max-width: 480px)': {
+      height: '4px',
+      borderRadius: '2px',
+    },
+    '@media (max-width: 375px)': {
+      height: '3px',
+      borderRadius: '2px',
+    },
   },
   '@keyframes pulseGlow': {
     '0%, 100%': {
@@ -455,6 +684,26 @@ const useStyles = makeStylesWithTheme((theme) => ({
     marginTop: '1rem',
     animation: '$slideUpProgress 1s ease-out 2.7s forwards',
     opacity: 0,
+    '@media (max-width: 1200px)': {
+      gap: '0.4rem',
+      marginTop: '0.8rem',
+    },
+    '@media (max-width: 960px)': {
+      gap: '0.3rem',
+      marginTop: '0.7rem',
+    },
+    '@media (max-width: 600px)': {
+      gap: '0.3rem',
+      marginTop: '0.6rem',
+    },
+    '@media (max-width: 480px)': {
+      gap: '0.2rem',
+      marginTop: '0.5rem',
+    },
+    '@media (max-width: 375px)': {
+      gap: '0.2rem',
+      marginTop: '0.4rem',
+    },
   },
   '@keyframes slideUpProgress': {
     'from': {
@@ -471,6 +720,15 @@ const useStyles = makeStylesWithTheme((theme) => ({
     background: 'rgba(39, 40, 108, 0.2)',
     borderRadius: '2px',
     overflow: 'hidden',
+    '@media (max-width: 600px)': {
+      height: '3px',
+    },
+    '@media (max-width: 480px)': {
+      height: '2px',
+    },
+    '@media (max-width: 375px)': {
+      height: '2px',
+    },
   },
   progressFill: {
     height: '100%',
@@ -499,6 +757,9 @@ const useStyles = makeStylesWithTheme((theme) => ({
     width: '100%',
     height: '100%',
     pointerEvents: 'none',
+    '@media (max-width: 960px)': {
+      display: 'none',
+    },
   },
   floatingIcon: {
     position: 'absolute',
@@ -514,6 +775,11 @@ const useStyles = makeStylesWithTheme((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    '@media (max-width: 1200px)': {
+      width: '42px',
+      height: '42px',
+      padding: '10px',
+    },
   },
   '@keyframes floatAround': {
     '0%, 100%': {
@@ -562,9 +828,6 @@ const HeroSection = ({ handleCTAClick }) => {
     'Free Resume Builder',
     'AI Assistance ',
     'Smart Suggestion',
-    // 'Future Success',
-    // 'Professional Growth',
-    // 'Career Goals'
   ];
 
   useEffect(() => {
@@ -608,20 +871,15 @@ const HeroSection = ({ handleCTAClick }) => {
         {/* LEFT SECTION - Content */}
         <Box className={classes.leftSection}>
           <Typography variant="h1" className={classes.mainHeadline}>
-            {/* Build Your Path to Your */}
-            Create Resume That Gets You Noticed {" "}
-            {/* <br /> */}
+            Create Resume That Gets You Noticed
+            <br />
             <span className={classes.typewriterText}>
               {typewriterText}
             </span>
           </Typography>
 
-          {/* <Typography variant="subtitle1" className={classes.subtitle}>
-            Create professional, ATS-friendly resumes that open doors to opportunities. 
-            Free for all students, with live preview and AI-powered recommendations.
-          </Typography> */}
           <Typography variant="subtitle1" className={classes.subtitle}>
-            Whether you're a fresher looking for your first IT job or a professional aiming for a career switch, Gigaversity’s Resume Builder helps you build a resume that reflects your skills, projects, and growth in a recruiter-approved, ATS-friendly format.
+            Whether you're a fresher looking for your first IT job or a professional aiming for a career switch, Gigaversity's Resume Builder helps you build a resume that reflects your skills, projects, and growth in a recruiter-approved, ATS-friendly format.
           </Typography>
           <Typography variant="subtitle2" className={classes.subtitle}>
             Choose from a variety of resume templates that adapt to your career stage, helping you present your achievements, skills, and projects clearly and professionally so recruiters notice what truly matters.
@@ -630,20 +888,11 @@ const HeroSection = ({ handleCTAClick }) => {
           <Box className={classes.ctaContainer}>
             <Button
               className={classes.primaryCTA}
-              onClick={() => navigate('/signup')}
+              onClick={() => window.location.href = 'https://resume.gigaversity.in/'}
               startIcon={<PlayArrowRounded />}
             >
               Create Resume Now
             </Button>
-            {/* <Button
-              className={classes.secondaryCTA}
-              onClick={() => {
-                const element = document.getElementById('features-section');
-                element?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              See Features
-            </Button> */}
           </Box>
 
           <Box className={classes.statsContainer}>

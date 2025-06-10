@@ -402,10 +402,10 @@ const Navbar = () => {
                 variant="contained"
                 className={classes.signUpButton}
                 component={Link}
-                to="/cart"
+                to="https://resume.gigaversity.in/"
                 onClick={scrollToTop}
               >
-                Apply Now
+                create resume now
               </Button>
             </Box>
           </>

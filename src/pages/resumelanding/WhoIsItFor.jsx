@@ -1,13 +1,13 @@
 // src/components/landing/WhoIsItFor.jsx
 import React, { useEffect, useRef } from 'react';
 import { Box, Typography, Container } from '@mui/material';
+import { CheckCircle, Person, Work, TrendingUp, Code } from '@mui/icons-material';
 import makeStylesWithTheme from '../../styles/makeStylesAdapter';
-import { animate } from 'animejs';
 
 const useStyles = makeStylesWithTheme((theme) => ({
   audienceSection: {
     background: '#fff',
-    padding: '6rem 2rem',
+    padding: '4rem 1.5rem',
     position: 'relative',
     overflow: 'hidden',
     // Add SVG grid background as ::before
@@ -26,71 +26,104 @@ const useStyles = makeStylesWithTheme((theme) => ({
     },
     zIndex: 1,
     '@media (max-width: 1200px)': {
-      padding: '5rem 1.5rem',
+      padding: '3.5rem 1.2rem',
     },
     '@media (max-width: 960px)': {
-      padding: '4rem 1.5rem',
+      padding: '3rem 1rem',
+    },
+    '@media (max-width: 768px)': {
+      padding: '2.5rem 0.8rem',
     },
     '@media (max-width: 600px)': {
-      padding: '3rem 0.5rem',
+      padding: '2rem 0.8rem',
     },
     '@media (max-width: 480px)': {
-      padding: '2.5rem 0.3rem',
+      padding: '1.8rem 0.5rem',
     },
     '@media (max-width: 375px)': {
-      padding: '2rem 0.2rem',
+      padding: '1.5rem 0.3rem',
     },
   },
   sectionTitle: {
-    fontSize: '2.5rem !important',
+    fontSize: '2.2rem !important',
     fontWeight: '800 !important',
     color: '#2A2B6A !important',
     textAlign: 'center',
-    marginBottom: '40px !important',
+    marginBottom: '2.5rem !important',
     background: '#fff',
     borderRadius: '18px',
     display: 'inline-block',
-    padding: '18px 36px',
+    padding: '16px 32px',
     position: 'relative',
     zIndex: 2,
+    boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+    border: '1px solid #f0f0f0',
     '& span': {
       color: '#FFC614 !important',
     },
     '@media (max-width: 1200px)': {
-      fontSize: '2.3rem !important',
+      fontSize: '2rem !important',
+      padding: '14px 28px',
+      marginBottom: '2rem !important',
     },
     '@media (max-width: 960px)': {
-      fontSize: '2rem !important',
-      marginBottom: '30px !important',
-      padding: '14px 20px',
+      fontSize: '1.8rem !important',
+      marginBottom: '1.8rem !important',
+      padding: '12px 24px',
+      borderRadius: '15px',
+    },
+    '@media (max-width: 768px)': {
+      fontSize: '1.6rem !important',
+      padding: '10px 20px',
+      borderRadius: '12px',
+      marginBottom: '1.5rem !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '1.8rem !important',
-      padding: '10px 8px',
-      borderRadius: '12px',
+      fontSize: '1.4rem !important',
+      padding: '8px 16px',
+      marginBottom: '1.2rem !important',
     },
     '@media (max-width: 480px)': {
-      fontSize: '1.6rem !important',
+      fontSize: '1.3rem !important',
+      padding: '6px 12px',
+      marginBottom: '1rem !important',
     },
     '@media (max-width: 375px)': {
-      fontSize: '1.4rem !important',
+      fontSize: '1.2rem !important',
+      padding: '6px 10px',
+      borderRadius: '8px',
+      marginBottom: '0.8rem !important',
     },
   },
+
+  // WHEEL DESIGN (Desktop/Tablet)
   wheelContainer: {
     position: 'relative',
     width: '100%',
     height: 'auto',
     margin: '0 auto',
     zIndex: 2,
-    paddingTop: '2rem',
-    paddingBottom: '2rem',
+    paddingTop: '1.5rem',
+    paddingBottom: '1.5rem',
+    display: 'block',
+    '@media (max-width: 1200px)': {
+      paddingTop: '1.2rem',
+      paddingBottom: '1.2rem',
+    },
+    '@media (max-width: 960px)': {
+      paddingTop: '1rem',
+      paddingBottom: '1rem',
+    },
+    '@media (max-width: 768px)': {
+      display: 'none', // Hide wheel on mobile
+    },
   },
   wheel: {
     position: 'relative',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: '2rem',
+    gap: '1.8rem',
     flexWrap: 'nowrap',
     '&::before': {
       content: '""',
@@ -104,39 +137,20 @@ const useStyles = makeStylesWithTheme((theme) => ({
       transform: 'translateY(-50%)',
     },
     '@media (max-width: 1200px)': {
-      gap: '1.8rem',
+      gap: '1.5rem',
     },
     '@media (max-width: 960px)': {
-      gap: '1.5rem',
+      gap: '1.2rem',
       '&::before': {
         left: '5%',
         right: '5%',
       },
     },
-    '@media (max-width: 600px)': {
-      flexDirection: 'column',
-      gap: '1rem',
-      '&::before': {
-        left: '50%',
-        right: 'auto',
-        top: '10%',
-        bottom: '10%',
-        width: '3px',
-        height: 'auto',
-        transform: 'translateX(-50%)',
-      },
-    },
-    '@media (max-width: 480px)': {
-      gap: '0.8rem',
-    },
-    '@media (max-width: 375px)': {
-      gap: '0.6rem',
-    },
   },
   wheelItem: {
     position: 'relative',
-    width: 180,
-    height: 180,
+    width: 160,
+    height: 160,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -146,7 +160,7 @@ const useStyles = makeStylesWithTheme((theme) => ({
     border: '3px solid #FFC614',
     transition: 'transform 0.25s cubic-bezier(.4,2,.6,1), box-shadow 0.25s',
     cursor: 'pointer',
-    padding: '16px',
+    padding: '14px',
     zIndex: 2,
     '&:hover': {
       transform: 'scale(1.08)',
@@ -154,33 +168,18 @@ const useStyles = makeStylesWithTheme((theme) => ({
       borderColor: '#2A2B6A',
     },
     '@media (max-width: 1200px)': {
-      width: 150,
-      height: 150,
-      padding: '14px',
-    },
-    '@media (max-width: 960px)': {
-      width: 130,
-      height: 130,
+      width: 140,
+      height: 140,
       padding: '12px',
     },
-    '@media (max-width: 600px)': {
-      width: 90,
-      height: 90,
-      padding: '8px',
-    },
-    '@media (max-width: 480px)': {
-      width: 80,
-      height: 80,
-      padding: '6px',
-    },
-    '@media (max-width: 375px)': {
-      width: 70,
-      height: 70,
-      padding: '4px',
+    '@media (max-width: 960px)': {
+      width: 120,
+      height: 120,
+      padding: '10px',
     },
   },
   wheelText: {
-    fontSize: '1rem',
+    fontSize: '0.9rem',
     color: '#2A2B6A',
     fontWeight: 600,
     textAlign: 'center',
@@ -189,25 +188,16 @@ const useStyles = makeStylesWithTheme((theme) => ({
     wordBreak: 'break-word',
     maxWidth: '100%',
     '@media (max-width: 1200px)': {
-      fontSize: '0.9rem',
-    },
-    '@media (max-width: 960px)': {
       fontSize: '0.85rem',
     },
-    '@media (max-width: 600px)': {
-      fontSize: '0.7rem',
-    },
-    '@media (max-width: 480px)': {
-      fontSize: '0.65rem',
-    },
-    '@media (max-width: 375px)': {
-      fontSize: '0.6rem',
+    '@media (max-width: 960px)': {
+      fontSize: '0.8rem',
     },
   },
   wheelCenter: {
     position: 'relative',
-    width: 160,
-    height: 160,
+    width: 140,
+    height: 140,
     background: 'radial-gradient(circle at 60% 40%, #FFC614 80%, #FFD95C 100%)',
     borderRadius: '50%',
     display: 'flex',
@@ -220,30 +210,18 @@ const useStyles = makeStylesWithTheme((theme) => ({
     left: 'auto',
     top: 'auto',
     '@media (max-width: 1200px)': {
-      width: 140,
-      height: 140,
+      width: 120,
+      height: 120,
     },
     '@media (max-width: 960px)': {
-      width: 130,
-      height: 130,
-    },
-    '@media (max-width: 600px)': {
-      width: 90,
-      height: 90,
-    },
-    '@media (max-width: 480px)': {
-      width: 80,
-      height: 80,
-    },
-    '@media (max-width: 375px)': {
-      width: 70,
-      height: 70,
+      width: 110,
+      height: 110,
     },
   },
   wheelCenterText: {
     color: '#2A2B6A',
     fontWeight: 700,
-    fontSize: '1.2rem',
+    fontSize: '1.1rem',
     textAlign: 'center',
     '@media (max-width: 1200px)': {
       fontSize: '1rem',
@@ -251,14 +229,229 @@ const useStyles = makeStylesWithTheme((theme) => ({
     '@media (max-width: 960px)': {
       fontSize: '0.9rem',
     },
+  },
+
+  // POINTS DESIGN (Mobile)
+  pointsContainer: {
+    display: 'none',
+    '@media (max-width: 768px)': {
+      display: 'block',
+      width: '100%',
+      maxWidth: '600px',
+      margin: '0 auto',
+      padding: '0 1rem',
+    },
     '@media (max-width: 600px)': {
-      fontSize: '0.7rem',
+      padding: '0 0.5rem',
     },
     '@media (max-width: 480px)': {
-      fontSize: '0.65rem',
+      padding: '0 0.3rem',
     },
     '@media (max-width: 375px)': {
-      fontSize: '0.6rem',
+      padding: '0 0.1rem',
+    },
+  },
+  pointsList: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '1.2rem',
+    '@media (max-width: 600px)': {
+      gap: '1rem',
+    },
+    '@media (max-width: 480px)': {
+      gap: '0.8rem',
+    },
+    '@media (max-width: 375px)': {
+      gap: '0.6rem',
+    },
+  },
+  pointItem: {
+    display: 'flex',
+    alignItems: 'flex-start',
+    gap: '1rem',
+    padding: '1.2rem',
+    background: '#fff',
+    borderRadius: '16px',
+    boxShadow: '0 4px 20px rgba(42, 43, 106, 0.08)',
+    border: '2px solid #f0f2ff',
+    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+    cursor: 'pointer',
+    position: 'relative',
+    overflow: 'hidden',
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      height: '3px',
+      background: 'linear-gradient(90deg, #FFC614, #2A2B6A)',
+      transform: 'translateX(-100%)',
+      transition: 'transform 0.3s ease',
+    },
+    '&:hover': {
+      transform: 'translateY(-4px)',
+      boxShadow: '0 8px 30px rgba(42, 43, 106, 0.15)',
+      border: '2px solid #FFC614',
+      '&::before': {
+        transform: 'translateX(0)',
+      },
+      '& $pointIcon': {
+        transform: 'scale(1.1) rotate(5deg)',
+        background: 'linear-gradient(135deg, #FFC614, #2A2B6A)',
+      },
+    },
+    '&.active': {
+      border: '2px solid #FFC614',
+      boxShadow: '0 8px 30px rgba(255, 198, 20, 0.3)',
+      '&::before': {
+        transform: 'translateX(0)',
+      },
+      '& $pointIcon': {
+        background: 'linear-gradient(135deg, #FFC614, #2A2B6A)',
+        transform: 'scale(1.05)',
+      },
+    },
+    '@media (max-width: 600px)': {
+      padding: '1rem',
+      gap: '0.8rem',
+      borderRadius: '12px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '0.8rem',
+      gap: '0.6rem',
+      borderRadius: '10px',
+    },
+    '@media (max-width: 375px)': {
+      padding: '0.6rem',
+      gap: '0.5rem',
+      borderRadius: '8px',
+    },
+  },
+  pointIcon: {
+    width: '48px',
+    height: '48px',
+    borderRadius: '12px',
+    background: 'linear-gradient(135deg, #2A2B6A, #4a4d9e)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: '#fff',
+    fontSize: '1.5rem',
+    flexShrink: 0,
+    transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+    '@media (max-width: 600px)': {
+      width: '40px',
+      height: '40px',
+      fontSize: '1.3rem',
+      borderRadius: '10px',
+    },
+    '@media (max-width: 480px)': {
+      width: '36px',
+      height: '36px',
+      fontSize: '1.1rem',
+      borderRadius: '8px',
+    },
+    '@media (max-width: 375px)': {
+      width: '32px',
+      height: '32px',
+      fontSize: '1rem',
+      borderRadius: '6px',
+    },
+  },
+  pointContent: {
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  pointTitle: {
+    fontSize: '1.1rem !important',
+    fontWeight: '700 !important',
+    color: '#2A2B6A !important',
+    marginBottom: '0.3rem !important',
+    lineHeight: '1.3 !important',
+    '@media (max-width: 600px)': {
+      fontSize: '1rem !important',
+      marginBottom: '0.2rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.9rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.85rem !important',
+    },
+  },
+  pointDescription: {
+    fontSize: '0.85rem !important',
+    color: '#666 !important',
+    lineHeight: '1.4 !important',
+    margin: '0 !important',
+    '@media (max-width: 600px)': {
+      fontSize: '0.8rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.75rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.7rem !important',
+    },
+  },
+  mobileBrandContainer: {
+    display: 'none',
+    '@media (max-width: 768px)': {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginTop: '2rem',
+      marginBottom: '1rem',
+    },
+    '@media (max-width: 600px)': {
+      marginTop: '1.5rem',
+      marginBottom: '0.8rem',
+      zIndex: 0,
+    },
+    '@media (max-width: 480px)': {
+      marginTop: '1.2rem',
+      marginBottom: '0.6rem',
+      zIndex: 0,
+    },
+    '@media (max-width: 375px)': {
+      marginTop: '1rem',
+      marginBottom: '0.5rem',
+      zIndex: 0,
+    },
+  },
+  mobileBrand: {
+    background: 'linear-gradient(135deg, #FFC614, #FFD95C)',
+    borderRadius: '50px',
+    padding: '12px 24px',
+    boxShadow: '0 8px 25px rgba(255, 198, 20, 0.3)',
+    '@media (max-width: 600px)': {
+      padding: '10px 20px',
+      borderRadius: '40px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '8px 16px',
+      borderRadius: '30px',
+    },
+    '@media (max-width: 375px)': {
+      padding: '6px 12px',
+      borderRadius: '25px',
+    },
+  },
+  mobileBrandText: {
+    color: '#2A2B6A',
+    fontWeight: '700 !important',
+    fontSize: '1rem !important',
+    textAlign: 'center',
+    '@media (max-width: 600px)': {
+      fontSize: '0.9rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.8rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.75rem !important',
     },
   },
 }));
@@ -270,16 +463,28 @@ const WhoIsItFor = () => {
 
   const targetAudience = [
     {
-      text: "Students and freshers entering the job market"
+      text: "Students and freshers entering the job market",
+      title: "Students & Freshers",
+      description: "Perfect for new graduates and career starters",
+      icon: <Person />
     },
     {
-      text: "Working professionals upgrading roles or switching careers"
+      text: "Working professionals upgrading roles or switching careers",
+      title: "Career Switchers",
+      description: "Ideal for professionals changing career paths",
+      icon: <Work />
     },
     {
-      text: "Individuals with career gaps needing impactful resumes"
+      text: "Individuals with career gaps needing impactful resumes",
+      title: "Career Gap Recovery",
+      description: "Get back into the workforce with confidence",
+      icon: <TrendingUp />
     },
     {
-      text: "Tech enthusiasts wanting to showcase Gen AI & project skills"
+      text: "Tech enthusiasts wanting to showcase Gen AI & project skills",
+      title: "Tech Enthusiasts",
+      description: "Showcase your AI and technical project skills",
+      icon: <Code />
     }
   ];
 
@@ -287,7 +492,7 @@ const WhoIsItFor = () => {
   React.useEffect(() => {
     const interval = setInterval(() => {
       setActiveIdx((prev) => (prev + 1) % targetAudience.length);
-    }, 1800);
+    }, 2500);
     return () => clearInterval(interval);
   }, [targetAudience.length]);
 
@@ -299,6 +504,8 @@ const WhoIsItFor = () => {
             Who is it <span>for?</span>
           </Typography>
         </Box>
+        
+        {/* WHEEL DESIGN FOR DESKTOP/TABLET */}
         <Box className={classes.wheelContainer}>
           <Box className={classes.wheel} ref={wheelRef}>
             {targetAudience.slice(0, 2).map((audience, idx) => (
@@ -332,6 +539,38 @@ const WhoIsItFor = () => {
                 <Typography className={classes.wheelText}>{audience.text}</Typography>
               </Box>
             ))}
+          </Box>
+        </Box>
+
+        {/* POINTS DESIGN FOR MOBILE */}
+        <Box className={classes.pointsContainer}>
+          <Box className={classes.pointsList}>
+            {targetAudience.map((audience, idx) => (
+              <Box
+                key={idx}
+                className={`${classes.pointItem} ${activeIdx === idx ? 'active' : ''}`}
+              >
+                <Box className={classes.pointIcon}>
+                  {audience.icon}
+                </Box>
+                <Box className={classes.pointContent}>
+                  <Typography className={classes.pointTitle}>
+                    {audience.title}
+                  </Typography>
+                  <Typography className={classes.pointDescription}>
+                    {audience.description}
+                  </Typography>
+                </Box>
+              </Box>
+            ))}
+          </Box>
+          
+          <Box className={classes.mobileBrandContainer}>
+            <Box className={classes.mobileBrand}>
+              <Typography className={classes.mobileBrandText}>
+                Giga Resume Builder
+              </Typography>
+            </Box>
           </Box>
         </Box>
       </Container>
