@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Chip } from '@mui/material';
+import { Box, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, } from '@mui/material';
 import { CheckCircle, Cancel, Warning } from '@mui/icons-material';
 import makeStylesWithTheme from '../../styles/makeStylesAdapter';
 
@@ -106,7 +106,7 @@ const useStyles = makeStylesWithTheme((theme) => ({
   },
   headerCell: {
     color: '#1a202c',
-    fontWeight: 700,
+    fontWeight: '700 !important',
     fontSize: '1.1rem',
     borderBottom: '2px solid #e5e7eb',
     padding: '1.25rem 1rem',
@@ -139,7 +139,7 @@ const useStyles = makeStylesWithTheme((theme) => ({
     },
   },
   featureCell: {
-    fontWeight: 500,
+    fontWeight: '500 !important',
     color: '#1a202c',
   },
   iconCell: {
@@ -193,6 +193,21 @@ const useStyles = makeStylesWithTheme((theme) => ({
 
 const comparisonData = [
   {
+    feature: 'Free to Use',
+    giga: { status: 'success', text: '100% Free' },
+    others: { status: 'warning', text: 'Limited Access' }
+  },
+  {
+    feature: 'Built for Freshers & Tech Roles',
+    giga: { status: 'success', text: 'Specifically Designed' },
+    others: { status: 'warning', text: 'Generic' }
+  },
+  {
+    feature: 'ATS Compatibility Tested',
+    giga: { status: 'success', text: 'Yes' },
+    others: { status: 'warning', text: 'Limited' }
+  },
+  {
     feature: 'Gen AI Skill Recommendations',
     giga: { status: 'success', text: 'Yes' },
     others: { status: 'error', text: 'No' }
@@ -203,25 +218,11 @@ const comparisonData = [
     others: { status: 'error', text: 'No' }
   },
   {
-    feature: 'ATS Compatibility Tested',
-    giga: { status: 'success', text: 'Yes' },
-    others: { status: 'warning', text: 'Limited' }
-  },
-  {
-    feature: 'Free to Use',
-    giga: { status: 'success', text: '100% Free' },
-    others: { status: 'warning', text: 'Limited Access' }
-  },
-  {
     feature: 'One-Click GitHub Projects',
     giga: { status: 'success', text: 'Yes' },
     others: { status: 'error', text: 'No' }
   },
-  {
-    feature: 'Built for Freshers & Tech Roles',
-    giga: { status: 'success', text: 'Specifically Designed' },
-    others: { status: 'warning', text: 'Generic' }
-  }
+  
 ];
 
 const ComparisonTableSection = () => {

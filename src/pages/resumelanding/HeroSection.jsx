@@ -4,9 +4,9 @@ import {
   Box, 
   Typography, 
   Button, 
-  Fade, 
-  Grow,
-  Slide 
+  // Fade, 
+  // Grow,
+  // Slide 
 } from '@mui/material';
 import { 
   PlayArrowRounded,
@@ -20,7 +20,7 @@ import {
 } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import makeStylesWithTheme from '../../styles/makeStylesAdapter';
-import { Bold } from 'lucide-react';
+// import { Bold } from 'lucide-react';
 
 const useStyles = makeStylesWithTheme((theme) => ({
   heroContainer: {
@@ -624,7 +624,7 @@ const HeroSection = ({ handleCTAClick }) => {
             Whether you're a fresher looking for your first IT job or a professional aiming for a career switch, Gigaversity’s Resume Builder helps you build a resume that reflects your skills, projects, and growth in a recruiter-approved, ATS-friendly format.
           </Typography>
           <Typography variant="subtitle2" className={classes.subtitle}>
-            Choose from a variety of resume templates that adapt to your career stage, helping you present your achievements, skills, and projects clearly and professionally — so recruiters notice what truly matters.
+            Choose from a variety of resume templates that adapt to your career stage, helping you present your achievements, skills, and projects clearly and professionally so recruiters notice what truly matters.
           </Typography>
 
           <Box className={classes.ctaContainer}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, Container, useMediaQuery } from '@mui/material';
+import { Box, Typography, Container } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import StarIcon from '@mui/icons-material/Star';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
@@ -12,7 +12,7 @@ import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 
 const useStyles = makeStyles({
   section: {
-    padding: '100px 0',
+    padding: '40px 0',
     background: 'linear-gradient(135deg, #101138 0%, #2A2B6A 100%)',
     '@media (max-width: 960px)': {
       padding: '80px 0',
@@ -27,7 +27,7 @@ const useStyles = makeStyles({
   },
   titleSection: {
     textAlign: 'center',
-    marginBottom: '80px',
+    marginBottom: '40px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
