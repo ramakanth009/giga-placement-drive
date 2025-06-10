@@ -9,6 +9,7 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import VerifiedIcon from '@mui/icons-material/Verified';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import makeStylesWithTheme from '../../styles/makeStylesAdapter';
+import { textAlign } from '@mui/system';
 
 const useStyles = makeStylesWithTheme((theme) => ({
   section: {
@@ -34,8 +35,8 @@ const useStyles = makeStylesWithTheme((theme) => ({
     },
   },
   mainTitle: {
-    fontSize: '3.5rem',
-    fontWeight: 800,
+    fontSize: '3.5rem !important',
+    fontWeight: 'bold !important',
     color: '#ffffff',
     marginBottom: '20px',
     letterSpacing: '-0.02em',
@@ -52,9 +53,10 @@ const useStyles = makeStylesWithTheme((theme) => ({
     
   },
   subtitle: {
-    fontSize: '1.2rem',
+    fontSize: '1.2rem !important',
     color: '#a0a0a0',
-    maxWidth: '600px',
+    textAlign: 'center',
+    maxWidth: '600px !important',
     margin: '0 auto',
     lineHeight: 1.6,
     '@media (max-width: 600px)': {
