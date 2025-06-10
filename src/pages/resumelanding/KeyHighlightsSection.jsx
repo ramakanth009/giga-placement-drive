@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, Typography, Container, useTheme, useMediaQuery } from '@mui/material';
+import { Box, Typography, Container, useMediaQuery } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import StarIcon from '@mui/icons-material/Star';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
 import PsychologyIcon from '@mui/icons-material/Psychology';
@@ -8,13 +9,10 @@ import DesignServicesIcon from '@mui/icons-material/DesignServices';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import VerifiedIcon from '@mui/icons-material/Verified';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-import makeStylesWithTheme from '../../styles/makeStylesAdapter';
-import { textAlign } from '@mui/system';
 
-const useStyles = makeStylesWithTheme((theme) => ({
+const useStyles = makeStyles({
   section: {
     padding: '100px 0',
-    // Use the same background as HeroSection.jsx heroContainer:
     background: 'linear-gradient(135deg, #101138 0%, #2A2B6A 100%)',
     '@media (max-width: 960px)': {
       padding: '80px 0',
@@ -30,6 +28,9 @@ const useStyles = makeStylesWithTheme((theme) => ({
   titleSection: {
     textAlign: 'center',
     marginBottom: '80px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
     '@media (max-width: 600px)': {
       marginBottom: '50px',
     },
@@ -38,29 +39,30 @@ const useStyles = makeStylesWithTheme((theme) => ({
     fontSize: '3.5rem !important',
     fontWeight: 'bold !important',
     color: '#ffffff',
-    marginBottom: '20px',
+    marginBottom: '20px !important',
     letterSpacing: '-0.02em',
+    textAlign: 'center',
     '@media (max-width: 960px)': {
-      fontSize: '2.8rem',
+      fontSize: '2.8rem !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '2.2rem',
+      fontSize: '2.2rem !important',
     },
   },
   brandHighlight: {
     color: '#ffc614',
     position: 'relative',
-    
   },
   subtitle: {
     fontSize: '1.2rem !important',
-    color: '#a0a0a0',
-    textAlign: 'center',
-    maxWidth: '600px !important',
-    margin: '0 auto',
-    lineHeight: 1.6,
+    color: '#a0a0a0 !important',
+    textAlign: 'center !important',
+    maxWidth: '600px',
+    lineHeight: '1.6 !important',
+    margin: '0 !important',
     '@media (max-width: 600px)': {
-      fontSize: '1rem',
+      fontSize: '1rem !important',
+      maxWidth: '90%',
     },
   },
   highlightsGrid: {
@@ -76,7 +78,7 @@ const useStyles = makeStylesWithTheme((theme) => ({
   slider: {
     display: 'flex',
     gap: '40px',
-    animation: '$slide 40s linear infinite', // Slowed down from 20s to 40s
+    animation: '$slide 40s linear infinite',
     '&:hover': {
       animationPlayState: 'paused',
     },
@@ -86,7 +88,7 @@ const useStyles = makeStylesWithTheme((theme) => ({
       transform: 'translateX(0)',
     },
     '100%': {
-      transform: 'translateX(-50%)', // Changed from -100% to -50% for smoother loop
+      transform: 'translateX(-50%)',
     },
   },
   highlightCard: {
@@ -131,9 +133,9 @@ const useStyles = makeStylesWithTheme((theme) => ({
   },
   highlightTitle: {
     fontSize: '1.3rem',
-    fontWeight: 700,
-    color: '#fff',
-    marginBottom: '0',
+    fontWeight: '700 !important',
+    color: '#fff !important',
+    marginBottom: '0 !important',
     transition: 'color 0.3s ease',
     position: 'relative',
     zIndex: 2,
@@ -172,66 +174,56 @@ const useStyles = makeStylesWithTheme((theme) => ({
     textAlign: 'center',
     '& h3': {
       fontSize: '2.5rem',
-      fontWeight: 800,
-      color: '#ffc614',
-      marginBottom: '10px',
+      fontWeight: '800 !important',
+      color: '#ffc614 !important',
+      marginBottom: '10px !important',
       '@media (max-width: 600px)': {
         fontSize: '2rem',
       },
     },
     '& p': {
       fontSize: '1rem',
-      color: '#a0a0a0',
-      margin: 0,
+      color: '#a0a0a0 !important',
+      margin: '0 !important',
     },
   },
-}));
+});
 
 const KeyHighlightsSection = () => {
   const classes = useStyles();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const highlights = [
     { 
       icon: <StarIcon />, 
       title: "Top Rated",
-      delay: 0.1
     },
     { 
       icon: <FlashOnIcon />, 
       title: "Lightning Fast",
-      delay: 0.2
     },
     { 
       icon: <PsychologyIcon />, 
       title: "Gen AI Recommendation",
-      delay: 0.3
     },
     { 
       icon: <LightbulbIcon />, 
       title: "Project Suggestion",
-      delay: 0.4
     },
     { 
       icon: <DesignServicesIcon />, 
       title: "Professional Layouts",
-      delay: 0.5
     },
     { 
       icon: <ThumbUpIcon />, 
       title: "Recruiters Approved Templates",
-      delay: 0.6
     },
     { 
       icon: <VerifiedIcon />, 
       title: "ATS-Friendly",
-      delay: 0.7
     },
     { 
       icon: <TrendingUpIcon />, 
       title: "Skills Suggestion",
-      delay: 0.8
     }
   ];
 
