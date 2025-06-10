@@ -290,7 +290,7 @@ const Navbar = () => {
               </Button>
 
               {/* Full Stack Dropdown */}
-              <Box className={classes.dropdown}>
+              {/* <Box className={classes.dropdown}>
                 <Button
                   className={`${classes.navLink} ${
                     currentPath.includes("/fullstack") ||
@@ -320,10 +320,10 @@ const Navbar = () => {
                     Data Science
                   </Link>
                 </Box>
-              </Box>
+              </Box> */}
 
               {/* Data Science Dropdown */}
-              <Box className={classes.dropdown}>
+              {/* <Box className={classes.dropdown}>
                 <Button
                   className={`${classes.navLink} ${
                     currentPath.includes("/datascience") ||
@@ -353,8 +353,8 @@ const Navbar = () => {
                     Data Science Program
                   </Link>
                 </Box>
-              </Box>
-              <Button
+              </Box> */}
+              {/* <Button
                 className={`${classes.navLink} ${
                   currentPath === "/campus" ? classes.active : ""
                 }`}
@@ -363,7 +363,7 @@ const Navbar = () => {
                 onClick={handleNavLinkClick}
               >
                 Campus
-              </Button>
+              </Button> */}
               <Button
                 className={`${classes.navLink} ${
                   currentPath === "/blog" ? classes.active : ""
@@ -439,7 +439,7 @@ const Navbar = () => {
           </MenuItem>
 
           {/* Mobile Full Stack dropdown */}
-          <MenuItem
+          {/* <MenuItem
             onClick={toggleMobileFullStack}
             className={classes.menuItem}
           >
@@ -454,31 +454,31 @@ const Navbar = () => {
                 }}
               />
             </Box>
-          </MenuItem>
+          </MenuItem> */}
           {mobileFullStackOpen && (
             <Box className={classes.mobileSubmenu}>
-              <MenuItem
+              {/* <MenuItem
                 onClick={() => handleNavLinkClick()}
                 className={classes.mobileSubmenuItem}
                 component={Link}
                 to="/fullstack"
               >
                 Full Stack
-              </MenuItem>
-              <MenuItem
+              </MenuItem> */}
+              {/* <MenuItem
                 onClick={() => handleNavLinkClick()}
                 className={classes.mobileSubmenuItem}
                 component={Link}
                 to="/datascience"
               >
                 Data Science
-              </MenuItem>
+              </MenuItem> */}
               
             </Box>
           )}
 
           {/* Mobile Data Science dropdown */}
-          <MenuItem
+          {/* <MenuItem
             onClick={toggleMobileDataScience}
             className={classes.menuItem}
           >
@@ -493,8 +493,8 @@ const Navbar = () => {
                 }}
               />
             </Box>
-          </MenuItem>
-          {mobileDataScienceOpen && (
+          </MenuItem> */}
+          {/* {mobileDataScienceOpen && (
             <Box className={classes.mobileSubmenu}>
               
               <MenuItem
@@ -514,7 +514,7 @@ const Navbar = () => {
                 Full Stack Program
               </MenuItem>
             </Box>
-          )}
+          )} */}
 
           <MenuItem
             onClick={() => handleNavLinkClick()}
@@ -532,14 +532,14 @@ const Navbar = () => {
           >
             Contact Us
           </MenuItem>
-          <MenuItem
+          {/* <MenuItem
             onClick={() => handleNavLinkClick()}
             className={classes.menuItem}
             component={Link}
             to="/campus"
           >
             Campus
-          </MenuItem>
+          </MenuItem> */}
           <MenuItem
             onClick={() => handleNavLinkClick()}
             className={classes.menuItem}
@@ -548,14 +548,14 @@ const Navbar = () => {
           >
             Blog
           </MenuItem>
-          <MenuItem
+          {/* <MenuItem
             onClick={() => handleNavLinkClick()}
             className={`${classes.menuItem} ${classes.signUpMenuItem}`}
             component={Link}
             to="/cart"
           >
             Apply Now
-          </MenuItem>
+          </MenuItem> */}
         </Menu>
       </Toolbar>
     </AppBar>

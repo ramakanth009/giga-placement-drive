@@ -788,7 +788,7 @@ const Footer = () => {
             </Box>
 
             {/* Programs Column */}
-            <Box className={classes.column}>
+            {/* <Box className={classes.column}>
               <Typography className={classes.sectionTitle}>Programs</Typography>
               <ul className={classes.linksList}>
                 <li className={classes.linkItem}>
@@ -812,7 +812,7 @@ const Footer = () => {
                   >
                     Data Science
                   </MuiLink>
-                </li>
+                </li> */}
                 {/* <li className={classes.linkItem}>
                   <BusinessCenterIcon className={classes.linkIcon} />
                   <MuiLink
@@ -849,8 +849,8 @@ const Footer = () => {
                     Data Science Full Time
                   </MuiLink>
                 </li> */}
-              </ul>
-            </Box>
+              {/* </ul>
+            </Box> */}
 
             {/* Contact Info Column */}
             <Box className={classes.column}>
