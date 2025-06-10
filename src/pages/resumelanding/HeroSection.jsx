@@ -20,6 +20,7 @@ import {
 } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import makeStylesWithTheme from '../../styles/makeStylesAdapter';
+import { Bold } from 'lucide-react';
 
 const useStyles = makeStylesWithTheme((theme) => ({
   heroContainer: {
@@ -30,21 +31,21 @@ const useStyles = makeStylesWithTheme((theme) => ({
     position: 'relative',
     overflow: 'hidden',
     padding: '2rem 5rem',
-    background: 'linear-gradient(135deg, #101138 0%, #2A2B6A 100%)',
+    background: 'linear-gradient(135deg, #101138 0%, #2A2B6A 100%) !important',
     '@media (max-width: 1200px)': {
-      padding: '2rem 4rem',
-    },
-    '@media (max-width: 960px)': {
       padding: '2rem 3rem',
     },
+    '@media (max-width: 960px)': {
+      padding: '1.5rem 2.5rem',
+    },
     '@media (max-width: 600px)': {
-      padding: '2rem',
+      padding: '1rem 1.5rem',
     },
     '@media (max-width: 480px)': {
-      padding: '1.5rem',
+      padding: '0.8rem 1rem',
     },
     '@media (max-width: 375px)': {
-      padding: '1rem',
+      padding: '0.5rem 0.8rem',
     },
   },
   heroContent: {
@@ -59,7 +60,7 @@ const useStyles = makeStylesWithTheme((theme) => ({
     },
     '@media (max-width: 960px)': {
       flexDirection: 'column',
-      gap: '3rem',
+      gap: '2.5rem',
     },
     '@media (max-width: 600px)': {
       gap: '2rem',
@@ -79,29 +80,64 @@ const useStyles = makeStylesWithTheme((theme) => ({
     flexDirection: 'column',
     alignItems: 'flex-start',
     paddingRight: '2rem',
+    position: 'relative', // Added for positioning the circle
     '@media (max-width: 960px)': {
       alignItems: 'center',
       textAlign: 'center',
       paddingRight: 0,
       order: 1,
     },
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      top: '90%',
+      left: '60%',
+      width: '300px',
+      height: '300px',
+      background: 'rgba(255, 198, 21, 0.1)',
+      borderRadius: '50%',
+      transform: 'translate(-50%, -50%)',
+      zIndex: -1,
+      '@media (max-width: 960px)': {
+        width: '250px',
+        height: '250px',
+      },
+      '@media (max-width: 600px)': {
+        width: '200px',
+        height: '200px',
+      },
+      '@media (max-width: 480px)': {
+        width: '150px',
+        height: '150px',
+      },
+      '@media (max-width: 375px)': {
+        width: '100px',
+        height: '100px',
+      },
+    },
   },
   mainHeadline: {
-    fontSize: '2.5rem',
-    fontWeight: 800,
-    lineHeight: 1.1,
-    marginBottom: '1.5rem',
+    fontSize: '3.5rem !important',
+    fontWeight: "bold !important",
+    lineHeight: "1.1 !important",
+    marginBottom: '1.5rem !important',
     color: '#ffffff',
     opacity: 0,
     animation: '$slideInLeft 1s ease-out 0.2s forwards',
     '@media (max-width: 1200px)': {
-      fontSize: '3rem',
+      fontSize: '3rem !important',
     },
     '@media (max-width: 960px)': {
-      fontSize: '2.5rem',
+      fontSize: '2.5rem !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '2rem',
+      fontSize: '2rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '1.8rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1.5rem !important',
     },
   },
   typewriterText: {
@@ -126,19 +162,25 @@ const useStyles = makeStylesWithTheme((theme) => ({
     },
   },
   subtitle: {
-    fontSize: '1.rem',
-    color: 'rgba(255, 255, 255, 0.9)',
-    marginBottom: '2rem',
+    fontSize: '1.1rem !important',
+    color: 'rgba(255, 255, 255, 0.9) !important',
+    marginBottom: '2rem !important',
     lineHeight: 1.6,
-    maxWidth: '800px',
+    maxWidth: '800px !important',
     opacity: 0,
     animation: '$fadeInUp 1s ease-out 0.4s forwards',
     '@media (max-width: 960px)': {
-      fontSize: '1.2rem',
-      maxWidth: '600px',
+      fontSize: '1rem',
+      maxWidth: '500px',
     },
     '@media (max-width: 600px)': {
-      fontSize: '1.1rem',
+      fontSize: '0.9rem',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.85rem',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.8rem',
     },
   },
   '@keyframes fadeInUp': {
@@ -153,13 +195,13 @@ const useStyles = makeStylesWithTheme((theme) => ({
   },
   ctaContainer: {
     display: 'flex',
-    gap: '1.5rem',
-    marginBottom: '3rem',
+    gap: '1.5rem  !important',
+    marginBottom: '3rem !important',
     opacity: 0,
     animation: '$scaleIn 0.8s ease-out 0.6s forwards',
     '@media (max-width: 600px)': {
       flexDirection: 'column',
-      gap: '1rem',
+      gap: '0.8rem',
       width: '100%',
     },
   },
@@ -174,12 +216,12 @@ const useStyles = makeStylesWithTheme((theme) => ({
     },
   },
   primaryCTA: {
-    background: 'linear-gradient(135deg, #ffc615 0%, #ffb700 100%)',
-    color: '#1a1b4b',
-    padding: '1rem 2.5rem',
-    fontSize: '1.1rem',
-    fontWeight: 700,
-    borderRadius: '50px',
+    background: 'linear-gradient(135deg, #ffc615 0%, #ffb700 100%) !important',
+    color: '#1a1b4b !important',
+    padding: '1rem 2.5rem !important',
+    fontSize: '1.3rem !important',
+    fontWeight: 'Bold !important',
+    borderRadius: '50px !important',
     textTransform: 'none',
     boxShadow: '0 8px 32px rgba(255, 198, 21, 0.4)',
     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -216,12 +258,12 @@ const useStyles = makeStylesWithTheme((theme) => ({
   },
   statsContainer: {
     display: 'flex',
-    gap: '2rem',
+    gap: '2rem !important',
     opacity: 0,
     animation: '$slideInStagger 1s ease-out 0.8s forwards',
     '@media (max-width: 600px)': {
       justifyContent: 'center',
-      gap: '1.5rem',
+      gap: '1rem',
     },
   },
   '@keyframes slideInStagger': {
@@ -259,17 +301,17 @@ const useStyles = makeStylesWithTheme((theme) => ({
     },
   },
   statNumber: {
-    fontSize: '2.5rem',
-    fontWeight: 800,
-    color: '#ffc615',
+    fontSize: '2.5rem !important',
+    fontWeight: "800 !important",
+    color: '#ffc615  !important',
     lineHeight: 1,
     '@media (max-width: 600px)': {
       fontSize: '2rem',
     },
   },
   statLabel: {
-    fontSize: '0.9rem',
-    color: 'rgba(255, 255, 255, 0.8)',
+    fontSize: '0.9rem !important',
+    color: 'rgba(255, 255, 255, 0.8) !important',
     fontWeight: 500,
   },
 
@@ -319,8 +361,16 @@ const useStyles = makeStylesWithTheme((theme) => ({
       animation: 'none',
     },
     '@media (max-width: 600px)': {
-      width: '300px',
-      padding: '1.5rem',
+      width: '280px',
+      padding: '1.2rem',
+    },
+    '@media (max-width: 480px)': {
+      width: '240px',
+      padding: '1rem',
+    },
+    '@media (max-width: 375px)': {
+      width: '200px',
+      padding: '0.8rem',
     },
   },
   '@keyframes morphCard': {
