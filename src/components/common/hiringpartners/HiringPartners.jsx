@@ -297,6 +297,11 @@ import { ReactComponent as GoldmanSachsLogo } from '../../../assets/hiringpartne
 import { ReactComponent as PaytmLogo } from '../../../assets/hiringpartners/paytm.svg';
 import { ReactComponent as HappyFoxLogo } from '../../../assets/hiringpartners/happyfox.svg';
 import { ReactComponent as SynopsysLogo } from '../../../assets/hiringpartners/Synopsys_Logo.svg';
+import applexusLogo from '../../../assets/hiringpartners/applexus.png';
+import skillventory from '../../../assets/hiringpartners/skillventory.png';
+import nielseniq from '../../../assets/hiringpartners/nielseniq.webp';
+import biznext from '../../../assets/hiringpartners/biznext.png';
+import meesho from '../../../assets/hiringpartners/meesho.png';
 
 const useStyles = makeStyles({
   partnersSectionWrapper: {
@@ -423,16 +428,16 @@ const useStyles = makeStyles({
   },
   logoGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))',
+    gridTemplateColumns: 'repeat(7, 1fr)',
     padding: '25px 30px',
     gap: '25px',
     '@media (max-width: 960px)': {
-      gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))',
+      gridTemplateColumns: 'repeat(4, 1fr)',
       padding: '20px',
       gap: '20px',
     },
     '@media (max-width: 600px)': {
-      gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))',
+      gridTemplateColumns: 'repeat(2, 1fr)',
       padding: '15px',
       gap: '15px',
     },
@@ -450,14 +455,15 @@ const useStyles = makeStyles({
     transition: 'all 0.3s ease',
     position: 'relative',
     overflow: 'hidden',
-    height: '120px',
+    height: '100px',
+    width: '100%',
     '&:hover': {
       transform: 'translateY(-5px)',
       boxShadow: '0 8px 20px rgba(0,0,0,0.08)',
     },
     '@media (max-width: 768px)': {
       padding: '15px 10px',
-      height: '100px',
+      height: '90px',
     },
   },
   logoSvg: {
@@ -478,7 +484,41 @@ const useStyles = makeStyles({
   emptyStateText: {
     color: '#777 !important',
     fontSize: '1.1rem !important',
-  }
+  },
+  moreCompaniesCard: {
+    display: 'flex',
+    // flexDirection: 'column',
+    alignItems: 'center',
+    gap: '10px',
+    justifyContent: 'center',
+    backgroundColor: '#f8f9ff',
+    borderRadius: '12px',
+    padding: '20px 15px',
+    border: '2px dashed #2A2B6A',
+    cursor: 'pointer',
+    height: '100px',
+    width: '100%',
+    transition: 'all 0.3s ease',
+    backgroundColor: '#2A2B6A',
+    '&:hover': {
+      backgroundColor: '#eef0ff',
+      transform: 'translateY(-5px)',
+    },
+    '@media (max-width: 768px)': {
+      height: '90px',
+    },
+  },
+  moreCompaniesText: {
+    color: '#ffffff',
+    fontSize: '1rem',
+    fontWeight: 600,
+    marginTop: '8px',
+  },
+  plusIcon: {
+    fontSize: '40px',
+    color: '#ffffff',
+    marginBottom: '4px',
+  },
 });
 
 const HiringPartners = () => {
@@ -504,6 +544,13 @@ const HiringPartners = () => {
     { name: 'Zoho', Logo: ZohoLogo, category: 'Software & IT' },
     { name: 'HappyFox', Logo: HappyFoxLogo, category: 'Software & IT' },
     { name: 'Infrrt', Logo: InfrrtLogo, category: 'Software & IT' },
+    { name: 'Applexus', Logo: ({ className }) => (
+        <img 
+          src={applexusLogo} 
+          className={className} 
+          alt="Applexus" 
+        />
+      ), category: 'Software & IT' },
     
     // Enterprise Tech Companies
     { name: 'TCS', Logo: TcsLogo, category: 'Enterprise Tech' },
@@ -526,6 +573,34 @@ const HiringPartners = () => {
     { name: 'Capgemini', Logo: CapgeminiLogo, category: 'Consulting' },
     { name: 'PharmEasy', Logo: PharmEasyLogo, category: 'Retail & E-commerce' },
     { name: 'Mu Sigma', Logo: MuSigmaLogo, category: 'Consulting' },
+    { name: 'skillventory', Logo: ({ className }) => (
+        <img 
+          src={skillventory} 
+          className={className} 
+          alt="skillventory" 
+        />
+      ), category: 'Consulting' },
+    { name: 'nielseniq', Logo: ({ className }) => (
+        <img 
+          src={nielseniq} 
+          className={className} 
+          alt="nielseniq" 
+        />
+      ), category: 'Enterprise Tech' },
+    { name: 'biznext', Logo: ({ className }) => (
+        <img 
+          src={biznext} 
+          className={className} 
+          alt="biznext" 
+        />
+      ), category: 'Finance & Fintech' },
+    { name: 'meesho', Logo: ({ className }) => (
+        <img 
+          src={meesho} 
+          className={className} 
+          alt="meesho" 
+        />
+      ), category: 'Retail & E-commerce' },
     { name: 'Adidas', Logo: AdidasLogo, category: 'Retail & E-commerce' },
     { name: 'Medplus', Logo: MedplusLogo, category: 'Retail & E-commerce' },
   ];
@@ -547,6 +622,26 @@ const HiringPartners = () => {
       count: companiesInCategory.length
     };
   }).filter(category => category.count > 0);
+
+  const MoreCompaniesCard = () => {
+    return (
+      <div className={classes.moreCompaniesCard}>
+        <span className={classes.plusIcon}>+</span>
+        <span className={classes.moreCompaniesText}>More Companies</span>
+      </div>
+    );
+  };
+
+  const renderLogos = (categoryCompanies) => (
+    <div className={classes.logoGrid}>
+      {categoryCompanies.map((company) => (
+        <div key={company.name} className={classes.logoWrapper}>
+          <company.Logo className={classes.logoSvg} aria-label={company.name} />
+        </div>
+      ))}
+      <MoreCompaniesCard />
+    </div>
+  );
 
   return (
     <Box className={classes.partnersSectionWrapper}>
@@ -589,13 +684,7 @@ const HiringPartners = () => {
                 </Box>
                 
                 {/* Logos grid */}
-                <Box className={classes.logoGrid}>
-                  {category.companies.map((company, index) => (
-                    <Box key={index} className={classes.logoWrapper}>
-                      <company.Logo className={classes.logoSvg} aria-label={company.name} />
-                    </Box>
-                  ))}
-                </Box>
+                {renderLogos(category.companies)}
               </Box>
             ))
           ) : (

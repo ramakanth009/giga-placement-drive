@@ -20,7 +20,7 @@ import LaptopIcon from '@mui/icons-material/Laptop';
 
 const useStyles = makeStyles({
   section: {
-    minHeight: '100vh',
+    minHeight: '90vh',
     position: 'relative',
     overflow: 'hidden',
     background: 'linear-gradient(180deg, #101138 0%, #1e1c44 100%)',
@@ -58,7 +58,7 @@ const useStyles = makeStyles({
     },
   },
   container: {
-    height: '100vh',
+    height: '10vh',
     display: 'flex',
     flexDirection: 'column',
     position: 'relative',
@@ -192,7 +192,7 @@ const useStyles = makeStyles({
   questionText: {
     fontSize: '1.8rem !important',
     fontWeight: '600 !important',
-    color: '#fdb347 !important',
+    color: '#FFC614 !important',
     marginBottom: '20px !important',
     lineHeight: '1.3 !important',
     transition: 'all 0.4s ease',
@@ -346,7 +346,7 @@ const useStyles = makeStyles({
   stackCard: {
     position: 'absolute',
     width: '100%',
-    height: '75%',     // Increased from 60%
+    height: '65%',     // Increased from 60%
     borderRadius: '20px !important',
     backfaceVisibility: 'hidden',
     transition: 'all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
@@ -396,12 +396,12 @@ const useStyles = makeStyles({
     width: '50px',
     height: '50px',
     borderRadius: '50%',
-    background: 'linear-gradient(135deg, #9370DB 0%, #483D8B 100%)',
+    background: 'linear-gradient(135deg, #101138 0%, #1e1c44 100%)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: '20px',
-    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(147, 112, 219, 0.5)',
+    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(16, 17, 56, 0.5)',
     transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
     position: 'relative',
     '&::before': {
@@ -409,7 +409,7 @@ const useStyles = makeStyles({
       position: 'absolute',
       inset: '-3px',
       borderRadius: '50%',
-      background: 'conic-gradient(from 0deg, #9370DB, #483D8B, #9370DB)',
+      background: 'conic-gradient(from 0deg, #101138, #1e1c44, #101138)',
       opacity: 0,
       transition: 'opacity 0.4s ease',
       animation: '$rotate 3s linear infinite',
@@ -419,7 +419,7 @@ const useStyles = makeStyles({
       position: 'absolute',
       inset: '0',
       borderRadius: '50%',
-      background: 'linear-gradient(135deg, #9370DB 0%, #483D8B 100%)',
+      background: 'linear-gradient(135deg, #101138 0%, #1e1c44 100%)',
     },
     '$stackCard:hover &': {
       transform: 'scale(1.1)',

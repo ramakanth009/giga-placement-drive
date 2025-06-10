@@ -579,7 +579,7 @@ import HeroImage8 from '../../../assets/hero/Banner8.jpg';
 
 const useStyles = makeStyles({
   heroSection: {
-    width: '100%',
+    width: '100vw',
     height: '500px',
     position: 'relative',
   },
@@ -602,9 +602,9 @@ const useStyles = makeStyles({
     },
   },
   heroImage: {
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
+    width: '100vw',
+    // height: '100%',
+    objectFit: 'fill',
     display: 'block',
   },
   swiperSlide: {
