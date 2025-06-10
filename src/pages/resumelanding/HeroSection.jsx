@@ -25,12 +25,12 @@ import { Bold } from 'lucide-react';
 const useStyles = makeStylesWithTheme((theme) => ({
   heroContainer: {
     width: '100%',
-    minHeight: '100vh',
+    // minHeight: '100vh',
     display: 'flex',
     alignItems: 'center',
     position: 'relative',
     overflow: 'hidden',
-    padding: '2rem 5rem',
+    padding: '3rem 5rem',
     background: 'linear-gradient(135deg, #101138 0%, #2A2B6A 100%) !important',
     '@media (max-width: 1200px)': {
       padding: '2rem 3rem',
@@ -117,7 +117,7 @@ const useStyles = makeStylesWithTheme((theme) => ({
     },
   },
   mainHeadline: {
-    fontSize: '3.5rem !important',
+    fontSize: '2.8rem !important',
     fontWeight: "bold !important",
     lineHeight: "1.1 !important",
     marginBottom: '1.5rem !important',
@@ -164,9 +164,9 @@ const useStyles = makeStylesWithTheme((theme) => ({
   subtitle: {
     fontSize: '1.1rem !important',
     color: 'rgba(255, 255, 255, 0.9) !important',
-    marginBottom: '2rem !important',
+    marginBottom: '1rem !important',
     lineHeight: 1.6,
-    maxWidth: '800px !important',
+    maxWidth: '900px !important',
     opacity: 0,
     animation: '$fadeInUp 1s ease-out 0.4s forwards',
     '@media (max-width: 960px)': {
@@ -196,7 +196,7 @@ const useStyles = makeStylesWithTheme((theme) => ({
   ctaContainer: {
     display: 'flex',
     gap: '1.5rem  !important',
-    marginBottom: '3rem !important',
+    marginBottom: '1rem !important',
     opacity: 0,
     animation: '$scaleIn 0.8s ease-out 0.6s forwards',
     '@media (max-width: 600px)': {
@@ -623,7 +623,7 @@ const HeroSection = ({ handleCTAClick }) => {
           <Typography variant="subtitle1" className={classes.subtitle}>
             Whether you're a fresher looking for your first IT job or a professional aiming for a career switch, Gigaversity’s Resume Builder helps you build a resume that reflects your skills, projects, and growth in a recruiter-approved, ATS-friendly format.
           </Typography>
-          <Typography variant="subtitle1" className={classes.subtitle}>
+          <Typography variant="subtitle2" className={classes.subtitle}>
             Choose from a variety of resume templates that adapt to your career stage, helping you present your achievements, skills, and projects clearly and professionally — so recruiters notice what truly matters.
           </Typography>
 

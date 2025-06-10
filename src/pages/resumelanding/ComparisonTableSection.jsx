@@ -264,7 +264,7 @@ const ComparisonTableSection = () => {
       <Box className={classes.container}>
         <Box display="flex" justifyContent="center" alignItems="center" width="100%" mb={4}>
           <Typography className={classes.title}>
-            Why Use <span>Giga Resume Builder?</span>
+            Why <span>Giga Resume Builder?</span> Stands Out
           </Typography>
         </Box>
 
