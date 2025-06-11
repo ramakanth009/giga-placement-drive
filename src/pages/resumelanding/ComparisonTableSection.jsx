@@ -1,9 +1,9 @@
 import React from 'react';
 import { Box, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, } from '@mui/material';
 import { CheckCircle, Cancel, Warning } from '@mui/icons-material';
-import makeStylesWithTheme from '../../styles/makeStylesAdapter';
+import { makeStyles } from '@mui/styles';
 
-const useStyles = makeStylesWithTheme((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     padding: '3rem 1.5rem',
     background: '#fff',
@@ -168,13 +168,13 @@ const useStyles = makeStylesWithTheme((theme) => ({
     tableLayout: 'fixed', // Forces equal column distribution
   },
   tableHead: {
-    background: 'linear-gradient(135deg, #f8fafc 0%, #e3f2fd 50%, #fff3c4 100%)',
+    background: 'linear-gradient(135deg, #2A2B6A 0%, #3a3d7a 50%, #4a4d8a 100%)',
   },
   headerCell: {
-    color: '#1a202c',
+    color: '#ffffff !important',
     fontWeight: '700 !important',
     fontSize: '1rem !important',
-    borderBottom: '2px solid #e5e7eb',
+    borderBottom: '2px solid #1a1d4a',
     padding: '1rem 0.5rem',
     textAlign: 'center',
     background: 'transparent',
@@ -217,7 +217,8 @@ const useStyles = makeStylesWithTheme((theme) => ({
       background: '#f8fafc',
     },
     '&:hover': {
-      background: 'linear-gradient(135deg, #fffde7 0%, #f3e5f5 100%)',
+      background: 'linear-gradient(135deg, #f8f9ff 0%, #fff8e7 100%)',
+      // transform: 'scale(1.01)',
     },
     transition: 'all 0.2s ease',
   },
