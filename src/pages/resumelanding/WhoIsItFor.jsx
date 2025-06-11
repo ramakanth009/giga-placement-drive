@@ -35,7 +35,7 @@ const useStyles = makeStyles({
   },
   title: {
     fontWeight: 800,
-    fontSize: '3.5rem',
+    fontSize: '2.8rem',
     color: '#2A2B6A',
     textAlign: 'center',
     marginBottom: '20px',

@@ -7,10 +7,10 @@ import makeStylesWithTheme from '../../styles/makeStylesAdapter';
 const useStyles = makeStylesWithTheme((theme) => ({
   featuresSection: {
     background: '#ffffff',
-    padding: '3rem 1.5rem',
+    padding: '2rem 1rem',
     position: 'relative',
     overflow: 'hidden',
-    minHeight: '100vh',
+    // minHeight: '100vh',
     display: 'flex',
     alignItems: 'center',
     zIndex: 1,
@@ -44,11 +44,11 @@ const useStyles = makeStylesWithTheme((theme) => ({
     },
   },
   sectionTitle: {
-    fontSize: '2.2rem !important',
+    fontSize: '2.8rem !important',
     fontWeight: '800 !important',
     color: '#2A2B6A !important',
     textAlign: 'center',
-    marginBottom: '2.5rem !important',
+    marginBottom: '1.5rem !important',
     background: '#fff',
     borderRadius: '18px',
     display: 'inline-block',

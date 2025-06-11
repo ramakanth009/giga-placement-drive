@@ -62,7 +62,7 @@ const useStyles = makeStyles({
     },
   },
   title: {
-    fontSize: '2.2rem !important',
+    fontSize: '2.8rem !important',
     fontWeight: 'bold !important',
     color: '#ffffff',
     marginBottom: '1rem !important',
