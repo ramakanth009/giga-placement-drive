@@ -296,11 +296,16 @@ const useStyles = makeStylesWithTheme((theme) => ({
     borderRadius: '50px !important',
     textTransform: 'none',
     boxShadow: '0 8px 32px rgba(255, 198, 21, 0.4)',
-    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+    transition: 'all 0.15s cubic-bezier(0.4, 0, 0.1, 1) !important',
+    transform: 'translateY(0) scale(1)',
     '&:hover': {
-      transform: 'translateY(-3px) scale(1.02)',
-      boxShadow: '0 12px 40px rgba(255, 198, 21, 0.6)',
-      background: 'linear-gradient(135deg, #ffb700 0%, #ffa000 100%)',
+      transform: 'translateY(-2px) scale(1.01) !important',
+      boxShadow: '0 12px 40px rgba(255, 198, 21, 0.6) !important',
+      background: 'linear-gradient(135deg, #ffb700 0%, #ffa000 100%) !important',
+    },
+    '&:active': {
+      transform: 'translateY(0) scale(0.98) !important',
+      transition: 'all 0.08s cubic-bezier(0.4, 0, 0.1, 1) !important',
     },
     '@media (max-width: 1200px)': {
       padding: '0.9rem 2.2rem !important',
@@ -334,11 +339,17 @@ const useStyles = makeStylesWithTheme((theme) => ({
     textTransform: 'none',
     backdropFilter: 'blur(10px)',
     background: 'rgba(255, 255, 255, 0.1)',
-    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+    transition: 'all 0.12s cubic-bezier(0.4, 0, 0.1, 1) !important',
+    transform: 'translateY(0)',
     '&:hover': {
-      background: 'rgba(255, 255, 255, 0.2)',
-      borderColor: 'rgba(255, 255, 255, 0.5)',
-      transform: 'translateY(-2px)',
+      background: 'rgba(255, 255, 255, 0.2) !important',
+      borderColor: 'rgba(255, 255, 255, 0.5) !important',
+      transform: 'translateY(-1px) !important',
+      backdropFilter: 'blur(15px) !important',
+    },
+    '&:active': {
+      transform: 'translateY(0) !important',
+      transition: 'all 0.06s cubic-bezier(0.4, 0, 0.1, 1) !important',
     },
     '@media (max-width: 1200px)': {
       padding: '0.9rem 1.8rem',
@@ -401,9 +412,16 @@ const useStyles = makeStylesWithTheme((theme) => ({
   statItem: {
     textAlign: 'left',
     animation: '$bounceIn 0.6s ease-out forwards',
+    transition: 'all 0.2s cubic-bezier(0.4, 0, 0.1, 1)',
     '&:nth-child(1)': { animationDelay: '1s' },
     '&:nth-child(2)': { animationDelay: '1.2s' },
     '&:nth-child(3)': { animationDelay: '1.4s' },
+    '&:hover': {
+      transform: 'translateY(-3px) scale(1.05)',
+      '& $statNumber': {
+        color: '#ffb700 !important',
+      },
+    },
     '@media (max-width: 960px)': {
       textAlign: 'center',
     },
@@ -431,6 +449,7 @@ const useStyles = makeStylesWithTheme((theme) => ({
     fontWeight: "800 !important",
     color: '#ffc615 !important',
     lineHeight: 1,
+    transition: 'color 0.15s cubic-bezier(0.4, 0, 0.1, 1)',
     '@media (max-width: 1200px)': {
       fontSize: '2.3rem !important',
     },
@@ -518,13 +537,18 @@ const useStyles = makeStylesWithTheme((theme) => ({
     padding: '2rem',
     boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)',
     border: '1px solid rgba(255, 255, 255, 0.2)',
-    transform: 'rotateY(-8deg) rotateX(3deg)',
-    transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+    transform: 'perspective(1000px) rotateY(-8deg) rotateX(3deg) scale(1) translateZ(0)',
+    transformOrigin: 'center center',
+    transition: 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s cubic-bezier(0.23, 1, 0.32, 1), backdrop-filter 0.6s ease-out, border-color 0.6s ease-out, background 0.6s ease-out',
     animation: '$morphCard 4s ease-in-out infinite',
+    willChange: 'transform',
     '&:hover': {
-      transform: 'rotateY(0deg) rotateX(0deg) scale(1.05)',
-      boxShadow: '0 30px 80px rgba(0, 0, 0, 0.4)',
+      transform: 'perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1.05) translateZ(50px)',
+      boxShadow: '0 40px 100px rgba(0, 0, 0, 0.5), 0 0 50px rgba(255, 198, 21, 0.3)',
       animation: 'none',
+      backdropFilter: 'blur(30px)',
+      border: '1px solid rgba(255, 255, 255, 0.5)',
+      background: 'linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.95) 100%)',
     },
     '@media (max-width: 1200px)': {
       width: '320px',
@@ -563,10 +587,16 @@ const useStyles = makeStylesWithTheme((theme) => ({
     marginBottom: '1.5rem',
     opacity: 0,
     animation: '$buildSection 0.8s ease-out forwards',
+    transition: 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)',
+    transformOrigin: 'left center',
+    willChange: 'transform',
     '&:nth-child(1)': { animationDelay: '1.5s' },
     '&:nth-child(2)': { animationDelay: '1.8s' },
     '&:nth-child(3)': { animationDelay: '2.1s' },
     '&:nth-child(4)': { animationDelay: '2.4s' },
+    '$resumeCard:hover &': {
+      transform: 'translateX(8px)',
+    },
     '@media (max-width: 1200px)': {
       marginBottom: '1.3rem',
     },
@@ -602,6 +632,13 @@ const useStyles = makeStylesWithTheme((theme) => ({
     fontWeight: 600,
     fontSize: '0.9rem',
     animation: '$iconSpin 2s ease-in-out infinite',
+    transition: 'color 0.6s cubic-bezier(0.23, 1, 0.32, 1), transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)',
+    transformOrigin: 'left center',
+    willChange: 'transform, color',
+    '$resumeCard:hover &': {
+      color: '#1a1b4b',
+      transform: 'scale(1.02)',
+    },
     '@media (max-width: 1200px)': {
       fontSize: '0.85rem',
       gap: '0.4rem',
@@ -636,6 +673,12 @@ const useStyles = makeStylesWithTheme((theme) => ({
     position: 'relative',
     overflow: 'hidden',
     animation: '$pulseGlow 3s ease-in-out infinite',
+    transition: 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s cubic-bezier(0.23, 1, 0.32, 1)',
+    willChange: 'transform, box-shadow',
+    '$resumeCard:hover &': {
+      transform: 'scaleX(1.03)',
+      boxShadow: '0 0 25px rgba(255, 198, 21, 0.8)',
+    },
     '&::after': {
       content: '""',
       position: 'absolute',
@@ -735,6 +778,7 @@ const useStyles = makeStylesWithTheme((theme) => ({
     background: 'linear-gradient(90deg, #27286c, #ffc615)',
     borderRadius: '2px',
     animation: '$fillProgress 3s ease-out infinite',
+    transition: 'animation-duration 0.15s cubic-bezier(0.4, 0, 0.1, 1)',
   },
   '@keyframes fillProgress': {
     '0%': { 
@@ -775,6 +819,13 @@ const useStyles = makeStylesWithTheme((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    transition: 'all 0.2s cubic-bezier(0.4, 0, 0.1, 1)',
+    '&:hover': {
+      transform: 'scale(1.2) !important',
+      background: 'rgba(255, 198, 21, 0.2) !important',
+      border: '1px solid rgba(255, 198, 21, 0.5) !important',
+      backdropFilter: 'blur(15px) !important',
+    },
     '@media (max-width: 1200px)': {
       width: '42px',
       height: '42px',
