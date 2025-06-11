@@ -5,7 +5,7 @@ import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles(() => ({
   root: {
-    padding: '3rem 1.5rem',
+    padding: '2rem 1.5rem',
     background: '#fff',
     position: 'relative',
     overflow: 'hidden',
@@ -66,7 +66,7 @@ const useStyles = makeStyles(() => ({
     display: 'block',
     textAlign: 'center',
     width: '100%',
-    marginBottom: '2rem',
+    marginBottom: '1rem',
     '@media (max-width: 1200px)': {
       marginBottom: '1.5rem',
     },
@@ -92,7 +92,7 @@ const useStyles = makeStyles(() => ({
     background: '#fff',
     borderRadius: '18px',
     display: 'inline-block',
-    padding: '18px 35px',
+    padding: '18px 3px',
     position: 'relative',
     zIndex: 2,
     boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
@@ -176,7 +176,7 @@ const useStyles = makeStyles(() => ({
     fontSize: '1rem !important',
     borderBottom: '2px solid #1a1d4a',
     padding: '1rem 0.5rem',
-    textAlign: 'center',
+    textAlign: 'center !important',
     background: 'transparent',
     lineHeight: '1.2',
     wordWrap: 'break-word',
@@ -227,7 +227,7 @@ const useStyles = makeStyles(() => ({
     fontSize: '0.85rem !important',
     borderBottom: '1px solid #e5e7eb',
     padding: '0.8rem 0.5rem',
-    textAlign: 'center',
+    textAlign: 'center !important',
     verticalAlign: 'middle',
     lineHeight: '1.3',
     wordWrap: 'break-word',
@@ -257,7 +257,7 @@ const useStyles = makeStyles(() => ({
     fontWeight: '600 !important',
     color: '#1a202c !important',
     fontSize: '0.85rem !important',
-    textAlign: 'left !important',
+    textAlign: 'center !important',
     '@media (max-width: 1200px)': {
       fontSize: '0.8rem !important',
     },

@@ -38,7 +38,7 @@ const useStyles = makeStyles({
     fontSize: '3.5rem',
     color: '#2A2B6A',
     textAlign: 'center',
-    marginBottom: '32px',
+    marginBottom: '20px',
     position: 'relative',
     fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
     '& span': {
@@ -63,7 +63,7 @@ const useStyles = makeStyles({
   },
   subtitle: {
     color: '#000000',
-    marginBottom: '30px',
+    marginBottom: '20px',
     fontSize: '1.2rem',
     lineHeight: 1.7,
     textAlign: 'center',

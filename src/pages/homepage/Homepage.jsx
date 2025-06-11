@@ -58,10 +58,10 @@ const Homepage = () => {
         <HeroSection />
         <WhyUseSection />
         <KeyHighlightsSection />
-        <ComparisonTableSection />
         <TemplatesGallerySection />
         <WhoIsItFor />
         <SmartResumeSection />
+        <ComparisonTableSection />
       </Box>
     </Box>
   );

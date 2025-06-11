@@ -13,7 +13,9 @@ import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 const useStyles = makeStyles({
   section: {
     padding: '60px 0',
-    background: 'linear-gradient(135deg, #101138 0%, #2A2B6A 100%)',
+    // background: 'linear-gradient(135deg, #101138 0%, #2A2B6A 100%)',
+    // background: 'linear-gradient(135deg, #0f0f3a 0%, #1a1a4a 100%)',
+    background: 'linear-gradient(315deg, #0f0f3a 0%, #1a1a4a 100%)',
     '@media (max-width: 768px)': {
       padding: '40px 0',
     },

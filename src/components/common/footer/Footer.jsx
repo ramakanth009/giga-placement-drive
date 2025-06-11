@@ -26,10 +26,23 @@ import { ReactComponent as CodeIcon } from "../../../assets/fullstackfoot.svg";
 import { ReactComponent as DataObjectIcon } from "../../../assets/datasciencefoot.svg";
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import { ReactComponent as GigaLogo } from "../../../assets/GIGAVERSITY_LOGO.svg";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { Link } from "react-router-dom";
 import { scrollToTop } from '../../../utils/scrollUtils';
 import { ReactComponent as CBottom } from "../../../assets/cbottom.svg";
 import { ReactComponent as CTop } from "../../../assets/ctop.svg";
+
+// Custom Discord Icon Component (since MUI doesn't have a Discord icon)
+const DiscordIcon = (props) => (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    {...props}
+  >
+    <path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.211.369-.444.85-.608 1.23a18.566 18.566 0 0 0-5.487 0 12.36 12.36 0 0 0-.617-1.23A.077.077 0 0 0 8.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 0 0-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 0 0 .031.055 20.03 20.03 0 0 0 5.993 2.98.078.078 0 0 0 .084-.026 13.83 13.83 0 0 0 1.226-1.963.074.074 0 0 0-.041-.104 13.201 13.201 0 0 1-1.872-.878.075.075 0 0 1-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 0 1 .078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 0 1 .079.009c.12.098.245.195.372.288a.075.075 0 0 1-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 0 0-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 0 0 .084.028 19.963 19.963 0 0 0 6.002-2.981.076.076 0 0 0 .032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 0 0-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.311-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.311-.946 2.38-2.157 2.38z"/>
+  </svg>
+);
 
 const useStyles = makeStyles({
   footerWrapper: {
@@ -534,6 +547,7 @@ const useStyles = makeStyles({
     gap: "15px",
     marginTop: "25px",
     flexWrap: "wrap",
+    justifyContent: "flex-start",
     "@media (max-width: 1200px)": {
       gap: "14px",
       marginTop: "23px",
@@ -545,6 +559,7 @@ const useStyles = makeStyles({
     "@media (max-width: 600px)": {
       gap: "12px",
       marginTop: "20px",
+      justifyContent: "center",
     },
     "@media (max-width: 480px)": {
       gap: "10px",
@@ -670,6 +685,34 @@ const useStyles = makeStyles({
       padding: "4px 0 0",
     },
   },
+  sitemapLink: {
+    color: "#ffffff !important",
+    textDecoration: "none !important",
+    fontSize: "1rem",
+    transition: "color 0.3s ease",
+    display: "inline-flex",
+    alignItems: "center",
+    marginTop: "10px",
+    "&:hover": {
+      color: "#FFC614 !important",
+      textDecoration: "underline !important",
+    },
+    "@media (max-width: 1200px)": {
+      fontSize: "0.98rem",
+    },
+    "@media (max-width: 960px)": {
+      fontSize: "0.95rem",
+    },
+    "@media (max-width: 600px)": {
+      fontSize: "0.95rem",
+    },
+    "@media (max-width: 480px)": {
+      fontSize: "0.9rem",
+    },
+    "@media (max-width: 375px)": {
+      fontSize: "0.85rem",
+    },
+  },
 });
 
 const Footer = () => {
@@ -726,17 +769,6 @@ const Footer = () => {
                     About Us
                   </MuiLink>
                 </li>
-                {/* <li className={classes.linkItem}>
-                  <BusinessCenterIcon className={classes.linkIcon} />
-                  <MuiLink
-                    component={Link}
-                    to="/campus"
-                    className={classes.linkText}
-                    onClick={scrollToTop}
-                  >
-                    Campus
-                  </MuiLink>
-                </li> */}
                 <li className={classes.linkItem}>
                   <InfoIcon className={classes.linkIcon} />
                   <MuiLink
@@ -781,76 +813,11 @@ const Footer = () => {
                     Terms & Conditions
                   </MuiLink>
                 </li>
-                <Link component={RouterLink} to="/sitemap" className={classes.sitemapLink}>
-                🗺️ Sitemap
-              </Link>
               </ul>
+              <MuiLink component={RouterLink} to="/sitemap" className={classes.sitemapLink}>
+                🗺️ Sitemap
+              </MuiLink>
             </Box>
-
-            {/* Programs Column */}
-            {/* <Box className={classes.column}>
-              <Typography className={classes.sectionTitle}>Programs</Typography>
-              <ul className={classes.linksList}>
-                <li className={classes.linkItem}>
-                  <CodeIcon className={classes.linkIcon} />
-                  <MuiLink
-                    component={Link}
-                    to="/fullstack"
-                    className={classes.programLink}
-                    onClick={scrollToTop}
-                  >
-                    Full-Stack Development
-                  </MuiLink>
-                </li>
-                <li className={classes.linkItem}>
-                  <DataObjectIcon className={classes.linkIcon} />
-                  <MuiLink
-                    component={Link}
-                    to="/datascience"
-                    className={classes.programLink}
-                    onClick={scrollToTop}
-                  >
-                    Data Science
-                  </MuiLink>
-                </li> */}
-                {/* <li className={classes.linkItem}>
-                  <BusinessCenterIcon className={classes.linkIcon} />
-                  <MuiLink
-                    component={Link}
-                    className={classes.programLink}
-                    onClick={scrollToTop}
-                  >
-                    Master Internship
-                  </MuiLink>
-                </li> */}
-
-                {/* <Typography className={classes.sectionTitle} style={{ marginTop: '30px' }}>
-                  Full-Time Programs
-                </Typography>
-                <li className={classes.linkItem}>
-                  <CodeIcon className={classes.linkIcon} />
-                  <MuiLink
-                    component={Link}
-                    to="/fulltime/fullstack"
-                    className={classes.programLink}
-                    onClick={scrollToTop}
-                  >
-                    Full Stack Full Time
-                  </MuiLink>
-                </li>
-                <li className={classes.linkItem}>
-                  <DataObjectIcon className={classes.linkIcon} />
-                  <MuiLink
-                    component={Link}
-                    to="/fulltime/datascience"
-                    className={classes.programLink}
-                    onClick={scrollToTop}
-                  >
-                    Data Science Full Time
-                  </MuiLink>
-                </li> */}
-              {/* </ul>
-            </Box> */}
 
             {/* Contact Info Column */}
             <Box className={classes.column}>
@@ -880,7 +847,7 @@ const Footer = () => {
                 </MuiLink>
               </Box>
 
-              {/* Social Media Icons moved to Contact section */}
+              {/* Social Media Icons with Discord added */}
               <Box className={classes.socialIcons}>
                 <MuiLink
                   href="https://www.facebook.com/share/1BCGVFefmp/"
@@ -900,7 +867,15 @@ const Footer = () => {
                     <LinkedInIcon />
                   </Box>
                 </MuiLink>
-
+                <MuiLink
+                  href="https://discord.gg/gigaversity"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Box className={classes.socialIcon}>
+                    <DiscordIcon />
+                  </Box>
+                </MuiLink>
                 <MuiLink
                   href="https://wa.me/919849048999"
                   target="_blank"
@@ -910,15 +885,6 @@ const Footer = () => {
                     <WhatsAppIcon />
                   </Box>
                 </MuiLink>
-                {/* <MuiLink
-                  href="https://www.youtube.com/channel/gigaversity"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Box className={classes.socialIcon}>
-                    <YouTubeIcon />
-                  </Box>
-                </MuiLink> */}
                 <MuiLink
                   href="https://www.instagram.com/gigaversity.in?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                   target="_blank"

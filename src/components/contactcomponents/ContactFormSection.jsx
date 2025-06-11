@@ -625,14 +625,14 @@ const ContactFormSection = () => {
                 >
                   <LinkedInIcon />
                 </Link>
-                <Link 
+                {/* <Link 
                   href="https://www.youtube.com/channel/gigaversity"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={classes.socialIcon}
                 >
                   <YouTubeIcon />
-                </Link>
+                </Link> */}
                 <Link 
                   href="https://www.instagram.com/gigaversity.in?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                   target="_blank"
