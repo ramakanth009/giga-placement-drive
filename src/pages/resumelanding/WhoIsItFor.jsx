@@ -30,22 +30,21 @@ const useStyles = makeStyles({
   title: {
     fontWeight: 800,
     fontSize: '3.5rem',
-    background: 'linear-gradient(135deg, #2563eb 0%, #fbbf24 100%)',
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'transparent',
-    backgroundClip: 'text',
-    textAlign: 'left',
+    color: '#2A2B6A', // Changed to white
+    textAlign: 'center',
     marginBottom: '32px',
     position: 'relative',
-    display: 'inline-block',
     fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    '& span': {
+      color: '#FFC614 !important', // Added span styling for yellow color
+    },
   },
   subtitle: {
-    color: '#ffffff',
+    color: '#000000',
     marginBottom: '30px',
     fontSize: '1.2rem',
-    maxWidth: '700px',
     lineHeight: 1.7,
+    textAlign: 'center',
     fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
   },
   featuresContainer: {
@@ -139,6 +138,7 @@ const useStyles = makeStyles({
     fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
   },
   featureDescription: {
+    minHeight: '160px',
     color: '#6b7280',
     lineHeight: 1.7,
     fontSize: '1rem',
@@ -178,14 +178,14 @@ const WhoIsItFor = () => {
     },
     {
       icon: <GraduationCap className={classes.iconStyle} />,
-      title: "Recent Graduates", 
+      title: "Recent Grads", 
       description: "Ideal for graduates entering the workforce who need to showcase their academic achievements and relevant experiences effectively.",
       iconClass: classes.icon2,
       shadowClass: classes.iconShadow2
     },
     {
       icon: <Monitor className={classes.iconStyle} />,
-      title: "Career Changers",
+      title: "Career shift",
       description: "Tailored for professionals transitioning to new industries who need to emphasize transferable skills and relevant qualifications.",
       iconClass: classes.icon3,
       shadowClass: classes.iconShadow3
@@ -207,7 +207,7 @@ const WhoIsItFor = () => {
       
       <div className={classes.contentContainer}>
         <h2 className={classes.title}>
-          Who Is It For?
+          Who Is It <span>For?</span>
         </h2>
         <p className={classes.subtitle}>
           Our resume builder is designed to help professionals at all career stages create impactful resumes that showcase their unique value proposition.
