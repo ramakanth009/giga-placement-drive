@@ -910,7 +910,7 @@ const Footer = () => {
                     <WhatsAppIcon />
                   </Box>
                 </MuiLink>
-                <MuiLink
+                {/* <MuiLink
                   href="https://www.youtube.com/channel/gigaversity"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -918,7 +918,7 @@ const Footer = () => {
                   <Box className={classes.socialIcon}>
                     <YouTubeIcon />
                   </Box>
-                </MuiLink>
+                </MuiLink> */}
                 <MuiLink
                   href="https://www.instagram.com/gigaversity.in?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                   target="_blank"
