@@ -95,8 +95,8 @@ const useStyles = makeStyles(() => ({
     padding: '18px 3px',
     position: 'relative',
     zIndex: 2,
-    boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
-    border: '1px solid #f0f0f0',
+    // boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+    // border: '1px solid #f0f0f0',
     '& span': {
       color: '#FFC614 !important',
     },

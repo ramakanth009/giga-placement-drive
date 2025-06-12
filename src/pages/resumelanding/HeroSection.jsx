@@ -543,7 +543,7 @@ const useStyles = makeStylesWithTheme((theme) => ({
     animation: '$morphCard 4s ease-in-out infinite',
     willChange: 'transform',
     '&:hover': {
-      transform: 'perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1.05) translateZ(50px)',
+      // transform: 'perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1.05) translateZ(50px)',
       boxShadow: '0 40px 100px rgba(0, 0, 0, 0.5), 0 0 50px rgba(255, 198, 21, 0.3)',
       animation: 'none',
       backdropFilter: 'blur(30px)',
