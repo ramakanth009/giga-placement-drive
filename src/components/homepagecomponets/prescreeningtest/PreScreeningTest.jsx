@@ -439,7 +439,7 @@
 // };
 
 // export default PreScreeningTest;
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Container, Typography, Stepper, Step, StepLabel, Button, Paper, CircularProgress } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { useNavigate } from 'react-router-dom';
@@ -687,6 +687,14 @@ const PreScreeningTest = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [apiResponse, setApiResponse] = useState(null);
+
+  // Scroll to top whenever activeStep changes
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }, [activeStep]);
 
   const handleNext = () => {
     const isValid = validateStep(activeStep);
