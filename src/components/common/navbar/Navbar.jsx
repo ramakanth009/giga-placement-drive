@@ -290,7 +290,7 @@ const Navbar = () => {
               </Button>
 
               {/* Full Stack Dropdown */}
-              {/* <Box className={classes.dropdown}>
+              <Box className={classes.dropdown}>
                 <Button
                   className={`${classes.navLink} ${
                     currentPath.includes("/fullstack") ||
@@ -320,10 +320,10 @@ const Navbar = () => {
                     Data Science
                   </Link>
                 </Box>
-              </Box> */}
+              </Box>
 
               {/* Data Science Dropdown */}
-              {/* <Box className={classes.dropdown}>
+              <Box className={classes.dropdown}>
                 <Button
                   className={`${classes.navLink} ${
                     currentPath.includes("/datascience") ||
@@ -353,8 +353,8 @@ const Navbar = () => {
                     Data Science Program
                   </Link>
                 </Box>
-              </Box> */}
-              {/* <Button
+              </Box>
+              <Button
                 className={`${classes.navLink} ${
                   currentPath === "/campus" ? classes.active : ""
                 }`}
@@ -363,7 +363,7 @@ const Navbar = () => {
                 onClick={handleNavLinkClick}
               >
                 Campus
-              </Button> */}
+              </Button>
               <Button
                 className={`${classes.navLink} ${
                   currentPath === "/blog" ? classes.active : ""
