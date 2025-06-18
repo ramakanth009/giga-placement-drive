@@ -1475,36 +1475,37 @@ const useStyles = makeStyles({
     marginBottom: "30px",
   },
   title: {
-    fontSize: "2.5rem !important",
-    fontWeight: "900 !important",
-    background: "linear-gradient(45deg, #00d4ff 0%, #ff0080 50%, #ffeb3b 100%)",
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent",
-    backgroundClip: "text",
-    marginBottom: "15px !important",
-    animation: "$glow 4s ease-in-out infinite alternate",
+    fontSize: "3rem !important",
+    fontWeight: "700 !important",
+    textAlign: "center",
     "@media (max-width: 960px)": {
-      fontSize: "2.2rem !important",
+      fontSize: "2.5rem !important",
     },
     "@media (max-width: 600px)": {
-      fontSize: "1.8rem !important",
-    },
-    "@media (max-width: 480px)": {
-      fontSize: "1.5rem !important",
+      fontSize: "2rem !important",
     },
   },
+  gradientText: {
+    background: "linear-gradient(to right, #fff 20%, #6b6b6b 40%, #fff 60%, #6b6b6b 80%)",
+    WebkitBackgroundClip: "text !important",
+    WebkitTextFillColor: "transparent !important",
+    backgroundSize: "200% auto",
+    animation: "$shine 4s linear infinite",
+    display: "inline-block",
+  },
+  highlight:{
+    color: "#FFC614 !important",
+    display: "inline-block",
+  },
   subtitle: {
-    fontSize: "1.2rem !important",
-    color: "rgba(255, 255, 255, 0.8) !important",
-    maxWidth: "1000px",
-    margin: "0 auto 60px auto !important",
-    "@media (max-width: 768px)": {
+    fontSize: "1.1rem !important",
+    color: "#fff !important",
+    textAlign: "center",
+    maxWidth: "800px",
+    margin: "20px auto 60px auto !important",
+    "@media (max-width: 600px)": {
       fontSize: "1rem !important",
-      margin: "0 auto 40px auto !important",
-    },
-    "@media (max-width: 480px)": {
-      fontSize: "0.9rem !important",
-      padding: "0 10px",
+      margin: "15px auto 40px auto !important",
     },
   },
   solarSystem: {
@@ -1669,7 +1670,7 @@ const useStyles = makeStyles({
     transition: "all 0.8s cubic-bezier(0.4, 0, 0.2, 1)",
     cursor: "pointer",
     "&:hover": {
-      transform: "scale(1.15) !important",
+      // transform: "scale(1.15) !important",
       filter: "brightness(1.3)",
     },
     "@media (max-width: 768px)": {
@@ -1682,8 +1683,8 @@ const useStyles = makeStyles({
     },
   },
   planetActive: {
-    transform: "scale(1.2) !important",
-    filter: "brightness(1.4) !important",
+    // transform: "scale(1.2) !important",
+    // filter: "brightness(1.4) !important",
   },
   planet1: {
     top: "-2%",
@@ -2005,6 +2006,7 @@ const useStyles = makeStyles({
     left: "50%",
     zIndex: 15,
     transition: "animation-play-state 0.6s ease",
+    pointerEvents: "none", // Prevent accidental hover/clicks
   },
   rocketRunning: {
     animation: "$rocketOrbit 20s linear infinite",
@@ -2076,14 +2078,21 @@ const useStyles = makeStyles({
       transform: "translate(-50%, -50%) rotate(360deg) translateX(250px) rotate(-360deg)",
     },
   },
+  "@keyframes shine": {
+    "to": {
+      backgroundPosition: "200% center",
+    },
+  },
 });
+
+const ORBIT_RADII = [100, 140, 180, 225]; // px, match orbit1-4 radii (half of their width)
 
 const LearningBreakdown = () => {
   const classes = useStyles();
   const [activePhase, setActivePhase] = useState(-1);
   const [showCard, setShowCard] = useState(false);
   const [rocketActivePhase, setRocketActivePhase] = useState(-1);
-  const [isHovering, setIsHovering] = useState(false);
+  const [isCardHovering, setIsCardHovering] = useState(false); // <-- renamed for clarity
   const [rocketPaused, setRocketPaused] = useState(false);
   const threeContainerRef = useRef(null);
   const sceneRef = useRef(null);
@@ -2248,7 +2257,7 @@ const LearningBreakdown = () => {
   }, []);
 
   useEffect(() => {
-    if (isHovering) {
+    if (isCardHovering) {
       setRocketPaused(true);
       return;
     }
@@ -2295,19 +2304,7 @@ const LearningBreakdown = () => {
     const interval = setInterval(updateRocketPhase, 100);
 
     return () => clearInterval(interval);
-  }, [activePhase, rocketActivePhase, isHovering]);
-
-  const handlePlanetEnter = (phaseIndex) => {
-    setIsHovering(true);
-    setActivePhase(phaseIndex);
-    setShowCard(true);
-  };
-
-  const handlePlanetLeave = () => {
-    setIsHovering(false);
-    setShowCard(false);
-    setActivePhase(-1);
-  };
+  }, [activePhase, rocketActivePhase, isCardHovering]);
 
   const handleExploreMore = (phaseIndex) => {
     console.log(`Exploring more about phase ${phaseIndex + 1}`);
@@ -2315,6 +2312,13 @@ const LearningBreakdown = () => {
   };
 
   const currentPhase = activePhase >= 0 ? phases[activePhase] : null;
+
+  // Helper to get current orbit radius for the rocket
+  const getRocketOrbitRadius = () => {
+    if (rocketActivePhase >= 0) return ORBIT_RADII[rocketActivePhase];
+    // Default to largest orbit if not on a phase
+    return ORBIT_RADII[ORBIT_RADII.length - 1];
+  };
 
   return (
     <Box className={classes.section}>
@@ -2324,10 +2328,11 @@ const LearningBreakdown = () => {
       <Container maxWidth="lg" className={classes.container}>
         <Box className={classes.header}>
           <Typography variant="h2" className={classes.title}>
-            The Solar System of Learning
+            <span className={classes.gradientText}>Learning Journey </span> {" "}
+            <span className={classes.highlight}>Roadmap</span>
           </Typography>
           <Typography variant="body1" className={classes.subtitle}>
-            Navigate through our structured learning orbits designed to launch your tech career into the cosmos
+            Our comprehensive learning pathway designed to transform you into an industry-ready professional
           </Typography>
         </Box>
 
@@ -2346,15 +2351,18 @@ const LearningBreakdown = () => {
             {/* Information Card Overlay */}
             <Fade in={showCard} timeout={800}>
               <Zoom in={showCard} timeout={600}>
-                <Box 
+                <Box
                   className={`${classes.infoCard} ${currentPhase ? classes[`infoCard${activePhase + 1}`] : ''}`}
+                  onMouseEnter={() => setIsCardHovering(true)}
+                  onMouseLeave={() => setIsCardHovering(false)}
+                  // Only this card hover controls the pause
                 >
                   {currentPhase && (
                     <>
                       <Typography className={classes.cardTitle}>
                         {currentPhase.title}
                       </Typography>
-                      <Typography 
+                      <Typography
                         className={`${classes.cardMonths} ${classes[`cardMonths${activePhase + 1}`]}`}
                       >
                         {currentPhase.months}
@@ -2398,8 +2406,7 @@ const LearningBreakdown = () => {
             <Box
               key={index}
               className={`${classes.planet} ${classes[`planet${index + 1}`]} ${activePhase === index ? classes.planetActive : ''}`}
-              onMouseEnter={() => handlePlanetEnter(index)}
-              onMouseLeave={handlePlanetLeave}
+              // Remove onMouseEnter/onMouseLeave handlers
             >
               <Box className={`${classes.planetCore} ${classes[`planet${index + 1}Core`]} ${activePhase === index ? classes.planetCoreActive : ''}`}>
                 <Box className={classes.planetInner}>
@@ -2420,8 +2427,17 @@ const LearningBreakdown = () => {
           ))}
 
           {/* Animated Rocket */}
-          <Box className={`${classes.rocketContainer} ${rocketPaused ? classes.rocketPaused : classes.rocketRunning}`}>
-            <RocketLaunchIcon 
+          <Box
+            className={`${classes.rocketContainer} ${rocketPaused ? classes.rocketPaused : classes.rocketRunning}`}
+            style={{
+              // Dynamically set the orbit radius
+              transform: `translate(-50%, -50%) rotate(0deg) translateX(${getRocketOrbitRadius()}px)`,
+              // Let animation override rotate, but always start at correct radius
+              // The animation will animate the rotate part, but the translateX is always the correct radius
+              // This ensures the rocket never jumps to the center
+            }}
+          >
+            <RocketLaunchIcon
               className={`${classes.rocket} ${rocketActivePhase >= 0 ? classes[`rocketPhase${rocketActivePhase + 1}`] : ''}`}
             />
           </Box>
