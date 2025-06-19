@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { makeStyles } from '@mui/styles';
 import { Box } from '@mui/material';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -35,6 +35,7 @@ const useStyles = makeStyles({
   swiperSlide: {
     padding:"5px 60px",
     display: 'flex',
+    flexDirection: 'column', // Add this to stack image and dots vertically
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -43,25 +44,36 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     marginTop: '18px',
     width: '100%',
-    position: 'static', // Remove absolute/relative positioning
+    position: 'static',
     zIndex: 10,
   },
   '@global': {
-    '.custom-swiper-pagination .swiper-pagination-bullet': {
+    '.swiper-pagination': {
+      display: 'flex',
+      justifyContent: 'center',
+      marginTop: '18px',
+      position: 'static !important', // Ensure not overlaying image
+    },
+    '.swiper-pagination-bullet': {
       background: '#fff',
       opacity: 0.7,
       margin: '0 6px',
+      width: '22px !important',         // Increased size
+      height: '22px !important',        // Increased size
+      borderRadius: '50%',
+      transition: 'background 0.3s, opacity 0.3s',
     },
-    '.custom-swiper-pagination .swiper-pagination-bullet-active': {
-      background: 'yellow',
+    '.swiper-pagination-bullet-active': {
+      background: '#FFC614 !important', // Active color
       opacity: 1,
+      width: '22px !important',         // Optionally make active dot even bigger
+      height: '22px !important',
     },
   },
 });
 
 const Banner = () => {
   const classes = useStyles();
-  const paginationRef = useRef(null);
 
   const heroImages = [
     { src: HeroImage1, alt: 'Hero Banner 1' },
@@ -83,15 +95,6 @@ const Banner = () => {
         slidesPerView={1}
         pagination={{
           clickable: true,
-          el: paginationRef.current,
-        }}
-        onSwiper={swiper => {
-          if (swiper.params.pagination) {
-            swiper.params.pagination.el = paginationRef.current;
-            swiper.pagination.init();
-            swiper.pagination.render();
-            swiper.pagination.update();
-          }
         }}
         autoplay={{
           delay: 4000,
@@ -106,11 +109,11 @@ const Banner = () => {
               alt={image.alt} 
               className={classes.heroImage}
             />
+            {/* Pagination dots will be rendered by Swiper below all slides */}
           </SwiperSlide>
         ))}
       </Swiper>
-      {/* Pagination dots directly below the image */}
-      <div className={`${classes.paginationWrapper} custom-swiper-pagination`} ref={paginationRef} />
+      {/* Remove custom pagination wrapper */}
     </div>
   );
 };
