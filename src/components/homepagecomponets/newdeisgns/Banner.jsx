@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { makeStyles } from '@mui/styles';
 import { Box } from '@mui/material';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { Pagination, Autoplay } from 'swiper/modules';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -21,44 +21,47 @@ import HeroImage3 from '../../../assets/hero/Banner3.png';
 const useStyles = makeStyles({
   heroSection: {
     width: '100vw',
-    height: '500px',
     position: 'relative',
   },
   swiperContainer: {
     width: '100%',
-    height: '100%',
-    '& .swiper-pagination-bullet': {
-        background: '#fff',
-        opacity: 0.7,
-    },
-    '& .swiper-pagination-bullet-active': {
-        background: '#fff',
-        opacity: 1,
-    },
-    '& .swiper-button-next, & .swiper-button-prev': {
-        color: '#fff',
-        '&:after': {
-            fontSize: '20px',
-        },
-    },
-},
-heroImage: {
+  },
+  heroImage: {
     borderRadius:"40px",
     width: '100vw',
-    // height: '100%',
     objectFit: 'fill',
     display: 'block',
-},
-swiperSlide: {
-      padding:"5px 60px",
+  },
+  swiperSlide: {
+    padding:"5px 60px",
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
   },
+  paginationWrapper: {
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: '18px',
+    width: '100%',
+    position: 'static', // Remove absolute/relative positioning
+    zIndex: 10,
+  },
+  '@global': {
+    '.custom-swiper-pagination .swiper-pagination-bullet': {
+      background: '#fff',
+      opacity: 0.7,
+      margin: '0 6px',
+    },
+    '.custom-swiper-pagination .swiper-pagination-bullet-active': {
+      background: 'yellow',
+      opacity: 1,
+    },
+  },
 });
 
-const Hero = () => {
+const Banner = () => {
   const classes = useStyles();
+  const paginationRef = useRef(null);
 
   const heroImages = [
     { src: HeroImage1, alt: 'Hero Banner 1' },
@@ -75,11 +78,21 @@ const Hero = () => {
     <div className={classes.heroSection}>
       <Swiper
         className={classes.swiperContainer}
-        modules={[Navigation, Pagination, Autoplay]}
+        modules={[Pagination, Autoplay]}
         spaceBetween={0}
         slidesPerView={1}
-        navigation
-        pagination={{ clickable: true }}
+        pagination={{
+          clickable: true,
+          el: paginationRef.current,
+        }}
+        onSwiper={swiper => {
+          if (swiper.params.pagination) {
+            swiper.params.pagination.el = paginationRef.current;
+            swiper.pagination.init();
+            swiper.pagination.render();
+            swiper.pagination.update();
+          }
+        }}
         autoplay={{
           delay: 4000,
           disableOnInteraction: false,
@@ -96,8 +109,9 @@ const Hero = () => {
           </SwiperSlide>
         ))}
       </Swiper>
+      {/* Pagination dots directly below the image */}
+      <div className={`${classes.paginationWrapper} custom-swiper-pagination`} ref={paginationRef} />
     </div>
   );
 };
-
-export default Hero;
+export default Banner;
