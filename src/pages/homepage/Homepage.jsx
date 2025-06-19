@@ -1,7 +1,7 @@
 // src/pages/homepage/Homepage.jsx
 import React from "react";
 import { Box } from "@mui/material";
-import Hero from "../../components/homepagecomponets/herosection/Hero";
+// import Hero from "../../components/homepagecomponets/herosection/Hero";
 import PageBackground from "../../components/common/background/PageBackground";
 import HiringPartners from "../../components/common/hiringpartners/HiringPartners";
 import OtherPrograms from "../../components/homepagecomponets/otherprograms/OtherPrograms";
@@ -24,6 +24,7 @@ import AIIntegrationSection from "../../components/homepagecomponets/aiintegrati
 // import TemplatesGallerySection from "../../pages/resumelanding/TemplatesGallerySection";
 // import WhoIsItFor from "../../pages/resumelanding/WhoIsItFor";
 // import SmartResumeSection from "../../pages/resumelanding/SmartResumeSection";
+import Hero from "../../components/homepagecomponets/newdeisgns/HeroSection";
 
 const Homepage = () => {
   return (
