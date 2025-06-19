@@ -205,32 +205,11 @@ const useStyles = makeStyles({
         },
       },
     },
-    '& .swiper-button-next, & .swiper-button-prev': {
-      color: '#FFC614 !important',
-      backgroundColor: 'rgba(255, 255, 255, 0.1) !important',
-      borderRadius: '50% !important',
-      width: '44px !important',
-      height: '44px !important',
-      marginTop: '-22px !important',
-      '&:after': {
-        fontSize: '18px !important',
-        fontWeight: 'bold !important',
-      },
-      '&:hover': {
-        backgroundColor: 'rgba(255, 255, 255, 0.2) !important',
-      },
-    },
-    '& .swiper-button-prev': {
-      left: '-20px !important',
-    },
-    '& .swiper-button-next': {
-      right: '-20px !important',
-    },
-    "@media (max-width: 960px)": {
-      '& .swiper-button-next, & .swiper-button-prev': {
-        display: 'none !important',
-      },
-    },
+    // Removed navigation button styles
+    // '& .swiper-button-next, & .swiper-button-prev': { ... },
+    // '& .swiper-button-prev': { ... },
+    // '& .swiper-button-next': { ... },
+    // "@media (max-width: 960px)": { ... },
   },
   cardWrapper: {
     width: '100%',
@@ -765,7 +744,7 @@ const OtherPrograms = () => {
               slidesPerView={2}
               slidesPerGroup={2}
               spaceBetween={30}
-              navigation={true}
+              navigation={false} // changed from true to false
               pagination={{
                 clickable: true,
               }}
