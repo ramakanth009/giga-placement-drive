@@ -14,7 +14,7 @@ const useStyles = makeStyles({
     marginBottom: '5px',
     position: 'relative',
     overflow: 'visible',
-    padding: '10px 0',
+    // padding: '10px 0',
     '@media (max-width: 960px)': {
       padding: '40px 0',
     },
@@ -26,9 +26,9 @@ const useStyles = makeStyles({
     position: 'relative',
     zIndex: 2,
     width: '100%',
-    maxWidth: '1400px',
+    // maxWidth: '1400px',
     margin: '0 auto',
-    padding: '0 20px',
+    // padding: '0 20px',
     '@media (max-width: 600px)': {
       padding: '0 16px',
     },

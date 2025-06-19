@@ -199,7 +199,7 @@ const useStyles = makeStyles({
     },
   },
   questionTitle: {
-    fontSize: "1.2rem !important",
+    fontSize: "1.5rem !important",
     fontWeight: "600 !important",
     marginBottom: "15px !important",
     display: "flex",
@@ -215,6 +215,7 @@ const useStyles = makeStyles({
   textField: {
     marginBottom: "15px !important",
     "& .MuiOutlinedInput-root": {
+      borderRadius:"20px !important",
       color: "white",
       "& fieldset": {
         borderColor: "rgba(255, 255, 255, 0.3)",

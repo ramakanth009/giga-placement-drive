@@ -1,14 +1,14 @@
 // src/pages/homepage/Homepage.jsx
 import React from "react";
 import { Box } from "@mui/material";
-// import Hero from "../../components/homepagecomponets/herosection/Hero";
 import PageBackground from "../../components/common/background/PageBackground";
+// import Hero from "../../components/homepagecomponets/herosection/Hero";
+// import CampusSection from "../../components/homepagecomponets/campussection/CampusSection";
 import HiringPartners from "../../components/common/hiringpartners/HiringPartners";
 import OtherPrograms from "../../components/homepagecomponets/otherprograms/OtherPrograms";
 import Faq from "../../components/homepagecomponets/faqhomepage/FaqHomepage";
 import ResumeBuilderSection from "../../components/homepagecomponets/resumebuilder/ResumeBuilderSection";
 import PreScreeningBanner from "../../components/homepagecomponets/prescreening/PreScreeningBanner";
-import CampusSection from "../../components/homepagecomponets/campussection/CampusSection";
 import LearningBreakdown from "../../components/homepagecomponets/learningbreakdown/LearningBreakdown";
 import StartupFundProcess from "../../components/homepagecomponets/startupfundprocess/StartupFundProcess";
 import TechFutureSection from "../../components/homepagecomponets/techfuturesection/TechFutureSection";
@@ -26,6 +26,7 @@ import AIIntegrationSection from "../../components/homepagecomponets/aiintegrati
 // import SmartResumeSection from "../../pages/resumelanding/SmartResumeSection";
 import Hero from "../../components/homepagecomponets/newdeisgns/HeroSection";
 import Banner from "../../components/homepagecomponets/newdeisgns/Banner";
+import CampusSection from "../../components/homepagecomponets/newdeisgns/CampusSection";
 
 const Homepage = () => {
   return (
