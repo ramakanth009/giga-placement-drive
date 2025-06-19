@@ -25,6 +25,7 @@ import AIIntegrationSection from "../../components/homepagecomponets/aiintegrati
 // import WhoIsItFor from "../../pages/resumelanding/WhoIsItFor";
 // import SmartResumeSection from "../../pages/resumelanding/SmartResumeSection";
 import Hero from "../../components/homepagecomponets/newdeisgns/HeroSection";
+import Banner from "../../components/homepagecomponets/newdeisgns/Banner";
 
 const Homepage = () => {
   return (
@@ -40,10 +41,9 @@ const Homepage = () => {
       <Box sx={{ position: "relative", zIndex: 1 }}>
         {/* Hero Section */}
         <Hero />
+        <Banner />
         <ResumeBuilderSection />
-        PreScreeningBanner Test
         <CampusSection />
-        Hiring Partners as separate section
         <OtherPrograms />
         <LearningBreakdown />
         <PodcastShowcaseSection />
@@ -63,6 +63,8 @@ const Homepage = () => {
         <WhoIsItFor />
         <SmartResumeSection />
         <ComparisonTableSection /> */}
+        
+        
       </Box>
     </Box>
   );

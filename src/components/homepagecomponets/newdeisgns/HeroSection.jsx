@@ -1,8 +1,11 @@
 import React from 'react';
-import { Box, Typography, Button, Container, Grid } from '@mui/material';
+import { Box, Typography, Button, Container } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import Heroguy from '../../../assets/heroguy3.png'; 
 import { ReactComponent as Curve } from '../../../assets/curve.svg';
+import { ReactComponent as Stack } from '../../../assets/stack.svg';
+import { ReactComponent as Tick } from '../../../assets/tick.svg';
+import { ReactComponent as Message } from '../../../assets/message.svg';
 
 
 const useStyles = makeStyles({
@@ -20,9 +23,23 @@ const useStyles = makeStyles({
     margin: '0 auto',
     padding: '0 20px'
   },
-  leftContent: {
+  flexRow: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: '96px', // similar to spacing={12}
+    '@media (max-width:900px)': {
+      flexDirection: 'column',
+      gap: '48px',
+    }
+  },
+  leftBox: {
+    flex: 1,
     paddingRight: '40px',
-    zIndex: 2
+    zIndex: 2,
+    '@media (max-width:900px)': {
+      paddingRight: 0,
+    }
   },
   mainTitle: {
     fontSize: '4.5rem !important',
@@ -61,16 +78,21 @@ const useStyles = makeStyles({
       boxShadow: '0 4px 8px rgba(0,0,0,0.2)'
     }
   },
-  rightContent: {
+  rightBox: {
+    flex: 1,
     position: 'relative',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '600px'
+    height: '600px',
+    '@media (max-width:900px)': {
+      height: '400px',
+      marginTop: '32px'
+    }
   },
   yellowCircle: {
-    width: '543px',
-    height: '543px',
+    width: '500px',
+    height: '500px',
     backgroundColor: '#FFC614',
     borderRadius: '50%',
     position: 'absolute',
@@ -81,19 +103,19 @@ const useStyles = makeStyles({
     height: 'auto',
     zIndex: 2,
     position: 'relative',
-    bottom: '40px',
+    bottom: '55px',
   },
   floatingIcon: {
     position: 'absolute',
     zIndex: 3,
-    backgroundColor: '#2c3e50',
+    // backgroundColor: '#2c3e50',
     borderRadius: '12px',
     padding: '12px',
-    boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
+    // boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
   },
   icon1: {
-    top: '50px',
-    right: '100px',
+    top: '83px',
+    right: '66px',
     width: '50px',
     height: '50px'
   },
@@ -106,13 +128,13 @@ const useStyles = makeStyles({
   icon3: {
     bottom: '150px',
     right: '50px',
-    width: '40px',
-    height: '40px'
+    // width: '40px',
+    // height: '40px'
   },
   iconSvg: {
-    width: '100%',
-    height: '100%',
-    fill: 'white'
+    // width: '100%',
+    // height: '100%',
+    // fill: 'white'
   }
 });
 
@@ -122,57 +144,42 @@ const HeroSection = () => {
   return (
     <Box className={classes.heroSection}>
       <Container className={classes.container}>
-        <Grid container alignItems="center" spacing={12}>
-          <Grid item xs={12} md={6}>
-            <Box className={classes.leftContent}>
-              <Typography className={classes.mainTitle}>
-                We’re here<br />
-                to shape<br />
-                your career!
-              </Typography>
-              {/* <Box className={classes.yellowUnderline}></Box> */}
-              <Curve />
-              <Typography className={classes.subtitle}>
-                Let's make your work more organize and easily using the
-                Gigaversity with many of the latest features!
-              </Typography>
-              <Button className={classes.applyButton}>
-                Apply Now
-              </Button>
+        <Box className={classes.flexRow}>
+          <Box className={classes.leftBox}>
+            <Typography className={classes.mainTitle}>
+              We’re here<br />
+              to shape<br />
+              your career!
+            </Typography>
+            {/* <Box className={classes.yellowUnderline}></Box> */}
+            <Curve />
+            <Typography className={classes.subtitle}>
+              Let's make your work more organize and easily using the
+              Gigaversity with many of the latest features!
+            </Typography>
+            <Button className={classes.applyButton}>
+              Apply Now
+            </Button>
+          </Box>
+          <Box className={classes.rightBox}>
+            <Box className={classes.yellowCircle}></Box>
+            <img 
+              src={Heroguy} 
+              alt="Person with laptop" 
+              className={classes.heroImage}
+            />
+            {/* Floating Icons */}
+            <Box className={`${classes.floatingIcon} ${classes.icon1}`}>
+              <Stack/>
             </Box>
-          </Grid>
-          
-          <Grid item xs={12} md={6}>
-            <Box className={classes.rightContent}>
-              <Box className={classes.yellowCircle}></Box>
-              <img 
-                src={Heroguy} 
-                alt="Person with laptop" 
-                className={classes.heroImage}
-              />
-              
-              {/* Floating Icons */}
-              <Box className={`${classes.floatingIcon} ${classes.icon1}`}>
-                <svg className={classes.iconSvg} viewBox="0 0 24 24">
-                  <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"/>
-                </svg>
-              </Box>
-              
-              <Box className={`${classes.floatingIcon} ${classes.icon2}`}>
-                <svg className={classes.iconSvg} viewBox="0 0 24 24">
-                  <path d="M9 11H7v9c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2V10l1-1-7.5-7.5c-.5-.5-1.3-.5-1.8 0L3 7.3c-.4.4-.4 1 0 1.4L9 14.4V11z"/>
-                  <path d="M16 1H8c-1.1 0-2 .9-2 2v4l7.5 7.5L21 7V3c0-1.1-.9-2-2-2z"/>
-                </svg>
-              </Box>
-              
-              <Box className={`${classes.floatingIcon} ${classes.icon3}`}>
-                <svg className={classes.iconSvg} viewBox="0 0 24 24">
-                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z"/>
-                </svg>
-              </Box>
+            <Box className={`${classes.floatingIcon} ${classes.icon2}`}>
+              <Tick/>
             </Box>
-          </Grid>
-        </Grid>
+            <Box className={`${classes.floatingIcon} ${classes.icon3}`}>
+              <Message/>
+            </Box>
+          </Box>
+        </Box>
       </Container>
     </Box>
   );
