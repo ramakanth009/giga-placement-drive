@@ -28,27 +28,29 @@ const useStyles = makeStyles({
     width: '100%',
     height: '100%',
     '& .swiper-pagination-bullet': {
-      background: '#fff',
-      opacity: 0.7,
+        background: '#fff',
+        opacity: 0.7,
     },
     '& .swiper-pagination-bullet-active': {
-      background: '#fff',
-      opacity: 1,
+        background: '#fff',
+        opacity: 1,
     },
     '& .swiper-button-next, & .swiper-button-prev': {
-      color: '#fff',
-      '&:after': {
-        fontSize: '20px',
-      },
+        color: '#fff',
+        '&:after': {
+            fontSize: '20px',
+        },
     },
-  },
-  heroImage: {
+},
+heroImage: {
+    borderRadius:"40px",
     width: '100vw',
     // height: '100%',
     objectFit: 'fill',
     display: 'block',
-  },
-  swiperSlide: {
+},
+swiperSlide: {
+      padding:"5px 60px",
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
