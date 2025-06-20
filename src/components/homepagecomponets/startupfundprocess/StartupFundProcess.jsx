@@ -39,10 +39,11 @@ const useStyles = makeStyles({
   },
   stepsContainer: {
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'flex-end',
     position: 'relative',
     marginTop: '20px',
+    gap:"20px",
     maxWidth: '1200px',
     margin: '0 auto',
     '@media (max-width: 1200px)': {
