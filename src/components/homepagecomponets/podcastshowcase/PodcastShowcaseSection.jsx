@@ -190,7 +190,7 @@ const useStyles = makeStyles({
   },
   questionForm: {
     marginTop: "30px",
-    padding: "20px",
+    padding: "10px",
     backgroundColor: "rgba(255, 255, 255, 0.05)",
     borderRadius: "15px",
     border: "1px solid rgba(255, 255, 255, 0.1)",
@@ -201,19 +201,20 @@ const useStyles = makeStyles({
   questionTitle: {
     fontSize: "1.5rem !important",
     fontWeight: "600 !important",
-    marginBottom: "15px !important",
+    // marginBottom: "15px !important",
     fontFamily:"Montserrat !important",
     color:"#FFC614 !important",
     display: "flex",
     alignItems: "center",
     gap: "10px",
+    borderBottom:"1px solid #ffffff",
     "@media (max-width: 600px)": {
       fontSize: "1.1rem !important",
     },
   },
   questionIcon: {
-    height:"10rem",
-    width:"10rem",
+    height:"8rem",
+    width:"8rem",
     color: "#FFC614",
   },
   textField: {
