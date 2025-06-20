@@ -405,7 +405,7 @@ const Navbar = () => {
                 to="https://resume.gigaversity.in/"
                 onClick={scrollToTop}
               >
-                create resume now
+                Apply Now
               </Button>
             </Box>
           </>

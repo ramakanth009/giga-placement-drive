@@ -34,18 +34,23 @@ const useStyles = makeStyles({
     marginBottom: '50px',
     '@media (max-width: 1200px)': {
       marginBottom: '45px',
+      padding: '28px',
     },
     '@media (max-width: 960px)': {
       marginBottom: '40px',
+      padding: '25px',
     },
     '@media (max-width: 600px)': {
       marginBottom: '35px',
+      padding: '20px',
     },
     '@media (max-width: 480px)': {
       marginBottom: '30px',
+      padding: '18px',
     },
     '@media (max-width: 375px)': {
       marginBottom: '25px',
+      padding: '15px',
     },
   },
   titleBlue: {
@@ -118,18 +123,40 @@ const useStyles = makeStyles({
     },
   },
   factCard: {
-    padding: '30px',
-    borderRadius: '15px',
-    boxShadow: '0 10px 25px rgba(0, 0, 0, 0.05)',
+    padding: '35px',
+    borderRadius: '18px',
     backgroundColor: '#ffffff',
+    boxShadow: '0 12px 30px rgba(0, 0, 0, 0.08)',
     maxWidth: '500px',
     width: '100%',
     position: 'relative',
     overflow: 'hidden',
-    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+    transition: 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+    border: '2px solid transparent',
     '&:hover': {
-      transform: 'translateY(-5px)',
-      boxShadow: '0 15px 35px rgba(0, 0, 0, 0.1)',
+      transform: 'translateY(-8px) scale(1.02)',
+      boxShadow: '0 20px 45px rgba(0, 0, 0, 0.15)',
+    },
+    // Pattern: Color 1, Color 2, Color 1, Color 2, Color 2, Color 1 (repeat)
+    '&:nth-child(6n+1), &:nth-child(6n+3), &:nth-child(6n+6)': {
+      backgroundColor: '#f0f4ff',
+      borderLeft: '6px solid #2A2B6A',
+      borderTop: '2px solid rgba(42, 43, 106, 0.1)',
+      '&:hover': {
+        backgroundColor: '#e8f1ff',
+        borderColor: '#2A2B6A',
+        boxShadow: '0 20px 45px rgba(42, 43, 106, 0.2)',
+      },
+    },
+    '&:nth-child(6n+2), &:nth-child(6n+4), &:nth-child(6n+5)': {
+      backgroundColor: '#fffbf0',
+      borderLeft: '6px solid #FFC614',
+      borderTop: '2px solid rgba(255, 198, 20, 0.1)',
+      '&:hover': {
+        backgroundColor: '#fff8e6',
+        borderColor: '#FFC614',
+        boxShadow: '0 20px 45px rgba(255, 198, 20, 0.2)',
+      },
     },
     '@media (max-width: 1200px)': {
       padding: '28px',
@@ -154,8 +181,10 @@ const useStyles = makeStyles({
     position: 'absolute',
     top: '20px',
     right: '20px',
-    color: 'rgba(42, 43, 106, 0.1)',
-    fontSize: '60px !important',
+    color: 'rgba(42, 43, 106, 0.2)',
+    fontSize: '55px !important',
+    transition: 'all 0.3s ease',
+    filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1))',
     '@media (max-width: 1200px)': {
       fontSize: '55px !important',
     },
@@ -181,12 +210,15 @@ const useStyles = makeStyles({
     },
   },
   factText: {
-    fontSize: '1.1rem !important',
-    lineHeight: '1.6 !important',
-    color: '#333333 !important',
-    marginBottom: '20px !important',
+    fontSize: '1.15rem !important',
+    lineHeight: '1.7 !important',
+    color: '#1a1a1a !important',
+    fontWeight: '600 !important',
+    marginBottom: '25px !important',
     position: 'relative',
     zIndex: 2,
+    textShadow: '0 1px 2px rgba(0, 0, 0, 0.1)',
+    letterSpacing: '0.2px',
     '@media (max-width: 1200px)': {
       fontSize: '1.05rem !important',
     },
@@ -208,9 +240,17 @@ const useStyles = makeStyles({
     },
   },
   sourceText: {
-    fontSize: '0.9rem !important',
-    color: '#666666 !important',
+    fontSize: '0.95rem !important',
+    color: '#555555 !important',
     fontStyle: 'italic',
+    fontWeight: '500 !important',
+    background: 'linear-gradient(135deg, #666666 0%, #888888 100%)',
+    backgroundClip: 'text',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    textTransform: 'uppercase',
+    letterSpacing: '0.5px',
+    marginTop: '15px !important',
     '@media (max-width: 960px)': {
       fontSize: '0.85rem !important',
     },
@@ -227,7 +267,6 @@ const useStyles = makeStyles({
   decorCircle: {
     position: 'absolute',
     borderRadius: '50%',
-    backgroundColor: 'rgba(42, 43, 106, 0.03)',
     zIndex: 1,
   },
   circle1: {
@@ -235,6 +274,7 @@ const useStyles = makeStyles({
     height: '200px',
     top: '-100px',
     right: '-50px',
+    backgroundColor: 'rgba(42, 43, 106, 0.06)',
     '@media (max-width: 960px)': {
       width: '180px',
       height: '180px',
@@ -265,6 +305,7 @@ const useStyles = makeStyles({
     height: '300px',
     bottom: '-150px',
     left: '-100px',
+    backgroundColor: 'rgba(255, 198, 20, 0.05)',
     '@media (max-width: 960px)': {
       width: '250px',
       height: '250px',
