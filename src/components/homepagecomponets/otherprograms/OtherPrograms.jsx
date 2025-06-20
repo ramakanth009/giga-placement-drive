@@ -4,12 +4,8 @@ import {
   Typography, 
   Button, 
   Container,
-  Card, 
-  CardMedia, 
-  Chip, 
   Tabs,
   Tab,
-  Divider,
   Dialog,
   DialogTitle,
   DialogContent,
@@ -19,13 +15,11 @@ import {
 import { makeStyles } from '@mui/styles';
 import { useNavigate } from 'react-router-dom';
 import SendIcon from '@mui/icons-material/Send';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import LaunchIcon from '@mui/icons-material/Launch';
 import SchoolIcon from '@mui/icons-material/School';
 import CodeIcon from '@mui/icons-material/Code';
 import DataUsageIcon from '@mui/icons-material/DataUsage';
 import WorkIcon from '@mui/icons-material/Work';
-import EnhancedEngagementSection from './EnhancedEngagementSection';
+import ProgramCard from './ProgramCard';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
@@ -37,7 +31,7 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 
 const useStyles = makeStyles({
   section: {
-    padding: '10px 0', // Reduced from 20px
+    padding: '10px 0',
     position: 'relative',
     overflow: 'hidden',
     background: 'linear-gradient(180deg, #101138 0%, #1e1c44 100%)',
@@ -91,90 +85,88 @@ const useStyles = makeStyles({
     marginBottom: '20px',
     position: 'relative',
     zIndex: 2,
+    "@media (max-width: 960px)": {
+      marginBottom: '15px',
+    },
     "@media (max-width: 600px)": {
-      marginBottom: '30px',
+      marginBottom: '10px',
     },
   },
   title: {
-    fontSize: '2rem !important', // Reduced from 2.5rem
+    fontSize: '2.5rem !important',
     fontWeight: 'bold !important',
-    color: 'white !important',
-    position: 'relative',
-    display: 'inline-block',
+    color: '#ffffff !important',
+    marginBottom: '8px !important',
+    textAlign: 'center',
+    '& span': {
+      color: '#FFC614 !important',
+    },
+    "@media (max-width: 1200px)": {
+      fontSize: '2.3rem !important',
+    },
+    "@media (max-width: 960px)": {
+      fontSize: '2rem !important',
+    },
     "@media (max-width: 600px)": {
-      fontSize: '1.5rem !important', // Reduced from 1.8rem
+      fontSize: '1.6rem !important',
+      marginBottom: '6px !important',
     },
   },
-  highlight: {
-    color: '#FFC614 !important',
-    position: 'relative',
-  },
   subtitle: {
-    fontSize: '1rem !important', // Reduced from 1.1rem
-    color: 'rgba(255, 255, 255, 0.7) !important',
-    maxWidth: '900px',
-    margin: '5px auto 0 !important', // Reduced from 20px
-    "@media (max-width: 600px)": {
+    fontSize: '1rem !important',
+    color: 'rgba(255, 255, 255, 0.8) !important',
+    textAlign: 'center',
+    // maxWidth: '600px',
+    margin: '0 auto',
+    lineHeight: '1.6 !important',
+    "@media (max-width: 960px)": {
       fontSize: '0.9rem !important',
-      maxWidth: '90%',
-      margin: '8px auto 0 !important', // Reduced from 12px
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '0.8rem !important',
     },
   },
   tabsContainer: {
-    marginBottom: '15px', // Reduced from 20px
+    display: 'flex',
+    justifyContent: 'center',
+    marginBottom: '15px',
+    position: 'relative',
+    zIndex: 2,
     "@media (max-width: 600px)": {
-      marginBottom: '20px',
+      marginBottom: '10px',
     },
   },
-  tabsRoot: {
-    minHeight: '50px', // Reduced from 60px
-    borderRadius: '25px', // Reduced from 30px
-    padding: '4px', // Reduced from 5px
-    backgroundColor: 'rgba(255, 255, 255, 0.08)',
-    width: 'fit-content',
-    margin: '0 auto',
-    position: 'relative',
+  tabs: {
+    borderRadius: '25px',
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    backdropFilter: 'blur(10px)',
+    padding: '4px',
+    minHeight: 'auto !important',
     '& .MuiTabs-indicator': {
       display: 'none',
     },
-    "@media (max-width: 600px)": {
-      minHeight: '40px', // Reduced from 45px
-      borderRadius: '20px', // Reduced from 22px
-      padding: '3px', // Reduced from 4px
-      width: '100%',
-      maxWidth: '400px',
-    },
-  },
-  tab: {
-    color: 'rgba(255, 255, 255, 0.7) !important',
-    padding: '0 25px !important', // Reduced from 30px
-    minHeight: '42px !important', // Reduced from 50px
-    borderRadius: '21px !important', // Reduced from 25px
-    textTransform: 'none !important',
-    fontSize: '0.95rem !important', // Reduced from 1rem
-    fontWeight: '500 !important',
-    transition: 'all 0.3s ease !important',
-    '&.Mui-selected': {
-      color: '#2A2B6A !important',
-      background: '#FFC614',
-    },
-    '& .MuiTab-wrapper': {
-      flexDirection: 'row',
-      justifyContent: 'center',
-    },
-    '& svg': {
-      marginRight: '8px', // Reduced from 10px
-      fontSize: '1.1rem', // Added to reduce icon size
-    },
-    "@media (max-width: 600px)": {
-      padding: '0 12px !important', // Reduced from 15px
-      minHeight: '34px !important', // Reduced from 40px
-      fontSize: '0.85rem !important', // Reduced from 0.9rem
-      borderRadius: '17px !important', // Reduced from 20px
-      flexGrow: 1,
-      '& svg': {
-        marginRight: '4px', // Reduced from 6px
-        fontSize: '1rem', // Reduced from 1.2rem
+    '& .MuiTab-root': {
+      minHeight: 'auto !important',
+      padding: '8px 16px !important',
+      borderRadius: '20px !important',
+      color: 'rgba(255, 255, 255, 0.7) !important',
+      fontSize: '0.8rem !important',
+      fontWeight: '500 !important',
+      textTransform: 'none !important',
+      transition: 'all 0.3s !important',
+      minWidth: 'auto !important',
+      marginRight: '4px !important',
+      "&:last-child": {
+        marginRight: '0 !important',
+      },
+      '&.Mui-selected': {
+        backgroundColor: '#FFC614 !important',
+        color: '#2A2B6A !important',
+        fontWeight: '600 !important',
+      },
+      '@media (max-width: 600px)': {
+        fontSize: '0.7rem !important',
+        padding: '6px 12px !important',
       },
     },
   },
@@ -187,9 +179,9 @@ const useStyles = makeStyles({
     },
   },
   swiperContainer: {
-    padding: '10px 0 5px 0', // Reduced padding
+    padding: '10px 0 5px 0',
     '& .swiper': {
-      paddingBottom: '10px', // Reduced from 20px
+      paddingBottom: '10px',
     },
     '& .swiper-slide': {
       height: 'auto',
@@ -205,325 +197,20 @@ const useStyles = makeStyles({
         },
       },
     },
-    // Removed navigation button styles
-    // '& .swiper-button-next, & .swiper-button-prev': { ... },
-    // '& .swiper-button-prev': { ... },
-    // '& .swiper-button-next': { ... },
-    // "@media (max-width: 960px)": { ... },
-  },
-  cardWrapper: {
-    width: '100%',
-    display: 'flex',
-    height: '100%',
-  },
-  card: {
-    width: '100%',
-    backgroundColor: 'rgba(255, 255, 255, 0.03) !important',
-    backdropFilter: 'blur(10px)',
-    border: '1px solid rgba(255, 255, 255, 0.1)',
-    borderRadius: '20px !important',
-    overflow: 'hidden',
-    boxShadow: '0 15px 35px rgba(0, 0, 0, 0.2) !important',
-    transition: 'transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.6s !important',
-    padding: '0 !important',
-    display: 'flex',
-    flexDirection: 'column',
-    height: '100%',
-    '&:hover': {
-      transform: 'translateY(-10px)',
-      boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 198, 20, 0.1) !important',
-      '& $viewButton': {
-        opacity: 1,
-        transform: 'translateY(0)',
-      },
-      '& $cardMedia': {
-        transform: 'scale(1.05)',
-      },
-      '& $hoverOverlay': {
-        opacity: 1,
-      },
-    },
-    "@media (max-width: 600px)": {
-      borderRadius: '14px !important',
-    },
-  },
-  cardMedia: {
-    height: '160px', // Reduced from 200px
-    transition: 'transform 0.6s',
-    objectFit: 'cover',
-    objectPosition: 'center',
-    "@media (max-width: 600px)": {
-      height: '140px', // Reduced from 170px
-    },
-  },
-  hoverOverlay: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    height: '160px', // Reduced from 200px
-    background: 'linear-gradient(0deg, rgba(42, 43, 106, 0.1) 0%, rgba(255, 255, 255, 0) 50%)',
-    opacity: 0,
-    transition: 'opacity 0.4s ease',
-    zIndex: 2,
-    display: 'flex',
-    alignItems: 'flex-end',
-    justifyContent: 'center',
-    padding: '0 0 10px 0', // Reduced padding
-    "@media (max-width: 600px)": {
-      height: '140px', // Reduced from 170px
-      padding: '0 0 10px 0', // Reduced padding
-    },
-  },
-  viewButton: {
-    backgroundColor: '#FFC614 !important',
-    color: '#2A2B6A !important',
-    padding: '10px 24px !important',
-    borderRadius: '30px !important', 
-    fontWeight: '600 !important',
-    textTransform: 'none !important',
-    fontSize: '0.95rem !important',
-    opacity: 0,
-    transform: 'translateY(20px)',
-    transition: 'all 0.4s ease !important',
-    '&:hover': {
-      backgroundColor: 'white !important',
-    },
-    "@media (max-width: 600px)": {
-      padding: '8px 18px !important',
-      fontSize: '0.85rem !important',
-      borderRadius: '25px !important', 
-    },
-  },
-  cardContent: {
-    padding: '15px !important', // Reduced from 25px
-    color: 'white',
-    "@media (max-width: 600px)": {
-      padding: '12px !important', // Reduced from 18px
-    },
-  },
-  programTag: {
-    position: 'absolute',
-    top: '15px',
-    left: '15px',
-    zIndex: 3,
-    backgroundColor: '#FFC614 !important',
-    color: '#2A2B6A !important',
-    fontWeight: 'bold !important',
-    padding: '5px 12px !important',
-    borderRadius: '20px !important',
-    fontSize: '0.75rem !important',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.15) !important',
-    "@media (max-width: 600px)": {
-      top: '12px',
-      left: '12px',
-      padding: '4px 9px !important',
-      fontSize: '0.68rem !important',
-      borderRadius: '18px !important',
-    },
-  },
-  durationTag: {
-    position: 'absolute',
-    top: '15px',
-    right: '15px',
-    zIndex: 3,
-    backgroundColor: 'rgba(255, 255, 255, 0.9) !important',
-    color: '#2A2B6A !important',
-    fontWeight: '600 !important',
-    padding: '5px 12px !important',
-    borderRadius: '20px !important',
-    fontSize: '0.75rem !important',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.15) !important',
-    display: 'flex',
-    alignItems: 'center',
-    '& svg': {
-      marginRight: '4px',
-      fontSize: '0.9rem !important',
-    },
-    "@media (max-width: 600px)": {
-      top: '12px',
-      right: '12px',
-      padding: '4px 9px !important',
-      fontSize: '0.68rem !important',
-      borderRadius: '18px !important',
-    },
-  },
-  programTitle: {
-    fontSize: '1.2rem !important', // Reduced from 1.5rem
-    fontWeight: 'bold !important',
-    color: 'white !important',
-    marginBottom: '10px !important', // Reduced from 15px
-    lineHeight: '1.3 !important',
-    "@media (max-width: 600px)": {
-      fontSize: '1.1rem !important', // Reduced from 1.3rem
-      marginBottom: '8px !important', // Reduced from 12px
-    },
-  },
-  divider: {
-    backgroundColor: 'rgba(255, 255, 255, 0.1) !important',
-    margin: '10px 0 15px !important', // Reduced from 15px 0 20px
-    "@media (max-width: 600px)": {
-      margin: '8px 0 12px !important', // Reduced from 12px 0 16px
-    },
-  },
-  featuresContainer: {
-    marginBottom: '15px', // Reduced from 20px
-    "@media (max-width: 600px)": {
-      marginBottom: '10px', // Reduced from 14px
-    },
-  },
-  featureItem: {
-    display: 'flex',
-    alignItems: 'center',
-    marginBottom: '8px', // Reduced from 12px
-    '&:last-child': {
-      marginBottom: 0
-    },
-    "@media (max-width: 600px)": {
-      marginBottom: '6px', // Reduced from 9px
-    },
-  },
-  featureIcon: {
-    color: '#FFC614',
-    marginRight: '10px',
-    marginTop: '3px',
-    "@media (max-width: 600px)": {
-      marginRight: '7px',
-      fontSize: '0.85rem !important',
-    },
-  },
-  featureText: {
-    fontSize: '0.85rem !important', // Reduced from 0.95rem
-    color: 'rgba(255, 255, 255, 0.8) !important',
-    "@media (max-width: 600px)": {
-      fontSize: '0.8rem !important', // Reduced from 0.85rem
-    },
-  },
-  studentCount: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '5px',
-    color: 'rgba(255, 255, 255, 0.8) !important',
-    fontSize: '0.9rem !important',
-    "@media (max-width: 600px)": {
-      fontSize: '0.85rem !important',
-    },
-  },
-  enrollButton: {
-    backgroundColor: 'rgba(46, 204, 113, 0.15) !important',
-    color: '#2ecc71 !important',
-    padding: '8px 16px !important',
-    borderRadius: '20px !important',
-    fontSize: '0.85rem !important',
-    fontWeight: '500 !important',
-    marginTop: '15px !important',
-    transition: 'all 0.3s ease !important',
-    border: '1px solid rgba(46, 204, 113, 0.3) !important',
-    '&:hover': {
-      backgroundColor: 'rgba(46, 204, 113, 0.25) !important',
-      borderColor: 'rgba(46, 204, 113, 0.5) !important',
-    },
-    '& .MuiButton-startIcon': {
-      marginRight: '6px !important',
-    },
-    "@media (max-width: 600px)": {
-      fontSize: '0.8rem !important',
-      padding: '6px 12px !important',
-    },
-  },
-  enrollIcon: {
-    width: '8px !important',
-    height: '8px !important',
-    backgroundColor: '#2ecc71',
-    borderRadius: '50%',
-    position: 'relative',
-    '&:before': {
-      content: '""',
-      position: 'absolute',
-      width: '100%',
-      height: '100%',
-      borderRadius: '50%',
-      backgroundColor: 'inherit',
-      animation: '$pulse 1.5s infinite',
-    },
-  },
-  pulseDot: {
-    display: 'inline-block',
-    width: '10px',
-    height: '10px',
-    borderRadius: '50%',
-    backgroundColor: '#2ecc71',
-    marginRight: '8px',
-    position: 'relative',
-    '&:before': {
-      content: '""',
-      display: 'block',
-      position: 'absolute',
-      width: '100%',
-      height: '100%',
-      borderRadius: '50%',
-      backgroundColor: 'inherit',
-      opacity: 0.7,
-      animation: '$pulse 1.5s infinite',
-    },
-    "@media (max-width: 600px)": {
-      width: '7px',
-      height: '7px',
-      marginRight: '5px',
-    },
-  },
-  '@keyframes pulse': {
-    '0%': {
-      transform: 'scale(1)',
-      opacity: 0.7,
-    },
-    '70%': {
-      transform: 'scale(2)',
-      opacity: 0,
-    },
-    '100%': {
-      transform: 'scale(2.5)',
-      opacity: 0,
-    },
-  },
-  moreButton: {
-    // marginTop: '60px !important',
-    backgroundColor: 'transparent !important',
-    color: 'white !important',
-    border: '2px solid rgba(255, 198, 20, 0.5) !important',
-    padding: '12px 30px !important',
-    borderRadius: '30px !important',
-    fontWeight: '600 !important',
-    fontSize: '1rem !important',
-    transition: 'all 0.3s ease !important',
-    display: 'flex !important',
-    margin: '0 auto !important',
-    '&:hover': {
-      backgroundColor: 'rgba(255, 198, 20, 0.1) !important',
-      borderColor: '#FFC614 !important',
-    },
-    "@media (max-width: 600px)": {
-      marginTop: '40px !important',
-      padding: '9px 22px !important',
-      fontSize: '0.9rem !important',
-      borderRadius: '25px !important',
-    },
   },
   commentDialog: {
     '& .MuiDialog-paper': {
       borderRadius: '15px !important',
-      minWidth: '400px',
-      "@media (max-width: 600px)": {
-        minWidth: '90%',
-        margin: '20px',
-      },
+      backgroundColor: '#ffffff !important',
     },
   },
   commentDialogTitle: {
-    color: '#2A2B6A !important',
-    fontWeight: 'bold !important',
-    borderBottom: '1px solid #eee',
-    paddingBottom: '10px !important',
+    backgroundColor: '#2A2B6A !important',
+    color: 'white !important',
+    fontSize: '1.2rem !important',
+    fontWeight: '600 !important',
+    padding: '16px 24px !important',
+    marginBottom: '10px !important',
   },
   commentField: {
     marginTop: '15px !important',
@@ -675,31 +362,29 @@ const OtherPrograms = () => {
       level: 'Intermediate',
       category: 'development'
     },
-    {
-      id: 6,
-      title: 'Virtual Placement Drive in Data Science',
-      duration: '6 Months',
-      features: [
-        'Get Job-Specific Training in Data Science Domains',
-        'Apply to 15+ Verified Openings Every Week',
-        'Master AI Tools Aligned with Real Job Roles',
-        'Boost Communication & Analytical Skillsets'
-      ],
-      students: 1198,
-      tag: 'Placement Drive',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80',
-      level: 'Intermediate',
-      category: 'datascience'
-    }
   ];
+
+  const categories = [
+    { id: 0, label: 'All Programs', icon: <SchoolIcon sx={{ fontSize: '0.9rem !important' }} /> },
+    { id: 1, label: 'Development', icon: <CodeIcon sx={{ fontSize: '0.9rem !important' }} /> },
+    { id: 2, label: 'Data Science', icon: <DataUsageIcon sx={{ fontSize: '0.9rem !important' }} /> },
+    { id: 3, label: 'Placement', icon: <WorkIcon sx={{ fontSize: '0.9rem !important' }} /> },
+  ];
+
+  const filteredPrograms = programs.filter(program => {
+    if (tabValue === 0) return true;
+    if (tabValue === 1) return program.category === 'development';
+    if (tabValue === 2) return program.category === 'datascience';
+    if (tabValue === 3) return program.tag === 'Placement Drive';
+    return true;
+  });
 
   return (
     <Box className={classes.section}>
-      
-      <Container maxWidth="lg" className={classes.container}>
+      <Container maxWidth="xl" className={classes.container}>
         <Box className={classes.titleContainer}>
           <Typography variant="h2" className={classes.title}>
-            Explore Our <span className={classes.highlight}>Programs</span>
+            Explore Our <span>Programs</span>
           </Typography>
           <Typography variant="body1" className={classes.subtitle}>
             Immersive learning experiences designed to transform beginners into industry-ready professionals
@@ -709,165 +394,68 @@ const OtherPrograms = () => {
         <Box className={classes.tabsContainer}>
           <Tabs 
             value={tabValue} 
-            onChange={handleTabChange}
-            classes={{ root: classes.tabsRoot }}
-            centered
+            onChange={handleTabChange} 
+            className={classes.tabs}
             variant="scrollable"
             scrollButtons="auto"
           >
-            <Tab 
-              label="All Programs" 
-              className={classes.tab}
-              icon={<SchoolIcon />}
-            />
-            <Tab 
-              label="Full Time" 
-              className={classes.tab}
-              icon={<WorkIcon />}
-            />
-            <Tab 
-              label="Master Internships" 
-              className={classes.tab}
-              icon={<CodeIcon />}
-            />
-            <Tab 
-              label="Virtual Placement" 
-              className={classes.tab}
-              icon={<DataUsageIcon />}
-            />
+            {categories.map((category) => (
+              <Tab 
+                key={category.id}
+                label={
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    {category.icon}
+                    {category.label}
+                  </Box>
+                }
+              />
+            ))}
           </Tabs>
         </Box>
 
         <Box className={classes.cardsContainer}>
           <Box className={classes.swiperContainer}>
             <Swiper
-              slidesPerView={2}
-              slidesPerGroup={2}
-              spaceBetween={30}
-              navigation={false} // changed from true to false
-              pagination={{
-                clickable: true,
-              }}
+              modules={[Navigation, Pagination, Autoplay]}
+              spaceBetween={20}
+              slidesPerView={1}
+              pagination={{ clickable: true }}
               autoplay={{
                 delay: 4000,
                 disableOnInteraction: false,
-                pauseOnMouseEnter: true,
               }}
-              modules={[Navigation, Pagination, Autoplay]}
               breakpoints={{
-                320: {
+                640: {
                   slidesPerView: 1,
-                  slidesPerGroup: 1,
-                  spaceBetween: 20,
+                  spaceBetween: 15,
                 },
                 768: {
-                  slidesPerView: 1.5,
-                  slidesPerGroup: 1,
-                  spaceBetween: 25,
+                  slidesPerView: 2,
+                  spaceBetween: 20,
                 },
                 1024: {
-                  slidesPerView: 2,
-                  slidesPerGroup: 2,
+                  slidesPerView: 3,
+                  spaceBetween: 25,
+                },
+                1200: {
+                  slidesPerView: 3,
                   spaceBetween: 30,
                 },
               }}
             >
-              {programs
-                .filter(program => {
-                  if (tabValue === 0) return true;
-                  if (tabValue === 1) return program.tag === 'Full Time';
-                  if (tabValue === 2) return program.tag === 'Internship';
-                  if (tabValue === 3) return program.tag === 'Placement Drive';
-                  return true;
-                })
-                .map((program) => (
-                  <SwiperSlide key={program.id}>
-                    <Box className={classes.cardWrapper}>
-                      <Card className={classes.card} sx={{ height: '100%' }}>
-                        <Chip label={program.tag} className={classes.programTag} />
-                        <Chip 
-                          icon={<AccessTimeIcon />} 
-                          label={program.duration}
-                          className={classes.durationTag} 
-                        />
-                        
-                        <Box sx={{ position: 'relative' }}>
-                          <CardMedia
-                            component="img"
-                            className={classes.cardMedia}
-                            image={program.image}
-                            alt={program.title}
-                          />
-                          
-                          <Box className={classes.hoverOverlay}>
-                            <Button 
-                              variant="contained" 
-                              className={classes.viewButton}
-                              endIcon={<LaunchIcon />}
-                              onClick={() => handleViewProgram(program.id)}
-                            >
-                              {program.id >= 3 ? 'View Details' : 'Launching soon'}
-                            </Button>
-                          </Box>
-                        </Box>
-                        
-                        <Box className={classes.cardContent}>
-                          <Typography className={classes.programTitle}>
-                            {program.title}
-                          </Typography>
-                          
-                          <Divider className={classes.divider} />
-                          
-                          <Box className={classes.featuresContainer}>
-                            {program.features.map((feature, index) => (
-                              <Box key={index} className={classes.featureItem}>
-                                <Box 
-                                  component="span" 
-                                  sx={{ 
-                                    width: '6px', 
-                                    height: '6px', 
-                                    borderRadius: '50%', 
-                                    backgroundColor: '#FFC614',
-                                    display: 'inline-block',
-                                    marginRight: '12px',
-                                  }} 
-                                />
-                                <Typography className={classes.featureText}>
-                                  {feature}
-                                </Typography>
-                              </Box>
-                            ))}
-                          </Box>
-                          
-                          <EnhancedEngagementSection 
-                            onLoveClick={() => handleLove(program.id)}
-                            onCommentClick={() => handleCommentOpen(program.id)}
-                          />
-                          
-                          <Box className={classes.engagementContainer}>
-                            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                              <Button
-                                variant="contained"
-                                className={classes.enrollButton}
-                                startIcon={<Box className={classes.enrollIcon} />}
-                                onClick={() => handleViewProgram(program.id)}
-                              >
-                                Enrolling Now
-                              </Button>
-                            </Box>
-                          </Box>
-                        </Box>
-                      </Card>
-                    </Box>
-                  </SwiperSlide>
-                ))}
+              {filteredPrograms.map((program) => (
+                <SwiperSlide key={program.id}>
+                  <ProgramCard
+                    program={program}
+                    onLoveClick={handleLove}
+                    onCommentClick={handleCommentOpen}
+                    onViewProgram={handleViewProgram}
+                  />
+                </SwiperSlide>
+              ))}
             </Swiper>
           </Box>
         </Box>
-        
-        {/* <Button variant="outlined" className={classes.moreButton}>
-          View All Programs
-        </Button> */}
       </Container>
 
       <Dialog 

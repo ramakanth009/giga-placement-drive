@@ -1,155 +1,161 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, Button } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import CommentIcon from '@mui/icons-material/Comment';
-import StarIcon from '@mui/icons-material/Star';
-import PeopleIcon from '@mui/icons-material/People';
 
 const useStyles = makeStyles({
   engagementContainer: {
     display: 'flex',
-    flexDirection: 'column',
     alignItems: 'center',
-    marginTop: '15px',
+    justifyContent: 'space-between',
+    background: 'linear-gradient(135deg, #5C63AB 0%, #4A4E96 50%, #3A3D7A 100%)',
+    borderRadius: '20px',
+    padding: '16px 20px',
+    margin: '15px 0',
     position: 'relative',
-    zIndex: 2,
-    '@media (max-width: 600px)': {
-      marginTop: '10px',
+    overflow: 'hidden',
+    boxShadow: '0 8px 24px rgba(92, 99, 171, 0.3)',
+    '&:before': {
+      content: '""',
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)',
+      borderRadius: '20px',
     },
-  },
-  highlightedText: {
-    fontSize: '0.9rem !important',
-    color: '#FFC614 !important',
-    fontWeight: '600 !important',
-    textAlign: 'center',
-    padding: '8px 15px',
-    borderRadius: '8px',
-    backgroundColor: 'rgba(255, 198, 20, 0.15)',
-    border: '1px solid rgba(255, 198, 20, 0.3)',
-    marginBottom: '10px !important',
-    maxWidth: '90%',
-    position: 'relative',
-    animation: '$glow 2.5s infinite alternate',
-    transition: 'transform 0.3s ease',
-    '&:hover': {
-      transform: 'scale(1.02)',
-    },
-    '@media (max-width: 600px)': {
-      fontSize: '0.85rem !important',
-      padding: '6px 12px',
-      marginBottom: '8px !important',
+    '@media (max-width: 768px)': {
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      gap: '12px',
+      padding: '14px 16px',
+      borderRadius: '16px',
     },
     '@media (max-width: 480px)': {
-      fontSize: '0.8rem !important',
-      padding: '5px 10px',
-      marginBottom: '6px !important',
+      padding: '12px 14px',
+      borderRadius: '14px',
+      margin: '12px 0',
     },
   },
-  decorativeStars: {
-    position: 'absolute',
-    top: '-6px',
-    right: '10px',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '2px',
+  textContent: {
+    flex: 1,
+    position: 'relative',
+    zIndex: 2,
+    '@media (max-width: 768px)': {
+      width: '100%',
+    },
   },
-  starIcon: {
-    color: '#FFC614',
-    fontSize: '14px !important',
-    animation: '$spin 8s linear infinite',
-    '@media (max-width: 600px)': {
-      fontSize: '12px !important',
+  engagementText: {
+    fontSize: '0.9rem !important',
+    color: '#ffffff !important',
+    fontWeight: '500 !important',
+    lineHeight: '1.4 !important',
+    margin: 0,
+    '@media (max-width: 960px)': {
+      fontSize: '0.85rem !important',
+    },
+    '@media (max-width: 768px)': {
+      fontSize: '0.8rem !important',
+      lineHeight: '1.3 !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.75rem !important',
     },
   },
   actionsContainer: {
     display: 'flex',
-    justifyContent: 'center',
     alignItems: 'center',
-    gap: '20px',
-    marginTop: '5px',
-    flexWrap: 'wrap',
-    '@media (max-width: 600px)': {
-      gap: '15px',
+    gap: '12px',
+    position: 'relative',
+    zIndex: 2,
+    '@media (max-width: 768px)': {
+      width: '100%',
+      justifyContent: 'flex-end',
     },
-  },
-  engagementActions: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: '15px',
-    '@media (max-width: 600px)': {
-      gap: '12px',
+    '@media (max-width: 480px)': {
+      gap: '8px',
     },
   },
   actionButton: {
     display: 'flex',
-    flexDirection: 'column',
     alignItems: 'center',
-    gap: '3px',
+    gap: '6px',
+    padding: '8px 16px',
+    borderRadius: '25px',
+    backgroundColor: 'rgba(255, 255, 255, 0.15)',
+    backdropFilter: 'blur(10px)',
+    border: '1px solid rgba(255, 255, 255, 0.2)',
     cursor: 'pointer',
-    transition: 'all 0.2s ease',
+    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+    minWidth: 'auto',
+    fontWeight: '500 !important',
+    fontSize: '0.8rem !important',
+    textTransform: 'none !important',
+    color: '#ffffff !important',
     '&:hover': {
-      transform: 'translateY(-3px)',
+      backgroundColor: 'rgba(255, 255, 255, 0.25)',
+      transform: 'translateY(-2px)',
+      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+      border: '1px solid rgba(255, 255, 255, 0.3)',
+    },
+    '&:active': {
+      transform: 'translateY(0)',
+    },
+    '@media (max-width: 960px)': {
+      padding: '7px 14px',
+      fontSize: '0.75rem !important',
+      gap: '5px',
+    },
+    '@media (max-width: 768px)': {
+      padding: '6px 12px',
+      fontSize: '0.7rem !important',
+      borderRadius: '20px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '5px 10px',
+      fontSize: '0.65rem !important',
+      gap: '4px',
     },
   },
   actionIcon: {
-    color: 'rgba(255, 255, 255, 0.8)',
-    fontSize: '20px !important',
-    transition: 'all 0.2s ease',
-    '@media (max-width: 600px)': {
-      fontSize: '18px !important',
-    },
-  },
-  loveIcon: {
-    '&:hover': {
-      color: '#ff4757',
-    },
-  },
-  commentIcon: {
-    '&:hover': {
-      color: '#FFC614',
-    },
-  },
-  actionText: {
-    fontSize: '0.75rem !important',
-    color: 'rgba(255, 255, 255, 0.7) !important',
-    '@media (max-width: 480px)': {
-      fontSize: '0.7rem !important',
-    },
-  },
-  interestedCount: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '6px',
-    backgroundColor: 'rgba(255, 198, 20, 0.15)',
-    padding: '6px 12px',
-    borderRadius: '15px',
-  },
-  countIcon: {
-    color: '#FFC614',
     fontSize: '16px !important',
-  },
-  countText: {
-    color: '#FFC614 !important',
-    fontSize: '0.8rem !important',
-    fontWeight: '600 !important',
-  },
-  '@keyframes glow': {
-    '0%': {
-      boxShadow: '0 0 5px rgba(255, 198, 20, 0.3)',
+    transition: 'all 0.3s ease',
+    '@media (max-width: 960px)': {
+      fontSize: '15px !important',
     },
-    '100%': {
-      boxShadow: '0 0 20px rgba(255, 198, 20, 0.6)',
+    '@media (max-width: 768px)': {
+      fontSize: '14px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '13px !important',
     },
   },
-  '@keyframes spin': {
-    '0%': {
-      transform: 'rotate(0deg)',
+  loveButton: {
+    '&:hover': {
+      backgroundColor: 'rgba(255, 71, 87, 0.2)',
+      border: '1px solid rgba(255, 71, 87, 0.4)',
+      '& $actionIcon': {
+        color: '#ff4757',
+      },
     },
-    '100%': {
-      transform: 'rotate(360deg)',
+  },
+  commentButton: {
+    '&:hover': {
+      backgroundColor: 'rgba(255, 198, 20, 0.2)',
+      border: '1px solid rgba(255, 198, 20, 0.4)',
+      '& $actionIcon': {
+        color: '#FFC614',
+      },
+    },
+  },
+  loved: {
+    backgroundColor: 'rgba(255, 71, 87, 0.2) !important',
+    border: '1px solid rgba(255, 71, 87, 0.4) !important',
+    '& $actionIcon': {
+      color: '#ff4757 !important',
     },
   },
 });
@@ -165,38 +171,34 @@ const EnhancedEngagementSection = ({ onLoveClick, onCommentClick }) => {
 
   return (
     <Box className={classes.engagementContainer}>
-      <Typography className={classes.highlightedText}>
-        If you love our curriculum, just drop a love and share what you find exciting
-        <Box className={classes.decorativeStars}>
-          <StarIcon className={classes.starIcon} style={{ animationDelay: '0s' }} />
-          <StarIcon className={classes.starIcon} style={{ animationDelay: '0.2s' }} />
-          <StarIcon className={classes.starIcon} style={{ animationDelay: '0.4s' }} />
-        </Box>
-      </Typography>
+      <Box className={classes.textContent}>
+        <Typography className={classes.engagementText}>
+          If you love our curriculum, just drop a love and share what you find exciting
+        </Typography>
+      </Box>
       
       <Box className={classes.actionsContainer}>
-        <Box className={classes.engagementActions}>
-          <Box className={classes.actionButton} onClick={handleLoveClick}>
-            {loved ? (
-              <FavoriteIcon className={`${classes.actionIcon} ${classes.loveIcon}`} style={{ color: '#ff4757' }} />
-            ) : (
-              <FavoriteBorderIcon className={`${classes.actionIcon} ${classes.loveIcon}`} />
-            )}
-            <Typography className={classes.actionText}>Love</Typography>
-          </Box>
-          
-          <Box className={classes.actionButton} onClick={onCommentClick}>
-            <CommentIcon className={`${classes.actionIcon} ${classes.commentIcon}`} />
-            <Typography className={classes.actionText}>Comment</Typography>
-          </Box>
-        </Box>
-
-        <Box className={classes.interestedCount}>
-          <PeopleIcon className={classes.countIcon} />
-          <Typography className={classes.countText}>
-            Interested Students - 2584
-          </Typography>
-        </Box>
+        <Button
+          className={`${classes.actionButton} ${classes.loveButton} ${loved ? classes.loved : ''}`}
+          onClick={handleLoveClick}
+          disableRipple
+        >
+          {loved ? (
+            <FavoriteIcon className={classes.actionIcon} />
+          ) : (
+            <FavoriteBorderIcon className={classes.actionIcon} />
+          )}
+          Like
+        </Button>
+        
+        <Button
+          className={`${classes.actionButton} ${classes.commentButton}`}
+          onClick={onCommentClick}
+          disableRipple
+        >
+          <CommentIcon className={classes.actionIcon} />
+          Comment
+        </Button>
       </Box>
     </Box>
   );
