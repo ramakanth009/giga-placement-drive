@@ -63,6 +63,11 @@ const useStyles = makeStyles({
       fontSize: '2rem !important',
     },
   },
+  // Add highlight style for yellow span
+  highlight: {
+    color: "#FFC614",
+    fontWeight: "bold",
+  },
   categoryContainer: {
     maxWidth: '1200px',
     margin: '0 auto 40px',
@@ -89,7 +94,7 @@ const useStyles = makeStyles({
     border: 'none !important',
     boxShadow: 'none !important',
     borderRadius: '0 !important',
-    transition: 'all 0.3s ease !important',
+    transition: 'all 0.5s cubic-bezier(0.4,0,0.2,1) !important',
     position: 'relative',
     zIndex: '1',
     margin: '0 -1px !important',
@@ -107,6 +112,7 @@ const useStyles = makeStyles({
     fontWeight: '600 !important',
     zIndex: '2',
     borderRadius:"30px !important",
+    transition: 'background 0.5s cubic-bezier(0.4,0,0.2,1), color 0.5s cubic-bezier(0.4,0,0.2,1) !important',
     '&:hover': {
       backgroundColor: '#2A2B6A !important',
     },
@@ -126,6 +132,8 @@ const useStyles = makeStyles({
     borderRadius: '30px',
     overflow: 'hidden',
     boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+    // Smooth transition for tab background
+    transition: 'background 0.5s cubic-bezier(0.4,0,0.2,1)',
   },
   firstTab: {
     borderTopLeftRadius: '30px !important',
@@ -178,6 +186,10 @@ const useStyles = makeStyles({
     gridTemplateColumns: 'repeat(7, 1fr)',
     padding: '25px 30px',
     gap: '25px',
+    // Smooth fade/slide for grid
+    opacity: 1,
+    transform: 'translateY(0px)',
+    transition: 'opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1)',
     '@media (max-width: 960px)': {
       gridTemplateColumns: 'repeat(4, 1fr)',
       padding: '20px',
@@ -204,6 +216,9 @@ const useStyles = makeStyles({
     overflow: 'hidden',
     height: '100px',
     width: '100%',
+    opacity: 0,
+    transform: 'translateY(30px)',
+    animation: '$fadeInLogo 0.8s cubic-bezier(0.4,0,0.2,1) forwards',
     '&:hover': {
       transform: 'translateY(-5px)',
       boxShadow: '0 8px 20px rgba(0,0,0,0.08)',
@@ -247,6 +262,9 @@ const useStyles = makeStyles({
     width: '100%',
     transition: 'all 0.3s ease',
     backgroundColor: '#2A2B6A',
+    opacity: 0,
+    transform: 'translateX(40px)',
+    animation: '$fadeInRight 0.8s cubic-bezier(0.4,0,0.2,1) forwards',
     '&:hover': {
       transform: 'translateY(-5px)',
     },
@@ -254,16 +272,23 @@ const useStyles = makeStyles({
       height: '90px',
     },
   },
-  moreCompaniesText: {
-    color: '#ffffff',
-    fontSize: '1rem',
-    fontWeight: 600,
-    marginTop: '8px',
-  },
   plusIcon: {
     fontSize: '40px',
     color: '#ffffff',
     marginBottom: '4px',
+  },
+  '@keyframes fadeInLogo': {
+    '0%': { opacity: 0, transform: 'translateY(30px)' },
+    '100%': { opacity: 1, transform: 'translateY(0)' },
+  },
+  '@keyframes fadeInRight': {
+    '0%': { opacity: 0, transform: 'translateX(40px)' },
+    '100%': { opacity: 1, transform: 'translateX(0)' },
+  },
+  moreCompaniesText: {
+    color: '#ffffff',
+    fontSize: '16px',
+    fontWeight: '500',
   },
 });
 
@@ -288,7 +313,7 @@ const HiringPartners = () => {
       const currentIndex = filters.indexOf(activeFilter);
       const nextIndex = (currentIndex + 1) % filters.length;
       setActiveFilter(filters[nextIndex]);
-    }, 5000); // Switch every 5 seconds
+    }, 3000); // Switch every 5 seconds
 
     return () => clearInterval(interval);
   }, [activeFilter, filters]);
@@ -390,13 +415,20 @@ const HiringPartners = () => {
   };
 
   const renderLogos = (categoryCompanies) => (
-    <div className={classes.logoGrid}>
-      {categoryCompanies.map((company) => (
-        <div key={company.name} className={classes.logoWrapper}>
+    <div className={classes.logoGrid} key={categoryCompanies.map(c => c.name).join('-')}>
+      {categoryCompanies.map((company, idx) => (
+        <div
+          key={company.name}
+          className={classes.logoWrapper}
+          style={{ animationDelay: `${0.05 * idx + 0.1}s` }}
+        >
           <company.Logo className={classes.logoSvg} aria-label={company.name} />
         </div>
       ))}
-      <MoreCompaniesCard />
+      {/* MoreCompaniesCard gets its own animation via its class */}
+      <div>
+        <MoreCompaniesCard />
+      </div>
     </div>
   );
 
@@ -406,7 +438,10 @@ const HiringPartners = () => {
       <Box className={classes.titleContainer}>
         <Box sx={{ textAlign: 'center' }}>
           <Typography variant="h2" className={classes.sectionTitle}>
-            Backed by our Hiring Partners
+            <span>
+              Backed by our{" "}
+              <span className={classes.highlight}>Hiring Partners</span>
+            </span>
           </Typography>
         </Box>
       </Box>
