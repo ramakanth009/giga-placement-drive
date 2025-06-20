@@ -120,16 +120,16 @@ const useStyles = makeStyles({
     height: '50px'
   },
   icon2: {
-    bottom: '80px',
-    left: '50px',
+    bottom: '210px',
+    left: '-15px',
     width: '45px',
     height: '45px'
   },
   icon3: {
     bottom: '150px',
     right: '50px',
-    // width: '40px',
-    // height: '40px'
+    width: '40px',
+    height: '40px'
   },
   iconSvg: {
     // width: '100%',

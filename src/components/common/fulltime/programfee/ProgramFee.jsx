@@ -505,9 +505,9 @@ const ProgramFee = ({ programName, totalFee, onApplyClick }) => {
           
           <Divider className={classes.divider} />
           
-          <Typography className={classes.tagline}>
+          {/* <Typography className={classes.tagline}>
             Invest in your Skills that pay dividends for life
-          </Typography>
+          </Typography> */}
           
           <Box className={classes.benefitsContainer}>
             <Typography className={classes.benefitTitle}>What You Get:</Typography>

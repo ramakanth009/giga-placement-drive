@@ -2,7 +2,7 @@ import React from 'react'
 import FullStackHero from '../../components/fulltime/fullstack/fullstackhero/FullStackHero'
 import FullStackIndustryFacts from '../../components/fulltime/fullstack/industryfacts/FullStackIndustryFacts'
 import FullStackProgramHighlights from '../../components/fulltime/fullstack/programhighlights/FullStackProgramHighlights'
-import FullStackTechnologyKit from '../../components/fulltime/fullstack/technologykit/FullStackTechnologyKit'
+// import FullStackTechnologyKit from '../../components/fulltime/fullstack/technologykit/FullStackTechnologyKit'
 import Fullstackcurriculam from '../../components/fulltime/fullstack/curriculum/FullStackCurriculum'
 import FullStackProjectSection from '../../components/fulltime/fullstack/projectssection/FullStackProjectsSection'
 import FullStackCaseStudies from '../../components/fulltime/fullstack/fullStackcasestudies/FullStackCaseStudies'
@@ -23,7 +23,7 @@ const FullstackFulltime = () => {
         <FullStackIndustryFacts />
         {/* <FullStackSkillsMaster /> */}
         <Fullstackcurriculam />
-        <FullStackTechnologyKit />
+        {/* <FullStackTechnologyKit /> */}
         <FullStackProjectSection />
         <FullStackCaseStudies />
         <FulltimeCertificates />

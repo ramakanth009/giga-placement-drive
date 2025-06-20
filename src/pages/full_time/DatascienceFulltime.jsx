@@ -8,7 +8,7 @@ import DataScienceCaseStudies from "../../components/fulltime/datascience/dataSc
 import DataScienceProgramFee from "../../components/fulltime/datascience/programfee/DataScienceProgramFee";
 import FulltimeCertificates from "../../components/common/fulltime/fulltimeCertificates/FulltimeCertificates";
 import DataScienceProjectsSection from "../../components/fulltime/datascience/projectssection/DataScienceProjectsSection";
-import DataScienceTechnologyKit from '../../components/fulltime/datascience/technologykit/DataScienceTechnologyKit'
+// import DataScienceTechnologyKit from '../../components/fulltime/datascience/technologykit/DataScienceTechnologyKit'
 import DataScienceCurriculum from "../../components/fulltime/datascience/curriculum/DataScienceCurriculum";
 // import DataScienceSkillsMaster from "../../components/fulltime/datascience/skillsmaster/DataScienceSkillsMaster";
 import DataScienceLearningPath from '../../components/fulltime/datascience/learningpathtimeline/DataScienceLearningPath';
@@ -23,7 +23,7 @@ const DatascienceFulltime = () => {
       <DataScienceIndustryFacts />
       {/* <DataScienceSkillsMaster /> */}
       <DataScienceCurriculum />
-      <DataScienceTechnologyKit />
+      {/* <DataScienceTechnologyKit /> */}
       <DataScienceProjectsSection />
       <DataScienceCaseStudies />
       <FulltimeCertificates />
