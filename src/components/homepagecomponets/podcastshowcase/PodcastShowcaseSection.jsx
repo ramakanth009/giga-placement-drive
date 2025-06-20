@@ -9,10 +9,10 @@ import {
   Paper,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import YouTubeIcon from "@mui/icons-material/YouTube";
 import SendIcon from "@mui/icons-material/Send";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
+// import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
+import {ReactComponent as  QuestionAnswerIcon} from "../../../assets/commenticon.svg";
 
 const useStyles = makeStyles({
   section: {
@@ -202,6 +202,8 @@ const useStyles = makeStyles({
     fontSize: "1.5rem !important",
     fontWeight: "600 !important",
     marginBottom: "15px !important",
+    fontFamily:"Montserrat !important",
+    color:"#FFC614 !important",
     display: "flex",
     alignItems: "center",
     gap: "10px",
@@ -361,7 +363,6 @@ const PodcastShowcaseSection = () => {
             >
               <Typography
                 className={classes.questionTitle}
-                sx={{ color: "#fff" }}
               >
                 <QuestionAnswerIcon className={classes.questionIcon} />
                 Have a Question for Founders, Co-Founders, or Recruiters?
