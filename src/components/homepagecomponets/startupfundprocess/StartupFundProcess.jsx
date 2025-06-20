@@ -71,6 +71,8 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    marginLeft:"auto",
+    marginRight:"auto",
     marginBottom: '20px',
     position: 'relative',
     zIndex: 3,
@@ -78,6 +80,7 @@ const useStyles = makeStyles({
     fontWeight: '700 !important',
     color: '#1a1a1a !important',
     boxShadow: '0 4px 12px rgba(251, 191, 36, 0.3)',
+    textAlign:"center"
   },
   stepContent: {
     textAlign: 'center',
