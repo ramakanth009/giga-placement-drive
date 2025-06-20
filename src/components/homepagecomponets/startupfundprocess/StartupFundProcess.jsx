@@ -10,7 +10,7 @@ import {ReactComponent as Step6} from "../../../assets/startup/step6.svg";
 
 const useStyles = makeStyles({
   section: {
-    padding: '60px 0 120px 0',
+    padding: '60px 0 0px 0',
     backgroundColor: '#f8f9fa',
     position: 'relative',
     overflow: 'hidden',
@@ -24,11 +24,11 @@ const useStyles = makeStyles({
     fontSize: '2.5rem !important',
     fontWeight: '700 !important',
     marginBottom: '12px !important',
-    color: '#1a1a1a !important',
+    color: '#2A2B6A !important',
     lineHeight: '1.2 !important',
   },
   rupeeText: {
-    color: '#4f46e5 !important',
+    color: '#FFC614 !important',
   },
   subtitle: {
     fontSize: '1.1rem !important',
@@ -67,7 +67,7 @@ const useStyles = makeStyles({
     width: '60px',
     height: '40px',
     borderRadius: '20px',
-    backgroundColor: '#fbbf24',
+    backgroundColor: '#FFC614',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
