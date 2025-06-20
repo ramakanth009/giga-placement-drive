@@ -1,9 +1,10 @@
 // src/components/common/faq/Faq.jsx
 import React, { useState } from 'react';
-import { Box, Typography, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import { Box, Typography, Card, CardContent, IconButton } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import SearchIcon from '@mui/icons-material/Search';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const useStyles = makeStyles({
   faqContainer: {
@@ -74,10 +75,10 @@ const useStyles = makeStyles({
   
   headerSection: {
     textAlign: 'center',
-    marginBottom: '30px',
+    marginBottom: '60px',
     position: 'relative',
     '@media (max-width: 600px)': {
-      marginBottom: '20px',
+      marginBottom: '40px',
     },
   },
   
@@ -114,22 +115,22 @@ const useStyles = makeStyles({
     fontSize: '1.3rem !important',
     color: '#666',
     maxWidth: '800px',
-    margin: '0 auto !important',
+    margin: '0 auto 40px !important',
     lineHeight: '1.6 !important',
     fontWeight: '400',
     '@media (max-width: 600px)': {
       fontSize: '1.1rem !important',
       maxWidth: '90%',
+      margin: '0 auto 30px !important',
     },
   },
   
   searchContainer: {
     maxWidth: '500px',
-    margin: '20px auto 0',
+    margin: '0 auto',
     position: 'relative',
     '@media (max-width: 600px)': {
       maxWidth: '100%',
-      margin: '15px auto 0',
     },
   },
   
@@ -164,97 +165,79 @@ const useStyles = makeStyles({
     pointerEvents: 'none',
   },
   
-  accordionContainer: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(500px, 1fr))',
-    gap: '10px',
-    '@media (max-width: 1100px)': {
-      gridTemplateColumns: '1fr',
-      gap: '15px',
-    },
+  carouselContainer: {
+    position: 'relative',
+    overflow: 'hidden',
+    margin: '0 auto',
     '@media (max-width: 600px)': {
-      gap: '12px',
+      margin: '0 -16px',
     },
   },
   
-  accordion: {
-    background: 'rgba(255, 255, 255, 0.7) !important',
+  carouselWrapper: {
+    display: 'flex',
+    transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+    gap: '30px',
+    padding: '20px 0',
+    '@media (max-width: 960px)': {
+      gap: '20px',
+    },
+    '@media (max-width: 600px)': {
+      gap: '15px',
+      padding: '20px 16px',
+    },
+  },
+  
+  faqCard: {
+    minWidth: '350px',
+    maxWidth: '350px',
+    background: 'rgba(255, 255, 255, 0.9) !important',
     backdropFilter: 'blur(10px)',
     borderRadius: '20px !important',
     border: '1px solid rgba(42, 43, 106, 0.08) !important',
-    boxShadow: '0 8px 32px rgba(42, 43, 106, 0.08) !important',
-    marginBottom: '5px !important',
+    boxShadow: '0 8px 32px rgba(42, 43, 106, 0.1) !important',
     overflow: 'hidden',
     position: 'relative',
     transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important',
-    '&:before': {
-      display: 'none',
-    },
+    minHeight: '280px',
+    display: 'flex',
+    flexDirection: 'column',
+    cursor: 'pointer',
     '&:hover': {
-      transform: 'translateY(-4px)',
-      boxShadow: '0 12px 40px rgba(42, 43, 106, 0.15) !important',
+      transform: 'translateY(-8px)',
+      boxShadow: '0 16px 48px rgba(42, 43, 106, 0.2) !important',
       '& $questionNumber': {
         background: 'linear-gradient(135deg, #FFC614 0%, #ffb700 100%)',
         transform: 'scale(1.1)',
       },
-    },
-    '&.Mui-expanded': {
-      margin: '0 0 16px 0 !important',
-      transform: 'translateY(-2px)',
-      boxShadow: '0 15px 45px rgba(42, 43, 106, 0.2) !important',
-      background: 'rgba(255, 255, 255, 0.95) !important',
-      '& $questionNumber': {
-        background: 'linear-gradient(135deg, #2A2B6A 0%, #1a1b4a 100%)',
-        color: 'white',
-        transform: 'scale(1.1)',
-      },
-      '& $expandIcon': {
+      '& $readMore': {
         color: '#2A2B6A',
-        transform: 'rotate(180deg) scale(1.1)',
+        transform: 'translateX(5px)',
       },
     },
-    '&::after': {
-      content: '""',
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      right: 0,
-      height: '4px',
-      background: 'linear-gradient(90deg, #2A2B6A 0%, #FFC614 100%)',
-      opacity: 0,
-      transition: 'opacity 0.3s ease',
+    '&.expanded': {
+      minHeight: 'auto',
     },
-    '&.Mui-expanded::after': {
-      opacity: 1,
+    '@media (max-width: 960px)': {
+      minWidth: '320px',
+      maxWidth: '320px',
+      minHeight: '260px',
     },
     '@media (max-width: 600px)': {
-      borderRadius: '16px !important',
-      marginBottom: '8px !important',
+      minWidth: '280px',
+      maxWidth: '280px',
+      minHeight: '240px',
     },
   },
   
-  accordionSummary: {
-    padding: '20px 25px !important',
-    minHeight: '70px !important',
-    alignItems: 'center',
+  cardContent: {
+    padding: '25px !important',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
     position: 'relative',
-    '&.Mui-expanded': {
-      minHeight: '70px !important',
-      borderBottom: '1px solid rgba(42, 43, 106, 0.1)',
-    },
     '@media (max-width: 600px)': {
-      padding: '15px 20px !important',
-      minHeight: '60px !important',
-    },
-  },
-  
-  summaryContent: {
-    margin: '0 !important',
-    display: 'flex !important',
-    alignItems: 'center !important',
-    width: '100%',
-    '&.Mui-expanded': {
-      margin: '0 !important',
+      padding: '20px !important',
     },
   },
   
@@ -262,82 +245,128 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '40px',
-    height: '40px',
+    width: '45px',
+    height: '45px',
     borderRadius: '50%',
     background: 'linear-gradient(135deg, rgba(42, 43, 106, 0.1) 0%, rgba(255, 198, 20, 0.1) 100%)',
     color: '#2A2B6A',
     fontWeight: 'bold !important',
-    fontSize: '1rem !important',
-    marginRight: '20px !important',
-    flexShrink: 0,
+    fontSize: '1.2rem !important',
+    marginBottom: '20px !important',
     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
     border: '2px solid rgba(42, 43, 106, 0.1)',
     '@media (max-width: 600px)': {
-      width: '35px',
-      height: '35px',
-      fontSize: '0.9rem !important',
-      marginRight: '15px !important',
+      width: '40px',
+      height: '40px',
+      fontSize: '1rem !important',
+      marginBottom: '15px !important',
     },
   },
   
   question: {
-    fontSize: '1.1rem !important',
-    fontWeight: '600 !important',
+    fontSize: '1.25rem !important',
+    fontWeight: '700 !important',
     color: '#2A2B6A !important',
-    flex: 1,
-    lineHeight: '1.5 !important',
-    transition: 'color 0.3s ease',
+    lineHeight: '1.4 !important',
+    marginBottom: '15px !important',
+    flex: 0,
     '@media (max-width: 600px)': {
-      fontSize: '1rem !important',
-    },
-  },
-  
-  expandIcon: {
-    color: '#2A2B6A !important',
-    fontSize: '24px !important',
-    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important',
-    marginLeft: '15px !important',
-    flexShrink: 0,
-    '@media (max-width: 600px)': {
-      fontSize: '20px !important',
-      marginLeft: '10px !important',
-    },
-  },
-  
-  accordionDetails: {
-    padding: '0 25px 25px !important',
-    backgroundColor: 'rgba(248, 249, 250, 0.5)',
-    position: 'relative',
-    '&::before': {
-      content: '""',
-      position: 'absolute',
-      top: 0,
-      left: '30px',
-      right: '30px',
-      height: '1px',
-      background: 'linear-gradient(90deg, transparent 0%, rgba(42, 43, 106, 0.1) 50%, transparent 100%)',
-    },
-    '@media (max-width: 600px)': {
-      padding: '0 20px 20px !important',
-      '&::before': {
-        left: '20px',
-        right: '20px',
-      },
+      fontSize: '1.1rem !important',
+      marginBottom: '12px !important',
     },
   },
   
   answer: {
-    color: '#4A4A4A !important',
-    fontSize: '1rem !important',
-    lineHeight: '1.7 !important',
-    whiteSpace: 'pre-line !important',
-    fontWeight: '400',
-    letterSpacing: '0.01em',
-    animation: '$fadeInUp 0.5s ease-out',
+    color: '#666 !important',
+    fontSize: '0.95rem !important',
+    lineHeight: '1.6 !important',
+    marginBottom: 'auto !important',
+    flex: 1,
+    overflow: 'hidden',
+    '&.truncated': {
+      display: '-webkit-box',
+      WebkitLineClamp: 4,
+      WebkitBoxOrient: 'vertical',
+    },
+    '&.expanded': {
+      display: 'block',
+      WebkitLineClamp: 'none',
+    },
     '@media (max-width: 600px)': {
-      fontSize: '0.95rem !important',
-      lineHeight: '1.6 !important',
+      fontSize: '0.9rem !important',
+      '&.truncated': {
+        WebkitLineClamp: 3,
+      },
+    },
+  },
+  
+  readMore: {
+    color: '#666 !important',
+    fontSize: '0.9rem !important',
+    fontWeight: '600 !important',
+    textDecoration: 'none',
+    marginTop: '15px !important',
+    transition: 'all 0.3s ease',
+    alignSelf: 'flex-start',
+    '&:hover': {
+      textDecoration: 'none',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.85rem !important',
+      marginTop: '12px !important',
+    },
+  },
+  
+  navigationButton: {
+    position: 'absolute',
+    top: '50%',
+    transform: 'translateY(-50%)',
+    background: 'rgba(255, 255, 255, 0.9) !important',
+    backdropFilter: 'blur(10px)',
+    border: '1px solid rgba(42, 43, 106, 0.1) !important',
+    width: '50px !important',
+    height: '50px !important',
+    borderRadius: '50% !important',
+    color: '#2A2B6A !important',
+    boxShadow: '0 5px 20px rgba(42, 43, 106, 0.15) !important',
+    zIndex: 2,
+    transition: 'all 0.3s ease !important',
+    '&:hover': {
+      background: 'rgba(42, 43, 106, 0.1) !important',
+      transform: 'translateY(-50%) scale(1.1)',
+      boxShadow: '0 8px 25px rgba(42, 43, 106, 0.25) !important',
+    },
+    '&:disabled': {
+      opacity: 0.3,
+      cursor: 'not-allowed',
+      '&:hover': {
+        transform: 'translateY(-50%)',
+        background: 'rgba(255, 255, 255, 0.9) !important',
+      },
+    },
+    '@media (max-width: 600px)': {
+      width: '40px !important',
+      height: '40px !important',
+    },
+  },
+  
+  prevButton: {
+    left: '-75px',
+    '@media (max-width: 960px)': {
+      left: '-60px',
+    },
+    '@media (max-width: 600px)': {
+      left: '-50px',
+    },
+  },
+  
+  nextButton: {
+    right: '-75px',
+    '@media (max-width: 960px)': {
+      right: '-60px',
+    },
+    '@media (max-width: 600px)': {
+      right: '-50px',
     },
   },
   
@@ -349,17 +378,6 @@ const useStyles = makeStyles({
     '50%': {
       transform: 'translateY(-20px) rotate(180deg)',
       opacity: 0.8,
-    },
-  },
-  
-  '@keyframes pulse': {
-    '0%, 100%': {
-      transform: 'scale(1)',
-      boxShadow: '0 10px 30px rgba(42, 43, 106, 0.3)',
-    },
-    '50%': {
-      transform: 'scale(1.05)',
-      boxShadow: '0 15px 40px rgba(42, 43, 106, 0.4)',
     },
   },
   
@@ -377,15 +395,20 @@ const useStyles = makeStyles({
 
 const Faq = ({ faqData, title, subtitle }) => {
   const classes = useStyles();
-  const [expanded, setExpanded] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
-
-  const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
-  };
+  const [expandedCards, setExpandedCards] = useState({});
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value.toLowerCase());
+    setCurrentIndex(0);
+  };
+
+  const handleReadMore = (faqId) => {
+    setExpandedCards(prev => ({
+      ...prev,
+      [faqId]: !prev[faqId]
+    }));
   };
 
   // Filter FAQs based on search term
@@ -393,6 +416,17 @@ const Faq = ({ faqData, title, subtitle }) => {
     faq.question.toLowerCase().includes(searchTerm) ||
     faq.answer.toLowerCase().includes(searchTerm)
   );
+
+  const handlePrevious = () => {
+    setCurrentIndex((prev) => Math.max(0, prev - 1));
+  };
+
+  const handleNext = () => {
+    const maxIndex = Math.max(0, filteredFaqs.length - 3);
+    setCurrentIndex((prev) => Math.min(maxIndex, prev + 1));
+  };
+
+  const translateX = -currentIndex * (350 + 30); // card width + gap
 
   return (
     <Box className={classes.faqContainer}>
@@ -406,19 +440,17 @@ const Faq = ({ faqData, title, subtitle }) => {
       <Box className={classes.contentWrapper}>
         <Box className={classes.headerSection}>            
           <Typography variant="h2" className={classes.title}>
-            {typeof title === 'object' ? title : <>Frequently Asked <span>Questions</span></>}
+            {typeof title === 'object' ? title : <>FAQs</>}
           </Typography>
           
-          {subtitle && (
-            <Typography variant="body1" className={classes.subtitle}>
-              {subtitle}
-            </Typography>
-          )}
+          <Typography variant="body1" className={classes.subtitle}>
+            {subtitle || 'Commonly asked questions about our Virtual Placement Drive Program'}
+          </Typography>
           
           <Box className={classes.searchContainer}>
             <input
               type="text"
-              placeholder="Search frequently asked questions..."
+              placeholder="search bar"
               className={classes.searchBox}
               onChange={handleSearch}
               value={searchTerm}
@@ -427,38 +459,60 @@ const Faq = ({ faqData, title, subtitle }) => {
           </Box>
         </Box>
 
-        <Box className={classes.accordionContainer}>
-          {filteredFaqs.map((faq) => (
-            <Accordion
-              key={faq.id}
-              expanded={expanded === faq.id}
-              onChange={handleChange(faq.id)}
-              className={classes.accordion}
-            >
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon className={classes.expandIcon} />}
-                className={classes.accordionSummary}
-                classes={{
-                  content: classes.summaryContent,
-                }}
-                aria-controls={`${faq.id}-content`}
-                id={`${faq.id}-header`}
-              >
-                <Box className={classes.questionNumber}>
-                  {faq.number}
-                </Box>
-                <Typography className={classes.question}>
-                  {faq.question}
-                </Typography>
-              </AccordionSummary>
-              
-              <AccordionDetails className={classes.accordionDetails}>
-                <Typography className={classes.answer}>
-                  {faq.answer}
-                </Typography>
-              </AccordionDetails>
-            </Accordion>
-          ))}
+        <Box className={classes.carouselContainer}>
+          <IconButton
+            className={`${classes.navigationButton} ${classes.prevButton}`}
+            onClick={handlePrevious}
+            disabled={currentIndex === 0}
+          >
+            <ArrowBackIosIcon />
+          </IconButton>
+
+          <Box 
+            className={classes.carouselWrapper}
+            style={{ transform: `translateX(${translateX}px)` }}
+          >
+            {filteredFaqs.map((faq) => {
+              const isExpanded = expandedCards[faq.id];
+              return (
+                <Card 
+                  key={faq.id} 
+                  className={`${classes.faqCard} ${isExpanded ? 'expanded' : ''}`}
+                >
+                  <CardContent className={classes.cardContent}>
+                    <Box className={classes.questionNumber}>
+                      {faq.number}
+                    </Box>
+                    
+                    <Typography className={classes.question}>
+                      {faq.question}
+                    </Typography>
+                    
+                    <Typography 
+                      className={`${classes.answer} ${isExpanded ? 'expanded' : 'truncated'}`}
+                    >
+                      {faq.answer}
+                    </Typography>
+                    
+                    <Typography 
+                      className={classes.readMore}
+                      onClick={() => handleReadMore(faq.id)}
+                    >
+                      {isExpanded ? 'Read Less <' : 'Read More >'}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </Box>
+
+          <IconButton
+            className={`${classes.navigationButton} ${classes.nextButton}`}
+            onClick={handleNext}
+            disabled={currentIndex >= Math.max(0, filteredFaqs.length - 3)}
+          >
+            <ArrowForwardIosIcon />
+          </IconButton>
         </Box>
 
         {searchTerm && filteredFaqs.length === 0 && (
