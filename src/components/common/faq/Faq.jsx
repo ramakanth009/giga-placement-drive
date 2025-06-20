@@ -64,7 +64,7 @@ const useStyles = makeStyles({
   contentWrapper: {
     position: 'relative',
     zIndex: 1,
-    maxWidth: '1200px',
+    maxWidth: '1300px',
     margin: '0 auto',
     padding: '0 20px',
     width: '100%',
@@ -169,8 +169,25 @@ const useStyles = makeStyles({
     position: 'relative',
     overflow: 'hidden',
     margin: '0 auto',
+    display: 'flex',
+    alignItems: 'center',
+    minHeight: '340px', // Ensures enough height for vertical centering
+    width: '1110px', // 3 * 350px card + 2 * 30px gap
+    maxWidth: '100%',
+    '@media (max-width: 1200px)': {
+      width: '990px', // 3 * 320px + 2 * 15px gap
+    },
+    '@media (max-width: 960px)': {
+      width: '870px', // 3 * 280px + 2 * 15px gap
+    },
+    '@media (max-width: 900px)': {
+      width: '100%',
+      minWidth: 0,
+    },
     '@media (max-width: 600px)': {
-      margin: '0 -16px',
+      width: '100%',
+      minWidth: 0,
+      minHeight: '260px',
     },
   },
   
@@ -179,6 +196,9 @@ const useStyles = makeStyles({
     transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
     gap: '30px',
     padding: '20px 0',
+    width: '100%',
+    // Ensures the wrapper grows to fill available space between buttons
+    flex: 1,
     '@media (max-width: 960px)': {
       gap: '20px',
     },
@@ -318,55 +338,38 @@ const useStyles = makeStyles({
   },
   
   navigationButton: {
-    position: 'absolute',
-    top: '50%',
-    transform: 'translateY(-50%)',
-    background: 'rgba(255, 255, 255, 0.9) !important',
-    backdropFilter: 'blur(10px)',
-    border: '1px solid rgba(42, 43, 106, 0.1) !important',
-    width: '50px !important',
-    height: '50px !important',
-    borderRadius: '50% !important',
+    position: 'relative',
+    top: 'unset',
+    transform: 'none',
+    alignSelf: 'center',
+    background: 'linear-gradient(135deg, #FFC614 0%, #ffb700 100%) !important',
     color: '#2A2B6A !important',
-    boxShadow: '0 5px 20px rgba(42, 43, 106, 0.15) !important',
-    zIndex: 2,
-    transition: 'all 0.3s ease !important',
+    // Remove transform and top/alignSelf since buttons are outside now
     '&:hover': {
-      background: 'rgba(42, 43, 106, 0.1) !important',
-      transform: 'translateY(-50%) scale(1.1)',
-      boxShadow: '0 8px 25px rgba(42, 43, 106, 0.25) !important',
-    },
-    '&:disabled': {
-      opacity: 0.3,
-      cursor: 'not-allowed',
-      '&:hover': {
-        transform: 'translateY(-50%)',
-        background: 'rgba(255, 255, 255, 0.9) !important',
-      },
-    },
-    '@media (max-width: 600px)': {
-      width: '40px !important',
-      height: '40px !important',
+      background: 'linear-gradient(135deg, #FFD84A 0%, #FFC614 100%) !important',
+      color: '#1a1b4a !important',
     },
   },
   
   prevButton: {
-    left: '10px',
+    marginRight: '20px',
+    left: 'unset',
     '@media (max-width: 960px)': {
-      left: '5px',
+      marginRight: '10px',
     },
     '@media (max-width: 600px)': {
-      left: '0',
+      marginRight: '5px',
     },
   },
   
   nextButton: {
-    right: '10px',
+    marginLeft: '20px',
+    right: 'unset',
     '@media (max-width: 960px)': {
-      right: '5px',
+      marginLeft: '10px',
     },
     '@media (max-width: 600px)': {
-      right: '0',
+      marginLeft: '5px',
     },
   },
   
@@ -457,7 +460,7 @@ const Faq = ({ faqData, title, subtitle }) => {
           </Box>
         </Box>
 
-        <Box className={classes.carouselContainer}>
+        <Box display="flex" alignItems="center" justifyContent="center">
           <IconButton
             className={`${classes.navigationButton} ${classes.prevButton}`}
             onClick={handlePrevious}
@@ -465,48 +468,45 @@ const Faq = ({ faqData, title, subtitle }) => {
           >
             <ArrowBackIosIcon />
           </IconButton>
-
-          <Box 
-            className={classes.carouselWrapper}
-            style={{ transform: `translateX(${translateX}px)` }}
-          >
-            {filteredFaqs.map((faq) => {
-              const isExpanded = expandedCardId === faq.id;
-              return (
-                <Card 
-                  key={faq.id} 
-                  className={`${classes.faqCard} ${isExpanded ? 'expanded' : ''}`}
-                >
-                  <CardContent className={classes.cardContent}>
-                    <Box className={classes.questionNumber}>
-                      {faq.number}
-                    </Box>
-                    
-                    <Typography className={classes.question}>
-                      {faq.question}
-                    </Typography>
-                    
-                    <Typography 
-                      className={`${classes.answer} ${isExpanded ? 'expanded' : 'truncated'}`}
-                    >
-                      {faq.answer}
-                    </Typography>
-                    
-                    <Typography 
-                      className={classes.readMore}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleReadMore(faq.id);
-                      }}
-                    >
-                      {isExpanded ? 'Read Less <' : 'Read More >'}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              );
-            })}
+          <Box className={classes.carouselContainer}>
+            <Box 
+              className={classes.carouselWrapper}
+              style={{ transform: `translateX(${translateX}px)` }}
+            >
+              {filteredFaqs.map((faq) => {
+                const isExpanded = expandedCardId === faq.id;
+                return (
+                  <Card 
+                    key={faq.id} 
+                    className={`${classes.faqCard} ${isExpanded ? 'expanded' : ''}`}
+                  >
+                    <CardContent className={classes.cardContent}>
+                      <Box className={classes.questionNumber}>
+                        {faq.number}
+                      </Box>
+                      <Typography className={classes.question}>
+                        {faq.question}
+                      </Typography>
+                      <Typography 
+                        className={`${classes.answer} ${isExpanded ? 'expanded' : 'truncated'}`}
+                      >
+                        {faq.answer}
+                      </Typography>
+                      <Typography 
+                        className={classes.readMore}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleReadMore(faq.id);
+                        }}
+                      >
+                        {isExpanded ? 'Read Less <' : 'Read More >'}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </Box>
           </Box>
-
           <IconButton
             className={`${classes.navigationButton} ${classes.nextButton}`}
             onClick={handleNext}
@@ -531,4 +531,4 @@ const Faq = ({ faqData, title, subtitle }) => {
   );
 };
 
-export default Faq; 
+export default Faq;
