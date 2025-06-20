@@ -10,7 +10,7 @@ import {ReactComponent as Step6} from "../../../assets/startup/step6.svg";
 
 const useStyles = makeStyles({
   section: {
-    padding: '60px 0 0px 0',
+    padding: '30px 0 0px 0',
     backgroundColor: '#f8f9fa',
     position: 'relative',
     overflow: 'hidden',
@@ -33,50 +33,50 @@ const useStyles = makeStyles({
   subtitle: {
     fontSize: '1.1rem !important',
     color: '#6b7280 !important',
-    marginBottom: '60px !important',
+    marginBottom: '40px !important',
     maxWidth: '600px',
-    margin: '0 auto 60px auto !important',
+    margin: '0 auto 40px auto !important',
   },
   stepsContainer: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'flex-end',
     position: 'relative',
-    marginTop: '40px',
+    marginTop: '20px',
     maxWidth: '1200px',
     margin: '0 auto',
     '@media (max-width: 1200px)': {
       flexDirection: 'column',
       alignItems: 'center',
-      gap: '40px',
+      gap: '25px',
     },
   },
   step: {
     display: 'flex',
     flexDirection: 'column', // text on top, icon at bottom
     alignItems: 'center',
-    width: '160px',
+    width: '120px',
     position: 'relative',
     zIndex: 2,
     '@media (max-width: 1200px)': {
       width: '100%',
-      maxWidth: '300px',
+      maxWidth: '250px',
     },
   },
   stepNumber: {
-    width: '60px',
-    height: '40px',
-    borderRadius: '20px',
+    width: '45px',
+    height: '30px',
+    borderRadius: '15px',
     backgroundColor: '#FFC614',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft:"auto",
     marginRight:"auto",
-    marginBottom: '20px',
+    marginBottom: '10px',
     position: 'relative',
     zIndex: 3,
-    fontSize: '1.2rem !important',
+    fontSize: '0.9rem !important',
     fontWeight: '700 !important',
     color: '#1a1a1a !important',
     boxShadow: '0 4px 12px rgba(251, 191, 36, 0.3)',
@@ -84,23 +84,59 @@ const useStyles = makeStyles({
   },
   stepContent: {
     textAlign: 'center',
-    marginBottom: '30px',
+    marginBottom: '12px',
     zIndex: 3,
     position: 'relative',
   },
   stepTitle: {
-    fontSize: '1.1rem !important',
+    fontSize: '0.85rem !important',
     fontWeight: '600 !important',
-    marginBottom: '8px !important',
+    marginBottom: '5px !important',
     color: '#1a1a1a !important',
-    lineHeight: '1.3 !important',
+    lineHeight: '1.2 !important',
   },
   stepDescription: {
-    fontSize: '0.9rem !important',
+    fontSize: '0.7rem !important',
     color: '#6b7280 !important',
-    lineHeight: '1.4 !important',
-    maxWidth: '140px',
+    lineHeight: '1.2 !important',
+    maxWidth: '110px',
     margin: '0 auto',
+  },
+  svgStep1: {
+    '& svg': {
+      width: '70px !important',
+      height: '70px !important',
+    }
+  },
+  svgStep2: {
+    '& svg': {
+      width: '75px !important',
+      height: '65px !important',
+    }
+  },
+  svgStep3: {
+    '& svg': {
+      width: '80px !important',
+      height: '60px !important',
+    }
+  },
+  svgStep4: {
+    '& svg': {
+      width: '65px !important',
+      height: '75px !important',
+    }
+  },
+  svgStep5: {
+    '& svg': {
+      width: '70px !important',
+      height: '70px !important',
+    }
+  },
+  svgStep6: {
+    '& svg': {
+      width: '75px !important',
+      height: '65px !important',
+    }
   },
 });
 
