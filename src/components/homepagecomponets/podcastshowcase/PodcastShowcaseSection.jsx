@@ -212,6 +212,8 @@ const useStyles = makeStyles({
     },
   },
   questionIcon: {
+    height:"10rem",
+    width:"10rem",
     color: "#FFC614",
   },
   textField: {
@@ -351,14 +353,15 @@ const PodcastShowcaseSection = () => {
 
             <Paper
               className={classes.questionForm}
-              elevation={3} // Changed from 0 to 3 for better visibility
+              elevation={2} // Changed from 0 to 3 for better visibility
               sx={{
-                background: "rgba(255, 255, 255, 0.1)",
+                background: "none",
+                minWidth:"500px",
                 backdropFilter: "blur(10px)",
-                border: "1px solid rgba(255, 255, 255, 0.2)",
+                borderBottom: "1px solid ",
                 borderRadius: "16px",
-                padding: "24px",
-                marginTop: "32px",
+                // padding: "24px",
+                // marginTop: "32px",
               }}
             >
               <Typography
