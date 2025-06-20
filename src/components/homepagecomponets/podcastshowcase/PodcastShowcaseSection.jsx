@@ -7,6 +7,7 @@ import {
   TextField,
   Container,
   Paper,
+  InputAdornment,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import SendIcon from "@mui/icons-material/Send";
@@ -45,11 +46,12 @@ const useStyles = makeStyles({
   },
   contentWrapper: {
     display: "flex",
-    alignItems: "center",
+    alignItems: "stretch", // Changed from "center" to "stretch"
     gap: "40px",
     "@media (max-width: 960px)": {
       flexDirection: "column",
       gap: "30px",
+      alignItems: "stretch", // Ensure stretch on mobile too
     },
   },
   videoWrapper: {
@@ -61,9 +63,13 @@ const useStyles = makeStyles({
     aspectRatio: "16/9",
     maxWidth: "800px", // Added maxWidth for larger screens
     margin: "0 auto", // Center the video wrapper
+    display: "flex", // Add flex
+    flexDirection: "column", // Add flex direction
+    height: "100%", // Ensure it stretches
     "@media (max-width: 960px)": {
       width: "100%",
       maxWidth: "100%", // Full width on mobile
+      height: "auto", // Let it be auto on mobile
     },
   },
   videoIframe: {
@@ -78,12 +84,20 @@ const useStyles = makeStyles({
   contentBox: {
     flex: "1",
     color: "white",
+    display: "flex", // Add flex
+    flexDirection: "column", // Add flex direction
+    height: "100%", // Ensure it stretches
     "@media (max-width: 960px)": {
       textAlign: "center",
       maxWidth: "600px",
+      height: "auto", // Let it be auto on mobile
     },
     "& .MuiPaper-root": {
       marginTop: "0px",
+      height: "100%", // Make Paper fill the box
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
     }
   },
   highlight: {
@@ -93,7 +107,7 @@ const useStyles = makeStyles({
   title: {
     fontSize: "2.5rem !important",
     fontWeight: "bold !important",
-    marginBottom: "20px !important",
+    marginBottom: "10px !important",
     lineHeight: "1.2 !important",
     "@media (max-width: 1200px)": {
       fontSize: "2.2rem !important",
@@ -107,7 +121,7 @@ const useStyles = makeStyles({
   },
   titleContainer: {
     textAlign: "center",
-    marginBottom: "40px",
+    marginBottom: "10px",
     "@media (max-width: 960px)": {
       marginBottom: "30px",
     },
@@ -194,8 +208,13 @@ const useStyles = makeStyles({
     backgroundColor: "rgba(255, 255, 255, 0.05)",
     borderRadius: "15px",
     border: "1px solid rgba(255, 255, 255, 0.1)",
+    height: "100%", // Make Paper fill the parent
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
     "@media (max-width: 600px)": {
       padding: "15px",
+      height: "auto", // Let it be auto on mobile
     },
   },
   questionTitle: {
@@ -213,8 +232,8 @@ const useStyles = makeStyles({
     },
   },
   questionIcon: {
-    height:"8rem",
-    width:"8rem",
+    height:"6.5rem",
+    width:"6.5rem",
     color: "#FFC614",
   },
   textField: {
@@ -239,17 +258,23 @@ const useStyles = makeStyles({
       },
     },
     "& .MuiFormHelperText-root": {
-      color: "rgba(255, 255, 255, 0.5)",
+      color: "#ffffff !important",
       "&.Mui-focused": {
-        color: "rgba(255, 255, 255, 0.5)",
+        color: "#ffffff !important",
       },
+      "&.Mui-disabled": {
+        color: "#ffffff !important",
+      },
+      "&.Mui-error": {
+        color: "rgba(255, 255, 255, 0.5) !important",
+      }
     },
   },
   submitButton: {
     backgroundColor: "#FFC614 !important",
     color: "#3c3e8f !important",
     padding: "10px 25px !important",
-    borderRadius: "50px !important",
+    borderRadius: "10px !important",
     fontWeight: "600 !important",
     fontSize: "0.9rem !important",
     textTransform: "none !important",
@@ -374,7 +399,7 @@ const PodcastShowcaseSection = () => {
 
               <Typography
                 variant="body2"
-                sx={{ color: "#fff", mb: 2, opacity: 0.9 }}
+                sx={{ color: "#fff", mb: 2, opacity: 0.9, marginTop:"10px" }}
               >
                 Share it here! Selected questions will be answered during our
                 podcast, along with a special mention.
@@ -394,25 +419,49 @@ const PodcastShowcaseSection = () => {
                   sx={{
                     "& .MuiOutlinedInput-root": {
                       backgroundColor: "rgba(255, 255, 255, 0.9)",
-                      color:"#000000",
+                      color: "#000000",
                       "&:hover": {
                         backgroundColor: "#fff",
-                        color:"#000000"
+                        color: "#000000"
                       },
+                      minHeight: "110px",
+                      fontSize: "1.1rem",
+                      alignItems: "flex-end",
                     },
+                    "& textarea": {
+                      paddingRight: "48px !important",
+                      resize: "none"
+                    }
                   }}
-                  helperText="Keep it concise and specific for a better chance to be featured"
+                  helperText={
+                    submitted
+                      ? "Thanks for submitting"
+                      : "Keep it concise and specific for a better chance to be featured"
+                  }
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end" sx={{ alignItems: "flex-end" }}>
+                        <Button
+                          type="submit"
+                          variant="contained"
+                          className={classes.submitButton}
+                          disabled={!question.trim() || submitted}
+                          sx={{
+                            minWidth: 0,
+                            width: 36,
+                            height: 36,
+                            p: 0,
+                            boxShadow: 3,
+                            fontSize: "1.2rem",
+                            alignSelf: "flex-end"
+                          }}
+                        >
+                          <SendIcon />
+                        </Button>
+                      </InputAdornment>
+                    ),
+                  }}
                 />
-
-                <Button
-                  type="submit"
-                  variant="contained"
-                  className={classes.submitButton}
-                  endIcon={submitted ? null : <SendIcon />}
-                  disabled={!question.trim() || submitted}
-                >
-                  {submitted ? "Question Submitted!" : "Post your question"}
-                </Button>
               </form>
             </Paper>
           </Box>
