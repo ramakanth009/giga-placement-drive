@@ -351,22 +351,22 @@ const useStyles = makeStyles({
   },
   
   prevButton: {
-    left: '-75px',
+    left: '10px',
     '@media (max-width: 960px)': {
-      left: '-60px',
+      left: '5px',
     },
     '@media (max-width: 600px)': {
-      left: '-50px',
+      left: '0',
     },
   },
   
   nextButton: {
-    right: '-75px',
+    right: '10px',
     '@media (max-width: 960px)': {
-      right: '-60px',
+      right: '5px',
     },
     '@media (max-width: 600px)': {
-      right: '-50px',
+      right: '0',
     },
   },
   
@@ -397,18 +397,16 @@ const Faq = ({ faqData, title, subtitle }) => {
   const classes = useStyles();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
-  const [expandedCards, setExpandedCards] = useState({});
+  const [expandedCardId, setExpandedCardId] = useState(null);
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value.toLowerCase());
     setCurrentIndex(0);
+    setExpandedCardId(null); // Reset expanded card when searching
   };
 
   const handleReadMore = (faqId) => {
-    setExpandedCards(prev => ({
-      ...prev,
-      [faqId]: !prev[faqId]
-    }));
+    setExpandedCardId(prevId => prevId === faqId ? null : faqId);
   };
 
   // Filter FAQs based on search term
@@ -450,7 +448,7 @@ const Faq = ({ faqData, title, subtitle }) => {
           <Box className={classes.searchContainer}>
             <input
               type="text"
-              placeholder="search bar"
+              placeholder="Search for questions..."
               className={classes.searchBox}
               onChange={handleSearch}
               value={searchTerm}
@@ -473,7 +471,7 @@ const Faq = ({ faqData, title, subtitle }) => {
             style={{ transform: `translateX(${translateX}px)` }}
           >
             {filteredFaqs.map((faq) => {
-              const isExpanded = expandedCards[faq.id];
+              const isExpanded = expandedCardId === faq.id;
               return (
                 <Card 
                   key={faq.id} 
@@ -496,7 +494,10 @@ const Faq = ({ faqData, title, subtitle }) => {
                     
                     <Typography 
                       className={classes.readMore}
-                      onClick={() => handleReadMore(faq.id)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleReadMore(faq.id);
+                      }}
                     >
                       {isExpanded ? 'Read Less <' : 'Read More >'}
                     </Typography>
@@ -530,4 +531,4 @@ const Faq = ({ faqData, title, subtitle }) => {
   );
 };
 
-export default Faq;
+export default Faq; 
