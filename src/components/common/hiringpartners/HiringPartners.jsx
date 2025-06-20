@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
@@ -75,40 +74,66 @@ const useStyles = makeStyles({
   categoryFilters: {
     display: 'flex',
     justifyContent: 'center',
-    flexWrap: 'wrap',
-    gap: '15px',
+    position: 'relative',
     marginBottom: '40px',
     '@media (max-width: 768px)': {
-      gap: '10px',
       marginBottom: '30px',
     },
   },
   filterButton: {
-    backgroundColor: 'white !important',
+    backgroundColor: '#f0f2f5 !important',
     color: '#555 !important',
-    borderRadius: '30px !important',
-    padding: '8px 20px !important',
+    padding: '12px 24px !important',
     fontSize: '14px !important',
     fontWeight: '500 !important',
-    border: '1px solid #e0e0e0 !important',
-    boxShadow: '0 2px 8px rgba(0,0,0,0.05) !important',
+    border: 'none !important',
+    boxShadow: 'none !important',
+    borderRadius: '0 !important',
     transition: 'all 0.3s ease !important',
+    position: 'relative',
+    zIndex: '1',
+    margin: '0 -1px !important',
     '&:hover': {
-      backgroundColor: '#f5f5f5 !important',
-      boxShadow: '0 4px 12px rgba(0,0,0,0.1) !important',
+      backgroundColor: '#e8eaed !important',
     },
     '@media (max-width: 768px)': {
-      padding: '6px 15px !important',
+      padding: '8px 16px !important',
       fontSize: '13px !important',
     },
   },
   activeFilterButton: {
     backgroundColor: '#2A2B6A !important',
-    color: 'white !important',
-    boxShadow: '0 4px 12px rgba(42,43,106,0.2) !important',
+    color: '#fff !important',
+    fontWeight: '600 !important',
+    zIndex: '2',
+    borderRadius:"30px !important",
     '&:hover': {
-      backgroundColor: '#232255 !important',
+      backgroundColor: '#2A2B6A !important',
     },
+    '&:first-child': {
+      borderTopLeftRadius: '30px !important',
+      borderBottomLeftRadius: '30px !important',
+    },
+    '&:last-child': {
+      borderTopRightRadius: '30px !important',
+      borderBottomRightRadius: '30px !important',
+    },
+  },
+  tabsContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    position: 'relative',
+    borderRadius: '30px',
+    overflow: 'hidden',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+  },
+  firstTab: {
+    borderTopLeftRadius: '30px !important',
+    borderBottomLeftRadius: '30px !important',
+  },
+  lastTab: {
+    borderTopRightRadius: '30px !important',
+    borderBottomRightRadius: '30px !important',
   },
   cardsContainer: {
     display: 'flex',
@@ -223,7 +248,6 @@ const useStyles = makeStyles({
     transition: 'all 0.3s ease',
     backgroundColor: '#2A2B6A',
     '&:hover': {
-      backgroundColor: '#eef0ff',
       transform: 'translateY(-5px)',
     },
     '@media (max-width: 768px)': {
@@ -257,6 +281,17 @@ const HiringPartners = () => {
   ];
   
   const filters = categories.map(cat => cat.name);
+
+  // Auto-switching tabs functionality
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const currentIndex = filters.indexOf(activeFilter);
+      const nextIndex = (currentIndex + 1) % filters.length;
+      setActiveFilter(filters[nextIndex]);
+    }, 5000); // Switch every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [activeFilter, filters]);
 
   // Companies data with category assignment
   const companies = [
@@ -379,18 +414,21 @@ const HiringPartners = () => {
       {/* Category filters */}
       <Box className={classes.categoryContainer}>
         <Box className={classes.categoryFilters}>
-          {filters.map((filter, index) => (
-            <Button
-              key={index}
-              variant="contained"
-              className={`${classes.filterButton} ${
-                activeFilter === filter ? classes.activeFilterButton : ''
-              }`}
-              onClick={() => setActiveFilter(filter)}
-            >
-              {filter}
-            </Button>
-          ))}
+          <Box className={classes.tabsContainer}>
+            {filters.map((filter, index) => (
+              <Button
+                key={index}
+                variant="contained"
+                className={`${classes.filterButton} 
+                  ${activeFilter === filter ? classes.activeFilterButton : ''} 
+                  ${index === 0 ? classes.firstTab : ''} 
+                  ${index === filters.length - 1 ? classes.lastTab : ''}`}
+                onClick={() => setActiveFilter(filter)}
+              >
+                {filter}
+              </Button>
+            ))}
+          </Box>
         </Box>
         
         {/* Category cards */}
@@ -398,13 +436,6 @@ const HiringPartners = () => {
           {groupedCompanies.length > 0 ? (
             groupedCompanies.map((category) => (
               <Box key={category.id} className={classes.categoryCard}>
-                {/* Category header */}
-                <Box className={classes.categoryHeader}>
-                  <Typography variant="h5" className={classes.categoryTitle}>
-                    {category.name}
-                  </Typography>
-                </Box>
-                
                 {/* Logos grid */}
                 {renderLogos(category.companies)}
               </Box>
