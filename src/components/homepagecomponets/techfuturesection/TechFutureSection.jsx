@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Box, Typography, Container, Paper } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import BarChartIcon from '@mui/icons-material/BarChart';
@@ -165,21 +165,39 @@ const useStyles = makeStyles({
 });
 
 // Animated counter component
-const AnimatedCounter = ({ end, duration = 2000, className }) => {
+const AnimatedCounter = ({ end, duration = 2000, className, loopInterval = 3000 }) => {
   const [count, setCount] = useState(0);
-  
+  const [run, setRun] = useState(0);
+
   useEffect(() => {
     let startTimestamp = null;
+    let rafId;
+
     const step = (timestamp) => {
       if (!startTimestamp) startTimestamp = timestamp;
       const progress = Math.min((timestamp - startTimestamp) / duration, 1);
       setCount(Math.floor(progress * end));
       if (progress < 1) {
-        window.requestAnimationFrame(step);
+        rafId = window.requestAnimationFrame(step);
       }
     };
-    window.requestAnimationFrame(step);
-  }, [end, duration]);
+
+    rafId = window.requestAnimationFrame(step);
+
+    return () => {
+      if (rafId) window.cancelAnimationFrame(rafId);
+    };
+  }, [end, duration, run]);
+
+  useEffect(() => {
+    if (count === end) {
+      const timeoutId = setTimeout(() => {
+        setCount(0);
+        setRun((r) => r + 1);
+      }, loopInterval);
+      return () => clearTimeout(timeoutId);
+    }
+  }, [count, end, loopInterval]);
 
   return <span className={className}>{count}</span>;
 };
@@ -187,8 +205,12 @@ const AnimatedCounter = ({ end, duration = 2000, className }) => {
 const TechFutureSection = () => {
   const classes = useStyles();
   const [isVisible, setIsVisible] = useState(false);
-  
+  const sectionRef = useRef(null);
+
   useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -198,17 +220,16 @@ const TechFutureSection = () => {
       },
       { threshold: 0.1 }
     );
-    
-    const section = document.querySelector(`.${classes.section}`);
-    if (section) observer.observe(section);
-    
+
+    observer.observe(section);
+
     return () => {
-      if (section) observer.unobserve(section);
+      observer.disconnect();
     };
-  }, [classes.section]);
+  }, []);
 
   return (
-    <Box className={classes.section}>
+    <Box className={classes.section} ref={sectionRef}>
       {/* Decorative circles */}
       <Box className={`${classes.decorCircle} ${classes.circle1}`} />
       <Box className={`${classes.decorCircle} ${classes.circle2}`} />
