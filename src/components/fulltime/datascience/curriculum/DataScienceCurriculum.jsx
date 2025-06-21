@@ -1,13 +1,6 @@
 // src/components/fulltime/datascience/curriculum/DataScienceCurriculum.jsx
 import React from 'react';
 import Curriculum from '../../../common/fulltime/curriculum/Curriculum';
-import CodeIcon from '@mui/icons-material/Code';
-import StorageIcon from '@mui/icons-material/Storage';
-import FunctionsIcon from '@mui/icons-material/Functions';
-import PsychologyIcon from '@mui/icons-material/Psychology';
-import AutoGraphIcon from '@mui/icons-material/AutoGraph';
-import ChatIcon from '@mui/icons-material/Chat';
-import SmartToyIcon from '@mui/icons-material/SmartToy';
 
 const DataScienceCurriculum = () => {
   // The curriculum data structure
@@ -115,15 +108,7 @@ const DataScienceCurriculum = () => {
   };
 
   // Icons for each curriculum section
-  const sectionIcons = {
-    python: <CodeIcon />,
-    sql: <StorageIcon />,
-    math: <FunctionsIcon />,
-    machine: <PsychologyIcon />,
-    deep: <AutoGraphIcon />,
-    nlp: <ChatIcon />,
-    genai: <SmartToyIcon />
-  };
+  
 
   return (
     <Curriculum 
@@ -131,7 +116,6 @@ const DataScienceCurriculum = () => {
       subtitle="Our comprehensive data science curriculum is designed to build your skills from foundational concepts to advanced techniques, ensuring you're industry-ready."
       programName="Data Science Program" 
       curriculumData={curriculumData}
-      icons={sectionIcons}
     />
   );
 };
