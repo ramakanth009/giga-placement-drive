@@ -12,6 +12,14 @@ const DataScienceIndustryFacts = () => {
     {
       text: "Data science and AI roles are projected to grow by 41.9% through 2031, outpacing most professions.",
       source: "Northeastern University"
+    },
+    {
+      text: "70% of companies use data analytics to drive decisions. Data skills are now core to business strategy across industries.",
+      source: "NewVantage Partners, 2024"
+    },
+    {
+      text: "94% of enterprises say data is critical for growth. Data science drives digital transformation and business success.",
+      source: "IDC, 2024"
     }
   ];
 

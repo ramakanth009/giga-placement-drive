@@ -242,39 +242,6 @@ const useStyles = makeStyles({
       paddingBottom: '20px',
     },
   },
-  coreSkillsLabel: {
-    position: 'absolute',
-    top: '-5px',
-    left: '50%',
-    transform: 'translateX(-50%)',
-    zIndex: 5,
-    padding: '12px 30px',
-    fontWeight: 'bold',
-    fontSize: '18px',
-    color: 'white',
-    marginTop:"20px",
-    marginBottom:"20px",
-    whiteSpace: 'nowrap',
-    background: 'linear-gradient(90deg, #6A5AF9 0%, #9E8DFC 100%)',
-    boxShadow: '0 4px 15px rgba(106, 90, 249, 0.3)',
-    borderRadius: '50px',
-    '@media (max-width: 960px)': {
-      padding: '10px 25px',
-      fontSize: '16px',
-    },
-    '@media (max-width: 600px)': {
-      padding: '8px 20px',
-      fontSize: '15px',
-    },
-    '@media (max-width: 480px)': {
-      padding: '7px 18px',
-      fontSize: '14px',
-    },
-    '@media (max-width: 375px)': {
-      padding: '6px 15px',
-      fontSize: '13px',
-    },
-  },
   sliderTrack: {
     display: 'flex',
     transition: 'transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -586,9 +553,6 @@ const Curriculum = ({
         </Box>
 
         <Box className={classes.sliderContainer}>
-          <Box className={classes.coreSkillsLabel}>
-            Core Skills
-          </Box>
           
           <Box 
             className={classes.sliderWrapper}

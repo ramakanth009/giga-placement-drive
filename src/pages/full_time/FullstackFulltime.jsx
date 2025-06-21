@@ -12,6 +12,7 @@ import TestimonialComponent from '../../components/common/testimonialcomponent/T
 // import FullStackSkillsMaster from '../../components/fulltime/fullstack/skillsmaster/FullStackSkillsMaster'
 import FullStackAIToolkit from '../../components/fulltime/fullstack/aitoolkit/FullStackAIToolkit'
 import FullStackLearningPath from '../../components/fulltime/fullstack/learningpathtimeline/FullStackLearningPath';
+import FullFullStackFullTimeFaq from "../../components/fulltime/fullstack/faq/FullStackFullTimeFaq"
 
 const FullstackFulltime = () => {
   return (
@@ -29,6 +30,7 @@ const FullstackFulltime = () => {
         <FulltimeCertificates />
         <FullStackProgramFee />
         <TestimonialComponent />
+        <FullFullStackFullTimeFaq />
     </div>
   )
 }

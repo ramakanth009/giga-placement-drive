@@ -1095,7 +1095,7 @@ const TestimonialComponent = () => {
           {/* Left Section - Description */}
           <Box className={classes.leftSection}>
             <Typography variant="h1" className={classes.mainTitle}>
-              Hear From Our Successful Graduates
+              Be the first to review
             </Typography>
 
             <Box className={classes.descriptionBox}>

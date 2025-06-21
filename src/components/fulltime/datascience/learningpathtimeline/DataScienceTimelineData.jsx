@@ -40,23 +40,23 @@ const dataScienceTimelineData = {
       description: "From the very first session, you'll build essential skills through real-world case studies, collaborative projects, and mentor guidance.",
       highlights: [
         {
-          title: "Solving Real-World Case Studies",
-          description: "Dive into bite-sized industry problems—analyzing customer-churn data, building mini-dashboards, or scripting ETL pipelines.",
+          title: "Orientation to the Data Science Landscape",
+          description: "Gain clarity on the fundamentals of data science, its career pathways, and real-world industry applications across various sectors.",
           icon: <CodeIcon />
         },
         {
-          title: "Collaborative Mini-Projects",
-          description: "Pair up with peers to deliver 1–2 week sprint projects under mentor guidance.",
+          title: "Introduction to Python Programming",
+          description: "Develop essential programming skills using Python—covering core concepts, data types, control structures, and foundational libraries like NumPy and Pandas.",
           icon: <PeopleIcon />
         },
         {
-          title: "Live Mentor Sessions & Tech Talks",
-          description: "Weekly Q&A panels with data scientists from top firms and lightning demos of new tools.",
+          title: "Fundamentals of Statistics & Data Interpretation",
+          description: "Build a solid base in statistical thinking, learning key concepts such as distributions, averages, correlations, and variability—critical for data-driven decision-making.",
           icon: <MessageIcon />
         },
         {
-          title: "Practical Data Exploration",
-          description: "Learn to wrangle, clean, and visualize real-world messy datasets from day one.",
+          title: "Data Handling with Excel & Structured Thinking",
+          description: "Master spreadsheet-based analysis to explore and organize data effectively, while developing a structured approach to problem-solving and analytics.",
           icon: <DataUsageIcon />
         }
       ],
