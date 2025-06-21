@@ -409,6 +409,14 @@ const Curriculum = ({
     };
   }, [autoPlay, currentIndex, totalItems, isHovered, cardsData]);
 
+  // Sync visibleCategoryId with currentIndex when currentIndex changes (e.g., on tab switch)
+  useEffect(() => {
+    if (cardsData.length > 0 && currentIndex < cardsData.length) {
+      setVisibleCategoryId(cardsData[currentIndex]?.id);
+    }
+    // eslint-disable-next-line
+  }, [currentIndex, cardsData]);
+
   // Determine if a card should be scaled
   const isCardInCoreSkills = (index) => {
     return index === Math.floor(totalItems / 2);

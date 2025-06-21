@@ -12,14 +12,14 @@ const DataScienceCurriculum = () => {
         "Python Basics",
         "Control Flow & Loops",
         "Functions & Functional Programming",
-        "Data Structures",
+        "Data Structures", 
         "Modules, Packages & File Handling",
         "Object-Oriented Programming (OOP)",
         "Advanced Python Concepts",
         "Data Science Libraries",
       ],
     },
-    sql: {
+    sql: { 
       title: "SQL",
       topics: [
         "Introduction to Databases and SQL",
@@ -116,6 +116,7 @@ const DataScienceCurriculum = () => {
       subtitle="Our comprehensive data science curriculum is designed to build your skills from foundational concepts to advanced techniques, ensuring you're industry-ready."
       programName="Data Science Program" 
       curriculumData={curriculumData}
+      icons={{}} // Pass empty icons object
     />
   );
 };
