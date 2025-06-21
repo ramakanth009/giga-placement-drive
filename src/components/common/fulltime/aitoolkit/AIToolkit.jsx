@@ -143,34 +143,12 @@ const useStyles = makeStyles({
       marginBottom: '10px',
     },
   },
-  toolIcon: {
-    width: '40px',
-    height: '40px',
-    borderRadius: '8px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: '12px',
-    '@media (max-width: 480px)': {
-      width: '30px',
-      height: '30px',
-      marginRight: '8px',
-    },
-  },
   toolName: {
     fontWeight: '700 !important',
     fontSize: '1.1rem !important',
     color: '#333 !important',
     '@media (max-width: 480px)': {
       fontSize: '0.9rem !important',
-    },
-  },
-  toolDescription: {
-    color: '#666 !important',
-    fontSize: '0.9rem !important',
-    lineHeight: '1.4 !important',
-    '@media (max-width: 480px)': {
-      fontSize: '0.8rem !important',
     },
   },
   toolDetails: {
@@ -430,9 +408,6 @@ const AIToolkit = ({ tools, programName }) => {
                   {tool.name}
                 </Typography>
               </Box>
-              <Typography className={classes.toolDescription}>
-                {tool.description.substring(0, 60)}...
-              </Typography>
             </Paper>
           ))}
         </Box>
@@ -443,9 +418,6 @@ const AIToolkit = ({ tools, programName }) => {
             <Box className={classes.twoColumn}>
               <Box>
                 <Box className={classes.toolDetailsHeader}>
-                  <Box className={classes.toolIcon} style={{ color: selectedTool.iconColor }}>
-                    <div dangerouslySetInnerHTML={{ __html: selectedTool.iconHtml }} />
-                  </Box>
                   <Typography className={classes.toolDetailsName}>
                     {selectedTool.name}
                   </Typography>
