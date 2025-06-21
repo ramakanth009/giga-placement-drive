@@ -14,8 +14,33 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingTop: '30px',
-    paddingBottom: '90px',
+    paddingTop: '40px',
+    paddingBottom: '140px',
+    '@media (max-width: 1200px)': {
+      paddingTop: '35px',
+      paddingBottom: '120px',
+      minHeight: '85vh',
+    },
+    '@media (max-width: 960px)': {
+      paddingTop: '30px',
+      paddingBottom: '100px',
+      minHeight: '80vh',
+    },
+    '@media (max-width: 600px)': {
+      paddingTop: '25px',
+      paddingBottom: '90px',
+      minHeight: '75vh',
+    },
+    '@media (max-width: 480px)': {
+      paddingTop: '20px',
+      paddingBottom: '80px',
+      minHeight: '70vh',
+    },
+    '@media (max-width: 375px)': {
+      paddingTop: '15px',
+      paddingBottom: '70px',
+      minHeight: '65vh',
+    },
   },
   networkCanvas: {
     position: 'absolute',
@@ -36,6 +61,22 @@ const useStyles = makeStyles({
     transformOrigin: 'bottom',
     marginBottom: '-70px',
     zIndex: 2,
+    '@media (max-width: 960px)': {
+      height: '140px',
+      marginBottom: '-60px',
+    },
+    '@media (max-width: 600px)': {
+      height: '120px',
+      marginBottom: '-50px',
+    },
+    '@media (max-width: 480px)': {
+      height: '100px',
+      marginBottom: '-40px',
+    },
+    '@media (max-width: 375px)': {
+      height: '80px',
+      marginBottom: '-30px',
+    },
   },
   contentContainer: {
     width: '100%',
@@ -47,20 +88,44 @@ const useStyles = makeStyles({
     padding: '0 40px',
     position: 'relative',
     zIndex: 3,
-    '@media (max-width: 900px)': {
+    height: 'auto',
+    '@media (max-width: 1200px)': {
+      maxWidth: '1000px',
+      padding: '0 35px',
+    },
+    '@media (max-width: 960px)': {
       flexDirection: 'column',
       textAlign: 'center',
-      gap: '40px',
+      gap: '35px',
+      padding: '0 30px',
+      maxWidth: '800px',
+    },
+    '@media (max-width: 600px)': {
+      gap: '30px',
+      padding: '0 25px',
+      maxWidth: '100%',
+    },
+    '@media (max-width: 480px)': {
+      gap: '25px',
       padding: '0 20px',
-    }
+    },
+    '@media (max-width: 375px)': {
+      gap: '20px',
+      padding: '0 15px',
+    },
   },
   leftSection: {
     flex: '1',
     maxWidth: '600px',
     paddingRight: '20px',
-    '@media (max-width: 900px)': {
+    '@media (max-width: 1200px)': {
+      maxWidth: '500px',
+      paddingRight: '15px',
+    },
+    '@media (max-width: 960px)': {
       paddingRight: 0,
-    }
+      maxWidth: '100%',
+    },
   },
   rightSection: {
     flex: '1',
@@ -68,10 +133,24 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     alignItems: 'center',
     position: 'relative',
-    '@media (max-width: 900px)': {
+    height: 'auto',
+    '@media (max-width: 1200px)': {
+      flex: '0.8',
+    },
+    '@media (max-width: 960px)': {
       width: '100%',
       maxWidth: '450px',
-    }
+      flex: 'none',
+    },
+    '@media (max-width: 600px)': {
+      maxWidth: '350px',
+    },
+    '@media (max-width: 480px)': {
+      maxWidth: '280px',
+    },
+    '@media (max-width: 375px)': {
+      maxWidth: '250px',
+    },
   },
   title: {
     fontSize: '3.2rem !important',
@@ -79,12 +158,21 @@ const useStyles = makeStyles({
     color: 'white !important',
     marginBottom: '10px !important',
     lineHeight: '1.2 !important',
-    '@media (max-width: 900px)': {
+    '@media (max-width: 1200px)': {
+      fontSize: '2.8rem !important',
+    },
+    '@media (max-width: 960px)': {
       fontSize: '2.5rem !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '2rem !important',
-    }
+      fontSize: '2.2rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '1.9rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1.7rem !important',
+    },
   },
   highlighted: {
     color: '#FFC614 !important',
@@ -95,24 +183,47 @@ const useStyles = makeStyles({
     fontWeight: '500 !important',
     color: '#FFC614 !important',
     marginBottom: '40px !important',
-    '@media (max-width: 900px)': {
+    '@media (max-width: 1200px)': {
+      fontSize: '1.4rem !important',
+      marginBottom: '35px !important',
+    },
+    '@media (max-width: 960px)': {
       fontSize: '1.3rem !important',
       marginBottom: '30px !important',
     },
     '@media (max-width: 600px)': {
+      fontSize: '1.2rem !important',
+      marginBottom: '25px !important',
+    },
+    '@media (max-width: 480px)': {
       fontSize: '1.1rem !important',
-    }
+      marginBottom: '20px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1rem !important',
+      marginBottom: '18px !important',
+    },
   },
   buttonContainer: {
     display: 'flex',
     gap: '20px',
-    '@media (max-width: 900px)': {
+    '@media (max-width: 1200px)': {
+      gap: '18px',
+    },
+    '@media (max-width: 960px)': {
       justifyContent: 'center',
     },
     '@media (max-width: 600px)': {
       flexDirection: 'column',
       alignItems: 'center',
-    }
+      gap: '15px',
+    },
+    '@media (max-width: 480px)': {
+      gap: '12px',
+    },
+    '@media (max-width: 375px)': {
+      gap: '10px',
+    },
   },
   applyButton: {
     backgroundColor: 'white !important',
@@ -122,9 +233,33 @@ const useStyles = makeStyles({
     fontSize: '1.1rem !important',
     fontWeight: '600 !important',
     textTransform: 'none !important',
+    minWidth: '140px',
+    transition: 'all 0.3s ease !important',
     '&:hover': {
       backgroundColor: '#f0f0f0 !important',
-    }
+      transform: 'translateY(-2px)',
+      boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
+    },
+    '@media (max-width: 1200px)': {
+      padding: '11px 28px !important',
+      fontSize: '1.05rem !important',
+      minWidth: '130px',
+    },
+    '@media (max-width: 600px)': {
+      padding: '10px 25px !important',
+      fontSize: '1rem !important',
+      minWidth: '120px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '9px 22px !important',
+      fontSize: '0.95rem !important',
+      minWidth: '110px',
+    },
+    '@media (max-width: 375px)': {
+      padding: '8px 20px !important',
+      fontSize: '0.9rem !important',
+      minWidth: '100px',
+    },
   },
   brochureButton: {
     borderColor: 'white !important',
@@ -134,10 +269,34 @@ const useStyles = makeStyles({
     fontSize: '1.1rem !important',
     fontWeight: '600 !important',
     textTransform: 'none !important',
+    minWidth: '140px',
+    transition: 'all 0.3s ease !important',
     '&:hover': {
       borderColor: '#f0f0f0 !important',
       backgroundColor: 'rgba(255, 255, 255, 0.1) !important',
-    }
+      transform: 'translateY(-2px)',
+      boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
+    },
+    '@media (max-width: 1200px)': {
+      padding: '11px 28px !important',
+      fontSize: '1.05rem !important',
+      minWidth: '130px',
+    },
+    '@media (max-width: 600px)': {
+      padding: '10px 25px !important',
+      fontSize: '1rem !important',
+      minWidth: '120px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '9px 22px !important',
+      fontSize: '0.95rem !important',
+      minWidth: '110px',
+    },
+    '@media (max-width: 375px)': {
+      padding: '8px 20px !important',
+      fontSize: '0.9rem !important',
+      minWidth: '100px',
+    },
   },
   imageContainer: {
     position: 'relative',
@@ -147,21 +306,58 @@ const useStyles = makeStyles({
     borderRadius: '10px',
     overflow: 'hidden',
     boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
-    '@media (max-width: 1100px)': {
+    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+    '&:hover': {
+      transform: 'translateY(-5px)',
+      boxShadow: '0 15px 40px rgba(0,0,0,0.3)',
+    },
+    '@media (max-width: 1200px)': {
       maxWidth: '450px',
     },
+    '@media (max-width: 960px)': {
+      maxWidth: '400px',
+    },
     '@media (max-width: 600px)': {
-      maxWidth: '300px',
-    }
+      maxWidth: '320px',
+      borderRadius: '8px',
+    },
+    '@media (max-width: 480px)': {
+      maxWidth: '260px',
+      borderRadius: '6px',
+    },
+    '@media (max-width: 375px)': {
+      maxWidth: '230px',
+      borderRadius: '5px',
+    },
   },
   heroImage: {
     width: '100%',
     height: 'auto',
     objectFit: 'cover',
+    display: 'block',
+    maxHeight: '400px',
+    '@media (max-width: 1200px)': {
+      maxHeight: '350px',
+    },
+    '@media (max-width: 960px)': {
+      maxHeight: '320px',
+    },
+    '@media (max-width: 600px)': {
+      maxHeight: '280px',
+    },
+    '@media (max-width: 480px)': {
+      maxHeight: '240px',
+    },
+    '@media (max-width: 375px)': {
+      maxHeight: '200px',
+    },
   },
   decorElement: {
     position: 'absolute',
     zIndex: 2,
+    '@media (max-width: 960px)': {
+      display: 'none', // Hide decorative elements on smaller screens to prevent overflow
+    },
   }
 });
 
@@ -188,9 +384,9 @@ const HeroSection = ({
     const width = canvas.width = window.innerWidth;
     const height = canvas.height = window.innerHeight;
 
-    // Create particles (dots)
+    // Create particles (dots) - adjust count based on screen size
     const particles = [];
-    const particleCount = Math.min(width * 0.08, 120); 
+    const particleCount = Math.min(width * 0.08, width < 768 ? 60 : 120); 
     
     for (let i = 0; i < particleCount; i++) {
       particles.push({
@@ -202,7 +398,7 @@ const HeroSection = ({
       });
     }
 
-    const maxDist = 250;
+    const maxDist = width < 768 ? 200 : 250;
     
     function animate() {
       ctx.clearRect(0, 0, width, height);
@@ -294,7 +490,7 @@ const HeroSection = ({
         </Box>
 
         <Box className={classes.rightSection}>
-          {/* Render decorative elements */}
+          {/* Render decorative elements - hidden on mobile to prevent overflow */}
           {decorElements.map((elem, index) => (
             <Box 
               key={index}
