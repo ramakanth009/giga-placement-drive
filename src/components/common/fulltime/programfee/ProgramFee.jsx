@@ -8,6 +8,7 @@ import WorkIcon from '@mui/icons-material/Work';
 import CodeIcon from '@mui/icons-material/Code';
 import GroupsIcon from '@mui/icons-material/Groups';
 import ApartmentIcon from '@mui/icons-material/Apartment';
+import ScholarshipIcon from '@mui/icons-material/CardGiftcard';
 
 const useStyles = makeStyles({
   container: {
@@ -68,174 +69,134 @@ const useStyles = makeStyles({
   title: {
     fontSize: '2.4rem !important',
     fontWeight: 'bold !important',
-    marginBottom: '6px !important',
-    letterSpacing: '-0.5px !important',
+    marginBottom: '10px !important',
     textAlign: 'center',
-    '@media (max-width: 960px)': {
-      fontSize: '1.9rem !important',
-    },
-    '@media (max-width: 600px)': {
-      fontSize: '1.6rem !important',
-    },
-  },
-  highlight: {
-    color: '#FFC614 !important',
+    background: 'linear-gradient(45deg, #ffffff 30%, #f0f8ff 90%)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
     position: 'relative',
-    '&::after': {
-      content: '""',
-      position: 'absolute',
-      bottom: '5px',
-      left: '0',
-      width: '100%',
-      height: '8px',
-      background: 'rgba(255, 198, 20, 0.2)',
-      zIndex: -1,
-      borderRadius: '4px',
-    }
+    '@media (max-width: 600px)': {
+      fontSize: '2rem !important',
+    },
   },
   subtitle: {
     fontSize: '1.1rem !important',
-    opacity: '0.9',
-    // maxWidth: '800px',
+    opacity: 0.9,
     textAlign: 'center',
-    lineHeight: '1.5 !important',
-    '@media (max-width: 960px)': {
-      fontSize: '1rem !important',
-    },
+    fontWeight: '400 !important',
     '@media (max-width: 600px)': {
-      fontSize: '0.9rem !important',
+      fontSize: '1rem !important',
     },
   },
   content: {
+    padding: '50px',
     position: 'relative',
     zIndex: 1,
-    padding: '30px',
     '@media (max-width: 600px)': {
-      padding: '30px 20px',
+      padding: '40px 25px',
     },
   },
   priceRow: {
-    display: 'flex',
-    alignItems: 'stretch',
-    justifyContent: 'center',
-    gap: '25px',
-    flexWrap: 'wrap',
-    marginBottom: '20px',
-    '@media (max-width: 768px)': {
-      flexDirection: 'column',
-      alignItems: 'center',
-      gap: '20px',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+    gap: '30px',
+    marginBottom: '40px',
+    '@media (max-width: 600px)': {
+      gridTemplateColumns: '1fr',
+      gap: '25px',
+      marginBottom: '35px',
     },
   },
   priceBox: {
-    flex: '1',
-    padding: '30px',
-    borderRadius: '20px',
-    background: 'white',
-    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.06)',
-    border: '1px solid rgba(0, 0, 0, 0.05)',
     textAlign: 'center',
-    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+    padding: '35px 25px',
+    borderRadius: '20px',
+    background: 'linear-gradient(135deg, rgba(42, 43, 106, 0.02) 0%, rgba(42, 43, 106, 0.05) 100%)',
+    border: '1px solid rgba(42, 43, 106, 0.08)',
     position: 'relative',
     overflow: 'hidden',
+    transition: 'all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)',
     '&:hover': {
-      transform: 'translateY(-8px)',
-      boxShadow: '0 15px 40px rgba(0, 0, 0, 0.1)',
+      transform: 'translateY(-8px) scale(1.02)',
+      boxShadow: '0 20px 40px rgba(42, 43, 106, 0.15)',
+      borderColor: 'rgba(42, 43, 106, 0.2)',
     },
     '&::before': {
       content: '""',
       position: 'absolute',
-      top: 0,
-      left: 0,
-      right: 0,
-      height: '5px',
-      background: 'linear-gradient(90deg, #2A2B6A, #4A4C9B)',
-      borderTopLeftRadius: '20px',
-      borderTopRightRadius: '20px',
+      top: '0',
+      left: '0',
+      right: '0',
+      height: '4px',
+      background: 'linear-gradient(90deg, #2A2B6A, #4A4C9B, #FFC614)',
+      opacity: 0,
+      transition: 'opacity 0.3s ease',
     },
-    '@media (max-width: 768px)': {
-      width: '100%',
-      maxWidth: '350px',
+    '&:hover::before': {
+      opacity: 1,
     },
     '@media (max-width: 600px)': {
-      padding: '25px 20px',
-      maxWidth: '100%',
+      padding: '30px 20px',
     },
   },
   priceLabel: {
-    fontSize: '1.1rem !important',
-    color: '#2A2B6A !important',
-    marginBottom: '15px !important',
-    fontWeight: '700 !important',
+    fontSize: '1rem !important',
+    color: '#666 !important',
+    fontWeight: '500 !important',
+    marginBottom: '10px !important',
     textTransform: 'uppercase',
-    letterSpacing: '1px',
+    letterSpacing: '0.5px',
   },
   priceValue: {
-    fontSize: '2.8rem !important',
+    fontSize: '2.5rem !important',
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
-    marginBottom: '10px !important',
-    position: 'relative',
-    display: 'inline-block',
-    '&::after': {
-      content: '""',
-      position: 'absolute',
-      bottom: '-5px',
-      left: '50%',
-      transform: 'translateX(-50%)',
-      width: '40%',
-      height: '4px',
-      background: 'rgba(74, 99, 231, 0.2)',
-      borderRadius: '2px',
-    },
-    '@media (max-width: 960px)': {
-      fontSize: '2.4rem !important',
-    },
+    marginBottom: '15px !important',
+    fontFamily: '"Poppins", sans-serif !important',
     '@media (max-width: 600px)': {
-      fontSize: '2rem !important',
+      fontSize: '2.2rem !important',
     },
   },
   comparisonContainer: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: '15px',
-    background: 'rgba(42, 43, 106, 0.05)',
-    padding: '10px 15px',
-    borderRadius: '50px',
+    gap: '8px',
+    marginTop: '10px',
   },
   comparisonIcon: {
-    color: '#FFC614',
-    marginRight: '10px',
+    fontSize: '1.2rem !important',
+    color: '#FFC614 !important',
   },
   comparisonText: {
-    fontSize: '0.95rem !important',
-    color: '#555 !important',
-    fontWeight: '500 !important',
+    fontSize: '0.9rem !important',
+    color: '#888 !important',
+    fontStyle: 'italic',
   },
   divider: {
-    margin: '10px 0 !important',
-    height: '2px !important',
-    background: 'linear-gradient(90deg, rgba(74, 99, 231, 0.1), rgba(74, 99, 231, 0.3), rgba(74, 99, 231, 0.1)) !important',
+    margin: '40px 0 !important',
+    backgroundColor: 'rgba(42, 43, 106, 0.1) !important',
+    '@media (max-width: 600px)': {
+      margin: '35px 0 !important',
+    },
   },
   tagline: {
     fontSize: '1.3rem !important',
-    fontWeight: 'bold !important',
+    fontWeight: '600 !important',
     color: '#2A2B6A !important',
     textAlign: 'center',
-    marginBottom: '20px !important',
+    marginBottom: '40px !important',
     position: 'relative',
-    display: 'inline-block',
-    left: '50%',
-    transform: 'translateX(-50%)',
     '&::after': {
       content: '""',
       position: 'absolute',
       bottom: '-10px',
-      left: '0',
-      width: '100%',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      width: '60px',
       height: '3px',
-      background: 'linear-gradient(90deg, transparent, #FFC614, transparent)',
+      background: '#FFC614',
+      borderRadius: '2px',
     },
     '@media (max-width: 600px)': {
       fontSize: '1.2rem !important',
@@ -380,81 +341,130 @@ const useStyles = makeStyles({
       left: '150%',
     },
   },
-  chipContainer: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: '15px',
-    justifyContent: 'center',
-    marginBottom: '20px',
+
+  // New scholarship section styles
+  scholarshipSection: {
+    background: 'linear-gradient(135deg, rgba(255, 198, 20, 0.05) 0%, rgba(255, 198, 20, 0.1) 100%)',
+    borderRadius: '16px',
+    padding: '25px',
+    marginBottom: '30px',
+    border: '1px solid rgba(255, 198, 20, 0.2)',
+    position: 'relative',
+    overflow: 'hidden',
+    textAlign: 'center',
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      top: '0',
+      left: '0',
+      right: '0',
+      height: '3px',
+      background: 'linear-gradient(90deg, #FFC614, #FFD700)',
+    },
+    '@media (max-width: 600px)': {
+      padding: '20px',
+      marginBottom: '25px',
+    },
   },
-  chip: {
-    background: 'linear-gradient(135deg, rgba(42, 43, 106, 0.05) 0%, rgba(42, 43, 106, 0.1) 100%) !important',
+  scholarshipText: {
+    fontSize: '1.1rem !important',
     color: '#2A2B6A !important',
-    fontWeight: '600 !important',
-    padding: '8px 15px !important',
+    marginBottom: '20px !important',
+    fontWeight: '500 !important',
+    lineHeight: '1.6 !important',
+    '@media (max-width: 600px)': {
+      fontSize: '1rem !important',
+      marginBottom: '15px !important',
+    },
+  },
+  scholarshipButton: {
+    background: 'linear-gradient(45deg, #FFC614 0%, #FFD700 100%) !important',
+    color: '#2A2B6A !important',
+    padding: '12px 30px !important',
     borderRadius: '50px !important',
-    border: '1px solid rgba(42, 43, 106, 0.1) !important',
-    boxShadow: '0 5px 15px rgba(0, 0, 0, 0.05) !important',
+    fontWeight: 'bold !important',
+    fontSize: '1rem !important',
     transition: 'all 0.3s ease !important',
+    boxShadow: '0 8px 20px rgba(255, 198, 20, 0.3) !important',
+    position: 'relative',
+    overflow: 'hidden',
     '&:hover': {
       transform: 'translateY(-3px)',
-      boxShadow: '0 8px 20px rgba(0, 0, 0, 0.08) !important',
-      background: 'linear-gradient(135deg, rgba(42, 43, 106, 0.08) 0%, rgba(42, 43, 106, 0.15) 100%) !important',
+      boxShadow: '0 12px 25px rgba(255, 198, 20, 0.4) !important',
+      background: 'linear-gradient(45deg, #FFD700 0%, #FFC614 100%) !important',
+    },
+    '&::after': {
+      content: '""',
+      position: 'absolute',
+      top: '-50%',
+      left: '-50%',
+      width: '200%',
+      height: '200%',
+      background: 'linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 100%)',
+      transform: 'rotate(30deg)',
+      animation: '$shine 3s infinite',
+    },
+    '@media (max-width: 600px)': {
+      width: '100%',
+      fontSize: '0.95rem !important',
+      padding: '10px 25px !important',
     },
   },
 });
 
-const ProgramFee = ({ programName, totalFee, onApplyClick }) => {
+const ProgramFee = ({ totalFee, onApplyClick }) => {
   const classes = useStyles();
   
-  // Remove commas and convert to number
-  const totalFeeNum = Number(totalFee.replace(/,/g, ''));
-  const monthlyFee = Math.round(totalFeeNum / 12);
-  const dailyFee = Math.round(monthlyFee / 24);
-
-  // Format numbers with commas
+  const monthlyFee = parseInt(totalFee.replace(/,/g, '')) / 12;
   const monthlyFeeFormatted = monthlyFee.toLocaleString('en-IN');
-  const dailyFeeFormatted = dailyFee.toLocaleString('en-IN');
+  
+  const dailyFee = parseInt(totalFee.replace(/,/g, '')) / 365;
+  const dailyFeeFormatted = Math.round(dailyFee).toLocaleString('en-IN');
 
   const benefits = [
     {
       icon: <SchoolIcon />,
-      title: '12 Months of Guided Learning',
-      description: 'AI-enhanced tools and personalized mentorship'
+      title: "12 Months of Guided Learning",
+      description: "AI-enhanced tools and personalized mentorship"
     },
     {
       icon: <CodeIcon />,
-      title: 'Real-World Projects',
-      description: 'Inspired by startup products and industry needs'
+      title: "Real-World Projects",
+      description: "Inspired by startup products and industry needs"
     },
     {
       icon: <GroupsIcon />,
-      title: 'Peer Reviews',
-      description: 'Team-based learning with industry-standard workflows'
+      title: "Peer Reviews",
+      description: "Team-based learning with industry-standard workflows"
     },
     {
       icon: <WorkIcon />,
-      title: 'Career-Focused Training',
-      description: `Specialized preparation for ${programName} roles`
+      title: "Career-Focused Training",
+      description: "Specialized preparation for undefined roles"
     },
     {
       icon: <ApartmentIcon />,
-      title: 'Access to Product Simulations',
-      description: 'Real experience with incubation startup products'
+      title: "Access to Product Simulations",
+      description: "Real experience with incubation startup products"
     },
     {
       icon: <SchoolIcon />,
-      title: 'Portfolio + Certification',
-      description: 'Industry-recognized certification with project portfolio'
+      title: "Portfolio + Certification",
+      description: "Industry-recognized certification with project portfolio"
     }
   ];
 
+  const handleScholarshipClick = () => {
+    // Add scholarship application logic here
+    console.log('Scholarship application clicked');
+  };
+
   return (
     <Box className={classes.container}>
-      <Paper className={classes.feeCard} elevation={0}>
+      <Paper className={classes.feeCard}>
         <Box className={classes.header}>
           <Typography className={classes.title}>
-            Invest in Your Future — <span className={classes.highlight}>Not Just a Course Fee</span>
+            Invest in Your Future — Not Just a Course Fee
           </Typography>
           <Typography className={classes.subtitle}>
             A 12-month career investment for real-world skills, AI tools, and job-ready projects.
@@ -497,17 +507,24 @@ const ProgramFee = ({ programName, totalFee, onApplyClick }) => {
             </Box>
           </Box>
           
-          <Box className={classes.chipContainer}>
-            <Chip label="One-Time Investment" className={classes.chip} />
-            <Chip label="Lifetime Return" className={classes.chip} />
-            <Chip label="Cost of Skill > Cost of Degree" className={classes.chip} />
+
+
+          {/* New Scholarship Section */}
+          <Box className={classes.scholarshipSection}>
+            <Typography className={classes.scholarshipText}>
+              Need financial support? Apply for scholarships with coverage of up to 100% of the program fee.
+            </Typography>
+            <Button 
+              variant="contained" 
+              className={classes.scholarshipButton}
+              startIcon={<ScholarshipIcon />}
+              onClick={handleScholarshipClick}
+            >
+              Apply for Scholarship
+            </Button>
           </Box>
           
           <Divider className={classes.divider} />
-          
-          {/* <Typography className={classes.tagline}>
-            Invest in your Skills that pay dividends for life
-          </Typography> */}
           
           <Box className={classes.benefitsContainer}>
             <Typography className={classes.benefitTitle}>What You Get:</Typography>
