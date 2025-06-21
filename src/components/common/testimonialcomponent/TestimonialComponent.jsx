@@ -647,12 +647,11 @@ import VerifiedIcon from '@mui/icons-material/Verified';
 
 const useStyles = makeStyles({
   testimonialSection: {
-    padding: '60px 0',
+    padding: '30px 0',
     width: '100%',
     background: 'linear-gradient(135deg, #f8f9ff 0%, #f0f6ff 100%)',
     position: 'relative',
     overflow: 'hidden',
-    minHeight: '100vh',
     display: 'flex',
     alignItems: 'center',
     '@media (max-width: 960px)': {
@@ -756,7 +755,7 @@ const useStyles = makeStyles({
     boxShadow: '0 20px 50px rgba(42, 43, 106, 0.3)',
     position: 'relative',
     overflow: 'hidden',
-    transform: 'perspective(1000px) rotateY(-5deg)',
+    transform: 'perspective(1000px) rotateY(5deg)',
     transition: 'all 0.3s ease',
     '&:hover': {
       transform: 'perspective(1000px) rotateY(0deg) translateY(-5px)',
@@ -866,10 +865,10 @@ const useStyles = makeStyles({
     border: '1px solid rgba(42, 43, 106, 0.1) !important',
     position: 'relative',
     overflow: 'hidden',
-    transform: 'perspective(1000px) rotateY(5deg)',
+    // transform: 'perspective(1000px) rotateY(5deg)',
     transition: 'all 0.3s ease',
     '&:hover': {
-      transform: 'perspective(1000px) rotateY(0deg) translateY(-5px)',
+      // transform: 'perspective(1000px) rotateY(0deg) translateY(-5px)',
       boxShadow: '0 30px 80px rgba(42, 43, 106, 0.25) !important',
     },
     '&::before': {
@@ -893,19 +892,12 @@ const useStyles = makeStyles({
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
     textAlign: 'center',
-    marginBottom: '25px !important',
+    marginBottom: '10px !important',
     position: 'relative',
-    '&::after': {
-      content: '"✨"',
-      position: 'absolute',
-      right: '-30px',
-      top: '0',
-      fontSize: '1.2rem',
-    },
   },
 
   formField: {
-    marginBottom: '20px !important',
+    marginBottom: '10px !important',
     '& .MuiOutlinedInput-root': {
       borderRadius: '12px',
       transition: 'all 0.3s ease',
@@ -926,20 +918,20 @@ const useStyles = makeStyles({
 
   ratingBox: {
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: '25px',
-    padding: '25px',
+    // marginBottom: '25px',
+    padding: '5px',
     background: 'linear-gradient(135deg, rgba(42, 43, 106, 0.03) 0%, rgba(255, 198, 20, 0.03) 100%)',
     borderRadius: '16px',
     border: '1px solid rgba(42, 43, 106, 0.1)',
   },
 
   ratingLabel: {
-    fontSize: '1.1rem !important',
+    fontSize: '1rem !important',
     color: '#2A2B6A !important',
     fontWeight: '600 !important',
-    marginBottom: '15px !important',
+    // marginBottom: '15px !important',
   },
 
   starBox: {
@@ -1001,11 +993,6 @@ const useStyles = makeStyles({
     '&:hover::before': {
       left: '100%',
     },
-  },
-
-  heartIcon: {
-    color: '#FFC614 !important',
-    animation: '$heartBeat 2s infinite',
   },
 
   '@keyframes float': {
@@ -1100,7 +1087,7 @@ const TestimonialComponent = () => {
 
             <Box className={classes.descriptionBox}>
               <Typography className={classes.descriptionText}>
-                Unlike other edtech platforms, we don't post fake reviews. Be the first to get featured with your honest feedback. Liked our curriculum? Just drop a ❤️ and share your valuable feedback!
+                Unlike other platforms, we don't post fake reviews. Be the first to get featured with your honest feedback. Liked our curriculum? Just drop a ❤️ and share your valuable feedback!
               </Typography>
             </Box>
 
@@ -1149,7 +1136,19 @@ const TestimonialComponent = () => {
                     variant="outlined"
                     required
                   />
-
+                  <TextField
+                    fullWidth
+                    label="Your Honest Feedback"
+                    name="review"
+                    value={formData.review}
+                    onChange={handleInputChange}
+                    className={classes.formField}
+                    variant="outlined"
+                    multiline
+                    rows={4}
+                    placeholder="Tell us how our program impacted your career journey..."
+                    required
+                  />
                   <Box className={classes.ratingBox}>
                     <Typography className={classes.ratingLabel}>
                       Rate Your Experience
@@ -1165,25 +1164,11 @@ const TestimonialComponent = () => {
                           disableRipple
                           size="small"
                         >
-                          {star <= formData.rating ? <StarIcon /> : <StarBorderIcon />}
+                          {star <= formData.rating ? <FavoriteIcon /> : <StarBorderIcon />}
                         </IconButton>
                       ))}
                     </Box>
                   </Box>
-
-                  <TextField
-                    fullWidth
-                    label="Your Honest Feedback"
-                    name="review"
-                    value={formData.review}
-                    onChange={handleInputChange}
-                    className={classes.formField}
-                    variant="outlined"
-                    multiline
-                    rows={4}
-                    placeholder="Tell us how our program impacted your career journey..."
-                    required
-                  />
 
                   <Box className={classes.submitBox}>
                     <Button
@@ -1191,7 +1176,6 @@ const TestimonialComponent = () => {
                       className={classes.submitButton}
                       disabled={loading}
                       startIcon={<SendIcon />}
-                      endIcon={<FavoriteIcon className={classes.heartIcon} />}
                     >
                       {loading ? 'Submitting...' : 'Submit Review'}
                     </Button>

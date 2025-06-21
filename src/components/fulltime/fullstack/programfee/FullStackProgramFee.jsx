@@ -5,7 +5,7 @@ import ProgramFeeNew from '../../../common/fulltime/programfee/ProgramFee';
 const FullStackProgramFee = () => {
   return (
     <ProgramFeeNew
-      totalFee="84,999"
+      totalFee="1,50,000"
     />
   );
 };

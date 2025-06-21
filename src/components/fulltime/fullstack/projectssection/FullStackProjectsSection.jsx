@@ -51,7 +51,7 @@ const FullStackProjectsSection = () => {
         }
       ],
       description: "Create impactful Social Media Insights! Build a dynamic Social Media Dashboard that helps track key metrics and analyze performance across multiple platforms.",
-      skills: ["React/Vue", "Component Design", "State Management", "API Integration"]
+      skills: ["Component Design", "State Management", "API Integration", "React/Vue"]
     },
     {
       title: "Quick Commerce / Rider app",

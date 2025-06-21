@@ -20,7 +20,8 @@ import LaptopIcon from '@mui/icons-material/Laptop';
 
 const useStyles = makeStyles({
   section: {
-    minHeight: '90vh',
+    minHeight: '100vh',
+    padding:"30px 0px",
     position: 'relative',
     overflow: 'hidden',
     background: 'linear-gradient(180deg, #101138 0%, #1e1c44 100%)',
@@ -290,7 +291,7 @@ const useStyles = makeStyles({
   stackContainer: {
     position: 'relative',
     width: '380px',    // Increased from 320px
-    height: '500px',   // Increased from 400px
+    height: '380px',   // Increased from 400px
     perspective: '1200px',
     transformStyle: 'preserve-3d',
     '@media (max-width: 600px)': {
@@ -346,7 +347,7 @@ const useStyles = makeStyles({
   stackCard: {
     position: 'absolute',
     width: '100%',
-    height: '65%',     // Increased from 60%
+    height: '95%',     // Increased from 60%
     borderRadius: '20px !important',
     backfaceVisibility: 'hidden',
     transition: 'all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)',

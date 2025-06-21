@@ -166,7 +166,7 @@ const fullStackTimelineData = {
     },
     {
       id: 3,
-      title: "Capstone Phase",
+      title: "Product phase",
       subtitle: "6–9 Months",
       tagline: "Where Learning Becomes Real.",
       icon: <RocketLaunchIcon />,

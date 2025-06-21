@@ -1,4 +1,4 @@
-// Enhanced Curriculum Component with auto-scrolling and improved padding
+// Enhanced Curriculum Component with brand colors and improved sizing
 import React, { useRef, useState, useEffect } from 'react';
 import { Box, Typography, Container, Chip } from '@mui/material';
 import { makeStyles } from '@mui/styles';
@@ -6,412 +6,338 @@ import CurriculumCard from './CurriculumCard';
 
 const useStyles = makeStyles({
   section: {
-    padding: '80px 0',
+    padding: '60px 0',
     position: 'relative',
     overflow: 'hidden',
     background: 'linear-gradient(180deg, #f8f9ff 0%, #ffffff 100%)',
     '@media (max-width: 1200px)': {
-      padding: '70px 0',
-    },
-    '@media (max-width: 960px)': {
-      padding: '60px 0',
-    },
-    '@media (max-width: 600px)': {
       padding: '50px 0',
     },
-    '@media (max-width: 480px)': {
+    '@media (max-width: 960px)': {
       padding: '40px 0',
     },
-    '@media (max-width: 375px)': {
+    '@media (max-width: 600px)': {
+      padding: '35px 0',
+    },
+    '@media (max-width: 480px)': {
       padding: '30px 0',
     },
   },
   bgDecoration: {
     position: 'absolute',
     borderRadius: '50%',
-    background: 'radial-gradient(circle, rgba(74, 99, 231, 0.05) 0%, rgba(74, 99, 231, 0.01) 70%)',
+    background: 'radial-gradient(circle, rgba(42, 43, 106, 0.05) 0%, rgba(42, 43, 106, 0.01) 70%)',
     zIndex: 1,
   },
   bgDecorationTop: {
+    width: '500px',
+    height: '500px',
+    top: '-150px',
+    right: '-75px',
+    '@media (max-width: 960px)': {
+      width: '350px',
+      height: '350px',
+      top: '-125px',
+      right: '-60px',
+    },
+    '@media (max-width: 600px)': {
+      width: '250px',
+      height: '250px',
+      top: '-75px',
+      right: '-40px',
+    },
+  },
+  bgDecorationBottom: {
     width: '600px',
     height: '600px',
-    top: '-200px',
-    right: '-100px',
+    bottom: '-200px',
+    left: '-150px',
+    background: 'radial-gradient(circle, rgba(255, 198, 20, 0.05) 0%, rgba(255, 198, 20, 0.01) 70%)',
     '@media (max-width: 960px)': {
-      width: '400px',
-      height: '400px',
-      top: '-150px',
-      right: '-75px',
+      width: '450px',
+      height: '450px',
+      bottom: '-150px',
+      left: '-120px',
     },
     '@media (max-width: 600px)': {
       width: '300px',
       height: '300px',
-      top: '-100px',
-      right: '-50px',
-    },
-  },
-  bgDecorationBottom: {
-    width: '800px',
-    height: '800px',
-    bottom: '-300px',
-    left: '-200px',
-    '@media (max-width: 960px)': {
-      width: '600px',
-      height: '600px',
-      bottom: '-200px',
-      left: '-150px',
-    },
-    '@media (max-width: 600px)': {
-      width: '400px',
-      height: '400px',
-      bottom: '-150px',
-      left: '-100px',
+      bottom: '-100px',
+      left: '-80px',
     },
   },
   container: {
     position: 'relative',
     zIndex: 2,
-    padding: '0 20px',
+    padding: '0 15px',
   },
   titleContainer: {
-    marginBottom: '50px',
+    marginBottom: '35px',
     position: 'relative',
     zIndex: 2,
     textAlign: 'center',
     '@media (max-width: 960px)': {
-      marginBottom: '40px',
-    },
-    '@media (max-width: 600px)': {
-      marginBottom: '35px',
-    },
-    '@media (max-width: 480px)': {
       marginBottom: '30px',
     },
-    '@media (max-width: 375px)': {
+    '@media (max-width: 600px)': {
       marginBottom: '25px',
     },
   },
   sectionTitle: {
-    fontSize: '2.5rem !important',
+    fontSize: '2.2rem !important',
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
     textAlign: 'center',
-    marginBottom: '15px !important',
+    marginBottom: '12px !important',
     position: 'relative',
     display: 'inline-block',
+    whiteSpace: 'nowrap',
     '&::after': {
       content: '""',
       position: 'absolute',
-      bottom: '-15px',
+      bottom: '-12px',
       left: '50%',
       transform: 'translateX(-50%)',
-      width: '80px',
-      height: '4px',
-      background: 'linear-gradient(90deg, #4A63E7 0%, #8B5CF6 100%)',
+      width: '60px',
+      height: '3px',
+      background: 'linear-gradient(90deg, #2A2B6A 0%, #FFC614 100%)',
       borderRadius: '2px',
     },
     '@media (max-width: 1200px)': {
-      fontSize: '2.3rem !important',
+      fontSize: '2rem !important',
     },
     '@media (max-width: 960px)': {
-      fontSize: '2.1rem !important',
+      fontSize: '1.8rem !important',
       '&::after': {
-        width: '70px',
-        height: '3px',
-        bottom: '-12px',
-      },
-    },
-    '@media (max-width: 600px)': {
-      fontSize: '1.9rem !important',
-      '&::after': {
-        width: '60px',
+        width: '50px',
         bottom: '-10px',
       },
     },
-    '@media (max-width: 480px)': {
-      fontSize: '1.7rem !important',
+    '@media (max-width: 600px)': {
+      fontSize: '1.6rem !important',
       '&::after': {
-        width: '50px',
+        width: '45px',
+        bottom: '-8px',
       },
     },
-    '@media (max-width: 375px)': {
-      fontSize: '1.5rem !important',
+    '@media (max-width: 480px)': {
+      fontSize: '1.4rem !important',
       '&::after': {
         width: '40px',
         height: '2px',
-        bottom: '-8px',
       },
     },
   },
   highlightText: {
-    color: '#4A63E7 !important',
+    color: '#FFC614 !important',
     fontWeight: 'bold !important',
     position: 'relative',
   },
   sectionSubtitle: {
-    fontSize: '1.1rem !important',
+    fontSize: '1rem !important',
     color: '#666666 !important',
     textAlign: 'center',
-    maxWidth: '700px',
-    margin: '30px auto 0 !important',
-    '@media (max-width: 1200px)': {
-      fontSize: '1.05rem !important',
-    },
+    // maxWidth: '600px',
+    margin: '25px auto 0 !important',
     '@media (max-width: 960px)': {
-      fontSize: '1rem !important',
-      maxWidth: '650px',
-      margin: '25px auto 0 !important',
-    },
-    '@media (max-width: 600px)': {
       fontSize: '0.95rem !important',
-      maxWidth: '90%',
-      margin: '22px auto 0 !important',
-    },
-    '@media (max-width: 480px)': {
-      fontSize: '0.9rem !important',
+      maxWidth: '550px',
       margin: '20px auto 0 !important',
     },
-    '@media (max-width: 375px)': {
-      fontSize: '0.85rem !important',
+    '@media (max-width: 600px)': {
+      fontSize: '0.9rem !important',
+      maxWidth: '90%',
       margin: '18px auto 0 !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.85rem !important',
+      margin: '15px auto 0 !important',
     },
   },
   roadmapLine: {
     position: 'absolute',
     left: '50%',
     transform: 'translateX(-50%)',
-    top: '200px',
-    bottom: '100px',
-    width: '4px',
-    background: 'linear-gradient(180deg, #4A63E7 0%, #8B5CF6 100%)',
+    top: '150px',
+    bottom: '80px',
+    width: '3px',
+    background: 'linear-gradient(180deg, #2A2B6A 0%, #4A4C9B 100%)',
     zIndex: 1,
     borderRadius: '2px',
     '&::before, &::after': {
       content: '""',
       position: 'absolute',
-      width: '16px',
-      height: '16px',
+      width: '12px',
+      height: '12px',
       borderRadius: '50%',
       left: '50%',
       transform: 'translateX(-50%)',
-      backgroundColor: '#4A63E7',
+      backgroundColor: '#2A2B6A',
     },
     '&::before': {
-      top: '-8px',
+      top: '-6px',
     },
     '&::after': {
-      bottom: '-8px',
-      backgroundColor: '#8B5CF6',
+      bottom: '-6px',
+      backgroundColor: '#FFC614',
     },
     '@media (max-width: 960px)': {
-      width: '3px',
+      width: '2px',
       '&::before, &::after': {
-        width: '14px',
-        height: '14px',
-      },
-      '&::before': {
-        top: '-7px',
-      },
-      '&::after': {
-        bottom: '-7px',
-      },
-    },
-    '@media (max-width: 600px)': {
-      '&::before, &::after': {
-        width: '12px',
-        height: '12px',
-      },
-      '&::before': {
-        top: '-6px',
-      },
-      '&::after': {
-        bottom: '-6px',
+        width: '10px',
+        height: '10px',
       },
     },
   },
   sliderContainer: {
     position: 'relative',
-    paddingTop: '40px',
-    paddingBottom: '30px',
+    paddingTop: '30px',
+    paddingBottom: '20px',
     '@media (max-width: 960px)': {
-      paddingTop: '35px',
-      paddingBottom: '25px',
-    },
-    '@media (max-width: 600px)': {
-      paddingTop: '30px',
-      paddingBottom: '20px',
+      paddingTop: '25px',
+      paddingBottom: '15px',
     },
   },
   sliderTrack: {
     display: 'flex',
     transition: 'transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)',
-    padding: '20px 0',
+    padding: '15px 0',
   },
   sliderWrapper: {
     position: 'relative',
     overflow: 'hidden',
     marginLeft: 'auto',
     marginRight: 'auto',
-    maxWidth: 'calc(100% - 120px)',
+    maxWidth: 'calc(100% - 80px)',
     '@media (max-width: 960px)': {
-      maxWidth: 'calc(100% - 100px)',
+      maxWidth: 'calc(100% - 60px)',
     },
     '@media (max-width: 600px)': {
-      maxWidth: 'calc(100% - 80px)',
-    },
-    '@media (max-width: 480px)': {
-      maxWidth: 'calc(100% - 60px)',
+      maxWidth: 'calc(100% - 40px)',
     },
   },
   progressContainer: {
     display: 'flex',
     justifyContent: 'center',
-    marginTop: '35px',
-    gap: '10px',
+    marginTop: '25px',
+    gap: '8px',
     '@media (max-width: 960px)': {
-      marginTop: '30px',
-      gap: '9px',
-    },
-    '@media (max-width: 600px)': {
-      marginTop: '25px',
-      gap: '8px',
-    },
-    '@media (max-width: 480px)': {
       marginTop: '20px',
       gap: '7px',
     },
-    '@media (max-width: 375px)': {
-      marginTop: '15px',
+    '@media (max-width: 600px)': {
+      marginTop: '18px',
       gap: '6px',
     },
   },
   progressDot: {
-    width: '12px',
-    height: '12px',
+    width: '10px',
+    height: '10px',
     borderRadius: '50%',
     backgroundColor: '#e0e0e0',
     transition: 'all 0.3s ease',
     cursor: 'pointer',
     '@media (max-width: 600px)': {
-      width: '10px',
-      height: '10px',
-    },
-    '@media (max-width: 480px)': {
-      width: '9px',
-      height: '9px',
-    },
-    '@media (max-width: 375px)': {
       width: '8px',
       height: '8px',
     },
   },
   progressDotActive: {
-    backgroundColor: '#4A63E7',
-    transform: 'scale(1.3)',
-    boxShadow: '0 0 0 2px rgba(74, 99, 231, 0.2)',
+    backgroundColor: '#2A2B6A',
+    transform: 'scale(1.2)',
+    boxShadow: '0 0 0 2px rgba(42, 43, 106, 0.2)',
   },
   skillChip: {
-    marginTop: '20px',
+    marginTop: '15px',
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    gap: '10px',
+    gap: '8px',
     padding: '0 10px',
     '@media (max-width: 960px)': {
-      gap: '8px',
-    },
-    '@media (max-width: 600px)': {
-      gap: '7px',
-    },
-    '@media (max-width: 480px)': {
       gap: '6px',
     },
-    '@media (max-width: 375px)': {
+    '@media (max-width: 600px)': {
       gap: '5px',
     },
   },
   chip: {
-    fontSize: '0.85rem !important',
+    fontSize: '0.8rem !important',
     fontWeight: '500 !important',
-    borderRadius: '50px !important',
-    padding: '8px 14px !important',
+    borderRadius: '25px !important',
+    padding: '6px 12px !important',
     transition: 'all 0.3s ease !important',
+    whiteSpace: 'nowrap !important',
+    maxWidth: '200px !important',
+    overflow: 'hidden !important',
+    textOverflow: 'ellipsis !important',
     '&:hover': {
       transform: 'translateY(-2px)',
       boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
     },
     '@media (max-width: 960px)': {
-      fontSize: '0.8rem !important',
-      padding: '7px 12px !important',
+      fontSize: '0.75rem !important',
+      padding: '5px 10px !important',
+      maxWidth: '180px !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '0.75rem !important',
-      padding: '6px 10px !important',
+      fontSize: '0.7rem !important',
+      padding: '4px 8px !important',
+      maxWidth: '160px !important',
     },
     '@media (max-width: 480px)': {
-      fontSize: '0.7rem !important',
-      padding: '5px 8px !important',
-    },
-    '@media (max-width: 375px)': {
       fontSize: '0.65rem !important',
-      padding: '4px 7px !important',
+      padding: '3px 6px !important',
+      maxWidth: '140px !important',
     },
   },
   chipActive: {
-    background: 'linear-gradient(90deg, #4A63E7 0%, #8B5CF6 100%) !important',
+    background: 'linear-gradient(90deg, #2A2B6A 0%, #4A4C9B 100%) !important',
     color: 'white !important',
-    boxShadow: '0 4px 10px rgba(74, 99, 231, 0.2) !important',
+    boxShadow: '0 4px 10px rgba(42, 43, 106, 0.3) !important',
   },
   programTitle: {
-    fontSize: '1.8rem !important',
+    fontSize: '1.6rem !important',
     fontWeight: 'bold !important',
     color: '#4A4A4A !important',
-    marginBottom: '30px !important',
+    marginBottom: '25px !important',
     textAlign: 'center',
     position: 'relative',
+    whiteSpace: 'nowrap',
     '&::after': {
       content: '""',
       position: 'absolute',
-      bottom: '-10px',
+      bottom: '-8px',
       left: '50%',
       transform: 'translateX(-50%)',
-      width: '50px',
-      height: '3px',
-      background: 'linear-gradient(90deg, #4A63E7 0%, #8B5CF6 100%)',
-      borderRadius: '1.5px',
+      width: '40px',
+      height: '2px',
+      background: 'linear-gradient(90deg, #2A2B6A 0%, #FFC614 100%)',
+      borderRadius: '1px',
     },
     '@media (max-width: 1200px)': {
-      fontSize: '1.7rem !important',
-      marginBottom: '27px !important',
-    },
-    '@media (max-width: 960px)': {
-      fontSize: '1.6rem !important',
-      marginBottom: '25px !important',
-      '&::after': {
-        width: '45px',
-      },
-    },
-    '@media (max-width: 600px)': {
       fontSize: '1.5rem !important',
       marginBottom: '22px !important',
-      '&::after': {
-        width: '40px',
-        height: '2.5px',
-      },
     },
-    '@media (max-width: 480px)': {
+    '@media (max-width: 960px)': {
       fontSize: '1.4rem !important',
       marginBottom: '20px !important',
       '&::after': {
         width: '35px',
       },
     },
-    '@media (max-width: 375px)': {
+    '@media (max-width: 600px)': {
       fontSize: '1.3rem !important',
       marginBottom: '18px !important',
       '&::after': {
         width: '30px',
-        height: '2px',
+      },
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '1.2rem !important',
+      marginBottom: '15px !important',
+      '&::after': {
+        width: '25px',
       },
     },
   },
@@ -447,10 +373,10 @@ const Curriculum = ({
           id: key,
           number: cardIndex,
           title: section.title,
-          topics: section.topics,
+          topics: section.topics, // Pass all topics to the card
           icon: icons[key],
-          difficulty: Math.floor(Math.random() * 3) + 1, // Random difficulty for demo
-          duration: `${Math.floor(Math.random() * 3) + 2} weeks`, // Random duration for demo
+          difficulty: Math.floor(Math.random() * 3) + 1,
+          duration: `${Math.floor(Math.random() * 3) + 2} weeks`,
         });
         cardIndex++;
       });
@@ -475,7 +401,7 @@ const Curriculum = ({
         if (newVisibleId) {
           setVisibleCategoryId(newVisibleId);
         }
-      }, 3000); // Change slide every 3 seconds
+      }, 4000); // Increased interval for better UX
     }
     
     return () => {
@@ -483,7 +409,7 @@ const Curriculum = ({
     };
   }, [autoPlay, currentIndex, totalItems, isHovered, cardsData]);
 
-  // Determine if a card should be scaled (Core Skills section - assuming it's the middle card)
+  // Determine if a card should be scaled
   const isCardInCoreSkills = (index) => {
     return index === Math.floor(totalItems / 2);
   };
@@ -494,9 +420,8 @@ const Curriculum = ({
     if (newVisibleId) {
       setVisibleCategoryId(newVisibleId);
     }
-    // Pause autoplay briefly when user interacts
     setAutoPlay(false);
-    setTimeout(() => setAutoPlay(true), 5000);
+    setTimeout(() => setAutoPlay(true), 6000);
   };
 
   const handleChipClick = (id) => {
@@ -504,9 +429,8 @@ const Curriculum = ({
     if (index !== -1) {
       setCurrentIndex(index);
       setVisibleCategoryId(id);
-      // Pause autoplay briefly when user interacts
       setAutoPlay(false);
-      setTimeout(() => setAutoPlay(true), 5000);
+      setTimeout(() => setAutoPlay(true), 6000);
     }
   };
 
@@ -514,10 +438,9 @@ const Curriculum = ({
   const getSliderStyle = () => {
     if (!sliderRef.current) return {};
     
-    const cardWidth = 400 + 24; // card width + margin
+    const cardWidth = 350 + 20; // Reduced card width + margin
     const offset = -currentIndex * cardWidth;
     
-    // Calculate center offset to position the current card in the center
     const containerWidth = sliderRef.current.parentElement.offsetWidth;
     const centerOffset = (containerWidth - cardWidth) / 2;
     
@@ -553,7 +476,6 @@ const Curriculum = ({
         </Box>
 
         <Box className={classes.sliderContainer}>
-          
           <Box 
             className={classes.sliderWrapper}
             onMouseEnter={() => setIsHovered(true)}
@@ -569,7 +491,7 @@ const Curriculum = ({
                   key={card.id}
                   number={card.number}
                   title={card.title}
-                  topics={card.topics}
+                  topics={card.topics} // All topics will be passed
                   difficulty={card.difficulty}
                   duration={card.duration}
                   icon={card.icon}
