@@ -9,7 +9,7 @@ import OtherPrograms from "../../components/homepagecomponets/otherprograms/Othe
 import Faq from "../../components/homepagecomponets/faqhomepage/FaqHomepage";
 import ResumeBuilderSection from "../../components/homepagecomponets/resumebuilder/ResumeBuilderSection";
 import PreScreeningBanner from "../../components/homepagecomponets/prescreening/PreScreeningBanner";
-import LearningBreakdown from "../../components/homepagecomponets/learningbreakdown/LearningBreakdown";
+// import LearningBreakdown from "../../components/homepagecomponets/learningbreakdown/LearningBreakdown";
 import StartupFundProcess from "../../components/homepagecomponets/startupfundprocess/StartupFundProcess";
 import TechFutureSection from "../../components/homepagecomponets/techfuturesection/TechFutureSection";
 import PlacementPortalSection from "../../components/homepagecomponets/placementportalsection/PlacementPortalSection";
@@ -46,7 +46,7 @@ const Homepage = () => {
         <ResumeBuilderSection />
         <CampusSection />
         <OtherPrograms />
-        <LearningBreakdown />
+        {/* <LearningBreakdown /> */}
         <PodcastShowcaseSection />
         <HiringPartners />
         <StartupFundProcess />

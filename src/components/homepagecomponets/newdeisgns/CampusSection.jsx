@@ -14,7 +14,7 @@ import sportsArenaImg from '../../../assets/mentor-room/sports-arena.jpg';
 const useStyles = makeStyles({
   section: {
     backgroundColor: '#f8f9fa',
-    padding: '80px 0',
+    padding: '20px 0',
     minHeight: '100vh',
     display: 'flex',
     alignItems: 'center',
@@ -31,26 +31,29 @@ const useStyles = makeStyles({
   },
   header: {
     textAlign: 'center',
-    marginBottom: '60px',
+    marginBottom: '30px',
     '@media (max-width: 960px)': {
       marginBottom: '40px',
     },
   },
-  title: {
-    fontSize: '2.8rem !important',
-    fontWeight: '700 !important',
-    color: '#2c3e50 !important',
-    marginBottom: '16px !important',
-    letterSpacing: '-0.5px !important',
-    lineHeight: '1.2 !important',
+  
+    title: {
+    fontSize: '3.5rem !important',
+    fontWeight: 'bold !important',
+    color: '#2A2B6A !important',
+    marginBottom: '20px !important',
+    '& span': {
+      color: '#FFC614 !important',
+      // textShadow: '0 4px 24px rgba(255, 198, 20, 0.5)',
+    },
     '@media (max-width: 1200px)': {
-      fontSize: '2.4rem !important',
+      fontSize: '3rem !important',
     },
     '@media (max-width: 960px)': {
-      fontSize: '2rem !important',
+      fontSize: '2.5rem !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '1.7rem !important',
+      fontSize: '2rem !important',
     },
   },
   subtitle: {
@@ -144,7 +147,7 @@ const useStyles = makeStyles({
   ctaContainer: {
     display: 'flex',
     justifyContent: 'center',
-    marginTop: '40px',
+    // marginTop: '40px',
     '@media (max-width: 960px)': {
       marginTop: '30px',
     },
@@ -154,8 +157,8 @@ const useStyles = makeStyles({
     color: '#2c3e50 !important',
     padding: '14px 32px !important',
     borderRadius: '25px !important',
-    fontSize: '1rem !important',
-    fontWeight: '600 !important',
+    fontSize: '1.2rem !important',
+    fontWeight: 'bold !important',
     textTransform: 'none !important',
     boxShadow: '0 4px 12px rgba(255, 198, 20, 0.3) !important',
     transition: 'all 0.3s ease !important',
@@ -218,7 +221,7 @@ const CampusSection = () => {
       <Container maxWidth="xl" className={classes.container}>
         <Box className={classes.header}>
           <Typography variant="h2" className={classes.title}>
-            Gigaversity State of the Art Campus
+            Gigaversity State of the <span> Art Campus </span>
           </Typography>
           <Typography variant="body1" className={classes.subtitle}>
             Learn, build, and grow in a dynamic environment equipped with everything you need to thrive in the tech industry

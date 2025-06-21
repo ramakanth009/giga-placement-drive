@@ -10,7 +10,7 @@ import ResumeCard from './ResumeCard';
 
 const useStyles = makeStyles({
   section: {
-    marginTop: '5px',
+    marginTop: '10px',
     marginBottom: '5px',
     position: 'relative',
     overflow: 'visible',
@@ -29,6 +29,10 @@ const useStyles = makeStyles({
     zIndex: 2,
     width: '100%',
     margin: '0 auto',
+    padding:"0 50px",
+    '@media (max-width: 960px)': {
+      padding: '0 18px',
+    },
     '@media (max-width: 600px)': {
       padding: '0 16px',
     },
@@ -59,7 +63,7 @@ const useStyles = makeStyles({
     },
   },
   contentWrapper: {
-    padding: '20px 20px',
+    padding: '10px 10px',
     display: 'flex',
     gap: '30px',
     justifyContent: 'space-between',
@@ -100,7 +104,7 @@ const useStyles = makeStyles({
   
   titleContainer: {
     textAlign: 'center',
-    padding: '30px 20px 0',
+    padding: '15px 20px 0',
     position: 'relative',
     zIndex: 2,
     '@media (max-width: 1200px)': {
