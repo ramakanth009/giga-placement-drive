@@ -7,7 +7,7 @@ const DataScienceAIToolkit = () => {
   const tools = [
     {
       id: 'gemini',
-      name: 'Gemini Premium',
+      name: 'Gemini ',
       isPaid: true,
       price: '$30/year (Included)',
       iconHtml: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -15,8 +15,8 @@ const DataScienceAIToolkit = () => {
                   <polyline points="2 17 12 22 22 17"></polyline>
                   <polyline points="2 12 12 17 22 12"></polyline>
                 </svg>`,
-      iconColor: '#8B5CF6',
-      color: '#8B5CF6',
+      iconColor: '#4796E4',
+      color: '#4796E4',
       description: "Google's most advanced AI system with premium features for data analysis, coding, and research.",
       useCases: [
         'Multi-modal data analysis',
@@ -39,8 +39,8 @@ const DataScienceAIToolkit = () => {
       iconHtml: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                 </svg>`,
-      iconColor: '#10B981',
-      color: '#10B981',
+      iconColor: '#13AD87',
+      color: '#13AD87',
       description: 'Versatile assistant for ideation, coding support, and data interpretation.',
       useCases: [
         'Rapid prototyping',
@@ -63,8 +63,8 @@ const DataScienceAIToolkit = () => {
       iconHtml: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5V5a2 2 0 0 0 2 2h1.5a2.5 2.5 0 0 1 0 5H15a2 2 0 0 0-2 2v1.5a2.5 2.5 0 0 1-5 0V14a2 2 0 0 0-2-2h-1.5a2.5 2.5 0 0 1 0-5H6a2 2 0 0 0 2-2v-.5A2.5 2.5 0 0 1 9.5 2z"></path>
                 </svg>`,
-      iconColor: '#D97706',
-      color: '#D97706',
+      iconColor: '#0275EF',
+      color: '#0275EF',
       description: 'Open-source machine learning model excellent for specialized ML applications.',
       useCases: [
         'Custom model training',
@@ -88,8 +88,8 @@ const DataScienceAIToolkit = () => {
                   <circle cx="11" cy="11" r="8"></circle>
                   <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>`,
-      iconColor: '#EF4444',
-      color: '#EF4444',
+      iconColor: '#20808D',
+      color: '#20808D',
       description: 'Research-focused AI that excels at information synthesis and retrieval.',
       useCases: [
         'Literature reviews',

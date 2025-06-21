@@ -16,8 +16,8 @@ const FullStackAIToolkit = () => {
                   <path d="M2 22l5-10 5 10"></path>
                   <path d="M18.6 11a9 9 0 1 0-17.2 0"></path>
                 </svg>`,
-      iconColor: '#0EA5E9',
-      color: '#0EA5E9',
+      iconColor: '#3A00C2 ',
+      color: '#3A00C2 ',
       description: "AI pair programmer that helps write code faster with smart autocompletions and full function suggestions.",
       useCases: [
         'Real-time code completion',
@@ -40,8 +40,8 @@ const FullStackAIToolkit = () => {
       iconHtml: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                 </svg>`,
-      iconColor: '#8B5CF6',
-      color: '#8B5CF6',
+      iconColor: '#D97757',
+      color: '#D97757',
       description: 'Advanced AI assistant for complex code explanation, system design, and architectural guidance.',
       useCases: [
         'System architecture planning',
@@ -64,8 +64,8 @@ const FullStackAIToolkit = () => {
       iconHtml: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                 </svg>`,
-      iconColor: '#10B981',
-      color: '#10B981',
+      iconColor: '#13AD87',
+      color: '#13AD87',
       description: 'Versatile AI assistant for code generation, problem solving, and learning new frameworks.',
       useCases: [
         'Rapid prototyping',
@@ -91,8 +91,8 @@ const FullStackAIToolkit = () => {
                   <line x1="6" y1="6" x2="6.01" y2="6"></line>
                   <line x1="6" y1="18" x2="6.01" y2="18"></line>
                 </svg>`,
-      iconColor: '#EC4899',
-      color: '#EC4899',
+      iconColor: '#FF2210',
+      color: '#FF2210',
       description: 'Context-aware AI coding assistant that delivers personalized code completions.',
       useCases: [
         'Faster code writing',

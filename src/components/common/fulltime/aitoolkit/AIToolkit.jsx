@@ -2,6 +2,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Box, Typography, Container, Paper } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import { Code, Storage, Language, Cloud, Security, Build, BugReport, DataUsage } from '@mui/icons-material';
 
 const useStyles = makeStyles({
   section: {
@@ -125,11 +126,11 @@ const useStyles = makeStyles({
     color: 'white',
     padding: '4px 12px',
     borderRadius: '20px',
-    fontSize: '0.8rem',
+    fontSize: '0.7rem',
     fontWeight: '600',
     position: 'absolute',
     top: '10px',
-    right: '10px',
+    right: '5px',
     '@media (max-width: 480px)': {
       fontSize: '0.7rem',
       padding: '3px 10px',
@@ -190,36 +191,8 @@ const useStyles = makeStyles({
       marginLeft: '8px !important',
     },
   },
-  premiumBox: {
-    backgroundColor: '#f3f0ff',
-    border: '1px solid #d8cffd',
-    borderRadius: '8px',
-    padding: '15px',
-    marginBottom: '20px',
-    '@media (max-width: 600px)': {
-      padding: '12px',
-      marginBottom: '15px',
-    },
-    '@media (max-width: 480px)': {
-      padding: '10px',
-      marginBottom: '12px',
-    },
-  },
-  premiumBoxTitle: {
-    color: '#7c3aed !important',
-    fontWeight: '600 !important',
-    marginBottom: '5px !important',
-    '@media (max-width: 480px)': {
-      fontSize: '0.9rem !important',
-    },
-  },
-  premiumBoxPrice: {
-    color: '#8b5cf6 !important',
-    fontSize: '0.9rem !important',
-    '@media (max-width: 480px)': {
-      fontSize: '0.8rem !important',
-    },
-  },
+  
+
   twoColumn: {
     display: 'grid',
     gridTemplateColumns: '1fr 2fr',
@@ -295,6 +268,19 @@ const useStyles = makeStyles({
     },
   },
 });
+
+// Map tool names or IDs to Material-UI icons (add more as needed)
+const toolIcons = {
+  'code': <Code />, // Example mapping
+  'database': <Storage />,
+  'web': <Language />,
+  'cloud': <Cloud />,
+  'security': <Security />,
+  'devops': <Build />,
+  'debug': <BugReport />,
+  'data': <DataUsage />,
+  // Add more mappings as needed
+};
 
 const AIToolkit = ({ tools, programName }) => {
   const classes = useStyles();
@@ -400,13 +386,18 @@ const AIToolkit = ({ tools, programName }) => {
               elevation={0}
             >
               {tool.isPaid && <span className={classes.premiumBadge}>Premium</span>}
-              <Box className={classes.toolHeader}>
-                <Box className={classes.toolIcon} style={{ color: tool.iconColor }}>
-                  <div dangerouslySetInnerHTML={{ __html: tool.iconHtml }} />
-                </Box>
+              {/* Icon in its own row, centered */}
+              
+              <Box className={classes.toolHeader} style={{ justifyContent: 'center' }}>
                 <Typography className={classes.toolName}>
                   {tool.name}
                 </Typography>
+              </Box>
+              <Box style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: 12 }}>
+                <Box className={classes.toolIcon} style={{ color: tool.iconColor, fontSize: 40 }}>
+                  {/* Use open source icon instead of iconHtml */}
+                  {toolIcons[tool.id] || <Code />}
+                </Box>
               </Box>
             </Paper>
           ))}
@@ -423,14 +414,7 @@ const AIToolkit = ({ tools, programName }) => {
                   </Typography>
                 </Box>
                 
-                {selectedTool.isPaid && (
-                  <Box className={classes.premiumBox}>
-                    <Typography className={classes.premiumBoxTitle}>Premium Access Included</Typography>
-                    <Typography className={classes.premiumBoxPrice}>
-                      {selectedTool.price} - No additional cost to students
-                    </Typography>
-                  </Box>
-                )}
+                
                 
                 <Typography>
                   {selectedTool.description}
