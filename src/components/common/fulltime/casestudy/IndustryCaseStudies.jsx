@@ -410,27 +410,27 @@ const useStyles = makeStyles({
   tag: {
     backgroundColor: '#F7F8FF',
     color: '#4264E3',
-    fontSize: '14px',
+    fontSize: '12px',
     padding: '8px 16px',
     borderRadius: '20px',
     '@media (max-width: 960px)': {
-      fontSize: '13px',
+      fontSize: '11px',
       padding: '7px 14px',
     },
     '@media (max-width: 768px)': {
-      fontSize: '12.5px',
+      fontSize: '10.5px',
       padding: '6px 13px',
     },
     '@media (max-width: 600px)': {
-      fontSize: '12px',
+      fontSize: '10px',
       padding: '6px 12px',
     },
     '@media (max-width: 480px)': {
-      fontSize: '11px',
+      fontSize: '9px',
       padding: '5px 10px',
     },
     '@media (max-width: 375px)': {
-      fontSize: '10px',
+      fontSize: '8px',
       padding: '4px 8px',
       borderRadius: '15px',
     },
