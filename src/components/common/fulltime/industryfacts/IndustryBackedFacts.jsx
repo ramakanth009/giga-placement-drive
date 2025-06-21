@@ -328,6 +328,7 @@ const IndustryBackedFacts = ({ titleBlue, titleYellow, facts = [] }) => {
 };
 
 export default IndustryBackedFacts;
+
 // import React from 'react';
 // import { Box, Typography, Container, Paper } from '@mui/material';
 // import { makeStyles } from '@mui/styles';

@@ -41,23 +41,23 @@ const fullStackTimelineData = {
       description: "From the very first session, you'll build essential full stack skills through real-world case studies, collaborative projects, and mentor guidance.",
       highlights: [
         {
-          title: "Hands-on Web Development",
-          description: "Build real websites and applications from day one using modern HTML, CSS, and JavaScript frameworks.",
+          title: "Logical Thinking and Algorithmic Skill",
+          description: "Learn to break problems into steps and solve them using clear, logical thinking and algorithms.",
           icon: <WebIcon />
         },
         {
-          title: "Collaborative Mini-Projects",
-          description: "Pair up with peers to deliver 1–2 week sprint projects under mentor guidance.",
+          title: "Code Comprehension & Refactoring",
+          description: "Understand existing code, improve its structure, and make it cleaner without changing what it does.",
           icon: <PeopleIcon />
         },
         {
           title: "Live Mentor Sessions & Tech Talks",
-          description: "Weekly Q&A panels with developers from top firms and lightning demos of new frameworks.",
+          description: "Join live expert sessions to clear doubts, gain insights, and stay updated with industry trends.",
           icon: <MessageIcon />
         },
         {
-          title: "Campus Vibes & Hack Corners",
-          description: "Our vibrant learning lounges, 24/7 code cafés, and pop-up hackathons keep you inspired.",
+          title: "Interest & Productivity Observation",
+          description: " Track your learning pace, consistency, and passion to help mentors guide your learning path better.",
           icon: <AutoAwesomeIcon />
         }
       ],
