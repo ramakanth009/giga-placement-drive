@@ -7,7 +7,7 @@ import { Code, Storage, Language, Cloud, Security, Build, BugReport, DataUsage }
 const useStyles = makeStyles({
   section: {
     position: 'relative',
-    padding: '60px 0',
+    padding: '30px 0',
     backgroundColor: '#2A2B6A',
     overflow: 'hidden',
     '&::before': {

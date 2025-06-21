@@ -19,8 +19,8 @@ const DatascienceFulltime = () => {
       <DataScienceHero />
       <DataScienceLearningPath />
       <DataScienceProgramHighlights />
-      <DataScienceAIToolkit />
       <DataScienceIndustryFacts />
+      <DataScienceAIToolkit />
       {/* <DataScienceSkillsMaster /> */}
       <DataScienceCurriculum />
       {/* <DataScienceTechnologyKit /> */}

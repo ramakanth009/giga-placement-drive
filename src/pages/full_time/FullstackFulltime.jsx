@@ -19,8 +19,8 @@ const FullstackFulltime = () => {
         <FullStackHero />
         <FullStackLearningPath />
         <FullStackProgramHighlights />
-        <FullStackAIToolkit />
         <FullStackIndustryFacts />
+        <FullStackAIToolkit />
         {/* <FullStackSkillsMaster /> */}
         <Fullstackcurriculam />
         {/* <FullStackTechnologyKit /> */}
