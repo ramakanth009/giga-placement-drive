@@ -236,7 +236,7 @@ const dataScienceTimelineData = {
         }
       ],
       perks: [
-        "Flexible: Attend Online or On-Campus (or mix both!)",
+        "Flexible: Attend Online or On-Campus or Hybrid",
         "Hands-On: Mentor-led labs, pop-up hackathons, 'Demo Days'",
         "Community: 24/7 Slack channels, peer study groups, campus hangouts",
         "Career Network: Access to 100+ hiring partners and alumni mentorship"

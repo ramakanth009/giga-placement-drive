@@ -74,7 +74,15 @@ const useStyles = makeStyles({
     background: 'linear-gradient(45deg, #ffffff 30%, #f0f8ff 90%)',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
+    backgroundClip: 'text',
     position: 'relative',
+    '& span': {
+      background: 'linear-gradient(135deg, #FFC614 0%, #FFD700 100%)',
+      WebkitBackgroundClip: 'text',
+      WebkitTextFillColor: 'transparent',
+      backgroundClip: 'text',
+      fontWeight: 'bold',
+    },
     '@media (max-width: 600px)': {
       fontSize: '2rem !important',
     },
@@ -464,7 +472,7 @@ const ProgramFee = ({ totalFee, onApplyClick }) => {
       <Paper className={classes.feeCard}>
         <Box className={classes.header}>
           <Typography className={classes.title}>
-            Invest in Your Future — Not Just a Course Fee
+            Invest in Your Future — <span>Not Just a Course Fee</span>
           </Typography>
           <Typography className={classes.subtitle}>
             A 12-month career investment for real-world skills, AI tools, and job-ready projects.
@@ -507,8 +515,6 @@ const ProgramFee = ({ totalFee, onApplyClick }) => {
             </Box>
           </Box>
           
-
-
           {/* New Scholarship Section */}
           <Box className={classes.scholarshipSection}>
             <Typography className={classes.scholarshipText}>

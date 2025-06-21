@@ -6,7 +6,7 @@ import CurriculumCard from './CurriculumCard';
 
 const useStyles = makeStyles({
   section: {
-    padding: '60px 0',
+    padding: '30px 0',
     position: 'relative',
     overflow: 'hidden',
     background: 'linear-gradient(180deg, #f8f9ff 0%, #ffffff 100%)',
@@ -72,7 +72,7 @@ const useStyles = makeStyles({
     padding: '0 15px',
   },
   titleContainer: {
-    marginBottom: '35px',
+    marginBottom: '15px',
     position: 'relative',
     zIndex: 2,
     textAlign: 'center',
@@ -88,21 +88,21 @@ const useStyles = makeStyles({
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
     textAlign: 'center',
-    marginBottom: '12px !important',
+    marginBottom: '5px !important',
     position: 'relative',
     display: 'inline-block',
     whiteSpace: 'nowrap',
-    '&::after': {
-      content: '""',
-      position: 'absolute',
-      bottom: '-12px',
-      left: '50%',
-      transform: 'translateX(-50%)',
-      width: '60px',
-      height: '3px',
-      background: 'linear-gradient(90deg, #2A2B6A 0%, #FFC614 100%)',
-      borderRadius: '2px',
-    },
+    // '&::after': {
+    //   content: '""',
+    //   position: 'absolute',
+    //   bottom: '-12px',
+    //   left: '50%',
+    //   transform: 'translateX(-50%)',
+    //   width: '60px',
+    //   height: '3px',
+    //   background: 'linear-gradient(90deg, #2A2B6A 0%, #FFC614 100%)',
+    //   borderRadius: '2px',
+    // },
     '@media (max-width: 1200px)': {
       fontSize: '2rem !important',
     },
@@ -138,7 +138,7 @@ const useStyles = makeStyles({
     color: '#666666 !important',
     textAlign: 'center',
     // maxWidth: '600px',
-    margin: '25px auto 0 !important',
+    margin: '5px auto 0 !important',
     '@media (max-width: 960px)': {
       fontSize: '0.95rem !important',
       maxWidth: '550px',
@@ -191,8 +191,8 @@ const useStyles = makeStyles({
   },
   sliderContainer: {
     position: 'relative',
-    paddingTop: '30px',
-    paddingBottom: '20px',
+    paddingTop: '10px',
+    paddingBottom: '10px',
     '@media (max-width: 960px)': {
       paddingTop: '25px',
       paddingBottom: '15px',
@@ -201,7 +201,7 @@ const useStyles = makeStyles({
   sliderTrack: {
     display: 'flex',
     transition: 'transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)',
-    padding: '15px 0',
+    // padding: '15px 0',
   },
   sliderWrapper: {
     position: 'relative',
@@ -268,9 +268,9 @@ const useStyles = makeStyles({
     padding: '6px 12px !important',
     transition: 'all 0.3s ease !important',
     whiteSpace: 'nowrap !important',
-    maxWidth: '200px !important',
-    overflow: 'hidden !important',
-    textOverflow: 'ellipsis !important',
+    minWidth: '200px !important',
+    // overflow: 'hidden !important',
+    // textOverflow: 'ellipsis !important',
     '&:hover': {
       transform: 'translateY(-2px)',
       boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
