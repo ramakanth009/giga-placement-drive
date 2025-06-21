@@ -14,7 +14,7 @@ const useStyles = makeStyles({
     // minHeight: '100vh',
     display: 'flex',
     alignItems: 'center',
-    padding: '60px 0',
+    padding: '20px 0',
     position: 'relative',
     overflow: 'hidden'
   },
@@ -60,7 +60,7 @@ const useStyles = makeStyles({
     fontSize: '1.2rem !important',
     color: '#000 !important',
     lineHeight: '1.6 !important',
-    marginBottom: '40px !important',
+    marginBottom: '20px !important',
     maxWidth: '480px !important',
     fontFamily: 'Montserrat !important'
   },
@@ -84,26 +84,26 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '600px',
+    height: '620px',
     '@media (max-width:900px)': {
       height: '400px',
       marginTop: '32px'
     }
   },
   yellowCircle: {
-    width: '500px',
-    height: '500px',
+    width: '450px',
+    height: '450px',
     backgroundColor: '#FFC614',
     borderRadius: '50%',
     position: 'absolute',
     zIndex: 1
   },
   heroImage: {
-    width: '400px',
+    width: '350px',
     height: 'auto',
     zIndex: 2,
     position: 'relative',
-    bottom: '55px',
+    bottom: '67px',
   },
   floatingIcon: {
     position: 'absolute',
@@ -114,20 +114,20 @@ const useStyles = makeStyles({
     // boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
   },
   icon1: {
-    top: '83px',
-    right: '66px',
+    top: '98px',
+    right: '88px',
     width: '50px',
     height: '50px'
   },
   icon2: {
     bottom: '210px',
-    left: '-15px',
+    left: '7px',
     width: '45px',
     height: '45px'
   },
   icon3: {
-    bottom: '150px',
-    right: '50px',
+    bottom: '170px',
+    right: '67px',
     width: '40px',
     height: '40px'
   },
