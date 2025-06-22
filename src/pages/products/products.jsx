@@ -9,7 +9,7 @@ import TemplatesGallerySection from "../../pages/resumelanding/TemplatesGalleryS
 import WhoIsItFor from "../../pages/resumelanding/WhoIsItFor";
 import SmartResumeSection from "../../pages/resumelanding/SmartResumeSection";
 
-const Procucts = () => {
+const Products = () => {
   return (
     <Box>
       <HeroSection />
@@ -23,4 +23,4 @@ const Procucts = () => {
   );
 };
 
-export default Procucts;
+export default Products;
