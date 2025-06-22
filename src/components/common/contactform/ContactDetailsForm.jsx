@@ -21,52 +21,84 @@ import MessageIcon from '@mui/icons-material/Message';
 
 const useStyles = makeStyles({
   mainContainer: {
-    minHeight: '100vh',
+    minHeight: '20vh',
     background: 'linear-gradient(135deg, #f8f9ff 0%, #e8eaff 100%)',
-    padding: '40px 0',
+    padding: '20px 0',
     '@media (max-width: 1200px)': {
-      padding: '35px 0',
+      padding: '18px 0',
+      minHeight: '75vh',
     },
     '@media (max-width: 960px)': {
-      padding: '25px 0',
+      padding: '15px 0',
+      minHeight: '70vh',
     },
     '@media (max-width: 600px)': {
-      padding: '20px 0',
+      padding: '12px 0',
+      minHeight: '65vh',
     },
     '@media (max-width: 480px)': {
-      padding: '15px 0',
+      padding: '10px 0',
+      minHeight: '60vh',
     },
     '@media (max-width: 375px)': {
-      padding: '12px 0',
+      padding: '8px 0',
+      minHeight: '55vh',
     },
   },
   contentWrapper: {
     display: 'flex',
     alignItems: 'center',
-    minHeight: '20vh',
+    minHeight: '15vh',
     flexDirection: 'row',
+    '@media (max-width: 1200px)': {
+      minHeight: '12vh',
+    },
     '@media (max-width: 960px)': {
       minHeight: 'auto',
       flexDirection: 'column',
+    },
+    '@media (max-width: 600px)': {
+      minHeight: 'auto',
+    },
+    '@media (max-width: 480px)': {
+      minHeight: 'auto',
+    },
+    '@media (max-width: 375px)': {
+      minHeight: 'auto',
     },
   },
   sectionsContainer: {
     display: 'flex',
     width: '100%',
     flexDirection: 'row',
+    maxWidth: '900px',
+    margin: '0 auto',
+    '@media (max-width: 1200px)': {
+      maxWidth: '800px',
+    },
     '@media (max-width: 960px)': {
       flexDirection: 'column',
+      maxWidth: '600px',
+    },
+    '@media (max-width: 600px)': {
+      maxWidth: '500px',
+    },
+    '@media (max-width: 480px)': {
+      maxWidth: '400px',
+    },
+    '@media (max-width: 375px)': {
+      maxWidth: '350px',
     },
   },
   leftSection: {
     flex: '1',
-    padding: '20px',
+    padding: '15px',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     backgroundColor: '#ffffff',
-    borderRadius: '20px 0 0 20px',
-    boxShadow: '0 8px 25px rgba(42, 43, 106, 0.08)',
+    borderRadius: '16px 0 0 16px',
+    boxShadow: '0 6px 20px rgba(42, 43, 106, 0.08)',
     position: 'relative',
     overflow: 'hidden',
     '&::before': {
@@ -75,312 +107,304 @@ const useStyles = makeStyles({
       top: 0,
       left: 0,
       right: 0,
-      height: '4px',
+      height: '3px',
       background: 'linear-gradient(90deg, #2A2B6A 0%, #FFC614 100%)',
     },
     '@media (max-width: 1200px)': {
-      padding: '25px',
+      padding: '12px',
+      borderRadius: '14px 0 0 14px',
     },
     '@media (max-width: 960px)': {
-      borderRadius: '20px 20px 0 0',
-      padding: '30px',
-    },
-    '@media (max-width: 600px)': {
-      padding: '25px',
-      borderRadius: '16px 16px 0 0',
-    },
-    '@media (max-width: 480px)': {
-      padding: '20px',
-      borderRadius: '12px 12px 0 0',
-    },
-    '@media (max-width: 375px)': {
-      padding: '15px',
-      borderRadius: '10px 10px 0 0',
+      display: 'none !important',
     },
   },
   rightSection: {
     flex: '1',
-    padding: '20px',
+    padding: '15px',
     backgroundColor: '#ffffff',
-    borderRadius: '0 20px 20px 0',
-    boxShadow: '0 8px 25px rgba(42, 43, 106, 0.08)',
+    borderRadius: '0 16px 16px 0',
+    boxShadow: '0 6px 20px rgba(42, 43, 106, 0.08)',
     borderLeft: '1px solid rgba(42, 43, 106, 0.1)',
+    position: 'relative',
+    zIndex: 1,
     '@media (max-width: 1200px)': {
-      padding: '25px',
+      padding: '12px',
+      borderRadius: '0 14px 14px 0',
     },
     '@media (max-width: 960px)': {
-      borderRadius: '0 0 20px 20px',
+      borderRadius: '16px',
       borderLeft: 'none',
-      borderTop: '1px solid rgba(42, 43, 106, 0.1)',
-      padding: '30px',
+      padding: '15px',
     },
     '@media (max-width: 600px)': {
-      padding: '25px',
-      borderRadius: '0 0 16px 16px',
+      padding: '12px',
+      borderRadius: '12px',
     },
     '@media (max-width: 480px)': {
-      padding: '20px',
-      borderRadius: '0 0 12px 12px',
+      padding: '10px',
+      borderRadius: '10px',
     },
     '@media (max-width: 375px)': {
-      padding: '15px',
-      borderRadius: '0 0 10px 10px',
+      padding: '8px',
+      borderRadius: '8px',
     },
   },
   imageContainer: {
     textAlign: 'center',
-    marginBottom: '15px',
+    marginBottom: '10px',
     position: 'relative',
     '@media (max-width: 1200px)': {
-      marginBottom: '20px',
+      marginBottom: '8px',
     },
     '@media (max-width: 960px)': {
-      marginBottom: '25px',
+      marginBottom: '12px',
     },
     '@media (max-width: 600px)': {
-      marginBottom: '20px',
+      marginBottom: '10px',
     },
     '@media (max-width: 480px)': {
-      marginBottom: '15px',
+      marginBottom: '8px',
     },
     '@media (max-width: 375px)': {
-      marginBottom: '12px',
+      marginBottom: '6px',
     },
   },
   heroImage: {
     width: '100%',
-    maxWidth: '400px',
-    height: '300px',
+    maxWidth: '300px',
+    height: '200px',
     objectFit: 'cover',
-    borderRadius: '16px',
-    boxShadow: '0 12px 30px rgba(42, 43, 106, 0.15)',
-    border: '3px solid #FFC614',
+    borderRadius: '12px',
+    boxShadow: '0 8px 20px rgba(42, 43, 106, 0.12)',
+    border: '2px solid #FFC614',
     '@media (max-width: 1200px)': {
-      height: '250px',
-      maxWidth: '350px',
-    },
-    '@media (max-width: 960px)': {
-      height: '220px',
-      maxWidth: '320px',
-    },
-    '@media (max-width: 600px)': {
-      height: '200px',
-      maxWidth: '280px',
-      borderRadius: '12px',
-      border: '2px solid #FFC614',
-    },
-    '@media (max-width: 480px)': {
       height: '180px',
-      maxWidth: '240px',
+      maxWidth: '280px',
       borderRadius: '10px',
     },
-    '@media (max-width: 375px)': {
+    '@media (max-width: 960px)': {
       height: '160px',
-      maxWidth: '200px',
+      maxWidth: '250px',
+    },
+    '@media (max-width: 600px)': {
+      height: '140px',
+      maxWidth: '220px',
       borderRadius: '8px',
+    },
+    '@media (max-width: 480px)': {
+      height: '120px',
+      maxWidth: '180px',
+      borderRadius: '6px',
+    },
+    '@media (max-width: 375px)': {
+      height: '100px',
+      maxWidth: '150px',
+      borderRadius: '4px',
     },
   },
   leftTitle: {
     fontSize: '2.5rem !important',
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
-    marginBottom: '20px !important',
+    marginBottom: '8px !important',
     textAlign: 'center',
     background: 'linear-gradient(135deg, #2A2B6A 0%, #3A3B7A 100%)',
     backgroundClip: 'text',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
+    '& span': {
+      color: '#FFC614 !important',
+      background: 'none !important',
+      WebkitTextFillColor: '#FFC614 !important',
+    },
     '@media (max-width: 1200px)': {
-      fontSize: '2.2rem !important',
-      marginBottom: '18px !important',
+      fontSize: '1.6rem !important',
+      marginBottom: '6px !important',
     },
     '@media (max-width: 960px)': {
-      fontSize: '2rem !important',
-      marginBottom: '16px !important',
+      fontSize: '1.5rem !important',
+      marginBottom: '8px !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '1.8rem !important',
-      marginBottom: '15px !important',
+      fontSize: '1.3rem !important',
+      marginBottom: '6px !important',
     },
     '@media (max-width: 480px)': {
-      fontSize: '1.6rem !important',
-      marginBottom: '12px !important',
+      fontSize: '1.2rem !important',
+      marginBottom: '5px !important',
     },
     '@media (max-width: 375px)': {
-      fontSize: '1.4rem !important',
-      marginBottom: '10px !important',
+      fontSize: '1.1rem !important',
+      marginBottom: '4px !important',
     },
   },
   leftSubtitle: {
     fontSize: '1.2rem !important',
     color: '#666666 !important',
     textAlign: 'center',
-    marginBottom: '25px !important',
-    lineHeight: '1.6',
+    marginBottom: '10px !important',
+    lineHeight: '1.4',
     '@media (max-width: 1200px)': {
-      fontSize: '1.15rem !important',
-      marginBottom: '22px !important',
+      fontSize: '0.85rem !important',
+      marginBottom: '8px !important',
     },
     '@media (max-width: 960px)': {
-      fontSize: '1.1rem !important',
-      marginBottom: '20px !important',
+      fontSize: '0.8rem !important',
+      marginBottom: '10px !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '1rem !important',
-      marginBottom: '18px !important',
+      fontSize: '0.75rem !important',
+      marginBottom: '8px !important',
     },
     '@media (max-width: 480px)': {
-      fontSize: '0.95rem !important',
-      marginBottom: '15px !important',
+      fontSize: '0.7rem !important',
+      marginBottom: '6px !important',
     },
     '@media (max-width: 375px)': {
-      fontSize: '0.9rem !important',
-      marginBottom: '12px !important',
+      fontSize: '0.65rem !important',
+      marginBottom: '5px !important',
     },
   },
   featuresList: {
     listStyle: 'none',
     padding: 0,
+    margin: 0,
     '@media (max-width: 480px)': {
-      paddingLeft: '5px',
+      paddingLeft: '2px',
+    },
+    '@media (max-width: 375px)': {
+      paddingLeft: '1px',
     },
   },
   featureItem: {
     display: 'flex',
     alignItems: 'center',
-    marginBottom: '10px !important',
-    fontSize: '1rem',
+    marginBottom: '6px !important',
+    fontSize: '0.85rem',
     color: '#333333',
     '@media (max-width: 1200px)': {
-      fontSize: '0.95rem',
-      marginBottom: '9px !important',
+      fontSize: '0.8rem',
+      marginBottom: '5px !important',
     },
     '@media (max-width: 960px)': {
-      fontSize: '0.9rem',
-      marginBottom: '8px !important',
+      fontSize: '0.75rem',
+      marginBottom: '4px !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '0.85rem',
-      marginBottom: '7px !important',
+      fontSize: '0.7rem',
+      marginBottom: '3px !important',
     },
     '@media (max-width: 480px)': {
-      fontSize: '0.8rem',
-      marginBottom: '6px !important',
+      fontSize: '0.65rem',
+      marginBottom: '2px !important',
     },
     '@media (max-width: 375px)': {
-      fontSize: '0.75rem',
-      marginBottom: '5px !important',
+      fontSize: '0.6rem',
+      marginBottom: '2px !important',
     },
   },
   featureIcon: {
     color: '#FFC614 !important',
-    marginRight: '12px !important',
-    fontSize: '1.2rem !important',
+    marginRight: '8px !important',
+    fontSize: '1rem !important',
     '@media (max-width: 1200px)': {
-      fontSize: '1.15rem !important',
-      marginRight: '10px !important',
-    },
-    '@media (max-width: 960px)': {
-      fontSize: '1.1rem !important',
-    },
-    '@media (max-width: 600px)': {
-      fontSize: '1rem !important',
-      marginRight: '8px !important',
-    },
-    '@media (max-width: 480px)': {
-      fontSize: '0.95rem !important',
+      fontSize: '0.9rem !important',
       marginRight: '6px !important',
     },
-    '@media (max-width: 375px)': {
-      fontSize: '0.9rem !important',
+    '@media (max-width: 960px)': {
+      fontSize: '0.8rem !important',
       marginRight: '5px !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.75rem !important',
+      marginRight: '4px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.7rem !important',
+      marginRight: '3px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.65rem !important',
+      marginRight: '2px !important',
     },
   },
   formContainer: {
     padding: '0',
+    position: 'relative',
+    zIndex: 2,
   },
   heading: {
-    fontSize: '1.8rem !important',
+    fontSize: '1.4rem !important',
     fontWeight: 'bold !important',
     color: '#2A2B6A',
-    marginBottom: '25px !important',
+    marginBottom: '15px !important',
     textAlign: 'center',
     position: 'relative',
-    '&::after': {
-      content: '""',
-      position: 'absolute',
-      bottom: '-8px',
-      left: '50%',
-      transform: 'translateX(-50%)',
-      width: '60px',
-      height: '3px',
-      backgroundColor: '#FFC614',
-      borderRadius: '2px',
-    },
     '@media (max-width: 1200px)': {
-      fontSize: '1.7rem !important',
-      marginBottom: '22px !important',
+      fontSize: '1.3rem !important',
+      marginBottom: '12px !important',
       '&::after': {
-        width: '55px',
+        width: '35px',
       },
     },
     '@media (max-width: 960px)': {
-      fontSize: '1.6rem !important',
-      marginBottom: '20px !important',
+      fontSize: '1.2rem !important',
+      marginBottom: '10px !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '1.4rem !important',
-      marginBottom: '18px !important',
+      fontSize: '1.1rem !important',
+      marginBottom: '8px !important',
       '&::after': {
-        width: '50px',
-        height: '2px',
+        width: '30px',
       },
     },
     '@media (max-width: 480px)': {
-      fontSize: '1.3rem !important',
-      marginBottom: '15px !important',
+      fontSize: '1rem !important',
+      marginBottom: '6px !important',
       '&::after': {
-        width: '45px',
+        width: '25px',
       },
     },
     '@media (max-width: 375px)': {
-      fontSize: '1.2rem !important',
-      marginBottom: '12px !important',
+      fontSize: '0.9rem !important',
+      marginBottom: '5px !important',
       '&::after': {
-        width: '40px',
+        width: '20px',
       },
     },
   },
   fieldContainer: {
-    marginBottom: '20px !important',
+    marginBottom: '12px !important',
+    position: 'relative',
+    zIndex: 'auto',
     '@media (max-width: 1200px)': {
-      marginBottom: '18px !important',
+      marginBottom: '10px !important',
     },
     '@media (max-width: 960px)': {
-      marginBottom: '16px !important',
+      marginBottom: '8px !important',
     },
     '@media (max-width: 600px)': {
-      marginBottom: '15px !important',
+      marginBottom: '6px !important',
     },
     '@media (max-width: 480px)': {
-      marginBottom: '12px !important',
+      marginBottom: '5px !important',
     },
     '@media (max-width: 375px)': {
-      marginBottom: '10px !important',
+      marginBottom: '4px !important',
     },
   },
   textField: {
     width: '100%',
     '& .MuiOutlinedInput-root': {
-      borderRadius: '8px',
-      fontSize: '1rem',
+      borderRadius: '6px',
+      fontSize: '0.85rem',
       '& fieldset': {
         borderColor: 'rgba(42, 43, 106, 0.2)',
         borderWidth: '1px',
       },
       '&:hover fieldset': {
         borderColor: '#2A2B6A',
-        borderWidth: '2px',
+        borderWidth: '1.5px',
       },
       '&.Mui-focused fieldset': {
         borderColor: '#2A2B6A',
@@ -392,7 +416,8 @@ const useStyles = makeStyles({
     },
     '& .MuiInputLabel-root': {
       color: '#666666',
-      fontSize: '1rem',
+      fontSize: '0.9rem',
+      fontWeight: '500',
       '&.Mui-focused': {
         color: '#2A2B6A',
       },
@@ -403,68 +428,105 @@ const useStyles = makeStyles({
     '& .MuiInputAdornment-root': {
       color: '#2A2B6A',
     },
+    '& .MuiSelect-select': {
+      zIndex: 1,
+    },
+    '& .MuiPopover-root': {
+      zIndex: 9999,
+    },
     '@media (max-width: 1200px)': {
       '& .MuiOutlinedInput-root': {
-        fontSize: '0.95rem',
+        fontSize: '0.8rem',
+        borderRadius: '5px',
       },
       '& .MuiInputLabel-root': {
-        fontSize: '0.95rem',
+        fontSize: '0.85rem',
       },
     },
     '@media (max-width: 960px)': {
       '& .MuiOutlinedInput-root': {
-        fontSize: '0.9rem',
+        fontSize: '0.75rem',
       },
       '& .MuiInputLabel-root': {
-        fontSize: '0.9rem',
+        fontSize: '0.8rem',
       },
     },
     '@media (max-width: 600px)': {
       '& .MuiOutlinedInput-root': {
-        fontSize: '0.85rem',
-        borderRadius: '6px',
-      },
-      '& .MuiInputLabel-root': {
-        fontSize: '0.85rem',
-      },
-    },
-    '@media (max-width: 480px)': {
-      '& .MuiOutlinedInput-root': {
-        fontSize: '0.8rem',
-        padding: '8px',
-      },
-      '& .MuiInputLabel-root': {
-        fontSize: '0.8rem',
-      },
-    },
-    '@media (max-width: 375px)': {
-      '& .MuiOutlinedInput-root': {
-        fontSize: '0.75rem',
+        fontSize: '0.7rem',
         borderRadius: '4px',
       },
       '& .MuiInputLabel-root': {
         fontSize: '0.75rem',
       },
     },
+    '@media (max-width: 480px)': {
+      '& .MuiOutlinedInput-root': {
+        fontSize: '0.65rem',
+        padding: '6px',
+      },
+      '& .MuiInputLabel-root': {
+        fontSize: '0.7rem',
+      },
+    },
+    '@media (max-width: 375px)': {
+      '& .MuiOutlinedInput-root': {
+        fontSize: '0.6rem',
+        borderRadius: '3px',
+        padding: '4px',
+      },
+      '& .MuiInputLabel-root': {
+        fontSize: '0.65rem',
+      },
+    },
+  },
+  selectField: {
+    width: '100%',
+    '& .MuiSelect-root': {
+      position: 'relative',
+      zIndex: 1,
+    },
+    '& .MuiMenu-paper': {
+      zIndex: 9999,
+      maxHeight: '200px',
+    },
+    '& .MuiMenuItem-root': {
+      fontSize: '0.85rem',
+      '@media (max-width: 1200px)': {
+        fontSize: '0.8rem',
+      },
+      '@media (max-width: 960px)': {
+        fontSize: '0.75rem',
+      },
+      '@media (max-width: 600px)': {
+        fontSize: '0.7rem',
+      },
+      '@media (max-width: 480px)': {
+        fontSize: '0.65rem',
+      },
+      '@media (max-width: 375px)': {
+        fontSize: '0.6rem',
+      },
+    },
   },
   submitButton: {
     backgroundColor: '#2A2B6A !important',
     color: 'white !important',
-    padding: '12px 30px !important',
-    borderRadius: '8px !important',
-    fontSize: '1rem !important',
+    padding: '8px 20px !important',
+    borderRadius: '6px !important',
+    fontSize: '0.85rem !important',
     fontWeight: '600 !important',
     textTransform: 'none !important',
     width: '100%',
-    marginTop: '10px !important',
-    boxShadow: '0 4px 15px rgba(42, 43, 106, 0.2) !important',
+    marginTop: '5px !important',
+    boxShadow: '0 3px 12px rgba(42, 43, 106, 0.2) !important',
     transition: 'all 0.3s ease !important',
     position: 'relative',
     overflow: 'hidden',
     '&:hover': {
       backgroundColor: '#1A1B4A !important',
-      transform: 'translateY(-2px)',
-      boxShadow: '0 6px 20px rgba(42, 43, 106, 0.3) !important',
+      transform: 'translateY(-1px)',
+      boxShadow: '0 4px 16px rgba(42, 43, 106, 0.3) !important',
     },
     '&:disabled': {
       backgroundColor: '#cccccc !important',
@@ -475,77 +537,77 @@ const useStyles = makeStyles({
     '&::after': {
       content: '""',
       position: 'absolute',
-      width: '30px',
+      width: '25px',
       height: '100%',
       background: 'rgba(255, 255, 255, 0.3)',
-      transform: 'skewX(-30deg) translateX(-150px)',
+      transform: 'skewX(-30deg) translateX(-120px)',
       animation: '$shine 3s infinite',
     },
     '@media (max-width: 1200px)': {
-      padding: '11px 28px !important',
-      fontSize: '0.95rem !important',
-    },
-    '@media (max-width: 960px)': {
-      padding: '10px 25px !important',
-      fontSize: '0.9rem !important',
-    },
-    '@media (max-width: 600px)': {
-      padding: '10px 20px !important',
-      fontSize: '0.85rem !important',
-      borderRadius: '6px !important',
-    },
-    '@media (max-width: 480px)': {
-      padding: '8px 16px !important',
-      fontSize: '0.8rem !important',
-      marginTop: '8px !important',
-    },
-    '@media (max-width: 375px)': {
-      padding: '8px 12px !important',
-      fontSize: '0.75rem !important',
-      borderRadius: '4px !important',
-      marginTop: '6px !important',
-    },
-  },
-  errorMessage: {
-    color: '#e53935 !important',
-    fontSize: '0.85rem !important',
-    marginTop: '5px !important',
-    '@media (max-width: 1200px)': {
+      padding: '7px 18px !important',
       fontSize: '0.8rem !important',
     },
     '@media (max-width: 960px)': {
+      padding: '6px 15px !important',
       fontSize: '0.75rem !important',
     },
     '@media (max-width: 600px)': {
+      padding: '5px 12px !important',
       fontSize: '0.7rem !important',
+      borderRadius: '4px !important',
     },
     '@media (max-width: 480px)': {
+      padding: '4px 10px !important',
       fontSize: '0.65rem !important',
       marginTop: '3px !important',
     },
     '@media (max-width: 375px)': {
+      padding: '3px 8px !important',
       fontSize: '0.6rem !important',
+      borderRadius: '3px !important',
       marginTop: '2px !important',
+    },
+  },
+  errorMessage: {
+    color: '#e53935 !important',
+    fontSize: '0.7rem !important',
+    marginTop: '2px !important',
+    '@media (max-width: 1200px)': {
+      fontSize: '0.65rem !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '0.6rem !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.55rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.5rem !important',
+      marginTop: '1px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.45rem !important',
+      marginTop: '1px !important',
     },
   },
   loadingContainer: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: '10px',
+    gap: '6px',
     '@media (max-width: 480px)': {
-      gap: '8px',
+      gap: '4px',
     },
     '@media (max-width: 375px)': {
-      gap: '6px',
+      gap: '3px',
     },
   },
   '@keyframes shine': {
     '0%': {
-      transform: 'skewX(-30deg) translateX(-150px)',
+      transform: 'skewX(-30deg) translateX(-120px)',
     },
     '100%': {
-      transform: 'skewX(-30deg) translateX(350px)',
+      transform: 'skewX(-30deg) translateX(280px)',
     },
   },
 });
@@ -637,11 +699,11 @@ const ContactFormLayout = ({ onSubmit, isSubmitting = false }) => {
   return (
     <Box className={classes.mainContainer}>
       <Container maxWidth="lg">
-        <Box sx={{ textAlign: 'center', marginBottom: '10px' }}>
-          <Typography variant="h1" className={classes.leftTitle} style={{ marginBottom: '20px' }}>
-            Get In <span style={{ color: '#FFC614' }}>Touch</span>
+        <Box sx={{ textAlign: 'center', marginBottom: '5px' }}>
+          <Typography variant="h1" className={classes.leftTitle} style={{ marginBottom: '8px' }}>
+            Get In <span>Touch</span>
           </Typography>
-          <Typography variant="h3" className={classes.leftSubtitle} style={{ maxWidth: '800px', margin: '0 auto' }}>
+          <Typography variant="h3" className={classes.leftSubtitle} style={{ maxWidth: '600px', margin: '0 auto' }}>
             We'd love to hear from you. Connect with us and let's start a conversation.
           </Typography>
         </Box>
@@ -680,7 +742,7 @@ const ContactFormLayout = ({ onSubmit, isSubmitting = false }) => {
             {/* Right Section - Form */}
             <Box className={classes.rightSection}>
               <Paper className={classes.formContainer} elevation={0}>
-                <form onSubmit={handleSubmit} style={{ marginTop: '20px' }}>
+                <form onSubmit={handleSubmit} style={{ marginTop: '10px' }}>
                   <Box className={classes.fieldContainer}>
                     <TextField
                       label="Name"
@@ -693,7 +755,7 @@ const ContactFormLayout = ({ onSubmit, isSubmitting = false }) => {
                       required
                       InputProps={{
                         startAdornment: (
-                          <PersonIcon sx={{ color: '#2A2B6A', marginRight: '8px' }} />
+                          <PersonIcon sx={{ color: '#2A2B6A', marginRight: '6px', fontSize: '1rem' }} />
                         ),
                       }}
                     />
@@ -715,7 +777,7 @@ const ContactFormLayout = ({ onSubmit, isSubmitting = false }) => {
                       }}
                       InputProps={{
                         startAdornment: (
-                          <PhoneIcon sx={{ color: '#2A2B6A', marginRight: '8px' }} />
+                          <PhoneIcon sx={{ color: '#2A2B6A', marginRight: '6px', fontSize: '1rem' }} />
                         ),
                       }}
                     />
@@ -734,7 +796,7 @@ const ContactFormLayout = ({ onSubmit, isSubmitting = false }) => {
                       required
                       InputProps={{
                         startAdornment: (
-                          <EmailIcon sx={{ color: '#2A2B6A', marginRight: '8px' }} />
+                          <EmailIcon sx={{ color: '#2A2B6A', marginRight: '6px', fontSize: '1rem' }} />
                         ),
                       }}
                     />
@@ -749,11 +811,30 @@ const ContactFormLayout = ({ onSubmit, isSubmitting = false }) => {
                       onChange={handleChange('yearOfGraduation')}
                       error={Boolean(errors.yearOfGraduation)}
                       helperText={errors.yearOfGraduation}
-                      className={classes.textField}
+                      className={`${classes.textField} ${classes.selectField}`}
                       required
+                      SelectProps={{
+                        MenuProps: {
+                          PaperProps: {
+                            style: {
+                              maxHeight: 200,
+                              zIndex: 9999,
+                            },
+                          },
+                          anchorOrigin: {
+                            vertical: 'bottom',
+                            horizontal: 'left',
+                          },
+                          transformOrigin: {
+                            vertical: 'top',
+                            horizontal: 'left',
+                          },
+                          getContentAnchorEl: null,
+                        },
+                      }}
                       InputProps={{
                         startAdornment: (
-                          <SchoolIcon sx={{ color: '#2A2B6A', marginRight: '8px' }} />
+                          <SchoolIcon sx={{ color: '#2A2B6A', marginRight: '6px', fontSize: '1rem' }} />
                         ),
                       }}
                     >
@@ -773,7 +854,7 @@ const ContactFormLayout = ({ onSubmit, isSubmitting = false }) => {
                       label="Message"
                       variant="outlined"
                       multiline
-                      rows={4}
+                      rows={3}
                       value={formData.message}
                       onChange={handleChange('message')}
                       error={Boolean(errors.message)}
@@ -782,7 +863,7 @@ const ContactFormLayout = ({ onSubmit, isSubmitting = false }) => {
                       required
                       InputProps={{
                         startAdornment: (
-                          <MessageIcon sx={{ color: '#2A2B6A', marginRight: '8px', alignSelf: 'flex-start', marginTop: '16px' }} />
+                          <MessageIcon sx={{ color: '#2A2B6A', marginRight: '6px', alignSelf: 'flex-start', marginTop: '12px', fontSize: '1rem' }} />
                         ),
                       }}
                     />
@@ -795,9 +876,9 @@ const ContactFormLayout = ({ onSubmit, isSubmitting = false }) => {
                     disabled={isSubmitting}
                     endIcon={
                       isSubmitting ? (
-                        <CircularProgress size={20} color="inherit" />
+                        <CircularProgress size={16} color="inherit" />
                       ) : (
-                        <SendIcon />
+                        <SendIcon sx={{ fontSize: '0.9rem' }} />
                       )
                     }
                   >

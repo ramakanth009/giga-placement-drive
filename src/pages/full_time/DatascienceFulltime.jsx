@@ -12,6 +12,7 @@ import DataScienceProjectsSection from "../../components/fulltime/datascience/pr
 import DataScienceCurriculum from "../../components/fulltime/datascience/curriculum/DataScienceCurriculum";
 // import DataScienceSkillsMaster from "../../components/fulltime/datascience/skillsmaster/DataScienceSkillsMaster";
 import DataScienceLearningPath from '../../components/fulltime/datascience/learningpathtimeline/DataScienceLearningPath';
+import DataScienceFullTimeFaq from "../../components/fulltime/datascience/faqs/DataScienceFullTimeFaq"
 
 const DatascienceFulltime = () => {
   return (
@@ -29,6 +30,7 @@ const DatascienceFulltime = () => {
       <FulltimeCertificates />
       <DataScienceProgramFee />
       <TestimonialComponent />
+      <DataScienceFullTimeFaq />
     </div>
   );
 };
