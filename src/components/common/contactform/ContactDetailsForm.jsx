@@ -24,8 +24,20 @@ const useStyles = makeStyles({
     minHeight: '100vh',
     background: 'linear-gradient(135deg, #f8f9ff 0%, #e8eaff 100%)',
     padding: '40px 0',
+    '@media (max-width: 1200px)': {
+      padding: '35px 0',
+    },
     '@media (max-width: 960px)': {
+      padding: '25px 0',
+    },
+    '@media (max-width: 600px)': {
       padding: '20px 0',
+    },
+    '@media (max-width: 480px)': {
+      padding: '15px 0',
+    },
+    '@media (max-width: 375px)': {
+      padding: '12px 0',
     },
   },
   contentWrapper: {
@@ -66,13 +78,24 @@ const useStyles = makeStyles({
       height: '4px',
       background: 'linear-gradient(90deg, #2A2B6A 0%, #FFC614 100%)',
     },
+    '@media (max-width: 1200px)': {
+      padding: '25px',
+    },
     '@media (max-width: 960px)': {
       borderRadius: '20px 20px 0 0',
       padding: '30px',
     },
     '@media (max-width: 600px)': {
-      padding: '20px',
+      padding: '25px',
       borderRadius: '16px 16px 0 0',
+    },
+    '@media (max-width: 480px)': {
+      padding: '20px',
+      borderRadius: '12px 12px 0 0',
+    },
+    '@media (max-width: 375px)': {
+      padding: '15px',
+      borderRadius: '10px 10px 0 0',
     },
   },
   rightSection: {
@@ -82,6 +105,9 @@ const useStyles = makeStyles({
     borderRadius: '0 20px 20px 0',
     boxShadow: '0 8px 25px rgba(42, 43, 106, 0.08)',
     borderLeft: '1px solid rgba(42, 43, 106, 0.1)',
+    '@media (max-width: 1200px)': {
+      padding: '25px',
+    },
     '@media (max-width: 960px)': {
       borderRadius: '0 0 20px 20px',
       borderLeft: 'none',
@@ -89,16 +115,36 @@ const useStyles = makeStyles({
       padding: '30px',
     },
     '@media (max-width: 600px)': {
-      padding: '20px',
+      padding: '25px',
       borderRadius: '0 0 16px 16px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '20px',
+      borderRadius: '0 0 12px 12px',
+    },
+    '@media (max-width: 375px)': {
+      padding: '15px',
+      borderRadius: '0 0 10px 10px',
     },
   },
   imageContainer: {
     textAlign: 'center',
     marginBottom: '15px',
     position: 'relative',
+    '@media (max-width: 1200px)': {
+      marginBottom: '20px',
+    },
     '@media (max-width: 960px)': {
       marginBottom: '25px',
+    },
+    '@media (max-width: 600px)': {
+      marginBottom: '20px',
+    },
+    '@media (max-width: 480px)': {
+      marginBottom: '15px',
+    },
+    '@media (max-width: 375px)': {
+      marginBottom: '12px',
     },
   },
   heroImage: {
@@ -111,10 +157,27 @@ const useStyles = makeStyles({
     border: '3px solid #FFC614',
     '@media (max-width: 1200px)': {
       height: '250px',
+      maxWidth: '350px',
     },
     '@media (max-width: 960px)': {
+      height: '220px',
+      maxWidth: '320px',
+    },
+    '@media (max-width: 600px)': {
       height: '200px',
-      maxWidth: '300px',
+      maxWidth: '280px',
+      borderRadius: '12px',
+      border: '2px solid #FFC614',
+    },
+    '@media (max-width: 480px)': {
+      height: '180px',
+      maxWidth: '240px',
+      borderRadius: '10px',
+    },
+    '@media (max-width: 375px)': {
+      height: '160px',
+      maxWidth: '200px',
+      borderRadius: '8px',
     },
   },
   leftTitle: {
@@ -129,12 +192,23 @@ const useStyles = makeStyles({
     WebkitTextFillColor: 'transparent',
     '@media (max-width: 1200px)': {
       fontSize: '2.2rem !important',
+      marginBottom: '18px !important',
     },
     '@media (max-width: 960px)': {
-      fontSize: '1.8rem !important',
+      fontSize: '2rem !important',
+      marginBottom: '16px !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '1.5rem !important',
+      fontSize: '1.8rem !important',
+      marginBottom: '15px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '1.6rem !important',
+      marginBottom: '12px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1.4rem !important',
+      marginBottom: '10px !important',
     },
   },
   leftSubtitle: {
@@ -143,16 +217,33 @@ const useStyles = makeStyles({
     textAlign: 'center',
     marginBottom: '25px !important',
     lineHeight: '1.6',
+    '@media (max-width: 1200px)': {
+      fontSize: '1.15rem !important',
+      marginBottom: '22px !important',
+    },
     '@media (max-width: 960px)': {
       fontSize: '1.1rem !important',
+      marginBottom: '20px !important',
     },
     '@media (max-width: 600px)': {
       fontSize: '1rem !important',
+      marginBottom: '18px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.95rem !important',
+      marginBottom: '15px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.9rem !important',
+      marginBottom: '12px !important',
     },
   },
   featuresList: {
     listStyle: 'none',
     padding: 0,
+    '@media (max-width: 480px)': {
+      paddingLeft: '5px',
+    },
   },
   featureItem: {
     display: 'flex',
@@ -160,14 +251,50 @@ const useStyles = makeStyles({
     marginBottom: '10px !important',
     fontSize: '1rem',
     color: '#333333',
-    '@media (max-width: 600px)': {
+    '@media (max-width: 1200px)': {
+      fontSize: '0.95rem',
+      marginBottom: '9px !important',
+    },
+    '@media (max-width: 960px)': {
       fontSize: '0.9rem',
+      marginBottom: '8px !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.85rem',
+      marginBottom: '7px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.8rem',
+      marginBottom: '6px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.75rem',
+      marginBottom: '5px !important',
     },
   },
   featureIcon: {
     color: '#FFC614 !important',
     marginRight: '12px !important',
     fontSize: '1.2rem !important',
+    '@media (max-width: 1200px)': {
+      fontSize: '1.15rem !important',
+      marginRight: '10px !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '1.1rem !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '1rem !important',
+      marginRight: '8px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.95rem !important',
+      marginRight: '6px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.9rem !important',
+      marginRight: '5px !important',
+    },
   },
   formContainer: {
     padding: '0',
@@ -193,6 +320,9 @@ const useStyles = makeStyles({
     '@media (max-width: 1200px)': {
       fontSize: '1.7rem !important',
       marginBottom: '22px !important',
+      '&::after': {
+        width: '55px',
+      },
     },
     '@media (max-width: 960px)': {
       fontSize: '1.6rem !important',
@@ -206,11 +336,37 @@ const useStyles = makeStyles({
         height: '2px',
       },
     },
+    '@media (max-width: 480px)': {
+      fontSize: '1.3rem !important',
+      marginBottom: '15px !important',
+      '&::after': {
+        width: '45px',
+      },
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1.2rem !important',
+      marginBottom: '12px !important',
+      '&::after': {
+        width: '40px',
+      },
+    },
   },
   fieldContainer: {
     marginBottom: '20px !important',
+    '@media (max-width: 1200px)': {
+      marginBottom: '18px !important',
+    },
+    '@media (max-width: 960px)': {
+      marginBottom: '16px !important',
+    },
     '@media (max-width: 600px)': {
       marginBottom: '15px !important',
+    },
+    '@media (max-width: 480px)': {
+      marginBottom: '12px !important',
+    },
+    '@media (max-width: 375px)': {
+      marginBottom: '10px !important',
     },
   },
   textField: {
@@ -247,12 +403,47 @@ const useStyles = makeStyles({
     '& .MuiInputAdornment-root': {
       color: '#2A2B6A',
     },
-    '@media (max-width: 600px)': {
+    '@media (max-width: 1200px)': {
+      '& .MuiOutlinedInput-root': {
+        fontSize: '0.95rem',
+      },
+      '& .MuiInputLabel-root': {
+        fontSize: '0.95rem',
+      },
+    },
+    '@media (max-width: 960px)': {
       '& .MuiOutlinedInput-root': {
         fontSize: '0.9rem',
       },
       '& .MuiInputLabel-root': {
         fontSize: '0.9rem',
+      },
+    },
+    '@media (max-width: 600px)': {
+      '& .MuiOutlinedInput-root': {
+        fontSize: '0.85rem',
+        borderRadius: '6px',
+      },
+      '& .MuiInputLabel-root': {
+        fontSize: '0.85rem',
+      },
+    },
+    '@media (max-width: 480px)': {
+      '& .MuiOutlinedInput-root': {
+        fontSize: '0.8rem',
+        padding: '8px',
+      },
+      '& .MuiInputLabel-root': {
+        fontSize: '0.8rem',
+      },
+    },
+    '@media (max-width: 375px)': {
+      '& .MuiOutlinedInput-root': {
+        fontSize: '0.75rem',
+        borderRadius: '4px',
+      },
+      '& .MuiInputLabel-root': {
+        fontSize: '0.75rem',
       },
     },
   },
@@ -290,17 +481,64 @@ const useStyles = makeStyles({
       transform: 'skewX(-30deg) translateX(-150px)',
       animation: '$shine 3s infinite',
     },
+    '@media (max-width: 1200px)': {
+      padding: '11px 28px !important',
+      fontSize: '0.95rem !important',
+    },
+    '@media (max-width: 960px)': {
+      padding: '10px 25px !important',
+      fontSize: '0.9rem !important',
+    },
+    '@media (max-width: 600px)': {
+      padding: '10px 20px !important',
+      fontSize: '0.85rem !important',
+      borderRadius: '6px !important',
+    },
+    '@media (max-width: 480px)': {
+      padding: '8px 16px !important',
+      fontSize: '0.8rem !important',
+      marginTop: '8px !important',
+    },
+    '@media (max-width: 375px)': {
+      padding: '8px 12px !important',
+      fontSize: '0.75rem !important',
+      borderRadius: '4px !important',
+      marginTop: '6px !important',
+    },
   },
   errorMessage: {
     color: '#e53935 !important',
     fontSize: '0.85rem !important',
     marginTop: '5px !important',
+    '@media (max-width: 1200px)': {
+      fontSize: '0.8rem !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '0.75rem !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.7rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.65rem !important',
+      marginTop: '3px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.6rem !important',
+      marginTop: '2px !important',
+    },
   },
   loadingContainer: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     gap: '10px',
+    '@media (max-width: 480px)': {
+      gap: '8px',
+    },
+    '@media (max-width: 375px)': {
+      gap: '6px',
+    },
   },
   '@keyframes shine': {
     '0%': {
@@ -452,7 +690,6 @@ const ContactFormLayout = ({ onSubmit, isSubmitting = false }) => {
                       error={Boolean(errors.name)}
                       helperText={errors.name}
                       className={classes.textField}
-                      // placeholder="e.g. John Smith"
                       required
                       InputProps={{
                         startAdornment: (
@@ -471,7 +708,6 @@ const ContactFormLayout = ({ onSubmit, isSubmitting = false }) => {
                       error={Boolean(errors.contactNo)}
                       helperText={errors.contactNo}
                       className={classes.textField}
-                      // placeholder="e.g. 9876543210"
                       required
                       inputProps={{
                         maxLength: 10,
@@ -495,7 +731,6 @@ const ContactFormLayout = ({ onSubmit, isSubmitting = false }) => {
                       error={Boolean(errors.email)}
                       helperText={errors.email}
                       className={classes.textField}
-                      // placeholder="e.g. john.smith@example.com"
                       required
                       InputProps={{
                         startAdornment: (
@@ -544,7 +779,6 @@ const ContactFormLayout = ({ onSubmit, isSubmitting = false }) => {
                       error={Boolean(errors.message)}
                       helperText={errors.message}
                       className={classes.textField}
-                      // placeholder="Type your message here..."
                       required
                       InputProps={{
                         startAdornment: (
