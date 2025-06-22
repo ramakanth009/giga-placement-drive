@@ -20,11 +20,11 @@ import PeopleIcon from '@mui/icons-material/People';
 // import WorkIcon from '@mui/icons-material/Work';
 
 // Import sample images for projects
-import aiChatbotImage from '../../../../assets/ai-chatbot.png';
-import quizMasterImage from '../../../../assets/quiz-master.png';
-import callAuditorImage from '../../../../assets/call-auditor.png';
-import atsToolsImage from '../../../../assets/ats-tools.png';
-import additionalProjectImage from '../../../../assets/additional-project.png';
+import aiChatbotImage from '../../../../assets/Multi_Model_AI_chtabot.png';
+import quizMasterImage from '../../../../assets/ai_quiz_master.png';
+import callAuditorImage from '../../../../assets/AI_Call_auditor.png';
+// import atsToolsImage from '../../../../assets/ats-tools.png';
+// import additionalProjectImage from '../../../../assets/additional-project.png';
 
 const DataScienceProjectsSection = () => {
   const subtitle = "Build your portfolio with real-world data science applications. Each project is designed to develop industry-relevant skills and solve practical problems.";
