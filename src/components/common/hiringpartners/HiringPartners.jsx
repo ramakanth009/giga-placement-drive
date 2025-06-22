@@ -40,8 +40,23 @@ const useStyles = makeStyles({
     padding: '60px 0',
     margin: '0',
     overflow: 'hidden',
+    '@media (max-width: 1200px)': {
+      padding: '55px 0',
+    },
+    '@media (max-width: 960px)': {
+      padding: '50px 0',
+    },
     '@media (max-width: 768px)': {
       padding: '40px 0',
+    },
+    '@media (max-width: 600px)': {
+      padding: '35px 0',
+    },
+    '@media (max-width: 480px)': {
+      padding: '30px 0',
+    },
+    '@media (max-width: 375px)': {
+      padding: '25px 0',
     },
   },
   titleContainer: {
@@ -51,6 +66,21 @@ const useStyles = makeStyles({
     marginBottom: '50px',
     position: 'relative',
     zIndex: 2,
+    '@media (max-width: 1200px)': {
+      marginBottom: '45px',
+    },
+    '@media (max-width: 960px)': {
+      marginBottom: '40px',
+    },
+    '@media (max-width: 600px)': {
+      marginBottom: '35px',
+    },
+    '@media (max-width: 480px)': {
+      marginBottom: '30px',
+    },
+    '@media (max-width: 375px)': {
+      marginBottom: '25px',
+    },
   },
   sectionTitle: {
     color: "#2A2B6A !important",
@@ -58,12 +88,22 @@ const useStyles = makeStyles({
     textAlign: 'center !important',
     fontSize: "2.5rem !important",
     position: 'relative',
-    
+    '@media (max-width: 1200px)': {
+      fontSize: '2.3rem !important',
+    },
     '@media (max-width: 960px)': {
       fontSize: '2rem !important',
     },
+    '@media (max-width: 600px)': {
+      fontSize: '1.8rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '1.6rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1.4rem !important',
+    },
   },
-  // Add highlight style for yellow span
   highlight: {
     color: "#FFC614",
     fontWeight: "bold",
@@ -72,8 +112,29 @@ const useStyles = makeStyles({
     maxWidth: '1200px',
     margin: '0 auto 40px',
     padding: '0 20px',
+    '@media (max-width: 1200px)': {
+      maxWidth: '1000px',
+      padding: '0 18px',
+    },
+    '@media (max-width: 960px)': {
+      maxWidth: '900px',
+      padding: '0 16px',
+    },
     '@media (max-width: 768px)': {
       marginBottom: '30px',
+      padding: '0 14px',
+    },
+    '@media (max-width: 600px)': {
+      padding: '0 12px',
+      marginBottom: '25px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '0 10px',
+      marginBottom: '20px',
+    },
+    '@media (max-width: 375px)': {
+      padding: '0 8px',
+      marginBottom: '18px',
     },
   },
   categoryFilters: {
@@ -81,8 +142,23 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     position: 'relative',
     marginBottom: '40px',
+    '@media (max-width: 1200px)': {
+      marginBottom: '35px',
+    },
+    '@media (max-width: 960px)': {
+      marginBottom: '30px',
+    },
     '@media (max-width: 768px)': {
       marginBottom: '30px',
+    },
+    '@media (max-width: 600px)': {
+      marginBottom: '25px',
+    },
+    '@media (max-width: 480px)': {
+      marginBottom: '20px',
+    },
+    '@media (max-width: 375px)': {
+      marginBottom: '18px',
     },
   },
   filterButton: {
@@ -101,9 +177,29 @@ const useStyles = makeStyles({
     '&:hover': {
       backgroundColor: '#e8eaed !important',
     },
+    '@media (max-width: 1200px)': {
+      padding: '11px 22px !important',
+      fontSize: '13.5px !important',
+    },
+    '@media (max-width: 960px)': {
+      padding: '10px 20px !important',
+      fontSize: '13px !important',
+    },
     '@media (max-width: 768px)': {
       padding: '8px 16px !important',
       fontSize: '13px !important',
+    },
+    '@media (max-width: 600px)': {
+      padding: '7px 14px !important',
+      fontSize: '12px !important',
+    },
+    '@media (max-width: 480px)': {
+      padding: '6px 12px !important',
+      fontSize: '11px !important',
+    },
+    '@media (max-width: 375px)': {
+      padding: '5px 10px !important',
+      fontSize: '10px !important',
     },
   },
   activeFilterButton: {
@@ -132,23 +228,67 @@ const useStyles = makeStyles({
     borderRadius: '30px',
     overflow: 'hidden',
     boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
-    // Smooth transition for tab background
     transition: 'background 0.5s cubic-bezier(0.4,0,0.2,1)',
+    '@media (max-width: 600px)': {
+      borderRadius: '25px',
+    },
+    '@media (max-width: 480px)': {
+      borderRadius: '20px',
+    },
+    '@media (max-width: 375px)': {
+      borderRadius: '18px',
+    },
   },
   firstTab: {
     borderTopLeftRadius: '30px !important',
     borderBottomLeftRadius: '30px !important',
+    '@media (max-width: 600px)': {
+      borderTopLeftRadius: '25px !important',
+      borderBottomLeftRadius: '25px !important',
+    },
+    '@media (max-width: 480px)': {
+      borderTopLeftRadius: '20px !important',
+      borderBottomLeftRadius: '20px !important',
+    },
+    '@media (max-width: 375px)': {
+      borderTopLeftRadius: '18px !important',
+      borderBottomLeftRadius: '18px !important',
+    },
   },
   lastTab: {
     borderTopRightRadius: '30px !important',
     borderBottomRightRadius: '30px !important',
+    '@media (max-width: 600px)': {
+      borderTopRightRadius: '25px !important',
+      borderBottomRightRadius: '25px !important',
+    },
+    '@media (max-width: 480px)': {
+      borderTopRightRadius: '20px !important',
+      borderBottomRightRadius: '20px !important',
+    },
+    '@media (max-width: 375px)': {
+      borderTopRightRadius: '18px !important',
+      borderBottomRightRadius: '18px !important',
+    },
   },
   cardsContainer: {
     display: 'flex',
     flexDirection: 'column',
     gap: '30px',
+    '@media (max-width: 1200px)': {
+      gap: '25px',
+    },
     '@media (max-width: 768px)': {
       gap: '20px',
+    },
+    '@media (max-width: 600px)': {
+      gap: '18px',
+    },
+    '@media (max-width: 480px)': {
+      gap: '15px',
+    },
+    '@media (max-width: 375px)': {
+      gap: '12px',
     },
   },
   categoryCard: {
@@ -161,6 +301,15 @@ const useStyles = makeStyles({
       boxShadow: '0 15px 40px rgba(0,0,0,0.12)',
       transform: 'translateY(-5px)',
     },
+    '@media (max-width: 600px)': {
+      borderRadius: '14px',
+    },
+    '@media (max-width: 480px)': {
+      borderRadius: '12px',
+    },
+    '@media (max-width: 375px)': {
+      borderRadius: '10px',
+    },
   },
   categoryHeader: {
     backgroundColor: '#f8f9ff',
@@ -169,16 +318,40 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-start',
+    '@media (max-width: 1200px)': {
+      padding: '18px 25px',
+    },
     '@media (max-width: 768px)': {
       padding: '15px 20px',
+    },
+    '@media (max-width: 600px)': {
+      padding: '12px 16px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '10px 14px',
+    },
+    '@media (max-width: 375px)': {
+      padding: '8px 12px',
     },
   },
   categoryTitle: {
     color: '#2A2B6A !important',
     fontSize: '1.4rem !important',
     fontWeight: '600 !important',
+    '@media (max-width: 1200px)': {
+      fontSize: '1.3rem !important',
+    },
     '@media (max-width: 768px)': {
       fontSize: '1.2rem !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '1.1rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '1rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.95rem !important',
     },
   },
   logoGrid: {
@@ -186,19 +359,36 @@ const useStyles = makeStyles({
     gridTemplateColumns: 'repeat(7, 1fr)',
     padding: '25px 30px',
     gap: '25px',
-    // Smooth fade/slide for grid
     opacity: 1,
     transform: 'translateY(0px)',
     transition: 'opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1)',
+    '@media (max-width: 1200px)': {
+      gridTemplateColumns: 'repeat(6, 1fr)',
+      padding: '22px 25px',
+      gap: '22px',
+    },
     '@media (max-width: 960px)': {
       gridTemplateColumns: 'repeat(4, 1fr)',
       padding: '20px',
       gap: '20px',
     },
+    '@media (max-width: 768px)': {
+      gridTemplateColumns: 'repeat(3, 1fr)',
+      padding: '18px',
+      gap: '18px',
+    },
     '@media (max-width: 600px)': {
       gridTemplateColumns: 'repeat(2, 1fr)',
       padding: '15px',
       gap: '15px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '12px',
+      gap: '12px',
+    },
+    '@media (max-width: 375px)': {
+      padding: '10px',
+      gap: '10px',
     },
   },
   logoWrapper: {
@@ -223,9 +413,34 @@ const useStyles = makeStyles({
       transform: 'translateY(-5px)',
       boxShadow: '0 8px 20px rgba(0,0,0,0.08)',
     },
+    '@media (max-width: 1200px)': {
+      padding: '18px 12px',
+      height: '95px',
+      borderRadius: '11px',
+    },
+    '@media (max-width: 960px)': {
+      padding: '16px 10px',
+      height: '90px',
+      borderRadius: '10px',
+    },
     '@media (max-width: 768px)': {
       padding: '15px 10px',
       height: '90px',
+    },
+    '@media (max-width: 600px)': {
+      padding: '12px 8px',
+      height: '80px',
+      borderRadius: '9px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '10px 6px',
+      height: '75px',
+      borderRadius: '8px',
+    },
+    '@media (max-width: 375px)': {
+      padding: '8px 5px',
+      height: '70px',
+      borderRadius: '7px',
     },
   },
   logoSvg: {
@@ -234,22 +449,59 @@ const useStyles = makeStyles({
     opacity: 0.9,
     transition: 'all 0.3s ease',
     objectFit: 'contain',
+    '@media (max-width: 1200px)': {
+      width: '90px',
+      height: '45px',
+    },
+    '@media (max-width: 960px)': {
+      width: '85px',
+      height: '42px',
+    },
     '@media (max-width: 768px)': {
       width: '80px',
       height: '40px',
+    },
+    '@media (max-width: 600px)': {
+      width: '70px',
+      height: '35px',
+    },
+    '@media (max-width: 480px)': {
+      width: '65px',
+      height: '32px',
+    },
+    '@media (max-width: 375px)': {
+      width: '60px',
+      height: '30px',
     },
   },
   emptyState: {
     textAlign: 'center',
     padding: '50px 20px',
+    '@media (max-width: 600px)': {
+      padding: '40px 15px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '35px 12px',
+    },
+    '@media (max-width: 375px)': {
+      padding: '30px 10px',
+    },
   },
   emptyStateText: {
     color: '#777 !important',
     fontSize: '1.1rem !important',
+    '@media (max-width: 600px)': {
+      fontSize: '1rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.95rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.9rem !important',
+    },
   },
   moreCompaniesCard: {
     display: 'flex',
-    // flexDirection: 'column',
     alignItems: 'center',
     gap: '10px',
     justifyContent: 'center',
@@ -268,14 +520,55 @@ const useStyles = makeStyles({
     '&:hover': {
       transform: 'translateY(-5px)',
     },
+    '@media (max-width: 1200px)': {
+      padding: '18px 12px',
+      height: '95px',
+      borderRadius: '11px',
+    },
+    '@media (max-width: 960px)': {
+      padding: '16px 10px',
+      height: '90px',
+      borderRadius: '10px',
+    },
     '@media (max-width: 768px)': {
       height: '90px',
+    },
+    '@media (max-width: 600px)': {
+      padding: '12px 8px',
+      height: '80px',
+      borderRadius: '9px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '10px 6px',
+      height: '75px',
+      borderRadius: '8px',
+    },
+    '@media (max-width: 375px)': {
+      padding: '8px 5px',
+      height: '70px',
+      borderRadius: '7px',
     },
   },
   plusIcon: {
     fontSize: '40px',
     color: '#ffffff',
     marginBottom: '4px',
+    '@media (max-width: 1200px)': {
+      fontSize: '36px',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '32px',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '28px',
+      marginBottom: '2px',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '24px',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '20px',
+    },
   },
   '@keyframes fadeInLogo': {
     '0%': { opacity: 0, transform: 'translateY(30px)' },
@@ -289,20 +582,42 @@ const useStyles = makeStyles({
     color: '#ffffff',
     fontSize: '16px',
     fontWeight: '500',
+    '@media (max-width: 1200px)': {
+      fontSize: '15px',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '14px',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '13px',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '12px',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '11px',
+    },
   },
 });
 
 const HiringPartners = () => {
   const classes = useStyles();
-  const [activeFilter, setActiveFilter] = useState('Software & IT');
+  const [activeFilter, setActiveFilter] = useState('Software');
 
   // Define categories and company data
+  // const categories = [
+  //   { id: 'software', name: 'Software', color: '#4285F4' },
+  //   { id: 'enterprise', name: 'Enterprise', color: '#9334EA' },  // New category
+  //   { id: 'finance', name: 'Fintech', color: '#34A853' },
+  //   { id: 'consulting', name: 'Consulting', color: '#FBBC05' },
+  //   { id: 'retail', name: 'E-commerce', color: '#EA4335' },
+  // ];
   const categories = [
-    { id: 'software', name: 'Software & IT', color: '#4285F4' },
-    { id: 'enterprise', name: 'Enterprise Tech', color: '#9334EA' },  // New category
-    { id: 'finance', name: 'Finance & Fintech', color: '#34A853' },
+    { id: 'software', name: 'Software', color: '#4285F4' },
+    { id: 'enterprise', name: 'Enterprise', color: '#9334EA' },  // New category
+    { id: 'finance', name: 'Fintech', color: '#34A853' },
     { id: 'consulting', name: 'Consulting', color: '#FBBC05' },
-    { id: 'retail', name: 'Retail & E-commerce', color: '#EA4335' },
+    { id: 'retail', name: 'E-commerce', color: '#EA4335' },
   ];
   
   const filters = categories.map(cat => cat.name);
@@ -320,40 +635,40 @@ const HiringPartners = () => {
 
   // Companies data with category assignment
   const companies = [
-    // Software & IT Companies
-    { name: 'Amazon', Logo: AmazonLogo, category: 'Retail & E-commerce' },
-    { name: 'CRED', Logo: CredLogo, category: 'Software & IT' },
-    { name: 'Zoho', Logo: ZohoLogo, category: 'Software & IT' },
-    { name: 'HappyFox', Logo: HappyFoxLogo, category: 'Software & IT' },
-    { name: 'Infrrt', Logo: InfrrtLogo, category: 'Software & IT' },
+    // Software Companies
+    { name: 'Amazon', Logo: AmazonLogo, category: 'E-commerce' },
+    { name: 'CRED', Logo: CredLogo, category: 'Software' },
+    { name: 'Zoho', Logo: ZohoLogo, category: 'Software' },
+    { name: 'HappyFox', Logo: HappyFoxLogo, category: 'Software' },
+    { name: 'Infrrt', Logo: InfrrtLogo, category: 'Software' },
     { name: 'Applexus', Logo: ({ className }) => (
         <img 
           src={applexusLogo} 
           className={className} 
           alt="Applexus" 
         />
-      ), category: 'Software & IT' },
+      ), category: 'Software' },
     
-    // Enterprise Tech Companies
-    { name: 'TCS', Logo: TcsLogo, category: 'Enterprise Tech' },
-    { name: 'Wipro', Logo: WiproLogo, category: 'Enterprise Tech' },
-    { name: 'Tech Mahindra', Logo: TechMahindraLogo, category: 'Enterprise Tech' },
-    { name: 'Dell', Logo: DellLogo, category: 'Software & IT' },
-    { name: 'Synopsys', Logo: SynopsysLogo, category: 'Enterprise Tech' },
-    { name: 'Caterpillar', Logo: CaterpillarLogo, category: 'Enterprise Tech' },
+    // Enterprise Companies
+    { name: 'TCS', Logo: TcsLogo, category: 'Enterprise' },
+    { name: 'Wipro', Logo: WiproLogo, category: 'Enterprise' },
+    { name: 'Tech Mahindra', Logo: TechMahindraLogo, category: 'Enterprise' },
+    { name: 'Dell', Logo: DellLogo, category: 'Software' },
+    { name: 'Synopsys', Logo: SynopsysLogo, category: 'Enterprise' },
+    { name: 'Caterpillar', Logo: CaterpillarLogo, category: 'Enterprise' },
 
     // Existing other categories remain unchanged
-    { name: 'Flipkart', Logo: FlipkartLogo, category: 'Retail & E-commerce' },
+    { name: 'Flipkart', Logo: FlipkartLogo, category: 'E-commerce' },
     { name: 'Infosys', Logo: InfosysLogo, category: 'Consulting' },
 
     { name: 'Accenture', Logo: AccentureLogo, category: 'Consulting' },
     { name: 'Deloitte', Logo: DeloitteLogo, category: 'Consulting' },
-    { name: 'Goldman Sachs', Logo: GoldmanSachsLogo, category: 'Finance & Fintech' },
-    { name: 'Paytm', Logo: PaytmLogo, category: 'Finance & Fintech' },
-    { name: 'PhonePe', Logo: PhonePeLogo, category: 'Finance & Fintech' },
-    { name: 'BharatPe', Logo: BharatPeLogo, category: 'Finance & Fintech' },
+    { name: 'Goldman Sachs', Logo: GoldmanSachsLogo, category: 'Fintech' },
+    { name: 'Paytm', Logo: PaytmLogo, category: 'Fintech' },
+    { name: 'PhonePe', Logo: PhonePeLogo, category: 'Fintech' },
+    { name: 'BharatPe', Logo: BharatPeLogo, category: 'Fintech' },
     { name: 'Capgemini', Logo: CapgeminiLogo, category: 'Consulting' },
-    { name: 'PharmEasy', Logo: PharmEasyLogo, category: 'Retail & E-commerce' },
+    { name: 'PharmEasy', Logo: PharmEasyLogo, category: 'E-commerce' },
     { name: 'Mu Sigma', Logo: MuSigmaLogo, category: 'Consulting' },
     { name: 'skillventory', Logo: ({ className }) => (
         <img 
@@ -368,23 +683,23 @@ const HiringPartners = () => {
           className={className} 
           alt="nielseniq" 
         />
-      ), category: 'Enterprise Tech' },
+      ), category: 'Enterprise' },
     { name: 'biznext', Logo: ({ className }) => (
         <img 
           src={biznext} 
           className={className} 
           alt="biznext" 
         />
-      ), category: 'Finance & Fintech' },
+      ), category: 'Fintech' },
     { name: 'meesho', Logo: ({ className }) => (
         <img 
           src={meesho} 
           className={className} 
           alt="meesho" 
         />
-      ), category: 'Retail & E-commerce' },
-    { name: 'Adidas', Logo: AdidasLogo, category: 'Retail & E-commerce' },
-    { name: 'Medplus', Logo: MedplusLogo, category: 'Retail & E-commerce' },
+      ), category: 'E-commerce' },
+    { name: 'Adidas', Logo: AdidasLogo, category: 'E-commerce' },
+    { name: 'Medplus', Logo: MedplusLogo, category: 'E-commerce' },
   ];
 
   // Filter companies based on selected category

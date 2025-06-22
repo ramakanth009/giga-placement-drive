@@ -19,7 +19,7 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     '@media (max-width: 960px)': {
-      padding: '60px 0',
+      padding: '20px 0',
       minHeight: 'auto',
     },
   },
@@ -149,7 +149,7 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     // marginTop: '40px',
     '@media (max-width: 960px)': {
-      marginTop: '30px',
+      // marginTop: '30px',
     },
   },
   ctaButton: {

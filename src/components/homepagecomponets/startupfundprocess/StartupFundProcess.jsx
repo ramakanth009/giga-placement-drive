@@ -1,19 +1,37 @@
 import React from 'react';
 import { Box, Typography, Container } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import {ReactComponent as Step1} from "../../../assets/startup/step1.svg";
-import {ReactComponent as Step2} from "../../../assets/startup/step2.svg";
-import {ReactComponent as Step3} from "../../../assets/startup/step3.svg";
-import {ReactComponent as Step4} from "../../../assets/startup/step4.svg";
-import {ReactComponent as Step5} from "../../../assets/startup/step5.svg";
-import {ReactComponent as Step6} from "../../../assets/startup/step6.svg";
 
 const useStyles = makeStyles({
   section: {
-    padding: '30px 0 0px 0',
-    backgroundColor: '#f8f9fa',
+    padding: '40px 0',
     position: 'relative',
     overflow: 'hidden',
+    background: 'linear-gradient(180deg, #101138 0%, #1e1c44 100%)',
+    '&:before': {
+      content: '""',
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundImage: 
+        'linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px)',
+      backgroundSize: '30px 30px',
+      zIndex: 1,
+    },
+  },
+  glowEffect: {
+    position: 'absolute',
+    width: '500px',
+    height: '500px',
+    borderRadius: '50%',
+    zIndex: 1,
+    opacity: 0.3,
+    filter: 'blur(150px)',
+    background: '#8a5cf7',
+    top: '-200px',
+    right: '-100px',
   },
   container: {
     position: 'relative',
@@ -21,123 +39,135 @@ const useStyles = makeStyles({
     textAlign: 'center',
   },
   title: {
-    fontSize: '2.5rem !important',
+    fontSize: '2rem !important',
     fontWeight: '700 !important',
-    marginBottom: '12px !important',
-    color: '#2A2B6A !important',
-    lineHeight: '1.2 !important',
-  },
-  rupeeText: {
-    color: '#FFC614 !important',
+    marginBottom: '8px !important',
+    color: 'white !important',
   },
   subtitle: {
-    fontSize: '1.1rem !important',
-    color: '#6b7280 !important',
-    marginBottom: '40px !important',
+    fontSize: '1rem !important',
+    color: 'rgba(255, 255, 255, 0.7) !important',
+    marginBottom: '30px !important',
     maxWidth: '600px',
-    margin: '0 auto 40px auto !important',
+    margin: '0 auto 30px auto !important',
+  },
+  fundingButton: {
+    backgroundColor: '#E91E63 !important',
+    color: 'white !important',
+    padding: '6px 15px !important',
+    borderRadius: '50px !important',
+    fontSize: '0.9rem !important',
+    fontWeight: 'bold !important',
+    display: 'inline-block !important',
+    marginBottom: '20px !important',
   },
   stepsContainer: {
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'flex-end',
+    gap: '2%',
     position: 'relative',
     marginTop: '20px',
-    gap:"20px",
-    maxWidth: '1200px',
-    margin: '0 auto',
-    '@media (max-width: 1200px)': {
+    '@media (max-width: 1000px)': {
       flexDirection: 'column',
       alignItems: 'center',
-      gap: '25px',
+      gap: '50px',
     },
   },
   step: {
     display: 'flex',
-    flexDirection: 'column', // text on top, icon at bottom
+    flexDirection: 'column',
     alignItems: 'center',
-    width: '120px',
+    width: '14%',
     position: 'relative',
     zIndex: 2,
-    '@media (max-width: 1200px)': {
-      width: '100%',
-      maxWidth: '250px',
+    '@media (max-width: 1000px)': {
+      width: '80%',
+      maxWidth: '300px',
     },
   },
-  stepNumber: {
-    width: '45px',
-    height: '30px',
-    borderRadius: '15px',
-    backgroundColor: '#FFC614',
+  stepNumberContainer: {
+    width: '60px',
+    height: '60px',
+    borderRadius: '50%',
+    backgroundColor: '#4263EB',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    marginLeft:"auto",
-    marginRight:"auto",
-    marginBottom: '10px',
+    marginBottom: '15px',
     position: 'relative',
-    zIndex: 3,
-    fontSize: '0.9rem !important',
-    fontWeight: '700 !important',
-    color: '#1a1a1a !important',
-    boxShadow: '0 4px 12px rgba(251, 191, 36, 0.3)',
-    textAlign:"center"
+    zIndex: 2,
+    transition: 'all 0.3s ease',
+    boxShadow: '0 4px 15px rgba(66, 99, 235, 0.3)',
+    overflow: 'hidden',
+    '&:hover': {
+      transform: 'scale(1.1)',
+      boxShadow: '0 6px 20px rgba(66, 99, 235, 0.4)',
+    },
+    '&::after': {
+      content: '""',
+      position: 'absolute',
+      width: '30px',
+      height: '100%',
+      background: 'rgba(255, 255, 255, 0.3)',
+      transform: 'skewX(-30deg) translateX(-150px)',
+      animation: '$shine 3s infinite',
+    },
+    '@media (max-width: 960px)': {
+      width: '50px',
+      height: '50px',
+    },
   },
-  stepContent: {
-    textAlign: 'center',
-    marginBottom: '12px',
-    zIndex: 3,
-    position: 'relative',
+  stepNumber: {
+    color: 'white',
+    fontWeight: 'bold !important',
+    fontSize: '1.8rem !important',
+    animation: '$pulse 2s infinite',
+    '@media (max-width: 960px)': {
+      fontSize: '1.5rem',
+    },
   },
   stepTitle: {
-    fontSize: '0.85rem !important',
+    fontSize: '1rem !important',
+    minWidth: '400px !important',
     fontWeight: '600 !important',
-    marginBottom: '5px !important',
-    color: '#1a1a1a !important',
-    lineHeight: '1.2 !important',
+    marginBottom: '8px !important',
+    color: 'white !important',
   },
   stepDescription: {
-    fontSize: '0.7rem !important',
-    color: '#6b7280 !important',
-    lineHeight: '1.2 !important',
-    maxWidth: '110px',
-    margin: '0 auto',
+    fontSize: '0.85rem !important',
+    color: 'rgba(255, 255, 255, 0.7) !important',
+    lineHeight: '1.4 !important',
   },
-  svgStep1: {
-    '& svg': {
-      width: '70px !important',
-      height: '70px !important',
-    }
+  progressLine: {
+    position: 'absolute',
+    height: '2px',
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    top: '30px',
+    left: '10%',
+    right: '10%',
+    zIndex: 1,
+    '@media (max-width: 1000px)': {
+      display: 'none',
+    },
   },
-  svgStep2: {
-    '& svg': {
-      width: '75px !important',
-      height: '65px !important',
-    }
+  '@keyframes shine': {
+    '0%': {
+      transform: 'skewX(-30deg) translateX(-150px)',
+    },
+    '100%': {
+      transform: 'skewX(-30deg) translateX(350px)',
+    },
   },
-  svgStep3: {
-    '& svg': {
-      width: '80px !important',
-      height: '60px !important',
-    }
-  },
-  svgStep4: {
-    '& svg': {
-      width: '65px !important',
-      height: '75px !important',
-    }
-  },
-  svgStep5: {
-    '& svg': {
-      width: '70px !important',
-      height: '70px !important',
-    }
-  },
-  svgStep6: {
-    '& svg': {
-      width: '75px !important',
-      height: '65px !important',
-    }
+  '@keyframes pulse': {
+    '0%': {
+      transform: 'scale(1)',
+    },
+    '50%': {
+      transform: 'scale(1.1)',
+    },
+    '100%': {
+      transform: 'scale(1)',
+    },
   },
 });
 
@@ -146,66 +176,62 @@ const StartupFundProcess = () => {
 
   const steps = [
     {
-      number: "01",
+      number: 1,
       title: "Ideation",
-      description: "Spot a tech problem, ideate, validate, and test market fit.",
-      Icon: Step1,
+      description: "Think of a real-world tech problem worth solving. Conceptualize, validate, and evaluate product-market fit."
     },
     {
-      number: "02",
+      number: 2,
       title: "Prototyping",
-      description: "Design and build your MVP using Gigaversity's labs, tools, and mentor guidance.",
-      Icon: Step2,
+      description: "Design and build your MVP using Gigaversity's labs, tools, and mentor guidance."
     },
     {
-      number: "03",
+      number: 3,
       title: "Mentorship",
-      description: "Get 1:1 sessions with startup founders, tech leaders, and VCs to refine your product.",
-      Icon: Step3,
+      description: "Get 1:1 sessions with startup founders, tech leaders, and VCs to refine your product."
     },
     {
-      number: "04",
+      number: 4,
       title: "Pitch Day",
-      description: "Present your startup to our in-house incubation panel for feedback and funding.",
-      Icon: Step4,
+      description: "Present your startup to our in-house incubation panel for feedback and funding."
     },
     {
-      number: "05",
+      number: 5,
       title: "Get Funded",
-      description: "Receive up to ₹1 Lakh to build, scale, and launch your product from our campus.",
-      Icon: Step5,
+      description: "Receive up to ₹1 Lakh to build, scale, and launch your product from our campus."
     },
     {
-      number: "06",
+      number: 6,
       title: "Scale your Tech Product",
-      description: "Grow your MVP into a market-ready product with expert guidance, UX improvements, and go-to-market strategies.",
-      Icon: Step6,
+      description: "Grow your MVP into a market-ready product with expert guidance, UX improvements, and go-to-market strategies."
     }
   ];
 
   return (
     <Box className={classes.section}>
-      <Container maxWidth="xl" className={classes.container}>
+      <Box className={classes.glowEffect} />
+      <Container maxWidth="lg" className={classes.container}>
         <Typography variant="h2" className={classes.title}>
-          Get Access to the <span className={classes.rupeeText}>₹1 Lakh Startup</span> Fund
+          Get Access to the <span style={{ color: '#FFC614' }}>₹1 Lakh Startup </span>Fund
         </Typography>
         <Typography variant="body1" className={classes.subtitle}>
           Turn your tech idea into reality — right from campus.
         </Typography>
         
+        <Box className={classes.fundingButton}>
+          ₹1 LAKH FUNDING
+        </Box>
+        
         <Box className={classes.stepsContainer}>
-          {steps.map((step, index) => (
+          <Box className={classes.progressLine}></Box>
+          
+          {steps.map((step) => (
             <Box key={step.number} className={classes.step}>
-              {/* Text content at the top */}
-              <Box className={classes.stepContent}>
-                <Box className={classes.stepNumber}>{step.number}</Box>
-                <Typography className={classes.stepTitle}>{step.title}</Typography>
-                <Typography className={classes.stepDescription}>{step.description}</Typography>
+              <Box className={classes.stepNumberContainer}>
+                <Typography className={classes.stepNumber}>{step.number}</Typography>
               </Box>
-              {/* SVG icon at the bottom */}
-              <Box>
-                <step.Icon />
-              </Box>
+              <Typography className={classes.stepTitle}>{step.title}</Typography>
+              <Typography className={classes.stepDescription}>{step.description}</Typography>
             </Box>
           ))}
         </Box>
