@@ -152,40 +152,58 @@ const useStyles = makeStyles({
 
   leftSection: {
     flex: 1,
-    padding: '0 15px',
+    padding: '40px 15px',
     '@media (max-width: 1200px)': {
-      padding: '0 10px',
+      padding: '35px 10px',
     },
     '@media (max-width: 960px)': {
-      padding: '0',
+      padding: '30px 0',
+    },
+    '@media (max-width: 600px)': {
+      padding: '25px 0',
+    },
+    '@media (max-width: 480px)': {
+      padding: '20px 0',
+    },
+  },
+
+  titleContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '15px',
+    marginBottom: '35px',
+    '@media (max-width: 1200px)': {
+      marginBottom: '30px',
+      gap: '12px',
+    },
+    '@media (max-width: 960px)': {
+      justifyContent: 'center',
+      marginBottom: '25px',
+      gap: '10px',
+    },
+    '@media (max-width: 600px)': {
+      marginBottom: '20px',
+      gap: '8px',
+      flexDirection: 'column',
+    },
+    '@media (max-width: 480px)': {
+      marginBottom: '15px',
+      gap: '6px',
     },
   },
 
   mainTitle: {
-    fontSize: '2.8rem !important',
+    fontSize: '2.5rem !important',
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
-    marginBottom: '20px !important',
     lineHeight: '1.1 !important',
     position: 'relative',
-    '&::after': {
-      content: '""',
-      position: 'absolute',
-      bottom: '-8px',
-      left: '0',
-      width: '60px',
-      height: '4px',
-      background: 'linear-gradient(90deg, #FFC614, #FFD700)',
-      borderRadius: '3px',
-    },
+    margin: '0 !important',
     '@media (max-width: 1200px)': {
       fontSize: '2.5rem !important',
-      marginBottom: '18px !important',
     },
     '@media (max-width: 960px)': {
       fontSize: '2.2rem !important',
-      textAlign: 'center',
-      marginBottom: '15px !important',
       '&::after': { 
         left: '50%', 
         transform: 'translateX(-50%)',
@@ -194,11 +212,13 @@ const useStyles = makeStyles({
     },
     '@media (max-width: 600px)': {
       fontSize: '1.9rem !important',
-      marginBottom: '12px !important',
+      '&::after': { 
+        left: '50%', 
+        transform: 'translateX(-50%)',
+      },
     },
     '@media (max-width: 480px)': {
       fontSize: '1.7rem !important',
-      marginBottom: '10px !important',
       '&::after': { 
         width: '40px',
         height: '3px',
@@ -206,21 +226,45 @@ const useStyles = makeStyles({
     },
     '@media (max-width: 375px)': {
       fontSize: '1.5rem !important',
-      marginBottom: '8px !important',
+    },
+  },
+
+  bigLoveIcon: {
+    color: '#e91e63',
+    fontSize: '4rem !important',
+    animation: '$heartBeat 2s ease-in-out infinite',
+    filter: 'drop-shadow(0 8px 20px rgba(233, 30, 99, 0.3))',
+    '@media (max-width: 1200px)': {
+      fontSize: '3.5rem !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '3rem !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '2.5rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '2rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1.8rem !important',
     },
   },
 
   descriptionBox: {
     background: 'linear-gradient(135deg, #2A2B6A 0%, #4A4C9B 100%)',
     color: 'white',
-    padding: '25px 30px',
+    padding: '45px 40px',
     borderRadius: '16px',
-    marginBottom: '25px',
+    marginBottom: '35px',
     boxShadow: '0 15px 40px rgba(42, 43, 106, 0.25)',
     position: 'relative',
     overflow: 'hidden',
     transform: 'perspective(1000px) rotateY(3deg)',
     transition: 'all 0.3s ease',
+    minHeight: '220px',
+    display: 'flex',
+    alignItems: 'center',
     '&:hover': {
       transform: 'perspective(1000px) rotateY(0deg) translateY(-3px)',
       boxShadow: '0 18px 45px rgba(42, 43, 106, 0.3)',
@@ -235,158 +279,163 @@ const useStyles = makeStyles({
       background: 'linear-gradient(90deg, #FFC614, #FFD700)',
     },
     '@media (max-width: 1200px)': {
-      padding: '22px 26px',
-      marginBottom: '22px',
+      padding: '40px 35px',
+      marginBottom: '30px',
+      minHeight: '200px',
     },
     '@media (max-width: 960px)': {
       transform: 'none',
-      padding: '20px 24px',
-      marginBottom: '20px',
+      padding: '35px 30px',
+      marginBottom: '25px',
+      minHeight: '180px',
       '&:hover': { transform: 'translateY(-3px)' },
     },
     '@media (max-width: 600px)': {
-      padding: '18px 20px',
-      marginBottom: '18px',
+      padding: '30px 25px',
+      marginBottom: '20px',
       borderRadius: '12px',
+      minHeight: '160px',
     },
     '@media (max-width: 480px)': {
-      padding: '15px 18px',
-      marginBottom: '15px',
+      padding: '25px 20px',
+      marginBottom: '18px',
+      minHeight: '140px',
     },
     '@media (max-width: 375px)': {
-      padding: '12px 15px',
-      marginBottom: '12px',
+      padding: '20px 18px',
+      marginBottom: '15px',
+      minHeight: '120px',
     },
   },
 
   descriptionText: {
-    fontSize: '1.1rem !important',
-    lineHeight: '1.6 !important',
+    fontSize: '1.25rem !important',
+    lineHeight: '1.7 !important',
     fontWeight: '500 !important',
     margin: '0 !important',
     position: 'relative',
     zIndex: 1,
     '@media (max-width: 1200px)': {
-      fontSize: '1.05rem !important',
+      fontSize: '1.2rem !important',
     },
     '@media (max-width: 960px)': {
-      fontSize: '1rem !important',
+      fontSize: '1.15rem !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '0.95rem !important',
-      lineHeight: '1.5 !important',
+      fontSize: '1.1rem !important',
+      lineHeight: '1.6 !important',
     },
     '@media (max-width: 480px)': {
-      fontSize: '0.9rem !important',
+      fontSize: '1rem !important',
     },
     '@media (max-width: 375px)': {
-      fontSize: '0.85rem !important',
+      fontSize: '0.95rem !important',
     },
   },
 
   statsBox: {
     display: 'flex',
-    gap: '20px',
-    marginTop: '20px',
+    gap: '30px',
+    marginTop: '30px',
     '@media (max-width: 1200px)': {
-      gap: '18px',
-      marginTop: '18px',
+      gap: '25px',
+      marginTop: '25px',
     },
     '@media (max-width: 960px)': {
       justifyContent: 'center',
-      gap: '15px',
-      marginTop: '15px',
+      gap: '20px',
+      marginTop: '20px',
     },
     '@media (max-width: 600px)': {
       flexDirection: 'column',
-      gap: '12px',
-      marginTop: '12px',
+      gap: '18px',
+      marginTop: '18px',
     },
     '@media (max-width: 480px)': {
-      gap: '10px',
-      marginTop: '10px',
+      gap: '15px',
+      marginTop: '15px',
     },
     '@media (max-width: 375px)': {
-      gap: '8px',
-      marginTop: '8px',
+      gap: '12px',
+      marginTop: '12px',
     },
   },
 
   statItem: {
     display: 'flex',
     alignItems: 'center',
-    gap: '8px',
-    padding: '12px 16px',
+    gap: '12px',
+    padding: '18px 24px',
     background: 'rgba(255, 255, 255, 0.9)',
-    borderRadius: '10px',
+    borderRadius: '12px',
     border: '1px solid rgba(42, 43, 106, 0.1)',
-    boxShadow: '0 6px 20px rgba(42, 43, 106, 0.08)',
+    boxShadow: '0 8px 25px rgba(42, 43, 106, 0.1)',
     transition: 'all 0.3s ease',
     '&:hover': {
-      transform: 'translateY(-2px)',
-      boxShadow: '0 8px 25px rgba(42, 43, 106, 0.12)',
+      transform: 'translateY(-3px)',
+      boxShadow: '0 12px 30px rgba(42, 43, 106, 0.15)',
     },
     '@media (max-width: 1200px)': {
-      padding: '10px 14px',
-      gap: '7px',
+      padding: '15px 20px',
+      gap: '10px',
     },
     '@media (max-width: 600px)': {
-      padding: '8px 12px',
-      gap: '6px',
+      padding: '12px 18px',
+      gap: '8px',
     },
     '@media (max-width: 480px)': {
-      padding: '6px 10px',
-      gap: '5px',
+      padding: '10px 15px',
+      gap: '7px',
     },
     '@media (max-width: 375px)': {
-      padding: '5px 8px',
-      gap: '4px',
+      padding: '8px 12px',
+      gap: '6px',
     },
   },
 
   statIcon: {
-    width: '30px',
-    height: '30px',
-    borderRadius: '6px',
+    width: '40px',
+    height: '40px',
+    borderRadius: '8px',
     backgroundColor: 'rgba(255, 198, 20, 0.15)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     color: '#2A2B6A',
     '@media (max-width: 1200px)': {
+      width: '35px',
+      height: '35px',
+    },
+    '@media (max-width: 600px)': {
+      width: '30px',
+      height: '30px',
+    },
+    '@media (max-width: 480px)': {
       width: '28px',
       height: '28px',
     },
-    '@media (max-width: 600px)': {
+    '@media (max-width: 375px)': {
       width: '25px',
       height: '25px',
-    },
-    '@media (max-width: 480px)': {
-      width: '22px',
-      height: '22px',
-    },
-    '@media (max-width: 375px)': {
-      width: '20px',
-      height: '20px',
     },
   },
 
   statText: {
-    fontSize: '0.9rem !important',
+    fontSize: '1.05rem !important',
     color: '#2A2B6A !important',
     fontWeight: '600 !important',
     margin: '0 !important',
     '@media (max-width: 1200px)': {
-      fontSize: '0.85rem !important',
+      fontSize: '1rem !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '0.8rem !important',
+      fontSize: '0.95rem !important',
     },
     '@media (max-width: 480px)': {
-      fontSize: '0.75rem !important',
+      fontSize: '0.9rem !important',
     },
     '@media (max-width: 375px)': {
-      fontSize: '0.7rem !important',
+      fontSize: '0.85rem !important',
     },
   },
 
@@ -782,9 +831,12 @@ const TestimonialComponent = () => {
         <Box className={classes.contentBox}>
           {/* Left Section - Description */}
           <Box className={classes.leftSection}>
-            <Typography variant="h1" className={classes.mainTitle}>
-              Be the first to review
-            </Typography>
+            <Box className={classes.titleContainer}>
+              <Typography variant="h1" className={classes.mainTitle}>
+                Be the first to review
+              </Typography>
+              <FavoriteIcon className={classes.bigLoveIcon} />
+            </Box>
 
             <Box className={classes.descriptionBox}>
               <Typography className={classes.descriptionText}>
@@ -814,7 +866,7 @@ const TestimonialComponent = () => {
                   Share Your Experience
                 </Typography>
 
-                <form onSubmit={handleSubmit}>
+                <Box component="form" onSubmit={handleSubmit}>
                   <TextField
                     fullWidth
                     label="Your Name"
@@ -883,7 +935,7 @@ const TestimonialComponent = () => {
                       {loading ? 'Submitting...' : 'Submit Review'}
                     </Button>
                   </Box>
-                </form>
+                </Box>
               </Paper>
             </Box>
           </Box>

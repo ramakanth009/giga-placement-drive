@@ -21,6 +21,9 @@ const useStyles = makeStyles({
       opacity: 0.2,
       zIndex: 1,
     },
+    '@media (max-width: 1200px)': {
+      padding: '55px 0',
+    },
     '@media (max-width: 960px)': {
       padding: '40px 0',
     },
@@ -45,10 +48,28 @@ const useStyles = makeStyles({
   content: {
     position: 'relative',
     zIndex: 3,
+    '@media (max-width: 1200px)': {
+      padding: '0 20px',
+    },
+    '@media (max-width: 960px)': {
+      padding: '0 16px',
+    },
+    '@media (max-width: 600px)': {
+      padding: '0 12px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '0 10px',
+    },
+    '@media (max-width: 375px)': {
+      padding: '0 8px',
+    },
   },
   header: {
     textAlign: 'center',
     marginBottom: '40px',
+    '@media (max-width: 1200px)': {
+      marginBottom: '35px',
+    },
     '@media (max-width: 960px)': {
       marginBottom: '30px',
     },
@@ -58,6 +79,9 @@ const useStyles = makeStyles({
     '@media (max-width: 480px)': {
       marginBottom: '20px',
     },
+    '@media (max-width: 375px)': {
+      marginBottom: '18px',
+    },
   },
   title: {
     fontSize: '2.5rem !important',
@@ -65,6 +89,9 @@ const useStyles = makeStyles({
     color: 'white !important',
     '& span': {
       color: '#FFC614 !important',
+    },
+    '@media (max-width: 1200px)': {
+      fontSize: '2.3rem !important',
     },
     '@media (max-width: 960px)': {
       fontSize: '2.2rem !important',
@@ -84,17 +111,29 @@ const useStyles = makeStyles({
     gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
     gap: '24px',
     marginBottom: '40px',
+    '@media (max-width: 1200px)': {
+      gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+      gap: '22px',
+      marginBottom: '35px',
+    },
     '@media (max-width: 960px)': {
       gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
       gap: '20px',
     },
     '@media (max-width: 600px)': {
-      gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
-      gap: '16px',
+      gridTemplateColumns: 'repeat(4, 1fr)',
+      gap: '8px',
+      marginBottom: '30px',
     },
     '@media (max-width: 480px)': {
-      gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
-      gap: '12px',
+      gridTemplateColumns: 'repeat(4, 1fr)',
+      gap: '6px',
+      marginBottom: '25px',
+    },
+    '@media (max-width: 375px)': {
+      gridTemplateColumns: 'repeat(4, 1fr)',
+      gap: '4px',
+      marginBottom: '20px',
     },
   },
   toolCard: {
@@ -138,11 +177,24 @@ const useStyles = makeStyles({
         transform: 'scale(1)',
       },
     },
-    '@media (max-width: 600px)': {
+    '@media (max-width: 1200px)': {
+      padding: '22px 18px',
+      borderRadius: '14px',
+    },
+    '@media (max-width: 960px)': {
       padding: '20px 16px',
     },
+    '@media (max-width: 600px)': {
+      padding: '12px 8px',
+      borderRadius: '8px',
+    },
     '@media (max-width: 480px)': {
-      padding: '16px 12px',
+      padding: '10px 6px',
+      borderRadius: '6px',
+    },
+    '@media (max-width: 375px)': {
+      padding: '8px 4px',
+      borderRadius: '6px',
     },
   },
   selectedToolCard: {
@@ -166,11 +218,29 @@ const useStyles = makeStyles({
     zIndex: 3,
     boxShadow: '0 4px 12px rgba(139, 92, 246, 0.3)',
     transition: 'all 0.3s ease',
+    '@media (max-width: 1200px)': {
+      fontSize: '0.73rem',
+      padding: '5px 12px',
+      top: '10px',
+      right: '10px',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '0.72rem',
+      padding: '5px 11px',
+    },
     '@media (max-width: 480px)': {
       fontSize: '0.7rem',
       padding: '4px 10px',
       top: '8px',
       right: '8px',
+      borderRadius: '16px',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.65rem',
+      padding: '3px 8px',
+      top: '6px',
+      right: '6px',
+      borderRadius: '14px',
     },
   },
   toolIconContainer: {
@@ -180,6 +250,21 @@ const useStyles = makeStyles({
     marginBottom: '16px',
     position: 'relative',
     zIndex: 3,
+    '@media (max-width: 1200px)': {
+      marginBottom: '14px',
+    },
+    '@media (max-width: 960px)': {
+      marginBottom: '12px',
+    },
+    '@media (max-width: 600px)': {
+      marginBottom: '8px',
+    },
+    '@media (max-width: 480px)': {
+      marginBottom: '6px',
+    },
+    '@media (max-width: 375px)': {
+      marginBottom: '4px',
+    },
   },
   toolIconWrapper: {
     width: '64px',
@@ -218,6 +303,61 @@ const useStyles = makeStyles({
         opacity: 1,
       },
     },
+    '@media (max-width: 1200px)': {
+      width: '60px',
+      height: '60px',
+      borderRadius: '14px',
+      '&::before': {
+        borderRadius: '14px',
+      },
+      '&::after': {
+        borderRadius: '12px',
+      },
+    },
+    '@media (max-width: 960px)': {
+      width: '56px',
+      height: '56px',
+      borderRadius: '12px',
+      '&::before': {
+        borderRadius: '12px',
+      },
+      '&::after': {
+        borderRadius: '10px',
+      },
+    },
+    '@media (max-width: 600px)': {
+      width: '36px',
+      height: '36px',
+      borderRadius: '6px',
+      '&::before': {
+        borderRadius: '6px',
+      },
+      '&::after': {
+        borderRadius: '4px',
+      },
+    },
+    '@media (max-width: 480px)': {
+      width: '32px',
+      height: '32px',
+      borderRadius: '5px',
+      '&::before': {
+        borderRadius: '5px',
+      },
+      '&::after': {
+        borderRadius: '3px',
+      },
+    },
+    '@media (max-width: 375px)': {
+      width: '28px',
+      height: '28px',
+      borderRadius: '4px',
+      '&::before': {
+        borderRadius: '4px',
+      },
+      '&::after': {
+        borderRadius: '2px',
+      },
+    },
   },
   toolIcon: {
     fontSize: '32px !important',
@@ -228,8 +368,20 @@ const useStyles = makeStyles({
     '$toolCard:hover &': {
       filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.15))',
     },
-    '@media (max-width: 480px)': {
+    '@media (max-width: 1200px)': {
+      fontSize: '30px !important',
+    },
+    '@media (max-width: 960px)': {
       fontSize: '28px !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '18px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '16px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '14px !important',
     },
   },
   toolHeader: {
@@ -239,6 +391,18 @@ const useStyles = makeStyles({
     marginBottom: '8px',
     position: 'relative',
     zIndex: 3,
+    '@media (max-width: 1200px)': {
+      marginBottom: '7px',
+    },
+    '@media (max-width: 960px)': {
+      marginBottom: '6px',
+    },
+    '@media (max-width: 480px)': {
+      marginBottom: '5px',
+    },
+    '@media (max-width: 375px)': {
+      marginBottom: '4px',
+    },
   },
   toolName: {
     fontWeight: '700 !important',
@@ -251,8 +415,21 @@ const useStyles = makeStyles({
     '$toolCard:hover &': {
       color: '#000 !important',
     },
+    '@media (max-width: 1200px)': {
+      fontSize: '1.15rem !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '1.12rem !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.85rem !important',
+    },
     '@media (max-width: 480px)': {
-      fontSize: '1rem !important',
+      fontSize: '0.8rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.75rem !important',
+      lineHeight: '1.1 !important',
     },
   },
   priceText: {
@@ -264,6 +441,24 @@ const useStyles = makeStyles({
     transition: 'opacity 0.3s ease',
     '$toolCard:hover &': {
       opacity: 1,
+    },
+    '@media (max-width: 1200px)': {
+      fontSize: '0.78rem !important',
+      marginTop: '3px',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '0.76rem !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.65rem !important',
+      marginTop: '1px',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.6rem !important',
+      marginTop: '1px',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.55rem !important',
     },
   },
   toolDetails: {
@@ -285,18 +480,53 @@ const useStyles = makeStyles({
       background: 'linear-gradient(90deg, transparent, currentColor, transparent)',
       opacity: 0.8,
     },
+    '@media (max-width: 1200px)': {
+      padding: '28px',
+      borderRadius: '18px',
+      marginTop: '22px',
+    },
+    '@media (max-width: 960px)': {
+      padding: '26px',
+      marginTop: '20px',
+    },
     '@media (max-width: 600px)': {
       padding: '24px',
       borderRadius: '16px',
+      marginTop: '18px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '20px',
+      borderRadius: '14px',
+      marginTop: '16px',
+    },
+    '@media (max-width: 375px)': {
+      padding: '16px',
+      borderRadius: '12px',
+      marginTop: '14px',
     },
   },
   twoColumn: {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
     gap: '32px',
+    '@media (max-width: 1200px)': {
+      gap: '28px',
+    },
+    '@media (max-width: 960px)': {
+      gap: '26px',
+    },
     '@media (max-width: 768px)': {
       gridTemplateColumns: '1fr',
       gap: '24px',
+    },
+    '@media (max-width: 600px)': {
+      gap: '20px',
+    },
+    '@media (max-width: 480px)': {
+      gap: '18px',
+    },
+    '@media (max-width: 375px)': {
+      gap: '16px',
     },
   },
   toolDetailsHeader: {
@@ -305,6 +535,22 @@ const useStyles = makeStyles({
     marginBottom: '20px',
     paddingBottom: '16px',
     borderBottom: '2px solid rgba(0, 0, 0, 0.05)',
+    '@media (max-width: 1200px)': {
+      marginBottom: '18px',
+      paddingBottom: '14px',
+    },
+    '@media (max-width: 960px)': {
+      marginBottom: '16px',
+      paddingBottom: '12px',
+    },
+    '@media (max-width: 480px)': {
+      marginBottom: '14px',
+      paddingBottom: '10px',
+    },
+    '@media (max-width: 375px)': {
+      marginBottom: '12px',
+      paddingBottom: '8px',
+    },
   },
   toolDetailsName: {
     fontSize: '1.8rem !important',
@@ -321,8 +567,37 @@ const useStyles = makeStyles({
       background: 'currentColor',
       borderRadius: '2px',
     },
+    '@media (max-width: 1200px)': {
+      fontSize: '1.7rem !important',
+      '&::after': {
+        width: '55px',
+        bottom: '-7px',
+      },
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '1.6rem !important',
+      '&::after': {
+        width: '50px',
+        bottom: '-6px',
+      },
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '1.55rem !important',
+    },
     '@media (max-width: 480px)': {
       fontSize: '1.5rem !important',
+      '&::after': {
+        width: '45px',
+        height: '2px',
+        bottom: '-5px',
+      },
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1.4rem !important',
+      '&::after': {
+        width: '40px',
+        bottom: '-4px',
+      },
     },
   },
   toolDescription: {
@@ -330,7 +605,29 @@ const useStyles = makeStyles({
     lineHeight: '1.6 !important',
     color: '#4a5568 !important',
     marginBottom: '24px !important',
-    fontWeight:"bold !important"
+    fontWeight:"bold !important",
+    '@media (max-width: 1200px)': {
+      fontSize: '0.98rem !important',
+      marginBottom: '22px !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '0.96rem !important',
+      marginBottom: '20px !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.94rem !important',
+      lineHeight: '1.5 !important',
+      marginBottom: '18px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.9rem !important',
+      marginBottom: '16px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.85rem !important',
+      lineHeight: '1.4 !important',
+      marginBottom: '14px !important',
+    },
   },
   useCases: {
     marginTop: '24px',
@@ -339,6 +636,34 @@ const useStyles = makeStyles({
       fontWeight: '600 !important',
       color: '#2d3748 !important',
       marginBottom: '16px !important',
+    },
+    '@media (max-width: 1200px)': {
+      marginTop: '22px',
+      '& > h6': {
+        fontSize: '1.18rem !important',
+        marginBottom: '14px !important',
+      },
+    },
+    '@media (max-width: 960px)': {
+      marginTop: '20px',
+      '& > h6': {
+        fontSize: '1.16rem !important',
+        marginBottom: '12px !important',
+      },
+    },
+    '@media (max-width: 480px)': {
+      marginTop: '18px',
+      '& > h6': {
+        fontSize: '1.1rem !important',
+        marginBottom: '10px !important',
+      },
+    },
+    '@media (max-width: 375px)': {
+      marginTop: '16px',
+      '& > h6': {
+        fontSize: '1.05rem !important',
+        marginBottom: '8px !important',
+      },
     },
   },
   useCaseItem: {
@@ -352,13 +677,54 @@ const useStyles = makeStyles({
       color: '#4a5568 !important',
       lineHeight: '1.5 !important',
     },
+    '@media (max-width: 1200px)': {
+      marginBottom: '10px',
+      '& span': {
+        fontSize: '0.98rem !important',
+      },
+    },
+    '@media (max-width: 960px)': {
+      marginBottom: '9px',
+      '& span': {
+        fontSize: '0.96rem !important',
+      },
+    },
+    '@media (max-width: 480px)': {
+      marginBottom: '8px',
+      '& span': {
+        fontSize: '0.9rem !important',
+        lineHeight: '1.4 !important',
+      },
+    },
+    '@media (max-width: 375px)': {
+      marginBottom: '6px',
+      '& span': {
+        fontSize: '0.85rem !important',
+        lineHeight: '1.3 !important',
+      },
+    },
   },
   arrowRight: {
     color: 'currentColor !important',
     marginRight: '12px !important',
-    // marginTop: '2px !important',
     fontWeight: 'bold !important',
     fontSize: '1.1rem !important',
+    '@media (max-width: 1200px)': {
+      marginRight: '10px !important',
+      fontSize: '1.05rem !important',
+    },
+    '@media (max-width: 960px)': {
+      marginRight: '9px !important',
+      fontSize: '1rem !important',
+    },
+    '@media (max-width: 480px)': {
+      marginRight: '8px !important',
+      fontSize: '0.95rem !important',
+    },
+    '@media (max-width: 375px)': {
+      marginRight: '6px !important',
+      fontSize: '0.9rem !important',
+    },
   },
   capabilitiesSection: {
     marginTop: '32px',
@@ -368,11 +734,51 @@ const useStyles = makeStyles({
       color: '#2d3748 !important',
       marginBottom: '20px !important',
     },
+    '@media (max-width: 1200px)': {
+      marginTop: '28px',
+      '& > h6': {
+        fontSize: '1.18rem !important',
+        marginBottom: '18px !important',
+      },
+    },
+    '@media (max-width: 960px)': {
+      marginTop: '26px',
+      '& > h6': {
+        fontSize: '1.16rem !important',
+        marginBottom: '16px !important',
+      },
+    },
+    '@media (max-width: 480px)': {
+      marginTop: '22px',
+      '& > h6': {
+        fontSize: '1.1rem !important',
+        marginBottom: '14px !important',
+      },
+    },
+    '@media (max-width: 375px)': {
+      marginTop: '18px',
+      '& > h6': {
+        fontSize: '1.05rem !important',
+        marginBottom: '12px !important',
+      },
+    },
   },
   capabilityChart: {
     display: 'flex',
     flexDirection: 'column',
     gap: '12px',
+    '@media (max-width: 1200px)': {
+      gap: '10px',
+    },
+    '@media (max-width: 960px)': {
+      gap: '9px',
+    },
+    '@media (max-width: 480px)': {
+      gap: '8px',
+    },
+    '@media (max-width: 375px)': {
+      gap: '6px',
+    },
   },
   capabilityBar: {
     position: 'relative',
@@ -381,6 +787,22 @@ const useStyles = makeStyles({
     borderRadius: '8px',
     overflow: 'hidden',
     border: '1px solid #e2e8f0',
+    '@media (max-width: 1200px)': {
+      height: '44px',
+      borderRadius: '7px',
+    },
+    '@media (max-width: 960px)': {
+      height: '42px',
+      borderRadius: '6px',
+    },
+    '@media (max-width: 480px)': {
+      height: '38px',
+      borderRadius: '5px',
+    },
+    '@media (max-width: 375px)': {
+      height: '34px',
+      borderRadius: '4px',
+    },
   },
   capabilityBarFill: {
     height: '100%',
@@ -417,6 +839,57 @@ const useStyles = makeStyles({
       '&:last-child': {
         fontSize: '0.85rem !important',
         opacity: 0.9,
+      },
+    },
+    '@media (max-width: 1200px)': {
+      padding: '0 14px',
+      borderRadius: '5px',
+      '& span': {
+        fontSize: '0.88rem !important',
+        '&:first-child': {
+          fontSize: '0.92rem !important',
+        },
+        '&:last-child': {
+          fontSize: '0.82rem !important',
+        },
+      },
+    },
+    '@media (max-width: 960px)': {
+      padding: '0 12px',
+      '& span': {
+        fontSize: '0.86rem !important',
+        '&:first-child': {
+          fontSize: '0.9rem !important',
+        },
+        '&:last-child': {
+          fontSize: '0.8rem !important',
+        },
+      },
+    },
+    '@media (max-width: 480px)': {
+      padding: '0 10px',
+      borderRadius: '4px',
+      '& span': {
+        fontSize: '0.8rem !important',
+        '&:first-child': {
+          fontSize: '0.85rem !important',
+        },
+        '&:last-child': {
+          fontSize: '0.75rem !important',
+        },
+      },
+    },
+    '@media (max-width: 375px)': {
+      padding: '0 8px',
+      borderRadius: '3px',
+      '& span': {
+        fontSize: '0.75rem !important',
+        '&:first-child': {
+          fontSize: '0.8rem !important',
+        },
+        '&:last-child': {
+          fontSize: '0.7rem !important',
+        },
       },
     },
   },
@@ -581,8 +1054,6 @@ const AIToolkit = ({ tools = [], capabilities = [], programName = "Development" 
               onClick={() => handleToolSelect(tool.id)}
               elevation={0}
             >
-              {tool.isPaid && <span className={classes.premiumBadge}>Premium</span>}
-              
               <Box className={classes.toolIconContainer}>
                 <Box className={classes.toolIconWrapper} style={{ color: tool.iconColor || tool.color }}>
                   <Box className={classes.toolIcon} style={{ color: tool.iconColor || tool.color }}>
@@ -611,6 +1082,7 @@ const AIToolkit = ({ tools = [], capabilities = [], programName = "Development" 
             <Box className={classes.twoColumn}>
               <Box>
                 <Box className={classes.toolDetailsHeader}>
+                  {selectedTool.isPaid && <span className={classes.premiumBadge}>Premium</span>}
                   <Typography className={classes.toolDetailsName} style={{ color: selectedTool.color }}>
                     {selectedTool.name}
                   </Typography>
