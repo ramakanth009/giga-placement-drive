@@ -157,7 +157,7 @@ const useStyles = makeStyles({
     },
   },
   title: {
-    fontSize: '16px !important',
+    fontSize: '20px !important',
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
     marginTop: '20px !important',
@@ -177,16 +177,16 @@ const useStyles = makeStyles({
       transition: 'width 0.3s ease',
     },
     '@media (max-width: 1200px)': {
-      fontSize: '15px !important',
+      fontSize: '18px !important',
       marginTop: '18px !important',
     },
     '@media (max-width: 960px)': {
-      fontSize: '14px !important',
+      fontSize: '16px !important',
       marginTop: '16px !important',
       marginBottom: '10px !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '13px !important',
+      fontSize: '15px !important',
       marginTop: '14px !important',
       marginBottom: '8px !important',
     },
@@ -197,16 +197,16 @@ const useStyles = makeStyles({
     },
   },
   titleScaled: {
-    fontSize: '17px !important',
+    fontSize: '22px !important',
     color: '#2A2B6A !important',
     '@media (max-width: 1200px)': {
-      fontSize: '16px !important',
+      fontSize: '20px !important',
     },
     '@media (max-width: 960px)': {
-      fontSize: '15px !important',
+      fontSize: '18px !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '14px !important',
+      fontSize: '16px !important',
     },
   },
   topicsContainer: {
