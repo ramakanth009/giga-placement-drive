@@ -92,19 +92,22 @@ const useStyles = makeStyles({
     '@media (max-width: 1200px)': {
       gap: '22px',
     },
-    '@media (max-width: 900px)': {
-      gap: '20px',
+    '@media (max-width: 960px)': {
+      gap: '15px',
+      maxWidth: '500px',
+      margin: '0 auto',
     },
     '@media (max-width: 600px)': {
-      gap: '15px',
-      flexDirection: 'column',
-      alignItems: 'center',
+      gap: '12px',
+      maxWidth: '400px',
     },
     '@media (max-width: 480px)': {
-      gap: '12px',
+      gap: '10px',
+      maxWidth: '350px',
     },
     '@media (max-width: 375px)': {
-      gap: '10px',
+      gap: '8px',
+      maxWidth: '320px',
     },
   },
   statCard: {
@@ -131,22 +134,23 @@ const useStyles = makeStyles({
       padding: '25px 18px',
     },
     '@media (max-width: 960px)': {
-      width: '180px',
+      width: 'calc(50% - 7.5px)',
+      maxWidth: '200px',
       padding: '22px 16px',
     },
     '@media (max-width: 600px)': {
-      width: '85%',
-      maxWidth: '320px',
+      width: 'calc(50% - 6px)',
+      maxWidth: '180px',
       padding: '20px 15px',
     },
     '@media (max-width: 480px)': {
-      width: '90%',
-      maxWidth: '280px',
+      width: 'calc(50% - 5px)',
+      maxWidth: '160px',
       padding: '18px 12px',
     },
     '@media (max-width: 375px)': {
-      width: '95%',
-      maxWidth: '260px',
+      width: 'calc(50% - 4px)',
+      maxWidth: '150px',
       padding: '15px 10px',
     },
   },
@@ -182,23 +186,23 @@ const useStyles = makeStyles({
       marginBottom: '12px',
     },
     '@media (max-width: 960px)': {
-      width: '60px',
-      height: '60px',
+      width: '55px',
+      height: '55px',
       marginBottom: '10px',
     },
     '@media (max-width: 600px)': {
-      width: '55px',
-      height: '55px',
+      width: '50px',
+      height: '50px',
       marginBottom: '8px',
     },
     '@media (max-width: 480px)': {
-      width: '50px',
-      height: '50px',
+      width: '45px',
+      height: '45px',
       marginBottom: '6px',
     },
     '@media (max-width: 375px)': {
-      width: '45px',
-      height: '45px',
+      width: '40px',
+      height: '40px',
       marginBottom: '5px',
     },
   },
@@ -227,18 +231,18 @@ const useStyles = makeStyles({
       marginBottom: '8px !important',
     },
     '@media (max-width: 960px)': {
-      fontSize: '2.1rem !important',
+      fontSize: '2rem !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '1.9rem !important',
+      fontSize: '1.8rem !important',
       marginBottom: '6px !important',
     },
     '@media (max-width: 480px)': {
-      fontSize: '1.7rem !important',
+      fontSize: '1.6rem !important',
       marginBottom: '5px !important',
     },
     '@media (max-width: 375px)': {
-      fontSize: '1.5rem !important',
+      fontSize: '1.4rem !important',
       marginBottom: '4px !important',
     },
   },
@@ -263,18 +267,18 @@ const useStyles = makeStyles({
       fontSize: '0.95rem !important',
     },
     '@media (max-width: 960px)': {
-      fontSize: '0.9rem !important',
+      fontSize: '0.85rem !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '0.85rem !important',
+      fontSize: '0.8rem !important',
       lineHeight: '1.3 !important',
     },
     '@media (max-width: 480px)': {
-      fontSize: '0.8rem !important',
+      fontSize: '0.75rem !important',
       lineHeight: '1.2 !important',
     },
     '@media (max-width: 375px)': {
-      fontSize: '0.75rem !important',
+      fontSize: '0.7rem !important',
     },
   },
   decorCircle: {
