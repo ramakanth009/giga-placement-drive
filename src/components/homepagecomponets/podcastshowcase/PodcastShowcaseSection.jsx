@@ -14,6 +14,7 @@ import SendIcon from "@mui/icons-material/Send";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 // import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
 import {ReactComponent as  QuestionAnswerIcon} from "../../../assets/commenticon.svg";
+import Launching from "../../../assets/launching_soon_video_clip.jpg"
 
 const useStyles = makeStyles({
   section: {
@@ -540,6 +541,7 @@ const PodcastShowcaseSection = () => {
         <Box className={classes.contentWrapper}>
           {/* Video Side */}
           <Box className={classes.videoWrapper}>
+            {/* 
             <iframe
               className={classes.videoIframe}
               src="https://www.youtube.com/embed/IxRVa1DbSAg?si=eZ7wKjpvpVlOlrVU&autoplay=1&mute=1&loop=1&controls=0&playlist=IxRVa1DbSAg"
@@ -565,6 +567,19 @@ const PodcastShowcaseSection = () => {
                 Watch on YouTube
               </Button>
             </Box>
+            */}
+            {/* Open-source image replacement */}
+            <img
+              src= {Launching}
+              alt="Podcast Open Source"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                borderRadius: "inherit",
+                display: "block"
+              }}
+            />
           </Box>
 
           {/* Content Side */}

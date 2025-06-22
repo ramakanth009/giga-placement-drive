@@ -407,7 +407,7 @@ const Navbar = () => {
                 variant="contained"
                 className={classes.signUpButton}
                 component={Link}
-                to="https://resume.gigaversity.in/"
+                to="/cart"
                 onClick={scrollToTop}
               >
                 Apply Now
