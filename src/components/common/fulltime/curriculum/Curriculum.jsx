@@ -323,20 +323,21 @@ const Curriculum = ({
     }
   };
 
-  // Calculate transform for slider - SIMPLE CENTERING
+  // Calculate transform for slider - SIMPLIFIED CENTERING
   const getSliderStyle = () => {
     if (!sliderRef.current || !sliderRef.current.parentElement) return {};
-    
-    const cardWidth = 350;
-    const cardMargin = 20;
     const containerWidth = sliderRef.current.parentElement.offsetWidth;
-    
-    // Simple centering: move by card width + margin for each index
-    const offset = currentIndex * (cardWidth + cardMargin);
+    const cardElems = sliderRef.current.children;
+    if (!cardElems.length) return {};
+    const cardElem = cardElems[0];
+    const cardWidth = cardElem.offsetWidth;
+    const cardMargin = parseInt(window.getComputedStyle(cardElem).marginRight) || 0;
+    const totalCardWidth = cardWidth + cardMargin;
+    const offset = currentIndex * totalCardWidth;
     const centerOffset = (containerWidth - cardWidth) / 2;
-    
+    const rightShift = 10; // px, adjust as needed
     return {
-      transform: `translateX(${centerOffset - offset}px)`,
+      transform: `translateX(${centerOffset - offset + rightShift}px)`
     };
   };
 
@@ -389,6 +390,7 @@ const Curriculum = ({
                   isScaled={visibleCategoryId === card.id} // Active card is scaled
                   isActive={visibleCategoryId === card.id}
                   onClick={() => handleChipClick(card.id)}
+                  style={visibleCategoryId === card.id ? { zIndex: 3, boxShadow: '0 8px 32px rgba(42,43,106,0.18)', transform: 'scale(1.08) translateY(-18px)', transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)' } : { zIndex: 1, transform: 'scale(1)', transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)' }}
                 />
               ))}
             </Box>

@@ -23,7 +23,8 @@ const useStyles = makeStyles({
     marginTop: '15px',
     border: '1px solid transparent',
     '&:hover': {
-      transform: 'translateY(-4px)',
+      // Removed transform to prevent card from moving up on hover
+      // transform: 'translateY(-4px)',
       boxShadow: '0px 8px 24px rgba(42, 43, 106, 0.12) !important',
       borderColor: 'rgba(42, 43, 106, 0.1)',
     },
@@ -49,12 +50,20 @@ const useStyles = makeStyles({
     },
   },
   cardScaled: {
-    transform: 'scale(1.05)',
+    transform: 'scale(1.13)', // Larger for active card
     zIndex: 2,
     boxShadow: '0px 15px 40px rgba(42, 43, 106, 0.2) !important',
     borderColor: 'rgba(255, 198, 20, 0.3)',
     '@media (max-width: 960px)': {
-      transform: 'scale(1.03)',
+      transform: 'scale(1.09)',
+    },
+  },
+  cardUnscaled: {
+    transform: 'scale(0.93)', // Smaller for inactive cards
+    zIndex: 1,
+    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+    '@media (max-width: 960px)': {
+      transform: 'scale(0.97)',
     },
   },
   cardActive: {
@@ -399,7 +408,6 @@ const CurriculumCard = ({
   difficulty = 1, 
   duration = "2 weeks", 
   icon,
-  isScaled = false,
   isActive = false,
   onClick
 }) => {
@@ -409,9 +417,12 @@ const CurriculumCard = ({
   // Display ALL topics instead of limiting to 4
   const displayTopics = topics;
 
+  // Determine card scale class
+  const cardScaleClass = isActive ? classes.cardScaled : classes.cardUnscaled;
+
   return (
     <Paper 
-      className={`${classes.card} ${isScaled ? classes.cardScaled : ''} ${isActive ? classes.cardActive : ''} ${isHovered ? classes.hoverEffect : ''}`} 
+      className={`${classes.card} ${cardScaleClass} ${isActive ? classes.cardActive : ''} ${isHovered ? classes.hoverEffect : ''}`} 
       elevation={0}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -422,7 +433,7 @@ const CurriculumCard = ({
         <Box className={classes.numberCircle}>{number}</Box>
         <Box className={classes.topicIcon}>{icon}</Box>
         
-        <Typography className={`${classes.title} ${isScaled ? classes.titleScaled : ''} ${isHovered ? classes.titleHover : ''}`}>
+        <Typography className={`${classes.title} ${isHovered ? classes.titleHover : ''}`}>
           {title}
         </Typography>
         
@@ -434,7 +445,7 @@ const CurriculumCard = ({
                 <ListItemText 
                   primary={
                     <Typography 
-                      className={`${classes.bulletText} ${isScaled ? classes.bulletTextScaled : ''}`}
+                      className={classes.bulletText}
                     >
                       {topic}
                     </Typography>
