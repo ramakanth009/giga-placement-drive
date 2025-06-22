@@ -283,7 +283,6 @@ const Navbar = () => {
               >
                 Home
               </Button>
-
               {/* Full Stack Dropdown */}
               <Box className={classes.dropdown}>
                 <Button
@@ -359,6 +358,17 @@ const Navbar = () => {
               >
                 Campus
               </Button>
+              {/* Products link right beside Campus */}
+              <Button
+                className={`${classes.navLink} ${
+                  currentPath === "/products" ? classes.active : ""
+                }`}
+                component={Link}
+                to="/products"
+                onClick={handleNavLinkClick}
+              >
+                Products
+              </Button>
               <Button
                 className={`${classes.navLink} ${
                   currentPath === "/blog" ? classes.active : ""
@@ -432,7 +442,6 @@ const Navbar = () => {
           >
             Home
           </MenuItem>
-
           {/* Mobile Full Stack dropdown */}
           <MenuItem
             onClick={toggleMobileFullStack}
@@ -468,10 +477,8 @@ const Navbar = () => {
               >
                 Data Science
               </MenuItem>
-              
             </Box>
           )}
-
           {/* Mobile Data Science dropdown */}
           <MenuItem
             onClick={toggleMobileDataScience}
@@ -507,7 +514,6 @@ const Navbar = () => {
               >
                 Data Science Program
               </MenuItem>
-              
             </Box>
           )}
 
@@ -535,6 +541,15 @@ const Navbar = () => {
           >
             Campus
           </MenuItem>
+          {/* Products link right beside Campus in mobile menu */}
+          <MenuItem
+            onClick={() => handleNavLinkClick()}
+            className={classes.menuItem}
+            component={Link}
+            to="/products"
+          >
+            Products
+          </MenuItem>
           <MenuItem
             onClick={() => handleNavLinkClick()}
             className={classes.menuItem}
@@ -558,3 +573,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
