@@ -6,7 +6,7 @@ const DataScienceProgramFee = () => {
 
   return (
     <ProgramFeeNew
-      totalFee="1,50,000"
+      totalFee="1,50,000 / Program"
     />
   );
 };

@@ -64,7 +64,7 @@ const useStyles = makeStyles({
     left: 0,
     right: 0,
     bottom: 0,
-    background: 'linear-gradient(135deg, rgba(255, 198, 20, 0.9) 0%, rgba(42, 43, 106, 0.9) 100%)',
+    // background: 'linear-gradient(135deg, rgba(255, 198, 20, 0.9) 0%, rgba(42, 43, 106, 0.9) 100%)',
     opacity: 0,
     transition: 'opacity 0.6s',
     display: 'flex',

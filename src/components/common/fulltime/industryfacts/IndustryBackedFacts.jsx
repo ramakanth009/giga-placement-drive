@@ -6,15 +6,39 @@ import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 const useStyles = makeStyles({
   section: {
     padding: '60px 0',
+    '@media (max-width: 1200px)': {
+      padding: '55px 0',
+    },
+    '@media (max-width: 960px)': {
+      padding: '50px 0',
+    },
     '@media (max-width: 600px)': {
       padding: '40px 0',
+    },
+    '@media (max-width: 480px)': {
+      padding: '35px 0',
+    },
+    '@media (max-width: 375px)': {
+      padding: '30px 0',
     }
   },
   titleContainer: {
     textAlign: 'center',
     marginBottom: '40px',
+    '@media (max-width: 1200px)': {
+      marginBottom: '38px',
+    },
+    '@media (max-width: 960px)': {
+      marginBottom: '35px',
+    },
     '@media (max-width: 600px)': {
       marginBottom: '30px',
+    },
+    '@media (max-width: 480px)': {
+      marginBottom: '28px',
+    },
+    '@media (max-width: 375px)': {
+      marginBottom: '25px',
     }
   },
   titleBlue: {
@@ -22,8 +46,20 @@ const useStyles = makeStyles({
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
     marginBottom: '10px !important',
+    '@media (max-width: 1200px)': {
+      fontSize: '2.1rem !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '2rem !important',
+    },
     '@media (max-width: 600px)': {
       fontSize: '1.8rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '1.6rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1.4rem !important',
     }
   },
   titleYellow: {
@@ -31,8 +67,25 @@ const useStyles = makeStyles({
     color: '#FFC614 !important',
     maxWidth: '800px',
     margin: '0 auto !important',
+    '@media (max-width: 1200px)': {
+      fontSize: '1.5rem !important',
+      maxWidth: '750px',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '1.4rem !important',
+      maxWidth: '700px',
+    },
     '@media (max-width: 600px)': {
       fontSize: '1.3rem !important',
+      maxWidth: '90%',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '1.2rem !important',
+      maxWidth: '95%',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1.1rem !important',
+      maxWidth: '100%',
     }
   },
   factsContainer: {
@@ -40,9 +93,22 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     flexWrap: 'wrap',
     gap: '25px',
+    '@media (max-width: 1200px)': {
+      gap: '23px',
+    },
+    '@media (max-width: 960px)': {
+      gap: '22px',
+    },
     '@media (max-width: 600px)': {
+      gap: '20px',
       flexDirection: 'column',
       alignItems: 'center',
+    },
+    '@media (max-width: 480px)': {
+      gap: '18px',
+    },
+    '@media (max-width: 375px)': {
+      gap: '15px',
     }
   },
   factCard: {
@@ -56,8 +122,23 @@ const useStyles = makeStyles({
     '&:hover': {
       transform: 'translateY(-5px)',
     },
+    '@media (max-width: 1200px)': {
+      padding: '23px',
+      maxWidth: '480px',
+    },
+    '@media (max-width: 960px)': {
+      padding: '22px',
+      maxWidth: '450px',
+    },
     '@media (max-width: 600px)': {
       padding: '20px',
+      maxWidth: '100%',
+    },
+    '@media (max-width: 480px)': {
+      padding: '18px',
+    },
+    '@media (max-width: 375px)': {
+      padding: '16px',
     }
   },
   quoteIcon: {
@@ -66,17 +147,71 @@ const useStyles = makeStyles({
     right: '15px',
     color: 'rgba(42, 43, 106, 0.1)',
     fontSize: '50px !important',
+    '@media (max-width: 1200px)': {
+      fontSize: '48px !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '45px !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '42px !important',
+      top: '12px',
+      right: '12px',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '38px !important',
+      top: '10px',
+      right: '10px',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '35px !important',
+      top: '8px',
+      right: '8px',
+    }
   },
   factText: {
     fontSize: '1rem !important',
     lineHeight: '1.5 !important',
     color: '#333 !important',
     marginBottom: '15px !important',
+    '@media (max-width: 1200px)': {
+      fontSize: '0.98rem !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '0.95rem !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.92rem !important',
+      marginBottom: '12px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.9rem !important',
+      marginBottom: '10px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.88rem !important',
+      marginBottom: '8px !important',
+    }
   },
   sourceText: {
     fontSize: '0.85rem !important',
     color: '#666 !important',
     fontStyle: 'italic',
+    '@media (max-width: 1200px)': {
+      fontSize: '0.83rem !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '0.8rem !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.78rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.75rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.72rem !important',
+    }
   }
 });
 

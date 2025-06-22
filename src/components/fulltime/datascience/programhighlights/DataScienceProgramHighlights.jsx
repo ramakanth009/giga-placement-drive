@@ -20,7 +20,7 @@ const DataScienceProgramHighlights = () => {
     },
     {
       icon: <BarChartIcon style={{ color: 'white' }} />,
-      title: "Build products like e-commerce, large-scale applications, and quick commerce"
+      title: "Build products like Multi-Model AI Chatbot, AI Quiz Master, and Advanced Call Auditor"
     },
     {
       icon: <AssessmentIcon style={{ color: 'white' }} />,

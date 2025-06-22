@@ -396,6 +396,7 @@ const useStyles = makeStyles({
     boxShadow: '0 8px 20px rgba(255, 198, 20, 0.3) !important',
     position: 'relative',
     overflow: 'hidden',
+    marginRight:"10px !important",
     '&:hover': {
       transform: 'translateY(-3px)',
       boxShadow: '0 12px 25px rgba(255, 198, 20, 0.4) !important',
@@ -423,8 +424,9 @@ const useStyles = makeStyles({
 const ProgramFee = ({ totalFee, onApplyClick }) => {
   const classes = useStyles();
   
-  const monthlyFee = parseInt(totalFee.replace(/,/g, '')) / 24;
-  const monthlyFeeFormatted = monthlyFee.toLocaleString('en-IN');
+  const monthlyFee = Math.round(parseInt(totalFee.replace(/,/g, '')) / 24);
+const monthlyFeeFormatted = monthlyFee.toLocaleString('en-IN');
+
   
   const dailyFee = parseInt(totalFee.replace(/,/g, '')) / 730;
   const dailyFeeFormatted = Math.round(dailyFee).toLocaleString('en-IN');
@@ -487,7 +489,7 @@ const ProgramFee = ({ totalFee, onApplyClick }) => {
               <Box className={classes.comparisonContainer}>
                 <ApartmentIcon className={classes.comparisonIcon} />
                 <Typography className={classes.comparisonText}>
-                  EMI options available
+                  EMI & Scholarship Available
                 </Typography>
               </Box>
             </Box>
@@ -527,6 +529,14 @@ const ProgramFee = ({ totalFee, onApplyClick }) => {
               onClick={handleScholarshipClick}
             >
               Apply for Scholarship
+            </Button>
+            <Button 
+              variant="contained" 
+              className={classes.scholarshipButton}
+              startIcon={<ScholarshipIcon />}
+              onClick={handleScholarshipClick}
+            >
+              Talk to our expert today
             </Button>
           </Box>
           

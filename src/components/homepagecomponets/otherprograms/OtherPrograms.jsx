@@ -28,6 +28,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 // Import required modules
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import Datascience from "../../../assets/datascienceop.jpg"
 
 const useStyles = makeStyles({
   section: {
@@ -310,7 +311,8 @@ const OtherPrograms = () => {
       ],
       students: 1523,
       tag: 'Full Time',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      // image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      image: Datascience,
       level: 'Advanced',
       category: 'datascience'
     },
