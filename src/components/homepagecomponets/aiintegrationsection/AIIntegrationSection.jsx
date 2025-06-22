@@ -40,21 +40,34 @@ const useStyles = makeStyles({
       zIndex: 1,
     },
     "@media (max-width: 1200px)": {
-      padding: '50px 0',
+      padding: '25px 0',
       '&:before': {
         backgroundSize: '25px 25px',
       },
     },
     "@media (max-width: 960px)": {
-      padding: '60px 0',
+      padding: '20px 0',
+      minHeight: 'auto',
       '&:before': {
         backgroundSize: '20px 20px',
       },
     },
     "@media (max-width: 600px)": {
-      padding: '40px 0',
+      padding: '15px 0',
       '&:before': {
         backgroundSize: '15px 15px',
+      },
+    },
+    "@media (max-width: 480px)": {
+      padding: '12px 0',
+      '&:before': {
+        backgroundSize: '12px 12px',
+      },
+    },
+    "@media (max-width: 375px)": {
+      padding: '10px 0',
+      '&:before': {
+        backgroundSize: '10px 10px',
       },
     },
   },
@@ -70,9 +83,16 @@ const useStyles = makeStyles({
     },
     "@media (max-width: 960px)": {
       padding: '0 25px',
+      height: 'auto',
     },
     "@media (max-width: 600px)": {
       padding: '0 20px',
+    },
+    "@media (max-width: 480px)": {
+      padding: '0 15px',
+    },
+    "@media (max-width: 375px)": {
+      padding: '0 10px',
     },
   },
   titleContainer: {
@@ -80,8 +100,20 @@ const useStyles = makeStyles({
     marginBottom: '20px',
     position: 'relative',
     zIndex: 2,
+    "@media (max-width: 1200px)": {
+      marginBottom: '18px',
+    },
+    "@media (max-width: 960px)": {
+      marginBottom: '15px',
+    },
     "@media (max-width: 600px)": {
-      marginBottom: '30px',
+      marginBottom: '12px',
+    },
+    "@media (max-width: 480px)": {
+      marginBottom: '10px',
+    },
+    "@media (max-width: 375px)": {
+      marginBottom: '8px',
     },
   },
   mainTitle: {
@@ -91,11 +123,20 @@ const useStyles = makeStyles({
     letterSpacing: '-0.02em',
     color: 'white !important',
     position: 'relative',
+    '@media (max-width: 1200px)': {
+      fontSize: '3rem !important',
+    },
     '@media (max-width: 960px)': {
-      fontSize: '2.8rem !important',
+      fontSize: '2.5rem !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '2.2rem !important',
+      fontSize: '2rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '1.7rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1.5rem !important',
     },
   },
   highlight: {
@@ -107,14 +148,27 @@ const useStyles = makeStyles({
     color: 'rgba(255, 255, 255, 0.7) !important',
     maxWidth: '900px',
     margin: '5px auto 0 !important',
-    "@media (max-width: 600px)": {
+    "@media (max-width: 1200px)": {
+      fontSize: '0.95rem !important',
+      maxWidth: '800px',
+    },
+    "@media (max-width: 960px)": {
       fontSize: '0.9rem !important',
+      maxWidth: '700px',
+    },
+    "@media (max-width: 600px)": {
+      fontSize: '0.85rem !important',
       maxWidth: '90%',
-      margin: '8px auto 0 !important',
+      margin: '3px auto 0 !important',
+    },
+    "@media (max-width: 480px)": {
+      fontSize: '0.8rem !important',
+    },
+    "@media (max-width: 375px)": {
+      fontSize: '0.75rem !important',
     },
   },
   
-  // Enhanced main content area
   contentArea: {
     flex: 1,
     display: 'flex',
@@ -124,7 +178,6 @@ const useStyles = makeStyles({
     },
   },
   
-  // Enhanced left panel with interaction animations
   leftPanel: {
     flex: '0 0 35%',
     padding: '20px',
@@ -134,12 +187,22 @@ const useStyles = makeStyles({
     opacity: 0,
     transform: 'translateX(-50px)',
     animation: '$slideInLeft 1s ease-out 0.6s forwards',
+    '@media (max-width: 1200px)': {
+      flex: '0 0 40%',
+      padding: '18px',
+    },
     '@media (max-width: 960px)': {
       flex: 'none',
-      padding: '20px 40px',
+      padding: '15px 20px',
     },
     '@media (max-width: 600px)': {
-      padding: '15px 20px',
+      padding: '12px 15px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '10px 12px',
+    },
+    '@media (max-width: 375px)': {
+      padding: '8px 10px',
     },
   },
   
@@ -185,8 +248,29 @@ const useStyles = makeStyles({
     '&:active': {
       transform: 'translateY(-5px) scale(0.98)',
     },
-    '@media (max-width: 600px)': {
+    '@media (max-width: 1200px)': {
+      padding: '25px !important',
+      borderRadius: '18px !important',
+    },
+    '@media (max-width: 960px)': {
       padding: '20px !important',
+      borderRadius: '16px !important',
+      marginBottom: '15px',
+    },
+    '@media (max-width: 600px)': {
+      padding: '15px !important',
+      borderRadius: '14px !important',
+      marginBottom: '12px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '12px !important',
+      borderRadius: '12px !important',
+      marginBottom: '10px',
+    },
+    '@media (max-width: 375px)': {
+      padding: '10px !important',
+      borderRadius: '10px !important',
+      marginBottom: '8px',
     },
   },
   
@@ -199,11 +283,25 @@ const useStyles = makeStyles({
     transition: 'all 0.4s ease',
     position: 'relative',
     zIndex: 2,
+    '@media (max-width: 1200px)': {
+      fontSize: '1.6rem !important',
+      marginBottom: '18px !important',
+    },
     '@media (max-width: 960px)': {
-      fontSize: '1.5rem !important',
+      fontSize: '1.4rem !important',
+      marginBottom: '15px !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '1.3rem !important',
+      fontSize: '1.2rem !important',
+      marginBottom: '12px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '1.1rem !important',
+      marginBottom: '10px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1rem !important',
+      marginBottom: '8px !important',
     },
   },
   
@@ -214,15 +312,23 @@ const useStyles = makeStyles({
     transition: 'all 0.4s ease',
     position: 'relative',
     zIndex: 2,
+    '@media (max-width: 1200px)': {
+      fontSize: '1.3rem !important',
+    },
     '@media (max-width: 960px)': {
       fontSize: '1.2rem !important',
     },
     '@media (max-width: 600px)': {
       fontSize: '1.1rem !important',
     },
+    '@media (max-width: 480px)': {
+      fontSize: '1rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.9rem !important',
+    },
   },
   
-  // Enhanced right panel
   rightPanel: {
     flex: 1,
     position: 'relative',
@@ -232,6 +338,21 @@ const useStyles = makeStyles({
     opacity: 0,
     transform: 'translateX(50px)',
     animation: '$slideInRight 1s ease-out 0.8s forwards',
+    '@media (max-width: 1200px)': {
+      padding: '18px',
+    },
+    '@media (max-width: 960px)': {
+      padding: '15px',
+    },
+    '@media (max-width: 600px)': {
+      padding: '12px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '10px',
+    },
+    '@media (max-width: 375px)': {
+      padding: '8px',
+    },
   },
   
   toolsHeader: {
@@ -245,25 +366,48 @@ const useStyles = makeStyles({
     color: 'white !important',
     marginBottom: '10px !important',
     position: 'relative',
-    '@media (max-width: 600px)': {
+    '@media (max-width: 1200px)': {
+      fontSize: '1.4rem !important',
+    },
+    '@media (max-width: 960px)': {
       fontSize: '1.3rem !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '1.2rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '1.1rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1rem !important',
     },
   },
   
-  // Enhanced card stacks container
   cardStacksContainer: {
     display: 'flex',
     justifyContent: 'space-around',
     height: '100%',
     gap: '40px',
+    '@media (max-width: 1200px)': {
+      gap: '30px',
+    },
     '@media (max-width: 960px)': {
       flexDirection: 'column',
-      gap: '50px',
+      gap: '30px',
       alignItems: 'center',
+      height: 'auto',
+    },
+    '@media (max-width: 600px)': {
+      gap: '25px',
+    },
+    '@media (max-width: 480px)': {
+      gap: '20px',
+    },
+    '@media (max-width: 375px)': {
+      gap: '15px',
     },
   },
   
-  // Enhanced category label
   categoryLabel: {
     fontSize: '1.2rem !important',
     color: 'white !important',
@@ -285,22 +429,56 @@ const useStyles = makeStyles({
       background: 'linear-gradient(90deg, transparent, rgba(255, 198, 20, 0.8), transparent)',
       animation: '$expandLine 1s ease-out 1.6s forwards',
     },
-  },
-  
-  // Enhanced stack container with perspective
-  stackContainer: {
-    position: 'relative',
-    width: '380px',    // Increased from 320px
-    height: '380px',   // Increased from 400px
-    perspective: '1200px',
-    transformStyle: 'preserve-3d',
+    '@media (max-width: 1200px)': {
+      fontSize: '1.1rem !important',
+      marginBottom: '18px !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '1rem !important',
+      marginBottom: '15px !important',
+    },
     '@media (max-width: 600px)': {
-      width: '320px',  // Increased from 280px
-      height: '450px', // Increased from 350px
+      fontSize: '0.95rem !important',
+      marginBottom: '12px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.9rem !important',
+      marginBottom: '10px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.85rem !important',
+      marginBottom: '8px !important',
     },
   },
   
-  // Enhanced navigation buttons
+  stackContainer: {
+    position: 'relative',
+    width: '380px',
+    height: '380px',
+    perspective: '1200px',
+    transformStyle: 'preserve-3d',
+    '@media (max-width: 1200px)': {
+      width: '340px',
+      height: '340px',
+    },
+    '@media (max-width: 960px)': {
+      width: '320px',
+      height: '320px',
+    },
+    '@media (max-width: 600px)': {
+      width: '280px',
+      height: '300px',
+    },
+    '@media (max-width: 480px)': {
+      width: '260px',
+      height: '280px',
+    },
+    '@media (max-width: 375px)': {
+      width: '240px',
+      height: '260px',
+    },
+  },
+  
   navigationButtons: {
     display: 'flex',
     justifyContent: 'center',
@@ -308,6 +486,24 @@ const useStyles = makeStyles({
     gap: '10px',
     opacity: 0,
     animation: '$fadeIn 0.8s ease-out 1.8s forwards',
+    '@media (max-width: 1200px)': {
+      marginTop: '18px',
+      gap: '8px',
+    },
+    '@media (max-width: 960px)': {
+      marginTop: '15px',
+    },
+    '@media (max-width: 600px)': {
+      marginTop: '12px',
+      gap: '6px',
+    },
+    '@media (max-width: 480px)': {
+      marginTop: '10px',
+    },
+    '@media (max-width: 375px)': {
+      marginTop: '8px',
+      gap: '4px',
+    },
   },
   
   navButton: {
@@ -341,13 +537,24 @@ const useStyles = makeStyles({
     '&:active': {
       transform: 'translateY(-1px) scale(0.95)',
     },
+    '@media (max-width: 600px)': {
+      width: '35px !important',
+      height: '35px !important',
+    },
+    '@media (max-width: 480px)': {
+      width: '30px !important',
+      height: '30px !important',
+    },
+    '@media (max-width: 375px)': {
+      width: '25px !important',
+      height: '25px !important',
+    },
   },
   
-  // Enhanced stack card with advanced animations
   stackCard: {
     position: 'absolute',
     width: '100%',
-    height: '95%',     // Increased from 60%
+    height: '95%',
     borderRadius: '20px !important',
     backfaceVisibility: 'hidden',
     transition: 'all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
@@ -358,6 +565,21 @@ const useStyles = makeStyles({
     '&:hover': {
       transform: 'scale(1.02)',
       boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',
+    },
+    '@media (max-width: 1200px)': {
+      borderRadius: '18px !important',
+    },
+    '@media (max-width: 960px)': {
+      borderRadius: '16px !important',
+    },
+    '@media (max-width: 600px)': {
+      borderRadius: '14px !important',
+    },
+    '@media (max-width: 480px)': {
+      borderRadius: '12px !important',
+    },
+    '@media (max-width: 375px)': {
+      borderRadius: '10px !important',
     },
   },
   
@@ -390,9 +612,28 @@ const useStyles = makeStyles({
     '$stackCard:hover &::before': {
       left: '100%',
     },
+    '@media (max-width: 1200px)': {
+      borderRadius: '18px',
+      padding: '18px',
+    },
+    '@media (max-width: 960px)': {
+      borderRadius: '16px',
+      padding: '16px',
+    },
+    '@media (max-width: 600px)': {
+      borderRadius: '14px',
+      padding: '14px',
+    },
+    '@media (max-width: 480px)': {
+      borderRadius: '12px',
+      padding: '12px',
+    },
+    '@media (max-width: 375px)': {
+      borderRadius: '10px',
+      padding: '10px',
+    },
   },
   
-  // Enhanced tool icon with glow effect
   toolIconWrapper: {
     width: '50px',
     height: '50px',
@@ -435,6 +676,46 @@ const useStyles = makeStyles({
       zIndex: 2,
       transition: 'all 0.3s ease',
     },
+    '@media (max-width: 1200px)': {
+      width: '45px',
+      height: '45px',
+      marginBottom: '18px',
+      '& svg': {
+        fontSize: '27px',
+      },
+    },
+    '@media (max-width: 960px)': {
+      width: '40px',
+      height: '40px',
+      marginBottom: '15px',
+      '& svg': {
+        fontSize: '24px',
+      },
+    },
+    '@media (max-width: 600px)': {
+      width: '35px',
+      height: '35px',
+      marginBottom: '12px',
+      '& svg': {
+        fontSize: '20px',
+      },
+    },
+    '@media (max-width: 480px)': {
+      width: '30px',
+      height: '30px',
+      marginBottom: '10px',
+      '& svg': {
+        fontSize: '18px',
+      },
+    },
+    '@media (max-width: 375px)': {
+      width: '25px',
+      height: '25px',
+      marginBottom: '8px',
+      '& svg': {
+        fontSize: '16px',
+      },
+    },
   },
   
   toolName: {
@@ -444,6 +725,26 @@ const useStyles = makeStyles({
     marginBottom: '15px !important',
     textShadow: '0 2px 10px rgba(0, 0, 0, 0.3)',
     transition: 'all 0.3s ease',
+    '@media (max-width: 1200px)': {
+      fontSize: '1.2rem !important',
+      marginBottom: '12px !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '1.1rem !important',
+      marginBottom: '10px !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '1rem !important',
+      marginBottom: '8px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.9rem !important',
+      marginBottom: '6px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.8rem !important',
+      marginBottom: '5px !important',
+    },
   },
   
   toolCategory: {
@@ -459,6 +760,31 @@ const useStyles = makeStyles({
       background: 'rgba(147, 112, 219, 0.2)',
       borderColor: 'rgba(147, 112, 219, 0.4)',
     },
+    '@media (max-width: 1200px)': {
+      fontSize: '0.8rem !important',
+      padding: '5px 12px',
+      marginBottom: '15px',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '0.75rem !important',
+      padding: '4px 10px',
+      marginBottom: '12px',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.7rem !important',
+      padding: '3px 8px',
+      marginBottom: '10px',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.65rem !important',
+      padding: '2px 6px',
+      marginBottom: '8px',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.6rem !important',
+      padding: '2px 5px',
+      marginBottom: '6px',
+    },
   },
   
   toolFeatures: {
@@ -467,32 +793,60 @@ const useStyles = makeStyles({
   },
   
   featureItem: {
-  fontSize: '0.9rem !important',
-  color: '#ffffff !important', // Pure white for better contrast
-  margin: '8px 0 !important',
-  display: 'flex',
-  alignItems: 'center',
-  transition: 'all 0.3s ease',
-  textAlign: 'left !important',
-  '&:before': {
-    content: '"◆"',
-    color: '#FFC614', // Changed to yellow for better contrast
-    fontWeight: 'bold',
-    marginRight: '10px',
-    transition: 'all 0.3s ease',
-    flexShrink: 0,
-  },
-  '$stackCard:hover &': {
+    fontSize: '0.9rem !important',
     color: '#ffffff !important',
-    textShadow: '0 1px 3px rgba(0, 0, 0, 0.5)', // Add shadow for better readability
+    margin: '8px 0 !important',
+    display: 'flex',
+    alignItems: 'center',
+    transition: 'all 0.3s ease',
+    textAlign: 'left !important',
     '&:before': {
-      color: '#FFD23F', // Brighter yellow on hover
-      transform: 'scale(1.2)',
+      content: '"◆"',
+      color: '#FFC614',
+      fontWeight: 'bold',
+      marginRight: '10px',
+      transition: 'all 0.3s ease',
+      flexShrink: 0,
+    },
+    '$stackCard:hover &': {
+      color: '#ffffff !important',
+      textShadow: '0 1px 3px rgba(0, 0, 0, 0.5)',
+      '&:before': {
+        color: '#FFD23F',
+        transform: 'scale(1.2)',
+      },
+    },
+    '@media (max-width: 1200px)': {
+      fontSize: '0.85rem !important',
+      margin: '6px 0 !important',
+      '&:before': {
+        marginRight: '8px',
+      },
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '0.8rem !important',
+      margin: '5px 0 !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.75rem !important',
+      margin: '4px 0 !important',
+      '&:before': {
+        marginRight: '6px',
+      },
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.7rem !important',
+      margin: '3px 0 !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.65rem !important',
+      margin: '2px 0 !important',
+      '&:before': {
+        marginRight: '4px',
+      },
     },
   },
-},
   
-  // Enhanced glowing orbs with interaction
   glowOrb: {
     position: 'absolute',
     borderRadius: '50%',
@@ -520,9 +874,28 @@ const useStyles = makeStyles({
       left: '15%',
       animationDelay: '4s',
     },
+    '@media (max-width: 1200px)': {
+      width: '150px',
+      height: '150px',
+    },
+    '@media (max-width: 960px)': {
+      width: '120px',
+      height: '120px',
+    },
+    '@media (max-width: 600px)': {
+      width: '100px',
+      height: '100px',
+    },
+    '@media (max-width: 480px)': {
+      width: '80px',
+      height: '80px',
+    },
+    '@media (max-width: 375px)': {
+      width: '60px',
+      height: '60px',
+    },
   },
   
-  // Enhanced animations
   '@keyframes gridMove': {
     '0%': { transform: 'translate(0, 0)' },
     '100%': { transform: 'translate(50px, 50px)' },
@@ -577,7 +950,6 @@ const useStyles = makeStyles({
     'to': { transform: 'rotate(360deg)' },
   },
   
-  // Touch gesture animations for mobile
   '@media (max-width: 768px)': {
     stackCard: {
       '&:active': {
@@ -591,15 +963,12 @@ const useStyles = makeStyles({
 const AIIntegrationSection = () => {
   const classes = useStyles();
   
-  // State for current card indices
   const [fullstackIndex, setFullstackIndex] = useState(0);
   const [dataScienceIndex, setDataScienceIndex] = useState(0);
   
-  // Refs for intersection observer
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
-  // Full Stack development tools
   const fullstackTools = [
     {
       name: 'GitHub Copilot',
@@ -669,7 +1038,6 @@ const AIIntegrationSection = () => {
     }
   ];
   
-  // Data Science tools
   const dataScienceTools = [
     {
       name: 'Claude',
@@ -739,7 +1107,6 @@ const AIIntegrationSection = () => {
     }
   ];
 
-  // Intersection observer for scroll animations
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -759,7 +1126,6 @@ const AIIntegrationSection = () => {
     };
   }, []);
 
-  // Auto-rotation effect
   useEffect(() => {
     const interval = setInterval(() => {
       setFullstackIndex((prev) => (prev + 1) % fullstackTools.length);
@@ -771,7 +1137,6 @@ const AIIntegrationSection = () => {
     return () => clearInterval(interval);
   }, [fullstackTools.length, dataScienceTools.length]);
 
-  // Navigation handlers with haptic feedback simulation
   const handleFullstackPrev = () => {
     setFullstackIndex((prev) => (prev === 0 ? fullstackTools.length - 1 : prev - 1));
   };
@@ -788,7 +1153,6 @@ const AIIntegrationSection = () => {
     setDataScienceIndex((prev) => (prev === dataScienceTools.length - 1 ? 0 : prev + 1));
   };
 
-  // Enhanced card style calculation with smoother transitions
   const getCardStyle = (index, activeIndex, totalCards) => {
     const position = (index - activeIndex + totalCards) % totalCards;
     
@@ -811,13 +1175,11 @@ const AIIntegrationSection = () => {
     };
   };
 
-  // Handle card click with ripple effect
   const handleCardClick = (e, toolName) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     
-    // Create ripple effect
     const ripple = document.createElement('div');
     ripple.style.position = 'absolute';
     ripple.style.borderRadius = '50%';
@@ -843,16 +1205,11 @@ const AIIntegrationSection = () => {
 
   return (
     <Box className={classes.section} ref={sectionRef}>
-      {/* Enhanced animated background grid */}
-      <Box className={classes.backgroundGrid} />
-      
-      {/* Enhanced glowing orbs */}
       <Box className={`${classes.glowOrb} orb1`} />
       <Box className={`${classes.glowOrb} orb2`} />
       <Box className={`${classes.glowOrb} orb3`} />
       
       <Container maxWidth="xl" className={classes.container}>
-        {/* Enhanced header */}
         <Box className={classes.titleContainer}>
           <Typography variant="h2" className={classes.mainTitle}>
             AI is Already in Our <span className={classes.highlight}>Classrooms</span>
@@ -862,9 +1219,7 @@ const AIIntegrationSection = () => {
           </Typography>
         </Box>
 
-        {/* Enhanced main content area */}
         <Box className={classes.contentArea}>
-          {/* Enhanced left panel */}
           <Box className={classes.leftPanel}>
             <Card className={classes.questionCard}>
               <Typography className={classes.questionText}>
@@ -876,7 +1231,6 @@ const AIIntegrationSection = () => {
             </Card>
           </Box>
 
-          {/* Enhanced right panel */}
           <Box className={classes.rightPanel}>
             <Box className={classes.toolsHeader}>
               <Typography className={classes.toolsTitle}>
@@ -885,7 +1239,6 @@ const AIIntegrationSection = () => {
             </Box>
 
             <Box className={classes.cardStacksContainer}>
-              {/* Fullstack Development Tools Stack */}
               <Box>
                 <Typography className={classes.categoryLabel}>
                   Full Stack Development
@@ -937,7 +1290,6 @@ const AIIntegrationSection = () => {
                 </Box>
               </Box>
               
-              {/* Data Science Tools Stack */}
               <Box>
                 <Typography className={classes.categoryLabel}>
                   Data Science

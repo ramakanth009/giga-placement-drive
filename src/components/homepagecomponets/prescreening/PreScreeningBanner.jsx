@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Typography, Button, Container, Grid } from '@mui/material';
+import { Box, Typography, Button, Container } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { useNavigate } from 'react-router-dom';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import AssessmentIcon from '@mui/icons-material/Assessment';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 import SchoolIcon from '@mui/icons-material/School';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import EmojiObjectsIcon from '@mui/icons-material/EmojiObjects';
-import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 
 const useStyles = makeStyles({
   bannerContainer: {
@@ -23,12 +21,30 @@ const useStyles = makeStyles({
     maxWidth: '1800px',
     marginLeft: 'auto',
     marginRight: 'auto',
+    '@media (max-width: 1200px)': {
+      padding: '18px 0',
+      margin: '25px 12px',
+      borderRadius: '14px',
+    },
     '@media (max-width: 960px)': {
-      padding: '25px 0',
+      padding: '16px 0',
+      margin: '20px 10px',
+      borderRadius: '12px',
     },
     '@media (max-width: 600px)': {
-      padding: '20px 15px',
+      padding: '15px 0',
+      margin: '15px 8px',
       borderRadius: '10px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '12px 0',
+      margin: '12px 6px',
+      borderRadius: '8px',
+    },
+    '@media (max-width: 375px)': {
+      padding: '10px 0',
+      margin: '10px 4px',
+      borderRadius: '6px',
     },
   },
   contentWrapper: {
@@ -42,6 +58,24 @@ const useStyles = makeStyles({
     zIndex: 2,
     textAlign: 'center',
     padding: '0 20px',
+    '@media (max-width: 1200px)': {
+      maxWidth: '1200px',
+      padding: '0 18px',
+    },
+    '@media (max-width: 960px)': {
+      maxWidth: '900px',
+      padding: '0 16px',
+    },
+    '@media (max-width: 600px)': {
+      maxWidth: '100%',
+      padding: '0 14px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '0 12px',
+    },
+    '@media (max-width: 375px)': {
+      padding: '0 10px',
+    },
   },
   title: {
     fontSize: '2.5rem !important',
@@ -49,13 +83,28 @@ const useStyles = makeStyles({
     color: '#ffffff !important',
     marginBottom: '15px !important',
     textShadow: '0 2px 4px rgba(0, 0, 0, 0.2) !important',
+    lineHeight: '1.2 !important',
+    '@media (max-width: 1200px)': {
+      fontSize: '2.2rem !important',
+      marginBottom: '14px !important',
+    },
     '@media (max-width: 960px)': {
       fontSize: '2rem !important',
       marginBottom: '12px !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '1.6rem !important',
+      fontSize: '1.8rem !important',
       marginBottom: '10px !important',
+      lineHeight: '1.3 !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '1.6rem !important',
+      marginBottom: '8px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1.4rem !important',
+      marginBottom: '6px !important',
+      lineHeight: '1.4 !important',
     },
   },
   subtitle: {
@@ -64,13 +113,30 @@ const useStyles = makeStyles({
     maxWidth: '700px',
     marginBottom: '30px !important',
     lineHeight: '1.5 !important',
+    '@media (max-width: 1200px)': {
+      fontSize: '1.1rem !important',
+      maxWidth: '600px',
+      marginBottom: '28px !important',
+    },
     '@media (max-width: 960px)': {
       fontSize: '1rem !important',
+      maxWidth: '500px',
       marginBottom: '25px !important',
     },
     '@media (max-width: 600px)': {
       fontSize: '0.95rem !important',
+      maxWidth: '90%',
       marginBottom: '20px !important',
+      lineHeight: '1.6 !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.9rem !important',
+      marginBottom: '18px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.85rem !important',
+      marginBottom: '15px !important',
+      maxWidth: '95%',
     },
   },
   targetAudienceGrid: {
@@ -81,35 +147,72 @@ const useStyles = makeStyles({
     width: '100%',
     maxWidth: '1400px',
     marginBottom: '30px',
-    '@media (max-width: 960px)': {
+    '@media (max-width: 1200px)': {
       gap: '12px',
+      marginBottom: '28px',
+      maxWidth: '1200px',
+    },
+    '@media (max-width: 960px)': {
+      gap: '10px',
       marginBottom: '25px',
+      maxWidth: '900px',
     },
     '@media (max-width: 600px)': {
-      gap: '10px',
+      gap: '8px',
       marginBottom: '20px',
+      maxWidth: '100%',
+    },
+    '@media (max-width: 480px)': {
+      gap: '6px',
+      marginBottom: '18px',
+    },
+    '@media (max-width: 375px)': {
+      gap: '4px',
+      marginBottom: '15px',
     },
   },
   targetItemWrapperFirstRow: {
     width: 'calc(50% - 7.5px)',
     minWidth: '300px',
     '@media (max-width: 1200px)': {
-      width: 'calc(50% - 10px)',
+      width: 'calc(50% - 6px)',
+      minWidth: '280px',
+    },
+    '@media (max-width: 960px)': {
+      width: 'calc(50% - 5px)',
+      minWidth: '250px',
     },
     '@media (max-width: 680px)': {
       width: '100%',
       minWidth: 'unset',
+    },
+    '@media (max-width: 480px)': {
+      width: '100%',
+    },
+    '@media (max-width: 375px)': {
+      width: '100%',
     },
   },
   targetItemWrapperSecondRow: {
     width: 'calc(33.33% - 10px)',
     minWidth: '300px',
     '@media (max-width: 1200px)': {
-      width: 'calc(50% - 10px)',
+      width: 'calc(33.33% - 8px)',
+      minWidth: '280px',
+    },
+    '@media (max-width: 960px)': {
+      width: 'calc(50% - 5px)',
+      minWidth: '250px',
     },
     '@media (max-width: 680px)': {
       width: '100%',
       minWidth: 'unset',
+    },
+    '@media (max-width: 480px)': {
+      width: '100%',
+    },
+    '@media (max-width: 375px)': {
+      width: '100%',
     },
   },
   targetItem: {
@@ -128,6 +231,30 @@ const useStyles = makeStyles({
       transform: 'translateY(-2px)',
       boxShadow: '0 5px 15px rgba(0, 0, 0, 0.2)',
     },
+    '@media (max-width: 1200px)': {
+      padding: '18px',
+      borderRadius: '10px',
+      minHeight: '70px',
+    },
+    '@media (max-width: 960px)': {
+      padding: '16px',
+      borderRadius: '8px',
+      minHeight: '65px',
+    },
+    '@media (max-width: 600px)': {
+      padding: '14px',
+      borderRadius: '6px',
+      minHeight: '60px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '12px',
+      minHeight: '55px',
+    },
+    '@media (max-width: 375px)': {
+      padding: '10px',
+      borderRadius: '4px',
+      minHeight: '50px',
+    },
   },
   checkIcon: {
     color: '#FFC614 !important',
@@ -135,12 +262,25 @@ const useStyles = makeStyles({
     marginRight: '15px !important',
     marginTop: '2px !important',
     flexShrink: 0,
+    '@media (max-width: 1200px)': {
+      fontSize: '30px !important',
+      marginRight: '14px !important',
+    },
     '@media (max-width: 960px)': {
       fontSize: '28px !important',
+      marginRight: '12px !important',
     },
     '@media (max-width: 600px)': {
       fontSize: '24px !important',
-      marginRight: '12px !important',
+      marginRight: '10px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '22px !important',
+      marginRight: '8px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '20px !important',
+      marginRight: '6px !important',
     },
   },
   targetText: {
@@ -148,6 +288,24 @@ const useStyles = makeStyles({
     fontSize: '0.95rem !important',
     fontWeight: '500 !important',
     lineHeight: '1.4 !important',
+    '@media (max-width: 1200px)': {
+      fontSize: '0.9rem !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '0.85rem !important',
+      lineHeight: '1.5 !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.8rem !important',
+      lineHeight: '1.6 !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.75rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.7rem !important',
+      lineHeight: '1.7 !important',
+    },
   },
   applyButton: {
     backgroundColor: '#FFC614 !important',
@@ -164,9 +322,28 @@ const useStyles = makeStyles({
       transform: 'translateY(-2px)',
       boxShadow: '0 8px 20px rgba(255, 198, 20, 0.4) !important',
     },
-    '@media (max-width: 600px)': {
+    '@media (max-width: 1200px)': {
+      padding: '11px 28px !important',
+      fontSize: '1.05rem !important',
+    },
+    '@media (max-width: 960px)': {
       padding: '10px 25px !important',
       fontSize: '1rem !important',
+    },
+    '@media (max-width: 600px)': {
+      padding: '9px 22px !important',
+      fontSize: '0.95rem !important',
+      borderRadius: '40px !important',
+    },
+    '@media (max-width: 480px)': {
+      padding: '8px 20px !important',
+      fontSize: '0.9rem !important',
+      borderRadius: '35px !important',
+    },
+    '@media (max-width: 375px)': {
+      padding: '7px 18px !important',
+      fontSize: '0.85rem !important',
+      borderRadius: '30px !important',
     },
   },
   backgroundPattern: {
@@ -185,6 +362,15 @@ const useStyles = makeStyles({
     zIndex: 1,
     animation: '$backgroundFloat 20s ease-in-out infinite',
     pointerEvents: 'none',
+    '@media (max-width: 960px)': {
+      backgroundSize: '100% 100%, 100% 100%, 25px 25px',
+    },
+    '@media (max-width: 600px)': {
+      backgroundSize: '100% 100%, 100% 100%, 20px 20px',
+    },
+    '@media (max-width: 375px)': {
+      backgroundSize: '100% 100%, 100% 100%, 15px 15px',
+    },
   },
   '@keyframes backgroundFloat': {
     '0%, 100%': {
@@ -199,8 +385,17 @@ const useStyles = makeStyles({
   buttonArrow: {
     marginLeft: '8px !important',
     transition: 'transform 0.3s ease',
+    fontSize: '1.2rem !important',
     '$applyButton:hover &': {
       transform: 'translateX(3px)',
+    },
+    '@media (max-width: 600px)': {
+      marginLeft: '6px !important',
+      fontSize: '1rem !important',
+    },
+    '@media (max-width: 375px)': {
+      marginLeft: '4px !important',
+      fontSize: '0.9rem !important',
     },
   },
 });
@@ -215,10 +410,7 @@ const PreScreeningBanner = () => {
   }, []);
 
   const handleApplyNow = () => {
-    // Redirect to pre-screening test page
     navigate('/pre-screening-test');
-    // Alternative: if using an external link
-    // window.open('https://gigaversity.in/prescreening_test', '_blank');
   };
 
   const handleClick = () => {
@@ -246,12 +438,9 @@ const PreScreeningBanner = () => {
       text: "Passionate learners who lacked mentorship and path, now determined to begin their tech journey.",
       icon: EmojiObjectsIcon
     },
-    
   ];
 
-  // First 2 items go in the first row (changed from 3)
   const firstRowItems = targetAudienceWithIcons.slice(0, 2);
-  // Remaining 3 items go in the second row (changed from 2)
   const secondRowItems = targetAudienceWithIcons.slice(2);
 
   const hoverStyles = {
@@ -278,6 +467,16 @@ const PreScreeningBanner = () => {
       opacity: 0,
       transition: 'opacity 0.2s ease',
       boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+      '@media (max-width: 600px)': {
+        fontSize: '10px',
+        padding: '4px 8px',
+        borderRadius: '15px',
+      },
+      '@media (max-width: 375px)': {
+        fontSize: '8px',
+        padding: '3px 6px',
+        borderRadius: '10px',
+      },
     },
     '&:hover::after': {
       opacity: 1
@@ -306,7 +505,6 @@ const PreScreeningBanner = () => {
           </Typography>
           
           <Box className={classes.targetAudienceGrid}>
-            {/* First row with 2 items */}
             {firstRowItems.map(({ text, icon: IconComponent }, index) => (
               <Box 
                 key={index} 
@@ -323,7 +521,6 @@ const PreScreeningBanner = () => {
               </Box>
             ))}
 
-            {/* Second row with 3 items */}
             {secondRowItems.map(({ text, icon: IconComponent }, index) => (
               <Box 
                 key={index + 2} 

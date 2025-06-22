@@ -11,16 +11,47 @@ const useStyles = makeStyles({
     padding: '50px 0',
     position: 'relative',
     overflow: 'hidden',
-    // background: 'linear-gradient(135deg, #f6f9ff 0%, #edf5ff 100%)',
+    '@media (max-width: 1200px)': {
+      padding: '45px 0',
+    },
+    '@media (max-width: 960px)': {
+      padding: '40px 0',
+    },
+    '@media (max-width: 600px)': {
+      padding: '35px 0',
+    },
+    '@media (max-width: 480px)': {
+      padding: '30px 0',
+    },
+    '@media (max-width: 375px)': {
+      padding: '25px 0',
+    },
   },
   sectionTitle: {
     fontSize: '2.5rem !important',
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
-    // color: '#4263EB !important',
     textAlign: 'center',
     marginBottom: '15px !important',
     position: 'relative',
+    '@media (max-width: 1200px)': {
+      fontSize: '2.3rem !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '2.1rem !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '1.8rem !important',
+      marginBottom: '12px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '1.6rem !important',
+      marginBottom: '10px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1.4rem !important',
+      marginBottom: '8px !important',
+    },
   },
   subtitle: {
     fontSize: '1.1rem !important',
@@ -29,12 +60,38 @@ const useStyles = makeStyles({
     marginBottom: '40px !important',
     maxWidth: '800px',
     margin: '0 auto 40px auto !important',
+    '@media (max-width: 1200px)': {
+      fontSize: '1.05rem !important',
+      maxWidth: '700px',
+      marginBottom: '35px !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '1rem !important',
+      maxWidth: '600px',
+      marginBottom: '30px !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.95rem !important',
+      maxWidth: '90%',
+      marginBottom: '25px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.9rem !important',
+      marginBottom: '20px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.85rem !important',
+      marginBottom: '18px !important',
+    },
   },
   statsContainer: {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
     gap: '25px',
+    '@media (max-width: 1200px)': {
+      gap: '22px',
+    },
     '@media (max-width: 900px)': {
       gap: '20px',
     },
@@ -42,6 +99,12 @@ const useStyles = makeStyles({
       gap: '15px',
       flexDirection: 'column',
       alignItems: 'center',
+    },
+    '@media (max-width: 480px)': {
+      gap: '12px',
+    },
+    '@media (max-width: 375px)': {
+      gap: '10px',
     },
   },
   statCard: {
@@ -63,9 +126,28 @@ const useStyles = makeStyles({
         transform: 'scale(1.1) rotate(10deg)',
       },
     },
+    '@media (max-width: 1200px)': {
+      width: '200px',
+      padding: '25px 18px',
+    },
+    '@media (max-width: 960px)': {
+      width: '180px',
+      padding: '22px 16px',
+    },
     '@media (max-width: 600px)': {
       width: '85%',
       maxWidth: '320px',
+      padding: '20px 15px',
+    },
+    '@media (max-width: 480px)': {
+      width: '90%',
+      maxWidth: '280px',
+      padding: '18px 12px',
+    },
+    '@media (max-width: 375px)': {
+      width: '95%',
+      maxWidth: '260px',
+      padding: '15px 10px',
     },
   },
   card1: {
@@ -94,6 +176,31 @@ const useStyles = makeStyles({
     marginBottom: '15px',
     transition: 'all 0.4s ease',
     position: 'relative',
+    '@media (max-width: 1200px)': {
+      width: '65px',
+      height: '65px',
+      marginBottom: '12px',
+    },
+    '@media (max-width: 960px)': {
+      width: '60px',
+      height: '60px',
+      marginBottom: '10px',
+    },
+    '@media (max-width: 600px)': {
+      width: '55px',
+      height: '55px',
+      marginBottom: '8px',
+    },
+    '@media (max-width: 480px)': {
+      width: '50px',
+      height: '50px',
+      marginBottom: '6px',
+    },
+    '@media (max-width: 375px)': {
+      width: '45px',
+      height: '45px',
+      marginBottom: '5px',
+    },
   },
   icon1: {
     color: '#4263EB',
@@ -115,6 +222,25 @@ const useStyles = makeStyles({
     fontSize: '2.5rem !important',
     fontWeight: 'bold !important',
     marginBottom: '10px !important',
+    '@media (max-width: 1200px)': {
+      fontSize: '2.3rem !important',
+      marginBottom: '8px !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '2.1rem !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '1.9rem !important',
+      marginBottom: '6px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '1.7rem !important',
+      marginBottom: '5px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1.5rem !important',
+      marginBottom: '4px !important',
+    },
   },
   value1: {
     color: '#4263EB !important',
@@ -133,6 +259,23 @@ const useStyles = makeStyles({
     fontWeight: '500 !important',
     color: '#555 !important',
     lineHeight: '1.4 !important',
+    '@media (max-width: 1200px)': {
+      fontSize: '0.95rem !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '0.9rem !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.85rem !important',
+      lineHeight: '1.3 !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.8rem !important',
+      lineHeight: '1.2 !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.75rem !important',
+    },
   },
   decorCircle: {
     position: 'absolute',
@@ -146,6 +289,36 @@ const useStyles = makeStyles({
     top: '-150px',
     left: '-150px',
     background: 'radial-gradient(circle, rgba(66, 99, 235, 0.1) 0%, rgba(66, 99, 235, 0) 70%)',
+    '@media (max-width: 1200px)': {
+      width: '250px',
+      height: '250px',
+      top: '-125px',
+      left: '-125px',
+    },
+    '@media (max-width: 960px)': {
+      width: '200px',
+      height: '200px',
+      top: '-100px',
+      left: '-100px',
+    },
+    '@media (max-width: 600px)': {
+      width: '150px',
+      height: '150px',
+      top: '-75px',
+      left: '-75px',
+    },
+    '@media (max-width: 480px)': {
+      width: '120px',
+      height: '120px',
+      top: '-60px',
+      left: '-60px',
+    },
+    '@media (max-width: 375px)': {
+      width: '100px',
+      height: '100px',
+      top: '-50px',
+      left: '-50px',
+    },
   },
   circle2: {
     width: '250px',
@@ -153,6 +326,36 @@ const useStyles = makeStyles({
     bottom: '-100px',
     right: '-100px',
     background: 'radial-gradient(circle, rgba(255, 107, 107, 0.1) 0%, rgba(255, 107, 107, 0) 70%)',
+    '@media (max-width: 1200px)': {
+      width: '200px',
+      height: '200px',
+      bottom: '-75px',
+      right: '-75px',
+    },
+    '@media (max-width: 960px)': {
+      width: '150px',
+      height: '150px',
+      bottom: '-50px',
+      right: '-50px',
+    },
+    '@media (max-width: 600px)': {
+      width: '120px',
+      height: '120px',
+      bottom: '-40px',
+      right: '-40px',
+    },
+    '@media (max-width: 480px)': {
+      width: '100px',
+      height: '100px',
+      bottom: '-30px',
+      right: '-30px',
+    },
+    '@media (max-width: 375px)': {
+      width: '80px',
+      height: '80px',
+      bottom: '-25px',
+      right: '-25px',
+    },
   },
   '@keyframes float': {
     '0%, 100%': {
@@ -164,7 +367,6 @@ const useStyles = makeStyles({
   },
 });
 
-// Animated counter component
 const AnimatedCounter = ({ end, duration = 2000, className, loopInterval = 3000 }) => {
   const [count, setCount] = useState(0);
   const [run, setRun] = useState(0);
@@ -230,7 +432,6 @@ const TechFutureSection = () => {
 
   return (
     <Box className={classes.section} ref={sectionRef}>
-      {/* Decorative circles */}
       <Box className={`${classes.decorCircle} ${classes.circle1}`} />
       <Box className={`${classes.decorCircle} ${classes.circle2}`} />
       
@@ -243,7 +444,6 @@ const TechFutureSection = () => {
         </Typography>
         
         <Box className={classes.statsContainer}>
-          {/* Stat Card 1 */}
           <Paper className={`${classes.statCard} ${classes.card1}`} elevation={0}>
             <Box className={`${classes.iconContainer} ${classes.icon1}`}>
               <BarChartIcon fontSize="large" />
@@ -256,7 +456,6 @@ const TechFutureSection = () => {
             </Typography>
           </Paper>
           
-          {/* Stat Card 2 */}
           <Paper className={`${classes.statCard} ${classes.card2}`} elevation={0}>
             <Box className={`${classes.iconContainer} ${classes.icon2}`}>
               <EmojiEventsIcon fontSize="large" />
@@ -269,7 +468,6 @@ const TechFutureSection = () => {
             </Typography>
           </Paper>
           
-          {/* Stat Card 3 */}
           <Paper className={`${classes.statCard} ${classes.card3}`} elevation={0}>
             <Box className={`${classes.iconContainer} ${classes.icon3}`}>
               <WorkIcon fontSize="large" />
@@ -282,7 +480,6 @@ const TechFutureSection = () => {
             </Typography>
           </Paper>
           
-          {/* Stat Card 4 */}
           <Paper className={`${classes.statCard} ${classes.card4}`} elevation={0}>
             <Box className={`${classes.iconContainer} ${classes.icon4}`}>
               <MonetizationOnIcon fontSize="large" />

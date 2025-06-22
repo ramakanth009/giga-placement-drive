@@ -54,6 +54,36 @@ const useStyles = makeStyles({
       backgroundSize: "30px 30px",
       zIndex: 1,
     },
+    '@media (max-width: 1200px)': {
+      padding: "35px 0",
+      "&::before": {
+        backgroundSize: "25px 25px",
+      },
+    },
+    '@media (max-width: 960px)': {
+      padding: "30px 0",
+      "&::before": {
+        backgroundSize: "22px 22px",
+      },
+    },
+    '@media (max-width: 600px)': {
+      padding: "25px 0",
+      "&::before": {
+        backgroundSize: "20px 20px",
+      },
+    },
+    '@media (max-width: 480px)': {
+      padding: "20px 0",
+      "&::before": {
+        backgroundSize: "18px 18px",
+      },
+    },
+    '@media (max-width: 375px)': {
+      padding: "18px 0",
+      "&::before": {
+        backgroundSize: "15px 15px",
+      },
+    },
   },
   container: {
     position: "relative",
@@ -65,8 +95,20 @@ const useStyles = makeStyles({
     color: "#ffffff !important",
     textAlign: "center",
     textShadow: "0 2px 4px rgba(0,0,0,0.3)",
-    "@media (max-width: 600px)": {
-      fontSize: "2.2rem !important",
+    '@media (max-width: 1200px)': {
+      fontSize: "2.7rem !important",
+    },
+    '@media (max-width: 960px)': {
+      fontSize: "2.4rem !important",
+    },
+    '@media (max-width: 600px)': {
+      fontSize: "2rem !important",
+    },
+    '@media (max-width: 480px)': {
+      fontSize: "1.8rem !important",
+    },
+    '@media (max-width: 375px)': {
+      fontSize: "1.6rem !important",
     },
   },
   titleYellow: {
@@ -79,10 +121,26 @@ const useStyles = makeStyles({
     maxWidth: "800px",
     margin: "0 auto 20px auto !important",
     textShadow: "0 1px 2px rgba(0,0,0,0.2)",
-    "@media (max-width: 600px)": {
+    '@media (max-width: 1200px)': {
       fontSize: "1.1rem !important",
+      maxWidth: "700px",
+    },
+    '@media (max-width: 960px)': {
+      fontSize: "1rem !important",
+      maxWidth: "600px",
+    },
+    '@media (max-width: 600px)': {
+      fontSize: "0.95rem !important",
       maxWidth: "90%",
-      marginBottom: "40px !important",
+      marginBottom: "15px !important",
+    },
+    '@media (max-width: 480px)': {
+      fontSize: "0.9rem !important",
+      marginBottom: "12px !important",
+    },
+    '@media (max-width: 375px)': {
+      fontSize: "0.85rem !important",
+      marginBottom: "10px !important",
     },
   },
   card: {
@@ -108,6 +166,26 @@ const useStyles = makeStyles({
         opacity: 0.8,
       },
     },
+    '@media (max-width: 1200px)': {
+      height: "450px",
+      borderRadius: "18px !important",
+    },
+    '@media (max-width: 960px)': {
+      height: "420px",
+      borderRadius: "16px !important",
+    },
+    '@media (max-width: 600px)': {
+      height: "400px",
+      borderRadius: "14px !important",
+    },
+    '@media (max-width: 480px)': {
+      height: "380px",
+      borderRadius: "12px !important",
+    },
+    '@media (max-width: 375px)': {
+      height: "360px",
+      borderRadius: "10px !important",
+    },
   },
   profileSection: {
     position: "relative",
@@ -117,6 +195,21 @@ const useStyles = makeStyles({
     alignItems: "center",
     justifyContent: "center",
     background: "linear-gradient(180deg, #101138 0%, #1e1c44 100%)",
+    '@media (max-width: 1200px)': {
+      height: "260px",
+    },
+    '@media (max-width: 960px)': {
+      height: "240px",
+    },
+    '@media (max-width: 600px)': {
+      height: "220px",
+    },
+    '@media (max-width: 480px)': {
+      height: "200px",
+    },
+    '@media (max-width: 375px)': {
+      height: "180px",
+    },
   },
   profileImage: {
     width: "180px",
@@ -127,6 +220,28 @@ const useStyles = makeStyles({
     transition: "transform 0.4s ease",
     zIndex: 2,
     position: "relative",
+    '@media (max-width: 1200px)': {
+      width: "160px",
+      height: "160px",
+      border: "3px solid rgba(255, 255, 255, 0.9)",
+    },
+    '@media (max-width: 960px)': {
+      width: "140px",
+      height: "140px",
+    },
+    '@media (max-width: 600px)': {
+      width: "120px",
+      height: "120px",
+      border: "2px solid rgba(255, 255, 255, 0.9)",
+    },
+    '@media (max-width: 480px)': {
+      width: "100px",
+      height: "100px",
+    },
+    '@media (max-width: 375px)': {
+      width: "90px",
+      height: "90px",
+    },
   },
   gradientOverlay: {
     position: "absolute",
@@ -139,29 +254,6 @@ const useStyles = makeStyles({
     transition: "opacity 0.3s ease",
     zIndex: 1,
   },
-  /* Commented out social styles
-  socialLinks: {
-    position: 'absolute',
-    bottom: '15px',
-    left: '50%',
-    transform: 'translateX(-50%) translateY(10px)',
-    display: 'flex',
-    gap: '8px',
-    opacity: 0,
-    transition: 'all 0.3s ease',
-    zIndex: 3,
-  },
-  socialIcon: {
-    backgroundColor: 'rgba(255, 255, 255, 0.9) !important',
-    color: '#233f94 !important',
-    width: '32px !important',
-    height: '32px !important',
-    '&:hover': {
-      backgroundColor: '#fff !important',
-      transform: 'scale(1.1)',
-    },
-  },
-  */
 
   cardContent: {
     padding: "24px !important",
@@ -172,18 +264,72 @@ const useStyles = makeStyles({
     textAlign: "center",
     background: "rgba(255, 255, 255, 0.03)",
     backdropFilter: "blur(10px)",
+    '@media (max-width: 1200px)': {
+      padding: "20px !important",
+    },
+    '@media (max-width: 960px)': {
+      padding: "18px !important",
+    },
+    '@media (max-width: 600px)': {
+      padding: "15px !important",
+    },
+    '@media (max-width: 480px)': {
+      padding: "12px !important",
+    },
+    '@media (max-width: 375px)': {
+      padding: "10px !important",
+    },
   },
   mentorName: {
     fontSize: "1.4rem !important",
     fontWeight: "700 !important",
     color: "white !important",
     marginBottom: "8px !important",
+    '@media (max-width: 1200px)': {
+      fontSize: "1.3rem !important",
+    },
+    '@media (max-width: 960px)': {
+      fontSize: "1.2rem !important",
+    },
+    '@media (max-width: 600px)': {
+      fontSize: "1.1rem !important",
+      marginBottom: "6px !important",
+    },
+    '@media (max-width: 480px)': {
+      fontSize: "1rem !important",
+      marginBottom: "5px !important",
+    },
+    '@media (max-width: 375px)': {
+      fontSize: "0.95rem !important",
+      marginBottom: "4px !important",
+    },
   },
   mentorTitle: {
     fontSize: "0.95rem !important",
     color: "rgba(255, 255, 255, 0.8) !important",
     lineHeight: "1.5 !important",
     marginBottom: "12px !important",
+    '@media (max-width: 1200px)': {
+      fontSize: "0.9rem !important",
+      marginBottom: "10px !important",
+    },
+    '@media (max-width: 960px)': {
+      fontSize: "0.85rem !important",
+    },
+    '@media (max-width: 600px)': {
+      fontSize: "0.8rem !important",
+      marginBottom: "8px !important",
+      lineHeight: "1.4 !important",
+    },
+    '@media (max-width: 480px)': {
+      fontSize: "0.75rem !important",
+      marginBottom: "6px !important",
+    },
+    '@media (max-width: 375px)': {
+      fontSize: "0.7rem !important",
+      marginBottom: "5px !important",
+      lineHeight: "1.3 !important",
+    },
   },
   expertiseChip: {
     backgroundColor: "rgba(255, 198, 20, 0.15) !important",
@@ -192,6 +338,28 @@ const useStyles = makeStyles({
     height: "24px !important",
     borderRadius: "12px !important",
     border: "1px solid rgba(255, 198, 20, 0.3) !important",
+    '@media (max-width: 1200px)': {
+      fontSize: "0.75rem !important",
+      height: "22px !important",
+    },
+    '@media (max-width: 960px)': {
+      fontSize: "0.7rem !important",
+      height: "20px !important",
+    },
+    '@media (max-width: 600px)': {
+      fontSize: "0.65rem !important",
+      height: "18px !important",
+      borderRadius: "10px !important",
+    },
+    '@media (max-width: 480px)': {
+      fontSize: "0.6rem !important",
+      height: "16px !important",
+      borderRadius: "8px !important",
+    },
+    '@media (max-width: 375px)': {
+      fontSize: "0.55rem !important",
+      height: "14px !important",
+    },
   },
   swiperContainer: {
     padding: "20px 60px 10px 60px !important",
@@ -231,8 +399,63 @@ const useStyles = makeStyles({
         transform: "scale(1.1)",
       },
     },
-    "@media (max-width: 600px)": {
-      padding: "20px 30px 50px 30px !important",
+    '@media (max-width: 1200px)': {
+      padding: "18px 50px 40px 50px !important",
+      "& .swiper-button-next, & .swiper-button-prev": {
+        width: "45px !important",
+        height: "45px !important",
+        "&:after": {
+          fontSize: "18px !important",
+        },
+      },
+    },
+    '@media (max-width: 960px)': {
+      padding: "16px 40px 35px 40px !important",
+      "& .swiper-button-next, & .swiper-button-prev": {
+        width: "40px !important",
+        height: "40px !important",
+        "&:after": {
+          fontSize: "16px !important",
+        },
+      },
+    },
+    '@media (max-width: 600px)': {
+      padding: "15px 30px 30px 30px !important",
+      "& .swiper-pagination-bullet": {
+        width: "10px !important",
+        height: "10px !important",
+      },
+      "& .swiper-button-next, & .swiper-button-prev": {
+        width: "35px !important",
+        height: "35px !important",
+        "&:after": {
+          fontSize: "14px !important",
+        },
+      },
+    },
+    '@media (max-width: 480px)': {
+      padding: "12px 25px 25px 25px !important",
+      "& .swiper-button-next, & .swiper-button-prev": {
+        width: "30px !important",
+        height: "30px !important",
+        "&:after": {
+          fontSize: "12px !important",
+        },
+      },
+    },
+    '@media (max-width: 375px)': {
+      padding: "10px 20px 20px 20px !important",
+      "& .swiper-pagination-bullet": {
+        width: "8px !important",
+        height: "8px !important",
+      },
+      "& .swiper-button-next, & .swiper-button-prev": {
+        width: "25px !important",
+        height: "25px !important",
+        "&:after": {
+          fontSize: "10px !important",
+        },
+      },
     },
   },
 
@@ -342,6 +565,16 @@ const MentorShowcase = () => {
             breakpoints={{
               320: {
                 slidesPerView: 1,
+                spaceBetween: 15,
+                effect: "slide",
+              },
+              480: {
+                slidesPerView: 1,
+                spaceBetween: 18,
+                effect: "slide",
+              },
+              600: {
+                slidesPerView: 1,
                 spaceBetween: 20,
                 effect: "slide",
               },
@@ -350,16 +583,33 @@ const MentorShowcase = () => {
                 spaceBetween: 25,
                 effect: "slide",
               },
+              960: {
+                slidesPerView: 2,
+                spaceBetween: 28,
+                effect: "coverflow",
+              },
               1024: {
                 slidesPerView: 3,
                 spaceBetween: 30,
+                effect: "coverflow",
+              },
+              1200: {
+                slidesPerView: 3,
+                spaceBetween: 35,
                 effect: "coverflow",
               },
             }}
             modules={[Pagination, Navigation, Autoplay, EffectCoverflow]}
           >
             {trainers.map((trainer) => (
-              <SwiperSlide key={trainer.id} style={{ width: "320px" }}>
+              <SwiperSlide key={trainer.id} style={{ 
+                width: "320px",
+                '@media (max-width: 1200px)': { width: "300px" },
+                '@media (max-width: 960px)': { width: "280px" },
+                '@media (max-width: 600px)': { width: "260px" },
+                '@media (max-width: 480px)': { width: "240px" },
+                '@media (max-width: 375px)': { width: "220px" },
+              }}>
                 <Card className={classes.card}>
                   <Box className={classes.profileSection}>
                     <Box className={classes.gradientOverlay} />
@@ -368,19 +618,6 @@ const MentorShowcase = () => {
                       alt={`Mentor ${trainer.name}`}
                       className={classes.profileImage}
                     />
-                    {/* Commented out social links section
-                    <Box className={classes.socialLinks}>
-                      <IconButton className={classes.socialIcon} size="small">
-                        <LinkedIn fontSize="small" />
-                      </IconButton>
-                      <IconButton className={classes.socialIcon} size="small">
-                        <Twitter fontSize="small" />
-                      </IconButton>
-                      <IconButton className={classes.socialIcon} size="small">
-                        <GitHub fontSize="small" />
-                      </IconButton>
-                    </Box>
-                    */}
                   </Box>
                   <CardContent className={classes.cardContent}>
                     <Typography className={classes.mentorName}>
