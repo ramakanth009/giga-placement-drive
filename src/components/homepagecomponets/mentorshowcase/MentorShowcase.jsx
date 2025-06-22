@@ -29,7 +29,7 @@ import {
 // Import trainer images
 import hemanthImg from "../../../assets/trainers/Hemanth_sairsm.jpg";
 import jaiImg from "../../../assets/trainers/Jai_shankar_reddy.jpg";
-import laxmanImg from "../../../assets/trainers/Laxman_eadala.jpeg";
+import laxmanImg from "../../../assets/trainers/Laxman_eadala.jpg";
 import vinodImg from "../../../assets/trainers/Vinod_kumar.jpg";
 import jaideepImg from "../../../assets/trainers/jaideep.png";
 import akhilImg from "../../../assets/trainers/akhil-lanka.png";

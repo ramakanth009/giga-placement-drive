@@ -1,4 +1,4 @@
-// 5. CurriculumCard Component
+// CurriculumCard Component with comprehensive responsiveness
 import React from 'react';
 import { Box, Typography, List, ListItem, ListItemText, Paper } from '@mui/material';
 import { makeStyles } from '@mui/styles';
@@ -8,70 +8,165 @@ import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 const useStyles = makeStyles({
   card: {
     backgroundColor: '#FFFFFF',
-    borderRadius: '20px !important',
-    boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.05) !important',
-    padding: '20px',
+    borderRadius: '24px !important',
+    boxShadow: '0px 6px 25px rgba(0, 0, 0, 0.06) !important',
+    padding: '24px',
     width: '400px',
-    height: '500px',
+    height: '520px',
     position: 'relative',
     transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
     marginRight: '24px',
     flex: '0 0 auto',
     overflow: 'hidden',
     cursor: 'pointer',
-    marginTop:"20px",
+    marginTop: '25px',
+    border: '1px solid rgba(74, 99, 231, 0.08)',
     '&:hover': {
-      transform: 'translateY(-5px)',
-      boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.1) !important',
+      transform: 'translateY(-6px)',
+      boxShadow: '0px 12px 35px rgba(0, 0, 0, 0.12) !important',
+      borderColor: 'rgba(74, 99, 231, 0.2)',
     },
     '@media (max-width: 1200px)': {
+      borderRadius: '22px !important',
+      padding: '22px',
       width: '380px',
-      height: '480px',
-      padding: '18px',
+      height: '500px',
+      marginRight: '22px',
+      marginTop: '23px',
+      '&:hover': {
+        transform: 'translateY(-5px)',
+        boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.1) !important',
+      },
     },
     '@media (max-width: 960px)': {
+      borderRadius: '20px !important',
+      padding: '20px',
       width: '350px',
-      height: '450px',
-      padding: '16px',
+      height: '480px',
+      marginRight: '20px',
+      marginTop: '20px',
+      '&:hover': {
+        transform: 'translateY(-4px)',
+        boxShadow: '0px 8px 25px rgba(0, 0, 0, 0.08) !important',
+      },
     },
     '@media (max-width: 600px)': {
+      borderRadius: '18px !important',
+      padding: '18px',
       width: '300px',
-      height: '420px',
-      padding: '15px',
+      height: '450px',
+      marginRight: '18px',
+      marginTop: '18px',
     },
     '@media (max-width: 480px)': {
+      borderRadius: '16px !important',
+      padding: '16px',
       width: '270px',
-      height: '400px',
-      padding: '12px',
+      height: '420px',
+      marginRight: '16px',
+      marginTop: '15px',
     },
     '@media (max-width: 375px)': {
+      borderRadius: '14px !important',
+      padding: '14px',
       width: '240px',
-      height: '380px',
-      padding: '10px',
+      height: '400px',
+      marginRight: '14px',
+      marginTop: '12px',
     },
   },
   cardScaled: {
-    transform: 'scale(1.08)',
-    zIndex: 2,
-    boxShadow: '0px 12px 30px rgba(0, 0, 0, 0.15) !important',
+    transform: 'scale(1.1)',
+    zIndex: 3,
+    boxShadow: '0px 15px 40px rgba(0, 0, 0, 0.18) !important',
+    borderColor: 'rgba(74, 99, 231, 0.3) !important',
+    '&:hover': {
+      transform: 'scale(1.1) translateY(-3px)',
+      boxShadow: '0px 18px 45px rgba(0, 0, 0, 0.2) !important',
+    },
+    '@media (max-width: 1200px)': {
+      transform: 'scale(1.08)',
+      '&:hover': {
+        transform: 'scale(1.08) translateY(-3px)',
+      },
+    },
     '@media (max-width: 960px)': {
-      transform: 'scale(1.05)',
+      transform: 'scale(1.06)',
+      '&:hover': {
+        transform: 'scale(1.06) translateY(-2px)',
+      },
     },
     '@media (max-width: 600px)': {
+      transform: 'scale(1.04)',
+      '&:hover': {
+        transform: 'scale(1.04) translateY(-2px)',
+      },
+    },
+    '@media (max-width: 480px)': {
       transform: 'scale(1.03)',
+      '&:hover': {
+        transform: 'scale(1.03) translateY(-1px)',
+      },
+    },
+    '@media (max-width: 375px)': {
+      transform: 'scale(1.02)',
+      '&:hover': {
+        transform: 'scale(1.02) translateY(-1px)',
+      },
     },
   },
   cardActive: {
-    borderTop: '4px solid #4A63E7',
-    boxShadow: '0px 8px 25px rgba(74, 99, 231, 0.15) !important',
+    borderTop: '5px solid #4A63E7',
+    boxShadow: '0px 10px 30px rgba(74, 99, 231, 0.18) !important',
+    borderColor: 'rgba(74, 99, 231, 0.3) !important',
+    backgroundColor: '#fafbff !important',
     '& $durationIcon': {
-      transform: 'rotate(15deg)',
+      transform: 'rotate(20deg)',
+      color: '#4A63E7 !important',
     },
     '& $bulletIcon': {
-      transform: 'scale(1.2)',
+      transform: 'scale(1.25)',
+      color: '#4A63E7 !important',
     },
     '& $title:after': {
       width: '100%',
+    },
+    '@media (max-width: 1200px)': {
+      borderTop: '4px solid #4A63E7',
+      '& $durationIcon': {
+        transform: 'rotate(18deg)',
+      },
+      '& $bulletIcon': {
+        transform: 'scale(1.2)',
+      },
+    },
+    '@media (max-width: 960px)': {
+      borderTop: '3px solid #4A63E7',
+      '& $durationIcon': {
+        transform: 'rotate(15deg)',
+      },
+      '& $bulletIcon': {
+        transform: 'scale(1.15)',
+      },
+    },
+    '@media (max-width: 600px)': {
+      '& $durationIcon': {
+        transform: 'rotate(12deg)',
+      },
+      '& $bulletIcon': {
+        transform: 'scale(1.1)',
+      },
+    },
+    '@media (max-width: 480px)': {
+      borderTop: '2px solid #4A63E7',
+      '& $durationIcon': {
+        transform: 'rotate(10deg)',
+      },
+    },
+    '@media (max-width: 375px)': {
+      '& $durationIcon': {
+        transform: 'rotate(8deg)',
+      },
     },
   },
   cardContent: {
@@ -87,18 +182,38 @@ const useStyles = makeStyles({
     left: 0,
     right: 0,
     bottom: 0,
-    opacity: 0.05,
+    opacity: 0.06,
     zIndex: 1,
-    transform: 'rotate(-3deg) scale(1.2) translateY(20px)',
-    backgroundSize: '20px 20px',
-    backgroundImage: 'radial-gradient(#4A63E7 1px, transparent 1px)',
+    transform: 'rotate(-2deg) scale(1.15) translateY(15px)',
+    backgroundSize: '25px 25px',
+    backgroundImage: 'radial-gradient(#4A63E7 1.5px, transparent 1.5px)',
+    '@media (max-width: 1200px)': {
+      backgroundSize: '23px 23px',
+      transform: 'rotate(-2deg) scale(1.12) translateY(12px)',
+    },
+    '@media (max-width: 960px)': {
+      backgroundSize: '20px 20px',
+      transform: 'rotate(-1deg) scale(1.1) translateY(10px)',
+    },
+    '@media (max-width: 600px)': {
+      backgroundSize: '18px 18px',
+      transform: 'rotate(-1deg) scale(1.08) translateY(8px)',
+    },
+    '@media (max-width: 480px)': {
+      backgroundSize: '16px 16px',
+      transform: 'rotate(-1deg) scale(1.05) translateY(6px)',
+    },
+    '@media (max-width: 375px)': {
+      backgroundSize: '14px 14px',
+      transform: 'rotate(-1deg) scale(1.03) translateY(5px)',
+    },
   },
   numberCircle: {
     position: 'absolute',
-    top: '-30px',
-    left: '20px',
-    width: '70px',
-    height: '70px',
+    top: '-35px',
+    left: '24px',
+    width: '80px',
+    height: '80px',
     borderRadius: '50%',
     background: 'linear-gradient(135deg, #4A63E7 0%, #8B5CF6 100%)',
     display: 'flex',
@@ -106,123 +221,183 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     color: 'white',
     fontWeight: 'bold',
-    fontSize: '48px',
-    boxShadow: '0px 6px 15px rgba(74, 99, 231, 0.25)',
+    fontSize: '54px',
+    boxShadow: '0px 8px 20px rgba(74, 99, 231, 0.3)',
     transition: 'all 0.4s ease',
-    marginBottom: '20px !important',
+    marginBottom: '25px !important',
+    border: '3px solid #ffffff',
     '&:hover': {
-      transform: 'rotate(10deg) scale(1.05)',
+      transform: 'rotate(15deg) scale(1.08)',
+      boxShadow: '0px 10px 25px rgba(74, 99, 231, 0.4)',
     },
     '@media (max-width: 1200px)': {
-      width: '65px',
-      height: '65px',
-      fontSize: '44px',
+      top: '-32px',
+      left: '22px',
+      width: '75px',
+      height: '75px',
+      fontSize: '50px',
+      marginBottom: '23px !important',
+      '&:hover': {
+        transform: 'rotate(12deg) scale(1.06)',
+      },
     },
     '@media (max-width: 960px)': {
-      width: '60px',
-      height: '60px',
-      fontSize: '40px',
-      top: '-25px',
+      top: '-30px',
+      left: '20px',
+      width: '70px',
+      height: '70px',
+      fontSize: '46px',
+      marginBottom: '20px !important',
+      border: '2px solid #ffffff',
+      '&:hover': {
+        transform: 'rotate(10deg) scale(1.05)',
+      },
     },
     '@media (max-width: 600px)': {
-      width: '55px',
-      height: '55px',
-      fontSize: '36px',
-      top: '-22px',
-      left: '15px',
+      top: '-27px',
+      left: '18px',
+      width: '65px',
+      height: '65px',
+      fontSize: '42px',
+      marginBottom: '18px !important',
     },
     '@media (max-width: 480px)': {
-      width: '50px',
-      height: '50px',
-      fontSize: '32px',
-      top: '-20px',
-      left: '12px',
+      top: '-25px',
+      left: '16px',
+      width: '60px',
+      height: '60px',
+      fontSize: '38px',
+      marginBottom: '15px !important',
+      '&:hover': {
+        transform: 'rotate(8deg) scale(1.03)',
+      },
     },
     '@media (max-width: 375px)': {
-      width: '45px',
-      height: '45px',
-      fontSize: '28px',
-      top: '-18px',
-      left: '10px',
+      top: '-22px',
+      left: '14px',
+      width: '55px',
+      height: '55px',
+      fontSize: '34px',
+      marginBottom: '12px !important',
+      '&:hover': {
+        transform: 'rotate(5deg) scale(1.02)',
+      },
     },
   },
   topicIcon: {
     position: 'absolute',
-    top: '20px',
-    right: '20px',
-    fontSize: '38px',
+    top: '24px',
+    right: '24px',
+    fontSize: '44px',
     color: '#4A63E7',
     transition: 'all 0.3s ease',
     '&:hover': {
-      transform: 'rotate(15deg) scale(1.1)',
+      transform: 'rotate(20deg) scale(1.15)',
+      color: '#8B5CF6',
     },
     '@media (max-width: 1200px)': {
-      fontSize: '36px',
+      fontSize: '42px',
+      top: '22px',
+      right: '22px',
+      '&:hover': {
+        transform: 'rotate(18deg) scale(1.12)',
+      },
     },
     '@media (max-width: 960px)': {
-      fontSize: '34px',
-      top: '18px',
-      right: '18px',
+      fontSize: '40px',
+      top: '20px',
+      right: '20px',
+      '&:hover': {
+        transform: 'rotate(15deg) scale(1.1)',
+      },
     },
     '@media (max-width: 600px)': {
-      fontSize: '32px',
-      top: '15px',
-      right: '15px',
+      fontSize: '38px',
+      top: '18px',
+      right: '18px',
+      '&:hover': {
+        transform: 'rotate(12deg) scale(1.08)',
+      },
     },
     '@media (max-width: 480px)': {
-      fontSize: '30px',
-      top: '12px',
-      right: '12px',
+      fontSize: '36px',
+      top: '16px',
+      right: '16px',
+      '&:hover': {
+        transform: 'rotate(10deg) scale(1.05)',
+      },
     },
     '@media (max-width: 375px)': {
-      fontSize: '28px',
-      top: '10px',
-      right: '10px',
+      fontSize: '34px',
+      top: '14px',
+      right: '14px',
+      '&:hover': {
+        transform: 'rotate(8deg) scale(1.03)',
+      },
     },
   },
   title: {
-    fontSize: '24px !important',
+    fontSize: '28px !important',
     fontWeight: 'bold !important',
     color: '#4A4A4A !important',
-    marginTop: '35px !important',
-    marginBottom: '20px !important',
+    marginTop: '40px !important',
+    marginBottom: '25px !important',
     transition: 'all 0.3s ease-in-out',
     display: 'inline-block',
     position: 'relative',
+    lineHeight: '1.3 !important',
     '&:after': {
       content: '""',
       position: 'absolute',
       width: '0',
-      height: '2px',
-      bottom: '-5px',
+      height: '3px',
+      bottom: '-8px',
       left: '0',
       backgroundColor: '#4A63E7',
       transition: 'width 0.3s ease',
+      borderRadius: '2px',
     },
     '@media (max-width: 1200px)': {
+      fontSize: '26px !important',
+      marginTop: '38px !important',
+      marginBottom: '23px !important',
+      '&:after': {
+        bottom: '-7px',
+      },
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '24px !important',
+      marginTop: '35px !important',
+      marginBottom: '20px !important',
+      '&:after': {
+        height: '2px',
+        bottom: '-6px',
+      },
+    },
+    '@media (max-width: 600px)': {
       fontSize: '22px !important',
       marginTop: '32px !important',
       marginBottom: '18px !important',
+      '&:after': {
+        bottom: '-5px',
+      },
     },
-    '@media (max-width: 960px)': {
+    '@media (max-width: 480px)': {
       fontSize: '20px !important',
       marginTop: '30px !important',
       marginBottom: '16px !important',
+      '&:after': {
+        bottom: '-4px',
+      },
     },
-    '@media (max-width: 600px)': {
+    '@media (max-width: 375px)': {
       fontSize: '18px !important',
       marginTop: '28px !important',
       marginBottom: '14px !important',
-    },
-    '@media (max-width: 480px)': {
-      fontSize: '16px !important',
-      marginTop: '25px !important',
-      marginBottom: '12px !important',
-    },
-    '@media (max-width: 375px)': {
-      fontSize: '15px !important',
-      marginTop: '22px !important',
-      marginBottom: '10px !important',
+      '&:after': {
+        height: '1px',
+        bottom: '-3px',
+      },
     },
   },
   titleHover: {
@@ -231,149 +406,192 @@ const useStyles = makeStyles({
     },
   },
   titleScaled: {
-    fontSize: '26px !important',
+    fontSize: '30px !important',
     color: '#4A63E7 !important',
+    '&:after': {
+      backgroundColor: '#8B5CF6',
+    },
     '@media (max-width: 1200px)': {
-      fontSize: '24px !important',
+      fontSize: '28px !important',
     },
     '@media (max-width: 960px)': {
-      fontSize: '22px !important',
+      fontSize: '26px !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '20px !important',
+      fontSize: '24px !important',
     },
     '@media (max-width: 480px)': {
-      fontSize: '18px !important',
+      fontSize: '22px !important',
     },
     '@media (max-width: 375px)': {
-      fontSize: '16px !important',
+      fontSize: '20px !important',
     },
   },
   bulletList: {
     padding: 0,
     listStyleType: 'none',
     overflow: 'hidden',
-    maxHeight: '295px',
+    maxHeight: '320px',
+    '@media (max-width: 1200px)': {
+      maxHeight: '305px',
+    },
     '@media (max-width: 960px)': {
-      maxHeight: '275px',
+      maxHeight: '290px',
     },
     '@media (max-width: 600px)': {
-      maxHeight: '255px',
+      maxHeight: '275px',
     },
     '@media (max-width: 480px)': {
-      maxHeight: '235px',
+      maxHeight: '260px',
     },
     '@media (max-width: 375px)': {
-      maxHeight: '215px',
+      maxHeight: '245px',
     },
   },
   bulletItem: {
     display: 'flex',
     alignItems: 'flex-start',
-    padding: '4px 0 !important',
-    '@media (max-width: 480px)': {
+    padding: '6px 0 !important',
+    '&:last-child': {
+      paddingBottom: '0 !important',
+    },
+    '@media (max-width: 1200px)': {
+      padding: '5px 0 !important',
+    },
+    '@media (max-width: 960px)': {
+      padding: '4px 0 !important',
+    },
+    '@media (max-width: 600px)': {
       padding: '3px 0 !important',
+    },
+    '@media (max-width: 480px)': {
+      padding: '2px 0 !important',
+    },
+    '@media (max-width: 375px)': {
+      padding: '1px 0 !important',
     },
   },
   bulletIcon: {
-    minWidth: '24px',
+    minWidth: '28px',
     color: '#4A63E7',
-    marginTop: '3px',
-    marginRight: '8px',
-    fontSize: '18px !important',
+    marginTop: '4px',
+    marginRight: '10px',
+    fontSize: '20px !important',
     transition: 'transform 0.3s ease',
+    '@media (max-width: 1200px)': {
+      fontSize: '19px !important',
+      minWidth: '26px',
+      marginRight: '9px',
+      marginTop: '3px',
+    },
     '@media (max-width: 960px)': {
-      fontSize: '17px !important',
-      marginRight: '7px',
+      fontSize: '18px !important',
+      minWidth: '24px',
+      marginRight: '8px',
     },
     '@media (max-width: 600px)': {
-      fontSize: '16px !important',
-      marginRight: '6px',
-    },
-    '@media (max-width: 480px)': {
-      fontSize: '15px !important',
-      marginRight: '5px',
+      fontSize: '17px !important',
+      minWidth: '22px',
+      marginRight: '7px',
       marginTop: '2px',
     },
-    '@media (max-width: 375px)': {
-      fontSize: '14px !important',
-      marginRight: '4px',
+    '@media (max-width: 480px)': {
+      fontSize: '16px !important',
       minWidth: '20px',
+      marginRight: '6px',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '15px !important',
+      minWidth: '18px',
+      marginRight: '5px',
+      marginTop: '1px',
     },
   },
   bulletText: {
-    fontSize: '16px !important',
+    fontSize: '17px !important',
     color: '#666666 !important',
     transition: 'all 0.3s ease-in-out',
     margin: '0 !important',
+    lineHeight: '1.5 !important',
     '@media (max-width: 1200px)': {
-      fontSize: '15px !important',
+      fontSize: '16px !important',
     },
     '@media (max-width: 960px)': {
-      fontSize: '14px !important',
+      fontSize: '15px !important',
+      lineHeight: '1.4 !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '13px !important',
+      fontSize: '14px !important',
     },
     '@media (max-width: 480px)': {
-      fontSize: '12px !important',
+      fontSize: '13px !important',
+      lineHeight: '1.3 !important',
     },
     '@media (max-width: 375px)': {
-      fontSize: '11px !important',
+      fontSize: '12px !important',
     },
   },
   bulletTextScaled: {
-    fontSize: '18px !important',
+    fontSize: '19px !important',
     color: '#4A4A4A !important',
+    fontWeight: '500 !important',
     '@media (max-width: 1200px)': {
-      fontSize: '17px !important',
+      fontSize: '18px !important',
     },
     '@media (max-width: 960px)': {
-      fontSize: '16px !important',
+      fontSize: '17px !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '15px !important',
+      fontSize: '16px !important',
     },
     '@media (max-width: 480px)': {
-      fontSize: '14px !important',
+      fontSize: '15px !important',
     },
     '@media (max-width: 375px)': {
-      fontSize: '13px !important',
+      fontSize: '14px !important',
     },
   },
   footer: {
     position: 'absolute',
-    bottom: '20px',
-    left: '20px',
-    right: '20px',
+    bottom: '24px',
+    left: '24px',
+    right: '24px',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '10px 0',
-    borderTop: '1px solid #F0F0F0',
+    padding: '12px 0',
+    borderTop: '2px solid #F5F5F5',
+    marginTop: 'auto',
+    '@media (max-width: 1200px)': {
+      bottom: '22px',
+      left: '22px',
+      right: '22px',
+      padding: '11px 0',
+    },
     '@media (max-width: 960px)': {
-      bottom: '15px',
-      left: '15px',
-      right: '15px',
-      padding: '8px 0',
+      bottom: '20px',
+      left: '20px',
+      right: '20px',
+      padding: '10px 0',
+      borderTop: '1px solid #F0F0F0',
     },
     '@media (max-width: 600px)': {
-      bottom: '12px',
-      left: '12px',
-      right: '12px',
-      padding: '7px 0',
+      bottom: '18px',
+      left: '18px',
+      right: '18px',
+      padding: '9px 0',
     },
     '@media (max-width: 480px)': {
-      bottom: '10px',
-      left: '10px',
-      right: '10px',
-      padding: '6px 0',
+      bottom: '16px',
+      left: '16px',
+      right: '16px',
+      padding: '8px 0',
     },
     '@media (max-width: 375px)': {
-      bottom: '8px',
-      left: '8px',
-      right: '8px',
-      padding: '5px 0',
+      bottom: '14px',
+      left: '14px',
+      right: '14px',
+      padding: '7px 0',
     },
   },
   difficultyContainer: {
@@ -381,42 +599,65 @@ const useStyles = makeStyles({
     alignItems: 'center',
   },
   difficultyLabel: {
-    fontSize: '14px !important',
+    fontSize: '15px !important',
     color: '#999999 !important',
-    marginRight: '10px !important',
+    marginRight: '12px !important',
+    fontWeight: '500 !important',
+    '@media (max-width: 1200px)': {
+      fontSize: '14px !important',
+      marginRight: '11px !important',
+    },
     '@media (max-width: 960px)': {
       fontSize: '13px !important',
-      marginRight: '8px !important',
+      marginRight: '10px !important',
     },
     '@media (max-width: 600px)': {
       fontSize: '12px !important',
-      marginRight: '7px !important',
+      marginRight: '9px !important',
     },
     '@media (max-width: 480px)': {
       fontSize: '11px !important',
-      marginRight: '6px !important',
+      marginRight: '8px !important',
     },
     '@media (max-width: 375px)': {
       fontSize: '10px !important',
-      marginRight: '5px !important',
+      marginRight: '7px !important',
     },
   },
   difficultyDots: {
     display: 'flex',
-    gap: '5px',
-    '@media (max-width: 600px)': {
+    gap: '6px',
+    '@media (max-width: 1200px)': {
+      gap: '5px',
+    },
+    '@media (max-width: 960px)': {
       gap: '4px',
     },
-    '@media (max-width: 480px)': {
+    '@media (max-width: 600px)': {
       gap: '3px',
+    },
+    '@media (max-width: 480px)': {
+      gap: '2px',
+    },
+    '@media (max-width: 375px)': {
+      gap: '2px',
     },
   },
   difficultyDot: {
-    width: '10px',
-    height: '10px',
+    width: '12px',
+    height: '12px',
     borderRadius: '50%',
     backgroundColor: '#E0E0E0',
     transition: 'all 0.3s ease',
+    border: '1px solid transparent',
+    '@media (max-width: 1200px)': {
+      width: '11px',
+      height: '11px',
+    },
+    '@media (max-width: 960px)': {
+      width: '10px',
+      height: '10px',
+    },
     '@media (max-width: 600px)': {
       width: '9px',
       height: '9px',
@@ -433,15 +674,30 @@ const useStyles = makeStyles({
   difficultyDotActive: {
     backgroundColor: '#4A63E7',
     boxShadow: '0 0 0 2px rgba(74, 99, 231, 0.2)',
+    borderColor: '#ffffff',
+    transform: 'scale(1.1)',
+    '@media (max-width: 600px)': {
+      boxShadow: '0 0 0 1px rgba(74, 99, 231, 0.2)',
+    },
+    '@media (max-width: 480px)': {
+      transform: 'scale(1.05)',
+    },
+    '@media (max-width: 375px)': {
+      transform: 'scale(1.02)',
+    },
   },
   duration: {
     display: 'flex',
     alignItems: 'center',
     color: '#999999',
-    fontSize: '14px',
+    fontSize: '15px',
+    fontWeight: '500',
     transition: 'color 0.3s ease',
     '&:hover': {
       color: '#4A63E7',
+    },
+    '@media (max-width: 1200px)': {
+      fontSize: '14px',
     },
     '@media (max-width: 960px)': {
       fontSize: '13px',
@@ -457,33 +713,28 @@ const useStyles = makeStyles({
     },
   },
   durationIcon: {
-    fontSize: '16px !important',
-    marginRight: '5px',
+    fontSize: '18px !important',
+    marginRight: '6px',
     transition: 'transform 0.3s ease',
+    '@media (max-width: 1200px)': {
+      fontSize: '17px !important',
+      marginRight: '5px',
+    },
     '@media (max-width: 960px)': {
-      fontSize: '15px !important',
+      fontSize: '16px !important',
     },
     '@media (max-width: 600px)': {
-      fontSize: '14px !important',
+      fontSize: '15px !important',
       marginRight: '4px',
     },
     '@media (max-width: 480px)': {
-      fontSize: '13px !important',
+      fontSize: '14px !important',
       marginRight: '3px',
     },
     '@media (max-width: 375px)': {
-      fontSize: '12px !important',
+      fontSize: '13px !important',
       marginRight: '2px',
     },
-  },
-  hoverEffect: {
-    // '& $durationIcon': {
-    //   transform: 'rotate(15deg)',
-    // },
-    // '& $bulletIcon': {
-    //   transform: 'scale(1.2)',
-    // },
-    // Moved to cardActive below
   },
 });
 
@@ -499,7 +750,6 @@ const CurriculumCard = ({
   onClick
 }) => {
   const classes = useStyles();
-  // const [isHovered, setIsHovered] = React.useState(false);
 
   const displayTopics = topics;
 
@@ -507,8 +757,6 @@ const CurriculumCard = ({
     <Paper 
       className={`${classes.card} ${isScaled ? classes.cardScaled : ''} ${isActive ? classes.cardActive : ''}`}
       elevation={0}
-      // onMouseEnter={() => setIsHovered(true)}
-      // onMouseLeave={() => setIsHovered(false)}
       onClick={onClick}
     >
       <Box className={classes.cardBackground}></Box>
