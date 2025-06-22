@@ -4,402 +4,209 @@ import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles({
   section: {
-    padding: '40px 0',
+    padding: '60px 0',
+    minHeight: '100vh',
     position: 'relative',
     overflow: 'hidden',
-    background: 'linear-gradient(180deg, #101138 0%, #1e1c44 100%)',
-    '&:before': {
-      content: '""',
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      backgroundImage: 
-        'linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px)',
-      backgroundSize: '30px 30px',
-      zIndex: 1,
-    },
-    '@media (max-width: 1200px)': {
-      padding: '35px 0',
-      '&:before': {
-        backgroundSize: '25px 25px',
-      },
-    },
-    '@media (max-width: 960px)': {
-      padding: '30px 0',
-      '&:before': {
-        backgroundSize: '22px 22px',
-      },
-    },
-    '@media (max-width: 600px)': {
-      padding: '25px 0',
-      '&:before': {
-        backgroundSize: '20px 20px',
-      },
-    },
-    '@media (max-width: 480px)': {
-      padding: '20px 0',
-      '&:before': {
-        backgroundSize: '18px 18px',
-      },
-    },
-    '@media (max-width: 375px)': {
-      padding: '18px 0',
-      '&:before': {
-        backgroundSize: '15px 15px',
-      },
-    },
-  },
-  glowEffect: {
-    position: 'absolute',
-    width: '500px',
-    height: '500px',
-    borderRadius: '50%',
-    zIndex: 1,
-    opacity: 0.3,
-    filter: 'blur(150px)',
-    background: '#8a5cf7',
-    top: '-200px',
-    right: '-100px',
-    '@media (max-width: 1200px)': {
-      width: '400px',
-      height: '400px',
-      top: '-150px',
-      right: '-75px',
-    },
-    '@media (max-width: 960px)': {
-      width: '350px',
-      height: '350px',
-      top: '-125px',
-      right: '-50px',
-    },
-    '@media (max-width: 600px)': {
-      width: '300px',
-      height: '300px',
-      top: '-100px',
-      right: '-25px',
-    },
-    '@media (max-width: 480px)': {
-      width: '250px',
-      height: '250px',
-      top: '-75px',
-      right: '0px',
-    },
-    '@media (max-width: 375px)': {
-      width: '200px',
-      height: '200px',
-      top: '-50px',
-      right: '25px',
-    },
+    background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
+    display: 'flex',
+    alignItems: 'center',
   },
   container: {
     position: 'relative',
     zIndex: 2,
     textAlign: 'center',
+    width: '100%',
+  },
+  header: {
+    marginBottom: '40px',
   },
   title: {
-    fontSize: '2rem !important',
-    fontWeight: '700 !important',
-    marginBottom: '8px !important',
-    color: 'white !important',
-    '@media (max-width: 1200px)': {
-      fontSize: '1.8rem !important',
+    fontSize: '2.5rem !important',
+    fontWeight: '800 !important',
+    marginBottom: '12px !important',
+    color: '#2A2B6A !important',
+    textShadow: '0 4px 12px rgba(42, 43, 106, 0.2)',
+    '@media (max-width: 768px)': {
+      fontSize: '2rem !important',
     },
-    '@media (max-width: 960px)': {
-      fontSize: '1.6rem !important',
-    },
-    '@media (max-width: 600px)': {
-      fontSize: '1.4rem !important',
-    },
-    '@media (max-width: 480px)': {
-      fontSize: '1.3rem !important',
-    },
-    '@media (max-width: 375px)': {
-      fontSize: '1.2rem !important',
-    },
+  },
+  highlightText: {
+    color: '#FFC614 !important',
   },
   subtitle: {
-    fontSize: '1rem !important',
-    color: 'rgba(255, 255, 255, 0.7) !important',
-    marginBottom: '30px !important',
-    maxWidth: '600px',
-    margin: '0 auto 30px auto !important',
-    '@media (max-width: 1200px)': {
-      fontSize: '0.95rem !important',
-      maxWidth: '550px',
-    },
-    '@media (max-width: 960px)': {
-      fontSize: '0.9rem !important',
-      maxWidth: '500px',
-      marginBottom: '25px !important',
-    },
-    '@media (max-width: 600px)': {
-      fontSize: '0.85rem !important',
-      maxWidth: '90%',
-      marginBottom: '20px !important',
-    },
-    '@media (max-width: 480px)': {
-      fontSize: '0.8rem !important',
-      marginBottom: '18px !important',
-    },
-    '@media (max-width: 375px)': {
-      fontSize: '0.75rem !important',
-      marginBottom: '15px !important',
-    },
-  },
-  fundingButton: {
-    backgroundColor: '#E91E63 !important',
-    color: 'white !important',
-    padding: '6px 15px !important',
-    borderRadius: '50px !important',
-    fontSize: '0.9rem !important',
-    fontWeight: 'bold !important',
-    display: 'inline-block !important',
+    fontSize: '1.1rem !important',
+    color: '#64748b !important',
     marginBottom: '20px !important',
+    maxWidth: '500px',
+    margin: '0 auto 20px auto !important',
+  },
+  fundingBadge: {
+    background: 'linear-gradient(135deg, #2A2B6A 0%, #1e1f4f 100%)',
+    color: 'white !important',
+    padding: '8px 20px !important',
+    borderRadius: '20px !important',
+    fontSize: '0.9rem !important',
+    fontWeight: '700 !important',
+    display: 'inline-block !important',
+    textTransform: 'uppercase',
+    letterSpacing: '1px',
+    boxShadow: '0 6px 20px rgba(42, 43, 106, 0.25)',
+  },
+  pathwayContainer: {
+    position: 'relative',
+    maxWidth: '1200px',
+    margin: '0 auto',
+  },
+  stepsGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(6, 1fr)',
+    gap: '20px',
+    position: 'relative',
     '@media (max-width: 1200px)': {
-      padding: '5px 13px !important',
-      fontSize: '0.85rem !important',
+      gridTemplateColumns: 'repeat(3, 1fr)',
+      gap: '30px',
     },
-    '@media (max-width: 960px)': {
-      padding: '5px 12px !important',
-      fontSize: '0.8rem !important',
-      marginBottom: '18px !important',
-    },
-    '@media (max-width: 600px)': {
-      padding: '4px 10px !important',
-      fontSize: '0.75rem !important',
-      marginBottom: '15px !important',
+    '@media (max-width: 768px)': {
+      gridTemplateColumns: 'repeat(2, 1fr)',
+      gap: '25px',
     },
     '@media (max-width: 480px)': {
-      padding: '4px 9px !important',
-      fontSize: '0.7rem !important',
-    },
-    '@media (max-width: 375px)': {
-      padding: '3px 8px !important',
-      fontSize: '0.65rem !important',
+      gridTemplateColumns: '1fr',
+      gap: '20px',
     },
   },
-  stepsContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    gap: '2%',
-    position: 'relative',
-    marginTop: '20px',
+  pathLine: {
+    position: 'absolute',
+    top: '40px',
+    left: '8%',
+    right: '8%',
+    height: '3px',
+    background: 'linear-gradient(90deg, #2A2B6A 0%, #FFC614 50%, #2A2B6A 100%)',
+    borderRadius: '2px',
+    zIndex: 1,
     '@media (max-width: 1200px)': {
-      gap: '1.5%',
-      marginTop: '18px',
-    },
-    '@media (max-width: 1000px)': {
-      flexDirection: 'column',
-      alignItems: 'center',
-      gap: '50px',
-    },
-    '@media (max-width: 960px)': {
-      gap: '40px',
-      marginTop: '15px',
-    },
-    '@media (max-width: 600px)': {
-      gap: '30px',
-      marginTop: '12px',
-    },
-    '@media (max-width: 480px)': {
-      gap: '25px',
-      marginTop: '10px',
-    },
-    '@media (max-width: 375px)': {
-      gap: '20px',
-      marginTop: '8px',
+      display: 'none',
     },
   },
   step: {
+    position: 'relative',
+    zIndex: 2,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    width: '14%',
-    position: 'relative',
-    zIndex: 2,
-    '@media (max-width: 1200px)': {
-      width: '15%',
-    },
-    '@media (max-width: 1000px)': {
-      width: '80%',
-      maxWidth: '300px',
-    },
-    '@media (max-width: 600px)': {
-      width: '90%',
-      maxWidth: '280px',
-    },
-    '@media (max-width: 480px)': {
-      width: '95%',
-      maxWidth: '260px',
-    },
-    '@media (max-width: 375px)': {
-      width: '100%',
-      maxWidth: '240px',
-    },
+    textAlign: 'center',
   },
-  stepNumberContainer: {
-    width: '60px',
-    height: '60px',
+  stepNumber: {
+    width: '80px',
+    height: '80px',
     borderRadius: '50%',
-    backgroundColor: '#4263EB',
+    background: 'linear-gradient(135deg, #2A2B6A 0%, #3b4dbf 100%)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: '15px',
+    marginBottom: '16px',
+    color: 'white',
+    fontSize: '1.8rem !important',
+    fontWeight: '900 !important',
+    boxShadow: '0 12px 30px rgba(42, 43, 106, 0.3), 0 6px 15px rgba(42, 43, 106, 0.2)',
+    border: '3px solid white',
     position: 'relative',
-    zIndex: 2,
     transition: 'all 0.3s ease',
-    boxShadow: '0 4px 15px rgba(66, 99, 235, 0.3)',
-    overflow: 'hidden',
     '&:hover': {
       transform: 'scale(1.1)',
-      boxShadow: '0 6px 20px rgba(66, 99, 235, 0.4)',
+      boxShadow: '0 16px 40px rgba(42, 43, 106, 0.4)',
     },
-    '&::after': {
+    '&::before': {
       content: '""',
       position: 'absolute',
-      width: '30px',
-      height: '100%',
-      background: 'rgba(255, 255, 255, 0.3)',
-      transform: 'skewX(-30deg) translateX(-150px)',
-      animation: '$shine 3s infinite',
+      inset: '-4px',
+      borderRadius: '50%',
+      background: 'linear-gradient(45deg, #FFC614, transparent, #FFC614)',
+      zIndex: -1,
+      animation: '$rotate 3s linear infinite',
     },
-    '@media (max-width: 1200px)': {
-      width: '55px',
-      height: '55px',
-    },
-    '@media (max-width: 960px)': {
-      width: '50px',
-      height: '50px',
-    },
-    '@media (max-width: 600px)': {
-      width: '45px',
-      height: '45px',
-      marginBottom: '12px',
-    },
-    '@media (max-width: 480px)': {
-      width: '40px',
-      height: '40px',
-      marginBottom: '10px',
-    },
-    '@media (max-width: 375px)': {
-      width: '35px',
-      height: '35px',
-      marginBottom: '8px',
-    },
-  },
-  stepNumber: {
-    color: 'white',
-    fontWeight: 'bold !important',
-    fontSize: '1.8rem !important',
-    animation: '$pulse 2s infinite',
-    '@media (max-width: 1200px)': {
+    '@media (max-width: 768px)': {
+      width: '70px',
+      height: '70px',
       fontSize: '1.6rem !important',
     },
-    '@media (max-width: 960px)': {
-      fontSize: '1.5rem !important',
+  },
+  stepContent: {
+    background: 'rgba(255, 255, 255, 0.9)',
+    borderRadius: '16px',
+    padding: '20px 16px',
+    height: '180px',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    boxShadow: '0 8px 25px rgba(42, 43, 106, 0.1)',
+    border: '1px solid rgba(42, 43, 106, 0.08)',
+    backdropFilter: 'blur(10px)',
+    transition: 'all 0.3s ease',
+    '&:hover': {
+      transform: 'translateY(-4px)',
+      boxShadow: '0 12px 35px rgba(42, 43, 106, 0.15)',
     },
-    '@media (max-width: 600px)': {
-      fontSize: '1.3rem !important',
-    },
-    '@media (max-width: 480px)': {
-      fontSize: '1.1rem !important',
-    },
-    '@media (max-width: 375px)': {
-      fontSize: '1rem !important',
+    '@media (max-width: 768px)': {
+      height: '160px',
+      padding: '16px 12px',
     },
   },
   stepTitle: {
-    fontSize: '1rem !important',
-    minWidth: '400px !important',
-    fontWeight: '600 !important',
+    fontSize: '1.1rem !important',
+    fontWeight: '700 !important',
     marginBottom: '8px !important',
-    color: 'white !important',
-    '@media (max-width: 1200px)': {
-      fontSize: '0.95rem !important',
-      minWidth: '350px !important',
-    },
-    '@media (max-width: 1000px)': {
-      minWidth: 'unset !important',
-      maxWidth: '300px',
-    },
-    '@media (max-width: 960px)': {
-      fontSize: '0.9rem !important',
-      maxWidth: '280px',
-    },
-    '@media (max-width: 600px)': {
-      fontSize: '0.85rem !important',
-      maxWidth: '260px',
-      marginBottom: '6px !important',
-    },
-    '@media (max-width: 480px)': {
-      fontSize: '0.8rem !important',
-      maxWidth: '240px',
-      marginBottom: '5px !important',
-    },
-    '@media (max-width: 375px)': {
-      fontSize: '0.75rem !important',
-      maxWidth: '220px',
-      marginBottom: '4px !important',
+    color: '#2A2B6A !important',
+    '@media (max-width: 768px)': {
+      fontSize: '1rem !important',
     },
   },
   stepDescription: {
     fontSize: '0.85rem !important',
-    color: 'rgba(255, 255, 255, 0.7) !important',
+    color: '#64748b !important',
     lineHeight: '1.4 !important',
-    '@media (max-width: 1200px)': {
+    '@media (max-width: 768px)': {
       fontSize: '0.8rem !important',
     },
-    '@media (max-width: 960px)': {
-      fontSize: '0.75rem !important',
-      lineHeight: '1.3 !important',
-    },
-    '@media (max-width: 600px)': {
-      fontSize: '0.7rem !important',
-      lineHeight: '1.2 !important',
-    },
-    '@media (max-width: 480px)': {
-      fontSize: '0.65rem !important',
-    },
-    '@media (max-width: 375px)': {
-      fontSize: '0.6rem !important',
-    },
   },
-  progressLine: {
+  decorativeElements: {
     position: 'absolute',
-    height: '2px',
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
-    top: '30px',
-    left: '10%',
-    right: '10%',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
     zIndex: 1,
-    '@media (max-width: 1200px)': {
-      top: '27px',
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      width: '300px',
+      height: '300px',
+      borderRadius: '50%',
+      background: 'radial-gradient(circle, rgba(42, 43, 106, 0.04) 0%, transparent 70%)',
+      top: '10%',
+      left: '5%',
+      animation: '$float 8s ease-in-out infinite',
     },
-    '@media (max-width: 1000px)': {
-      display: 'none',
+    '&::after': {
+      content: '""',
+      position: 'absolute',
+      width: '250px',
+      height: '250px',
+      borderRadius: '50%',
+      background: 'radial-gradient(circle, rgba(255, 198, 20, 0.06) 0%, transparent 70%)',
+      bottom: '10%',
+      right: '5%',
+      animation: '$float 10s ease-in-out infinite reverse',
     },
   },
-  '@keyframes shine': {
-    '0%': {
-      transform: 'skewX(-30deg) translateX(-150px)',
-    },
-    '100%': {
-      transform: 'skewX(-30deg) translateX(350px)',
-    },
+  '@keyframes rotate': {
+    '0%': { transform: 'rotate(0deg)' },
+    '100%': { transform: 'rotate(360deg)' },
   },
-  '@keyframes pulse': {
-    '0%': {
-      transform: 'scale(1)',
-    },
-    '50%': {
-      transform: 'scale(1.1)',
-    },
-    '100%': {
-      transform: 'scale(1)',
-    },
+  '@keyframes float': {
+    '0%, 100%': { transform: 'translateY(0px)' },
+    '50%': { transform: 'translateY(-20px)' },
   },
 });
 
@@ -410,7 +217,7 @@ const StartupFundProcess = () => {
     {
       number: 1,
       title: "Ideation",
-      description: "Think of a real-world tech problem worth solving. Conceptualize, validate, and evaluate product-market fit."
+      description: "Think of a real-world tech problem worth solving. Conceptualize and validate product-market fit."
     },
     {
       number: 2,
@@ -434,38 +241,42 @@ const StartupFundProcess = () => {
     },
     {
       number: 6,
-      title: "Scale your Tech Product",
-      description: "Grow your MVP into a market-ready product with expert guidance, UX improvements, and go-to-market strategies."
+      title: "Scale Product",
+      description: "Grow your MVP into a market-ready product with expert guidance and go-to-market strategies."
     }
   ];
 
   return (
     <Box className={classes.section}>
-      <Box className={classes.glowEffect} />
+      <Box className={classes.decorativeElements} />
       <Container maxWidth="lg" className={classes.container}>
-        <Typography variant="h2" className={classes.title}>
-          Get Access to the <span style={{ color: '#FFC614' }}>₹1 Lakh Startup </span>Fund
-        </Typography>
-        <Typography variant="body1" className={classes.subtitle}>
-          Turn your tech idea into reality — right from campus.
-        </Typography>
-        
-        <Box className={classes.fundingButton}>
-          ₹1 LAKH FUNDING
+        <Box className={classes.header}>
+          <Typography variant="h2" className={classes.title}>
+            Get Access to the <span className={classes.highlightText}>₹1 Lakh Startup</span> Fund
+          </Typography>
+          <Typography variant="body1" className={classes.subtitle}>
+            Turn your tech idea into reality — right from campus.
+          </Typography>
+          <Box className={classes.fundingBadge}>
+            ₹1 LAKH FUNDING
+          </Box>
         </Box>
         
-        <Box className={classes.stepsContainer}>
-          <Box className={classes.progressLine}></Box>
-          
-          {steps.map((step) => (
-            <Box key={step.number} className={classes.step}>
-              <Box className={classes.stepNumberContainer}>
-                <Typography className={classes.stepNumber}>{step.number}</Typography>
+        <Box className={classes.pathwayContainer}>
+          <Box className={classes.pathLine} />
+          <Box className={classes.stepsGrid}>
+            {steps.map((step) => (
+              <Box key={step.number} className={classes.step}>
+                <Box className={classes.stepNumber}>
+                  {step.number}
+                </Box>
+                <Box className={classes.stepContent}>
+                  <Typography className={classes.stepTitle}>{step.title}</Typography>
+                  <Typography className={classes.stepDescription}>{step.description}</Typography>
+                </Box>
               </Box>
-              <Typography className={classes.stepTitle}>{step.title}</Typography>
-              <Typography className={classes.stepDescription}>{step.description}</Typography>
-            </Box>
-          ))}
+            ))}
+          </Box>
         </Box>
       </Container>
     </Box>
