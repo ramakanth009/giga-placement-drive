@@ -7,7 +7,7 @@ import ProjectCard from './ProjectCard';
 const useStyles = makeStyles({
   section: {
     position: 'relative',
-    padding: '60px 0',
+    padding: '30px 0',
     backgroundColor: '#2A2B6A',
     backgroundImage: 'linear-gradient(to bottom right, #2A2B6A, #3C3E8D)',
     overflow: 'hidden',
@@ -53,9 +53,9 @@ const useStyles = makeStyles({
   },
   titleContainer: {
     textAlign: 'center',
-    marginBottom: '40px',
+    marginBottom: '20px !important',
     '@media (max-width: 1200px)': {
-      marginBottom: '35px',
+      marginBottom: '30px',
     },
     '@media (max-width: 960px)': {
       marginBottom: '30px',
@@ -74,7 +74,7 @@ const useStyles = makeStyles({
     fontSize: '2.5rem !important',
     fontWeight: 'bold !important',
     color: 'white !important',
-    marginBottom: '15px !important',
+    marginBottom: '10px !important',
     '& span': {
       color: '#FFC614 !important',
     },
