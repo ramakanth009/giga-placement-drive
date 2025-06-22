@@ -83,28 +83,28 @@ const useStyles = makeStyles({
     }
   },
   mainTitle: {
-    fontSize: '3.5rem !important',
+    fontSize: '3.5rem !important', // base
     fontWeight: 'bold !important',
     color: '#292B6B',
     lineHeight: '1.1 !important',
     marginBottom: '20px !important',
     fontFamily: 'Montserrat !important',
     '@media (max-width: 1200px)': {
-      fontSize: '4rem !important',
+      fontSize: '3rem !important', // was 4rem, now 3rem
     },
     '@media (max-width: 960px)': {
-      fontSize: '3.5rem !important',
+      fontSize: '2.5rem !important', // was 3.5rem, now 2.5rem
     },
     '@media (max-width: 600px)': {
-      fontSize: '2.8rem !important',
+      fontSize: '2rem !important', // was 2.8rem, now 2rem
       marginBottom: '16px !important',
     },
     '@media (max-width: 480px)': {
-      fontSize: '2.4rem !important',
+      fontSize: '1.6rem !important', // was 2.4rem, now 1.6rem
       marginBottom: '12px !important',
     },
     '@media (max-width: 375px)': {
-      fontSize: '2rem !important',
+      fontSize: '1.3rem !important', // was 2rem, now 1.3rem
       lineHeight: '1.2 !important',
     }
   },
