@@ -1,4 +1,4 @@
-// Enhanced Curriculum Component with brand colors and improved sizing
+// Enhanced Curriculum Component with perfect centering and elevated active card
 import React, { useRef, useState, useEffect } from 'react';
 import { Box, Typography, Container, Chip } from '@mui/material';
 import { makeStyles } from '@mui/styles';
@@ -92,40 +92,17 @@ const useStyles = makeStyles({
     position: 'relative',
     display: 'inline-block',
     whiteSpace: 'nowrap',
-    // '&::after': {
-    //   content: '""',
-    //   position: 'absolute',
-    //   bottom: '-12px',
-    //   left: '50%',
-    //   transform: 'translateX(-50%)',
-    //   width: '60px',
-    //   height: '3px',
-    //   background: 'linear-gradient(90deg, #2A2B6A 0%, #FFC614 100%)',
-    //   borderRadius: '2px',
-    // },
     '@media (max-width: 1200px)': {
       fontSize: '2rem !important',
     },
     '@media (max-width: 960px)': {
       fontSize: '1.8rem !important',
-      '&::after': {
-        width: '50px',
-        bottom: '-10px',
-      },
     },
     '@media (max-width: 600px)': {
       fontSize: '1.6rem !important',
-      '&::after': {
-        width: '45px',
-        bottom: '-8px',
-      },
     },
     '@media (max-width: 480px)': {
       fontSize: '1.4rem !important',
-      '&::after': {
-        width: '40px',
-        height: '2px',
-      },
     },
   },
   highlightText: {
@@ -137,7 +114,6 @@ const useStyles = makeStyles({
     fontSize: '1rem !important',
     color: '#666666 !important',
     textAlign: 'center',
-    // maxWidth: '600px',
     margin: '5px auto 0 !important',
     '@media (max-width: 960px)': {
       fontSize: '0.95rem !important',
@@ -154,67 +130,25 @@ const useStyles = makeStyles({
       margin: '15px auto 0 !important',
     },
   },
-  roadmapLine: {
-    position: 'absolute',
-    left: '50%',
-    transform: 'translateX(-50%)',
-    top: '150px',
-    bottom: '80px',
-    width: '3px',
-    background: 'linear-gradient(180deg, #2A2B6A 0%, #4A4C9B 100%)',
-    zIndex: 1,
-    borderRadius: '2px',
-    '&::before, &::after': {
-      content: '""',
-      position: 'absolute',
-      width: '12px',
-      height: '12px',
-      borderRadius: '50%',
-      left: '50%',
-      transform: 'translateX(-50%)',
-      backgroundColor: '#2A2B6A',
-    },
-    '&::before': {
-      top: '-6px',
-    },
-    '&::after': {
-      bottom: '-6px',
-      backgroundColor: '#FFC614',
-    },
-    '@media (max-width: 960px)': {
-      width: '2px',
-      '&::before, &::after': {
-        width: '10px',
-        height: '10px',
-      },
-    },
-  },
   sliderContainer: {
     position: 'relative',
-    paddingTop: '10px',
-    paddingBottom: '10px',
+    paddingTop: '30px', // Increased for active card elevation
+    paddingBottom: '30px', // Increased for active card elevation
     '@media (max-width: 960px)': {
-      paddingTop: '25px',
-      paddingBottom: '15px',
+      paddingTop: '35px',
+      paddingBottom: '25px',
     },
   },
   sliderTrack: {
     display: 'flex',
     transition: 'transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)',
-    // padding: '15px 0',
   },
   sliderWrapper: {
     position: 'relative',
-    overflow: 'hidden',
+    overflow: 'visible', // Changed to visible for elevated cards
     marginLeft: 'auto',
     marginRight: 'auto',
-    maxWidth: 'calc(100% - 80px)',
-    '@media (max-width: 960px)': {
-      maxWidth: 'calc(100% - 60px)',
-    },
-    '@media (max-width: 600px)': {
-      maxWidth: 'calc(100% - 40px)',
-    },
+    maxWidth: '100%',
   },
   progressContainer: {
     display: 'flex',
@@ -269,8 +203,6 @@ const useStyles = makeStyles({
     transition: 'all 0.3s ease !important',
     whiteSpace: 'nowrap !important',
     minWidth: '200px !important',
-    // overflow: 'hidden !important',
-    // textOverflow: 'ellipsis !important',
     '&:hover': {
       transform: 'translateY(-2px)',
       boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
@@ -295,51 +227,6 @@ const useStyles = makeStyles({
     background: 'linear-gradient(90deg, #2A2B6A 0%, #4A4C9B 100%) !important',
     color: 'white !important',
     boxShadow: '0 4px 10px rgba(42, 43, 106, 0.3) !important',
-  },
-  programTitle: {
-    fontSize: '1.6rem !important',
-    fontWeight: 'bold !important',
-    color: '#4A4A4A !important',
-    marginBottom: '25px !important',
-    textAlign: 'center',
-    position: 'relative',
-    whiteSpace: 'nowrap',
-    '&::after': {
-      content: '""',
-      position: 'absolute',
-      bottom: '-8px',
-      left: '50%',
-      transform: 'translateX(-50%)',
-      width: '40px',
-      height: '2px',
-      background: 'linear-gradient(90deg, #2A2B6A 0%, #FFC614 100%)',
-      borderRadius: '1px',
-    },
-    '@media (max-width: 1200px)': {
-      fontSize: '1.5rem !important',
-      marginBottom: '22px !important',
-    },
-    '@media (max-width: 960px)': {
-      fontSize: '1.4rem !important',
-      marginBottom: '20px !important',
-      '&::after': {
-        width: '35px',
-      },
-    },
-    '@media (max-width: 600px)': {
-      fontSize: '1.3rem !important',
-      marginBottom: '18px !important',
-      '&::after': {
-        width: '30px',
-      },
-    },
-    '@media (max-width: 480px)': {
-      fontSize: '1.2rem !important',
-      marginBottom: '15px !important',
-      '&::after': {
-        width: '25px',
-      },
-    },
   },
 });
 
@@ -373,7 +260,7 @@ const Curriculum = ({
           id: key,
           number: cardIndex,
           title: section.title,
-          topics: section.topics, // Pass all topics to the card
+          topics: section.topics,
           icon: icons[key],
           difficulty: Math.floor(Math.random() * 3) + 1,
           duration: `${Math.floor(Math.random() * 3) + 2} weeks`,
@@ -401,7 +288,7 @@ const Curriculum = ({
         if (newVisibleId) {
           setVisibleCategoryId(newVisibleId);
         }
-      }, 4000); // Increased interval for better UX
+      }, 4000);
     }
     
     return () => {
@@ -409,18 +296,12 @@ const Curriculum = ({
     };
   }, [autoPlay, currentIndex, totalItems, isHovered, cardsData]);
 
-  // Sync visibleCategoryId with currentIndex when currentIndex changes (e.g., on tab switch)
+  // Sync visibleCategoryId with currentIndex when currentIndex changes
   useEffect(() => {
     if (cardsData.length > 0 && currentIndex < cardsData.length) {
       setVisibleCategoryId(cardsData[currentIndex]?.id);
     }
-    // eslint-disable-next-line
   }, [currentIndex, cardsData]);
-
-  // Determine if a card should be scaled
-  const isCardInCoreSkills = (index) => {
-    return index === Math.floor(totalItems / 2);
-  };
 
   const handleDotClick = (index) => {
     setCurrentIndex(index);
@@ -442,18 +323,20 @@ const Curriculum = ({
     }
   };
 
-  // Calculate transform for slider
+  // Calculate transform for slider - SIMPLE CENTERING
   const getSliderStyle = () => {
-    if (!sliderRef.current) return {};
+    if (!sliderRef.current || !sliderRef.current.parentElement) return {};
     
-    const cardWidth = 350 + 20; // Reduced card width + margin
-    const offset = -currentIndex * cardWidth;
-    
+    const cardWidth = 350;
+    const cardMargin = 20;
     const containerWidth = sliderRef.current.parentElement.offsetWidth;
+    
+    // Simple centering: move by card width + margin for each index
+    const offset = currentIndex * (cardWidth + cardMargin);
     const centerOffset = (containerWidth - cardWidth) / 2;
     
     return {
-      transform: `translateX(${offset + centerOffset}px)`,
+      transform: `translateX(${centerOffset - offset}px)`,
     };
   };
 
@@ -499,11 +382,11 @@ const Curriculum = ({
                   key={card.id}
                   number={card.number}
                   title={card.title}
-                  topics={card.topics} // All topics will be passed
+                  topics={card.topics}
                   difficulty={card.difficulty}
                   duration={card.duration}
                   icon={card.icon}
-                  isScaled={isCardInCoreSkills(index)}
+                  isScaled={visibleCategoryId === card.id} // Active card is scaled
                   isActive={visibleCategoryId === card.id}
                   onClick={() => handleChipClick(card.id)}
                 />
