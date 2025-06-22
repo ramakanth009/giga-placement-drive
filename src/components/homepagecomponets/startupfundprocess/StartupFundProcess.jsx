@@ -15,14 +15,16 @@ const useStyles = makeStyles({
     '@media (max-width: 960px)': {
       padding: '20px 0',
     },
+    // Optimized mobile spacing starting from 600px
     '@media (max-width: 600px)': {
-      padding: '15px 0',
+      padding: '24px 0',
+      minHeight: 'auto',
     },
     '@media (max-width: 480px)': {
-      padding: '12px 0',
+      padding: '20px 0',
     },
     '@media (max-width: 375px)': {
-      padding: '10px 0',
+      padding: '16px 0',
     },
   },
   container: {
@@ -30,20 +32,12 @@ const useStyles = makeStyles({
     zIndex: 2,
     textAlign: 'center',
     width: '100%',
-    '@media (max-width: 1200px)': {
-      padding: '0 20px !important',
-    },
-    '@media (max-width: 960px)': {
-      padding: '0 16px !important',
-    },
+    // Mobile-first padding optimization
     '@media (max-width: 600px)': {
-      padding: '0 12px !important',
+      padding: '0 16px',
     },
     '@media (max-width: 480px)': {
-      padding: '0 10px !important',
-    },
-    '@media (max-width: 375px)': {
-      padding: '0 8px !important',
+      padding: '0 12px',
     },
   },
   header: {
@@ -55,13 +49,13 @@ const useStyles = makeStyles({
       marginBottom: '30px',
     },
     '@media (max-width: 600px)': {
-      marginBottom: '25px',
+      marginBottom: '32px',
     },
     '@media (max-width: 480px)': {
-      marginBottom: '20px',
+      marginBottom: '24px',
     },
     '@media (max-width: 375px)': {
-      marginBottom: '18px',
+      marginBottom: '20px',
     },
   },
   title: {
@@ -70,7 +64,6 @@ const useStyles = makeStyles({
     marginBottom: '12px !important',
     color: '#2A2B6A !important',
     textShadow: '0 4px 12px rgba(42, 43, 106, 0.2)',
-    lineHeight: '1.2 !important',
     '@media (max-width: 1200px)': {
       fontSize: '2.3rem !important',
       marginBottom: '10px !important',
@@ -79,20 +72,22 @@ const useStyles = makeStyles({
       fontSize: '2.1rem !important',
       marginBottom: '10px !important',
     },
+    // Enhanced mobile typography
     '@media (max-width: 600px)': {
-      fontSize: '1.9rem !important',
-      marginBottom: '8px !important',
-      lineHeight: '1.3 !important',
+      fontSize: '1.875rem !important',
+      marginBottom: '12px !important',
+      lineHeight: '1.2 !important',
+      letterSpacing: '-0.5px',
     },
     '@media (max-width: 480px)': {
-      fontSize: '1.7rem !important',
-      marginBottom: '8px !important',
-      lineHeight: '1.3 !important',
+      fontSize: '1.625rem !important',
+      marginBottom: '10px !important',
+      lineHeight: '1.25 !important',
     },
     '@media (max-width: 375px)': {
       fontSize: '1.5rem !important',
-      marginBottom: '6px !important',
-      lineHeight: '1.4 !important',
+      marginBottom: '8px !important',
+      lineHeight: '1.3 !important',
     },
   },
   highlightText: {
@@ -104,34 +99,32 @@ const useStyles = makeStyles({
     marginBottom: '20px !important',
     maxWidth: '500px',
     margin: '0 auto 20px auto !important',
-    lineHeight: '1.5 !important',
     '@media (max-width: 1200px)': {
       fontSize: '1.05rem !important',
-      maxWidth: '450px',
       marginBottom: '18px !important',
+      maxWidth: '450px',
     },
     '@media (max-width: 960px)': {
       fontSize: '1rem !important',
-      maxWidth: '400px',
       marginBottom: '16px !important',
+      maxWidth: '400px',
     },
+    // Improved mobile readability
     '@media (max-width: 600px)': {
-      fontSize: '0.95rem !important',
-      maxWidth: '350px',
-      marginBottom: '14px !important',
-      lineHeight: '1.4 !important',
+      fontSize: '1rem !important',
+      marginBottom: '16px !important',
+      maxWidth: '100%',
+      lineHeight: '1.5 !important',
+      padding: '0 8px',
     },
     '@media (max-width: 480px)': {
-      fontSize: '0.9rem !important',
-      maxWidth: '300px',
-      marginBottom: '12px !important',
-      lineHeight: '1.4 !important',
+      fontSize: '0.875rem !important',
+      marginBottom: '14px !important',
+      lineHeight: '1.6 !important',
     },
     '@media (max-width: 375px)': {
-      fontSize: '0.85rem !important',
-      maxWidth: '280px',
-      marginBottom: '10px !important',
-      lineHeight: '1.3 !important',
+      fontSize: '0.8125rem !important',
+      marginBottom: '12px !important',
     },
   },
   fundingBadge: {
@@ -152,24 +145,25 @@ const useStyles = makeStyles({
     '@media (max-width: 960px)': {
       padding: '6px 16px !important',
       fontSize: '0.8rem !important',
-      letterSpacing: '0.8px',
+      borderRadius: '18px !important',
     },
+    // Enhanced mobile badge design
     '@media (max-width: 600px)': {
-      padding: '6px 14px !important',
-      fontSize: '0.75rem !important',
-      letterSpacing: '0.6px',
+      padding: '8px 16px !important',
+      fontSize: '0.8125rem !important',
+      borderRadius: '16px !important',
+      letterSpacing: '0.5px',
+      fontWeight: '600 !important',
     },
     '@media (max-width: 480px)': {
-      padding: '5px 12px !important',
-      fontSize: '0.7rem !important',
-      letterSpacing: '0.5px',
-      borderRadius: '16px !important',
+      padding: '6px 14px !important',
+      fontSize: '0.75rem !important',
+      borderRadius: '14px !important',
     },
     '@media (max-width: 375px)': {
-      padding: '4px 10px !important',
-      fontSize: '0.65rem !important',
-      letterSpacing: '0.4px',
-      borderRadius: '14px !important',
+      padding: '5px 12px !important',
+      fontSize: '0.6875rem !important',
+      borderRadius: '12px !important',
     },
   },
   pathwayContainer: {
@@ -177,19 +171,14 @@ const useStyles = makeStyles({
     maxWidth: '1200px',
     margin: '0 auto',
     '@media (max-width: 1200px)': {
-      maxWidth: '100%',
+      maxWidth: '1000px',
     },
     '@media (max-width: 960px)': {
-      maxWidth: '100%',
+      maxWidth: '800px',
     },
     '@media (max-width: 600px)': {
       maxWidth: '100%',
-    },
-    '@media (max-width: 480px)': {
-      maxWidth: '100%',
-    },
-    '@media (max-width: 375px)': {
-      maxWidth: '100%',
+      padding: '0',
     },
   },
   stepsGrid: {
@@ -197,7 +186,7 @@ const useStyles = makeStyles({
     gridTemplateColumns: 'repeat(6, 1fr)',
     gap: '20px',
     position: 'relative',
-    '@media (max-width: 1200px)': {
+    '@media (max-width: 1024px)': {
       gridTemplateColumns: 'repeat(3, 1fr)',
       gap: '25px',
     },
@@ -205,21 +194,21 @@ const useStyles = makeStyles({
       gridTemplateColumns: 'repeat(3, 1fr)',
       gap: '20px',
     },
+    // Optimized mobile grid layout
     '@media (max-width: 600px)': {
       gridTemplateColumns: 'repeat(2, 1fr)',
-      gap: '18px',
+      gap: '20px',
+      padding: '0 4px',
     },
     '@media (max-width: 480px)': {
       gridTemplateColumns: '1fr',
-      gap: '16px',
-      maxWidth: '300px',
+      gap: '20px',
+      maxWidth: '320px',
       margin: '0 auto',
     },
     '@media (max-width: 375px)': {
-      gridTemplateColumns: '1fr',
-      gap: '14px',
+      gap: '16px',
       maxWidth: '280px',
-      margin: '0 auto',
     },
   },
   pathLine: {
@@ -231,7 +220,7 @@ const useStyles = makeStyles({
     background: 'linear-gradient(90deg, #2A2B6A 0%, #FFC614 50%, #2A2B6A 100%)',
     borderRadius: '2px',
     zIndex: 1,
-    '@media (max-width: 1200px)': {
+    '@media (max-width: 1024px)': {
       display: 'none',
     },
   },
@@ -274,28 +263,30 @@ const useStyles = makeStyles({
       height: '70px',
       fontSize: '1.6rem !important',
       marginBottom: '12px',
-      border: '2px solid white',
     },
+    // Enhanced mobile touch targets
     '@media (max-width: 600px)': {
-      width: '65px',
-      height: '65px',
+      width: '72px',
+      height: '72px',
       fontSize: '1.5rem !important',
-      marginBottom: '10px',
+      marginBottom: '12px',
       border: '2px solid white',
+      // Improved touch interaction
+      '&:active': {
+        transform: 'scale(0.95)',
+      },
     },
     '@media (max-width: 480px)': {
-      width: '60px',
-      height: '60px',
+      width: '68px',
+      height: '68px',
       fontSize: '1.4rem !important',
-      marginBottom: '10px',
-      border: '2px solid white',
+      marginBottom: '12px',
     },
     '@media (max-width: 375px)': {
-      width: '55px',
-      height: '55px',
+      width: '64px',
+      height: '64px',
       fontSize: '1.3rem !important',
-      marginBottom: '8px',
-      border: '2px solid white',
+      marginBottom: '10px',
     },
   },
   stepContent: {
@@ -324,19 +315,25 @@ const useStyles = makeStyles({
       padding: '16px 12px',
       borderRadius: '12px',
     },
+    // Optimized mobile content containers
     '@media (max-width: 600px)': {
-      height: '150px',
-      padding: '14px 10px',
+      height: 'auto',
+      minHeight: '140px',
+      padding: '16px 12px',
       borderRadius: '12px',
+      // Better mobile interaction
+      '&:active': {
+        transform: 'translateY(-2px)',
+      },
     },
     '@media (max-width: 480px)': {
-      height: '140px',
-      padding: '12px 10px',
+      minHeight: '130px',
+      padding: '14px 12px',
       borderRadius: '10px',
     },
     '@media (max-width: 375px)': {
-      height: '130px',
-      padding: '10px 8px',
+      minHeight: '120px',
+      padding: '12px 10px',
       borderRadius: '8px',
     },
   },
@@ -345,7 +342,6 @@ const useStyles = makeStyles({
     fontWeight: '700 !important',
     marginBottom: '8px !important',
     color: '#2A2B6A !important',
-    lineHeight: '1.3 !important',
     '@media (max-width: 1200px)': {
       fontSize: '1.05rem !important',
       marginBottom: '7px !important',
@@ -354,20 +350,20 @@ const useStyles = makeStyles({
       fontSize: '1rem !important',
       marginBottom: '6px !important',
     },
+    // Enhanced mobile typography hierarchy
     '@media (max-width: 600px)': {
-      fontSize: '0.95rem !important',
-      marginBottom: '6px !important',
-      lineHeight: '1.2 !important',
+      fontSize: '1rem !important',
+      marginBottom: '8px !important',
+      lineHeight: '1.3 !important',
+      fontWeight: '600 !important',
     },
     '@media (max-width: 480px)': {
-      fontSize: '0.9rem !important',
-      marginBottom: '5px !important',
-      lineHeight: '1.2 !important',
+      fontSize: '0.9375rem !important',
+      marginBottom: '6px !important',
     },
     '@media (max-width: 375px)': {
-      fontSize: '0.85rem !important',
-      marginBottom: '4px !important',
-      lineHeight: '1.2 !important',
+      fontSize: '0.875rem !important',
+      marginBottom: '5px !important',
     },
   },
   stepDescription: {
@@ -380,19 +376,21 @@ const useStyles = makeStyles({
     },
     '@media (max-width: 960px)': {
       fontSize: '0.8rem !important',
-      lineHeight: '1.3 !important',
+      lineHeight: '1.35 !important',
     },
+    // Improved mobile readability
     '@media (max-width: 600px)': {
-      fontSize: '0.78rem !important',
-      lineHeight: '1.25 !important',
+      fontSize: '0.8125rem !important',
+      lineHeight: '1.4 !important',
+      color: '#52525b !important', // Slightly darker for better contrast
     },
     '@media (max-width: 480px)': {
       fontSize: '0.75rem !important',
-      lineHeight: '1.2 !important',
+      lineHeight: '1.45 !important',
     },
     '@media (max-width: 375px)': {
-      fontSize: '0.72rem !important',
-      lineHeight: '1.15 !important',
+      fontSize: '0.6875rem !important',
+      lineHeight: '1.5 !important',
     },
   },
   decorativeElements: {
@@ -402,6 +400,7 @@ const useStyles = makeStyles({
     right: 0,
     bottom: 0,
     zIndex: 1,
+    pointerEvents: 'none', // Prevent interference with touch on mobile
     '&::before': {
       content: '""',
       position: 'absolute',
@@ -421,16 +420,18 @@ const useStyles = makeStyles({
         height: '200px',
       },
       '@media (max-width: 600px)': {
-        width: '150px',
-        height: '150px',
-      },
-      '@media (max-width: 480px)': {
         width: '120px',
         height: '120px',
+        top: '15%',
+        left: '10%',
+      },
+      '@media (max-width: 480px)': {
+        width: '80px',
+        height: '80px',
       },
       '@media (max-width: 375px)': {
-        width: '100px',
-        height: '100px',
+        width: '60px',
+        height: '60px',
       },
     },
     '&::after': {
@@ -448,30 +449,32 @@ const useStyles = makeStyles({
         height: '200px',
       },
       '@media (max-width: 960px)': {
-        width: '150px',
-        height: '150px',
+        width: '180px',
+        height: '180px',
       },
       '@media (max-width: 600px)': {
-        width: '120px',
-        height: '120px',
-      },
-      '@media (max-width: 480px)': {
         width: '100px',
         height: '100px',
+        bottom: '15%',
+        right: '10%',
+      },
+      '@media (max-width: 480px)': {
+        width: '60px',
+        height: '60px',
       },
       '@media (max-width: 375px)': {
-        width: '80px',
-        height: '80px',
+        width: '40px',
+        height: '40px',
       },
     },
-  },
-  '@keyframes rotate': {
-    '0%': { transform: 'rotate(0deg)' },
-    '100%': { transform: 'rotate(360deg)' },
   },
   '@keyframes float': {
     '0%, 100%': { transform: 'translateY(0px)' },
     '50%': { transform: 'translateY(-20px)' },
+    '@media (max-width: 600px)': {
+      '0%, 100%': { transform: 'translateY(0px)' },
+      '50%': { transform: 'translateY(-10px)' },
+    },
   },
 });
 
