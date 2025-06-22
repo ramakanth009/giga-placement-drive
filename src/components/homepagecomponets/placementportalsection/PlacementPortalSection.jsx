@@ -53,11 +53,39 @@ const useStyles = makeStyles({
     position: "relative",
     cursor: "pointer",
     transition: "all 0.3s ease",
+    minHeight: "400px",
+    border: "2px solid rgba(42, 43, 106, 0.1)",
+    borderRadius: "15px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    overflow: "hidden",
     "&:hover": {
       transform: "scale(1.02)",
+      borderColor: "rgba(42, 43, 106, 0.3)",
     },
     "&:hover .imageOverlay": {
       opacity: 1,
+    },
+    "@media (max-width: 1200px)": {
+      minHeight: "380px",
+      borderRadius: "14px",
+    },
+    "@media (max-width: 960px)": {
+      minHeight: "350px",
+      borderRadius: "13px",
+    },
+    "@media (max-width: 600px)": {
+      minHeight: "320px",
+      borderRadius: "12px",
+    },
+    "@media (max-width: 480px)": {
+      minHeight: "300px",
+      borderRadius: "11px",
+    },
+    "@media (max-width: 375px)": {
+      minHeight: "280px",
+      borderRadius: "10px",
     },
   },
   imageOverlay: {
@@ -402,9 +430,10 @@ const useStyles = makeStyles({
     transition: "all 0.3s ease !important",
     alignSelf: "flex-start",
     "&:hover": {
-      backgroundColor: "white !important",
+      backgroundColor: "#2A2B6A !important",
+      color: "white !important",
       transform: "translateY(-2px)",
-      boxShadow: "0 8px 25px rgba(255, 198, 20, 0.4) !important",
+      boxShadow: "0 8px 25px rgba(42, 43, 106, 0.4) !important",
     },
     "@media (max-width: 1200px)": {
       padding: "11px 32px !important",
