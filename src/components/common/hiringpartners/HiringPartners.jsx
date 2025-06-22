@@ -88,6 +88,10 @@ const useStyles = makeStyles({
     textAlign: 'center !important',
     fontSize: "2.5rem !important",
     position: 'relative',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+    maxWidth: '100%',
     '@media (max-width: 1200px)': {
       fontSize: '2.3rem !important',
     },
@@ -102,6 +106,10 @@ const useStyles = makeStyles({
     },
     '@media (max-width: 375px)': {
       fontSize: '1.4rem !important',
+    },
+    '@media (max-width: 540px)': {
+      fontSize: '1.3rem !important',
+      maxWidth: '95vw',
     },
   },
   highlight: {
@@ -160,6 +168,16 @@ const useStyles = makeStyles({
     '@media (max-width: 375px)': {
       marginBottom: '18px',
     },
+    '@media (max-width: 540px)': {
+      flexWrap: 'wrap',
+      overflowX: 'visible',
+      justifyContent: 'center',
+      marginLeft: 0,
+      marginRight: 0,
+      paddingLeft: 0,
+      paddingRight: 0,
+      marginBottom: '10px',
+    },
   },
   filterButton: {
     backgroundColor: '#f0f2f5 !important',
@@ -201,6 +219,17 @@ const useStyles = makeStyles({
       padding: '5px 10px !important',
       fontSize: '10px !important',
     },
+    '@media (max-width: 540px)': {
+      padding: '7px 14px !important',
+      fontSize: '12px !important',
+      borderRadius: '20px !important',
+      minWidth: '80px',
+      margin: '4px 4px 0 0 !important',
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      maxWidth: '110px',
+    },
   },
   activeFilterButton: {
     backgroundColor: '#2A2B6A !important',
@@ -220,6 +249,9 @@ const useStyles = makeStyles({
       borderTopRightRadius: '30px !important',
       borderBottomRightRadius: '30px !important',
     },
+    '@media (max-width: 540px)': {
+      borderRadius: '20px !important',
+    },
   },
   tabsContainer: {
     display: 'flex',
@@ -238,6 +270,15 @@ const useStyles = makeStyles({
     '@media (max-width: 375px)': {
       borderRadius: '18px',
     },
+    '@media (max-width: 540px)': {
+      borderRadius: '20px',
+      minWidth: 'unset',
+      boxShadow: 'none',
+      gap: '8px',
+      flexWrap: 'wrap',
+      width: '100%',
+      justifyContent: 'center',
+    },
   },
   firstTab: {
     borderTopLeftRadius: '30px !important',
@@ -254,6 +295,10 @@ const useStyles = makeStyles({
       borderTopLeftRadius: '18px !important',
       borderBottomLeftRadius: '18px !important',
     },
+    '@media (max-width: 540px)': {
+      borderTopLeftRadius: '20px !important',
+      borderBottomLeftRadius: '20px !important',
+    },
   },
   lastTab: {
     borderTopRightRadius: '30px !important',
@@ -269,6 +314,10 @@ const useStyles = makeStyles({
     '@media (max-width: 375px)': {
       borderTopRightRadius: '18px !important',
       borderBottomRightRadius: '18px !important',
+    },
+    '@media (max-width: 540px)': {
+      borderTopRightRadius: '20px !important',
+      borderBottomRightRadius: '20px !important',
     },
   },
   cardsContainer: {
