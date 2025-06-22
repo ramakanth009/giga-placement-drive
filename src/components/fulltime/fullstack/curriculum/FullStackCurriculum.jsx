@@ -6,25 +6,35 @@ import Curriculum from '../../../common/fulltime/curriculum/Curriculum';
 const FullStackCurriculum = () => {
   // The curriculum data structure based on PDF
   const curriculumData = {
-    frontend: {
-      title: "Frontend Development",
+    frontend1: {
+      title: "Frontend 1",
       topics: [
         "HTML & CSS Fundamentals",
         "Bootstrap Framework",
         "JavaScript Fundamentals",
         "DOM & Browser APIs",
+      ],
+    },
+    frontend2: {
+      title: "Frontend 2",
+      topics: [
         "Modern JavaScript (ES6+)",
         "API Integration",
         "React Development",
       ],
     },
-    backend: {
-      title: "Backend Development",
-       topics: [
+    backend1: {
+      title: "Backend 1",
+      topics: [
         "Node.js Introduction",
-        "Node.js Core", 
+        "Node.js Core",
         "Express Basics",
         "Express Middleware",
+      ],
+    },
+    backend2: {
+      title: "Backend 2",
+      topics: [
         "REST API Development",
         "API Testing",
         "Authentication",

@@ -153,17 +153,25 @@ const useStyles = makeStyles({
   leftSection: {
     flex: 1,
     padding: '40px 15px',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    minHeight: '420px', // Enhanced height
     '@media (max-width: 1200px)': {
       padding: '35px 10px',
+      minHeight: '380px',
     },
     '@media (max-width: 960px)': {
       padding: '30px 0',
+      minHeight: '340px',
     },
     '@media (max-width: 600px)': {
       padding: '25px 0',
+      minHeight: '300px',
     },
     '@media (max-width: 480px)': {
       padding: '20px 0',
+      minHeight: '260px',
     },
   },
 
@@ -172,6 +180,8 @@ const useStyles = makeStyles({
     alignItems: 'center',
     gap: '15px',
     marginBottom: '35px',
+    justifyContent: 'center', // Center the heading
+    width: '100%',
     '@media (max-width: 1200px)': {
       marginBottom: '30px',
       gap: '12px',
@@ -815,11 +825,6 @@ const TestimonialComponent = () => {
     }
   };
 
-  const stats = [
-    { icon: <VerifiedIcon />, text: 'Verified Reviews' },
-    { icon: <TrendingUpIcon />, text: '94% Success Rate' }
-  ];
-
   return (
     <Box className={classes.testimonialSection}>
       {/* Floating Elements */}
@@ -828,33 +833,21 @@ const TestimonialComponent = () => {
       <Box className={`${classes.floatingElement} ${classes.floatingElement3}`} />
 
       <Container className={classes.mainContainer}>
-        <Box className={classes.contentBox}>
-          {/* Left Section - Description */}
-          <Box className={classes.leftSection}>
-            <Box className={classes.titleContainer}>
+        <Box className={classes.titleContainer}>
               <Typography variant="h1" className={classes.mainTitle}>
                 Be the first to review
               </Typography>
               <FavoriteIcon className={classes.bigLoveIcon} />
             </Box>
 
+        <Box className={classes.contentBox}>
+          {/* Left Section - Description */}
+          <Box className={classes.leftSection}>
+            
             <Box className={classes.descriptionBox}>
               <Typography className={classes.descriptionText}>
                 Unlike other platforms, we don't post fake reviews. Be the first to get featured with your honest feedback. Loved our curriculum? Just drop some ❤️ and share your valuable feedback!
               </Typography>
-            </Box>
-
-            <Box className={classes.statsBox}>
-              {stats.map((stat, index) => (
-                <Box key={index} className={classes.statItem}>
-                  <Box className={classes.statIcon}>
-                    {stat.icon}
-                  </Box>
-                  <Typography className={classes.statText}>
-                    {stat.text}
-                  </Typography>
-                </Box>
-              ))}
             </Box>
           </Box>
 

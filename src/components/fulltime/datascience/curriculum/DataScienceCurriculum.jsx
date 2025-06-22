@@ -5,27 +5,37 @@ import Curriculum from '../../../common/fulltime/curriculum/Curriculum';
 const DataScienceCurriculum = () => {
   // The curriculum data structure
   const curriculumData = {
-    python: {
-      title: "Python",
+    python1: {
+      title: "Python 1",
       topics: [
         "Introduction to Python",
         "Python Basics",
         "Control Flow & Loops",
         "Functions & Functional Programming",
-        "Data Structures", 
+        "Data Structures",
+      ],
+    },
+    python2: {
+      title: "Python 2",
+      topics: [
         "Modules, Packages & File Handling",
         "Object-Oriented Programming (OOP)",
         "Advanced Python Concepts",
         "Data Science Libraries",
       ],
     },
-    sql: { 
-      title: "SQL",
+    sql1: { 
+      title: "SQL 1",
       topics: [
         "Introduction to Databases and SQL",
         "Basic Querying and Data Retrieval",
         "Aggregation, Grouping, and Joins",
         "Subqueries, CTEs, and Advanced Querying",
+      ],
+    },
+    sql2: { 
+      title: "SQL 2",
+      topics: [
         "Window Functions and Data Manipulation",
         "Time Series Analysis and Data Transformation",
         "Performance Optimization and Indexing",
@@ -33,14 +43,19 @@ const DataScienceCurriculum = () => {
         "Best Practices and Query Optimization Techniques",
       ],
     },
-    math: {
-      title: "Core Mathematics & EDA",
+    math1: {
+      title: "Core Mathematics & EDA 1",
       topics: [
         "Mathematics for Data Science",
         "Descriptive Statistics",
         "Probability Theory",
         "Linear Algebra",
         "Calculus & Optimization",
+      ],
+    },
+    math2: {
+      title: "Core Mathematics & EDA 2",
+      topics: [
         "Exploratory Data Analysis (EDA)",
         "Data Cleaning & Transformation",
         "Data Visualization",
@@ -49,27 +64,37 @@ const DataScienceCurriculum = () => {
         "EDA & Data Storytelling",
       ],
     },
-    machine: {
-      title: "Machine Learning",
+    machine1: {
+      title: "Machine Learning 1",
       topics: [
         "Introduction to Machine Learning",
         "Supervised Learning",
         "Regression Techniques",
         "Boosting and Ensemble Methods",
         "Basics of Neural Networks and Deep Learning",
+      ],
+    },
+    machine2: {
+      title: "Machine Learning 2",
+      topics: [
         "Unsupervised Learning",
         "Dimensionality Reduction and Feature Engineering",
         "Reinforcement Learning",
         "Model Evaluation and Advanced Topics",
       ],
     },
-    deep: {
-      title: "Deep Learning",
+    deep1: {
+      title: "Deep Learning 1",
       topics: [
         "Introduction to Deep Learning and Neural Networks",
         "Training Neural Networks and Optimization Techniques",
         "Convolutional Neural Networks (CNNs) and Applications in Computer Vision",
         "Recurrent Neural Networks (RNNs) and Long Short-Term Memory (LSTMs)",
+      ],
+    },
+    deep2: {
+      title: "Deep Learning 2",
+      topics: [
         "Model Evaluation Metrics and Hyperparameter Optimization",
         "Variational Autoencoders (VAEs) and Representation Learning",
         "Data Preparation, Augmentation, and Normalization Techniques",
@@ -77,27 +102,37 @@ const DataScienceCurriculum = () => {
         "Interpretability, Explainability, and Advanced Deep Learning Techniques",
       ],
     },
-    nlp: {
-      title: "Natural Language Processing",
+    nlp1: {
+      title: "Natural Language Processing 1",
       topics: [
         "Introduction to Natural Language Processing (NLP)",
         "Text Preprocessing and Tokenization",
         "Feature Extraction and Word Embeddings (Word2Vec, GloVe)",
         "Transformer Architecture and Attention Mechanisms",
         "BERT and Its Variants",
+      ],
+    },
+    nlp2: {
+      title: "Natural Language Processing 2",
+      topics: [
         "Named Entity Recognition (NER) and Sequence Labeling",
         "Text Classification with CNNs and RNNs",
         "Advanced NLP Techniques and Self-Supervised Learning",
         "Practical Applications of NLP",
       ],
     },
-    genai: {
-      title: "Generative AI",
+    genai1: {
+      title: "Generative AI 1",
       topics: [
         "Introduction to Generative AI and Models",
         "Overview of Generative Adversarial Networks (GANs)",
         "Applications of GANs in Image and Text Generation",
         "Introduction to Autoencoders and Variational Autoencoders (VAEs)",
+      ],
+    },
+    genai2: {
+      title: "Generative AI 2",
+      topics: [
         "Fundamentals of Large Language Models (LLMs)",
         "Transformer Architecture and Key Components",
         "Pre-trained Language Models and Their Applications",

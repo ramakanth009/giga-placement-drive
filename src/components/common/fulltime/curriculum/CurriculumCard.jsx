@@ -64,6 +64,15 @@ const useStyles = makeStyles({
   cardActive: {
     borderTop: '4px solid #4A63E7',
     boxShadow: '0px 8px 25px rgba(74, 99, 231, 0.15) !important',
+    '& $durationIcon': {
+      transform: 'rotate(15deg)',
+    },
+    '& $bulletIcon': {
+      transform: 'scale(1.2)',
+    },
+    '& $title:after': {
+      width: '100%',
+    },
   },
   cardContent: {
     height: '100%',
@@ -468,12 +477,13 @@ const useStyles = makeStyles({
     },
   },
   hoverEffect: {
-    '& $durationIcon': {
-      transform: 'rotate(15deg)',
-    },
-    '& $bulletIcon': {
-      transform: 'scale(1.2)',
-    },
+    // '& $durationIcon': {
+    //   transform: 'rotate(15deg)',
+    // },
+    // '& $bulletIcon': {
+    //   transform: 'scale(1.2)',
+    // },
+    // Moved to cardActive below
   },
 });
 
@@ -489,17 +499,16 @@ const CurriculumCard = ({
   onClick
 }) => {
   const classes = useStyles();
-  const [isHovered, setIsHovered] = React.useState(false);
+  // const [isHovered, setIsHovered] = React.useState(false);
 
-  // Show only first 4 topics
-  const displayTopics = topics.slice(0, 4);
+  const displayTopics = topics;
 
   return (
     <Paper 
-      className={`${classes.card} ${isScaled ? classes.cardScaled : ''} ${isActive ? classes.cardActive : ''} ${isHovered ? classes.hoverEffect : ''}`} 
+      className={`${classes.card} ${isScaled ? classes.cardScaled : ''} ${isActive ? classes.cardActive : ''}`}
       elevation={0}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      // onMouseEnter={() => setIsHovered(true)}
+      // onMouseLeave={() => setIsHovered(false)}
       onClick={onClick}
     >
       <Box className={classes.cardBackground}></Box>
@@ -507,7 +516,9 @@ const CurriculumCard = ({
         <Box className={classes.numberCircle}>{number}</Box>
         <Box className={classes.topicIcon}>{icon}</Box>
         
-        <Typography className={`${classes.title} ${isScaled ? classes.titleScaled : ''} ${isHovered ? classes.titleHover : ''}`}>
+        <Typography className={
+          `${classes.title} ${isScaled ? classes.titleScaled : ''}`
+        }>
           {title}
         </Typography>
         
