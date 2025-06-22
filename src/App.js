@@ -21,6 +21,7 @@ const PaymentComplete = React.lazy(() => import('./pages/cart/PaymentComplete'))
 const Blog = React.lazy(() => import('./pages/blog/Blog'));
 const BlogDetailPage = React.lazy(() => import('./components/blog/blogdetail/BlogDetailPage'));
 const CampusPage = React.lazy(() => import('./pages/campus/CampusPage'));
+const Productspage = React.lazy(() => import('./pages/products/Products'));
 const PreScreeningTest = React.lazy(() => import('./components/homepagecomponets/prescreeningtest/PreScreeningTest'));
 const SitemapPage = React.lazy(() => import('./pages/sitemap/SitemapPage')); // NEW SITEMAP PAGE
 
@@ -48,6 +49,7 @@ const App = () => {
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogDetailPage />} /> 
           <Route path="/campus" element={<CampusPage />} />
+          <Route path="/products" element={<Productspage />} />
           
           {/* New Full-Time Program routes */}
           <Route path="/fulltime/fullstack" element={<FullstackFulltime />} />
