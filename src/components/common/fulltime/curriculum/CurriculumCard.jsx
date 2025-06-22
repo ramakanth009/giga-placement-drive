@@ -115,6 +115,35 @@ const useStyles = makeStyles({
       },
     },
   },
+  cardInactive: {
+    transform: 'scale(0.85)',
+    opacity: 0.7,
+    filter: 'blur(0.5px)',
+    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+    zIndex: 1,
+    // Responsive width for inactive cards
+    width: '320px !important',
+    '@media (max-width: 1200px)': {
+      width: '290px !important',
+      transform: 'scale(0.83)',
+    },
+    '@media (max-width: 960px)': {
+      width: '260px !important',
+      transform: 'scale(0.81)',
+    },
+    '@media (max-width: 600px)': {
+      width: '220px !important',
+      transform: 'scale(0.79)',
+    },
+    '@media (max-width: 480px)': {
+      width: '200px !important',
+      transform: 'scale(0.77)',
+    },
+    '@media (max-width: 375px)': {
+      width: '180px !important',
+      transform: 'scale(0.75)',
+    },
+  },
   cardActive: {
     borderTop: '5px solid #4A63E7',
     boxShadow: '0px 10px 30px rgba(74, 99, 231, 0.18) !important',
@@ -747,6 +776,7 @@ const CurriculumCard = ({
   icon,
   isScaled = false,
   isActive = false,
+  isInactive = false,
   onClick
 }) => {
   const classes = useStyles();
@@ -755,7 +785,12 @@ const CurriculumCard = ({
 
   return (
     <Paper 
-      className={`${classes.card} ${isScaled ? classes.cardScaled : ''} ${isActive ? classes.cardActive : ''}`}
+      className={
+        `${classes.card} ` +
+        (isScaled ? classes.cardScaled + ' ' : '') +
+        (isActive ? classes.cardActive + ' ' : '') +
+        (isInactive ? classes.cardInactive : '')
+      }
       elevation={0}
       onClick={onClick}
     >
