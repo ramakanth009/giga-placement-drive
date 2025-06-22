@@ -348,7 +348,7 @@ const Navbar = () => {
                   </Link>
                 </Box>
               </Box>
-              <Button
+              {/* <Button
                 className={`${classes.navLink} ${
                   currentPath === "/campus" ? classes.active : ""
                 }`}
@@ -357,7 +357,7 @@ const Navbar = () => {
                 onClick={handleNavLinkClick}
               >
                 Campus
-              </Button>
+              </Button> */}
               {/* Products link right beside Campus */}
               <Button
                 className={`${classes.navLink} ${
@@ -533,14 +533,14 @@ const Navbar = () => {
           >
             Contact Us
           </MenuItem>
-          <MenuItem
+          {/* <MenuItem
             onClick={() => handleNavLinkClick()}
             className={classes.menuItem}
             component={Link}
             to="/campus"
           >
             Campus
-          </MenuItem>
+          </MenuItem> */}
           {/* Products link right beside Campus in mobile menu */}
           <MenuItem
             onClick={() => handleNavLinkClick()}

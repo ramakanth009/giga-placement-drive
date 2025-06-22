@@ -1,10 +1,11 @@
 import React from 'react';
-import { Box, Typography, Button, Container } from '@mui/material';
+import { Box, Typography, Button, Container, Link } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import Heroguy from '../../../assets/heroguy3.png'; 
 import { ReactComponent as Stack } from '../../../assets/stack.svg';
 import { ReactComponent as Tick } from '../../../assets/tick.svg';
 import { ReactComponent as Message } from '../../../assets/message.svg';
+import { scrollToTop } from "../../../utils/scrollUtils";
 
 const useStyles = makeStyles({
   heroSection: {
@@ -499,7 +500,10 @@ const HeroSection = () => {
             <Typography className={classes.subtitle}>
               Develop a real-time product before graduation and get a chance to build an MVP with access to up to ₹1,00,000 in startup grants.
             </Typography>
-            <Button className={classes.applyButton}>
+            <Button 
+            component={Link}
+                            to="/cart"
+                            onClick={scrollToTop}className={classes.applyButton}>
               Apply Now
             </Button>
           </Box>
