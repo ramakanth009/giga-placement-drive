@@ -5,21 +5,64 @@ import { makeStyles } from '@mui/styles';
 const useStyles = makeStyles({
   section: {
     padding: '30px 0',
-    // minHeight: '100vh',
     position: 'relative',
     overflow: 'hidden',
-    // background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
     display: 'flex',
     alignItems: 'center',
+    '@media (max-width: 1200px)': {
+      padding: '25px 0',
+    },
+    '@media (max-width: 960px)': {
+      padding: '20px 0',
+    },
+    '@media (max-width: 600px)': {
+      padding: '15px 0',
+    },
+    '@media (max-width: 480px)': {
+      padding: '12px 0',
+    },
+    '@media (max-width: 375px)': {
+      padding: '10px 0',
+    },
   },
   container: {
     position: 'relative',
     zIndex: 2,
     textAlign: 'center',
     width: '100%',
+    '@media (max-width: 1200px)': {
+      padding: '0 20px !important',
+    },
+    '@media (max-width: 960px)': {
+      padding: '0 16px !important',
+    },
+    '@media (max-width: 600px)': {
+      padding: '0 12px !important',
+    },
+    '@media (max-width: 480px)': {
+      padding: '0 10px !important',
+    },
+    '@media (max-width: 375px)': {
+      padding: '0 8px !important',
+    },
   },
   header: {
     marginBottom: '40px',
+    '@media (max-width: 1200px)': {
+      marginBottom: '35px',
+    },
+    '@media (max-width: 960px)': {
+      marginBottom: '30px',
+    },
+    '@media (max-width: 600px)': {
+      marginBottom: '25px',
+    },
+    '@media (max-width: 480px)': {
+      marginBottom: '20px',
+    },
+    '@media (max-width: 375px)': {
+      marginBottom: '18px',
+    },
   },
   title: {
     fontSize: '2.5rem !important',
@@ -27,8 +70,29 @@ const useStyles = makeStyles({
     marginBottom: '12px !important',
     color: '#2A2B6A !important',
     textShadow: '0 4px 12px rgba(42, 43, 106, 0.2)',
-    '@media (max-width: 768px)': {
-      fontSize: '2rem !important',
+    lineHeight: '1.2 !important',
+    '@media (max-width: 1200px)': {
+      fontSize: '2.3rem !important',
+      marginBottom: '10px !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '2.1rem !important',
+      marginBottom: '10px !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '1.9rem !important',
+      marginBottom: '8px !important',
+      lineHeight: '1.3 !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '1.7rem !important',
+      marginBottom: '8px !important',
+      lineHeight: '1.3 !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1.5rem !important',
+      marginBottom: '6px !important',
+      lineHeight: '1.4 !important',
     },
   },
   highlightText: {
@@ -40,6 +104,35 @@ const useStyles = makeStyles({
     marginBottom: '20px !important',
     maxWidth: '500px',
     margin: '0 auto 20px auto !important',
+    lineHeight: '1.5 !important',
+    '@media (max-width: 1200px)': {
+      fontSize: '1.05rem !important',
+      maxWidth: '450px',
+      marginBottom: '18px !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '1rem !important',
+      maxWidth: '400px',
+      marginBottom: '16px !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.95rem !important',
+      maxWidth: '350px',
+      marginBottom: '14px !important',
+      lineHeight: '1.4 !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.9rem !important',
+      maxWidth: '300px',
+      marginBottom: '12px !important',
+      lineHeight: '1.4 !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.85rem !important',
+      maxWidth: '280px',
+      marginBottom: '10px !important',
+      lineHeight: '1.3 !important',
+    },
   },
   fundingBadge: {
     background: 'linear-gradient(135deg, #2A2B6A 0%, #1e1f4f 100%)',
@@ -52,11 +145,52 @@ const useStyles = makeStyles({
     textTransform: 'uppercase',
     letterSpacing: '1px',
     boxShadow: '0 6px 20px rgba(42, 43, 106, 0.25)',
+    '@media (max-width: 1200px)': {
+      padding: '7px 18px !important',
+      fontSize: '0.85rem !important',
+    },
+    '@media (max-width: 960px)': {
+      padding: '6px 16px !important',
+      fontSize: '0.8rem !important',
+      letterSpacing: '0.8px',
+    },
+    '@media (max-width: 600px)': {
+      padding: '6px 14px !important',
+      fontSize: '0.75rem !important',
+      letterSpacing: '0.6px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '5px 12px !important',
+      fontSize: '0.7rem !important',
+      letterSpacing: '0.5px',
+      borderRadius: '16px !important',
+    },
+    '@media (max-width: 375px)': {
+      padding: '4px 10px !important',
+      fontSize: '0.65rem !important',
+      letterSpacing: '0.4px',
+      borderRadius: '14px !important',
+    },
   },
   pathwayContainer: {
     position: 'relative',
     maxWidth: '1200px',
     margin: '0 auto',
+    '@media (max-width: 1200px)': {
+      maxWidth: '100%',
+    },
+    '@media (max-width: 960px)': {
+      maxWidth: '100%',
+    },
+    '@media (max-width: 600px)': {
+      maxWidth: '100%',
+    },
+    '@media (max-width: 480px)': {
+      maxWidth: '100%',
+    },
+    '@media (max-width: 375px)': {
+      maxWidth: '100%',
+    },
   },
   stepsGrid: {
     display: 'grid',
@@ -65,15 +199,27 @@ const useStyles = makeStyles({
     position: 'relative',
     '@media (max-width: 1200px)': {
       gridTemplateColumns: 'repeat(3, 1fr)',
-      gap: '30px',
-    },
-    '@media (max-width: 768px)': {
-      gridTemplateColumns: 'repeat(2, 1fr)',
       gap: '25px',
+    },
+    '@media (max-width: 960px)': {
+      gridTemplateColumns: 'repeat(3, 1fr)',
+      gap: '20px',
+    },
+    '@media (max-width: 600px)': {
+      gridTemplateColumns: 'repeat(2, 1fr)',
+      gap: '18px',
     },
     '@media (max-width: 480px)': {
       gridTemplateColumns: '1fr',
-      gap: '20px',
+      gap: '16px',
+      maxWidth: '300px',
+      margin: '0 auto',
+    },
+    '@media (max-width: 375px)': {
+      gridTemplateColumns: '1fr',
+      gap: '14px',
+      maxWidth: '280px',
+      margin: '0 auto',
     },
   },
   pathLine: {
@@ -117,10 +263,39 @@ const useStyles = makeStyles({
       transform: 'scale(1.1)',
       boxShadow: '0 16px 40px rgba(42, 43, 106, 0.4)',
     },
-       '@media (max-width: 768px)': {
+    '@media (max-width: 1200px)': {
+      width: '75px',
+      height: '75px',
+      fontSize: '1.7rem !important',
+      marginBottom: '14px',
+    },
+    '@media (max-width: 960px)': {
       width: '70px',
       height: '70px',
       fontSize: '1.6rem !important',
+      marginBottom: '12px',
+      border: '2px solid white',
+    },
+    '@media (max-width: 600px)': {
+      width: '65px',
+      height: '65px',
+      fontSize: '1.5rem !important',
+      marginBottom: '10px',
+      border: '2px solid white',
+    },
+    '@media (max-width: 480px)': {
+      width: '60px',
+      height: '60px',
+      fontSize: '1.4rem !important',
+      marginBottom: '10px',
+      border: '2px solid white',
+    },
+    '@media (max-width: 375px)': {
+      width: '55px',
+      height: '55px',
+      fontSize: '1.3rem !important',
+      marginBottom: '8px',
+      border: '2px solid white',
     },
   },
   stepContent: {
@@ -139,9 +314,30 @@ const useStyles = makeStyles({
       transform: 'translateY(-4px)',
       boxShadow: '0 12px 35px rgba(42, 43, 106, 0.15)',
     },
-    '@media (max-width: 768px)': {
+    '@media (max-width: 1200px)': {
+      height: '170px',
+      padding: '18px 14px',
+      borderRadius: '14px',
+    },
+    '@media (max-width: 960px)': {
       height: '160px',
       padding: '16px 12px',
+      borderRadius: '12px',
+    },
+    '@media (max-width: 600px)': {
+      height: '150px',
+      padding: '14px 10px',
+      borderRadius: '12px',
+    },
+    '@media (max-width: 480px)': {
+      height: '140px',
+      padding: '12px 10px',
+      borderRadius: '10px',
+    },
+    '@media (max-width: 375px)': {
+      height: '130px',
+      padding: '10px 8px',
+      borderRadius: '8px',
     },
   },
   stepTitle: {
@@ -149,16 +345,54 @@ const useStyles = makeStyles({
     fontWeight: '700 !important',
     marginBottom: '8px !important',
     color: '#2A2B6A !important',
-    '@media (max-width: 768px)': {
+    lineHeight: '1.3 !important',
+    '@media (max-width: 1200px)': {
+      fontSize: '1.05rem !important',
+      marginBottom: '7px !important',
+    },
+    '@media (max-width: 960px)': {
       fontSize: '1rem !important',
+      marginBottom: '6px !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.95rem !important',
+      marginBottom: '6px !important',
+      lineHeight: '1.2 !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.9rem !important',
+      marginBottom: '5px !important',
+      lineHeight: '1.2 !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.85rem !important',
+      marginBottom: '4px !important',
+      lineHeight: '1.2 !important',
     },
   },
   stepDescription: {
     fontSize: '0.85rem !important',
     color: '#64748b !important',
     lineHeight: '1.4 !important',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 1200px)': {
+      fontSize: '0.82rem !important',
+      lineHeight: '1.35 !important',
+    },
+    '@media (max-width: 960px)': {
       fontSize: '0.8rem !important',
+      lineHeight: '1.3 !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.78rem !important',
+      lineHeight: '1.25 !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.75rem !important',
+      lineHeight: '1.2 !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.72rem !important',
+      lineHeight: '1.15 !important',
     },
   },
   decorativeElements: {
@@ -178,6 +412,26 @@ const useStyles = makeStyles({
       top: '10%',
       left: '5%',
       animation: '$float 8s ease-in-out infinite',
+      '@media (max-width: 1200px)': {
+        width: '250px',
+        height: '250px',
+      },
+      '@media (max-width: 960px)': {
+        width: '200px',
+        height: '200px',
+      },
+      '@media (max-width: 600px)': {
+        width: '150px',
+        height: '150px',
+      },
+      '@media (max-width: 480px)': {
+        width: '120px',
+        height: '120px',
+      },
+      '@media (max-width: 375px)': {
+        width: '100px',
+        height: '100px',
+      },
     },
     '&::after': {
       content: '""',
@@ -189,6 +443,26 @@ const useStyles = makeStyles({
       bottom: '10%',
       right: '5%',
       animation: '$float 10s ease-in-out infinite reverse',
+      '@media (max-width: 1200px)': {
+        width: '200px',
+        height: '200px',
+      },
+      '@media (max-width: 960px)': {
+        width: '150px',
+        height: '150px',
+      },
+      '@media (max-width: 600px)': {
+        width: '120px',
+        height: '120px',
+      },
+      '@media (max-width: 480px)': {
+        width: '100px',
+        height: '100px',
+      },
+      '@media (max-width: 375px)': {
+        width: '80px',
+        height: '80px',
+      },
     },
   },
   '@keyframes rotate': {
