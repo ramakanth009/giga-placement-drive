@@ -111,7 +111,7 @@ const DataScienceCurriculum = () => {
         "Transformer Architecture and Attention Mechanisms",
         "BERT and Its Variants",
       ],
-    },
+    }, 
     nlp2: {
       title: "Natural Language Processing II",
       topics: [
