@@ -7,7 +7,7 @@ const FullStackCurriculum = () => {
   // The curriculum data structure based on PDF
   const curriculumData = {
     frontend1: {
-      title: "Frontend 1",
+      title: "Front-End I",
       topics: [
         "HTML & CSS Fundamentals",
         "Bootstrap Framework",
@@ -16,7 +16,7 @@ const FullStackCurriculum = () => {
       ],
     },
     frontend2: {
-      title: "Frontend 2",
+      title: "Front-End II",
       topics: [
         "Modern JavaScript (ES6+)",
         "API Integration",

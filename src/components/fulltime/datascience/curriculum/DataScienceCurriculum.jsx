@@ -6,7 +6,7 @@ const DataScienceCurriculum = () => {
   // The curriculum data structure
   const curriculumData = {
     python1: {
-      title: "Python 1",
+      title: "Python I",
       topics: [
         "Introduction to Python",
         "Python Basics",
@@ -16,7 +16,7 @@ const DataScienceCurriculum = () => {
       ],
     },
     python2: {
-      title: "Python 2",
+      title: "Python II",
       topics: [
         "Modules, Packages & File Handling",
         "Object-Oriented Programming (OOP)",
@@ -25,7 +25,7 @@ const DataScienceCurriculum = () => {
       ],
     },
     sql1: { 
-      title: "SQL 1",
+      title: "SQL I",
       topics: [
         "Introduction to Databases and SQL",
         "Basic Querying and Data Retrieval",
@@ -34,7 +34,7 @@ const DataScienceCurriculum = () => {
       ],
     },
     sql2: { 
-      title: "SQL 2",
+      title: "SQL II",
       topics: [
         "Window Functions and Data Manipulation",
         "Time Series Analysis and Data Transformation",
@@ -44,7 +44,7 @@ const DataScienceCurriculum = () => {
       ],
     },
     math1: {
-      title: "Core Mathematics & EDA 1",
+      title: "Core Mathematics & EDA I",
       topics: [
         "Mathematics for Data Science",
         "Descriptive Statistics",
@@ -54,7 +54,7 @@ const DataScienceCurriculum = () => {
       ],
     },
     math2: {
-      title: "Core Mathematics & EDA 2",
+      title: "Core Mathematics & EDA II",
       topics: [
         "Exploratory Data Analysis (EDA)",
         "Data Cleaning & Transformation",
@@ -65,7 +65,7 @@ const DataScienceCurriculum = () => {
       ],
     },
     machine1: {
-      title: "Machine Learning 1",
+      title: "Machine Learning I",
       topics: [
         "Introduction to Machine Learning",
         "Supervised Learning",
@@ -75,7 +75,7 @@ const DataScienceCurriculum = () => {
       ],
     },
     machine2: {
-      title: "Machine Learning 2",
+      title: "Machine Learning II",
       topics: [
         "Unsupervised Learning",
         "Dimensionality Reduction and Feature Engineering",
@@ -84,7 +84,7 @@ const DataScienceCurriculum = () => {
       ],
     },
     deep1: {
-      title: "Deep Learning 1",
+      title: "Deep Learning I",
       topics: [
         "Introduction to Deep Learning and Neural Networks",
         "Training Neural Networks and Optimization Techniques",
@@ -93,7 +93,7 @@ const DataScienceCurriculum = () => {
       ],
     },
     deep2: {
-      title: "Deep Learning 2",
+      title: "Deep Learning II",
       topics: [
         "Model Evaluation Metrics and Hyperparameter Optimization",
         "Variational Autoencoders (VAEs) and Representation Learning",
@@ -103,7 +103,7 @@ const DataScienceCurriculum = () => {
       ],
     },
     nlp1: {
-      title: "Natural Language Processing 1",
+      title: "Natural Language Processing I",
       topics: [
         "Introduction to Natural Language Processing (NLP)",
         "Text Preprocessing and Tokenization",
@@ -113,7 +113,7 @@ const DataScienceCurriculum = () => {
       ],
     },
     nlp2: {
-      title: "Natural Language Processing 2",
+      title: "Natural Language Processing II",
       topics: [
         "Named Entity Recognition (NER) and Sequence Labeling",
         "Text Classification with CNNs and RNNs",
@@ -122,7 +122,7 @@ const DataScienceCurriculum = () => {
       ],
     },
     genai1: {
-      title: "Generative AI 1",
+      title: "Generative AI I",
       topics: [
         "Introduction to Generative AI and Models",
         "Overview of Generative Adversarial Networks (GANs)",
@@ -131,7 +131,7 @@ const DataScienceCurriculum = () => {
       ],
     },
     genai2: {
-      title: "Generative AI 2",
+      title: "Generative AI II",
       topics: [
         "Fundamentals of Large Language Models (LLMs)",
         "Transformer Architecture and Key Components",
