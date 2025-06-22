@@ -1,7 +1,7 @@
 import React from 'react';
 import HeroSection from '../../common/herosection/HeroSection';
 import fullstackHeroImage from '../../../assets/fullstackhero.png';
-import fullstackhero from "../../../assets/polite-friendly-brunette-businesswoman-posing-studio.png";
+import fullstackhero from "../../../assets/virtual_placement_drive_header(Full stack).png";
 
 const Hero = () => {
   // Define features
@@ -17,7 +17,7 @@ const Hero = () => {
       highlightText="Full Stack Development"
       subtitle="India's Premier Virtual Hiring & Learning Experience"
       features={features}
-      // heroImage={fullstackhero}
+      heroImage={fullstackhero}
       backgroundImage={fullstackHeroImage}
       displayAsBlock={true}
     />
