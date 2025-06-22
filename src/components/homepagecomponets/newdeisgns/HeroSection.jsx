@@ -83,7 +83,7 @@ const useStyles = makeStyles({
     }
   },
   mainTitle: {
-    fontSize: '4.5rem !important',
+    fontSize: '3.5rem !important',
     fontWeight: 'bold !important',
     color: '#292B6B',
     lineHeight: '1.1 !important',
@@ -487,9 +487,9 @@ const HeroSection = () => {
         <Box className={classes.flexRow}>
           <Box className={classes.leftBox}>
             <Typography className={classes.mainTitle}>
-              We're here<br />
-              to shape<br />
-              your career!
+              India’s first  <br />
+              product-based<br />
+              learning Platform
             </Typography>
             <Box className={classes.curveIcon}>
               <svg width="487" height="34" viewBox="0 0 487 34" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -497,8 +497,7 @@ const HeroSection = () => {
               </svg>
             </Box>
             <Typography className={classes.subtitle}>
-              Let's make your work more organize and easily using the
-              Gigaversity with many of the latest features!
+              Develop a real-time product before graduation and get a chance to build an MVP with access to up to ₹1,00,000 in startup grants.
             </Typography>
             <Button className={classes.applyButton}>
               Apply Now
