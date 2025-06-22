@@ -10,9 +10,10 @@ import foundationHallImg from '../../assets/mentor-room/Foundation-hall.png';
 import productRoomImg from '../../assets/mentor-room/Product-room.jpg';
 import startupRoomImg from '../../assets/mentor-room/Startup-room.png';
 import mentorRoomImg from '../../assets/mentor-room/mentor-room .png';
-import ventureHallImg from '../../assets/mentor-room/venture-hall.png';
+import ventureHallImg from '../../assets/mentor-room/venture-hall.jpg';
 import caffe from '../../assets/mentor-room/cafe.jpg';
 import sportsarena from '../../assets/mentor-room/sports-arena.jpg';
+import startupimg from '../../assets/mentor-room/coming-soon-with-colorful-cut-out-foil-ribbon-confetti-background.jpg'
 
 // Demo data for campus features
 const campusFeatures = [
@@ -67,10 +68,10 @@ const campusFeatures = [
   },
   {
     id: 8,
-    title: "Startup Mela → Innovation Connect",
+    title: "Innovation Connect → Investor Connect",
     description: "A vibrant monthly gathering where students, startup founders, co-founders, tech innovators, and industry professionals come together to network, pitch, and collaborate. Innovation Connect goes beyond traditional meetups—it's a launchpad for new ideas, early product demos, strategic partnerships, and community-driven innovation. Whether showcasing a new product, seeking co-founders, or discovering breakthrough technologies, this event fuels meaningful connections and inspires entrepreneurial growth across all levels of experience.",
-    image: "https://placehold.co/600x400", // Placeholder for missing image
-    alt: "Startup Mela → Innovation Connect"
+    image: startupimg,
+    alt: "Innovation Connect → Investor Connect"
   }
 ];
 
