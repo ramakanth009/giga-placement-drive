@@ -386,8 +386,8 @@ const useStyles = makeStyles({
   },
   floatingTags: {
     position: 'absolute',
-    top: '25%',
-    right: '-30px',
+    top: '17%',
+    right: '-18px',
     transform: 'translateY(-50%)',
     display: 'flex',
     flexDirection: 'column',
