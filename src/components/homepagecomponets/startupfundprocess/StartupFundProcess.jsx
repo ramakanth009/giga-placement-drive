@@ -4,11 +4,11 @@ import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles({
   section: {
-    padding: '60px 0',
-    minHeight: '100vh',
+    padding: '30px 0',
+    // minHeight: '100vh',
     position: 'relative',
     overflow: 'hidden',
-    background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
+    // background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
     display: 'flex',
     alignItems: 'center',
   },
@@ -117,16 +117,7 @@ const useStyles = makeStyles({
       transform: 'scale(1.1)',
       boxShadow: '0 16px 40px rgba(42, 43, 106, 0.4)',
     },
-    '&::before': {
-      content: '""',
-      position: 'absolute',
-      inset: '-4px',
-      borderRadius: '50%',
-      background: 'linear-gradient(45deg, #FFC614, transparent, #FFC614)',
-      zIndex: -1,
-      animation: '$rotate 3s linear infinite',
-    },
-    '@media (max-width: 768px)': {
+       '@media (max-width: 768px)': {
       width: '70px',
       height: '70px',
       fontSize: '1.6rem !important',
