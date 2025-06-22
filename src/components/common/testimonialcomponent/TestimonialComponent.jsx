@@ -19,15 +19,33 @@ import VerifiedIcon from '@mui/icons-material/Verified';
 
 const useStyles = makeStyles({
   testimonialSection: {
-    padding: '30px 0',
+    padding: '50px 0',
     width: '100%',
     background: 'linear-gradient(135deg, #f8f9ff 0%, #f0f6ff 100%)',
     position: 'relative',
     overflow: 'hidden',
     display: 'flex',
     alignItems: 'center',
-    '@media (max-width: 960px)': {
+    minHeight: '70vh',
+    '@media (max-width: 1200px)': {
       padding: '40px 0',
+      minHeight: '65vh',
+    },
+    '@media (max-width: 960px)': {
+      padding: '35px 0',
+      minHeight: '60vh',
+    },
+    '@media (max-width: 600px)': {
+      padding: '30px 0',
+      minHeight: '55vh',
+    },
+    '@media (max-width: 480px)': {
+      padding: '25px 0',
+      minHeight: '50vh',
+    },
+    '@media (max-width: 375px)': {
+      padding: '20px 0',
+      minHeight: '45vh',
     },
   },
 
@@ -45,7 +63,13 @@ const useStyles = makeStyles({
     width: '80px',
     height: '80px',
     animationDelay: '0s',
-    '@media (max-width: 960px)': { display: 'none' },
+    '@media (max-width: 1200px)': {
+      width: '70px',
+      height: '70px',
+    },
+    '@media (max-width: 960px)': { 
+      display: 'none' 
+    },
   },
 
   floatingElement2: {
@@ -54,7 +78,13 @@ const useStyles = makeStyles({
     width: '60px',
     height: '60px',
     animationDelay: '2s',
-    '@media (max-width: 960px)': { display: 'none' },
+    '@media (max-width: 1200px)': {
+      width: '50px',
+      height: '50px',
+    },
+    '@media (max-width: 960px)': { 
+      display: 'none' 
+    },
   },
 
   floatingElement3: {
@@ -63,7 +93,13 @@ const useStyles = makeStyles({
     width: '50px',
     height: '50px',
     animationDelay: '4s',
-    '@media (max-width: 960px)': { display: 'none' },
+    '@media (max-width: 1200px)': {
+      width: '40px',
+      height: '40px',
+    },
+    '@media (max-width: 960px)': { 
+      display: 'none' 
+    },
   },
 
   mainContainer: {
@@ -72,66 +108,122 @@ const useStyles = makeStyles({
     margin: '0 auto',
     position: 'relative',
     zIndex: 2,
+    '@media (max-width: 1200px)': {
+      maxWidth: '1000px',
+      padding: '0 20px',
+    },
+    '@media (max-width: 960px)': {
+      maxWidth: '800px',
+      padding: '0 15px',
+    },
+    '@media (max-width: 600px)': {
+      padding: '0 10px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '0 8px',
+    },
+    '@media (max-width: 375px)': {
+      padding: '0 5px',
+    },
   },
 
   contentBox: {
     display: 'flex',
     alignItems: 'center',
-    gap: '60px',
-    minHeight: '70vh',
+    gap: '50px',
+    '@media (max-width: 1200px)': {
+      gap: '40px',
+    },
     '@media (max-width: 960px)': {
       flexDirection: 'column',
-      gap: '40px',
+      gap: '30px',
       textAlign: 'center',
+    },
+    '@media (max-width: 600px)': {
+      gap: '25px',
+    },
+    '@media (max-width: 480px)': {
+      gap: '20px',
+    },
+    '@media (max-width: 375px)': {
+      gap: '15px',
     },
   },
 
   leftSection: {
     flex: 1,
-    padding: '0 20px',
+    padding: '0 15px',
+    '@media (max-width: 1200px)': {
+      padding: '0 10px',
+    },
+    '@media (max-width: 960px)': {
+      padding: '0',
+    },
   },
 
   mainTitle: {
-    fontSize: '3.5rem !important',
+    fontSize: '2.8rem !important',
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
-    marginBottom: '30px !important',
+    marginBottom: '20px !important',
     lineHeight: '1.1 !important',
     position: 'relative',
     '&::after': {
       content: '""',
       position: 'absolute',
-      bottom: '-10px',
+      bottom: '-8px',
       left: '0',
-      width: '80px',
-      height: '5px',
+      width: '60px',
+      height: '4px',
       background: 'linear-gradient(90deg, #FFC614, #FFD700)',
       borderRadius: '3px',
     },
+    '@media (max-width: 1200px)': {
+      fontSize: '2.5rem !important',
+      marginBottom: '18px !important',
+    },
     '@media (max-width: 960px)': {
-      fontSize: '2.8rem !important',
+      fontSize: '2.2rem !important',
       textAlign: 'center',
-      '&::after': { left: '50%', transform: 'translateX(-50%)' },
+      marginBottom: '15px !important',
+      '&::after': { 
+        left: '50%', 
+        transform: 'translateX(-50%)',
+        width: '50px',
+      },
     },
     '@media (max-width: 600px)': {
-      fontSize: '2.2rem !important',
+      fontSize: '1.9rem !important',
+      marginBottom: '12px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '1.7rem !important',
+      marginBottom: '10px !important',
+      '&::after': { 
+        width: '40px',
+        height: '3px',
+      },
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '1.5rem !important',
+      marginBottom: '8px !important',
     },
   },
 
   descriptionBox: {
     background: 'linear-gradient(135deg, #2A2B6A 0%, #4A4C9B 100%)',
     color: 'white',
-    padding: '35px 40px',
-    borderRadius: '20px',
-    marginBottom: '40px',
-    boxShadow: '0 20px 50px rgba(42, 43, 106, 0.3)',
+    padding: '25px 30px',
+    borderRadius: '16px',
+    marginBottom: '25px',
+    boxShadow: '0 15px 40px rgba(42, 43, 106, 0.25)',
     position: 'relative',
     overflow: 'hidden',
-    transform: 'perspective(1000px) rotateY(5deg)',
+    transform: 'perspective(1000px) rotateY(3deg)',
     transition: 'all 0.3s ease',
     '&:hover': {
-      transform: 'perspective(1000px) rotateY(0deg) translateY(-5px)',
-      boxShadow: '0 25px 60px rgba(42, 43, 106, 0.4)',
+      transform: 'perspective(1000px) rotateY(0deg) translateY(-3px)',
+      boxShadow: '0 18px 45px rgba(42, 43, 106, 0.3)',
     },
     '&::before': {
       content: '""',
@@ -139,107 +231,200 @@ const useStyles = makeStyles({
       top: '0',
       left: '0',
       right: '0',
-      height: '5px',
+      height: '4px',
       background: 'linear-gradient(90deg, #FFC614, #FFD700)',
     },
-    '&::after': {
-      content: '""',
-      position: 'absolute',
-      top: '-50px',
-      right: '-50px',
-      width: '100px',
-      height: '100px',
-      background: 'radial-gradient(circle, rgba(255, 198, 20, 0.2) 0%, transparent 70%)',
-      borderRadius: '50%',
+    '@media (max-width: 1200px)': {
+      padding: '22px 26px',
+      marginBottom: '22px',
     },
     '@media (max-width: 960px)': {
       transform: 'none',
-      '&:hover': { transform: 'translateY(-5px)' },
+      padding: '20px 24px',
+      marginBottom: '20px',
+      '&:hover': { transform: 'translateY(-3px)' },
+    },
+    '@media (max-width: 600px)': {
+      padding: '18px 20px',
+      marginBottom: '18px',
+      borderRadius: '12px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '15px 18px',
+      marginBottom: '15px',
+    },
+    '@media (max-width: 375px)': {
+      padding: '12px 15px',
+      marginBottom: '12px',
     },
   },
 
   descriptionText: {
-    fontSize: '1.25rem !important',
-    lineHeight: '1.7 !important',
+    fontSize: '1.1rem !important',
+    lineHeight: '1.6 !important',
     fontWeight: '500 !important',
     margin: '0 !important',
     position: 'relative',
     zIndex: 1,
+    '@media (max-width: 1200px)': {
+      fontSize: '1.05rem !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '1rem !important',
+    },
     '@media (max-width: 600px)': {
-      fontSize: '1.1rem !important',
+      fontSize: '0.95rem !important',
+      lineHeight: '1.5 !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.9rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.85rem !important',
     },
   },
 
   statsBox: {
     display: 'flex',
-    gap: '25px',
-    marginTop: '30px',
+    gap: '20px',
+    marginTop: '20px',
+    '@media (max-width: 1200px)': {
+      gap: '18px',
+      marginTop: '18px',
+    },
     '@media (max-width: 960px)': {
       justifyContent: 'center',
+      gap: '15px',
+      marginTop: '15px',
     },
     '@media (max-width: 600px)': {
       flexDirection: 'column',
-      gap: '15px',
+      gap: '12px',
+      marginTop: '12px',
+    },
+    '@media (max-width: 480px)': {
+      gap: '10px',
+      marginTop: '10px',
+    },
+    '@media (max-width: 375px)': {
+      gap: '8px',
+      marginTop: '8px',
     },
   },
 
   statItem: {
     display: 'flex',
     alignItems: 'center',
-    gap: '10px',
-    padding: '15px 20px',
+    gap: '8px',
+    padding: '12px 16px',
     background: 'rgba(255, 255, 255, 0.9)',
-    borderRadius: '12px',
+    borderRadius: '10px',
     border: '1px solid rgba(42, 43, 106, 0.1)',
-    boxShadow: '0 8px 25px rgba(42, 43, 106, 0.1)',
+    boxShadow: '0 6px 20px rgba(42, 43, 106, 0.08)',
     transition: 'all 0.3s ease',
     '&:hover': {
-      transform: 'translateY(-3px)',
-      boxShadow: '0 12px 30px rgba(42, 43, 106, 0.15)',
+      transform: 'translateY(-2px)',
+      boxShadow: '0 8px 25px rgba(42, 43, 106, 0.12)',
+    },
+    '@media (max-width: 1200px)': {
+      padding: '10px 14px',
+      gap: '7px',
+    },
+    '@media (max-width: 600px)': {
+      padding: '8px 12px',
+      gap: '6px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '6px 10px',
+      gap: '5px',
+    },
+    '@media (max-width: 375px)': {
+      padding: '5px 8px',
+      gap: '4px',
     },
   },
 
   statIcon: {
-    width: '35px',
-    height: '35px',
-    borderRadius: '8px',
+    width: '30px',
+    height: '30px',
+    borderRadius: '6px',
     backgroundColor: 'rgba(255, 198, 20, 0.15)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     color: '#2A2B6A',
+    '@media (max-width: 1200px)': {
+      width: '28px',
+      height: '28px',
+    },
+    '@media (max-width: 600px)': {
+      width: '25px',
+      height: '25px',
+    },
+    '@media (max-width: 480px)': {
+      width: '22px',
+      height: '22px',
+    },
+    '@media (max-width: 375px)': {
+      width: '20px',
+      height: '20px',
+    },
   },
 
   statText: {
-    fontSize: '0.95rem !important',
+    fontSize: '0.9rem !important',
     color: '#2A2B6A !important',
     fontWeight: '600 !important',
     margin: '0 !important',
+    '@media (max-width: 1200px)': {
+      fontSize: '0.85rem !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.8rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.75rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.7rem !important',
+    },
   },
 
   rightSection: {
     flex: 1,
     display: 'flex',
     justifyContent: 'center',
-    padding: '0 20px',
+    padding: '0 15px',
+    '@media (max-width: 1200px)': {
+      padding: '0 10px',
+    },
+    '@media (max-width: 960px)': {
+      padding: '0',
+    },
   },
 
   commentFormBox: {
     width: '100%',
-    maxWidth: '500px',
+    maxWidth: '380px',
+    '@media (max-width: 1200px)': {
+      maxWidth: '350px',
+    },
+    '@media (max-width: 600px)': {
+      maxWidth: '100%',
+    },
   },
 
   commentCard: {
-    padding: '40px !important',
-    borderRadius: '24px !important',
-    boxShadow: '0 25px 70px rgba(42, 43, 106, 0.2) !important',
+    padding: '20px !important',
+    borderRadius: '16px !important',
+    boxShadow: '0 15px 45px rgba(42, 43, 106, 0.12) !important',
     background: 'white !important',
     border: '1px solid rgba(42, 43, 106, 0.1) !important',
     position: 'relative',
     overflow: 'hidden',
     transition: 'all 0.3s ease',
     '&:hover': {
-      boxShadow: '0 30px 80px rgba(42, 43, 106, 0.25) !important',
+      boxShadow: '0 18px 50px rgba(42, 43, 106, 0.15) !important',
     },
     '&::before': {
       content: '""',
@@ -247,29 +432,59 @@ const useStyles = makeStyles({
       top: '0',
       left: '0',
       right: '0',
-      height: '5px',
+      height: '3px',
       background: 'linear-gradient(90deg, #2A2B6A, #4A4C9B, #FFC614)',
+    },
+    '@media (max-width: 1200px)': {
+      padding: '18px !important',
     },
     '@media (max-width: 960px)': {
       transform: 'none',
-      '&:hover': { transform: 'translateY(-5px)' },
-      padding: '30px 25px !important',
+      '&:hover': { transform: 'translateY(-2px)' },
+      padding: '16px !important',
+    },
+    '@media (max-width: 600px)': {
+      padding: '14px !important',
+      borderRadius: '12px !important',
+    },
+    '@media (max-width: 480px)': {
+      padding: '12px !important',
+    },
+    '@media (max-width: 375px)': {
+      padding: '10px !important',
     },
   },
 
   formTitle: {
-    fontSize: '1.6rem !important',
+    fontSize: '1.2rem !important',
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
     textAlign: 'center',
-    marginBottom: '10px !important',
+    marginBottom: '15px !important',
     position: 'relative',
+    '@media (max-width: 1200px)': {
+      fontSize: '1.1rem !important',
+      marginBottom: '12px !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '1rem !important',
+      marginBottom: '10px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.95rem !important',
+      marginBottom: '8px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.9rem !important',
+      marginBottom: '6px !important',
+    },
   },
 
   formField: {
-    marginBottom: '10px !important',
+    marginBottom: '12px !important',
     '& .MuiOutlinedInput-root': {
-      borderRadius: '12px',
+      borderRadius: '8px',
+      fontSize: '0.85rem',
       transition: 'all 0.3s ease',
       '&:hover .MuiOutlinedInput-notchedOutline': {
         borderColor: '#4A4C9B',
@@ -281,8 +496,41 @@ const useStyles = makeStyles({
         boxShadow: '0 0 0 3px rgba(42, 43, 106, 0.1)',
       },
     },
-    '& .MuiInputLabel-root.Mui-focused': {
-      color: '#2A2B6A',
+    '& .MuiInputLabel-root': {
+      fontSize: '0.85rem',
+      '&.Mui-focused': {
+        color: '#2A2B6A',
+      },
+    },
+    '@media (max-width: 1200px)': {
+      marginBottom: '10px !important',
+    },
+    '@media (max-width: 600px)': {
+      marginBottom: '8px !important',
+      '& .MuiOutlinedInput-root': {
+        fontSize: '0.8rem',
+      },
+      '& .MuiInputLabel-root': {
+        fontSize: '0.8rem',
+      },
+    },
+    '@media (max-width: 480px)': {
+      marginBottom: '6px !important',
+      '& .MuiOutlinedInput-root': {
+        fontSize: '0.75rem',
+      },
+      '& .MuiInputLabel-root': {
+        fontSize: '0.75rem',
+      },
+    },
+    '@media (max-width: 375px)': {
+      marginBottom: '5px !important',
+      '& .MuiOutlinedInput-root': {
+        fontSize: '0.7rem',
+      },
+      '& .MuiInputLabel-root': {
+        fontSize: '0.7rem',
+      },
     },
   },
 
@@ -290,32 +538,88 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    padding: '5px',
+    justifyContent: 'space-between',
+    padding: '8px',
     background: 'linear-gradient(135deg, rgba(42, 43, 106, 0.03) 0%, rgba(255, 198, 20, 0.03) 100%)',
-    borderRadius: '16px',
+    borderRadius: '8px',
     border: '1px solid rgba(42, 43, 106, 0.1)',
+    marginBottom: '15px',
+    '@media (max-width: 1200px)': {
+      padding: '6px',
+      marginBottom: '12px',
+    },
+    '@media (max-width: 600px)': {
+      flexDirection: 'column',
+      gap: '6px',
+      padding: '5px',
+      marginBottom: '10px',
+    },
+    '@media (max-width: 480px)': {
+      padding: '4px',
+      marginBottom: '8px',
+    },
+    '@media (max-width: 375px)': {
+      padding: '3px',
+      marginBottom: '6px',
+    },
   },
 
   ratingLabel: {
-    fontSize: '1rem !important',
+    fontSize: '0.8rem !important',
     color: '#2A2B6A !important',
     fontWeight: '600 !important',
+    '@media (max-width: 600px)': {
+      fontSize: '0.75rem !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.7rem !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.65rem !important',
+    },
   },
 
   heartBox: {
     display: 'flex',
-    gap: '8px',
+    gap: '4px',
+    '@media (max-width: 480px)': {
+      gap: '3px',
+    },
+    '@media (max-width: 375px)': {
+      gap: '2px',
+    },
   },
 
   heartButton: {
-    padding: '8px !important',
+    padding: '4px !important',
     color: '#ddd !important',
     transition: 'all 0.3s ease !important',
     borderRadius: '50% !important',
     '&:hover': {
-      transform: 'scale(1.3) rotate(15deg)',
+      transform: 'scale(1.15) rotate(8deg)',
       color: '#e91e63 !important',
       background: 'rgba(233, 30, 99, 0.1) !important',
+    },
+    '& .MuiSvgIcon-root': {
+      fontSize: '1rem',
+    },
+    '@media (max-width: 600px)': {
+      padding: '3px !important',
+      '& .MuiSvgIcon-root': {
+        fontSize: '0.9rem',
+      },
+    },
+    '@media (max-width: 480px)': {
+      padding: '2px !important',
+      '& .MuiSvgIcon-root': {
+        fontSize: '0.8rem',
+      },
+    },
+    '@media (max-width: 375px)': {
+      padding: '1px !important',
+      '& .MuiSvgIcon-root': {
+        fontSize: '0.7rem',
+      },
     },
   },
 
@@ -327,23 +631,35 @@ const useStyles = makeStyles({
 
   submitBox: {
     textAlign: 'center',
-    marginTop: '30px',
+    marginTop: '12px',
+    '@media (max-width: 1200px)': {
+      marginTop: '10px',
+    },
+    '@media (max-width: 600px)': {
+      marginTop: '8px',
+    },
+    '@media (max-width: 480px)': {
+      marginTop: '6px',
+    },
+    '@media (max-width: 375px)': {
+      marginTop: '5px',
+    },
   },
 
   submitButton: {
     background: 'linear-gradient(45deg, #2A2B6A 0%, #4A4C9B 100%) !important',
     color: 'white !important',
-    padding: '16px 45px !important',
-    borderRadius: '50px !important',
+    padding: '8px 25px !important',
+    borderRadius: '20px !important',
     fontWeight: 'bold !important',
-    fontSize: '1.1rem !important',
+    fontSize: '0.8rem !important',
     transition: 'all 0.4s ease !important',
-    boxShadow: '0 15px 35px rgba(42, 43, 106, 0.3) !important',
+    boxShadow: '0 8px 20px rgba(42, 43, 106, 0.2) !important',
     position: 'relative',
     overflow: 'hidden',
     '&:hover': {
-      transform: 'translateY(-3px) scale(1.05)',
-      boxShadow: '0 20px 45px rgba(42, 43, 106, 0.4) !important',
+      transform: 'translateY(-1px) scale(1.02)',
+      boxShadow: '0 10px 25px rgba(42, 43, 106, 0.25) !important',
     },
     '&:disabled': {
       opacity: '0.7 !important',
@@ -362,16 +678,32 @@ const useStyles = makeStyles({
     '&:hover::before': {
       left: '100%',
     },
+    '@media (max-width: 1200px)': {
+      padding: '6px 20px !important',
+      fontSize: '0.75rem !important',
+    },
+    '@media (max-width: 600px)': {
+      padding: '5px 18px !important',
+      fontSize: '0.7rem !important',
+    },
+    '@media (max-width: 480px)': {
+      padding: '4px 15px !important',
+      fontSize: '0.65rem !important',
+    },
+    '@media (max-width: 375px)': {
+      padding: '3px 12px !important',
+      fontSize: '0.6rem !important',
+    },
   },
 
   '@keyframes float': {
     '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
-    '50%': { transform: 'translateY(-20px) rotate(180deg)' },
+    '50%': { transform: 'translateY(-15px) rotate(180deg)' },
   },
 
   '@keyframes heartBeat': {
     '0%, 100%': { transform: 'scale(1)' },
-    '50%': { transform: 'scale(1.15)' },
+    '50%': { transform: 'scale(1.1)' },
   },
 });
 
@@ -515,7 +847,7 @@ const TestimonialComponent = () => {
                     className={classes.formField}
                     variant="outlined"
                     multiline
-                    rows={4}
+                    rows={2}
                     placeholder="Tell us how our program impacted your career journey..."
                     required
                   />

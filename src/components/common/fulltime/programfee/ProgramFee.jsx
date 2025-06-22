@@ -423,10 +423,10 @@ const useStyles = makeStyles({
 const ProgramFee = ({ totalFee, onApplyClick }) => {
   const classes = useStyles();
   
-  const monthlyFee = parseInt(totalFee.replace(/,/g, '')) / 12;
+  const monthlyFee = parseInt(totalFee.replace(/,/g, '')) / 24;
   const monthlyFeeFormatted = monthlyFee.toLocaleString('en-IN');
   
-  const dailyFee = parseInt(totalFee.replace(/,/g, '')) / 365;
+  const dailyFee = parseInt(totalFee.replace(/,/g, '')) / 730;
   const dailyFeeFormatted = Math.round(dailyFee).toLocaleString('en-IN');
 
   const benefits = [
@@ -498,7 +498,7 @@ const ProgramFee = ({ totalFee, onApplyClick }) => {
               <Box className={classes.comparisonContainer}>
                 <CoffeeIcon className={classes.comparisonIcon} />
                 <Typography className={classes.comparisonText}>
-                  Spread over 12 months
+                  Spread over 24 months
                 </Typography>
               </Box>
             </Box>
