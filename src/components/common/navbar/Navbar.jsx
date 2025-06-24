@@ -299,8 +299,9 @@ const Navbar = () => {
               <Box className={classes.dropdown}>
                 <Button
                   className={`${classes.navLink} ${
-                    currentPath.includes("/fullstack") ||
-                    currentPath.includes("/fulltime/fullstack")
+                    // Only underline for /fullstack and /datascience (not /fulltime/*)
+                    (currentPath.startsWith("/fullstack") || 
+                     (currentPath.startsWith("/datascience") && !currentPath.startsWith("/fulltime/")))
                       ? classes.active
                       : ""
                   }`}
@@ -332,8 +333,9 @@ const Navbar = () => {
               <Box className={classes.dropdown}>
                 <Button
                   className={`${classes.navLink} ${
-                    currentPath.includes("/datascience") ||
-                    currentPath.includes("/fulltime/datascience")
+                    // Only underline for /fulltime/fullstack or /fulltime/datascience
+                    (currentPath.startsWith("/fulltime/fullstack") ||
+                     currentPath.startsWith("/fulltime/datascience"))
                       ? classes.active
                       : ""
                   }`}
@@ -589,4 +591,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
