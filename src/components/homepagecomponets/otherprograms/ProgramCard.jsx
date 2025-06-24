@@ -288,7 +288,7 @@ const ProgramCard = ({
                 startIcon={<Box className={classes.enrollIcon} />}
                 onClick={() => onViewProgram(program.id)}
               >
-                Enrolling Now
+                view details
               </Button>
             </Box>
           </Box>
