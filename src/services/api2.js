@@ -1,0 +1,721 @@
+// // // ===============================
+// // // src/services/api.js - SINGLE API FILE
+// // // ===============================
+
+// // // API ENDPOINTS
+// // const ENDPOINTS = {
+// //   CONTACT: 'https://airesume.gigaversity.in/submit_contact',
+// //   PRESCREENING: 'https://prescreening-tool.onrender.com/prescreening_test',
+// //   PRESCREENING_HEALTH: 'https://prescreening-tool.onrender.com/health',
+// //   PAYMENT: '/pay',
+// //   PAYMENT_STATUS: '/pay/check-status'
+// // };
+
+// // // HTTP CLIENT WITH RETRY LOGIC
+// // class ApiClient {
+// //   async request(url, options = {}) {
+// //     const config = {
+// //       timeout: 30000,
+// //       retries: 3,
+// //       headers: { 'Content-Type': 'application/json' },
+// //       ...options
+// //     };
+
+// //     for (let attempt = 0; attempt <= config.retries; attempt++) {
+// //       try {
+// //         const controller = new AbortController();
+// //         const timeoutId = setTimeout(() => controller.abort(), config.timeout);
+
+// //         const response = await fetch(url, {
+// //           ...config,
+// //           headers: { ...config.headers, ...options.headers },
+// //           signal: controller.signal
+// //         });
+
+// //         clearTimeout(timeoutId);
+
+// //         const data = await response.json().catch(() => ({}));
+
+// //         if (!response.ok) {
+// //           throw new ApiError(
+// //             data.message || data.error || `HTTP ${response.status}`,
+// //             response.status,
+// //             data
+// //           );
+// //         }
+
+// //         return { success: true, data, status: response.status };
+
+// //       } catch (error) {
+// //         if (attempt === config.retries || !this.shouldRetry(error)) {
+// //           throw error instanceof ApiError ? error : new ApiError(error.message || 'Network error');
+// //         }
+// //         await new Promise(resolve => setTimeout(resolve, 1000 * Math.pow(2, attempt)));
+// //       }
+// //     }
+// //   }
+
+// //   shouldRetry(error) {
+// //     return error.name === 'TypeError' || error.name === 'AbortError' || 
+// //            (error.status >= 500 && error.status < 600);
+// //   }
+
+// //   async get(url, config = {}) {
+// //     return this.request(url, { ...config, method: 'GET' });
+// //   }
+
+// //   async post(url, data, config = {}) {
+// //     return this.request(url, { 
+// //       ...config, 
+// //       method: 'POST', 
+// //       body: JSON.stringify(data) 
+// //     });
+// //   }
+// // }
+
+// // // CUSTOM ERROR CLASS
+// // class ApiError extends Error {
+// //   constructor(message, status = 0, data = null) {
+// //     super(message);
+// //     this.name = 'ApiError';
+// //     this.status = status;
+// //     this.data = data;
+// //   }
+
+// //   isClientError() { return this.status >= 400 && this.status < 500; }
+// //   isServerError() { return this.status >= 500 && this.status < 600; }
+// //   isNetworkError() { return this.status === 0; }
+// // }
+
+// // // CLIENT INSTANCE
+// // const client = new ApiClient();
+
+// // // ===============================
+// // // CONTACT FORM API
+// // // ===============================
+// // export const contactApi = {
+// //   async submitContact(formData) {
+// //     this.validateContactData(formData);
+// //     return client.post(ENDPOINTS.CONTACT, formData);
+// //   },
+
+// //   validateContactData(data) {
+// //     const required = ['name', 'email', 'message'];
+// //     const missing = required.filter(field => !data[field]?.trim());
+    
+// //     if (missing.length > 0) {
+// //       throw new Error(`Missing required fields: ${missing.join(', ')}`);
+// //     }
+
+// //     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+// //       throw new Error('Invalid email format');
+// //     }
+
+// //     if (data.phone && !/^[\d\s\-\+\(\)]+$/.test(data.phone)) {
+// //       throw new Error('Invalid phone format');
+// //     }
+// //   }
+// // };
+
+// // // ===============================
+// // // PRESCREENING API
+// // // ===============================
+// // export const prescreeningApi = {
+// //   async submitTest(formData) {
+// //     this.validateTestData(formData);
+// //     return client.post(ENDPOINTS.PRESCREENING, formData);
+// //   },
+
+// //   async healthCheck() {
+// //     return client.get(ENDPOINTS.PRESCREENING_HEALTH);
+// //   },
+
+// //   validateTestData(data) {
+// //     const required = ['name', 'email', 'motivation_narrative', 'academic_performance'];
+// //     const missing = required.filter(field => !data[field]);
+    
+// //     if (missing.length > 0) {
+// //       throw new Error(`Missing required fields: ${missing.join(', ')}`);
+// //     }
+
+// //     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+// //       throw new Error('Invalid email format');
+// //     }
+
+// //     if (data.academic_performance < 0 || data.academic_performance > 100) {
+// //       throw new Error('Academic performance must be between 0-100');
+// //     }
+
+// //     if (data.motivation_narrative.length < 50) {
+// //       throw new Error('Motivation narrative must be at least 50 characters');
+// //     }
+// //   }
+// // };
+
+// // // ===============================
+// // // PAYMENT API
+// // // ===============================
+// // export const paymentApi = {
+// //   async initiatePayment(paymentData) {
+// //     this.validatePaymentData(paymentData);
+// //     return client.post(ENDPOINTS.PAYMENT, paymentData);
+// //   },
+
+// //   async checkStatus(orderId) {
+// //     if (!orderId) {
+// //       throw new Error('Order ID is required');
+// //     }
+// //     return client.get(`${ENDPOINTS.PAYMENT_STATUS}/${orderId}`);
+// //   },
+
+// //   validatePaymentData(data) {
+// //     const required = ['amount', 'email', 'mobile'];
+// //     const missing = required.filter(field => !data[field]);
+    
+// //     if (missing.length > 0) {
+// //       throw new Error(`Missing required fields: ${missing.join(', ')}`);
+// //     }
+
+// //     if (isNaN(data.amount) || data.amount <= 0) {
+// //       throw new Error('Amount must be positive number');
+// //     }
+
+// //     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+// //       throw new Error('Invalid email format');
+// //     }
+
+// //     if (!/^[\d\s\-\+\(\)]+$/.test(data.mobile)) {
+// //       throw new Error('Invalid mobile format');
+// //     }
+// //   }
+// // };
+
+// // // ===============================
+// // // COMBINED API EXPORT
+// // // ===============================
+// // export const api = {
+// //   contact: contactApi,
+// //   prescreening: prescreeningApi,
+// //   payment: paymentApi
+// // };
+
+// // // ===============================
+// // // ERROR HANDLER
+// // // ===============================
+// // export const handleApiError = (error) => {
+// //   console.error('API Error:', error);
+
+// //   if (error instanceof ApiError) {
+// //     return {
+// //       type: 'API_ERROR',
+// //       message: error.message,
+// //       status: error.status,
+// //       isNetworkError: error.isNetworkError(),
+// //       isClientError: error.isClientError(),
+// //       isServerError: error.isServerError()
+// //     };
+// //   }
+
+// //   return {
+// //     type: 'UNKNOWN_ERROR',
+// //     message: 'An unexpected error occurred',
+// //     status: 0
+// //   };
+// // };
+
+// // // ===============================
+// // // DATA STRUCTURES
+// // // ===============================
+// // export const STRUCTURES = {
+// //   CONTACT: {
+// //     name: '',
+// //     phone: '',
+// //     email: '',
+// //     subject: '',
+// //     message: ''
+// //   },
+
+// //   PRESCREENING: {
+// //     name: '',
+// //     email: '',
+// //     motivation_narrative: '',
+// //     academic_performance: 0,
+// //     education_gap: { has_gap: false, explanation: '' },
+// //     achievements: { hackathons: 0, competitions: 0, certifications: 0, oss_contributions: 0 },
+// //     achievement_justification: '',
+// //     tech_proficiency: {
+// //       LMS: 0, Git: 0, JavaScript: 0, Python: 0, React: 0, 'Node.js': 0,
+// //       MongoDB: 0, AWS: 0, Docker: 0, Kubernetes: 0, TensorFlow: 0, GraphQL: 0
+// //     },
+// //     communication_mcq: {
+// //       question_1: '', question_2: '', question_3: '', question_4: '', question_5: ''
+// //     },
+// //     learning_agility: { urls: [''], reflection: '' }
+// //   },
+
+// //   PAYMENT: {
+// //     amount: 0,
+// //     email: '',
+// //     mobile: ''
+// //   }
+// // };
+
+// // // ===============================
+// // // USAGE EXAMPLES
+// // // ===============================
+// // /*
+// // // Contact Form
+// // try {
+// //   const result = await api.contact.submitContact(formData);
+// //   console.log('Contact submitted:', result.data);
+// // } catch (error) {
+// //   const errorInfo = handleApiError(error);
+// //   alert(errorInfo.message);
+// // }
+
+// // // Prescreening Test
+// // try {
+// //   const result = await api.prescreening.submitTest(testData);
+// //   console.log('Test submitted:', result.data);
+// // } catch (error) {
+// //   const errorInfo = handleApiError(error);
+// //   if (error.isClientError()) {
+// //     alert(`Validation Error: ${error.message}`);
+// //   }
+// // }
+
+// // // Payment
+// // try {
+// //   const result = await api.payment.initiatePayment(paymentData);
+// //   window.location.href = result.data.paymentUrl;
+// // } catch (error) {
+// //   const errorInfo = handleApiError(error);
+// //   alert(`Payment Error: ${error.message}`);
+// // }
+
+// // // Check Payment Status
+// // try {
+// //   const result = await api.payment.checkStatus(orderId);
+// //   console.log('Payment status:', result.data);
+// // } catch (error) {
+// //   console.error('Status check failed:', handleApiError(error));
+// // }
+// // */
+
+// // export { ApiError };
+// // export default api;
+// // ===============================
+// // src/services/api.js - CENTRALIZED API WITH MULTIPLE BASE URLS
+// // ===============================
+
+// // BASE URLS CONFIGURATION
+// const BASE_URLS = {
+//   BASE_URL1: 'https://airesume.gigaversity.in',           // Contact API
+//   BASE_URL2: 'https://prescreening-tool.onrender.com',   // Prescreening API  
+//   BASE_URL3: '/pay'                                       // Payment API (relative)
+// };
+
+// // API ENDPOINTS MAPPED TO BASE URLS
+// const API_ENDPOINTS = {
+//   // Contact API (BASE_URL1)
+//   CONTACT: {
+//     BASE_URL: BASE_URLS.BASE_URL1,
+//     SUBMIT: '/submit_contact'
+//   },
+  
+//   // Prescreening API (BASE_URL2) 
+//   PRESCREENING: {
+//     BASE_URL: BASE_URLS.BASE_URL2,
+//     SUBMIT_TEST: '/prescreening_test',
+//     HEALTH_CHECK: '/health'
+//   },
+  
+//   // Payment API (BASE_URL3)
+//   PAYMENT: {
+//     BASE_URL: BASE_URLS.BASE_URL3,
+//     INITIATE: '',
+//     CHECK_STATUS: '/check-status'
+//   }
+// };
+
+// // HTTP CLIENT WITH RETRY LOGIC
+// class ApiClient {
+//   async request(url, options = {}) {
+//     const config = {
+//       timeout: 30000,
+//       retries: 3,
+//       headers: { 'Content-Type': 'application/json' },
+//       ...options
+//     };
+
+//     for (let attempt = 0; attempt <= config.retries; attempt++) {
+//       try {
+//         const controller = new AbortController();
+//         const timeoutId = setTimeout(() => controller.abort(), config.timeout);
+
+//         const response = await fetch(url, {
+//           ...config,
+//           headers: { ...config.headers, ...options.headers },
+//           signal: controller.signal
+//         });
+
+//         clearTimeout(timeoutId);
+
+//         const data = await response.json().catch(() => ({}));
+
+//         if (!response.ok) {
+//           throw new ApiError(
+//             data.message || data.error || `HTTP ${response.status}`,
+//             response.status,
+//             data
+//           );
+//         }
+
+//         return { success: true, data, status: response.status };
+
+//       } catch (error) {
+//         if (attempt === config.retries || !this.shouldRetry(error)) {
+//           throw error instanceof ApiError ? error : new ApiError(error.message || 'Network error');
+//         }
+//         await new Promise(resolve => setTimeout(resolve, 1000 * Math.pow(2, attempt)));
+//       }
+//     }
+//   }
+
+//   shouldRetry(error) {
+//     return error.name === 'TypeError' || error.name === 'AbortError' || 
+//            (error.status >= 500 && error.status < 600);
+//   }
+
+//   async get(url, config = {}) {
+//     return this.request(url, { ...config, method: 'GET' });
+//   }
+
+//   async post(url, data, config = {}) {
+//     return this.request(url, { 
+//       ...config, 
+//       method: 'POST', 
+//       body: JSON.stringify(data) 
+//     });
+//   }
+// }
+
+// // CUSTOM ERROR CLASS
+// class ApiError extends Error {
+//   constructor(message, status = 0, data = null) {
+//     super(message);
+//     this.name = 'ApiError';
+//     this.status = status;
+//     this.data = data;
+//   }
+
+//   isClientError() { return this.status >= 400 && this.status < 500; }
+//   isServerError() { return this.status >= 500 && this.status < 600; }
+//   isNetworkError() { return this.status === 0; }
+// }
+
+// // CLIENT INSTANCE
+// const client = new ApiClient();
+
+// // HELPER FUNCTION TO BUILD FULL URL
+// const buildUrl = (baseUrl, endpoint) => {
+//   if (baseUrl.startsWith('/')) {
+//     // Relative URL (like /pay)
+//     return `${baseUrl}${endpoint}`;
+//   }
+//   // Absolute URL
+//   return `${baseUrl}${endpoint}`;
+// };
+
+// // ===============================
+// // CONTACT FORM API (BASE_URL1)
+// // ===============================
+// export const contactApi = {
+//   async submitContact(formData) {
+//     this.validateContactData(formData);
+//     const url = buildUrl(API_ENDPOINTS.CONTACT.BASE_URL, API_ENDPOINTS.CONTACT.SUBMIT);
+//     return client.post(url, formData);
+//   },
+
+//   validateContactData(data) {
+//     const required = ['name', 'email', 'message'];
+//     const missing = required.filter(field => !data[field]?.trim());
+    
+//     if (missing.length > 0) {
+//       throw new ApiError(`Missing required fields: ${missing.join(', ')}`);
+//     }
+
+//     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+//       throw new ApiError('Invalid email format');
+//     }
+
+//     if (data.phone && !/^[\d\s\-\+\(\)]+$/.test(data.phone)) {
+//       throw new ApiError('Invalid phone format');
+//     }
+//   }
+// };
+
+// // ===============================
+// // PRESCREENING API (BASE_URL2)
+// // ===============================
+// export const prescreeningApi = {
+//   async submitTest(formData) {
+//     this.validateTestData(formData);
+//     const url = buildUrl(API_ENDPOINTS.PRESCREENING.BASE_URL, API_ENDPOINTS.PRESCREENING.SUBMIT_TEST);
+//     return client.post(url, formData);
+//   },
+
+//   async healthCheck() {
+//     const url = buildUrl(API_ENDPOINTS.PRESCREENING.BASE_URL, API_ENDPOINTS.PRESCREENING.HEALTH_CHECK);
+//     return client.get(url);
+//   },
+
+//   validateTestData(data) {
+//     const required = ['name', 'email', 'motivation_narrative', 'academic_performance'];
+//     const missing = required.filter(field => !data[field]);
+    
+//     if (missing.length > 0) {
+//       throw new ApiError(`Missing required fields: ${missing.join(', ')}`);
+//     }
+
+//     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+//       throw new ApiError('Invalid email format');
+//     }
+
+//     if (data.academic_performance < 0 || data.academic_performance > 100) {
+//       throw new ApiError('Academic performance must be between 0-100');
+//     }
+
+//     if (data.motivation_narrative.length < 50) {
+//       throw new ApiError('Motivation narrative must be at least 50 characters');
+//     }
+//   }
+// };
+
+// // ===============================
+// // PAYMENT API (BASE_URL3)
+// // ===============================
+// export const paymentApi = {
+//   async initiatePayment(paymentData) {
+//     this.validatePaymentData(paymentData);
+//     const url = buildUrl(API_ENDPOINTS.PAYMENT.BASE_URL, API_ENDPOINTS.PAYMENT.INITIATE);
+//     return client.post(url, paymentData);
+//   },
+
+//   async checkStatus(orderId) {
+//     if (!orderId) {
+//       throw new ApiError('Order ID is required');
+//     }
+//     const url = buildUrl(API_ENDPOINTS.PAYMENT.BASE_URL, `${API_ENDPOINTS.PAYMENT.CHECK_STATUS}/${orderId}`);
+//     return client.get(url);
+//   },
+
+//   validatePaymentData(data) {
+//     const required = ['amount', 'email', 'mobile'];
+//     const missing = required.filter(field => !data[field]);
+    
+//     if (missing.length > 0) {
+//       throw new ApiError(`Missing required fields: ${missing.join(', ')}`);
+//     }
+
+//     if (isNaN(data.amount) || data.amount <= 0) {
+//       throw new ApiError('Amount must be positive number');
+//     }
+
+//     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+//       throw new ApiError('Invalid email format');
+//     }
+
+//     if (!/^[\d\s\-\+\(\)]+$/.test(data.mobile)) {
+//       throw new ApiError('Invalid mobile format');
+//     }
+//   }
+// };
+
+// // ===============================
+// // COMBINED API EXPORT
+// // ===============================
+// export const api = {
+//   contact: contactApi,
+//   prescreening: prescreeningApi,
+//   payment: paymentApi
+// };
+
+// // ===============================
+// // ERROR HANDLER
+// // ===============================
+// export const handleApiError = (error) => {
+//   console.error('API Error:', error);
+
+//   if (error instanceof ApiError) {
+//     return {
+//       type: 'API_ERROR',
+//       message: error.message,
+//       status: error.status,
+//       isNetworkError: error.isNetworkError(),
+//       isClientError: error.isClientError(),
+//       isServerError: error.isServerError()
+//     };
+//   }
+
+//   return {
+//     type: 'UNKNOWN_ERROR',
+//     message: 'An unexpected error occurred',
+//     status: 0
+//   };
+// };
+
+// // ===============================
+// // DATA STRUCTURES & TYPES
+// // ===============================
+// export const STRUCTURES = {
+//   CONTACT: {
+//     name: '',
+//     phone: '',
+//     email: '',
+//     subject: '',
+//     message: ''
+//   },
+
+//   PRESCREENING: {
+//     name: '',
+//     email: '',
+//     motivation_narrative: '',
+//     academic_performance: 0,
+//     education_gap: { has_gap: false, explanation: '' },
+//     achievements: { hackathons: 0, competitions: 0, certifications: 0, oss_contributions: 0 },
+//     achievement_justification: '',
+//     tech_proficiency: {
+//       LMS: 0, Git: 0, JavaScript: 0, Python: 0, React: 0, 'Node.js': 0,
+//       MongoDB: 0, AWS: 0, Docker: 0, Kubernetes: 0, TensorFlow: 0, GraphQL: 0
+//     },
+//     communication_mcq: {
+//       question_1: '', question_2: '', question_3: '', question_4: '', question_5: ''
+//     },
+//     learning_agility: { urls: [''], reflection: '' }
+//   },
+
+//   PAYMENT: {
+//     amount: 0,
+//     email: '',
+//     mobile: ''
+//   }
+// };
+
+// // RESPONSE TYPES
+// export const RESPONSE_TYPES = {
+//   PRESCREENING: {
+//     candidate_id: '',
+//     status: '',
+//     evaluation: {
+//       decision: '', // 'Auto-Advance', 'Manual Review', 'Reject'
+//       scores: {
+//         motivation_narrative: 0,
+//         academic_performance: 0,
+//         tech_proficiency: 0,
+//         education_gap: 0,
+//         achievements: 0,
+//         achievement_justification: 0,
+//         communication_mcq: 0,
+//         learning_agility: 0
+//       },
+//       total_score: 0,
+//       red_flags: []
+//     },
+//     content: {
+//       title: '',
+//       message: '',
+//       recommendations: [],
+//       call_to_action: {
+//         primary: '',
+//         secondary: '',
+//         links: {}
+//       },
+//       next_steps: ''
+//     }
+//   }
+// };
+
+// // DECISION TYPES
+// export const DECISION_TYPES = {
+//   AUTO_ADVANCE: 'Auto-Advance',
+//   MANUAL_REVIEW: 'Manual Review',
+//   REJECT: 'Reject'
+// };
+
+// // SCORE RANGES
+// export const SCORE_RANGES = {
+//   EXCELLENT: { min: 86, max: 100 },
+//   GOOD: { min: 65, max: 85 },
+//   NEEDS_IMPROVEMENT: { min: 0, max: 64 }
+// };
+
+// // VALIDATION RULES
+// export const VALIDATION_RULES = {
+//   name: { required: true, minLength: 1 },
+//   email: { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ },
+//   motivation_narrative: { required: true, minLength: 50 },
+//   academic_performance: { required: true, min: 0, max: 100 },
+//   achievement_justification: { minLength: 50 },
+//   learning_agility_reflection: { minLength: 50 }
+// };
+
+// // ===============================
+// // LEGACY COMPATIBILITY (Optional)
+// // ===============================
+// // For backward compatibility with existing prescreeningAPI usage
+// export const prescreeningAPI = {
+//   submitTest: prescreeningApi.submitTest.bind(prescreeningApi),
+//   healthCheck: prescreeningApi.healthCheck.bind(prescreeningApi)
+// };
+
+// // Export configurations for reference
+// export const API_CONFIG = {
+//   BASE_URLS,
+//   API_ENDPOINTS
+// };
+
+// // ===============================
+// // USAGE EXAMPLES
+// // ===============================
+// /*
+// // Contact Form
+// try {
+//   const result = await api.contact.submitContact(formData);
+//   console.log('Contact submitted:', result.data);
+// } catch (error) {
+//   const errorInfo = handleApiError(error);
+//   alert(errorInfo.message);
+// }
+
+// // Prescreening Test
+// try {
+//   const result = await api.prescreening.submitTest(testData);
+//   console.log('Test submitted:', result.data);
+// } catch (error) {
+//   const errorInfo = handleApiError(error);
+//   if (error.isClientError()) {
+//     alert(`Validation Error: ${error.message}`);
+//   }
+// }
+
+// // Payment
+// try {
+//   const result = await api.payment.initiatePayment(paymentData);
+//   window.location.href = result.data.paymentUrl;
+// } catch (error) {
+//   const errorInfo = handleApiError(error);
+//   alert(`Payment Error: ${error.message}`);
+// }
+
+// // Legacy usage (still works)
+// try {
+//   const result = await prescreeningAPI.submitTest(testData);
+//   console.log('Legacy API call:', result.data);
+// } catch (error) {
+//   console.error('Error:', error);
+// }
+// */
+
+// export { ApiError };
+// export default api;
