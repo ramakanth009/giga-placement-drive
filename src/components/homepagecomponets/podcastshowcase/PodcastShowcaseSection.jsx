@@ -8,13 +8,16 @@ import {
   Container,
   Paper,
   InputAdornment,
+  Snackbar,
+  Alert,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import SendIcon from "@mui/icons-material/Send";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 // import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
 import {ReactComponent as  QuestionAnswerIcon} from "../../../assets/commenticon.svg";
-import Launching from "../../../assets/launching_soon_video_clip.jpg"
+import Launching from "../../../assets/launching_soon_video_clip.jpg";
+import { api, handleApiError } from "../../../services/api";
 
 const useStyles = makeStyles({
   section: {
@@ -445,6 +448,11 @@ const useStyles = makeStyles({
       color: "#FFC614 !important",
       transform: "translateY(-2px)",
     },
+    "&:disabled": {
+      backgroundColor: "#cccccc !important",
+      color: "#666666 !important",
+      transform: "none",
+    },
     "@media (max-width: 1200px)": {
       padding: "9px 22px !important",
       fontSize: "0.88rem !important",
@@ -506,19 +514,46 @@ const PodcastShowcaseSection = () => {
   const classes = useStyles();
   const [question, setQuestion] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'info' });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (question.trim()) {
-      // Here you would normally send the question to your backend
-      console.log("Question submitted:", question);
+    
+    if (!question.trim() || isSubmitting) return;
+
+    setIsSubmitting(true);
+    try {
+      const result = await api.podcast.submitQuestion(question.trim());
+      
       setSubmitted(true);
+      setSnackbar({
+        open: true,
+        message: 'Thank you! Your question has been submitted and may be featured in our upcoming podcast episode.',
+        severity: 'success'
+      });
+
       // Reset form after 3 seconds
       setTimeout(() => {
         setQuestion("");
         setSubmitted(false);
       }, 3000);
+
+    } catch (error) {
+      const errorInfo = handleApiError(error);
+      setSnackbar({
+        open: true,
+        message: errorInfo.message || 'Failed to submit question. Please try again.',
+        severity: 'error'
+      });
+      console.error('Podcast question submission error:', errorInfo);
+    } finally {
+      setIsSubmitting(false);
     }
+  };
+
+  const handleCloseSnackbar = () => {
+    setSnackbar(prev => ({ ...prev, open: false }));
   };
 
   return (
@@ -570,7 +605,7 @@ const PodcastShowcaseSection = () => {
             */}
             {/* Open-source image replacement */}
             <img
-              src= {Launching}
+              src={Launching}
               alt="Podcast Open Source"
               style={{
                 width: "100%",
@@ -584,8 +619,6 @@ const PodcastShowcaseSection = () => {
 
           {/* Content Side */}
           <Box className={classes.contentBox}>
-            
-
             <Paper
               className={classes.questionForm}
               elevation={2}
@@ -610,9 +643,7 @@ const PodcastShowcaseSection = () => {
                 },
               }}
             >
-              <Typography
-                className={classes.questionTitle}
-              >
+              <Typography className={classes.questionTitle}>
                 <QuestionAnswerIcon className={classes.questionIcon} />
                 Have a Question for Founders, Co-Founders, or Recruiters?
               </Typography>
@@ -648,7 +679,7 @@ const PodcastShowcaseSection = () => {
                   placeholder="Type your question here..."
                   value={question}
                   onChange={(e) => setQuestion(e.target.value)}
-                  disabled={submitted}
+                  disabled={submitted || isSubmitting}
                   className={classes.textField}
                   sx={{
                     "& .MuiOutlinedInput-root": {
@@ -681,7 +712,9 @@ const PodcastShowcaseSection = () => {
                   }}
                   helperText={
                     submitted
-                      ? "Thanks for submitting"
+                      ? "Thanks for submitting! Your question may be featured in our podcast."
+                      : isSubmitting 
+                      ? "Submitting your question..."
                       : "Keep it concise and specific for a better chance to be featured"
                   }
                   InputProps={{
@@ -691,7 +724,7 @@ const PodcastShowcaseSection = () => {
                           type="submit"
                           variant="contained"
                           className={classes.submitButton}
-                          disabled={!question.trim() || submitted}
+                          disabled={!question.trim() || submitted || isSubmitting}
                           sx={{
                             minWidth: 0,
                             width: 36,
@@ -728,6 +761,22 @@ const PodcastShowcaseSection = () => {
           </Box>
         </Box>
       </Container>
+
+      {/* Snackbar for feedback */}
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      >
+        <Alert 
+          onClose={handleCloseSnackbar} 
+          severity={snackbar.severity}
+          sx={{ width: '100%' }}
+        >
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 };
