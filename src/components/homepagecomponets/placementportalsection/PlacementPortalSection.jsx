@@ -20,7 +20,7 @@ import CentralizedPopupForms from "../../common/popupforms/CentralizedPopupForms
 
 const useStyles = makeStyles({
   section: {
-    padding: "40px 0",
+    padding: "50px 0 !important",
     position: "relative",
     overflow: "hidden",
     backgroundColor: "#ffffff",
@@ -29,7 +29,7 @@ const useStyles = makeStyles({
     alignItems: "center",
     "@media (max-width: 1200px)": {
       padding: "35px 0",
-      height: "95vh",
+      // height: "95vh",
     },
   imageModal: {
     display: "flex",
@@ -182,7 +182,7 @@ const useStyles = makeStyles({
     },
   },
   mainTitle: {
-    marginTop:"30px !important",
+    margin: "5px !important",
     fontSize: "2.5rem !important",
     fontWeight: "bold !important",
     color: "#2A2B6A !important",
