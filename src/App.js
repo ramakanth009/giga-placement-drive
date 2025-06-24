@@ -120,12 +120,12 @@ const App = () => {
         <Routes>
           {/* Main routes */}
           <Route path="/" element={<Homepage />} />
-          <Route path="/fullstack" element={<Fullstack />} />
+          <Route path="/virtual-placement-fullstack" element={<Fullstack />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
-          <Route path="/datascience" element={<DataScience />} />
+          <Route path="/virtual-placement-datascience" element={<DataScience />} />
           <Route path="/register" element={<RegistrationForm />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogDetailPage />} /> 
@@ -133,8 +133,8 @@ const App = () => {
           <Route path="/products" element={<Productspage />} />
           
           {/* New Full-Time Program routes */}
-          <Route path="/fulltime/fullstack" element={<FullstackFulltime />} />
-          <Route path="/fulltime/datascience" element={<DatascienceFulltime />} />
+          <Route path="/fullstack" element={<FullstackFulltime />} />
+          <Route path="/datascience" element={<DatascienceFulltime />} />
           
           {/* Redirect for old/alternative routes */}
           <Route path="/terms" element={<Navigate to="/terms-and-conditions" replace />} />

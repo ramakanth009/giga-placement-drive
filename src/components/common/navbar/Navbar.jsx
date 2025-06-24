@@ -25,7 +25,7 @@ const useStyles = makeStyles({
     boxShadow: "none !important",
     backgroundImage: "none !important",
     position: "relative",
-    zIndex: 9999, // Increased z-index to ensure it's above other elements
+    zIndex: 9999,
   },
   toolbar: {
     display: "flex",
@@ -94,7 +94,7 @@ const useStyles = makeStyles({
     fontWeight: "bold !important",
     transition: "all 0.3s ease !important",
     "&:hover": {
-      backgroundColor: "#1a1b43 !important", // Slightly darker shade for hover
+      backgroundColor: "#1a1b43 !important",
       transform: "translateY(-2px)",
     },
     "@media (max-width: 1200px)": {
@@ -146,7 +146,6 @@ const useStyles = makeStyles({
       },
     },
   },
-  // Dropdown styles
   dropdown: {
     position: "relative",
     "&:hover $dropdownContent": {
@@ -187,7 +186,6 @@ const useStyles = makeStyles({
       backgroundColor: "rgba(42, 43, 106, 0.05)",
     },
   },
-  // Dropdown icon
   dropdownIcon: {
     marginLeft: "4px",
     fontSize: "18px",
@@ -198,7 +196,6 @@ const useStyles = makeStyles({
     display: "flex",
     alignItems: "center",
   },
-  // Mobile submenu
   mobileSubmenu: {
     paddingLeft: "20px",
   },
@@ -220,11 +217,9 @@ const Navbar = () => {
   const open = Boolean(anchorEl);
   const [popupOpen, setPopupOpen] = useState(false);
 
-  // State for dropdown menus in mobile view
-  const [mobileFullStackOpen, setMobileFullStackOpen] = useState(false);
-  const [mobileDataScienceOpen, setMobileDataScienceOpen] = useState(false);
+  const [mobileVirtualPlacementOpen, setMobileVirtualPlacementOpen] = useState(false);
+  const [mobileFullTimeOpen, setMobileFullTimeOpen] = useState(false);
 
-  // Use location to highlight active link
   const location = useLocation();
   const currentPath = location.pathname;
 
@@ -234,8 +229,8 @@ const Navbar = () => {
 
   const handleClose = () => {
     setAnchorEl(null);
-    setMobileFullStackOpen(false);
-    setMobileDataScienceOpen(false);
+    setMobileVirtualPlacementOpen(false);
+    setMobileFullTimeOpen(false);
   };
 
   const handleNavLinkClick = () => {
@@ -245,16 +240,16 @@ const Navbar = () => {
     scrollToTop();
   };
 
-  const toggleMobileFullStack = (e) => {
+  const toggleMobileVirtualPlacement = (e) => {
     e.stopPropagation();
-    setMobileFullStackOpen(!mobileFullStackOpen);
-    setMobileDataScienceOpen(false);
+    setMobileVirtualPlacementOpen(!mobileVirtualPlacementOpen);
+    setMobileFullTimeOpen(false);
   };
 
-  const toggleMobileDataScience = (e) => {
+  const toggleMobileFullTime = (e) => {
     e.stopPropagation();
-    setMobileDataScienceOpen(!mobileDataScienceOpen);
-    setMobileFullStackOpen(false);
+    setMobileFullTimeOpen(!mobileFullTimeOpen);
+    setMobileVirtualPlacementOpen(false);
   };
 
   const handleApplyClick = (e) => {
@@ -270,7 +265,6 @@ const Navbar = () => {
   return (
     <AppBar position="relative" className={classes.appBar} sx={{ zIndex: 9999 }}>
       <Toolbar className={classes.toolbar}>
-        {/* Logo with Link to home */}
         <Box
           className={classes.logo}
           component={Link}
@@ -280,10 +274,8 @@ const Navbar = () => {
           <GigaLogo className={classes.logoSvg} />
         </Box>
 
-        {/* Desktop Navigation */}
         {!isMobile ? (
           <>
-            {/* Navigation links - centered */}
             <Box className={classes.navContainer}>
               <Button
                 className={`${classes.navLink} ${
@@ -295,32 +287,31 @@ const Navbar = () => {
               >
                 Home
               </Button>
-              {/* Full Stack Dropdown */}
+              
               <Box className={classes.dropdown}>
                 <Button
                   className={`${classes.navLink} ${
-                    // Only underline for /fullstack and /datascience (not /fulltime/*)
-                    (currentPath.startsWith("/fullstack") || 
-                     (currentPath.startsWith("/datascience") && !currentPath.startsWith("/fulltime/")))
+                    (currentPath === "/virtual-placement-fullstack" || 
+                     currentPath === "/virtual-placement-datascience")
                       ? classes.active
                       : ""
                   }`}
                 >
                   <Box className={classes.dropdownText}>
-                    Vitrual Placement
+                    Virtual Placement
                     <KeyboardArrowDownIcon className={classes.dropdownIcon} />
                   </Box>
                 </Button>
                 <Box className={classes.dropdownContent}>
                   <Link
-                    to="/fullstack"
+                    to="/virtual-placement-fullstack"
                     className={classes.dropdownItem}
                     onClick={handleNavLinkClick}
                   >
                     Full Stack
                   </Link>
                   <Link
-                    to="/datascience"
+                    to="/virtual-placement-datascience"
                     className={classes.dropdownItem}
                     onClick={handleNavLinkClick}
                   >
@@ -329,13 +320,11 @@ const Navbar = () => {
                 </Box>
               </Box>
 
-              {/* Data Science Dropdown */}
               <Box className={classes.dropdown}>
                 <Button
                   className={`${classes.navLink} ${
-                    // Only underline for /fulltime/fullstack or /fulltime/datascience
-                    (currentPath.startsWith("/fulltime/fullstack") ||
-                     currentPath.startsWith("/fulltime/datascience"))
+                    (currentPath === "/fullstack" ||
+                     currentPath === "/datascience")
                       ? classes.active
                       : ""
                   }`}
@@ -347,14 +336,14 @@ const Navbar = () => {
                 </Button>
                 <Box className={classes.dropdownContent}>
                   <Link
-                    to="/fulltime/fullstack"
+                    to="/fullstack"
                     className={classes.dropdownItem}
                     onClick={handleNavLinkClick}
                   >
                     Full Stack Program
                   </Link>
                   <Link
-                    to="/fulltime/datascience"
+                    to="/datascience"
                     className={classes.dropdownItem}
                     onClick={handleNavLinkClick}
                   >
@@ -362,17 +351,7 @@ const Navbar = () => {
                   </Link>
                 </Box>
               </Box>
-              {/* <Button
-                className={`${classes.navLink} ${
-                  currentPath === "/campus" ? classes.active : ""
-                }`}
-                component={Link}
-                to="/campus"
-                onClick={handleNavLinkClick}
-              >
-                Campus
-              </Button> */}
-              {/* Products link right beside Campus */}
+              
               <Button
                 className={`${classes.navLink} ${
                   currentPath === "/products" ? classes.active : ""
@@ -385,7 +364,7 @@ const Navbar = () => {
               </Button>
               <Button
                 className={`${classes.navLink} ${
-                  currentPath === "/blog" ? classes.active : ""
+                  currentPath === "/blog" || currentPath.startsWith("/blog/") ? classes.active : ""
                 }`}
                 component={Link}
                 to="/blog"
@@ -415,7 +394,6 @@ const Navbar = () => {
               </Button>
             </Box>
 
-            {/* Auth Container */}
             <Box className={classes.authContainer}>
               <Button
                 variant="contained"
@@ -427,7 +405,6 @@ const Navbar = () => {
             </Box>
           </>
         ) : (
-          // Mobile navigation with menu icon
           <IconButton
             size="large"
             edge="end"
@@ -439,7 +416,6 @@ const Navbar = () => {
           </IconButton>
         )}
 
-        {/* Mobile Menu */}
         <Menu
           anchorEl={anchorEl}
           open={open}
@@ -454,30 +430,30 @@ const Navbar = () => {
           >
             Home
           </MenuItem>
-          {/* Mobile Full Stack dropdown */}
+          
           <MenuItem
-            onClick={toggleMobileFullStack}
+            onClick={toggleMobileVirtualPlacement}
             className={classes.menuItem}
           >
             <Box className={classes.dropdownText}>
-              Vitrual Placement
+              Virtual Placement
               <KeyboardArrowDownIcon
                 className={classes.dropdownIcon}
                 style={{
-                  transform: mobileFullStackOpen
+                  transform: mobileVirtualPlacementOpen
                     ? "rotate(180deg)"
                     : "rotate(0deg)",
                 }}
               />
             </Box>
           </MenuItem> 
-          {mobileFullStackOpen && (
+          {mobileVirtualPlacementOpen && (
             <Box className={classes.mobileSubmenu}>
               <MenuItem
                 onClick={() => handleNavLinkClick()}
                 className={classes.mobileSubmenuItem}
                 component={Link}
-                to="/fullstack"
+                to="/virtual-placement-fullstack"
               >
                 Full Stack
               </MenuItem> 
@@ -485,15 +461,15 @@ const Navbar = () => {
                 onClick={() => handleNavLinkClick()}
                 className={classes.mobileSubmenuItem}
                 component={Link}
-                to="/datascience"
+                to="/virtual-placement-datascience"
               >
                 Data Science
               </MenuItem>
             </Box>
           )}
-          {/* Mobile Data Science dropdown */}
+          
           <MenuItem
-            onClick={toggleMobileDataScience}
+            onClick={toggleMobileFullTime}
             className={classes.menuItem}
           >
             <Box className={classes.dropdownText}>
@@ -501,20 +477,20 @@ const Navbar = () => {
               <KeyboardArrowDownIcon
                 className={classes.dropdownIcon}
                 style={{
-                  transform: mobileDataScienceOpen
+                  transform: mobileFullTimeOpen
                     ? "rotate(180deg)"
                     : "rotate(0deg)",
                 }}
               />
             </Box>
           </MenuItem>
-          {mobileDataScienceOpen && (
+          {mobileFullTimeOpen && (
             <Box className={classes.mobileSubmenu}>
               <MenuItem
                 onClick={() => handleNavLinkClick()}
                 className={classes.mobileSubmenuItem}
                 component={Link}
-                to="/fulltime/fullstack"
+                to="/fullstack"
               >
                 Full Stack Program
               </MenuItem>
@@ -522,38 +498,13 @@ const Navbar = () => {
                 onClick={() => handleNavLinkClick()}
                 className={classes.mobileSubmenuItem}
                 component={Link}
-                to="/fulltime/datascience"
+                to="/datascience"
               >
                 Data Science Program
               </MenuItem>
             </Box>
           )}
 
-          <MenuItem
-            onClick={() => handleNavLinkClick()}
-            className={classes.menuItem}
-            component={Link}
-            to="/about"
-          >
-            About Us
-          </MenuItem>
-          <MenuItem
-            onClick={() => handleNavLinkClick()}
-            className={classes.menuItem}
-            component={Link}
-            to="/contact"
-          >
-            Contact Us
-          </MenuItem>
-          {/* <MenuItem
-            onClick={() => handleNavLinkClick()}
-            className={classes.menuItem}
-            component={Link}
-            to="/campus"
-          >
-            Campus
-          </MenuItem> */}
-          {/* Products link right beside Campus in mobile menu */}
           <MenuItem
             onClick={() => handleNavLinkClick()}
             className={classes.menuItem}
@@ -572,10 +523,24 @@ const Navbar = () => {
           </MenuItem>
           <MenuItem
             onClick={() => handleNavLinkClick()}
-            className={`${classes.menuItem} ${classes.signUpMenuItem}`}
+            className={classes.menuItem}
             component={Link}
-            // to="/cart"
-            // onClick={handleApplyClick}
+            to="/about"
+          >
+            About Us
+          </MenuItem>
+          <MenuItem
+            onClick={() => handleNavLinkClick()}
+            className={classes.menuItem}
+            component={Link}
+            to="/contact"
+          >
+            Contact Us
+          </MenuItem>
+          
+          <MenuItem
+            onClick={handleApplyClick}
+            className={`${classes.menuItem} ${classes.signUpMenuItem}`}
           >
             Apply Now
           </MenuItem>

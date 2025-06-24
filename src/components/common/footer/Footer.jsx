@@ -25,6 +25,9 @@ import GavelIcon from "@mui/icons-material/Gavel";
 import { ReactComponent as CodeIcon } from "../../../assets/fullstackfoot.svg";
 import { ReactComponent as DataObjectIcon } from "../../../assets/datasciencefoot.svg";
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
+import SchoolIcon from '@mui/icons-material/School';
+import WorkIcon from '@mui/icons-material/Work';
+import BookIcon from '@mui/icons-material/Book';
 import { ReactComponent as GigaLogo } from "../../../assets/GIGAVERSITY_LOGO.svg";
 import { Link } from "react-router-dom";
 import { scrollToTop } from '../../../utils/scrollUtils';
@@ -309,7 +312,10 @@ const useStyles = makeStyles({
       fontSize: "1.15rem !important",
       marginBottom: "20px !important",
       paddingBottom: "8px",
+      textAlign: "center",
       "&:after": {
+        left: "50%",
+        transform: "translateX(-50%)",
         width: "35px",
         height: "2px",
       },
@@ -354,6 +360,7 @@ const useStyles = makeStyles({
     },
     "@media (max-width: 600px)": {
       marginBottom: "12px",
+      justifyContent: "center",
     },
     "@media (max-width: 480px)": {
       marginBottom: "10px",
@@ -417,35 +424,6 @@ const useStyles = makeStyles({
       marginRight: "3px",
     },
   },
-  programLink: {
-    color: "#ffffff !important",
-    textDecoration: "none !important",
-    fontSize: "1rem",
-    transition: "color 0.3s ease",
-    marginLeft: "10px",
-    "&:hover": {
-      color: "#FFC614 !important",
-      textDecoration: "underline !important",
-    },
-    "@media (max-width: 1200px)": {
-      fontSize: "0.98rem",
-    },
-    "@media (max-width: 960px)": {
-      fontSize: "0.95rem",
-    },
-    "@media (max-width: 600px)": {
-      fontSize: "0.95rem",
-      marginLeft: "8px",
-    },
-    "@media (max-width: 480px)": {
-      fontSize: "0.9rem",
-      marginLeft: "7px",
-    },
-    "@media (max-width: 375px)": {
-      fontSize: "0.85rem",
-      marginLeft: "6px",
-    },
-  },
   contactItem: {
     display: "flex",
     alignItems: "flex-start",
@@ -458,6 +436,7 @@ const useStyles = makeStyles({
     },
     "@media (max-width: 600px)": {
       marginBottom: "15px",
+      justifyContent: "center",
     },
     "@media (max-width: 480px)": {
       marginBottom: "12px",
@@ -724,6 +703,7 @@ const Footer = () => {
       <CBottom className={classes.bottomSvg} />
       <Box className={classes.footer}>
         <Container maxWidth="lg">
+          {/* Single Row Layout */}
           <Box className={classes.footerContainer}>
             {/* Company Info Column */}
             <Box className={classes.column}>
@@ -770,7 +750,7 @@ const Footer = () => {
                   </MuiLink>
                 </li>
                 <li className={classes.linkItem}>
-                  <InfoIcon className={classes.linkIcon} />
+                  <BookIcon className={classes.linkIcon} />
                   <MuiLink
                     component={Link}
                     to="/blog"
@@ -778,6 +758,17 @@ const Footer = () => {
                     onClick={scrollToTop}
                   >
                     Blog
+                  </MuiLink>
+                </li>
+                <li className={classes.linkItem}>
+                  <BusinessCenterIcon className={classes.linkIcon} />
+                  <MuiLink
+                    component={Link}
+                    to="/products"
+                    className={classes.linkText}
+                    onClick={scrollToTop}
+                  >
+                    Products
                   </MuiLink>
                 </li>
                 <li className={classes.linkItem}>
@@ -819,6 +810,65 @@ const Footer = () => {
               </MuiLink>
             </Box>
 
+            {/* Programs Column (Virtual Placement + Full Time) */}
+            <Box className={classes.column}>
+              <Typography className={classes.sectionTitle}>
+                Virtual Placement
+              </Typography>
+              <ul className={classes.linksList}>
+                <li className={classes.linkItem}>
+                  <CodeIcon className={classes.linkIcon} style={{ width: '18px', height: '18px' }} />
+                  <MuiLink
+                    component={Link}
+                    to="/virtual-placement-fullstack"
+                    className={classes.linkText}
+                    onClick={scrollToTop}
+                  >
+                    Full Stack
+                  </MuiLink>
+                </li>
+                <li className={classes.linkItem}>
+                  <DataObjectIcon className={classes.linkIcon} style={{ width: '18px', height: '18px' }} />
+                  <MuiLink
+                    component={Link}
+                    to="/virtual-placement-datascience"
+                    className={classes.linkText}
+                    onClick={scrollToTop}
+                  >
+                    Data Science
+                  </MuiLink>
+                </li>
+              </ul>
+
+              <Typography className={classes.sectionTitle} style={{ marginTop: '30px' }}>
+                Full Time Programs
+              </Typography>
+              <ul className={classes.linksList}>
+                <li className={classes.linkItem}>
+                  <SchoolIcon className={classes.linkIcon} />
+                  <MuiLink
+                    component={Link}
+                    to="/fullstack"
+                    className={classes.linkText}
+                    onClick={scrollToTop}
+                  >
+                    Full Stack Program
+                  </MuiLink>
+                </li>
+                <li className={classes.linkItem}>
+                  <SchoolIcon className={classes.linkIcon} />
+                  <MuiLink
+                    component={Link}
+                    to="/datascience"
+                    className={classes.linkText}
+                    onClick={scrollToTop}
+                  >
+                    Data Science Program
+                  </MuiLink>
+                </li>
+              </ul>
+            </Box>
+
             {/* Contact Info Column */}
             <Box className={classes.column}>
               <Typography className={classes.sectionTitle}>
@@ -847,7 +897,7 @@ const Footer = () => {
                 </MuiLink>
               </Box>
 
-              {/* Social Media Icons with Discord added */}
+              {/* Social Media Icons */}
               <Box className={classes.socialIcons}>
                 <MuiLink
                   href="https://www.facebook.com/share/1BCGVFefmp/"
