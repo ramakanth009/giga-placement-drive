@@ -488,6 +488,7 @@ const useStyles = makeStyles({
     backgroundSize: '30px 30px',
     opacity: 0.3,
     zIndex: 1,
+    pointerEvents: 'none', // <-- Add this line
     '@media (max-width: 600px)': {
       backgroundSize: '25px 25px',
     },
@@ -511,7 +512,7 @@ const ResumeBuilderSection = () => {
   }, []);
 
   const handleBuildClick = () => {
-    window.open('http://resume.gigaversity.in/', '_blank');
+    window.open('https://resume.gigaversity.in/', '_blank');
   };
   
   return (
