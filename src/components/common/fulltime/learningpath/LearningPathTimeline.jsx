@@ -6,6 +6,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import StarIcon from '@mui/icons-material/Star';
+import CentralizedPopupForms from '../../popupforms/CentralizedPopupForms';
 
 const useStyles = makeStyles({
   timelineContainer: {
@@ -1363,11 +1364,16 @@ const LearningPathTimeline = ({
   title, 
   subtitle, 
   phases, 
-  placementStats 
+  placementStats,
+  onApply, // <-- add this prop
+  popupVariant // <-- add this prop
 }) => {
   const classes = useStyles();
   const [activePhase, setActivePhase] = useState(1);
   const [showDetails, setShowDetails] = useState(null);
+
+  // Popup state
+  const [popupOpen, setPopupOpen] = useState(false);
 
   const activePhaseData = phases.find(phase => phase.id === activePhase);
 
@@ -1377,6 +1383,12 @@ const LearningPathTimeline = ({
     } else {
       setShowDetails(detailType);
     }
+  };
+
+  // Handler for Apply Now button
+  const handleApplyNow = () => {
+    setPopupOpen(true);
+    if (onApply) onApply();
   };
 
   return (
@@ -1754,6 +1766,7 @@ const LearningPathTimeline = ({
             <Button
               variant="contained"
               className={classes.applyButton}
+              onClick={handleApplyNow}
             >
               Apply Now
             </Button>
@@ -1766,6 +1779,13 @@ const LearningPathTimeline = ({
           </Box>
         </Box>
       </Box>
+
+      {/* CentralizedPopupForms for Apply Now */}
+      <CentralizedPopupForms
+        open={popupOpen}
+        onClose={() => setPopupOpen(false)}
+        variant={popupVariant}
+      />
     </Box>
   );
 };

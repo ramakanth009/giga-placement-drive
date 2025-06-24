@@ -221,12 +221,28 @@ const ProgramCard = ({
   program, 
   onLoveClick, 
   onCommentClick, 
-  onViewProgram 
+  onViewProgram,
+  launchingSoon,
+  onCardHover,
+  onCardLeave
 }) => {
   const classes = useStyles();
 
+  // Only Master Internship (ids 5 and 6) are "Launching soon"
+  const isLaunchingSoon = program.id === 5 || program.id === 6;
+
+  const handleButtonClick = () => {
+    if (!isLaunchingSoon) {
+      onViewProgram(program.id);
+    }
+  };
+
   return (
-    <Box className={classes.cardWrapper}>
+    <Box 
+      className={classes.cardWrapper}
+      onMouseEnter={onCardHover}
+      onMouseLeave={onCardLeave}
+    >
       <Card className={classes.card} elevation={0}>
         <Box sx={{ position: 'relative' }}>
           <CardMedia
@@ -240,9 +256,10 @@ const ProgramCard = ({
               variant="contained" 
               className={classes.viewButton}
               endIcon={<LaunchIcon />}
-              onClick={() => onViewProgram(program.id)}
+              onClick={handleButtonClick}
+              disabled={isLaunchingSoon}
             >
-              {program.tag !== 'Launching soon' ? 'View Details' : 'Launching soon'}
+              {isLaunchingSoon ? 'Launching soon' : 'View Details'}
             </Button>
           </Box>
         </Box>
@@ -286,9 +303,10 @@ const ProgramCard = ({
                 variant="contained"
                 className={classes.enrollButton}
                 startIcon={<Box className={classes.enrollIcon} />}
-                onClick={() => onViewProgram(program.id)}
+                onClick={handleButtonClick}
+                disabled={isLaunchingSoon}
               >
-                view details
+                {isLaunchingSoon ? 'Launching soon' : 'view details'}
               </Button>
             </Box>
           </Box>

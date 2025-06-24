@@ -16,6 +16,7 @@ import { makeStyles } from "@mui/styles";
 import { ReactComponent as GigaLogo } from "../../../assets/GIGAVERSITY_LOGO.svg";
 import { Link, useLocation } from "react-router-dom";
 import { scrollToTop } from "../../../utils/scrollUtils";
+import CentralizedPopupForms from '../../common/popupforms/CentralizedPopupForms';
 
 // Define styles using makeStyles
 const useStyles = makeStyles({
@@ -217,6 +218,7 @@ const Navbar = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+  const [popupOpen, setPopupOpen] = useState(false);
 
   // State for dropdown menus in mobile view
   const [mobileFullStackOpen, setMobileFullStackOpen] = useState(false);
@@ -253,6 +255,16 @@ const Navbar = () => {
     e.stopPropagation();
     setMobileDataScienceOpen(!mobileDataScienceOpen);
     setMobileFullStackOpen(false);
+  };
+
+  const handleApplyClick = (e) => {
+    if (e) e.preventDefault();
+    setPopupOpen(true);
+    if (isMobile) handleClose();
+  };
+
+  const handlePopupClose = () => {
+    setPopupOpen(false);
   };
 
   return (
@@ -406,9 +418,7 @@ const Navbar = () => {
               <Button
                 variant="contained"
                 className={classes.signUpButton}
-                component={Link}
-                to="/cart"
-                onClick={scrollToTop}
+                onClick={handleApplyClick}
               >
                 Apply Now
               </Button>
@@ -562,12 +572,18 @@ const Navbar = () => {
             onClick={() => handleNavLinkClick()}
             className={`${classes.menuItem} ${classes.signUpMenuItem}`}
             component={Link}
-            to="/cart"
+            // to="/cart"
+            // onClick={handleApplyClick}
           >
             Apply Now
           </MenuItem>
         </Menu>
       </Toolbar>
+      <CentralizedPopupForms
+        open={popupOpen}
+        onClose={handlePopupClose}
+        variant="dropdown"
+      />
     </AppBar>
   );
 };

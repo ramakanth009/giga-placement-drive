@@ -3,6 +3,7 @@ import React from "react";
 import { Box, Typography, Button } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles({
   aboutSection: {
@@ -362,6 +363,11 @@ const useStyles = makeStyles({
 
 const LaptopSection = () => {
   const classes = useStyles();
+  const navigate = useNavigate();
+
+  const handleTalkClick = () => {
+    navigate("/contact");
+  };
 
   return (
     <Box className={classes.aboutSection}>
@@ -383,6 +389,7 @@ const LaptopSection = () => {
                 variant="contained" 
                 className={classes.talkButton}
                 endIcon={<ArrowForwardIcon />}
+                onClick={handleTalkClick}
               >
                 Talk To Our Expert
               </Button>

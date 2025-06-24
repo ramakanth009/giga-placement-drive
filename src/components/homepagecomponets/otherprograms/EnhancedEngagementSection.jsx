@@ -91,7 +91,7 @@ const useStyles = makeStyles({
     backdropFilter: 'blur(10px)',
     border: '1px solid rgba(255, 255, 255, 0.2)',
     cursor: 'pointer',
-    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+    transition: 'background 0.35s cubic-bezier(0.4, 0, 0.2, 1), border 0.35s cubic-bezier(0.4, 0, 0.2, 1), color 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
     minWidth: 'auto',
     fontWeight: '500 !important',
     fontSize: '0.8rem !important',
@@ -99,12 +99,14 @@ const useStyles = makeStyles({
     color: '#ffffff !important',
     '&:hover': {
       backgroundColor: 'rgba(255, 255, 255, 0.25)',
-      transform: 'translateY(-2px)',
-      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
-      border: '1px solid rgba(255, 255, 255, 0.3)',
+      transform: 'translateY(-2px) scale(1.04)',
+      boxShadow: '0 4px 16px rgba(0, 0, 0, 0.18)',
+      border: '1.5px solid rgba(255, 255, 255, 0.3)',
+      transition: 'background 0.35s cubic-bezier(0.4, 0, 0.2, 1), border 0.35s cubic-bezier(0.4, 0, 0.2, 1), color 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
     },
     '&:active': {
-      transform: 'translateY(0)',
+      transform: 'translateY(0) scale(1)',
+      transition: 'transform 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
     },
     '&:disabled': {
       opacity: 0.6,
@@ -141,21 +143,27 @@ const useStyles = makeStyles({
     },
   },
   loveButton: {
+    transition: 'background 0.35s cubic-bezier(0.4, 0, 0.2, 1), border 0.35s cubic-bezier(0.4, 0, 0.2, 1), color 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
     '&:hover': {
       backgroundColor: 'rgba(255, 71, 87, 0.2)',
-      border: '1px solid rgba(255, 71, 87, 0.4)',
+      border: '1.5px solid rgba(255, 71, 87, 0.4)',
       '& $actionIcon': {
         color: '#ff4757',
+        transition: 'color 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
       },
+      transition: 'background 0.35s cubic-bezier(0.4, 0, 0.2, 1), border 0.35s cubic-bezier(0.4, 0, 0.2, 1), color 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
     },
   },
   commentButton: {
+    transition: 'background 0.35s cubic-bezier(0.4, 0, 0.2, 1), border 0.35s cubic-bezier(0.4, 0, 0.2, 1), color 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
     '&:hover': {
       backgroundColor: 'rgba(255, 198, 20, 0.2)',
-      border: '1px solid rgba(255, 198, 20, 0.4)',
+      border: '1.5px solid rgba(255, 198, 20, 0.4)',
       '& $actionIcon': {
         color: '#FFC614',
+        transition: 'color 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
       },
+      transition: 'background 0.35s cubic-bezier(0.4, 0, 0.2, 1), border 0.35s cubic-bezier(0.4, 0, 0.2, 1), color 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
     },
   },
   loved: {

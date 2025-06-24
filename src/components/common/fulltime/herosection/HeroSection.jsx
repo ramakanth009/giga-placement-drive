@@ -16,7 +16,7 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     paddingTop: '40px',
     paddingBottom: '140px',
-    '@media (max-width: 1200px)': {
+    '@media (max-width: 1200px)': { 
       paddingTop: '35px',
       paddingBottom: '120px',
       minHeight: '85vh',

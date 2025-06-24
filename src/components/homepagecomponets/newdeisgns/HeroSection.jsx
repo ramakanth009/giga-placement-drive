@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Typography, Button, Container, Link } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import Heroguy from '../../../assets/heroguy3.png'; 
 import { ReactComponent as Stack } from '../../../assets/stack.svg';
 import { ReactComponent as Tick } from '../../../assets/tick.svg';
 import { ReactComponent as Message } from '../../../assets/message.svg';
-import { scrollToTop } from "../../../utils/scrollUtils";
+import CentralizedPopupForms from '../../common/popupforms/CentralizedPopupForms';
 
 const useStyles = makeStyles({
   heroSection: {
@@ -182,7 +182,7 @@ const useStyles = makeStyles({
     boxShadow: 'none !important',
     transition: 'all 0.3s ease !important',
     '&:hover': {
-      backgroundColor: '#34495e !important',
+      backgroundColor: '#1a1b43 !important', // match Navbar.jsx
       boxShadow: '0 4px 8px rgba(0,0,0,0.2) !important',
       transform: 'translateY(-2px)'
     },
@@ -481,53 +481,70 @@ const useStyles = makeStyles({
 
 const HeroSection = () => {
   const classes = useStyles();
+  const [popupOpen, setPopupOpen] = useState(false);
+
+  const handleApplyClick = (e) => {
+    e.preventDefault();
+    setPopupOpen(true);
+  };
+
+  const handlePopupClose = () => {
+    setPopupOpen(false);
+  };
 
   return (
-    <Box className={classes.heroSection}>
-      <Container className={classes.container}>
-        <Box className={classes.flexRow}>
-          <Box className={classes.leftBox}>
-            <Typography className={classes.mainTitle}>
-              India’s first  <br />
-              product-based<br />
-              learning Platform
-            </Typography>
-            <Box className={classes.curveIcon}>
-              <svg width="487" height="34" viewBox="0 0 487 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 30C73.6307 10.3798 266.914 -17.0885 483 30" stroke="#FFC614" strokeWidth="8" strokeLinecap="round"/>
-              </svg>
+    <>
+      <Box className={classes.heroSection}>
+        <Container className={classes.container}>
+          <Box className={classes.flexRow}>
+            <Box className={classes.leftBox}>
+              <Typography className={classes.mainTitle}>
+                India’s first  <br />
+                product-based<br />
+                learning Platform
+              </Typography>
+              <Box className={classes.curveIcon}>
+                <svg width="487" height="34" viewBox="0 0 487 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 30C73.6307 10.3798 266.914 -17.0885 483 30" stroke="#FFC614" strokeWidth="8" strokeLinecap="round"/>
+                </svg>
+              </Box>
+              <Typography className={classes.subtitle}>
+                Develop a real-time product before graduation and get a chance to build an MVP with access to up to ₹1,00,000 in startup grants.
+              </Typography>
+              <Button 
+                className={classes.applyButton}
+                onClick={handleApplyClick}
+              >
+                Apply Now
+              </Button>
             </Box>
-            <Typography className={classes.subtitle}>
-              Develop a real-time product before graduation and get a chance to build an MVP with access to up to ₹1,00,000 in startup grants.
-            </Typography>
-            <Button 
-            component={Link}
-                            to="/cart"
-                            onClick={scrollToTop}className={classes.applyButton}>
-              Apply Now
-            </Button>
+            <Box className={classes.rightBox}>
+              <Box className={classes.yellowCircle}></Box>
+              <img 
+                src={Heroguy} 
+                alt="Person with laptop" 
+                className={classes.heroImage}
+              />
+              {/* Floating Icons */}
+              <Box className={`${classes.floatingIcon} ${classes.icon1}`}>
+                <Stack/>
+              </Box>
+              <Box className={`${classes.floatingIcon} ${classes.icon2}`}>
+                <Tick/>
+              </Box>
+              <Box className={`${classes.floatingIcon} ${classes.icon3}`}>
+                <Message/>
+              </Box>
+            </Box>
           </Box>
-          <Box className={classes.rightBox}>
-            <Box className={classes.yellowCircle}></Box>
-            <img 
-              src={Heroguy} 
-              alt="Person with laptop" 
-              className={classes.heroImage}
-            />
-            {/* Floating Icons */}
-            <Box className={`${classes.floatingIcon} ${classes.icon1}`}>
-              <Stack/>
-            </Box>
-            <Box className={`${classes.floatingIcon} ${classes.icon2}`}>
-              <Tick/>
-            </Box>
-            <Box className={`${classes.floatingIcon} ${classes.icon3}`}>
-              <Message/>
-            </Box>
-          </Box>
-        </Box>
-      </Container>
-    </Box>
+        </Container>
+      </Box>
+      <CentralizedPopupForms
+        open={popupOpen}
+        onClose={handlePopupClose}
+        variant="dropdown"
+      />
+    </>
   );
 };
 

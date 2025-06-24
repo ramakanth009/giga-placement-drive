@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import {
   Dialog,
@@ -8,7 +7,7 @@ import {
   TextField,
   Button,
   FormControl,
-  InputLabel,
+  InputLabel, 
   Select,
   MenuItem,
   Typography,
@@ -23,6 +22,10 @@ import CloseIcon from '@mui/icons-material/Close';
 import SchoolIcon from '@mui/icons-material/School';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import WorkIcon from '@mui/icons-material/Work';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CelebrationIcon from '@mui/icons-material/Celebration';
+
+import { api, handleApiError } from '../../../services/api.js';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -30,175 +33,245 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const useStyles = makeStyles({
   dialogPaper: {
-    borderRadius: '16px',
+    borderRadius: 20,
     overflow: 'hidden',
-    maxWidth: '500px',
+    maxWidth: 480,
     width: '100%',
     margin: '16px',
-    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-    color: 'white',
+    background: 'linear-gradient(135deg, #f8f9ff 0%, #e8eaff 100%)',
+    color: '#2A2B6A',
     position: 'relative',
-    '&::before': {
-      content: '""',
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      background: 'rgba(255, 255, 255, 0.1)',
-      backdropFilter: 'blur(10px)',
-      zIndex: 1
+    boxShadow: '0 8px 40px 0 rgba(42,43,106,0.15)',
+    border: 'none',
+    '@media (max-width: 600px)': {
+      maxWidth: '95vw',
+      margin: '8px',
+      borderRadius: 14,
     }
   },
   dialogContent: {
     position: 'relative',
     zIndex: 2,
-    padding: '24px',
-    background: 'rgba(255, 255, 255, 0.95)',
-    color: '#333',
-    borderRadius: '12px',
-    margin: '16px',
-    backdropFilter: 'blur(20px)',
-    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)'
+    padding: '28px 24px 20px 24px',
+    background: 'transparent',
+    color: '#2A2B6A',
+    borderRadius: 16,
+    margin: 0,
+    boxShadow: 'none',
+    '@media (max-width: 600px)': {
+      padding: '18px 6px 12px 6px',
+      borderRadius: 10,
+    }
   },
-  title: {
+  formHeading: {
+    fontSize: '1.5rem',
+    fontWeight: 'bold',
+    color: '#2A2B6A',
+    marginBottom: '10px',
+    textAlign: 'center',
+    letterSpacing: 0.5,
     position: 'relative',
-    zIndex: 2,
-    padding: '20px 24px 8px',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '12px',
-    color: 'white',
-    fontWeight: 700,
-    fontSize: '1.5rem'
+    paddingBottom: '8px',
+    '&:after': {
+      content: '""',
+      display: 'block',
+      margin: '8px auto 0 auto',
+      width: '40px',
+      height: '3px',
+      backgroundColor: '#FFC614',
+      borderRadius: '2px'
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '1.1rem',
+      paddingBottom: '6px',
+      '&:after': {
+        width: '28px',
+        height: '2px'
+      }
+    }
   },
   closeButton: {
     position: 'absolute',
-    right: '16px',
-    top: '16px',
+    right: 12,
+    top: 12,
     zIndex: 3,
-    color: 'white',
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
-    backdropFilter: 'blur(10px)',
-    transition: 'all 0.3s ease',
+    color: '#f44336', // red for wrong/close
+    backgroundColor: 'transparent',
+    border: 'none',
+    borderRadius: '50%',
+    width: 38,
+    height: 38,
+    boxShadow: 'none',
+    transition: 'none',
     '&:hover': {
-      backgroundColor: 'rgba(255, 255, 255, 0.3)',
-      transform: 'scale(1.1)',
-      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)'
+      backgroundColor: 'transparent',
+      color: '#f44336',
+      transform: 'none'
     }
+  },
+  title: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: 12,
+    color: '#2A2B6A',
+    fontWeight: 700,
+    fontSize: '1.1rem',
+    marginBottom: 0,
+    background: 'none',
+    padding: 0,
+    minHeight: 0
   },
   textField: {
     '& .MuiOutlinedInput-root': {
-      borderRadius: '12px',
-      backgroundColor: 'rgba(255, 255, 255, 0.9)',
-      transition: 'all 0.3s ease',
+      borderRadius: 8,
+      backgroundColor: '#f4f6fa',
+      color: '#2A2B6A',
+      transition: 'all 0.3s',
+      fontWeight: 500,
       '&:hover': {
-        backgroundColor: 'white',
-        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
+        backgroundColor: '#e6e9f8',
+        boxShadow: '0 2px 12px rgba(42,43,106,0.08)'
       },
       '&.Mui-focused': {
-        backgroundColor: 'white',
-        boxShadow: '0 6px 20px rgba(102, 126, 234, 0.3)'
+        backgroundColor: '#fff',
+        boxShadow: '0 4px 16px rgba(42,43,106,0.15)'
       }
     },
     '& .MuiInputLabel-root': {
-      fontWeight: 500
+      fontWeight: 600,
+      color: '#2A2B6A'
     }
   },
   selectField: {
     '& .MuiOutlinedInput-root': {
-      borderRadius: '12px',
-      backgroundColor: 'rgba(255, 255, 255, 0.9)',
-      transition: 'all 0.3s ease',
+      borderRadius: 8,
+      backgroundColor: '#f4f6fa',
+      color: '#2A2B6A',
+      transition: 'all 0.3s',
+      fontWeight: 500,
       '&:hover': {
-        backgroundColor: 'white',
-        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
+        backgroundColor: '#e6e9f8',
+        boxShadow: '0 2px 12px rgba(42,43,106,0.08)'
       },
       '&.Mui-focused': {
-        backgroundColor: 'white',
-        boxShadow: '0 6px 20px rgba(102, 126, 234, 0.3)'
+        backgroundColor: '#fff',
+        boxShadow: '0 4px 16px rgba(42,43,106,0.15)'
       }
     }
   },
   submitButton: {
-    borderRadius: '25px',
-    padding: '12px 32px',
-    fontWeight: 600,
+    borderRadius: 8,
+    padding: '12px 0',
+    fontWeight: 700,
     fontSize: '1rem',
     textTransform: 'none',
-    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-    color: 'white',
-    transition: 'all 0.3s ease',
+    backgroundColor: '#292B6B',
+    color: '#fff',
+    width: 160,
+    boxShadow: 'none',
+    transition: 'all 0.3s',
     '&:hover': {
-      background: 'linear-gradient(135deg, #764ba2 0%, #667eea 100%)',
-      transform: 'translateY(-2px)',
-      boxShadow: '0 8px 25px rgba(102, 126, 234, 0.4)'
+      backgroundColor: '#1a1b43',
+      color: '#fff',
+      boxShadow: 'none'
     },
     '&:disabled': {
-      background: 'rgba(0, 0, 0, 0.12)',
-      color: 'rgba(0, 0, 0, 0.26)'
+      backgroundColor: '#cccccc',
+      color: '#666666'
     }
   },
   cancelButton: {
-    borderRadius: '25px',
-    padding: '12px 24px',
-    fontWeight: 500,
+    borderRadius: 8,
+    padding: '12px 0',
+    fontWeight: 600,
     fontSize: '1rem',
     textTransform: 'none',
-    color: '#666',
-    border: '2px solid #e0e0e0',
-    transition: 'all 0.3s ease',
+    color: '#292B6B',
+    backgroundColor: '#e0e0e0',
+    border: 'none',
+    width: 120,
+    boxShadow: 'none',
+    transition: 'all 0.3s',
     '&:hover': {
-      borderColor: '#667eea',
-      color: '#667eea',
-      backgroundColor: 'rgba(102, 126, 234, 0.05)'
+      backgroundColor: '#bdbdbd',
+      color: '#292B6B'
     }
   },
   formContainer: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '20px'
+    gap: 18,
+    marginTop: 10,
+    '@media (max-width: 600px)': {
+      gap: 10,
+    }
   },
   readOnlyField: {
     '& .MuiOutlinedInput-root': {
-      backgroundColor: 'rgba(102, 126, 234, 0.1)',
+      backgroundColor: '#e6e9f8',
       '& fieldset': {
-        borderColor: 'rgba(102, 126, 234, 0.3)'
+        borderColor: '#FFC614'
       }
     },
     '& .MuiInputBase-input': {
-      color: '#667eea',
-      fontWeight: 500
+      color: '#2A2B6A',
+      fontWeight: 600
     }
   },
   successMessage: {
-    borderRadius: '12px',
-    backgroundColor: 'rgba(76, 175, 80, 0.1)',
-    color: '#4caf50',
-    fontWeight: 500,
-    border: '1px solid rgba(76, 175, 80, 0.3)'
+    borderRadius: 14,
+    background: 'linear-gradient(90deg, #e8eaff 0%, #f8f9ff 100%)',
+    color: '#2A2B6A',
+    fontWeight: 600,
+    border: '2px solid #FFC614',
+    boxShadow: '0 2px 12px rgba(42,43,106,0.10)',
+    padding: '24px 0',
+    margin: '0 auto',
+    maxWidth: 340,
+    '@media (max-width: 600px)': {
+      padding: '16px 0',
+      maxWidth: 260,
+    }
+  },
+  successIcon: {
+    fontSize: 54,
+    color: '#FFC614',
+    marginBottom: 8,
+    animation: '$pop 0.7s cubic-bezier(.68,-0.55,.27,1.55)'
+  },
+  celebrationIcon: {
+    fontSize: 44,
+    color: '#2A2B6A',
+    marginLeft: 8,
+    animation: '$pop 0.7s cubic-bezier(.68,-0.55,.27,1.55)'
+  },
+  '@keyframes pop': {
+    '0%': { transform: 'scale(0.7)' },
+    '60%': { transform: 'scale(1.15)' },
+    '100%': { transform: 'scale(1)' }
   },
   errorMessage: {
-    borderRadius: '12px',
-    backgroundColor: 'rgba(244, 67, 54, 0.1)',
+    borderRadius: 10,
+    backgroundColor: 'rgba(244, 67, 54, 0.08)',
     color: '#f44336',
     fontWeight: 500,
-    border: '1px solid rgba(244, 67, 54, 0.3)'
+    border: '1.5px solid rgba(244, 67, 54, 0.22)'
   },
   loadingContainer: {
     display: 'flex',
     alignItems: 'center',
-    gap: '12px',
-    color: '#667eea'
+    gap: 10,
+    color: '#2A2B6A'
   }
 });
 
-const CentralizedPopupForms = ({ 
-  open, 
-  onClose, 
-  variant = 'dropdown', // 'dropdown', 'demo', 'jobportal'
-  onSubmitSuccess 
+const CentralizedPopupForms = ({
+  open,
+  onClose,
+  variant = 'dropdown',
+  onSubmitSuccess
 }) => {
+  const isMobile = window.innerWidth <= 600;
   const classes = useStyles();
   const [formData, setFormData] = useState({
     full_name: '',
@@ -210,13 +283,15 @@ const CentralizedPopupForms = ({
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
 
-  // Reset form when variant changes or modal opens
   useEffect(() => {
     if (open) {
       setFormData({
         full_name: '',
         email: '',
-        chosen_field: variant === 'dropdown' ? '' : 'Book a demo',
+        chosen_field: variant === 'dropdown' ? '' : 
+                      variant === 'fullstack' ? 'Full Stack Development' :
+                      variant === 'datascience' ? 'Data Science' :
+                      'Book a demo',
         phone_number: ''
       });
       setSuccess(false);
@@ -232,6 +307,10 @@ const CentralizedPopupForms = ({
         return 'Schedule a Demo';
       case 'jobportal':
         return 'Schedule a Demo for Job Portal';
+      case 'fullstack':
+        return 'Apply for Full Stack Development';
+      case 'datascience':
+        return 'Apply for Data Science';
       default:
         return 'Contact Us';
     }
@@ -240,22 +319,30 @@ const CentralizedPopupForms = ({
   const getIcon = () => {
     switch (variant) {
       case 'dropdown':
-        return <SchoolIcon />;
+        return <SchoolIcon sx={{ fontSize: 32, color: '#FFC614' }} />;
       case 'demo':
-        return <CalendarTodayIcon />;
+        return <CalendarTodayIcon sx={{ fontSize: 32, color: '#FFC614' }} />;
       case 'jobportal':
-        return <WorkIcon />;
+        return <WorkIcon sx={{ fontSize: 32, color: '#FFC614' }} />;
+      case 'fullstack':
+        return <SchoolIcon sx={{ fontSize: 32, color: '#FFC614' }} />;
+      case 'datascience':
+        return <SchoolIcon sx={{ fontSize: 32, color: '#FFC614' }} />;
       default:
-        return <SchoolIcon />;
+        return <SchoolIcon sx={{ fontSize: 32, color: '#FFC614' }} />;
     }
   };
 
   const getChosenFieldDisplay = () => {
     switch (variant) {
       case 'demo':
-        return 'Schedule a demo';
+        return 'Schedule A Demo';
       case 'jobportal':
-        return 'Schedule a demo for jobportal';
+        return 'Schedule A Demo for Job Portal';
+      case 'fullstack':
+        return 'Full Stack Development';
+      case 'datascience':
+        return 'Data Science';
       default:
         return '';
     }
@@ -267,57 +354,41 @@ const CentralizedPopupForms = ({
       ...prev,
       [name]: value
     }));
-    // Clear error when user starts typing
     if (error) setError('');
   };
 
   const validateForm = () => {
     const { full_name, email, chosen_field, phone_number } = formData;
-    
     if (!full_name.trim()) return 'Full name is required';
     if (!email.trim()) return 'Email is required';
     if (!chosen_field.trim()) return 'Please select a field';
     if (!phone_number.trim()) return 'Phone number is required';
-    
-    // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) return 'Please enter a valid email address';
-    
-    // Phone validation
     const phoneRegex = /^[\d\s\-\+\(\)]+$/;
     if (!phoneRegex.test(phone_number)) return 'Please enter a valid phone number';
-    
     return null;
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    
     const validationError = validateForm();
     if (validationError) {
       setError(validationError);
       return;
     }
-
     setLoading(true);
     setError('');
-
     try {
-      // Import the API dynamically to avoid import issues
-      const { api, handleApiError } = await import('../services/api.js');
-      
-      const result = await api.virtualDriveContact.submitContact(formData);
-      
+      const result = await api.popupContact.submitContact(formData);
       setSuccess(true);
       setTimeout(() => {
         onClose();
         if (onSubmitSuccess) {
           onSubmitSuccess(result.data);
         }
-      }, 2000);
-      
+      }, 2200);
     } catch (err) {
-      const { api, handleApiError } = await import('../services/api.js');
       const errorInfo = handleApiError(err);
       setError(errorInfo.message || 'An error occurred. Please try again.');
     } finally {
@@ -336,33 +407,54 @@ const CentralizedPopupForms = ({
       maxWidth="sm"
       fullWidth
     >
+      {/* Close button at right top corner, always visible, no hover effect */}
       <IconButton
         className={classes.closeButton}
         onClick={onClose}
         disabled={loading}
+        aria-label="Close"
+        style={{ position: 'absolute', right: 12, top: 12 }}
       >
         <CloseIcon />
       </IconButton>
 
+      {/* Form Heading */}
+      <Box className={classes.formHeading}>
+        {getTitle()}
+      </Box>
+
+      {/* Icon and subtitle below heading */}
       <DialogTitle className={classes.title}>
         {getIcon()}
-        {getTitle()}
+        <span>
+          {variant === 'dropdown'
+            ? 'Apply for a program'
+            : variant === 'fullstack'
+              ? 'Apply for Full Stack Development'
+              : variant === 'datascience'
+                ? 'Apply for Data Science'
+                : "Let's connect!"}
+        </span>
       </DialogTitle>
-
       <DialogContent className={classes.dialogContent}>
         {success ? (
-          <Box textAlign="center" py={3}>
-            <Alert severity="success" className={classes.successMessage}>
-              <Typography variant="h6" gutterBottom>
+          <Box textAlign="center" py={isMobile ? 2 : 4}>
+            <Box>
+              <CheckCircleIcon className={classes.successIcon} />
+              <CelebrationIcon className={classes.celebrationIcon} />
+            </Box>
+            <Alert severity="success" className={classes.successMessage} icon={false}>
+              <Typography variant="h6" gutterBottom sx={{ fontWeight: 700, color: '#2A2B6A', letterSpacing: 0.5 }}>
                 Thank you for your submission!
               </Typography>
-              <Typography>
-                We'll be in touch soon.
+              <Typography sx={{ fontSize: isMobile ? '1rem' : '1.1rem', color: '#2A2B6A', fontWeight: 500 }}>
+                We'll be in touch soon.<br />
+                <span style={{ color: '#FFC614', fontWeight: 700 }}>Stay tuned for exciting updates!</span>
               </Typography>
             </Alert>
           </Box>
         ) : (
-          <form onSubmit={handleSubmit} className={classes.formContainer}>
+          <form onSubmit={handleSubmit} className={classes.formContainer} autoComplete="off">
             {error && (
               <Alert severity="error" className={classes.errorMessage}>
                 {error}
@@ -378,6 +470,8 @@ const CentralizedPopupForms = ({
               required
               className={classes.textField}
               disabled={loading}
+              autoFocus
+              inputProps={{ maxLength: 40 }}
             />
 
             <TextField
@@ -390,6 +484,7 @@ const CentralizedPopupForms = ({
               required
               className={classes.textField}
               disabled={loading}
+              inputProps={{ maxLength: 40 }}
             />
 
             {variant === 'dropdown' ? (
@@ -427,9 +522,14 @@ const CentralizedPopupForms = ({
               className={classes.textField}
               disabled={loading}
               placeholder="+1234567890"
+              inputProps={{ maxLength: 15 }}
             />
 
-            <DialogActions sx={{ padding: '20px 0 0', gap: '12px' }}>
+            <DialogActions sx={{
+              padding: isMobile ? '12px 0 0' : '20px 0 0',
+              gap: isMobile ? '8px' : '18px',
+              justifyContent: 'center'
+            }}>
               <Button
                 onClick={onClose}
                 className={classes.cancelButton}

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import HeroSection from '../../../common/fulltime/herosection/HeroSection';
 import dataScienceImage from '../../../../assets/datascience-hero-img.png';
+import CentralizedPopupForms from '../../../common/popupforms/CentralizedPopupForms';
 
 const useStyles = makeStyles({
   decorX: {
@@ -22,6 +23,8 @@ const useStyles = makeStyles({
 
 const DataScienceHero = () => {
   const classes = useStyles();
+  const [popupOpen, setPopupOpen] = useState(false);
+  const [popupVariant, setPopupVariant] = useState('datascience');
 
   // Define decorative elements
   const decorElements = [
@@ -29,25 +32,36 @@ const DataScienceHero = () => {
   ];
 
   const handleApplyClick = () => {
-    // Logic for apply button click
-    console.log("Apply Now button clicked");
+    setPopupVariant('datascience');
+    setPopupOpen(true);
   };
 
   const handleBrochureClick = () => {
-    // Logic for Book A Demo button click
-    console.log("Book A Demo button clicked");
+    setPopupVariant('demo');
+    setPopupOpen(true);
+  };
+
+  const handlePopupClose = () => {
+    setPopupOpen(false);
   };
 
   return (
-    <HeroSection
-      titleFirstLine="Comprehensive"
-      highlightedText="Data Science Program"
-      subtitle="Build Your Own Product and Launch Your Tech Startup Within a Year"
-      heroImage={dataScienceImage}
-      onApplyClick={handleApplyClick}
-      onBrochureClick={handleBrochureClick}
-      decorElements={decorElements}
-    />
+    <>
+      <HeroSection
+        titleFirstLine="Comprehensive"
+        highlightedText="Data Science Program"
+        subtitle="Build Your Own Product and Launch Your Tech Startup Within a Year"
+        heroImage={dataScienceImage}
+        onApplyClick={handleApplyClick}
+        onBrochureClick={handleBrochureClick}
+        decorElements={decorElements}
+      />
+      <CentralizedPopupForms
+        open={popupOpen}
+        onClose={handlePopupClose}
+        variant={popupVariant}
+      />
+    </>
   );
 };
 

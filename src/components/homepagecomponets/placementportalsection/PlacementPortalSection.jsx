@@ -16,6 +16,7 @@ import image3 from "../../../assets/Job-Portal-website/Skill-Based-Assessments.p
 import image4 from "../../../assets/Job-Portal-website/Mock-Interview-Coach.png";
 import image5 from "../../../assets/Job-Portal-website/Proctored-Testing-Employer-Access.png";
 import image6 from "../../../assets/Job-Portal-website/Detailed-Feedback-and-insights-report.png";
+import CentralizedPopupForms from "../../common/popupforms/CentralizedPopupForms";
 
 const useStyles = makeStyles({
   section: {
@@ -181,6 +182,7 @@ const useStyles = makeStyles({
     },
   },
   mainTitle: {
+    marginTop:"30px !important",
     fontSize: "2.5rem !important",
     fontWeight: "bold !important",
     color: "#2A2B6A !important",
@@ -674,6 +676,7 @@ const PlacementPortalSection = () => {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const slides = [
     {
@@ -809,6 +812,7 @@ const PlacementPortalSection = () => {
             <Button 
               className={classes.scheduleButton}
               aria-label="Schedule Demo"
+              onClick={() => setIsPopupOpen(true)}
             >
               Schedule now
             </Button>
@@ -889,6 +893,13 @@ const PlacementPortalSection = () => {
           />
         </Box>
       </Modal>
+
+      {/* Popup for Schedule a Demo for Job Portal */}
+      <CentralizedPopupForms
+        open={isPopupOpen}
+        onClose={() => setIsPopupOpen(false)}
+        variant="jobportal"
+      />
     </Box>
   );
 };

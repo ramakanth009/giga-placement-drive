@@ -9,6 +9,7 @@ import CodeIcon from '@mui/icons-material/Code';
 import GroupsIcon from '@mui/icons-material/Groups';
 import ApartmentIcon from '@mui/icons-material/Apartment';
 import ScholarshipIcon from '@mui/icons-material/CardGiftcard';
+import CentralizedPopupForms from '../../popupforms/CentralizedPopupForms';
 
 const useStyles = makeStyles({
   container: {
@@ -876,9 +877,26 @@ const ProgramFee = ({ totalFee, onApplyClick }) => {
     }
   ];
 
+  // Popup state for "Talk to our expert today"
+  const [popupOpen, setPopupOpen] = React.useState(false);
+  const [popupVariant, setPopupVariant] = React.useState('demo');
+
   const handleScholarshipClick = () => {
-    // Add scholarship application logic here
-    console.log('Scholarship application clicked');
+    window.location.href = '/pre-screening-test';
+  };
+
+  const handleExpertClick = () => {
+    setPopupVariant('demo');
+    setPopupOpen(true);
+  };
+
+  const handleCareerInvestmentClick = () => {
+    setPopupVariant('dropdown');
+    setPopupOpen(true);
+  };
+
+  const handlePopupClose = () => {
+    setPopupOpen(false);
   };
 
   return (
@@ -946,7 +964,7 @@ const ProgramFee = ({ totalFee, onApplyClick }) => {
               variant="contained" 
               className={classes.scholarshipButton}
               startIcon={<ScholarshipIcon />}
-              onClick={handleScholarshipClick}
+              onClick={handleExpertClick}
             >
               Talk to our expert today
             </Button>
@@ -978,12 +996,18 @@ const ProgramFee = ({ totalFee, onApplyClick }) => {
           <Button 
             variant="contained" 
             className={classes.applyButton}
-            onClick={onApplyClick}
+            onClick={handleCareerInvestmentClick}
           >
             Start Your Career Investment
           </Button>
         </Box>
       </Paper>
+      {/* Centralized Popup for "Talk to our expert today" and "Start Your Career Investment" */}
+      <CentralizedPopupForms
+        open={popupOpen}
+        onClose={handlePopupClose}
+        variant={popupVariant}
+      />
     </Box>
   );
 };

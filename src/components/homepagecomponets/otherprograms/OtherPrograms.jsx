@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { 
   Box, 
   Typography, 
@@ -240,6 +240,7 @@ const OtherPrograms = () => {
   const [lovedPrograms, setLovedPrograms] = useState({});
   const [commentDialog, setCommentDialog] = useState({ open: false, programId: null });
   const [comment, setComment] = useState('');
+  const swiperRef = useRef(null);
 
   const handleTabChange = (event, newValue) => {
     setTabValue(newValue);
@@ -271,14 +272,39 @@ const OtherPrograms = () => {
   const handleViewProgram = (programId) => {
     // Navigate to specific program pages
     switch(programId) {
-      case 3:
+      case 1:
         navigate('/fulltime/fullstack');
         break;
-      case 4:
+      case 2:
         navigate('/fulltime/datascience');
         break;
+      case 5:
+        // Master Internship Full Stack - launching soon
+        break;
+      case 6:
+        // Master Internship Data Science - launching soon
+        break;
+      case 3:
+        navigate('/fullstack');
+        break;
+      case 4:
+        navigate('/datascience');
+        break;
       default:
-        console.log('Program launching soon');
+        // fallback
+        alert('Launching soon');
+    }
+  };
+
+  // Pause/resume swiper autoplay on card hover
+  const handleCardHover = () => {
+    if (swiperRef.current && swiperRef.current.autoplay) {
+      swiperRef.current.autoplay.stop();
+    }
+  };
+  const handleCardLeave = () => {
+    if (swiperRef.current && swiperRef.current.autoplay) {
+      swiperRef.current.autoplay.start();
     }
   };
 
@@ -311,13 +337,44 @@ const OtherPrograms = () => {
       ],
       students: 1523,
       tag: 'Full Time',
-      // image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
       image: Datascience,
       level: 'Advanced',
       category: 'datascience'
     },
     {
       id: 3,
+      title: 'Virtual Placement Drive in Full Stack',
+      duration: '6 Months',
+      features: [
+        'Get Job-Specific Training in Full Stack Domains',
+        'Apply to 15+ Verified Openings Every Week',
+        'Build Communication & Technical Skills Together',
+        'Create Weekly Projects to Strengthen Your Portfolio'
+      ],
+      students: 1245,
+      tag: 'Placement Drive',
+      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      level: 'Intermediate',
+      category: 'development'
+    },
+    {
+      id: 4,
+      title: 'Virtual Placement Drive in Data Science',
+      duration: '6 Months',
+      features: [
+        'Get Job-Specific Training in Data Science & AI Roles',
+        'Apply to 15+ Verified Data Science Openings Weekly',
+        'Sharpen Analytical & Communication Skills',
+        'Build Weekly Data Projects for Your Portfolio'
+      ],
+      students: 1102,
+      tag: 'Placement Drive',
+      image: Datascience,
+      level: 'Intermediate',
+      category: 'datascience'
+    },
+    {
+      id: 5,
       title: 'Master Internship In Full Stack',
       duration: '3 Months',
       features: [
@@ -333,7 +390,7 @@ const OtherPrograms = () => {
       category: 'development'
     },
     {
-      id: 4,
+      id: 6,
       title: 'Master Internship In Data Science',
       duration: '3 Months',
       features: [
@@ -347,22 +404,6 @@ const OtherPrograms = () => {
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
       level: 'Advanced',
       category: 'datascience'
-    },
-    {
-      id: 5,
-      title: 'Virtual Placement Drive in Full Stack',
-      duration: '6 Months',
-      features: [
-        'Get Job-Specific Training in Full Stack Domains',
-        'Apply to 15+ Verified Openings Every Week',
-        'Build Communication & Technical Skills Together',
-        'Create Weekly Projects to Strengthen Your Portfolio'
-      ],
-      students: 1245,
-      tag: 'Placement Drive',
-      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      level: 'Intermediate',
-      category: 'development'
     },
   ];
 
@@ -444,6 +485,7 @@ const OtherPrograms = () => {
                   spaceBetween: 30,
                 },
               }}
+              onSwiper={swiper => { swiperRef.current = swiper; }}
             >
               {filteredPrograms.map((program) => (
                 <SwiperSlide key={program.id}>
@@ -452,6 +494,9 @@ const OtherPrograms = () => {
                     onLoveClick={handleLove}
                     onCommentClick={handleCommentOpen}
                     onViewProgram={handleViewProgram}
+                    launchingSoon={program.id === 3 || program.id === 4}
+                    onCardHover={handleCardHover}
+                    onCardLeave={handleCardLeave}
                   />
                 </SwiperSlide>
               ))}
