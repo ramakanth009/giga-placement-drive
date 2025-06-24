@@ -7,7 +7,6 @@ import {
   Accordion, 
   AccordionSummary, 
   AccordionDetails,
-  Divider
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';

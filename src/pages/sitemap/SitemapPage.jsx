@@ -430,7 +430,7 @@ import { makeStyles } from '@mui/styles';
 import { 
   Home, Info, Mail, Building, School, Code, Database, 
   Users, FileText, ShoppingCart, CreditCard, ClipboardCheck, 
-  Map, Search, Clock, BookOpen, GraduationCap 
+  Map, BookOpen, GraduationCap 
 } from 'lucide-react';
 
 const useStyles = makeStyles({

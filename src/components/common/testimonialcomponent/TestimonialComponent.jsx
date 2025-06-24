@@ -17,6 +17,9 @@ import SendIcon from '@mui/icons-material/Send';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import VerifiedIcon from '@mui/icons-material/Verified';
 
+// Import the API
+import { api, handleApiError } from '../../../services/api';
+
 const useStyles = makeStyles({
   testimonialSection: {
     padding: '50px 0',
@@ -156,7 +159,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    minHeight: '420px', // Enhanced height
+    minHeight: '420px',
     '@media (max-width: 1200px)': {
       padding: '35px 10px',
       minHeight: '380px',
@@ -180,7 +183,7 @@ const useStyles = makeStyles({
     alignItems: 'center',
     gap: '15px',
     marginBottom: '35px',
-    justifyContent: 'center', // Center the heading
+    justifyContent: 'center',
     width: '100%',
     '@media (max-width: 1200px)': {
       marginBottom: '30px',
@@ -805,24 +808,38 @@ const TestimonialComponent = () => {
     setLoading(true);
     
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Map form data to API structure
+      const reviewData = {
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        feedback: formData.review.trim(),
+        love_rating: formData.rating
+      };
+
+      const result = await api.reviews.submitReview(reviewData);
       
       setSnackbar({
         open: true,
-        message: 'Thank you! Your heartfelt review has been submitted successfully. ❤️',
+        message: result.data.message || 'Thank you! Your heartfelt review has been submitted successfully. ❤️',
         severity: 'success'
       });
       
+      // Reset form
       setFormData({ name: '', email: '', review: '', rating: 0 });
     } catch (error) {
+      const errorInfo = handleApiError(error);
       setSnackbar({
         open: true,
-        message: 'Failed to submit review. Please try again.',
+        message: errorInfo.message || 'Failed to submit review. Please try again.',
         severity: 'error'
       });
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleCloseSnackbar = () => {
+    setSnackbar(prev => ({ ...prev, open: false }));
   };
 
   return (
@@ -834,16 +851,15 @@ const TestimonialComponent = () => {
 
       <Container className={classes.mainContainer}>
         <Box className={classes.titleContainer}>
-              <Typography variant="h1" className={classes.mainTitle}>
-                Be the first to review
-              </Typography>
-              <FavoriteIcon className={classes.bigLoveIcon} />
-            </Box>
+          <Typography variant="h1" className={classes.mainTitle}>
+            Be the first to review
+          </Typography>
+          <FavoriteIcon className={classes.bigLoveIcon} />
+        </Box>
 
         <Box className={classes.contentBox}>
           {/* Left Section - Description */}
           <Box className={classes.leftSection}>
-            
             <Box className={classes.descriptionBox}>
               <Typography className={classes.descriptionText}>
                 Unlike other platforms, we don't post fake reviews. Be the first to get featured with your honest feedback. Loved our curriculum? Just drop some ❤️ and share your valuable feedback!
@@ -869,6 +885,7 @@ const TestimonialComponent = () => {
                     className={classes.formField}
                     variant="outlined"
                     required
+                    inputProps={{ maxLength: 128 }}
                   />
 
                   <TextField
@@ -895,6 +912,7 @@ const TestimonialComponent = () => {
                     rows={2}
                     placeholder="Tell us how our program impacted your career journey..."
                     required
+                    inputProps={{ minLength: 10 }}
                   />
                   
                   <Box className={classes.ratingBox}>
@@ -937,11 +955,11 @@ const TestimonialComponent = () => {
         <Snackbar
           open={snackbar.open}
           autoHideDuration={6000}
-          onClose={() => setSnackbar(prev => ({ ...prev, open: false }))}
+          onClose={handleCloseSnackbar}
           anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
         >
           <Alert
-            onClose={() => setSnackbar(prev => ({ ...prev, open: false }))}
+            onClose={handleCloseSnackbar}
             severity={snackbar.severity}
             variant="filled"
           >

@@ -1,4 +1,3 @@
-
 // ===============================
 // src/services/api.js - CENTRALIZED API WITH ALL ENDPOINTS
 // ===============================
@@ -6,7 +5,7 @@
 // BASE URLS CONFIGURATION
 const BASE_URLS = {
   BASE_URL1: 'https://airesume.gigaversity.in',           // Contact API
-  BASE_URL2: 'https://prescreening-tool.onrender.com',   // Prescreening API  
+  BASE_URL2: 'https://prescreening-tool.onrender.com',   // Prescreening, Reviews, etc.
   BASE_URL3: '/pay',                                       // Payment API (relative)
 };
 
@@ -18,7 +17,7 @@ const API_ENDPOINTS = {
     SUBMIT: '/submit_contact'
   },
   
-  // NEW: Popup Contact API (BASE_URL1)
+  // Popup Contact API (BASE_URL1)
   POPUP_CONTACT: {
     BASE_URL: BASE_URLS.BASE_URL1,
     SUBMIT: '/submit_vd_contact'
@@ -29,6 +28,12 @@ const API_ENDPOINTS = {
     BASE_URL: BASE_URLS.BASE_URL2,
     SUBMIT_TEST: '/prescreening_test',
     HEALTH_CHECK: '/health'
+  },
+  
+  // NEW: Reviews API (BASE_URL2)
+  REVIEWS: {
+    BASE_URL: BASE_URLS.BASE_URL2,
+    SUBMIT: '/submit_review'
   },
   
   // Payment API (BASE_URL3)
@@ -93,7 +98,7 @@ class ApiClient {
 
         if (!response.ok) {
           throw new ApiError(
-            data.message || data.error || `HTTP ${response.status}`,
+            data.error || data.message || `HTTP ${response.status}`,
             response.status,
             data
           );
@@ -186,7 +191,7 @@ export const contactApi = {
 };
 
 // ===============================
-// NEW: POPUP CONTACT API (BASE_URL1)
+// POPUP CONTACT API (BASE_URL1)
 // ===============================
 export const popupContactApi = {
   async submitContact(formData) {
@@ -217,6 +222,49 @@ export const popupContactApi = {
     const validFields = ['fullstack', 'datascience', 'Book a demo'];
     if (!validFields.includes(data.chosen_field)) {
       throw new ApiError(`Invalid chosen_field. Must be one of: ${validFields.join(', ')}`);
+    }
+  }
+};
+
+// ===============================
+// NEW: REVIEWS API (BASE_URL2)
+// ===============================
+export const reviewsApi = {
+  async submitReview(reviewData) {
+    this.validateReviewData(reviewData);
+    const url = buildUrl(API_ENDPOINTS.REVIEWS.BASE_URL, API_ENDPOINTS.REVIEWS.SUBMIT);
+    return client.post(url, reviewData);
+  },
+
+  validateReviewData(data) {
+    const required = ['name', 'email', 'feedback'];
+    const missing = required.filter(field => !data[field]?.toString().trim());
+    
+    if (missing.length > 0) {
+      throw new ApiError(`Missing required fields: ${missing.join(', ')}`);
+    }
+
+    // Name validation (max 128 chars)
+    if (data.name.trim().length > 128) {
+      throw new ApiError('Name must be less than 128 characters');
+    }
+
+    // Email validation
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+      throw new ApiError('Please provide a valid email address');
+    }
+
+    // Feedback validation (min 10 chars)
+    if (data.feedback.trim().length < 10) {
+      throw new ApiError('Feedback must be at least 10 characters long');
+    }
+
+    // Love rating validation (1-5, optional)
+    if (data.love_rating !== undefined) {
+      const rating = parseInt(data.love_rating);
+      if (isNaN(rating) || rating < 1 || rating > 5) {
+        throw new ApiError('Love rating must be between 1 and 5');
+      }
     }
   }
 };
@@ -315,18 +363,6 @@ export const programApi = {
     return client.post(url, { comment });
   },
 
-  // RED ITEMS - COMMENTED OUT AS NON-FUNCTIONAL
-  // async getProgramStats(programId) {
-  //   this.validateProgramId(programId);
-  //   const url = buildUrl(API_ENDPOINTS.PROGRAM.BASE_URL, API_ENDPOINTS.PROGRAM.STATS, { program_id: programId });
-  //   return client.get(url);
-  // },
-
-  // async getAllProgramStats() {
-  //   const url = buildUrl(API_ENDPOINTS.PROGRAM.BASE_URL, API_ENDPOINTS.PROGRAM.ALL_STATS);
-  //   return client.get(url);
-  // },
-
   validateProgramId(programId) {
     const validPrograms = ['fullstack', 'datascience', 'placement'];
     if (!programId || !validPrograms.includes(programId)) {
@@ -420,7 +456,8 @@ export const adminApi = {
 // ===============================
 export const api = {
   contact: contactApi,
-  popupContact: popupContactApi,  // NEW
+  popupContact: popupContactApi,
+  reviews: reviewsApi,           // NEW
   prescreening: prescreeningApi,
   payment: paymentApi,
   program: programApi,
@@ -465,12 +502,19 @@ export const STRUCTURES = {
     message: ''
   },
 
-  // NEW: Popup Contact Structure
   POPUP_CONTACT: {
     full_name: '',
     email: '',
     chosen_field: '', // 'fullstack', 'datascience', or 'Book a demo'
     phone_number: ''
+  },
+
+  // NEW: Review Structure
+  REVIEW: {
+    name: '',
+    email: '',
+    feedback: '',
+    love_rating: 5  // optional, 1-5, default: 5
   },
 
   PRESCREENING: {
@@ -516,6 +560,13 @@ export const STRUCTURES = {
 
 // RESPONSE TYPES
 export const RESPONSE_TYPES = {
+  // NEW: Review Response
+  REVIEW: {
+    message: '',
+    review_id: 0,
+    status: ''
+  },
+
   PRESCREENING: {
     candidate_id: '',
     status: '',
@@ -593,6 +644,20 @@ export const API_CONFIG = {
 // USAGE EXAMPLES
 // ===============================
 /*
+// NEW: Review Submission
+try {
+  const result = await api.reviews.submitReview({
+    name: 'John Doe',
+    email: 'john.doe@example.com',
+    feedback: 'This program exceeded my expectations! The curriculum was comprehensive.',
+    love_rating: 5  // optional
+  });
+  console.log('Review submitted:', result.data);
+} catch (error) {
+  const errorInfo = handleApiError(error);
+  alert(errorInfo.message);
+}
+
 // Contact Form
 try {
   const result = await api.contact.submitContact(formData);
@@ -602,68 +667,18 @@ try {
   alert(errorInfo.message);
 }
 
-// NEW: Popup Contact Forms
+// Popup Contact Forms
 try {
-  // Form 1: Dropdown selection
   const result = await api.popupContact.submitContact({
     full_name: 'John Doe',
     email: 'john.doe@example.com',
-    chosen_field: 'fullstack', // or 'datascience'
+    chosen_field: 'fullstack',
     phone_number: '+1234567890'
   });
   console.log('Popup contact submitted:', result.data);
 } catch (error) {
   const errorInfo = handleApiError(error);
   alert(errorInfo.message);
-}
-
-// Student Contact Form  
-try {
-  const result = await api.studentContact.submitContact({
-    name: 'Jane Smith',
-    contact_no: '9876543210',
-    email: 'jane@example.com', 
-    year_of_graduation: '2025',
-    message: 'Interested in your programs'
-  });
-  console.log('Student contact submitted:', result.data);
-} catch (error) {
-  const errorInfo = handleApiError(error);
-  alert(errorInfo.message);
-}
-
-// Program Engagement
-try {
-  const result = await api.program.likeProgram('fullstack');
-  console.log('Program liked:', result.data);
-} catch (error) {
-  const errorInfo = handleApiError(error);
-  alert(errorInfo.message);
-}
-
-try {
-  const result = await api.program.submitComment('datascience', 'This program looks amazing!');
-  console.log('Comment submitted:', result.data);
-} catch (error) {
-  const errorInfo = handleApiError(error);
-  alert(errorInfo.message);
-}
-
-// Podcast Question
-try {
-  const result = await api.podcast.submitQuestion('What skills are most important for junior developers?');
-  console.log('Question submitted:', result.data);
-} catch (error) {
-  const errorInfo = handleApiError(error);
-  alert(errorInfo.message);
-}
-
-// Legacy usage (still works)
-try {
-  const result = await prescreeningAPI.submitTest(testData);
-  console.log('Legacy API call:', result.data);
-} catch (error) {
-  console.error('Error:', error);
 }
 */
 
