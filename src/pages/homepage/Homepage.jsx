@@ -50,8 +50,8 @@ const Homepage = () => {
         <CampusSection />
         <OtherPrograms />
         {/* <LearningBreakdown /> */}
-        <PodcastShowcaseSection />
         <HiringPartners />
+        <PodcastShowcaseSection />
         <StartupFundProcess />
         <AIIntegrationSection />
         <TechFutureSection />
