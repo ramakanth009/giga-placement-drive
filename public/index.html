@@ -1,16 +1,71 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <!-- Basic Meta Tags -->
   <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
+  <meta content="#2A2B6A" name="theme-color" />
+  <meta content="#2A2B6A" name="msapplication-TileColor" />
+  <meta content="yes" name="apple-mobile-web-app-capable" />
+  <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style" />
+  
+  <!-- Enhanced SEO Meta Tags -->
+  <meta content="Gigaversity - India's #1 Tech Education Platform | Full Stack & Data Science Courses" name="title" />
+  <meta content="Transform your career with India's premier tech education platform. Master Full Stack Development & Data Science with hands-on projects, expert mentorship, and guaranteed job placement. Join 10,000+ successful graduates!" name="description" />
+  <meta content="tech education india, full stack development course, data science course, coding bootcamp, programming training, web development course, machine learning course, career change tech, online coding classes, software development institute, mern stack, python programming, virtual placement, gigaversity" name="keywords" />
+  
+  <!-- Author and Publisher Information -->
+  <meta content="Gigaversity" name="author" />
+  <meta content="Gigaversity" name="publisher" />
+  <meta content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" name="robots" />
+  <meta content="1 days" name="revisit-after" />
+  <meta content="Global" name="distribution" />
+  <meta content="General" name="rating" />
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Gigaversity" />
+  <meta property="og:title" content="Gigaversity - India's #1 Tech Education Platform" />
+  <meta property="og:description" content="Transform your career with India's premier tech education platform. Master Full Stack Development & Data Science with guaranteed job placement!" />
+  <meta property="og:url" content="https://gigaversity.in" />
+  <meta property="og:image" content="https://gigaversity.in/assets/og-homepage.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Gigaversity - Premier Tech Education Platform" />
+  <meta property="og:locale" content="en_IN" />
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@gigaversity" />
+  <meta name="twitter:creator" content="@gigaversity" />
+  <meta name="twitter:title" content="Gigaversity - India's #1 Tech Education Platform" />
+  <meta name="twitter:description" content="Transform your career with India's premier tech education platform. Master Full Stack Development & Data Science!" />
+  <meta name="twitter:image" content="https://gigaversity.in/assets/og-homepage.jpg" />
+  
+  <!-- Additional SEO Meta Tags -->
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="geo.region" content="IN-KA" />
+  <meta name="geo.placename" content="Bangalore" />
+  <meta name="geo.position" content="12.9716;77.5946" />
+  <meta name="ICBM" content="12.9716, 77.5946" />
+  
+  <!-- Canonical URL (will be updated dynamically by React) -->
+  <link rel="canonical" href="https://gigaversity.in/" />
+  
+  <!-- Favicon and Icons -->
   <link href="%PUBLIC_URL%/favicon.ico" rel="icon" />
-  <meta content="width=device-width, initial-scale=1" name="viewport" />
-  <meta content="#000000" name="theme-color" />
-  <meta content="Gigaversity Resume Builder—Free ATS-Friendly Resume Templates for Freshers"
-        name="title" />
-  <meta content="Build your resume with Gigaversity Resume Builder—free, ATS-friendly templates tailored for freshers. Impress recruiters with smart tools & perfect formats."
-        name="description" />
-  <meta content="Gigaversity Resume Builder, Giga Resume Builder, Free Resume builder, resume template for freshers, ATS-friendly resume template"
-        name="keywords" />
+  <link href="%PUBLIC_URL%/logo192.png" rel="apple-touch-icon" />
+  <link href="%PUBLIC_URL%/logo512.png" rel="apple-touch-icon" sizes="512x512" />
+  
+  <!-- Manifest -->
+  <link href="%PUBLIC_URL%/manifest.json" rel="manifest" />
+  
+  <!-- Preconnect to External Domains for Performance -->
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+  <link href="https://www.googletagmanager.com" rel="preconnect" />
+  <link href="https://www.google-analytics.com" rel="preconnect" />
+  
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -18,19 +73,173 @@
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-PW9PNF87');</script>
   <!-- End Google Tag Manager -->
-
-  <link href="%PUBLIC_URL%/logo192.png" rel="apple-touch-icon" />
-  <link href="%PUBLIC_URL%/manifest.json" rel="manifest" />
-  <title>Gigaversity</title>
-
+  
+  <!-- Structured Data for Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "Gigaversity",
+    "alternateName": "Gigaversity Tech Education",
+    "description": "India's Premier Tech Education Platform offering Full Stack Development and Data Science courses with job guarantee",
+    "url": "https://gigaversity.in",
+    "logo": "https://gigaversity.in/logo192.png",
+    "image": "https://gigaversity.in/assets/campus.jpg",
+    "foundingDate": "2020",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Tech Park, Whitefield",
+      "addressLocality": "Bangalore",
+      "addressRegion": "Karnataka",
+      "postalCode": "560066",
+      "addressCountry": "IN"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91-XXXXXXXXXX",
+      "contactType": "customer service",
+      "availableLanguage": ["English", "Hindi"],
+      "hoursAvailable": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      }
+    },
+    "sameAs": [
+      "https://linkedin.com/company/gigaversity",
+      "https://twitter.com/gigaversity",
+      "https://youtube.com/gigaversity",
+      "https://instagram.com/gigaversity"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Tech Education Courses",
+      "itemListElement": [
+        {
+          "@type": "Course",
+          "name": "Full Stack Development",
+          "description": "Complete MERN Stack Development Course with Job Guarantee",
+          "provider": {
+            "@type": "Organization",
+            "name": "Gigaversity"
+          },
+          "courseCode": "FSD-2025",
+          "educationalCredentialAwarded": "Full Stack Development Certificate"
+        },
+        {
+          "@type": "Course",
+          "name": "Data Science",
+          "description": "Comprehensive Data Science and Machine Learning Course",
+          "provider": {
+            "@type": "Organization",
+            "name": "Gigaversity"
+          },
+          "courseCode": "DS-2025",
+          "educationalCredentialAwarded": "Data Science Certificate"
+        }
+      ]
+    }
+  }
+  </script>
+  
+  <!-- Website Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Gigaversity",
+    "description": "India's Premier Tech Education Platform",
+    "url": "https://gigaversity.in",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://gigaversity.in/search?q={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Gigaversity",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://gigaversity.in/logo192.png"
+      }
+    }
+  }
+  </script>
+  
+  <!-- Performance Optimization -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" as="style" />
+  <link rel="preload" href="%PUBLIC_URL%/logo192.png" as="image" />
+  
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect" />
-  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+  
+  <!-- Title -->
+  <title>Gigaversity - India's #1 Tech Education Platform | Full Stack & Data Science Courses</title>
+  
+  <!-- DNS Prefetch for Performance -->
+  <link rel="dns-prefetch" href="//airesume.gigaversity.in" />
+  <link rel="dns-prefetch" href="//prescreening-tool.onrender.com" />
+  
+  <!-- CSS for Loading Animation -->
+  <style>
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Screen reader only content */
+    .sr-only {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+    
+    /* Skip navigation for accessibility */
+    .skip-nav {
+      position: absolute;
+      top: -40px;
+      left: 6px;
+      background: #2A2B6A;
+      color: white;
+      padding: 8px;
+      text-decoration: none;
+      border-radius: 0 0 4px 4px;
+      z-index: 1000;
+      transition: top 0.2s;
+    }
+    
+    .skip-nav:focus {
+      top: 0;
+    }
+  </style>
 </head>
 <body>
-  <!-- <noscript>You need to enable JavaScript to run this app.</noscript> -->
+  <!-- Skip Navigation for Accessibility -->
+  <a href="#main-content" class="skip-nav">Skip to main content</a>
+  
+  <!-- Screen Reader Content -->
+  <div class="sr-only">
+    <h1>Gigaversity - Premier Tech Education Platform in India</h1>
+    <nav aria-label="Page topics">
+      <span>Full Stack Development Course</span>
+      <span>Data Science Course</span>
+      <span>Virtual Placement Program</span>
+      <span>Tech Career Training</span>
+      <span>Programming Bootcamp</span>
+    </nav>
+  </div>
+  
+  <!-- Google Tag Manager (noscript) -->
   <noscript>
     <iframe height="0"
             src="https://www.googletagmanager.com/ns.html?id=GTM-PW9PNF87"
@@ -39,7 +248,57 @@
     </iframe>
   </noscript>
   <!-- End Google Tag Manager (noscript) -->
-
+  
+  <!-- No JavaScript Warning -->
+  <noscript>
+    <div style="
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #f44336;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      z-index: 9999;
+      font-family: Arial, sans-serif;
+    ">
+      Please enable JavaScript to use Gigaversity's full features and course enrollment system.
+    </div>
+  </noscript>
+  
+  <!-- React App Container -->
   <div id="root"></div>
+  
+  <!-- Hidden content for SEO (will be updated by React) -->
+  <div id="seo-content" style="display: none;">
+    <nav aria-label="Site navigation">
+      <a href="/">Home</a>
+      <a href="/virtual-placement-fullstack">Full Stack Course</a>
+      <a href="/virtual-placement-datascience">Data Science Course</a>
+      <a href="/fullstack">Full Stack Program</a>
+      <a href="/datascience">Data Science Program</a>
+      <a href="/about">About Us</a>
+      <a href="/contact">Contact</a>
+      <a href="/blog">Blog</a>
+      <a href="/campus">Campus</a>
+    </nav>
+  </div>
+  
+  <!-- Service Worker Registration (Optional) -->
+  <script>
+    // Register service worker for better performance (optional)
+    if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then((registration) => {
+            console.log('SW registered: ', registration);
+          })
+          .catch((registrationError) => {
+            console.log('SW registration failed: ', registrationError);
+          });
+      });
+    }
+  </script>
 </body>
 </html>
