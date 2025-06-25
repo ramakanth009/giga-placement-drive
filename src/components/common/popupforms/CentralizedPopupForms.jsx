@@ -33,184 +33,255 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const useStyles = makeStyles({
   dialogPaper: {
-    borderRadius: 20,
+    borderRadius: 16,
     overflow: 'hidden',
-    maxWidth: 480,
+    maxWidth: "500px !important",
     width: '100%',
-    margin: '16px',
-    background: 'linear-gradient(135deg, #f8f9ff 0%, #e8eaff 100%)',
-    color: '#2A2B6A',
+    margin: '12px',
+    backgroundColor: '#ffffff !important',
     position: 'relative',
-    boxShadow: '0 8px 40px 0 rgba(42,43,106,0.15)',
+    boxShadow: '0 10px 50px rgba(42, 43, 106, 0.15) !important',
     border: 'none',
+    opacity: '1 !important',
+    zIndex: 9999,
     '@media (max-width: 600px)': {
-      maxWidth: '95vw',
-      margin: '8px',
-      borderRadius: 14,
+      maxWidth: '90vw',
+      margin: '6px',
+      borderRadius: 12,
     }
   },
   dialogContent: {
     position: 'relative',
     zIndex: 2,
-    padding: '28px 24px 20px 24px',
-    background: 'transparent',
-    color: '#2A2B6A',
-    borderRadius: 16,
+    padding: '16px 20px 12px 20px',
+    backgroundColor: '#ffffff !important',
     margin: 0,
     boxShadow: 'none',
     '@media (max-width: 600px)': {
-      padding: '18px 6px 12px 6px',
-      borderRadius: 10,
+      padding: '12px 16px 8px 16px',
+    }
+  },
+  headerSection: {
+    background: 'linear-gradient(135deg, #2A2B6A 0%, #1a1b43 100%)',
+    padding: '20px 20px 16px 20px',
+    color: 'white',
+    position: 'relative',
+    overflow: 'hidden',
+    '@media (max-width: 600px)': {
+      padding: '16px 16px 12px 16px',
+    },
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      top: '-50%',
+      right: '-20%',
+      width: '100px',
+      height: '100px',
+      background: 'rgba(255, 198, 20, 0.1)',
+      borderRadius: '50%',
+      transform: 'scale(2)',
     }
   },
   formHeading: {
-    fontSize: '1.5rem',
-    fontWeight: 'bold',
-    color: '#2A2B6A',
-    marginBottom: '10px',
+    fontSize: '1.3rem',
+    fontWeight: 700,
+    color: 'white',
+    marginBottom: '4px',
     textAlign: 'center',
-    letterSpacing: 0.5,
+    letterSpacing: 0.3,
     position: 'relative',
-    paddingBottom: '8px',
-    '&:after': {
-      content: '""',
-      display: 'block',
-      margin: '8px auto 0 auto',
-      width: '40px',
-      height: '3px',
-      backgroundColor: '#FFC614',
-      borderRadius: '2px'
-    },
+    zIndex: 2,
     '@media (max-width: 600px)': {
       fontSize: '1.1rem',
-      paddingBottom: '6px',
-      '&:after': {
-        width: '28px',
-        height: '2px'
-      }
+      marginBottom: '2px',
+    }
+  },
+  subtitle: {
+    fontSize: '0.9rem',
+    color: '#292B6B !important',
+    textAlign: 'center',
+    fontWeight: "600 !important",
+    position: 'relative',
+    zIndex: 2,
+    '@media (max-width: 600px)': {
+      fontSize: '0.8rem',
     }
   },
   closeButton: {
     position: 'absolute',
-    right: 12,
-    top: 12,
+    right: 8,
+    top: 8,
     zIndex: 3,
-    color: '#f44336', // red for wrong/close
-    backgroundColor: 'transparent',
-    border: 'none',
+    color: '#ffffff !important',
+    backgroundColor: 'rgba(0, 0, 0, 0.25) !important',
+    border: '0.5px solid rgba(255, 255, 255, 0.3) !important',
     borderRadius: '50%',
-    width: 38,
-    height: 38,
-    boxShadow: 'none',
-    transition: 'none',
+    width: 32,
+    height: 32,
+    backdropFilter: 'blur(10px)',
+    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15) !important',
+    transition: 'all 0.2s ease',
     '&:hover': {
-      backgroundColor: 'transparent',
-      color: '#f44336',
-      transform: 'none'
+      backgroundColor: 'rgba(244, 67, 54, 0.9)',
+      borderColor: 'rgba(244, 67, 54, 1)',
+      color: 'white',
+      transform: 'scale(1.05)',
+      boxShadow: '0 4px 12px rgba(244, 67, 54, 0.3)',
     }
   },
-  title: {
+  iconContainer: {
     display: 'flex',
-    alignItems: 'center',
-    gap: 12,
-    color: '#2A2B6A',
-    fontWeight: 700,
-    fontSize: '1.1rem',
-    marginBottom: 0,
-    background: 'none',
-    padding: 0,
-    minHeight: 0
+    justifyContent: 'center',
+    marginBottom: '8px',
+    position: 'relative',
+    zIndex: 2,
+    '@media (max-width: 600px)': {
+      marginBottom: '6px',
+    }
   },
   textField: {
     '& .MuiOutlinedInput-root': {
       borderRadius: 8,
-      backgroundColor: '#f4f6fa',
-      color: '#2A2B6A',
-      transition: 'all 0.3s',
-      fontWeight: 500,
-      '&:hover': {
-        backgroundColor: '#e6e9f8',
-        boxShadow: '0 2px 12px rgba(42,43,106,0.08)'
+      backgroundColor: '#fafafa',
+      transition: 'all 0.2s ease',
+      fontSize: '0.9rem',
+      '& fieldset': {
+        borderColor: '#e0e0e0',
+        borderWidth: 1,
+      },
+      '&:hover fieldset': {
+        borderColor: '#2A2B6A',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: '#2A2B6A',
+        borderWidth: 2,
       },
       '&.Mui-focused': {
-        backgroundColor: '#fff',
-        boxShadow: '0 4px 16px rgba(42,43,106,0.15)'
+        backgroundColor: '#ffffff',
       }
     },
     '& .MuiInputLabel-root': {
-      fontWeight: 600,
-      color: '#2A2B6A'
+      fontSize: '0.9rem',
+      fontWeight: 500,
+      color: '#666666',
+      '&.Mui-focused': {
+        color: '#2A2B6A',
+      }
+    },
+    '& .MuiOutlinedInput-input': {
+      padding: '10px 12px',
+      fontSize: '0.9rem',
+      color: '#2A2B6A',
+      fontWeight: 500,
     }
   },
   selectField: {
     '& .MuiOutlinedInput-root': {
       borderRadius: 8,
-      backgroundColor: '#f4f6fa',
-      color: '#2A2B6A',
-      transition: 'all 0.3s',
-      fontWeight: 500,
-      '&:hover': {
-        backgroundColor: '#e6e9f8',
-        boxShadow: '0 2px 12px rgba(42,43,106,0.08)'
+      backgroundColor: '#fafafa',
+      transition: 'all 0.2s ease',
+      fontSize: '0.9rem',
+      '& fieldset': {
+        borderColor: '#e0e0e0',
+        borderWidth: 1,
+      },
+      '&:hover fieldset': {
+        borderColor: '#2A2B6A',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: '#2A2B6A',
+        borderWidth: 2,
       },
       '&.Mui-focused': {
-        backgroundColor: '#fff',
-        boxShadow: '0 4px 16px rgba(42,43,106,0.15)'
+        backgroundColor: '#ffffff',
+      }
+    },
+    '& .MuiSelect-select': {
+      padding: '10px 12px',
+      fontSize: '0.9rem',
+      color: '#2A2B6A',
+      fontWeight: 500,
+    },
+    '& .MuiInputLabel-root': {
+      fontSize: '0.9rem',
+      fontWeight: 500,
+      color: '#666666',
+      '&.Mui-focused': {
+        color: '#2A2B6A',
       }
     }
   },
   submitButton: {
     borderRadius: 8,
-    padding: '12px 0',
-    fontWeight: 700,
-    fontSize: '1rem',
+    padding: '10px 24px',
+    fontWeight: 600,
+    fontSize: '0.9rem',
     textTransform: 'none',
-    backgroundColor: '#292B6B',
-    color: '#fff',
-    width: 160,
-    boxShadow: 'none',
-    transition: 'all 0.3s',
+    background: 'linear-gradient(135deg, #2A2B6A 0%, #1a1b43 100%)',
+    color: '#fff !important',
+    minWidth: 120,
+    boxShadow: '0 4px 15px rgba(42, 43, 106, 0.3)',
+    transition: 'all 0.3s ease',
+    position: 'relative',
+    overflow: 'hidden',
     '&:hover': {
-      backgroundColor: '#1a1b43',
-      color: '#fff',
-      boxShadow: 'none'
+      background: 'linear-gradient(135deg, #1a1b43 0%, #0f1025 100%)',
+      boxShadow: '0 6px 20px rgba(42, 43, 106, 0.4)',
+      transform: 'translateY(-1px)',
     },
     '&:disabled': {
       backgroundColor: '#cccccc',
-      color: '#666666'
+      color: '#666666',
+      boxShadow: 'none',
+      transform: 'none',
+    },
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      top: 0,
+      left: '-100%',
+      width: '100%',
+      height: '100%',
+      background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent)',
+      transition: 'left 0.6s',
+    },
+    '&:hover::before': {
+      left: '100%',
     }
   },
   cancelButton: {
     borderRadius: 8,
-    padding: '12px 0',
-    fontWeight: 600,
-    fontSize: '1rem',
+    padding: '10px 20px',
+    fontWeight: 500,
+    fontSize: '0.9rem',
     textTransform: 'none',
-    color: '#292B6B',
-    backgroundColor: '#e0e0e0',
-    border: 'none',
-    width: 120,
-    boxShadow: 'none',
-    transition: 'all 0.3s',
+    color: '#666666 !important',
+    backgroundColor: 'transparent',
+    border: '1px solid #e0e0e0',
+    minWidth: 100,
+    transition: 'all 0.2s ease',
+    boxShadow: '0 10px 50px rgba(42, 43, 106, 0.35) !important',
     '&:hover': {
-      backgroundColor: '#bdbdbd',
-      color: '#292B6B'
+      backgroundColor: '#f5f5f5',
+      borderColor: '#2A2B6A !important',
+      color: '#2A2B6A',
     }
   },
   formContainer: {
     display: 'flex',
     flexDirection: 'column',
-    gap: 18,
-    marginTop: 10,
+    gap: 12,
+    marginTop: 4,
     '@media (max-width: 600px)': {
       gap: 10,
     }
   },
   readOnlyField: {
     '& .MuiOutlinedInput-root': {
-      backgroundColor: '#e6e9f8',
+      backgroundColor: '#f8f9ff',
       '& fieldset': {
-        borderColor: '#FFC614'
+        borderColor: '#FFC614',
+        borderWidth: 2,
       }
     },
     '& .MuiInputBase-input': {
@@ -218,50 +289,76 @@ const useStyles = makeStyles({
       fontWeight: 600
     }
   },
-  successMessage: {
-    borderRadius: 14,
-    background: 'linear-gradient(90deg, #e8eaff 0%, #f8f9ff 100%)',
-    color: '#2A2B6A',
-    fontWeight: 600,
-    border: '2px solid #FFC614',
-    boxShadow: '0 2px 12px rgba(42,43,106,0.10)',
-    padding: '24px 0',
-    margin: '0 auto',
-    maxWidth: 340,
+  successContainer: {
+    textAlign: 'center',
+    padding: '20px 0',
     '@media (max-width: 600px)': {
       padding: '16px 0',
-      maxWidth: 260,
     }
   },
-  successIcon: {
-    fontSize: 54,
-    color: '#FFC614',
+  successMessage: {
+    borderRadius: 12,
+    backgroundColor: '#f8fff8',
+    color: '#2A2B6A',
+    fontWeight: 500,
+    border: '2px solid #4caf50',
+    boxShadow: '0 4px 20px rgba(76, 175, 80, 0.15)',
+    padding: '16px',
+    margin: '12px 0',
+    '@media (max-width: 600px)': {
+      padding: '12px',
+      margin: '8px 0',
+    }
+  },
+  successIconContainer: {
     marginBottom: 8,
-    animation: '$pop 0.7s cubic-bezier(.68,-0.55,.27,1.55)'
+    position: 'relative',
+  },
+  successIcon: {
+    fontSize: 48,
+    color: '#4caf50',
+    animation: '$bounceIn 0.6s cubic-bezier(.68,-0.55,.27,1.55)',
+    filter: 'drop-shadow(0 2px 8px rgba(76, 175, 80, 0.3))',
   },
   celebrationIcon: {
-    fontSize: 44,
-    color: '#2A2B6A',
-    marginLeft: 8,
-    animation: '$pop 0.7s cubic-bezier(.68,-0.55,.27,1.55)'
+    fontSize: 36,
+    color: '#FFC614',
+    marginLeft: 6,
+    animation: '$bounceIn 0.8s cubic-bezier(.68,-0.55,.27,1.55)',
+    animationDelay: '0.2s',
+    animationFillMode: 'both',
   },
-  '@keyframes pop': {
-    '0%': { transform: 'scale(0.7)' },
-    '60%': { transform: 'scale(1.15)' },
-    '100%': { transform: 'scale(1)' }
+  '@keyframes bounceIn': {
+    '0%': { 
+      transform: 'scale(0.3) rotate(-10deg)',
+      opacity: 0,
+    },
+    '50%': { 
+      transform: 'scale(1.1) rotate(5deg)',
+      opacity: 0.8,
+    },
+    '100%': { 
+      transform: 'scale(1) rotate(0deg)',
+      opacity: 1,
+    }
   },
   errorMessage: {
-    borderRadius: 10,
-    backgroundColor: 'rgba(244, 67, 54, 0.08)',
-    color: '#f44336',
+    borderRadius: 8,
+    backgroundColor: '#fff5f5',
+    color: '#d32f2f',
     fontWeight: 500,
-    border: '1.5px solid rgba(244, 67, 54, 0.22)'
+    border: '1px solid rgba(211, 47, 47, 0.3)',
+    fontSize: '0.85rem',
+    '& .MuiAlert-message': {
+      padding: 0,
+    }
   },
   loadingContainer: {
     display: 'flex',
     alignItems: 'center',
-    gap: 10,
-    color: '#2A2B6A'
+    gap: 8,
+    color: 'inherit',
+    fontSize: '0.9rem',
   }
 });
 
@@ -304,34 +401,51 @@ const CentralizedPopupForms = ({
       case 'dropdown':
         return 'Join Our Program';
       case 'fullstackdemo':
-        return 'Schedule a Demo for Full Stack';
+        return 'Schedule Full Stack Demo';
       case 'datasciencedemo':
-        return 'Schedule a Demo for Data Science';
+        return 'Schedule Data Science Demo';
       case 'jobportal':
-        return 'Schedule a Demo for Job Portal';
+        return 'Schedule Job Portal Demo';
       case 'fullstack':
-        return 'Apply for Full Stack Development';
+        return 'Apply for Full Stack';
       case 'datascience':
         return 'Apply for Data Science';
       default:
-        return 'Contact Us';
+        return 'Get In Touch';
+    }
+  };
+
+  const getSubtitle = () => {
+    switch (variant) {
+      case 'dropdown':
+        return 'Choose your path to success';
+      case 'fullstackdemo':
+      case 'datasciencedemo':
+      case 'jobportal':
+        return 'Book a personalized demo';
+      case 'fullstack':
+        return 'Start your coding journey';
+      case 'datascience':
+        return 'Dive into data science';
+      default:
+        return "Let's connect and grow together";
     }
   };
 
   const getIcon = () => {
+    const iconProps = { sx: { fontSize: 28, color: '#FFC614', filter: 'drop-shadow(0 2px 4px rgba(255, 198, 20, 0.3))' } };
     switch (variant) {
       case 'dropdown':
-        return <SchoolIcon sx={{ fontSize: 32, color: '#FFC614' }} />;
-      case 'demo':
-        return <CalendarTodayIcon sx={{ fontSize: 32, color: '#FFC614' }} />;
-      case 'jobportal':
-        return <WorkIcon sx={{ fontSize: 32, color: '#FFC614' }} />;
       case 'fullstack':
-        return <SchoolIcon sx={{ fontSize: 32, color: '#FFC614' }} />;
       case 'datascience':
-        return <SchoolIcon sx={{ fontSize: 32, color: '#FFC614' }} />;
+        return <SchoolIcon {...iconProps} />;
+      case 'fullstackdemo':
+      case 'datasciencedemo':
+        return <CalendarTodayIcon {...iconProps} />;
+      case 'jobportal':
+        return <WorkIcon {...iconProps} />;
       default:
-        return <SchoolIcon sx={{ fontSize: 32, color: '#FFC614' }} />;
+        return <SchoolIcon {...iconProps} />;
     }
   };
 
@@ -340,7 +454,7 @@ const CentralizedPopupForms = ({
       case 'demo':
         return 'Schedule A Demo';
       case 'jobportal':
-        return 'Schedule A Demo for Job Portal';
+        return 'Job Portal Demo';
       case 'fullstack':
         return 'Full Stack Development';
       case 'datascience':
@@ -404,57 +518,76 @@ const CentralizedPopupForms = ({
       onClose={onClose}
       TransitionComponent={Transition}
       PaperProps={{
-        className: classes.dialogPaper
+        className: classes.dialogPaper,
+        style: {
+          backgroundColor: '#ffffff',
+          opacity: 1,
+          zIndex: 9999
+        }
       }}
+      BackdropProps={{
+        style: {
+          backgroundColor: 'rgba(0, 0, 0, 0.6)',
+          backdropFilter: 'blur(4px)',
+          zIndex: 9998
+        }
+      }}
+      style={{ zIndex: 9999 }}
       maxWidth="sm"
       fullWidth
     >
-      {/* Close button at right top corner, always visible, no hover effect */}
-      <IconButton
-        className={classes.closeButton}
-        onClick={onClose}
-        disabled={loading}
-        aria-label="Close"
-        style={{ position: 'absolute', right: 12, top: 12 }}
-      >
-        <CloseIcon />
-      </IconButton>
+      {/* Header Section */}
+      <Box className={classes.headerSection}>
+        <IconButton
+          className={classes.closeButton}
+          onClick={onClose}
+          disabled={loading}
+          aria-label="Close"
+        >
+          <CloseIcon sx={{ fontSize: 18 }} />
+        </IconButton>
 
-      {/* Form Heading */}
-      <Box className={classes.formHeading}>
-        {getTitle()}
+        <Box className={classes.iconContainer}>
+          {getIcon()}
+        </Box>
+
+        <Typography className={classes.formHeading}>
+          {getTitle()}
+        </Typography>
+        
+       
       </Box>
 
-      {/* Icon and subtitle below heading */}
-      <DialogTitle className={classes.title}>
-        {getIcon()}
-        <span>
-          {variant === 'dropdown'
-            ? 'Apply for a program'
-            : variant === 'fullstack'
-              ? 'Apply for Full Stack Development'
-              : variant === 'datascience'
-                ? 'Apply for Data Science'
-                : "Let's connect!"}
-        </span>
-      </DialogTitle>
       <DialogContent className={classes.dialogContent}>
         {success ? (
-          <Box textAlign="center" py={isMobile ? 2 : 4}>
-            <Box>
+          <Box className={classes.successContainer}>
+            <Box className={classes.successIconContainer}>
               <CheckCircleIcon className={classes.successIcon} />
               <CelebrationIcon className={classes.celebrationIcon} />
             </Box>
             <Alert severity="success" className={classes.successMessage} icon={false}>
-              <Typography variant="h6" gutterBottom sx={{ fontWeight: 700, color: '#2A2B6A', letterSpacing: 0.5 }}>
+              <Typography variant="h6" gutterBottom sx={{ 
+                fontWeight: 600, 
+                color: '#2A2B6A', 
+                fontSize: isMobile ? '1rem' : '1.1rem',
+                marginBottom: '4px'
+              }}>
                 Thank you for your submission!
               </Typography>
-              <Typography sx={{ fontSize: isMobile ? '1rem' : '1.1rem', color: '#2A2B6A', fontWeight: 500 }}>
-                We'll be in touch soon.<br />
-                <span style={{ color: '#FFC614', fontWeight: 700 }}>Stay tuned for exciting updates!</span>
+              <Typography sx={{ 
+                fontSize: isMobile ? '0.85rem' : '0.9rem', 
+                color: '#2A2B6A', 
+                fontWeight: 400,
+                lineHeight: 1.4
+              }}>
+                We'll be in touch soon.{' '}
+                <span style={{ color: '#4caf50', fontWeight: 600 }}>
+                  Stay tuned for updates!
+                </span>
               </Typography>
             </Alert>
           </Box>
+          
         ) : (
           <form onSubmit={handleSubmit} className={classes.formContainer} autoComplete="off">
             {error && (
@@ -462,6 +595,9 @@ const CentralizedPopupForms = ({
                 {error}
               </Alert>
             )}
+             <Typography className={classes.subtitle}>
+          {getSubtitle()}
+        </Typography>
 
             <TextField
               name="full_name"
@@ -528,8 +664,8 @@ const CentralizedPopupForms = ({
             />
 
             <DialogActions sx={{
-              padding: isMobile ? '12px 0 0' : '20px 0 0',
-              gap: isMobile ? '8px' : '18px',
+              padding: isMobile ? '12px 0 0' : '16px 0 0',
+              gap: isMobile ? '8px' : '12px',
               justifyContent: 'center'
             }}>
               <Button
@@ -546,7 +682,7 @@ const CentralizedPopupForms = ({
               >
                 {loading ? (
                   <Box className={classes.loadingContainer}>
-                    <CircularProgress size={20} color="inherit" />
+                    <CircularProgress size={16} color="inherit" />
                     Submitting...
                   </Box>
                 ) : (
