@@ -193,7 +193,7 @@ const PaymentComplete = React.lazy(() => import('./pages/cart/PaymentComplete'))
 const Blog = React.lazy(() => import('./pages/blog/Blog'));
 const BlogDetailPage = React.lazy(() => import('./components/blog/blogdetail/BlogDetailPage'));
 const CampusPage = React.lazy(() => import('./pages/campus/CampusPage'));
-const Productspage = React.lazy(() => import('./pages/products/Products'));
+const Productspage = React.lazy(() => import('./pages/products/products'));
 const PreScreeningTest = React.lazy(() => import('./components/homepagecomponets/prescreeningtest/PreScreeningTest'));
 const SitemapPage = React.lazy(() => import('./pages/sitemap/SitemapPage'));
 

@@ -354,10 +354,10 @@ const Navbar = () => {
               
               <Button
                 className={`${classes.navLink} ${
-                  currentPath === "/products" ? classes.active : ""
+                  currentPath === "/giga-resume-builder" ? classes.active : ""
                 }`}
                 component={Link}
-                to="/products"
+                to="/giga-resume-builder"
                 onClick={handleNavLinkClick}
               >
                 Products
@@ -509,7 +509,7 @@ const Navbar = () => {
             onClick={() => handleNavLinkClick()}
             className={classes.menuItem}
             component={Link}
-            to="/products"
+            to="/giga-resume-builder"
           >
             Products
           </MenuItem>

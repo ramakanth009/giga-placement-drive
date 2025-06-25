@@ -27,8 +27,11 @@ import AIIntegrationSection from "../../components/homepagecomponets/aiintegrati
 import Hero from "../../components/homepagecomponets/newdeisgns/HeroSection";
 import Banner from "../../components/homepagecomponets/newdeisgns/Banner";
 import CampusSection from "../../components/homepagecomponets/newdeisgns/CampusSection";
+import useAdvancedSEO from "../../hooks/useAdvancedSEO";
+import { advancedSeoData } from "../../data/advancedSeoData";
 
 const Homepage = () => {
+  useAdvancedSEO(advancedSeoData.homepage);
   return (
     <Box
       sx={{
@@ -64,8 +67,6 @@ const Homepage = () => {
         <WhoIsItFor />
         <SmartResumeSection />
         <ComparisonTableSection /> */}
-        
-        
       </Box>
     </Box>
   );

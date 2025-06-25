@@ -13,8 +13,11 @@ import TestimonialComponent from '../../components/common/testimonialcomponent/T
 import FullStackAIToolkit from '../../components/fulltime/fullstack/aitoolkit/FullStackAIToolkit'
 import FullStackLearningPath from '../../components/fulltime/fullstack/learningpathtimeline/FullStackLearningPath';
 import FullFullStackFullTimeFaq from "../../components/fulltime/fullstack/faq/FullStackFullTimeFaq"
+import useAdvancedSEO from '../../hooks/useAdvancedSEO'
+import { advancedSeoData } from '../../data/advancedSeoData'
 
 const FullstackFulltime = () => {
+  useAdvancedSEO(advancedSeoData.fullstack);
   return (
     <div>
         <FullStackHero />

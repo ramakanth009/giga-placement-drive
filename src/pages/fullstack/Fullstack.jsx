@@ -13,9 +13,12 @@ import CareerBanner from "../../components/common/careerbanner/CareerBanner";
 import ProjectsSection from "../../components/fullstackcomponents/projectssection/ProjectsSection";
 import ProjectHigh from "../../components/common/projecthighlightimg/ProgramHighlights";
 import FullStackCertificationsSection from "../../components/fullstackcomponents/certificationsection/FullStackCertificationsSection";
+import useAdvancedSEO from "../../hooks/useAdvancedSEO";
+import { advancedSeoData } from "../../data/advancedSeoData";
 
 
 const Fullstack = () => {
+  useAdvancedSEO(advancedSeoData["virtual-placement-fullstack"]);
   return (
     <div>
       <Hero /> 

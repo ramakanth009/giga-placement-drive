@@ -13,8 +13,11 @@ import ProjectsSection from "../../components/datasciencecomponents/projectssect
 import ProjectHigh from "../../components/common/projecthighlightimg/ProgramHighlights";
 import HiringRolesBoxes from "../../components/datasciencecomponents/hiringrolesboxes/HiringRolesBoxes";
 import DataScienceCertificationsSection from "../../components/datasciencecomponents/certificationsection/DataScienceCertificationsSection";
+import useAdvancedSEO from "../../hooks/useAdvancedSEO";
+import { advancedSeoData } from "../../data/advancedSeoData";
 
 const DataScience = () => {
+  useAdvancedSEO(advancedSeoData["virtual-placement-datascience"]);
   return (
     <div>
       <Hero />

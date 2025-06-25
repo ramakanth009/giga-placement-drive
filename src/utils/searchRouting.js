@@ -77,9 +77,9 @@ export class SearchRoutingManager {
       'pandas numpy training': '/virtual-placement-datascience',
       
       // Product/Service Keywords
-      'gigaversity products': '/products',
-      'tech products': '/products',
-      'resume builder': '/products',
+      'gigaversity products': '/giga-resume-builder',
+      'tech products': '/giga-resume-builder',
+      'resume builder': '/giga-resume-builder',
       'placement test': '/pre-screening-test',
       'screening test': '/pre-screening-test',
     };
@@ -220,7 +220,7 @@ export class SearchRoutingManager {
       'general-course': '/',
       'blog-content': '/blog',
       'campus-tour': '/campus',
-      'products-promo': '/products',
+      'products-promo': '/giga-resume-builder',
       'screening-test': '/pre-screening-test',
       
       // Source-based routing

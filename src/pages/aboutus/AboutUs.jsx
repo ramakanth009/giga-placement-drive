@@ -6,6 +6,8 @@ import HeroSection from "../../components/aboutcomponents/HeroSection";
 import WhyStartSection from "../../components/aboutcomponents//WhyStartSection";
 import CoreValuesSection from "../../components/aboutcomponents//CoreValuesSection";
 import WhatSetsUsApartSection from "../../components/aboutcomponents//WhatSetsUsApartSection";
+import useAdvancedSEO from "../../hooks/useAdvancedSEO";
+import { advancedSeoData } from "../../data/advancedSeoData";
 
 const useStyles = makeStyles({
   pageContainer: {
@@ -17,6 +19,7 @@ const useStyles = makeStyles({
 });
 
 const About = () => {
+  useAdvancedSEO(advancedSeoData.aboutus);
   const classes = useStyles();
 
   return (

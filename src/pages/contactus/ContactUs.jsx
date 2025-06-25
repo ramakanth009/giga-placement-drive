@@ -6,6 +6,8 @@ import Background from '../../components/homepagecomponets/background/Background
 import ContactHeroSection from '../../components/contactcomponents/ContactHeroSection';
 import ContactFormSection from '../../components/contactcomponents/ContactFormSection';
 import MapSection from '../../components/contactcomponents/MapSection';
+import useAdvancedSEO from '../../hooks/useAdvancedSEO';
+import { advancedSeoData } from '../../data/advancedSeoData';
 
 const useStyles = makeStyles({
   pageContainer: {
@@ -22,6 +24,7 @@ const useStyles = makeStyles({
 
 // Changed component name from Contact to ContactUs to match import in App.js
 const ContactUs = () => {
+  useAdvancedSEO(advancedSeoData.contactus);
   const classes = useStyles();
 
   return (

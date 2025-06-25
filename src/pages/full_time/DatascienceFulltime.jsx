@@ -13,8 +13,11 @@ import DataScienceCurriculum from "../../components/fulltime/datascience/curricu
 // import DataScienceSkillsMaster from "../../components/fulltime/datascience/skillsmaster/DataScienceSkillsMaster";
 import DataScienceLearningPath from '../../components/fulltime/datascience/learningpathtimeline/DataScienceLearningPath';
 import DataScienceFullTimeFaq from "../../components/fulltime/datascience/faqs/DataScienceFullTimeFaq"
+import useAdvancedSEO from "../../hooks/useAdvancedSEO";
+import { advancedSeoData } from "../../data/advancedSeoData";
 
 const DatascienceFulltime = () => {
+  useAdvancedSEO(advancedSeoData.datascience);
   return (
     <div>
       <DataScienceHero />

@@ -13,6 +13,8 @@ import { scrollToTop } from '../../utils/scrollUtils';
 import BlogPostCard from '../../components/blog/BlogPostCard';
 import BlogHero from '../../components/blog/BlogHero';
 import { blogPosts } from '../../data/blogData';
+import useAdvancedSEO from '../../hooks/useAdvancedSEO';
+import { advancedSeoData } from '../../data/advancedSeoData';
 
 const useStyles = makeStyles({
   pageContainer: {
@@ -149,6 +151,7 @@ const useStyles = makeStyles({
 });
 
 const Blog = () => {
+  useAdvancedSEO(advancedSeoData.blog);
   const classes = useStyles();
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [visiblePosts, setVisiblePosts] = useState(6);

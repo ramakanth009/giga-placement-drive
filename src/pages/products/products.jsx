@@ -8,8 +8,12 @@ import ComparisonTableSection from "../resumelanding/ComparisonTableSection";
 import TemplatesGallerySection from "../resumelanding/TemplatesGallerySection";
 import WhoIsItFor from "../resumelanding/WhoIsItFor";
 import SmartResumeSection from "../resumelanding/SmartResumeSection";
+import useAdvancedSEO from "../../hooks/useAdvancedSEO";
+import { advancedSeoData } from "../../data/advancedSeoData";
 
 const Products = () => {
+  useAdvancedSEO(advancedSeoData.products);
+
   return (
     <Box>
       <HeroSection />

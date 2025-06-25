@@ -764,7 +764,7 @@ const Footer = () => {
                   <BusinessCenterIcon className={classes.linkIcon} />
                   <MuiLink
                     component={Link}
-                    to="/products"
+                    to="/giga-resume-builder"
                     className={classes.linkText}
                     onClick={scrollToTop}
                   >

@@ -4,6 +4,8 @@ import { Box, Typography, Container, Button, Grid, Paper } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { scrollToTop } from '../../utils/scrollUtils';
+import useAdvancedSEO from '../../hooks/useAdvancedSEO';
+import { advancedSeoData } from '../../data/advancedSeoData';
 
 // Import images
 import foundationHallImg from '../../assets/mentor-room/Foundation-hall.png';
@@ -359,6 +361,7 @@ const FeatureItem = ({ feature, index }) => {
 };
 
 const CampusPage = () => {
+  useAdvancedSEO(advancedSeoData.campus);
   const classes = useStyles();
 
   return (
