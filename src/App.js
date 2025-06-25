@@ -247,7 +247,7 @@ const App = () => {
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogDetailPage />} /> 
             <Route path="/campus" element={<CampusPage />} />
-            <Route path="/products" element={<Productspage />} />
+            <Route path="/giga-resume-builder" element={<Productspage />} />
             
             {/* New Full-Time Program routes */}
             <Route path="/fullstack" element={<FullstackFulltime />} />
