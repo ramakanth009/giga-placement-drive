@@ -58,7 +58,7 @@ const FullStackFaq = () => {
   return (
     <Faq 
       faqData={faqData}
-      title={<>Full Stack <span>Development FAQ'</span>s</>}
+      title={<><span>FAQ'</span>s</>}
       subtitle="Common questions about our Full Stack Development program"
     />
   );

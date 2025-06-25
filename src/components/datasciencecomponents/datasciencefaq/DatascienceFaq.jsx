@@ -40,7 +40,7 @@ const DataScienceFaq = () => {
   return (
     <Faq 
       faqData={faqData}
-      title={<>Data Science FAQ<span>'s</span></>}
+      title={<> FAQ<span>'s</span></>}
       subtitle="Common questions about our Data Science program"
     />
   );

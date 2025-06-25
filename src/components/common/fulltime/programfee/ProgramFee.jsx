@@ -580,6 +580,8 @@ const useStyles = makeStyles({
     transition: 'transform 0.3s ease',
     '&:hover': {
       transform: 'rotate(10deg)',
+      backgroundColor: '#2A2B6A',
+      color: '#fff',
     },
     '@media (max-width: 1200px)': {
       width: '45px',

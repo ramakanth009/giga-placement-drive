@@ -303,8 +303,10 @@ const CentralizedPopupForms = ({
     switch (variant) {
       case 'dropdown':
         return 'Join Our Program';
-      case 'demo':
-        return 'Schedule a Demo';
+      case 'fullstackdemo':
+        return 'Schedule a Demo for Full Stack';
+      case 'datasciencedemo':
+        return 'Schedule a Demo for Data Science';
       case 'jobportal':
         return 'Schedule a Demo for Job Portal';
       case 'fullstack':
