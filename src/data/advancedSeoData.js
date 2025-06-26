@@ -5,19 +5,19 @@
 
 export const advancedSeoData = {
   homepage: {
-    title: "Gigaversity - #1 Tech Education Platform in India | Full Stack & Data Science Courses",
-    description: "Transform your career with India's top-rated tech education platform. Master Full Stack Development and Data Science through hands-on projects, expert mentorship, and guaranteed job placement. Join 10,000+ successful graduates.",
-    keywords: "tech education india, full stack development course, data science course, coding bootcamp, programming training, web development course, machine learning course, career change tech, online coding classes, software development institute",
+    title: "Gigaversity: Product-Based Full-Stack & Data Science Courses",
+    description: "Gigaversity is India’s first product-based learning platform offering full-stack and data science courses. Build real startup products with hands-on training.",
+    keywords: "Gigaversity, Gigaversity Full-Stack Development Program,Gigaversity Data Science Program, Startup incubator program for students, Real-world project building",
     canonicalUrl: "https://gigaversity.in/",
-    hiddenKeywords: [
-      "best coding bootcamp india",
-      "tech career transformation",
-      "programming institute bangalore",
-      "software development training",
-      "online tech education platform",
-      "coding course with placement",
-      "tech skills training center"
-    ],
+    // hiddenKeywords: [
+    //   "best coding bootcamp india",
+    //   "tech career transformation",
+    //   "programming institute bangalore",
+    //   "software development training",
+    //   "online tech education platform",
+    //   "coding course with placement",
+    //   "tech skills training center"
+    // ],
     searchTerms: [
       "how to become software developer",
       "career change to tech industry",
@@ -82,19 +82,19 @@ export const advancedSeoData = {
   },
 
   fullstack: {
-    title: "Full Stack Development Course - Master MERN Stack | 100% Job Guarantee | Gigaversity",
+    title: "Full Stack Development Course by Gigaversity | Build Real Products",
     description: "Become a Full Stack Developer in 6 months. Master React, Node.js, MongoDB, Express.js with real-world projects. 100% job placement assistance. Enroll now for ₹199!",
-    keywords: "full stack development course, MERN stack course, react course, nodejs training, web development bootcamp, javascript course, frontend backend development, full stack developer training, web development course with placement",
+    keywords: "Full Stack Development Course India,Full Stack Developer Program, Full Stack Web Development course, Full Stack Development Projects, Best Full Stack Course Online in India,Course for full-stack developer",
     canonicalUrl: "https://gigaversity.in/fullstack",
-    hiddenKeywords: [
-      "mern stack developer course",
-      "react nodejs mongodb course",
-      "javascript full stack training",
-      "web development certification",
-      "frontend backend developer course",
-      "full stack programming bootcamp",
-      "react developer training program"
-    ],
+    // hiddenKeywords: [
+    //   "mern stack developer course",
+    //   "react nodejs mongodb course",
+    //   "javascript full stack training",
+    //   "web development certification",
+    //   "frontend backend developer course",
+    //   "full stack programming bootcamp",
+    //   "react developer training program"
+    // ],
     searchTerms: [
       "how to become full stack developer",
       "best full stack course india",
@@ -150,13 +150,13 @@ export const advancedSeoData = {
     description: "Participate in Gigaversity's Full Stack Virtual Placement Drive. Get access to remote MERN stack developer jobs, online hiring, and virtual placement opportunities.",
     keywords: "fullstack virtual placement, virtual placement drive for full stack, remote full stack developer jobs, online placement for MERN stack, virtual hiring for web developers",
     canonicalUrl: "https://gigaversity.in/fullstack/virtual-placement",
-    hiddenKeywords: [
-      "fullstack virtual placement",
-      "virtual placement drive for full stack",
-      "remote full stack developer jobs",
-      "online placement for MERN stack",
-      "virtual hiring for web developers"
-    ],
+    // hiddenKeywords: [
+    //   "fullstack virtual placement",
+    //   "virtual placement drive for full stack",
+    //   "remote full stack developer jobs",
+    //   "online placement for MERN stack",
+    //   "virtual hiring for web developers"
+    // ],
     searchTerms: [
       "fullstack virtual placement",
       "virtual placement drive for full stack",
@@ -189,19 +189,19 @@ export const advancedSeoData = {
   },
 
   datascience: {
-    title: "Data Science Course - Master Python, ML, AI | 100% Job Placement | Gigaversity",
-    description: "Become a Data Scientist in 6 months. Master Python, Machine Learning, AI, Data Analysis with real projects. Industry mentors, job guarantee. Enroll for ₹199!",
-    keywords: "data science course, machine learning course, python course, artificial intelligence training, data analytics course, ML course, data scientist training, python programming course, AI course india",
+    title: "Gigaversity—9-Month Data Science Course with Real-World Projects",
+    description: "Join India’s leading 9-month Data Science program. Learn from experts, build real startup projects, and become job-ready with hands-on industry experience.",
+    keywords: "Data Science Program, Data science course, Data Science Projects, Data science program for freshers, Industry-ready data science course, Career in Data Science, Data science jobs",
     canonicalUrl: "https://gigaversity.in/datascience",
-    hiddenKeywords: [
-      "python data science course",
-      "machine learning bootcamp",
-      "data analytics training",
-      "AI artificial intelligence course",
-      "data scientist certification",
-      "python ML course",
-      "data science career program"
-    ],
+    // hiddenKeywords: [
+    //   "python data science course",
+    //   "machine learning bootcamp",
+    //   "data analytics training",
+    //   "AI artificial intelligence course",
+    //   "data scientist certification",
+    //   "python ML course",
+    //   "data science career program"
+    // ],
     searchTerms: [
       "how to become data scientist",
       "best data science course india",
@@ -257,13 +257,13 @@ export const advancedSeoData = {
     description: "Join Gigaversity's Data Science Virtual Placement Drive. Access remote data scientist jobs, online ML engineer placements, and virtual hiring for data analysts.",
     keywords: "data science virtual placement, virtual placement drive for data science, remote data scientist jobs, online placement for ML engineers, virtual hiring for data analysts",
     canonicalUrl: "https://gigaversity.in/datascience/virtual-placement",
-    hiddenKeywords: [
-      "data science virtual placement",
-      "virtual placement drive for data science",
-      "remote data scientist jobs",
-      "online placement for ML engineers",
-      "virtual hiring for data analysts"
-    ],
+    // hiddenKeywords: [
+    //   "data science virtual placement",
+    //   "virtual placement drive for data science",
+    //   "remote data scientist jobs",
+    //   "online placement for ML engineers",
+    //   "virtual hiring for data analysts"
+    // ],
     searchTerms: [
       "data science virtual placement",
       "virtual placement drive for data science",
@@ -300,13 +300,13 @@ export const advancedSeoData = {
     description: "Build your resume online with Gigaversity's free resume builder. Choose from modern templates, use AI suggestions, and download your resume instantly.",
     keywords: "resume builder, online resume maker, AI resume builder, free resume templates, best resume builder for jobs, CV maker, professional resume, resume download",
     canonicalUrl: "https://gigaversity.in/products",
-    hiddenKeywords: [
-      "resume builder",
-      "online resume maker",
-      "AI resume builder",
-      "free resume templates",
-      "best resume builder for jobs"
-    ],
+    // hiddenKeywords: [
+    //   "resume builder",
+    //   "online resume maker",
+    //   "AI resume builder",
+    //   "free resume templates",
+    //   "best resume builder for jobs"
+    // ],
     searchTerms: [
       "resume builder",
       "online resume maker",
@@ -334,17 +334,17 @@ export const advancedSeoData = {
   },
 
   aboutus: {
-    title: "About Us - Gigaversity | Our Mission, Vision & Team",
-    description: "Learn about Gigaversity's mission, vision, and the passionate team behind India's leading tech education platform.",
-    keywords: "about gigaversity, our mission, our vision, meet the team, why choose us, tech education team, company values",
+    title: "Gigaversity: India’s 1st Product-Based Learning Platform",
+    description: "Gigaversity empowers Indian students with hands-on tech skills. Our 9-month Full-Stack & Data Science programs build real projects and industry-ready skills.",
+    keywords: "product-based learning, Skill Development Platform India, About gigaversity, Our mission, Our vision, Meet the team ",
     canonicalUrl: "https://gigaversity.in/aboutus",
-    hiddenKeywords: [
-      "about gigaversity",
-      "our mission",
-      "our vision",
-      "meet the team",
-      "why choose us"
-    ],
+    // hiddenKeywords: [
+    //   "about gigaversity",
+    //   "our mission",
+    //   "our vision",
+    //   "meet the team",
+    //   "why choose us"
+    // ],
     searchTerms: [
       "about gigaversity",
       "our mission",
@@ -370,13 +370,13 @@ export const advancedSeoData = {
     description: "Contact Gigaversity for support, queries, or partnership opportunities. Reach out via our contact form or find our location details here.",
     keywords: "contact gigaversity, customer support, get in touch, location, contact form, tech education support",
     canonicalUrl: "https://gigaversity.in/contactus",
-    hiddenKeywords: [
-      "contact gigaversity",
-      "customer support",
-      "get in touch",
-      "location",
-      "contact form"
-    ],
+    // hiddenKeywords: [
+    //   "contact gigaversity",
+    //   "customer support",
+    //   "get in touch",
+    //   "location",
+    //   "contact form"
+    // ],
     searchTerms: [
       "contact gigaversity",
       "customer support",
@@ -402,13 +402,13 @@ export const advancedSeoData = {
     description: "Explore Gigaversity's campus, infrastructure, and facilities designed for innovation, collaboration, and student success.",
     keywords: "campus tour, infrastructure, campus facilities, learning environment, student life, gigaversity campus",
     canonicalUrl: "https://gigaversity.in/campus",
-    hiddenKeywords: [
-      "campus tour",
-      "infrastructure",
-      "campus facilities",
-      "learning environment",
-      "student life"
-    ],
+    // hiddenKeywords: [
+    //   "campus tour",
+    //   "infrastructure",
+    //   "campus facilities",
+    //   "learning environment",
+    //   "student life"
+    // ],
     searchTerms: [
       "campus tour",
       "infrastructure",
@@ -435,15 +435,15 @@ export const advancedSeoData = {
     description: "Read the latest articles, guides, and expert insights on tech careers, project-based learning, full stack, data science, and more at the Gigaversity Blog.",
     keywords: "gigaversity blog, tech blog, programming tutorials, project learning, tech careers, full stack blog, data science blog, coding tips, software development articles",
     canonicalUrl: "https://gigaversity.in/blog",
-    hiddenKeywords: [
-      "gigaversity blog",
-      "tech blog",
-      "programming tutorials",
-      "project-based learning articles",
-      "career advice for developers",
-      "full stack blog",
-      "data science blog"
-    ],
+    // hiddenKeywords: [
+    //   "gigaversity blog",
+    //   "tech blog",
+    //   "programming tutorials",
+    //   "project-based learning articles",
+    //   "career advice for developers",
+    //   "full stack blog",
+    //   "data science blog"
+    // ],
     searchTerms: [
       "tech blog",
       "project learning blog",
