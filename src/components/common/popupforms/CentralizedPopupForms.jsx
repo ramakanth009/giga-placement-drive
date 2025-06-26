@@ -1157,6 +1157,9 @@ const useStyles = makeStyles({
       fontSize: '0.9rem',
       color: '#2A2B6A',
       fontWeight: 500,
+      lineHeight: 1.2,
+      display: 'flex',
+      alignItems: 'center',
     },
     '@media (max-width: 1200px)': {
       '& .MuiOutlinedInput-root': {
