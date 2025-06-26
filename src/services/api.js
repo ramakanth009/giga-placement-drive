@@ -184,7 +184,7 @@ export const contactApi = {
       throw new ApiError('Invalid email format');
     }
 
-    if (data.phone && !/^[\d\s\-\+\(\)]+$/.test(data.phone)) {
+    if (data.phone && !/^[\d\s\-+()]+$/.test(data.phone)) {
       throw new ApiError('Invalid phone format');
     }
   }
@@ -214,7 +214,7 @@ export const popupContactApi = {
     }
 
     // Phone number validation (flexible format)
-    if (!/^[\d\s\-\+\(\)]+$/.test(data.phone_number)) {
+    if (!/^[\d\s\-+()]+$/.test(data.phone_number)) {
       throw new ApiError('Invalid phone number format');
     }
 
@@ -340,7 +340,7 @@ export const paymentApi = {
       throw new ApiError('Invalid email format');
     }
 
-    if (!/^[\d\s\-\+\(\)]+$/.test(data.mobile)) {
+    if (!/^[\d\s\-+()]+$/.test(data.mobile)) {
       throw new ApiError('Invalid mobile format');
     }
   }
@@ -405,7 +405,7 @@ export const studentContactApi = {
       throw new ApiError('Invalid email format');
     }
 
-    if (!/^[6-9]\d{9}$/.test(data.contact_no.toString().replace(/[\s\-\+\(\)]/g, ''))) {
+    if (!/^[6-9]\d{9}$/.test(data.contact_no.toString().replace(/[\s\-+()]/g, ''))) {
       throw new ApiError('Invalid contact number format');
     }
 

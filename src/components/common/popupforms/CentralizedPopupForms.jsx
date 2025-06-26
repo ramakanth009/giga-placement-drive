@@ -34,7 +34,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const useStyles = makeStyles({
   dialogPaper: {
     borderRadius: "18px !important",
-    overflow: 'hidden',
+    overflow: 'visible !important',
     maxWidth: "500px !important",
     width: '100%',
     margin: '12px',
@@ -42,7 +42,7 @@ const useStyles = makeStyles({
     position: 'relative',
     boxShadow: '0 12px 48px 0 rgba(42, 43, 106, 0.18), 0 1.5px 6px 0 rgba(42, 43, 106, 0.10) !important',
     opacity: '1 !important',
-    // zIndex: 9999,
+    zIndex: '1300 !important',
     '@media (max-width: 600px)': {
       maxWidth: '90vw',
       margin: '6px',
@@ -56,6 +56,8 @@ const useStyles = makeStyles({
     background: 'linear-gradient(120deg, #f8faff 0%, #fffbe6 100%) !important',
     margin: 0,
     boxShadow: 'none',
+    borderRadius: '18px !important',
+    overflow: 'visible !important',
     '@media (max-width: 600px)': {
       padding: '12px 16px 8px 16px',
     }
@@ -63,6 +65,7 @@ const useStyles = makeStyles({
   headerSection: {
     background: 'linear-gradient(135deg, #2A2B6A 0%, #1a1b43 100%)',
     padding: '20px 20px 16px 20px',
+    borderRadius: '18px 18px 10px 10px !important',
     color: 'white',
     position: 'relative',
     overflow: 'hidden',
@@ -404,16 +407,28 @@ const CentralizedPopupForms = ({
 
   useEffect(() => {
     if (open) {
+      // Map display values to backend expected values
+      const getBackendFieldValue = () => {
+        switch (variant) {
+          case 'dropdown':
+            return '';
+          case 'fullstack':
+          case 'fullstackdemo':
+            return 'fullstack';
+          case 'datascience': 
+          case 'datasciencedemo':
+            return 'datascience';
+          case 'jobportal':
+            return 'Book a demo';
+          default:
+            return 'Book a demo';
+        }
+      };
+
       setFormData({
         full_name: '',
         email: '',
-        chosen_field: variant === 'dropdown' ? '' : 
-                      variant === 'fullstack' ? 'Full Stack Development' :
-                      variant === 'datascience' ? 'Data Science' :
-                      variant === 'fullstackdemo' ? 'Full Stack Demo' :
-                      variant === 'datasciencedemo' ? 'Data Science Demo' :
-                      variant === 'jobportal' ? 'Job Portal Demo' :
-                      'Book a demo',
+        chosen_field: getBackendFieldValue(),
         phone_number: ''
       });
       setSuccess(false);
@@ -486,6 +501,8 @@ const CentralizedPopupForms = ({
         return 'Full Stack Development';
       case 'datascience':
         return 'Data Science';
+      case 'demo':
+        return 'Book a demo';
       default:
         return '';
     }
@@ -493,10 +510,28 @@ const CentralizedPopupForms = ({
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
+    
+    let mappedValue = value;
+    
+    // Map dropdown display values to backend values
+    if (name === 'chosen_field') {
+      switch (value) {
+        case 'Full Stack Development':
+          mappedValue = 'fullstack';
+          break;
+        case 'Data Science':
+          mappedValue = 'datascience';
+          break;
+        default:
+          mappedValue = value;
+      }
+    }
+    
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [name]: mappedValue
     }));
+    
     if (error) setError('');
   };
 
@@ -549,19 +584,21 @@ const CentralizedPopupForms = ({
         style: {
           backgroundColor: '#ffffff',
           opacity: 1,
-          zIndex: 9999
+          zIndex: 1300
         }
       }}
       BackdropProps={{
         style: {
           backgroundColor: 'rgba(0, 0, 0, 0.6)',
           backdropFilter: 'blur(4px)',
-          zIndex: 9998
+          zIndex: 1299
         }
       }}
-      style={{ zIndex: 9999 }}
+      style={{ zIndex: 1300 }}
       maxWidth="sm"
       fullWidth
+      disableEnforceFocus
+      disableAutoFocus
     >
       {/* Header Section */}
       <Box className={classes.headerSection}>
@@ -581,8 +618,6 @@ const CentralizedPopupForms = ({
         <Typography className={classes.formHeading}>
           {getTitle()}
         </Typography>
-        
-       
       </Box>
 
       <DialogContent className={classes.dialogContent}>
@@ -654,31 +689,45 @@ const CentralizedPopupForms = ({
 
             {variant === 'dropdown' ? (
               <FormControl fullWidth required className={classes.selectField}>
-                <InputLabel>Choose Your Field</InputLabel>
+                <InputLabel id="chosen-field-label">Choose Your Field</InputLabel>
                 <Select
+                  labelId="chosen-field-label"
+                  id="chosen-field-select"
                   name="chosen_field"
                   value={formData.chosen_field}
                   onChange={handleInputChange}
                   label="Choose Your Field"
                   disabled={loading}
                   MenuProps={{
+                    anchorOrigin: {
+                      vertical: 'bottom',
+                      horizontal: 'left',
+                    },
+                    transformOrigin: {
+                      vertical: 'top',
+                      horizontal: 'left',
+                    },
                     PaperProps: {
                       style: {
                         borderRadius: 12,
                         boxShadow: '0 6px 24px rgba(42,43,106,0.12)',
                         marginTop: 8,
+                        zIndex: 9999,
+                        maxHeight: 200,
                       }
-                    }
+                    },
+                    disablePortal: false,
+                    container: document.body,
                   }}
                 >
-                  <MenuItem value="Full Stack Development">Full Stack Development</MenuItem>
-                  <MenuItem value="Data Science">Data Science</MenuItem>
+                  <MenuItem value="fullstack">Full Stack</MenuItem>
+                  <MenuItem value="datascience">Data Science</MenuItem>
                 </Select>
               </FormControl>
             ) : (
               <TextField
                 name="chosen_field"
-                label="Service"
+                label="Demo"
                 value={getChosenFieldDisplay()}
                 fullWidth
                 disabled

@@ -542,7 +542,7 @@ const HeroSection = () => {
       <CentralizedPopupForms
         open={popupOpen}
         onClose={handlePopupClose}
-        variant="dropdown"
+        variant="demo"
       />
     </>
   );
