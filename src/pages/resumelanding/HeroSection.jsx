@@ -929,10 +929,10 @@ const HeroSection = ({ handleCTAClick }) => {
             </span>
           </Typography>
 
-          <Typography variant="subtitle1" className={classes.subtitle}>
+          <Typography variant="h2" className={classes.subtitle}>
             Whether you're a fresher looking for your first IT job or a professional aiming for a career switch, Gigaversity's Resume Builder helps you build a resume that reflects your skills, projects, and growth in a recruiter-approved, ATS-friendly format.
           </Typography>
-          <Typography variant="subtitle2" className={classes.subtitle}>
+          <Typography variant="h2" className={classes.subtitle}>
             Choose from a variety of resume templates that adapt to your career stage, helping you present your achievements, skills, and projects clearly and professionally so recruiters notice what truly matters.
           </Typography>
 

@@ -620,7 +620,7 @@ const WhyUseSection = () => {
                     <Box className={classes.iconContainer}>
                       {feature.icon}
                     </Box>
-                    <Typography className={classes.cardTitle}>
+                    <Typography variant='h3' className={classes.cardTitle}>
                       {feature.title}
                     </Typography>
                   </Box>

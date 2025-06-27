@@ -179,23 +179,23 @@ import SearchRoutingHandler from "./components/SearchRoutingHandler";
 // Lazy loaded components
 const Homepage = React.lazy(() => import("./pages/homepage/Homepage"));
 const Fullstack = React.lazy(() => import("./pages/fullstack/Fullstack"));
-const ContactUs = React.lazy(() => import("./pages/contactus/ContactUs"));
-const AboutUs = React.lazy(() => import("./pages/aboutus/AboutUs"));
-const PrivacyPolicy = React.lazy(() => import("./pages/privacypolicy/PrivacyPolicy"));
-const TermsAndConditions = React.lazy(() => import("./pages/termsandconditions/TermsAndConditions"));
+const PreScreeningTest = React.lazy(() => import('./components/homepagecomponets/prescreeningtest/PreScreeningTest'));
 const DataScience = React.lazy(() => import("./pages/datascience/DataScience"));
-const RegistrationForm = React.lazy(() => import('./pages/register/RegistrationForm'));
-const NotFound = React.lazy(() => import('./pages/notfound/NotFound'));
-const CartPage = React.lazy(() => import('./pages/cart/Cart'));
 const FullstackFulltime = React.lazy(() => import('./pages/full_time/FullstackFulltime'));
 const DatascienceFulltime = React.lazy(() => import('./pages/full_time/DatascienceFulltime'));
-const PaymentComplete = React.lazy(() => import('./pages/cart/PaymentComplete'));
-const Blog = React.lazy(() => import('./pages/blog/Blog'));
-const BlogDetailPage = React.lazy(() => import('./components/blog/blogdetail/BlogDetailPage'));
-const CampusPage = React.lazy(() => import('./pages/campus/CampusPage'));
+const NotFound = React.lazy(() => import('./pages/notfound/NotFound'));
 const Productspage = React.lazy(() => import('./pages/products/Products'));
-const PreScreeningTest = React.lazy(() => import('./components/homepagecomponets/prescreeningtest/PreScreeningTest'));
+const ContactUs = React.lazy(() => import("./pages/contactus/ContactUs"));
+const AboutUs = React.lazy(() => import("./pages/aboutus/AboutUs"));
+const Blog = React.lazy(() => import('./pages/blog/Blog'));
+const CampusPage = React.lazy(() => import('./pages/campus/CampusPage'));
+const BlogDetailPage = React.lazy(() => import('./components/blog/blogdetail/BlogDetailPage'));
+const PrivacyPolicy = React.lazy(() => import("./pages/privacypolicy/PrivacyPolicy"));
+const TermsAndConditions = React.lazy(() => import("./pages/termsandconditions/TermsAndConditions"));
+const CartPage = React.lazy(() => import('./pages/cart/Cart'));
+const RegistrationForm = React.lazy(() => import('./pages/register/RegistrationForm'));
 const SitemapPage = React.lazy(() => import('./pages/sitemap/SitemapPage'));
+const PaymentComplete = React.lazy(() => import('./pages/cart/PaymentComplete'));
 
 // Get configuration from environment variables
 const GA_TRACKING_ID = process.env.REACT_APP_GA_TRACKING_ID || 'G-XXXXXXXXXX';
