@@ -1,6 +1,6 @@
 // src/components/common/fulltime/programfee/ProgramFee.jsx
 import React from 'react';
-import { Box, Typography, Button, Paper, Divider, Chip } from '@mui/material';
+import { Box, Typography, Button, Paper, Divider } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import CoffeeIcon from '@mui/icons-material/Coffee';
 import SchoolIcon from '@mui/icons-material/School';

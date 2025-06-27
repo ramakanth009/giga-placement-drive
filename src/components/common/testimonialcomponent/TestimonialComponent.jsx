@@ -14,8 +14,6 @@ import { makeStyles } from '@mui/styles';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import SendIcon from '@mui/icons-material/Send';
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-import VerifiedIcon from '@mui/icons-material/Verified';
 
 // Import the API
 import { api, handleApiError } from '../../../services/api';
