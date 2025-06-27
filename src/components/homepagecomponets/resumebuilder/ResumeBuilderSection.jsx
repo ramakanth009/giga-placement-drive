@@ -530,11 +530,11 @@ const ResumeBuilderSection = () => {
               transition: 'opacity 0.8s ease, transform 0.8s ease',
             }}
           >
-            <Typography variant="h1" className={classes.title}>
+            <Typography variant="h2" className={classes.title}>
               Write your first career chapter with <span style={{ color: '#FFC614' }}>Gigaversity</span>{" "}
               <Typography
                 component="span"
-                variant="subtitle1"
+                variant="h2"
                 sx={{
                   display: 'block',
                   fontStyle: 'italic',

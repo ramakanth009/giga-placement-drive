@@ -782,7 +782,7 @@ const PlacementPortalSection = () => {
       
       <Container maxWidth="lg" className={classes.container}>
         <Box className={classes.titleContainer}>
-          <Typography variant="h1" className={classes.mainTitle}>
+          <Typography variant="h2" className={classes.mainTitle}>
             Unlock Career Opportunities with{" "}
             <span className={classes.highlight}>Gigaversity Smart Job Portal</span>
           </Typography>
@@ -797,7 +797,7 @@ const PlacementPortalSection = () => {
               {currentSlide.icon}
             </Box>
             
-            <Typography variant="h2" className={classes.slideTitle}>
+            <Typography variant="h3" className={classes.slideTitle}>
               {currentSlide.title}
             </Typography>
             

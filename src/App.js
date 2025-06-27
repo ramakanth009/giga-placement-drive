@@ -250,7 +250,6 @@ const App = () => {
             <Route path="/pre-screening-test" element={<PreScreeningTest />} />
             <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            
            
             
             {/* Redirect for old/alternative routes */}

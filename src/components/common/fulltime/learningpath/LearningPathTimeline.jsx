@@ -1538,7 +1538,7 @@ const LearningPathTimeline = ({
               {activePhaseData.modules.map((module, index) => (
                 <Box key={index} className={classes.moduleBox}>
                   <CheckCircleIcon className={classes.moduleIcon} />
-                  <Typography className={classes.moduleText}>
+                  <Typography variant="h6" className={classes.moduleText}>
                     {module}
                   </Typography>
                 </Box>
@@ -1658,7 +1658,7 @@ const LearningPathTimeline = ({
             </Typography>
             
             <Box sx={{ mb: 3 }}>
-              <Typography variant="h6" sx={{ 
+              <Typography variant="h4" sx={{ 
                 fontWeight: 'bold', 
                 mb: 2, 
                 display: 'flex', 

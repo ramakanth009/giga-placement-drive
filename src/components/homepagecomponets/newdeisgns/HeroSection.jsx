@@ -498,10 +498,10 @@ const HeroSection = () => {
         <Container className={classes.container}>
           <Box className={classes.flexRow}>
             <Box className={classes.leftBox}>
-              <Typography className={classes.mainTitle}>
+              <Typography variant="h1" className={classes.mainTitle}>
                 India’s first  <br />
                 product-based<br />
-                learning Platform
+                learning Platform Gigaversity
               </Typography>
               <Box className={classes.curveIcon}>
                 <svg width="487" height="34" viewBox="0 0 487 34" fill="none" xmlns="http://www.w3.org/2000/svg">

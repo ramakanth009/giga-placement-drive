@@ -887,9 +887,9 @@ const LearningBreakdown = () => {
 
       <Container maxWidth="lg" className={classes.container}>
         <Box className={classes.header}>
-          <Typography variant="h2" className={classes.title}>
-            <span className={classes.gradientText}>Learning Journey </span> {" "}
-            <span className={classes.highlight}>Roadmap</span>
+          <Typography variant="h1" className={classes.title}>
+            <span variant="h1" className={classes.gradientText}>Learning Journey </span> {" "}
+            <span variant="h1" className={classes.highlight}>Roadmap</span>
           </Typography>
           <Typography variant="body1" className={classes.subtitle}>
             Our comprehensive learning pathway designed to transform you into an industry-ready professional

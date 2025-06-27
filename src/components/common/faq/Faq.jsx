@@ -770,10 +770,10 @@ const Faq = ({ faqData, title, subtitle }) => {
                       <Box className={classes.questionNumber}>
                         {faq.number}
                       </Box>
-                      <Typography className={classes.question}>
+                      <Typography variant="h2" className={classes.question}>
                         {faq.question}
                       </Typography>
-                      <Typography 
+                      <Typography variant="h3"
                         className={`${classes.answer} ${isExpanded ? 'expanded' : 'truncated'}`}
                       >
                         {faq.answer}

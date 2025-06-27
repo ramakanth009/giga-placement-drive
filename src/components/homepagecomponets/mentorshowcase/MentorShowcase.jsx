@@ -623,7 +623,7 @@ const MentorShowcase = () => {
                     <Typography className={classes.mentorName}>
                       {trainer.name}
                     </Typography>
-                    <Typography className={classes.mentorTitle}>
+                    <Typography variant="h1" className={classes.mentorTitle}>
                       {trainer.title}
                     </Typography>
                     <Chip

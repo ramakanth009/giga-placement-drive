@@ -1387,7 +1387,7 @@ const ContactFormSection = () => {
         <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: { xs: '40px', md: '60px' } }}>
           {/* Left Side - Contact Information */}
           <Box sx={{ flex: '1' }}>
-            <Typography variant="h5" className={classes.infoTitle}>
+            <Typography variant="h2" className={classes.infoTitle}>
               Get in touch
             </Typography>
             <Typography variant="body1" className={classes.infoText}>
