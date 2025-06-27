@@ -1748,7 +1748,7 @@ const LearningPathTimeline = ({
           alignItems: { xs: 'flex-start', md: 'center' } 
         }}>
           <Box sx={{ mb: { xs: 3, md: 0 } }}>
-            <Typography className={classes.ctaTitle}>
+            <Typography variant="h2" className={classes.ctaTitle}>
               <StarIcon sx={{ mr: 1, color: '#FFC614' }} />
               Begin Your Transformation
             </Typography>

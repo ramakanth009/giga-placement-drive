@@ -905,7 +905,7 @@ const ProgramFee = ({ totalFee, onApplyClick }) => {
     <Box className={classes.container}>
       <Paper className={classes.feeCard}>
         <Box className={classes.header}>
-          <Typography className={classes.title}>
+          <Typography variant="h2" className={classes.title}>
             Invest in Your Future — <span>Not Just a Course Fee</span>
           </Typography>
           <Typography className={classes.subtitle}>
@@ -916,8 +916,8 @@ const ProgramFee = ({ totalFee, onApplyClick }) => {
         <Box className={classes.content}>
           <Box className={classes.priceRow}>
             <Box className={classes.priceBox}>
-              <Typography className={classes.priceLabel}>Total Investment</Typography>
-              <Typography className={classes.priceValue}>₹{totalFee}</Typography>
+              <Typography variant="h3" className={classes.priceLabel}>Total Investment</Typography>
+              <Typography variant="h4" className={classes.priceValue}>₹{totalFee}</Typography>
               <Box className={classes.comparisonContainer}>
                 <ApartmentIcon className={classes.comparisonIcon} />
                 <Typography className={classes.comparisonText}>
@@ -927,8 +927,8 @@ const ProgramFee = ({ totalFee, onApplyClick }) => {
             </Box>
             
             <Box className={classes.priceBox}>
-              <Typography className={classes.priceLabel}>Monthly Investment</Typography>
-              <Typography className={classes.priceValue}>₹{monthlyFeeFormatted}/month</Typography>
+              <Typography variant="h3" className={classes.priceLabel}>Monthly Investment</Typography>
+              <Typography variant="h4" className={classes.priceValue}>₹{monthlyFeeFormatted}/month</Typography>
               <Box className={classes.comparisonContainer}>
                 <CoffeeIcon className={classes.comparisonIcon} />
                 <Typography className={classes.comparisonText}>
@@ -938,8 +938,8 @@ const ProgramFee = ({ totalFee, onApplyClick }) => {
             </Box>
 
             <Box className={classes.priceBox}>
-              <Typography className={classes.priceLabel}>Daily Investment</Typography>
-              <Typography className={classes.priceValue}>₹{dailyFeeFormatted}/day</Typography>
+              <Typography variant="h3" className={classes.priceLabel}>Daily Investment</Typography>
+              <Typography variant="h4" className={classes.priceValue}>₹{dailyFeeFormatted}/day</Typography>
               <Box className={classes.comparisonContainer}>
                 <CoffeeIcon className={classes.comparisonIcon} />
                 <Typography className={classes.comparisonText}>

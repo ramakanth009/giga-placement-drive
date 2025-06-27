@@ -828,7 +828,7 @@ const Curriculum = ({ title, subtitle, weeks, skills, domain = 'fullstack' }) =>
       <Box className={classes.wrapper}>
         <Box className={classes.titleContainer}>
           <Typography variant="h2" className={classes.title}>
-            {title}
+            {title} wow
           </Typography>
           {subtitle && (
             <Typography variant="body1" className={classes.subtitle}>

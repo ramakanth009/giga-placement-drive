@@ -776,7 +776,7 @@ const Curriculum = ({
       
       <Container maxWidth="lg" className={classes.container}>
         <Box className={classes.titleContainer}>
-          <Typography className={classes.sectionTitle}>
+          <Typography variant="h2" className={classes.sectionTitle}>
             {title} <span className={classes.highlightText}>Curriculum</span>
           </Typography>
           <Typography className={classes.sectionSubtitle}>

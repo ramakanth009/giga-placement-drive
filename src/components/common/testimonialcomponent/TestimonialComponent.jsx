@@ -851,7 +851,7 @@ const TestimonialComponent = () => {
 
       <Container className={classes.mainContainer}>
         <Box className={classes.titleContainer}>
-          <Typography variant="h1" className={classes.mainTitle}>
+          <Typography variant="h2" className={classes.mainTitle}>
             Be the first to review
           </Typography>
           <FavoriteIcon className={classes.bigLoveIcon} />

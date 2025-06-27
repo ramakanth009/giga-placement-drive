@@ -798,8 +798,8 @@ const CurriculumCard = ({
       <Box className={classes.cardContent}>
         <Box className={classes.numberCircle}>{number}</Box>
         <Box className={classes.topicIcon}>{icon}</Box>
-        
-        <Typography className={
+
+        <Typography variant="h3" className={
           `${classes.title} ${isScaled ? classes.titleScaled : ''}`
         }>
           {title}

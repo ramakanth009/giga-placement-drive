@@ -342,7 +342,7 @@ const ProgramHighlights = ({ highlights }) => {
         onMouseLeave={handleMouseLeave}
       >
         <Box className={classes.titleContainer}>
-          <Typography className={classes.title}>
+          <Typography variant='h2' className={classes.title}>
             Highlights of the <span>Program</span>
           </Typography>
         </Box>

@@ -503,8 +503,8 @@ const IndustryCaseStudies = ({ title = "Industry Case Studies", subtitle = "Disc
                 />
               </Box>
 
-              <Typography className={classes.cardTitle}>
-                {study.title}
+              <Typography variant="h3" className={classes.cardTitle}>
+                {study.title} 
               </Typography>
               
               <Typography className={classes.cardDescription}>

@@ -411,7 +411,7 @@ const ProjectCard = ({ image, icon, title, features, description, skills }) => {
       <Box className={classes.imageContainer}>
         <img src={image} alt={title} className={classes.projectImage} />
         <Box className={classes.titleBar}>
-          <Typography className={classes.titleText}>{title}</Typography>
+          <Typography variant="h3" className={classes.titleText}>{title}</Typography>
         </Box>
         <Box className={classes.iconBox} style={{ background: icon.bgColor || 'linear-gradient(180deg, #8B5CF6 0%, #2A2B6A 100%)' }}>
           {icon.component}

@@ -1036,7 +1036,7 @@ const AIToolkit = ({ tools = [], capabilities = [], programName = "Development" 
       <canvas ref={canvasRef} className={classes.networkCanvas} />
       <Container maxWidth="lg" className={classes.content}>
         <Box className={classes.header}>
-          <Typography className={classes.title}>
+          <Typography variant="h2" className={classes.title}>
             Learn {programName} with<span> Built-In AI Tools</span>
           </Typography>
         </Box>
@@ -1063,7 +1063,7 @@ const AIToolkit = ({ tools = [], capabilities = [], programName = "Development" 
               </Box>
               
               <Box className={classes.toolHeader}>
-                <Typography className={classes.toolName}>
+                <Typography variant="h3" className={classes.toolName}>
                   {tool.name}
                 </Typography>
                 {tool.price && (
