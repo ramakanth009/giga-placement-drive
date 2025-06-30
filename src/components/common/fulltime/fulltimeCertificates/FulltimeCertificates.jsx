@@ -252,9 +252,12 @@ const useStyles = makeStyles({
   },
 });
 
-const FulltimeCertificates = ({ certificateImage, certificateAltText = "Professional Certificate showcasing industry-recognized credentials that validate expertise and technical competency for career advancement and employer recognition" }) => {
+const FulltimeCertificates = ({ certificateImage, certificateAltText }) => {
   const classes = useStyles();
   const canvasRef = useRef(null);
+
+  // Debug: log the image prop
+  console.log("Certificate image prop:", certificateImage);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -374,6 +377,11 @@ const FulltimeCertificates = ({ certificateImage, certificateAltText = "Professi
             src={certificateImage} 
             alt={certificateAltText} 
             className={classes.certificateImage}
+            onError={e => {
+              e.target.onerror = null;
+              e.target.src = "https://via.placeholder.com/400x250?text=Certificate+Image+Not+Found";
+              console.error("Certificate image failed to load:", certificateImage);
+            }}
           />
         </Box>
       </Box>

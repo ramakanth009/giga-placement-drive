@@ -6,7 +6,7 @@ import FullStackProgramHighlights from '../../components/fulltime/fullstack/prog
 import Fullstackcurriculam from '../../components/fulltime/fullstack/curriculum/FullStackCurriculum'
 import FullStackProjectSection from '../../components/fulltime/fullstack/projectssection/FullStackProjectsSection'
 import FullStackCaseStudies from '../../components/fulltime/fullstack/fullStackcasestudies/FullStackCaseStudies'
-import FulltimeCertificates from '../../components/common/fulltime/fulltimeCertificates/FulltimeCertificates';
+import FullStackCertificates from '../../components/fullstackcomponents/certificationsection/FullStackCertificationsSection';
 import FullStackProgramFee from '../../components/fulltime/fullstack/programfee/FullStackProgramFee'
 import TestimonialComponent from '../../components/common/testimonialcomponent/TestimonialComponent'
 // import FullStackSkillsMaster from '../../components/fulltime/fullstack/skillsmaster/FullStackSkillsMaster'
@@ -30,7 +30,7 @@ const FullstackFulltime = () => {
         {/* <FullStackTechnologyKit /> */}
         <FullStackProjectSection />
         <FullStackCaseStudies />
-        <FulltimeCertificates />
+        <FullStackCertificates />
         <FullStackProgramFee />
         <TestimonialComponent />
         <FullFullStackFullTimeFaq />

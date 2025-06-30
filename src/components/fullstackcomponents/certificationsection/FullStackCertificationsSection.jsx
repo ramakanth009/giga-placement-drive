@@ -1,7 +1,7 @@
 // src/components/fullstackcomponents/certificationsection/FullStackCertificationsSection.jsx
 import React from 'react';
 import FulltimeCertificates from '../../common/fulltime/fulltimeCertificates/FulltimeCertificates';
-import CertificateFullStack from '../../../assets/certificatefullstack.png';
+import CertificateFullStack from '../../../assets/certificatefullstack.png'; // If the file is named CertificateFullStack.png, use: // import CertificateFullStack from '../../../assets/CertificateFullStack.png';
 
 const FullStackCertificationsSection = () => {
   return (
