@@ -17,6 +17,8 @@ const DataScienceCaseStudies = () => {
       logoSrc: netflixLogo,
       companyName: "Netflix",
       monoLogoSrc: netflixMonoLogo,
+      logoAltText: "Case Study in Data Science on the Topic of of personalized recommendations like Netflix",
+      monoLogoAltText: "Case Study in Data Science on the Topic of of personalized recommendations like Netflix",
       title: "Data Science in Personalized Recommendations",
       description:
         "Learn how Netflix leverages data science to transform industries and create breakthrough products and services with their recommendation system.",
@@ -36,6 +38,8 @@ const DataScienceCaseStudies = () => {
       logoSrc: amazonLogo,
       companyName: "Amazon",
       monoLogoSrc: amazonMonoLogo,
+      logoAltText: "Case Study in Data Science on the Topic of E-commerce Optimization like Amazon",
+      monoLogoAltText: "Case Study in Data Science on the Topic of E-commerce Optimization like Amazon",
       title: "Data Science in E-Commerce Optimization",
       description:
         "Explore how Amazon leverages machine learning to analyze purchase patterns, user behavior, and pricing trends, boosting sales through personalized recommendations and dynamic pricing.",
@@ -55,6 +59,8 @@ const DataScienceCaseStudies = () => {
       logoSrc: googleLogo,
       companyName: "Google",
       monoLogoSrc: googleMonoLogo,
+      logoAltText: "Case Study in Data Science on the Topic of Search Engine Technology like Google",
+      monoLogoAltText: "Case Study in Data Science on the Topic of Search Engine Technology like Google",
       title: "Data Science in Search Engine Technology",
       description:
         "Discover how Google uses PageRank and NLP techniques to analyze query intent and user interactions, delivering real-time relevant results and maintaining dominant market share.",

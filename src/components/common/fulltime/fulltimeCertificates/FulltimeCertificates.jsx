@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Box, Typography, Container } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import certificateImage from '../../../../assets/certificatefullstack.png'; // Assuming this is where your certificate image is stored
+// Certificate image will be passed as prop
 
 
 const useStyles = makeStyles({
@@ -252,7 +252,7 @@ const useStyles = makeStyles({
   },
 });
 
-const FulltimeCertificates = () => {
+const FulltimeCertificates = ({ certificateImage, certificateAltText = "Professional Certificate showcasing industry-recognized credentials that validate expertise and technical competency for career advancement and employer recognition" }) => {
   const classes = useStyles();
   const canvasRef = useRef(null);
 
@@ -372,7 +372,7 @@ const FulltimeCertificates = () => {
         <Box className={classes.rightSection}>
           <img 
             src={certificateImage} 
-            alt="Program Certificate" 
+            alt={certificateAltText} 
             className={classes.certificateImage}
           />
         </Box>

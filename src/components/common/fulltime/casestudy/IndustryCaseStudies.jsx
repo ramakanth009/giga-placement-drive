@@ -436,6 +436,8 @@ const IndustryCaseStudies = ({ title = "Industry Case Studies", subtitle = "Disc
       logoSrc: "https://via.placeholder.com/200x80/4264E3/FFFFFF?text=Company+Logo",
       monoLogoSrc: "https://via.placeholder.com/100x24/333333/FFFFFF?text=Company",
       companyName: "TechCorp Solutions",
+      logoAltText: "TechCorp Solutions company logo showcasing their technology solutions and corporate branding",
+      monoLogoAltText: "TechCorp Solutions monochrome logo for case study presentation",
       title: "Streamlined Operations with 40% Efficiency Boost",
       description: "Learn how TechCorp Solutions transformed their workflow processes, reduced operational costs, and improved team productivity through strategic implementation of our comprehensive platform.",
       metrics: [
@@ -449,6 +451,8 @@ const IndustryCaseStudies = ({ title = "Industry Case Studies", subtitle = "Disc
       logoSrc: "https://via.placeholder.com/200x80/FF6B6B/FFFFFF?text=Innovation+Labs",
       monoLogoSrc: "https://via.placeholder.com/100x24/333333/FFFFFF?text=Innovation",
       companyName: "Innovation Labs",
+      logoAltText: "Innovation Labs company logo representing their research and development focus in technology innovation",
+      monoLogoAltText: "Innovation Labs monochrome logo for case study presentation",
       title: "Accelerated Development Cycles by 65%",
       description: "Discover how Innovation Labs leveraged our platform to accelerate their product development lifecycle, enhance collaboration, and deliver cutting-edge solutions faster than ever before.",
       metrics: [
@@ -481,7 +485,7 @@ const IndustryCaseStudies = ({ title = "Industry Case Studies", subtitle = "Disc
             <Box className={classes.imageSection}>
               <img 
                 src={study.logoSrc} 
-                alt={`${study.companyName} logo`} 
+                alt={study.logoAltText || `${study.companyName} logo`} 
                 className={classes.logo} 
               />
             </Box>
@@ -490,7 +494,7 @@ const IndustryCaseStudies = ({ title = "Industry Case Studies", subtitle = "Disc
               <Box className={classes.mobileLogoContainer}>
                 <img 
                   src={study.monoLogoSrc} 
-                  alt={`${study.companyName} logo`} 
+                  alt={study.monoLogoAltText || `${study.companyName} logo`} 
                   className={classes.mobileCompanyLogo} 
                 />
               </Box>
@@ -498,7 +502,7 @@ const IndustryCaseStudies = ({ title = "Industry Case Studies", subtitle = "Disc
               <Box className={classes.companyBadge}>
                 <img 
                   src={study.monoLogoSrc} 
-                  alt={`${study.companyName} logo`} 
+                  alt={study.monoLogoAltText || `${study.companyName} logo`} 
                   className={classes.companyIcon} 
                 />
               </Box>

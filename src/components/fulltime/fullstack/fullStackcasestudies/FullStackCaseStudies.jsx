@@ -17,6 +17,8 @@ const FullStackCaseStudies = () => {
       logoSrc: airbnbLogo,
       companyName: "Airbnb",
       monoLogoSrc: airbnbMonoLogo,
+      logoAltText: "Case Study on Scaling a Global Marketplace Platform Like AIRBNB for Full-Stack Development",
+      monoLogoAltText: "Case Study on Scaling a Global Marketplace Platform Like AIRBNB for Full-Stack Development",
       title: "Scaling a Global Marketplace Platform",
       description:
         "Explore how Airbnb developed a robust service-oriented architecture to handle millions of listings and bookings, ensuring seamless experiences across web and mobile platforms.",
@@ -33,9 +35,11 @@ const FullStackCaseStudies = () => {
       ],
     },
     {
-      logoSrc: spotifyLogo ,
+      logoSrc: spotifyLogo,
       companyName: "Spotify",
-      monoLogoSrc:spotifyMonoLogo ,
+      monoLogoSrc: spotifyMonoLogo,
+      logoAltText: "Case study on Building a modern, streamlined Service like Spotify for  Full-Stack Development",
+      monoLogoAltText: "Case study on Building a modern, streamlined Service like Spotify for  Full-Stack Development",
       title: "Building a Modern Streaming Service",
       description:
         "Discover how Spotify leverages React, Node.js, and microservices to deliver personalized music streaming experiences to millions of users worldwide with minimal latency.",
@@ -52,9 +56,11 @@ const FullStackCaseStudies = () => {
       ],
     },
     {
-      logoSrc: slackLogo ,
+      logoSrc: slackLogo,
       companyName: "Slack",
-      monoLogoSrc: slackMonoLogo ,
+      monoLogoSrc: slackMonoLogo,
+      logoAltText: "Case Study on Revolutionizing Workplace Communication Like Slack for Full-Stack Development",
+      monoLogoAltText: "Case Study on Revolutionizing Workplace Communication Like Slack for Full-Stack Development",
       title: "Revolutionizing Workplace Communication",
       description:
         "Learn how Slack built a real-time messaging platform that handles billions of messages daily, utilizing modern web technologies and robust backend systems.",

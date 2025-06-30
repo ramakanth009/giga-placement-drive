@@ -1,13 +1,13 @@
 // src/components/fullstackcomponents/certificationsection/FullStackCertificationsSection.jsx
 import React from 'react';
-import CertificationsSection from '../../common/certificationssection/CertificationsSection';
+import FulltimeCertificates from '../../common/fulltime/fulltimeCertificates/FulltimeCertificates';
 import CertificateFullStack from '../../../assets/certificatefullstack.png';
 
 const FullStackCertificationsSection = () => {
   return (
-    <CertificationsSection 
+    <FulltimeCertificates 
       certificateImage={CertificateFullStack}
-      fieldType="Full Stack Development"
+      certificateAltText="Full Stack Development Certificate showcasing comprehensive industry-recognized credentials that validate professional expertise in frontend technologies like React and Angular, backend development with Node.js and Python, database management, API development, cloud deployment, and modern web application architecture, designed to enhance career opportunities in software engineering and demonstrate technical competency to employers in the tech industry"
     />
   );
 };
