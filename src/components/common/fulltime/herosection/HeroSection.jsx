@@ -367,6 +367,7 @@ const HeroSection = ({
   titleSecondLine, 
   subtitle,
   heroImage,
+  heroImageAlt = "Program visualization",
   applyButtonText = "Apply Now",
   brochureButtonText = "Book A Demo",
   onApplyClick,
@@ -504,7 +505,7 @@ const HeroSection = ({
           <Box className={classes.imageContainer}>
             <img
               src={heroImage}
-              alt="Program visualization"
+              alt={heroImageAlt}
               className={classes.heroImage}
             />
           </Box>

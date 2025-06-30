@@ -52,6 +52,7 @@ const DataScienceHero = () => {
         highlightedText="Data Science Program"
         subtitle="Build Your Own Product and Launch Your Tech Startup Within a Year"
         heroImage={dataScienceImage}
+        heroImageAlt="Showcasing Data Analysis, Python, Code, and analytics for Data Science Program"
         onApplyClick={handleApplyClick}
         onBrochureClick={handleBrochureClick}
         decorElements={decorElements}

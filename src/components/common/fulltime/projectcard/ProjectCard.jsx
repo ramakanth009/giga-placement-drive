@@ -403,13 +403,13 @@ const useStyles = makeStyles({
   },
 });
 
-const ProjectCard = ({ image, icon, title, features, description, skills }) => {
+const ProjectCard = ({ image, icon, title, features, description, skills, altText }) => {
   const classes = useStyles();
 
   return (
     <Paper className={classes.projectCard} elevation={0}>
       <Box className={classes.imageContainer}>
-        <img src={image} alt={title} className={classes.projectImage} />
+        <img src={image} alt={altText || title} className={classes.projectImage} />
         <Box className={classes.titleBar}>
           <Typography variant="h3" className={classes.titleText}>{title}</Typography>
         </Box>
@@ -447,4 +447,4 @@ const ProjectCard = ({ image, icon, title, features, description, skills }) => {
   );
 };
 
-export default ProjectCard; 
+export default ProjectCard;

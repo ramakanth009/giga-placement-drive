@@ -23,7 +23,7 @@ const FullStackProjectsSection = () => {
   const subtitle = "Build your portfolio with real-world full stack applications. Each project is designed to develop industry-relevant skills and solve practical business problems.";
   const title = (
     <>
-      Products You’ll Build in the <span>Full Stack Program</span>
+      Products You'll Build in the <span>Full Stack Program</span>
     </>
   );
   
@@ -32,6 +32,7 @@ const FullStackProjectsSection = () => {
     {
       title: "Social Media",
       image: socialMediaImage,
+      altText: "Social Media Dashboard Project for Full-Stack Development at Gigaversity",
       icon: {
         component: <ViewModuleIcon />,
         bgColor: "#6B4BF3"
@@ -50,12 +51,13 @@ const FullStackProjectsSection = () => {
           text: "Real-time Updates"
         }
       ],
-      description: "Create impactful Social Media Insights! Build a dynamic Social Media Dashboard that helps track key metrics and analyze performance across multiple platforms.",
+      description: "Quick Commerce Project for full-stack development at Gigaversity",
       skills: ["Component Design", "State Management", "API Integration", "React/Vue"]
     },
     {
       title: "Quick Commerce / Rider app",
       image: taskManagementImage,
+      altText: "Build a Prototype Product for full-stack development at Gigaversity",
       icon: {
         component: <AssignmentIcon />,
         bgColor: "#6B4BF3"
@@ -80,6 +82,7 @@ const FullStackProjectsSection = () => {
     {
       title: "Startup Prototype Project/Startup Incubation Build",
       image: inventoryManagementImage,
+      altText: "Startup Prototype development workspace featuring MVP development environment, scalable architecture design, cloud integration services, startup incubation tools, and comprehensive full stack development framework for launching innovative tech solutions",
       icon: {
         component: <InventoryIcon />,
         bgColor: "#6B4BF3"

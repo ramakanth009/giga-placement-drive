@@ -52,6 +52,7 @@ const FullStackHero = () => {
         highlightedText="Full Stack Development Program"
         subtitle="Build Your Own Product and Launch Your Tech Startup Within a Year"
         heroImage={fullStackHeroImage}
+        heroImageAlt="Showcasing Frontend and Backend Code and analytics and Dashboards"
         onApplyClick={handleApplyClick}
         onBrochureClick={handleBrochureClick}
         decorElements={decorElements}

@@ -1663,7 +1663,7 @@ const ContactFormLayout = ({ onSubmit, isSubmitting = false }) => {
               <Box className={classes.imageContainer}>
                 <img
                   src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="Contact Us"
+                  alt="Contact form for connecting with Gigaversity"
                   className={classes.heroImage}
                 />
               </Box>

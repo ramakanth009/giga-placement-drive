@@ -30,7 +30,7 @@ const DataScienceProjectsSection = () => {
   const subtitle = "Build your portfolio with real-world data science applications. Each project is designed to develop industry-relevant skills and solve practical problems.";
   const title = (
     <>
-      Products You’ll Build in the <span>Data Science Program</span>
+      Products You'll Build in the <span>Data Science Program</span>
     </>
   );
 
@@ -39,6 +39,7 @@ const DataScienceProjectsSection = () => {
     {
       title: "Multi-Model AI Chatbot",
       image: aiChatbotImage,
+      altText: "Multi-Model AI Chatbot Project for Data Science Program",
       icon: {
         component: <ChatBubbleIcon />,
         bgColor: "#6B4BF3"
@@ -54,6 +55,7 @@ const DataScienceProjectsSection = () => {
     {
       title: "AI Quiz Master",
       image: quizMasterImage,
+      altText: "AI Quiz Master Project for Data Science Program",
       icon: {
         component: <SchoolIcon />,
         bgColor: "#6B4BF3"
@@ -69,6 +71,7 @@ const DataScienceProjectsSection = () => {
     {
       title: "Advanced Call Auditor",
       image: callAuditorImage,
+      altText: "Advance Call Auditor Project for Data Science Program",
       icon: {
         component: <CallIcon />,
         bgColor: "#6B4BF3"

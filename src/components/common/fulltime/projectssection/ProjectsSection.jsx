@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Box, Typography, Container } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import ProjectCard from './ProjectCard';
+import ProjectCard from '../projectcard/ProjectCard';
 
 const useStyles = makeStyles({
   section: {
@@ -267,6 +267,7 @@ const ProjectsSection = ({ projects, subtitle, title }) => {
                 features={project.features}
                 description={project.description}
                 skills={project.skills}
+                altText={project.altText}
               />
             </Box>
           ))}
