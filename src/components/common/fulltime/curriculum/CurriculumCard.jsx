@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     marginTop: '25px',
     border: '1px solid rgba(74, 99, 231, 0.08)',
     '&:hover': {
-      transform: 'translateY(-6px)',
+      // transform: 'translateY(-6px)',
       boxShadow: '0px 12px 35px rgba(0, 0, 0, 0.12) !important',
       borderColor: 'rgba(74, 99, 231, 0.2)',
     },

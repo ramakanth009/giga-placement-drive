@@ -1754,7 +1754,7 @@ const ContactFormLayout = ({ onSubmit, isSubmitting = false }) => {
                     />
                   </Box>
 
-                  <Box className={classes.fieldContainer}>
+                  {/* <Box className={classes.fieldContainer}>
                     <TextField
                       label="Year of graduation"
                       variant="outlined"
@@ -1800,7 +1800,7 @@ const ContactFormLayout = ({ onSubmit, isSubmitting = false }) => {
                         </MenuItem>
                       ))}
                     </TextField>
-                  </Box>
+                  </Box> */}
 
                   <Box className={classes.fieldContainer}>
                     <TextField

@@ -922,7 +922,7 @@ const HeroSection = ({ handleCTAClick }) => {
         {/* LEFT SECTION - Content */}
         <Box className={classes.leftSection}>
           <Typography variant="h1" className={classes.mainHeadline}>
-            Create Resume That Gets You Noticed
+            Giga resume builder <br/> create resume in just a click
             <br />
             <span className={classes.typewriterText}>
               {typewriterText}
