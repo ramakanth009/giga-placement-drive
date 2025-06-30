@@ -7,7 +7,7 @@ const DataScienceCertificationsSection = () => {
   return (
     <FulltimeCertificates 
       certificateImage={CertificateDataScience}
-      certificateAltText="Data Science Certificate showcasing comprehensive industry-recognized credentials that validate professional expertise in data analysis, machine learning algorithms, statistical modeling, Python and R programming, artificial intelligence, predictive analytics, data visualization, business intelligence solutions, and advanced analytics techniques, designed to enhance career opportunities in data science roles and demonstrate technical competency to employers in analytics-driven industries"
+      certificateAltText="Certificate representing Completion of theData Science program from Gigaversity"
     />
   );
 };
