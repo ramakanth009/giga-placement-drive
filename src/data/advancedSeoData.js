@@ -189,7 +189,7 @@ export const advancedSeoData = {
   },
 
   datascience: {
-    title: "Gigaversity—9-Month Data Science Course with Real-World Projects",
+    title: "Gigaversity 9 Month Data Science Course with Real-World Projects",
     description: "Join India’s leading 9-month Data Science program. Learn from experts, build real startup projects, and become job-ready with hands-on industry experience.",
     keywords: "Data Science Program, Data science course, Data Science Projects, Data science program for freshers, Industry-ready data science course, Career in Data Science, Data science jobs",
     canonicalUrl: "https://gigaversity.in/datascience",
