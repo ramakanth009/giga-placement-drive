@@ -1093,7 +1093,7 @@ const AIToolkit = ({ tools = [], capabilities = [], programName = "Development" 
                 </Typography>
                 
                 <Box className={classes.useCases}>
-                  <Typography variant="h6">Key Use Cases:</Typography>
+                  <Typography variant="h4">Key Use Cases:</Typography>
                   {selectedTool.useCases?.map((useCase, index) => (
                     <Box key={index} className={classes.useCaseItem}>
                       <span className={classes.arrowRight} style={{ color: selectedTool.color }}>→</span>
@@ -1105,7 +1105,7 @@ const AIToolkit = ({ tools = [], capabilities = [], programName = "Development" 
               
               {selectedTool.capabilities && (
                 <Box className={classes.capabilitiesSection}>
-                  <Typography variant="h6">Capability Breakdown:</Typography>
+                  <Typography variant="h4">Capability Breakdown:</Typography>
                   <Box className={classes.capabilityChart}>
                     {selectedTool.capabilities.map((capability, index) => (
                       <Box key={index} className={classes.capabilityBar}>

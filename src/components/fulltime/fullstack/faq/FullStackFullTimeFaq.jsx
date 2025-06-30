@@ -9,7 +9,7 @@ const FullStackFullTimeFaq = () => {
       id: 'fullstack-fulltime-panel1',
       number: '1',
       question: 'What is the duration of the fullstack developer course?',
-      answer: 'Our immersive program runs for 4–5 months, requiring just 2–3 hours daily for comprehensive learning. This structured approach ensures you can balance learning with other commitments while building strong foundational skills.',
+      answer: 'Our immersive program runs for 9 months, requiring just 2–3 hours daily for comprehensive learning. This structured approach ensures you can balance learning with other commitments while building strong foundational skills.',
     },
     {
       id: 'fullstack-fulltime-panel2',

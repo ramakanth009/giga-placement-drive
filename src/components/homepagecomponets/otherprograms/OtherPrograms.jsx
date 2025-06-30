@@ -322,6 +322,7 @@ const OtherPrograms = () => {
       students: 1847,
       tag: 'Full Time',
       image: 'https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      altText: 'Full Stack Development program',
       level: 'Comprehensive',
       category: 'development'
     },
@@ -338,6 +339,7 @@ const OtherPrograms = () => {
       students: 1523,
       tag: 'Full Time',
       image: Datascience,
+      altText: 'Data Science program',
       level: 'Advanced',
       category: 'datascience'
     },
@@ -354,6 +356,7 @@ const OtherPrograms = () => {
       students: 1245,
       tag: 'Placement Drive',
       image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      altText: 'Virtual Placement Drive in Full Stack Development',
       level: 'Intermediate',
       category: 'development'
     },
@@ -370,6 +373,7 @@ const OtherPrograms = () => {
       students: 1102,
       tag: 'Placement Drive',
       image: Datascience,
+      altText: 'Virtual Placement Drive in Data Science',
       level: 'Intermediate',
       category: 'datascience'
     },
@@ -386,6 +390,7 @@ const OtherPrograms = () => {
       students: 2854,
       tag: 'Internship',
       image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      altText: 'Internship Program in Full Stack ',
       level: 'Intermediate',
       category: 'development'
     },
@@ -402,6 +407,7 @@ const OtherPrograms = () => {
       students: 2960,
       tag: 'Internship',
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      altText: 'Internship Program in Data Science',
       level: 'Advanced',
       category: 'datascience'
     },

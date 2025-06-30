@@ -522,7 +522,7 @@ const HeroSection = () => {
               <Box className={classes.yellowCircle}></Box>
               <img 
                 src={Heroguy} 
-                alt="Person with laptop" 
+                alt="Gigaversity—India’s first product-based learning" 
                 className={classes.heroImage}
               />
               {/* Floating Icons */}

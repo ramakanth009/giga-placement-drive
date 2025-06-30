@@ -37,7 +37,7 @@ const useStyles = makeStyles({
     },
   },
   
-    title: {
+  title: {
     fontSize: '3.5rem !important',
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
@@ -188,31 +188,37 @@ const CampusSection = () => {
       title: "Foundation Hall",
       description: "Dynamic collaborative learning space where students from all backgrounds unite for high-energy sessions and problem-solving.",
       image: foundationHallImg,
+      altText: "Foundation Hall of Gigaversity"
     },
     {
       title: "Product Chamber",
       description: "Real tech products are built and executed collaboratively by teams in this dynamic, inspiring workspace.",
       image: productRoomImg,
+      altText: "Product chamber of Gigaversity"
     },
     {
       title: "Startup Studio",
       description: "Fuel ideas with mentorship and founder guidance. Secure up to ₹1 lakh funding for tech startup ideas.",
       image: startupRoomImg,
+      altText: "Startup Cabin of Gigaversity"
     },
     {
       title: "Mentor Hub",
       description: "Connect with industry experts for personalized 1:1 support to accelerate learning and career growth.",
       image: mentorRoomImg,
+      altText: "1:1 Mentor room of Gigaversity"
     },
     {
       title: "Campus Café",
       description: "A vibrant space for thinkers and innovators to connect, recharge, and build meaningful relationships.",
       image: caffeImg,
+      altText: "Campus Cafe of Gigaversity"
     },
     {
       title: "Play Arena",
       description: "Sports and recreation space for cricket, badminton, chess, and team-building activities.",
       image: sportsArenaImg,
+      altText: "Sports room of Gigaversity"
     }
   ];
 
@@ -237,7 +243,7 @@ const CampusSection = () => {
               <Box className={classes.cardImageContainer}>
                 <img
                   src={area.image}
-                  alt={area.title}
+                  alt={area.altText}
                   className={classes.cardImage}
                 />
               </Box>
@@ -267,4 +273,5 @@ const CampusSection = () => {
     </Box>
   );
 };
+
 export default CampusSection;

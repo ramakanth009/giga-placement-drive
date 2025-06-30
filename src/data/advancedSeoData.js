@@ -83,8 +83,8 @@ export const advancedSeoData = {
 
   fullstack: {
     title: "Full Stack Development Course by Gigaversity | Build Real Products",
-    description: "Become a Full Stack Developer in 6 months. Master React, Node.js, MongoDB, Express.js with real-world projects. 100% job placement assistance. Enroll now for ₹199!",
-    keywords: "Full Stack Development Course India,Full Stack Developer Program, Full Stack Web Development course, Full Stack Development Projects, Best Full Stack Course Online in India,Course for full-stack developer",
+    description: "Master full-stack development in 9 months with live classes, real startup product building, 1:1 mentorship, and hands-on experience across industries.",
+    keywords: "Full Stack Development Course,Full Stack Developer Program,Full Stack Web Development course,Full Stack Development Projects,Full-stack development program with AI,Best Full Stack Course Online in India,Course for full-stack developers,",
     canonicalUrl: "https://gigaversity.in/fullstack",
     // hiddenKeywords: [
     //   "mern stack developer course",

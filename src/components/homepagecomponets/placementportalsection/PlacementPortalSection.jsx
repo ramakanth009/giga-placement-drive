@@ -684,6 +684,7 @@ const PlacementPortalSection = () => {
       description: "Access a wide range of verified roles from top startups and leading tech companies actively hiring fresh talent like you.",
       icon: <WorkIcon className={classes.icon} />,
       image: image1,
+      altText: "1000+ Jobs Listed in Gigaversity Smart Job portal",
       cta: "Explore Opportunities"
     },
     {
@@ -691,6 +692,7 @@ const PlacementPortalSection = () => {
       description: "Get personalized job alerts based on your skills, interests, and career goals—sourced from India's top job platforms, all in one place.",
       icon: <NotificationsActiveIcon className={classes.icon} />,
       image: image2,
+      altText: "Job announcements are being provided at the Gigaversity Smart Job portal",
       cta: "Set Up Alerts"
     },
     {
@@ -698,6 +700,7 @@ const PlacementPortalSection = () => {
       description: "Demonstrate your expertise with real-time coding tasks and domain-specific evaluations designed to match industry expectations.",
       icon: <AssignmentIcon className={classes.icon} />,
       image: image3,
+      altText: "Skill-Based Assessment Questions and Criteria at the Gigaversity Smart Job portal",
       cta: "Take Assessment"
     },
     {
@@ -705,6 +708,7 @@ const PlacementPortalSection = () => {
       description: "Prepare with AI-powered and expert-led mock interviews. Receive actionable insights and performance analysis to build interview confidence.",
       icon: <VideocamIcon className={classes.icon} />,
       image: image4,
+      altText: "Mock Interview Questions Based on Job Role at Gigaversity Smart Job Portal",
       cta: "Start Practice"
     },
     {
@@ -712,6 +716,7 @@ const PlacementPortalSection = () => {
       description: "Provides you with secure, monitored tests based on the job role, skills, or resume that validate and provides you complete insight.",
       icon: <VerifiedUserIcon className={classes.icon} />,
       image: image5,
+      altText: "How Gigaversity Smart Job portal provides Proctored Testing in the platform",
       cta: "Verify Skills"
     },
     {
@@ -719,6 +724,7 @@ const PlacementPortalSection = () => {
       description: "Delivers detailed feedback on body language, tone of voice, and answer quality — including concept-level insights and how to improve each response.",
       icon: <TimelineIcon className={classes.icon} />,
       image: image6,
+      altText: "Detailed Feedback and complete analysis of a profile in Gigaversity Smart Job portal",
       cta: "View Insights"
     },
   ];
@@ -828,7 +834,7 @@ const PlacementPortalSection = () => {
             >
               <img
                 src={currentSlide.image}
-                alt={currentSlide.title}
+                alt={currentSlide.altText}
                 className={classes.slideImage}
                 loading={activeIndex <= 1 ? 'eager' : 'lazy'}
               />
@@ -887,7 +893,7 @@ const PlacementPortalSection = () => {
         >
           <img
             src={currentSlide.image}
-            alt={currentSlide.title}
+            alt={currentSlide.altText}
             className={classes.modalImage}
             onClick={(e) => e.stopPropagation()}
           />

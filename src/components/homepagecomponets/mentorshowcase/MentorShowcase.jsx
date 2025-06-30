@@ -464,7 +464,7 @@ const useStyles = makeStyles({
 const MentorShowcase = () => {
   const classes = useStyles();
 
-  // Enhanced trainers data with expertise tags
+  // Enhanced trainers data with expertise tags and comprehensive alt text
   const trainers = [
     {
       id: 1,
@@ -472,6 +472,7 @@ const MentorShowcase = () => {
       title: "Product specialist",
       expertise: "security",
       image: akhilImg,
+      altText: " Trainer at Gigaversity, Akhil Lanka"
     },
     {
       id: 2,
@@ -479,6 +480,7 @@ const MentorShowcase = () => {
       title: "Senior Software Engineer & Tech Lead (5+ Years)",
       expertise: "Full Stack",
       image: hemanthImg,
+      altText: "Trainer at Gigaversity, Hemanth Sai Ram"
     },
     {
       id: 3,
@@ -486,6 +488,7 @@ const MentorShowcase = () => {
       title: "Full Stack Developer at Virtusa (5+ Years)",
       expertise: "Full Stack",
       image: jaiImg,
+      altText: "Trainer at Gigaversity, Jay Shankar Reddy"
     },
     {
       id: 4,
@@ -493,6 +496,7 @@ const MentorShowcase = () => {
       title: "Full Stack Developer at Reliance (6+ Years)",
       expertise: "Full Stack",
       image: laxmanImg,
+      altText: "Trainer at Gigaversity, Laxman Eadala"
     },
     {
       id: 5,
@@ -500,13 +504,15 @@ const MentorShowcase = () => {
       title: "Engineer II at Masimo & TA at NYIT Vancouver",
       expertise: "Full Stack",
       image: vinodImg,
+      altText: "Trainer at Gigaversity, Vinod Kumar"
     },
     {
       id: 6,
-      name: "Jaideep",
+      name: "Jaideep Maganti",
       title: "Career Development & Industry Relations Coach",
       expertise: "Leadership",
       image: jaideepImg,
+      altText: "Trainer at Gigaversity, Jaideep Maganti"
     },
     {
       id: 7,
@@ -514,6 +520,7 @@ const MentorShowcase = () => {
       title: "Senior Software Engineer (5+ Years)",
       expertise: "Full Stack",
       image: abhishekImg,
+      altText: "Trainer at Gigaversity, Abhishek G"
     },
     {
       id: 8,
@@ -521,6 +528,7 @@ const MentorShowcase = () => {
       title: "Data science trainer",
       expertise: "Data Science",
       image: uttamImg,
+      altText: "Trainer at Gigaversity, Uttam Grade"
     },
   ];
 
@@ -615,7 +623,7 @@ const MentorShowcase = () => {
                     <Box className={classes.gradientOverlay} />
                     <img
                       src={trainer.image}
-                      alt={`Mentor ${trainer.name}`}
+                      alt={trainer.altText}
                       className={classes.profileImage}
                     />
                   </Box>

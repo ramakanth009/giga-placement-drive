@@ -6,7 +6,12 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import StarIcon from '@mui/icons-material/Star';
+import DownloadIcon from '@mui/icons-material/Download';
 import CentralizedPopupForms from '../../popupforms/CentralizedPopupForms';
+
+// Import PDF files
+import DataScienceCurriculum from '../../../../assets/pdfs/Data_Science_Curriculum.pdf';
+import FullStackCurriculum from '../../../../assets/pdfs/Full_Stack_Development_Curriculum.pdf';
 
 const useStyles = makeStyles({
   timelineContainer: {
@@ -1323,6 +1328,9 @@ const useStyles = makeStyles({
     textTransform: 'none !important',
     marginLeft: '15px !important',
     transition: 'all 0.3s ease !important',
+    display: 'flex !important',
+    alignItems: 'center !important',
+    gap: '8px !important',
     '&:hover': {
       backgroundColor: 'rgba(255, 255, 255, 0.1) !important',
       transform: 'translateY(-2px)',
@@ -1365,8 +1373,9 @@ const LearningPathTimeline = ({
   subtitle, 
   phases, 
   placementStats,
-  onApply, // <-- add this prop
-  popupVariant // <-- add this prop
+  curriculumType = 'fullstack', // New prop to identify curriculum type
+  onApply, 
+  popupVariant 
 }) => {
   const classes = useStyles();
   const [activePhase, setActivePhase] = useState(1);
@@ -1391,6 +1400,31 @@ const LearningPathTimeline = ({
     if (onApply) onApply();
   };
 
+  // Handler for Download Curriculum button
+  const handleDownloadCurriculum = () => {
+    let pdfPath;
+    let fileName;
+    
+    if (curriculumType === 'datascience') {
+      pdfPath = DataScienceCurriculum;
+      fileName = 'Data_Science_Curriculum.pdf';
+    } else {
+      pdfPath = FullStackCurriculum;
+      fileName = 'Full_Stack_Development_Curriculum.pdf';
+    }
+
+    // Create a temporary anchor element to trigger download
+    const link = document.createElement('a');
+    link.href = pdfPath;
+    link.download = fileName;
+    link.target = '_blank';
+    
+    // Append to body, click, and remove
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <Box className={classes.timelineContainer}>
       {/* Header Section */}
@@ -1398,8 +1432,8 @@ const LearningPathTimeline = ({
         <Typography variant="h2" className={classes.title}>
           {title}
         </Typography>
-        <Typography variant="h6" className={classes.subtitle}>
-          {subtitle}
+        <Typography variant="h3" className={classes.subtitle}>
+           {subtitle}
         </Typography>
         
         {placementStats && (
@@ -1455,7 +1489,7 @@ const LearningPathTimeline = ({
             <Typography variant="h3" className={classes.phaseTitle}>
               {activePhaseData.title}
             </Typography>
-            <Typography variant="h6" className={classes.phaseTagline}>
+            <Typography variant="h4" className={classes.phaseTagline}>
               {activePhaseData.tagline}
             </Typography>
           </Box>
@@ -1773,7 +1807,9 @@ const LearningPathTimeline = ({
             <Button
               variant="outlined"
               className={classes.curriculumButton}
+              onClick={handleDownloadCurriculum}
             >
+              <DownloadIcon />
               Download Curriculum
             </Button>
           </Box>

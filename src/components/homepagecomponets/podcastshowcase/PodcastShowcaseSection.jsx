@@ -606,7 +606,7 @@ const PodcastShowcaseSection = () => {
             {/* Open-source image replacement */}
             <img
               src={Launching}
-              alt="Podcast Open Source"
+              alt="Podcast of Gigaversity featured on YouTube"
               style={{
                 width: "100%",
                 height: "100%",
