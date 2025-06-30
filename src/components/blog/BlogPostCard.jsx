@@ -158,7 +158,11 @@ const BlogPostCard = ({ post }) => {
   return (
     <Paper className={classes.cardContainer} elevation={0}>
       <Box className={classes.imageContainer}>
-        <img src={post.image} alt={post.title} className={classes.postImage} />
+        <img
+          src={post.image}
+          alt={post.imageAlt || post.title || 'Blog post image'}
+          className={classes.postImage}
+        />
         {post.featuredCategory && (
           <Chip 
             label={post.featuredCategory} 

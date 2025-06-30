@@ -220,7 +220,7 @@ const Blog = () => {
               {/* Blog Posts Grid */}
               <Box className={classes.blogGrid}>
                 {filteredPosts.slice(0, visiblePosts).map((post) => (
-                  <BlogPostCard key={post.id} post={post} />
+                  <BlogPostCard key={post.id} post={post} alt={post.imageAlt} />
                 ))}
               </Box>
               

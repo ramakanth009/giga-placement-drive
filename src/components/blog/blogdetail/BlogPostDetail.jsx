@@ -230,10 +230,20 @@ const BlogPostDetail = () => {
     navigate('/blog');
   };
 
+  // Function to remove the featured image from the HTML content if present
+  const removeFeaturedImageFromContent = (content, imageUrl) => {
+    if (!content || !imageUrl) return content;
+    // Regex to remove <img ...src="imageUrl"...>
+    const imgRegex = new RegExp(`<img[^>]+src=["']${imageUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}["'][^>]*>`, 'i');
+    return content.replace(imgRegex, '');
+  };
+
   // Function to render HTML content
   const formatContent = (content) => {
     if (!content) return null;
-    return <div dangerouslySetInnerHTML={{ __html: content }} />;
+    // Remove featured image if present in content
+    const cleanedContent = removeFeaturedImageFromContent(content, post?.image);
+    return <div dangerouslySetInnerHTML={{ __html: cleanedContent }} />;
   };
 
   if (loading) {
@@ -303,7 +313,7 @@ const BlogPostDetail = () => {
       <Box className={classes.featuredImageContainer}>
         <img 
           src={post.image} 
-          alt={post.title} 
+          alt={post.imageAlt || post.title} 
           className={classes.featuredImage} 
         />
       </Box>
