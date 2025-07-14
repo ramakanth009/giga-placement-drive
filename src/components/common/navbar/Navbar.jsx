@@ -291,6 +291,39 @@ const Navbar = () => {
               <Box className={classes.dropdown}>
                 <Button
                   className={`${classes.navLink} ${
+                    (currentPath === "/fullstack" ||
+                     currentPath === "/datascience")
+                      ? classes.active
+                      : ""
+                  }`}
+                >
+                  <Box className={classes.dropdownText}>
+                    Full Time Programs
+                    <KeyboardArrowDownIcon className={classes.dropdownIcon} />
+                  </Box>
+                </Button>
+                <Box className={classes.dropdownContent}>
+                  <Link
+                    to="/fullstack"
+                    className={classes.dropdownItem}
+                    onClick={handleNavLinkClick}
+                  >
+                    Full Stack Program
+                  </Link>
+                  <Link
+                    to="/datascience"
+                    className={classes.dropdownItem}
+                    onClick={handleNavLinkClick}
+                  >
+                    Data Science Program
+                  </Link>
+                </Box>
+              </Box>
+
+              
+              <Box className={classes.dropdown}>
+                <Button
+                  className={`${classes.navLink} ${
                     (currentPath === "/virtual-placement-fullstack" || 
                      currentPath === "/virtual-placement-datascience")
                       ? classes.active
@@ -320,37 +353,7 @@ const Navbar = () => {
                 </Box>
               </Box>
 
-              <Box className={classes.dropdown}>
-                <Button
-                  className={`${classes.navLink} ${
-                    (currentPath === "/fullstack" ||
-                     currentPath === "/datascience")
-                      ? classes.active
-                      : ""
-                  }`}
-                >
-                  <Box className={classes.dropdownText}>
-                    Full Time Programs
-                    <KeyboardArrowDownIcon className={classes.dropdownIcon} />
-                  </Box>
-                </Button>
-                <Box className={classes.dropdownContent}>
-                  <Link
-                    to="/fullstack"
-                    className={classes.dropdownItem}
-                    onClick={handleNavLinkClick}
-                  >
-                    Full Stack Program
-                  </Link>
-                  <Link
-                    to="/datascience"
-                    className={classes.dropdownItem}
-                    onClick={handleNavLinkClick}
-                  >
-                    Data Science Program
-                  </Link>
-                </Box>
-              </Box>
+              
               
               <Button
                 className={`${classes.navLink} ${

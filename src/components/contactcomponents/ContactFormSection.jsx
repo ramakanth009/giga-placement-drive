@@ -1429,7 +1429,7 @@ const ContactFormSection = () => {
 
             {/* Social Media */}
             <Box className={classes.socialContainer}>
-              <Typography variant="h6" className={classes.socialTitle}>
+              <Typography variant="h2" className={classes.socialTitle}>
                 Connect with us on Social Media
               </Typography>
               <Box className={classes.socialIconsWrapper}>
@@ -1471,7 +1471,7 @@ const ContactFormSection = () => {
 
           {/* Right Side - Contact Form */}
           <Box sx={{ flex: '1' }}>
-            <Typography variant="h5" className={classes.formTitle}>
+            <Typography variant="h3" className={classes.formTitle}>
               Send us a message
             </Typography>
 

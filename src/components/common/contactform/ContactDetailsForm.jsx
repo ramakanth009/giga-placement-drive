@@ -1649,7 +1649,7 @@ const ContactFormLayout = ({ onSubmit, isSubmitting = false }) => {
     <Box className={classes.mainContainer}>
       <Container maxWidth="lg">
         <Box sx={{ textAlign: 'center', marginBottom: '5px' }}>
-          <Typography variant="h1" className={classes.leftTitle} style={{ marginBottom: '8px' }}>
+          <Typography variant="h2" className={classes.leftTitle} style={{ marginBottom: '8px' }}>
             Get In <span>Touch</span>
           </Typography>
           <Typography variant="h3" className={classes.leftSubtitle} style={{ maxWidth: '600px', margin: '0 auto' }}>

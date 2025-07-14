@@ -378,7 +378,7 @@ const LaptopSection = () => {
             <Box className={classes.laptopTopBezel} />
             <Box className={classes.screenContent}>
               <Typography variant="h2" className={classes.aboutTitle}>
-                About <span className="gigaversity">Gigaversity</span>
+                About <span className="gigaversity">Us</span>
               </Typography>
 
               <Typography variant="body1" className={classes.aboutDescription}>

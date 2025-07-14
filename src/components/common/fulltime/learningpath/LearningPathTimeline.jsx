@@ -1553,7 +1553,7 @@ const LearningPathTimeline = ({
         {/* Modules Section if available */}
         {activePhaseData.modules && (
           <Box sx={{ mb: 5 }}>
-            <Typography variant="h4" className={classes.sectionTitle}>
+            <Typography variant="h5" className={classes.sectionTitle}>
               Core Modules
             </Typography>
             <Box sx={{ 

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
 import { 
   Home, Info, Mail, Building, School, Code, Database, 
   Users, FileText, ShoppingCart, CreditCard, ClipboardCheck, 
-  Map, BookOpen, GraduationCap 
+  Map, BookOpen, GraduationCap, ExternalLink, CheckCircle, AlertCircle 
 } from 'lucide-react';
 
 const useStyles = makeStyles({
@@ -51,6 +51,83 @@ const useStyles = makeStyles({
     margin: '0 auto',
     lineHeight: '1.6'
   },
+  // ADDED: Status section for sitemap health
+  statusSection: {
+    marginBottom: '40px',
+    padding: '25px',
+    borderRadius: '15px',
+    backgroundColor: 'white',
+    border: '1px solid rgba(42, 43, 106, 0.1)',
+    boxShadow: '0 5px 20px rgba(0, 0, 0, 0.05)'
+  },
+  statusTitle: {
+    fontSize: '1.5rem',
+    fontWeight: '700',
+    color: '#2A2B6A',
+    marginBottom: '20px',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '10px'
+  },
+  statusGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+    gap: '20px'
+  },
+  statusItem: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px',
+    padding: '15px',
+    borderRadius: '10px',
+    backgroundColor: '#f8f9fa'
+  },
+  statusIconSuccess: {
+    color: '#28a745'
+  },
+  statusIconWarning: {
+    color: '#ffc107'
+  },
+  // ADDED: XML sitemap links section
+  xmlSection: {
+    marginBottom: '40px',
+    padding: '25px',
+    borderRadius: '15px',
+    backgroundColor: 'white',
+    border: '1px solid rgba(42, 43, 106, 0.1)',
+    boxShadow: '0 5px 20px rgba(0, 0, 0, 0.05)'
+  },
+  xmlTitle: {
+    fontSize: '1.5rem',
+    fontWeight: '700',
+    color: '#2A2B6A',
+    marginBottom: '20px',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '10px'
+  },
+  xmlLinks: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+    gap: '15px'
+  },
+  xmlLink: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: '15px 20px',
+    borderRadius: '10px',
+    backgroundColor: '#f8f9fa',
+    border: '1px solid rgba(42, 43, 106, 0.1)',
+    textDecoration: 'none',
+    color: '#2A2B6A',
+    transition: 'all 0.3s ease',
+    '&:hover': {
+      backgroundColor: '#e9ecef',
+      transform: 'translateY(-2px)',
+      boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1)'
+    }
+  },
   section: {
     marginBottom: '50px'
   },
@@ -84,101 +161,80 @@ const useStyles = makeStyles({
     transition: 'all 0.3s ease',
     textDecoration: 'none',
     color: 'inherit',
-    display: 'block',
-    position: 'relative',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    '&:hover': {
+      transform: 'translateY(-5px)',
+      boxShadow: '0 15px 40px rgba(0, 0, 0, 0.1)',
+      borderColor: '#FFC614'
+    }
   },
-  cardHover: {
-    transform: 'translateY(-5px)',
-    boxShadow: '0 10px 25px rgba(42, 43, 106, 0.15)',
-    borderColor: '#FFC614'
-  },
-  hiddenCard: {
-    opacity: 0.6,
-    backgroundColor: '#f5f5f5',
-    cursor: 'default'
-  },
-  iconContainer: {
-    width: '50px',
-    height: '50px',
-    borderRadius: '50%',
-    backgroundColor: 'rgba(42, 43, 106, 0.1)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+  cardIcon: {
+    fontSize: '2.5rem',
+    color: '#FFC614',
     marginBottom: '15px'
   },
-  linkIcon: {
+  cardTitle: {
+    fontSize: '1.3rem',
+    fontWeight: '700',
     color: '#2A2B6A',
-    width: '24px',
-    height: '24px'
+    marginBottom: '10px'
   },
-  linkTitle: {
-    fontSize: '1.1rem',
-    fontWeight: '600',
-    color: '#2A2B6A',
-    marginBottom: '8px',
-    margin: '0 0 8px 0'
+  cardDescription: {
+    color: '#666',
+    lineHeight: '1.6',
+    fontSize: '0.95rem'
   },
-  linkPath: {
-    fontSize: '0.9rem',
-    color: '#FFC614',
+  cardPath: {
+    fontSize: '0.85rem',
+    color: '#999',
     fontFamily: 'monospace',
-    backgroundColor: 'rgba(255, 198, 20, 0.1)',
-    padding: '4px 8px',
-    borderRadius: '4px',
-    marginBottom: '8px',
-    display: 'inline-block'
-  },
-  linkDescription: {
-    fontSize: '0.9rem',
-    color: '#666',
-    lineHeight: '1.4',
-    margin: '0'
-  },
-  statusChip: {
-    position: 'absolute',
-    top: '15px',
-    right: '15px',
-    fontSize: '0.7rem',
-    padding: '4px 8px',
-    borderRadius: '12px',
-    fontWeight: '600',
-    textTransform: 'uppercase'
-  },
-  activeChip: {
-    backgroundColor: '#e8f5e8',
-    color: '#2e7d32'
-  },
-  hiddenChip: {
-    backgroundColor: '#fff3e0',
-    color: '#f57c00'
-  },
-  redirectChip: {
-    backgroundColor: '#e3f2fd',
-    color: '#1976d2'
-  },
-  divider: {
-    height: '1px',
-    backgroundColor: 'rgba(42, 43, 106, 0.1)',
-    margin: '40px 0',
-    border: 'none'
-  },
-  footer: {
-    marginTop: '60px',
-    textAlign: 'center'
-  },
-  footerText: {
-    color: '#666',
-    fontStyle: 'italic',
-    fontSize: '0.9rem'
+    backgroundColor: '#f8f9fa',
+    padding: '5px 10px',
+    borderRadius: '5px',
+    marginTop: '10px'
   }
 });
 
 const SitemapPage = () => {
   const classes = useStyles();
   const navigate = useNavigate();
-  const [hoveredCard, setHoveredCard] = React.useState(null);
+  const [sitemapStatus, setSitemapStatus] = useState({
+    lastGenerated: null,
+    urlCount: 0,
+    isHealthy: false
+  });
+
+  // ADDED: Check sitemap health on component mount
+  useEffect(() => {
+    checkSitemapHealth();
+  }, []);
+
+  const checkSitemapHealth = async () => {
+    try {
+      const response = await fetch('/sitemap.xml');
+      const isHealthy = response.ok && response.headers.get('content-type')?.includes('xml');
+      
+      if (isHealthy) {
+        const text = await response.text();
+        const urlCount = (text.match(/<url>/g) || []).length;
+        
+        setSitemapStatus({
+          lastGenerated: new Date().toISOString().split('T')[0],
+          urlCount,
+          isHealthy: true
+        });
+      } else {
+        setSitemapStatus(prev => ({ ...prev, isHealthy: false }));
+      }
+    } catch (error) {
+      console.error('Error checking sitemap health:', error);
+      setSitemapStatus(prev => ({ ...prev, isHealthy: false }));
+    }
+  };
+
+  const handleCardClick = (path) => {
+    navigate(path);
+  };
 
   const sitePages = [
     {
@@ -188,28 +244,28 @@ const SitemapPage = () => {
         {
           title: 'Homepage',
           path: '/',
-          description: 'Main landing page with program overview and features',
+          description: 'Main landing page with program overview and latest updates',
           icon: <Home />,
           status: 'active'
         },
         {
           title: 'About Us',
           path: '/about',
-          description: 'Learn about Gigaversity mission and vision',
+          description: 'Learn about our mission, vision, and team',
           icon: <Info />,
           status: 'active'
         },
         {
           title: 'Contact Us',
           path: '/contact',
-          description: 'Get in touch with our team',
+          description: 'Get in touch with our team for inquiries and support',
           icon: <Mail />,
           status: 'active'
         },
         {
           title: 'Campus',
           path: '/campus',
-          description: 'Explore our state-of-the-art learning facilities',
+          description: 'Explore our campus facilities and learning environment',
           icon: <Building />,
           status: 'active'
         }
@@ -217,40 +273,40 @@ const SitemapPage = () => {
     },
     {
       category: 'Programs & Courses',
-      icon: <School />,
+      icon: <GraduationCap />,
       pages: [
         {
           title: 'Full Stack Development',
           path: '/fullstack',
-          description: 'Learn complete web development from frontend to backend',
+          description: 'Comprehensive full-stack development program',
           icon: <Code />,
           status: 'active'
         },
         {
           title: 'Data Science',
           path: '/datascience',
-          description: 'Master data analysis, ML, and AI technologies',
+          description: 'Advanced data science and analytics program',
           icon: <Database />,
           status: 'active'
         },
         {
-          title: 'Full-Time Full Stack',
-          path: '/fulltime/fullstack',
-          description: 'Intensive full-time full stack development program',
-          icon: <GraduationCap />,
+          title: 'Virtual Placement - Full Stack',
+          path: '/virtual-placement-fullstack',
+          description: 'Virtual placement program for full-stack developers',
+          icon: <Code />,
           status: 'active'
         },
         {
-          title: 'Full-Time Data Science',
-          path: '/fulltime/datascience',
-          description: 'Intensive full-time data science program',
+          title: 'Virtual Placement - Data Science',
+          path: '/virtual-placement-datascience',
+          description: 'Virtual placement program for data scientists',
           icon: <Database />,
           status: 'active'
         }
       ]
     },
     {
-      category: 'Registration & Forms',
+      category: 'Registration & Assessment',
       icon: <Users />,
       pages: [
         {
@@ -290,23 +346,30 @@ const SitemapPage = () => {
       ]
     },
     {
-      category: 'E-commerce & Payments',
+      category: 'Products & Tools',
       icon: <ShoppingCart />,
       pages: [
         {
-          title: 'Cart',
-          path: '/cart',
-          description: 'Review and manage your course selections',
-          icon: <ShoppingCart />,
+          title: 'Giga Resume Builder',
+          path: '/giga-resume-builder',
+          description: 'Professional resume building tool',
+          icon: <FileText />,
           status: 'active'
         },
-        {
-          title: 'Payment Complete',
-          path: '/payment-complete',
-          description: 'Payment confirmation and next steps',
-          icon: <CreditCard />,
-          status: 'active'
-        }
+        // {
+        //   title: 'Cart',
+        //   path: '/cart',
+        //   description: 'Review and manage your course selections',
+        //   icon: <ShoppingCart />,
+        //   status: 'active'
+        // },
+        // {
+        //   title: 'Payment Complete',
+        //   path: '/payment-complete',
+        //   description: 'Payment confirmation and next steps',
+        //   icon: <CreditCard />,
+        //   status: 'active'
+        // }
       ]
     },
     {
@@ -330,7 +393,7 @@ const SitemapPage = () => {
         {
           title: 'Sitemap',
           path: '/sitemap',
-          description: 'Complete navigation guide to all website pages',
+          description: 'Complete overview of all website pages',
           icon: <Map />,
           status: 'active'
         }
@@ -338,104 +401,112 @@ const SitemapPage = () => {
     }
   ];
 
-  const getStatusChip = (status) => {
-    const baseStyle = classes.statusChip;
-    switch (status) {
-      case 'active':
-        return `${baseStyle} ${classes.activeChip}`;
-      case 'hidden':
-        return `${baseStyle} ${classes.hiddenChip}`;
-      case 'redirect':
-        return `${baseStyle} ${classes.redirectChip}`;
-      default:
-        return baseStyle;
-    }
-  };
-
-  const getStatusText = (status) => {
-    switch (status) {
-      case 'active':
-        return 'Active';
-      case 'hidden':
-        return 'Hidden';
-      case 'redirect':
-        return 'Redirect';
-      default:
-        return '';
-    }
-  };
-
-  // Updated handleCardClick to use React Router navigate
-  const handleCardClick = (path, status) => {
-    if (status === 'active') {
-      navigate(path);
-    }
-  };
-
   return (
     <div className={classes.container}>
-      <div className={classes.backgroundPattern} />
+      {/* ADDED: SEO meta tags */}
+      <title>Sitemap - Gigaversity | Complete Website Structure</title>
       
+      <div className={classes.backgroundPattern}></div>
       <div className={classes.content}>
         <div className={classes.header}>
-          <h1 className={classes.title}>Sitemap</h1>
+          <h1 className={classes.title}>Website Sitemap</h1>
           <p className={classes.subtitle}>
-            Complete navigation guide to all pages and sections of Gigaversity platform
+            Complete overview of all pages and sections on Gigaversity. 
+            Navigate easily through our educational content and resources.
           </p>
         </div>
 
-        {sitePages.map((section, sectionIndex) => (
-          <div key={sectionIndex} className={classes.section}>
+        {/* ADDED: Sitemap Status Section */}
+        <div className={classes.statusSection}>
+          <h2 className={classes.statusTitle}>
+            <Map className={classes.sectionIcon} />
+            Sitemap Status
+          </h2>
+          <div className={classes.statusGrid}>
+            <div className={classes.statusItem}>
+              {sitemapStatus.isHealthy ? (
+                <CheckCircle className={classes.statusIconSuccess} size={24} />
+              ) : (
+                <AlertCircle className={classes.statusIconWarning} size={24} />
+              )}
+              <div>
+                <strong>Health Status:</strong> {sitemapStatus.isHealthy ? 'Healthy' : 'Needs Attention'}
+              </div>
+            </div>
+            <div className={classes.statusItem}>
+              <FileText className={classes.statusIconSuccess} size={24} />
+              <div>
+                <strong>Total URLs:</strong> {sitemapStatus.urlCount} pages
+              </div>
+            </div>
+            <div className={classes.statusItem}>
+              <CheckCircle className={classes.statusIconSuccess} size={24} />
+              <div>
+                <strong>Last Updated:</strong> {sitemapStatus.lastGenerated || 'Loading...'}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ADDED: XML Sitemap Links */}
+        <div className={classes.xmlSection}>
+          <h2 className={classes.xmlTitle}>
+            <Code className={classes.sectionIcon} />
+            XML Sitemaps for Search Engines
+          </h2>
+          <div className={classes.xmlLinks}>
+            <a 
+              href="/sitemap.xml" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className={classes.xmlLink}
+            >
+              <span>
+                <strong>Main Sitemap</strong>
+                <br />
+                <small>Complete website structure for Google</small>
+              </span>
+              <ExternalLink size={20} />
+            </a>
+            <a 
+              href="/robots.txt" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className={classes.xmlLink}
+            >
+              <span>
+                <strong>Robots.txt</strong>
+                <br />
+                <small>Crawling instructions for search engines</small>
+              </span>
+              <ExternalLink size={20} />
+            </a>
+          </div>
+        </div>
+
+        {/* Existing page sections */}
+        {sitePages.map((section, index) => (
+          <div key={index} className={classes.section}>
             <h2 className={classes.sectionTitle}>
-              <span className={classes.sectionIcon}>{section.icon}</span>
+              {React.cloneElement(section.icon, { className: classes.sectionIcon })}
               {section.category}
             </h2>
-            
             <div className={classes.grid}>
-              {section.pages.map((page, pageIndex) => {
-                const cardId = `${sectionIndex}-${pageIndex}`;
-                const isHovered = hoveredCard === cardId;
-                const cardStyle = [
-                  classes.card,
-                  page.status !== 'active' ? classes.hiddenCard : '',
-                  isHovered && page.status === 'active' ? classes.cardHover : ''
-                ].filter(Boolean).join(' ');
-
-                return (
-                  <div
-                    key={pageIndex}
-                    className={cardStyle}
-                    onMouseEnter={() => setHoveredCard(cardId)}
-                    onMouseLeave={() => setHoveredCard(null)}
-                    onClick={() => handleCardClick(page.path, page.status)}
-                  >
-                    <span className={getStatusChip(page.status)}>
-                      {getStatusText(page.status)}
-                    </span>
-                    
-                    <div className={classes.iconContainer}>
-                      <span className={classes.linkIcon}>{page.icon}</span>
-                    </div>
-                    
-                    <h3 className={classes.linkTitle}>{page.title}</h3>
-                    
-                    <code className={classes.linkPath}>{page.path}</code>
-                    
-                    <p className={classes.linkDescription}>{page.description}</p>
-                  </div>
-                );
-              })}
+              {section.pages.map((page, pageIndex) => (
+                <div
+                  key={pageIndex}
+                  className={classes.card}
+                  onClick={() => handleCardClick(page.path)}
+                >
+                  {React.cloneElement(page.icon, { className: classes.cardIcon })}
+                  <h3 className={classes.cardTitle}>{page.title}</h3>
+                  <p className={classes.cardDescription}>{page.description}</p>
+                  <div className={classes.cardPath}>{page.path}</div>
+                </div>
+              ))}
             </div>
-            
-            {sectionIndex < sitePages.length - 1 && <hr className={classes.divider} />}
           </div>
         ))}
-
-        <div className={classes.footer}>
-          <p className={classes.footerText}>
-            Last updated: {new Date().toLocaleDateString()}
-          </p>
-        </div>
       </div>
     </div>
   );

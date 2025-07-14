@@ -198,7 +198,7 @@ const Blog = () => {
               <Typography variant="h2" className={classes.sectionTitle}>
                 Insights for Your <span>Tech Journey</span>
               </Typography>
-              <Typography variant="body1" className={classes.sectionDescription}>
+              <Typography variant="h3" className={classes.sectionDescription}>
                 Explore our latest articles, guides, and insights on project-based learning, tech careers, and industry trends
               </Typography>
               

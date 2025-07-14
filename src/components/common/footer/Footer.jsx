@@ -228,8 +228,8 @@ const useStyles = makeStyles({
     },
   },
   companyName: {
-    fontSize: "1.5rem",
-    fontWeight: "bold",
+    fontSize: "1.5rem !important",
+    fontWeight: "bold !important",
     marginBottom: "20px",
     color: "#FFFFFF",
     "@media (max-width: 1200px)": {
@@ -711,7 +711,7 @@ const Footer = () => {
                 <Box className={classes.logoWrapper}>
                   <GigaLogo style={{ width: "100%", height: "100%" }} />
                 </Box>
-                <Typography variant="h6" className={classes.companyName}>
+                <Typography variant="h2" className={classes.companyName}>
                   Gigaversity
                 </Typography>
               </Box>
@@ -812,33 +812,6 @@ const Footer = () => {
 
             {/* Programs Column (Virtual Placement + Full Time) */}
             <Box className={classes.column}>
-              <Typography className={classes.sectionTitle}>
-                Virtual Placement
-              </Typography>
-              <ul className={classes.linksList}>
-                <li className={classes.linkItem}>
-                  <CodeIcon className={classes.linkIcon} style={{ width: '18px', height: '18px' }} />
-                  <MuiLink
-                    component={Link}
-                    to="/virtual-placement-fullstack"
-                    className={classes.linkText}
-                    onClick={scrollToTop}
-                  >
-                    Full Stack
-                  </MuiLink>
-                </li>
-                <li className={classes.linkItem}>
-                  <DataObjectIcon className={classes.linkIcon} style={{ width: '18px', height: '18px' }} />
-                  <MuiLink
-                    component={Link}
-                    to="/virtual-placement-datascience"
-                    className={classes.linkText}
-                    onClick={scrollToTop}
-                  >
-                    Data Science
-                  </MuiLink>
-                </li>
-              </ul>
 
               <Typography className={classes.sectionTitle} style={{ marginTop: '30px' }}>
                 Full Time Programs
@@ -867,6 +840,36 @@ const Footer = () => {
                   </MuiLink>
                 </li>
               </ul>
+
+              <Typography className={classes.sectionTitle}>
+                Virtual Placement
+              </Typography>
+              <ul className={classes.linksList}>
+                <li className={classes.linkItem}>
+                  <CodeIcon className={classes.linkIcon} style={{ width: '18px', height: '18px' }} />
+                  <MuiLink
+                    component={Link}
+                    to="/virtual-placement-fullstack"
+                    className={classes.linkText}
+                    onClick={scrollToTop}
+                  >
+                    Full Stack
+                  </MuiLink>
+                </li>
+                <li className={classes.linkItem}>
+                  <DataObjectIcon className={classes.linkIcon} style={{ width: '18px', height: '18px' }} />
+                  <MuiLink
+                    component={Link}
+                    to="/virtual-placement-datascience"
+                    className={classes.linkText}
+                    onClick={scrollToTop}
+                  >
+                    Data Science
+                  </MuiLink>
+                </li>
+              </ul>
+
+              
             </Box>
 
             {/* Contact Info Column */}

@@ -109,7 +109,7 @@ const ContactHeroSection = () => {
       <Typography variant="h1" className={classes.pageTitle}>
         Contact <span className={classes.highlightText}>Us</span>
       </Typography>
-      <Typography variant="h6" className={classes.pageSubtitle}>
+      <Typography variant="h2" className={classes.pageSubtitle}>
         Whether you're looking to upskill, switch careers, or hire top talent, Gigaversity is here
         to support your journey!
       </Typography>

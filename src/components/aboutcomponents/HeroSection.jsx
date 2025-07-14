@@ -120,9 +120,9 @@ const HeroSection = () => {
       <Box className={classes.heroSection}>
         <Box className={classes.heroContent}>
           <Typography variant="h1" className={classes.pageTitle}>
-            About <span className={classes.highlightText}>Us</span>
+            About <span className={classes.highlightText}>Gigaversity</span>
           </Typography>
-          <Typography variant="h6" className={classes.pageSubtitle}>
+          <Typography variant="h2" className={classes.pageSubtitle}>
             India's first product-based learning platform designed to transform students into industry-ready professionals
           </Typography>
         </Box>

@@ -184,7 +184,7 @@ const BlogPostCard = ({ post }) => {
         </Box>
         
         <Link to={`/blog/${post.slug}`} style={{ textDecoration: 'none' }}>
-          <Typography variant="h6" className={classes.title}>
+          <Typography variant="h3" className={classes.title}>
             {post.title}
           </Typography>
         </Link>
