@@ -12,26 +12,35 @@ const useStyles = makeStyles({
   cardContainer: {
     flex: "1 1 calc(33.333% - 20px)",
     minWidth: "300px",
+    minHeight: "500px", // Added minimum height for card consistency
     overflow: "hidden",
     borderRadius: "12px !important",
     boxShadow: "0 5px 20px rgba(0, 0, 0, 0.05) !important",
     transition: "all 0.3s ease !important",
     position: "relative",
+    display: "flex",
+    flexDirection: "column",
     "&:hover": {
       transform: "translateY(-8px)",
       boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1) !important",
     },
     "@media (max-width: 1100px)": {
       flex: "1 1 calc(50% - 15px)",
+      minHeight: "480px",
     },
     "@media (max-width: 700px)": {
       flex: "1 1 100%",
+      minHeight: "450px",
+    },
+    "@media (max-width: 600px)": {
+      minHeight: "420px",
     },
   },
   imageContainer: {
     height: "200px",
     overflow: "hidden",
     position: "relative",
+    flexShrink: 0, // Prevent image from shrinking
     "@media (max-width: 600px)": {
       height: "180px",
     },
@@ -60,8 +69,19 @@ const useStyles = makeStyles({
   },
   contentContainer: {
     padding: "25px",
+    display: "flex",
+    flexDirection: "column",
+    flexGrow: 1, // Allow content to grow and fill remaining space
+    minHeight: "280px", // Minimum height for content consistency
+    "@media (max-width: 1100px)": {
+      minHeight: "260px",
+    },
+    "@media (max-width: 700px)": {
+      minHeight: "250px",
+    },
     "@media (max-width: 600px)": {
       padding: "20px",
+      minHeight: "220px",
     },
   },
   postMeta: {
@@ -71,6 +91,7 @@ const useStyles = makeStyles({
     marginBottom: "15px",
     color: "#777",
     fontSize: "0.85rem !important",
+    flexShrink: 0, // Prevent meta from shrinking
     "@media (max-width: 600px)": {
       gap: "10px",
       marginBottom: "12px",
@@ -91,12 +112,19 @@ const useStyles = makeStyles({
     marginBottom: "12px !important",
     lineHeight: "1.4 !important",
     transition: "color 0.3s ease",
+    minHeight: "60px", // Minimum height for title consistency
+    display: "-webkit-box",
+    WebkitLineClamp: 2,
+    WebkitBoxOrient: "vertical",
+    overflow: "hidden",
+    flexShrink: 0, // Prevent title from shrinking
     "&:hover": {
       color: "#4A4C9B !important",
     },
     "@media (max-width: 600px)": {
       fontSize: "1.25rem !important",
       marginBottom: "10px !important",
+      minHeight: "55px",
     },
   },
   excerpt: {
@@ -105,13 +133,16 @@ const useStyles = makeStyles({
     marginBottom: "20px !important",
     lineHeight: "1.6 !important",
     display: "-webkit-box",
-    WebkitLineClamp: 3,
+    WebkitLineClamp: 6,
     WebkitBoxOrient: "vertical",
     overflow: "hidden",
     textOverflow: "ellipsis",
+    minHeight: "82px", // Minimum height for excerpt consistency (3 lines)
+    flexShrink: 0, // Prevent excerpt from shrinking
     "@media (max-width: 600px)": {
       fontSize: "0.9rem !important",
       marginBottom: "15px !important",
+      minHeight: "68px",
     },
   },
   tagsContainer: {
@@ -119,8 +150,12 @@ const useStyles = makeStyles({
     flexWrap: "wrap",
     gap: "8px",
     marginBottom: "20px",
+    minHeight: "32px", // Minimum height for tags consistency
+    alignItems: "flex-start",
+    flexShrink: 0, // Prevent tags from shrinking
     "@media (max-width: 600px)": {
       marginBottom: "15px",
+      minHeight: "30px",
     },
   },
   tag: {
@@ -134,16 +169,47 @@ const useStyles = makeStyles({
     },
   },
   readMoreButton: {
-    color: "#2A2B6A !important",
+    background: "linear-gradient(135deg, #2A2B6A 0%, #4A4C9B 100%) !important",
+    color: "white !important",
     fontSize: "0.9rem !important",
-    fontWeight: "bold !important",
+    fontWeight: "600 !important",
     textTransform: "none !important",
-    padding: "8px 0 !important",
+    padding: "12px 24px !important",
+    borderRadius: "25px !important",
+    marginTop: "auto",
+    alignSelf: "flex-start",
+    boxShadow: "0 4px 15px rgba(42, 43, 106, 0.2) !important",
+    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important",
+    position: "relative",
+    overflow: "hidden",
+    "&::before": {
+      content: '""',
+      position: "absolute",
+      top: 0,
+      left: "-100%",
+      width: "100%",
+      height: "100%",
+      background: "linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent)",
+      transition: "left 0.5s ease",
+    },
+    "&:hover": {
+      transform: "translateY(-2px) scale(1.02)",
+      boxShadow: "0 8px 25px rgba(42, 43, 106, 0.3) !important",
+      background: "linear-gradient(135deg, #3A3D7A 0%, #5A5EA0 100%) !important",
+    },
+    "&:hover::before": {
+      left: "100%",
+    },
     "& .MuiButton-endIcon": {
-      transition: "transform 0.3s ease",
+      transition: "transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+      marginLeft: "8px",
     },
     "&:hover .MuiButton-endIcon": {
-      transform: "translateX(4px)",
+      transform: "translateX(6px) scale(1.1)",
+    },
+    "&:active": {
+      transform: "translateY(0) scale(1)",
+      transition: "transform 0.1s ease",
     },
   },
 });

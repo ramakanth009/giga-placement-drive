@@ -56,7 +56,7 @@ const MapSection = () => {
         allowFullScreen=""
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
-        title="Gigaversity Location"
+        title="See our location in Madhapur, Hyderabad"
       ></iframe>
     </Box>
   );

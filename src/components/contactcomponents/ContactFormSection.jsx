@@ -1399,21 +1399,21 @@ const ContactFormSection = () => {
               <Box className={classes.contactInfoItem}>
                 <PhoneIcon className={classes.contactIcon} />
                 <Typography className={classes.contactText}>
-                  <Link href="tel:+919849048999">8062179357</Link>
+                  <Link href="tel:+919849048999" title="Reach out directly to our support team via phone">8062179357</Link>
                 </Typography>
               </Box>
 
               <Box className={classes.contactInfoItem}>
                 <EmailIcon className={classes.contactIcon} />
                 <Typography className={classes.contactText}>
-                  <Link href="mailto:Info@gigaversity.in">Info@gigaversity.in</Link>
+                  <Link href="mailto:Info@gigaversity.in" title="Send your queries or feedback to our support email">Info@gigaversity.in</Link>
                 </Typography>
               </Box>
 
               <Box className={classes.contactInfoItem}>
                 <LanguageIcon className={classes.contactIcon} />
                 <Typography className={classes.contactText}>
-                  <Link href="https://www.gigaversity.in" target="_blank">
+                  <Link href="https://www.gigaversity.in" target="_blank" title="Go to Gigaversity's main website">
                     www.gigaversity.in
                   </Link>
                 </Typography>
@@ -1438,6 +1438,7 @@ const ContactFormSection = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={classes.socialIcon}
+                  title="Stay connected with us for latest updates on Facebook"
                 >
                   <FacebookIcon />
                 </Link>
@@ -1446,6 +1447,7 @@ const ContactFormSection = () => {
                   target="_blank"
                   rel="noopener noreferrer" 
                   className={classes.socialIcon}
+                  title="Grow your network and follow our career insights on LinkedIn"
                 >
                   <LinkedInIcon />
                 </Link>
@@ -1462,6 +1464,7 @@ const ContactFormSection = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={classes.socialIcon}
+                  title="Catch our behind-the-scenes and highlights on Instagram"
                 >
                   <InstagramIcon />
                 </Link>
@@ -1619,6 +1622,7 @@ const ContactFormSection = () => {
               <Box sx={{ mt: 4 }}>
                 <Button
                   type="submit"
+                  title="Submit your message to the Gigaversity team"
                   variant="contained"
                   className={classes.submitButton}
                   fullWidth
