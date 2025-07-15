@@ -1,8 +1,8 @@
 // src/components/common/fulltime/learningpath/LearningPathTimeline.jsx
 import React, { useState } from 'react';
-import { Box, Typography, Button, Paper, Chip, Divider, IconButton } from '@mui/material';
+import { Box, Typography, Button, Paper } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+// import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import StarIcon from '@mui/icons-material/Star';
