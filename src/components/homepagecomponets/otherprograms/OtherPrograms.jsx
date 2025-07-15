@@ -541,6 +541,7 @@ const OtherPrograms = () => {
                   <SwiperSlide key={program.id}>
                     <ProgramCard
                       program={program}
+                      isLoved={lovedPrograms[program.id] || false}
                       onLoveClick={handleLove}
                       onCommentClick={handleCommentOpen}
                       onViewProgram={handleViewProgram}

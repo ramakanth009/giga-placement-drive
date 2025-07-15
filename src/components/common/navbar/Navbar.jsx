@@ -13,7 +13,8 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { makeStyles } from "@mui/styles";
-import { ReactComponent as GigaLogo } from "../../../assets/GIGAVERSITY_LOGO.svg";
+// import { ReactComponent as GigaLogo } from "../../../assets/GIGAVERSITY_LOGO.svg";
+import GigaLogo  from "../../../assets/GIGAVERSITY_LOGO.png";
 import { Link, useLocation } from "react-router-dom";
 import { scrollToTop } from "../../../utils/scrollUtils";
 import CentralizedPopupForms from '../../common/popupforms/CentralizedPopupForms';
@@ -271,7 +272,12 @@ const Navbar = () => {
           to="/"
           onClick={scrollToTop}
         >
-          <GigaLogo className={classes.logoSvg} />
+          {/* <GigaLogo className={classes.logoSvg} /> */}
+           <img 
+    src={GigaLogo} 
+    alt="Gigaversity Logo"
+    className={classes.logoSvg} 
+  />
         </Box>
 
         {!isMobile ? (
