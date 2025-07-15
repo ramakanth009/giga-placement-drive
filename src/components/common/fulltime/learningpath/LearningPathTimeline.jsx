@@ -557,6 +557,9 @@ const useStyles = makeStyles({
     border: '1px solid #e0e0e0',
     borderLeft: '4px solid #e0e0e0',
     height: '100%',
+    minHeight: '280px',
+    display: 'flex',
+    flexDirection: 'column',
     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
     '&:hover': {
       transform: 'translateY(-5px)',
@@ -589,22 +592,27 @@ const useStyles = makeStyles({
     '@media (max-width: 1200px)': {
       padding: '18px',
       borderRadius: '8px',
+      minHeight: '260px',
     },
     '@media (max-width: 960px)': {
       padding: '16px',
+      minHeight: '240px',
     },
     '@media (max-width: 600px)': {
       padding: '14px',
       borderRadius: '6px',
+      minHeight: '220px',
     },
     '@media (max-width: 480px)': {
       padding: '12px',
+      minHeight: '200px',
       '&:hover': {
         transform: 'translateY(-3px)',
       },
     },
     '@media (max-width: 375px)': {
       padding: '10px',
+      minHeight: '180px',
       '&:hover': {
         transform: 'translateY(-2px)',
       },
@@ -622,6 +630,7 @@ const useStyles = makeStyles({
     marginRight: '15px',
     marginBottom: '0',
     transition: 'all 0.3s ease',
+    flexShrink: 0,
     '@media (max-width: 1200px)': {
       width: '48px',
       height: '48px',
@@ -682,28 +691,23 @@ const useStyles = makeStyles({
   },
   activityDescription: {
     fontSize: '0.95rem !important',
-    minHeight: '90px',
     color: '#555 !important',
     lineHeight: '1.5 !important',
+    flex: 1,
     '@media (max-width: 1200px)': {
       fontSize: '0.93rem !important',
-      minHeight: '85px',
     },
     '@media (max-width: 960px)': {
       fontSize: '0.9rem !important',
-      minHeight: '80px',
     },
     '@media (max-width: 600px)': {
       fontSize: '0.88rem !important',
-      minHeight: '70px',
     },
     '@media (max-width: 480px)': {
       fontSize: '0.85rem !important',
-      minHeight: '60px',
     },
     '@media (max-width: 375px)': {
       fontSize: '0.8rem !important',
-      minHeight: '50px',
     },
   },
   moduleBox: {
@@ -714,6 +718,7 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     marginBottom: '10px',
+    minHeight: '60px',
     transition: 'all 0.3s ease',
     '&:hover': {
       backgroundColor: 'rgba(42, 43, 106, 0.1)',
@@ -722,19 +727,23 @@ const useStyles = makeStyles({
     },
     '@media (max-width: 1200px)': {
       padding: '14px',
+      minHeight: '58px',
     },
     '@media (max-width: 960px)': {
       padding: '12px',
       marginBottom: '8px',
+      minHeight: '56px',
     },
     '@media (max-width: 600px)': {
       padding: '10px',
       borderRadius: '6px',
       marginBottom: '6px',
+      minHeight: '54px',
     },
     '@media (max-width: 480px)': {
       padding: '8px',
       marginBottom: '5px',
+      minHeight: '52px',
       '&:hover': {
         transform: 'translateX(3px)',
       },
@@ -742,6 +751,7 @@ const useStyles = makeStyles({
     '@media (max-width: 375px)': {
       padding: '6px',
       marginBottom: '4px',
+      minHeight: '50px',
       '&:hover': {
         transform: 'translateX(2px)',
       },
@@ -750,6 +760,7 @@ const useStyles = makeStyles({
   moduleIcon: {
     color: '#2A2B6A',
     marginRight: '10px',
+    flexShrink: 0,
     '@media (max-width: 1200px)': {
       marginRight: '9px',
     },
@@ -770,6 +781,7 @@ const useStyles = makeStyles({
     fontSize: '1rem !important',
     color: '#444 !important',
     lineHeight: '1.4 !important',
+    flex: 1,
     '@media (max-width: 1200px)': {
       fontSize: '0.98rem !important',
     },
@@ -793,6 +805,9 @@ const useStyles = makeStyles({
     boxShadow: '0 4px 15px rgba(0, 0, 0, 0.08)',
     border: '1px solid #e0e0e0',
     height: '100%',
+    minHeight: '320px',
+    display: 'flex',
+    flexDirection: 'column',
     transition: 'all 0.3s ease',
     '&:hover': {
       boxShadow: '0 8px 25px rgba(0, 0, 0, 0.1)',
@@ -802,22 +817,27 @@ const useStyles = makeStyles({
     '@media (max-width: 1200px)': {
       padding: '18px',
       borderRadius: '8px',
+      minHeight: '300px',
     },
     '@media (max-width: 960px)': {
       padding: '16px',
+      minHeight: '280px',
     },
     '@media (max-width: 600px)': {
       padding: '14px',
       borderRadius: '6px',
+      minHeight: '260px',
     },
     '@media (max-width: 480px)': {
       padding: '12px',
+      minHeight: '240px',
       '&:hover': {
         transform: 'translateY(-2px)',
       },
     },
     '@media (max-width: 375px)': {
       padding: '10px',
+      minHeight: '220px',
       '&:hover': {
         transform: 'translateY(-1px)',
       },
@@ -827,6 +847,7 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     marginBottom: '20px',
+    flexShrink: 0,
     '@media (max-width: 1200px)': {
       marginBottom: '18px',
     },
@@ -853,6 +874,7 @@ const useStyles = makeStyles({
     backgroundColor: 'rgba(42, 43, 106, 0.1)',
     color: '#2A2B6A',
     marginRight: '15px',
+    flexShrink: 0,
     '@media (max-width: 1200px)': {
       width: '48px',
       height: '48px',
@@ -886,6 +908,7 @@ const useStyles = makeStyles({
     fontWeight: 'bold !important',
     color: '#2A2B6A !important',
     lineHeight: '1.3 !important',
+    flex: 1,
     '@media (max-width: 1200px)': {
       fontSize: '1.25rem !important',
     },
@@ -1090,6 +1113,7 @@ const useStyles = makeStyles({
     color: '#2A2B6A',
     marginRight: '10px',
     marginTop: '3px',
+    flexShrink: 0,
     '@media (max-width: 1200px)': {
       marginRight: '9px',
     },
@@ -1110,6 +1134,7 @@ const useStyles = makeStyles({
     fontSize: '1rem !important',
     color: '#444 !important',
     lineHeight: '1.5 !important',
+    flex: 1,
     '@media (max-width: 1200px)': {
       fontSize: '0.98rem !important',
     },
@@ -1513,6 +1538,7 @@ const LearningPathTimeline = ({
             gap: { xs: 1, sm: 1.5, md: 2 },
             overflowX: { xs: 'visible', lg: 'auto' },
             pb: 2,
+            alignItems: 'stretch',
             '&::-webkit-scrollbar': {
               height: '6px',
             },
@@ -1534,8 +1560,7 @@ const LearningPathTimeline = ({
                 <Box sx={{ 
                   display: 'flex', 
                   alignItems: 'center', 
-                  marginBottom: '10px', 
-                  minHeight: { xs: '50px', sm: '55px', md: '60px' }
+                  marginBottom: '10px'
                 }}>
                   <Box className={classes.activityIcon}>
                     {highlight.icon}
@@ -1593,6 +1618,7 @@ const LearningPathTimeline = ({
               display: 'flex', 
               flexWrap: 'wrap', 
               gap: { xs: 2, sm: 2.5, md: 3 },
+              alignItems: 'stretch',
               '& > *': { 
                 flex: { 
                   xs: '1 1 100%', 
@@ -1611,7 +1637,7 @@ const LearningPathTimeline = ({
                       {track.name}
                     </Typography>
                   </Box>
-                  <Box>
+                  <Box sx={{ flex: 1 }}>
                     {track.modules.map((module, mIndex) => (
                       <Box className={classes.moduleBox} key={mIndex}>
                         <CheckCircleIcon className={classes.moduleIcon} />
