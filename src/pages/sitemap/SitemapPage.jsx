@@ -1,198 +1,212 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { makeStyles } from '@mui/styles';
-import { 
-  Home, Info, Mail, Building, School, Code, Database, 
-  Users, FileText, ShoppingCart, CreditCard, ClipboardCheck, 
-  Map, BookOpen, GraduationCap, ExternalLink, CheckCircle, AlertCircle 
-} from 'lucide-react';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { makeStyles } from "@mui/styles";
+import {
+  Home,
+  Info,
+  Mail,
+  Building,
+  Code,
+  Database,
+  Users,
+  FileText,
+  ShoppingCart,
+  ClipboardCheck,
+  Map,
+  BookOpen,
+  GraduationCap,
+  ExternalLink,
+  CheckCircle,
+  AlertCircle,
+} from "lucide-react";
 
 const useStyles = makeStyles({
   container: {
-    minHeight: '100vh',
-    backgroundColor: '#f8f9fa',
-    position: 'relative',
-    paddingTop: '80px'
+    minHeight: "100vh",
+    backgroundColor: "#f8f9fa",
+    position: "relative",
+    paddingTop: "80px",
   },
   backgroundPattern: {
-    position: 'absolute',
+    position: "absolute",
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
-    background: 'linear-gradient(135deg, rgba(42, 43, 106, 0.02) 0%, rgba(255, 198, 20, 0.02) 100%)',
-    zIndex: 0
+    background:
+      "linear-gradient(135deg, rgba(42, 43, 106, 0.02) 0%, rgba(255, 198, 20, 0.02) 100%)",
+    zIndex: 0,
   },
   content: {
-    position: 'relative',
+    position: "relative",
     zIndex: 1,
-    maxWidth: '1200px',
-    margin: '0 auto',
-    padding: '40px 20px'
+    maxWidth: "1200px",
+    margin: "0 auto",
+    padding: "40px 20px",
   },
   header: {
-    textAlign: 'center',
-    marginBottom: '60px'
+    textAlign: "center",
+    marginBottom: "60px",
   },
   title: {
-    fontSize: '3rem',
-    fontWeight: '800',
-    color: '#2A2B6A',
-    marginBottom: '20px',
-    background: 'linear-gradient(135deg, #2A2B6A 0%, #FFC614 100%)',
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'transparent',
-    backgroundClip: 'text'
+    fontSize: "3rem",
+    fontWeight: "800",
+    color: "#2A2B6A",
+    marginBottom: "20px",
+    background: "linear-gradient(135deg, #2A2B6A 0%, #FFC614 100%)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+    backgroundClip: "text",
   },
   subtitle: {
-    fontSize: '1.2rem',
-    color: '#666',
-    maxWidth: '600px',
-    margin: '0 auto',
-    lineHeight: '1.6'
+    fontSize: "1.2rem",
+    color: "#666",
+    maxWidth: "600px",
+    margin: "0 auto",
+    lineHeight: "1.6",
   },
   // ADDED: Status section for sitemap health
   statusSection: {
-    marginBottom: '40px',
-    padding: '25px',
-    borderRadius: '15px',
-    backgroundColor: 'white',
-    border: '1px solid rgba(42, 43, 106, 0.1)',
-    boxShadow: '0 5px 20px rgba(0, 0, 0, 0.05)'
+    marginBottom: "40px",
+    padding: "25px",
+    borderRadius: "15px",
+    backgroundColor: "white",
+    border: "1px solid rgba(42, 43, 106, 0.1)",
+    boxShadow: "0 5px 20px rgba(0, 0, 0, 0.05)",
   },
   statusTitle: {
-    fontSize: '1.5rem',
-    fontWeight: '700',
-    color: '#2A2B6A',
-    marginBottom: '20px',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '10px'
+    fontSize: "1.5rem",
+    fontWeight: "700",
+    color: "#2A2B6A",
+    marginBottom: "20px",
+    display: "flex",
+    alignItems: "center",
+    gap: "10px",
   },
   statusGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-    gap: '20px'
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+    gap: "20px",
   },
   statusItem: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '12px',
-    padding: '15px',
-    borderRadius: '10px',
-    backgroundColor: '#f8f9fa'
+    display: "flex",
+    alignItems: "center",
+    gap: "12px",
+    padding: "15px",
+    borderRadius: "10px",
+    backgroundColor: "#f8f9fa",
   },
   statusIconSuccess: {
-    color: '#28a745'
+    color: "#28a745",
   },
   statusIconWarning: {
-    color: '#ffc107'
+    color: "#ffc107",
   },
   // ADDED: XML sitemap links section
   xmlSection: {
-    marginBottom: '40px',
-    padding: '25px',
-    borderRadius: '15px',
-    backgroundColor: 'white',
-    border: '1px solid rgba(42, 43, 106, 0.1)',
-    boxShadow: '0 5px 20px rgba(0, 0, 0, 0.05)'
+    marginBottom: "40px",
+    padding: "25px",
+    borderRadius: "15px",
+    backgroundColor: "white",
+    border: "1px solid rgba(42, 43, 106, 0.1)",
+    boxShadow: "0 5px 20px rgba(0, 0, 0, 0.05)",
   },
   xmlTitle: {
-    fontSize: '1.5rem',
-    fontWeight: '700',
-    color: '#2A2B6A',
-    marginBottom: '20px',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '10px'
+    fontSize: "1.5rem",
+    fontWeight: "700",
+    color: "#2A2B6A",
+    marginBottom: "20px",
+    display: "flex",
+    alignItems: "center",
+    gap: "10px",
   },
   xmlLinks: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-    gap: '15px'
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+    gap: "15px",
   },
   xmlLink: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: '15px 20px',
-    borderRadius: '10px',
-    backgroundColor: '#f8f9fa',
-    border: '1px solid rgba(42, 43, 106, 0.1)',
-    textDecoration: 'none',
-    color: '#2A2B6A',
-    transition: 'all 0.3s ease',
-    '&:hover': {
-      backgroundColor: '#e9ecef',
-      transform: 'translateY(-2px)',
-      boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1)'
-    }
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: "15px 20px",
+    borderRadius: "10px",
+    backgroundColor: "#f8f9fa",
+    border: "1px solid rgba(42, 43, 106, 0.1)",
+    textDecoration: "none",
+    color: "#2A2B6A",
+    transition: "all 0.3s ease",
+    "&:hover": {
+      backgroundColor: "#e9ecef",
+      transform: "translateY(-2px)",
+      boxShadow: "0 5px 15px rgba(0, 0, 0, 0.1)",
+    },
   },
   section: {
-    marginBottom: '50px'
+    marginBottom: "50px",
   },
   sectionTitle: {
-    fontSize: '2rem',
-    fontWeight: '700',
-    color: '#2A2B6A',
-    marginBottom: '30px',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '15px'
+    fontSize: "2rem",
+    fontWeight: "700",
+    color: "#2A2B6A",
+    marginBottom: "30px",
+    display: "flex",
+    alignItems: "center",
+    gap: "15px",
   },
   sectionIcon: {
-    color: '#FFC614',
-    fontSize: '2rem'
+    color: "#FFC614",
+    fontSize: "2rem",
   },
   grid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
-    gap: '25px',
-    '@media (max-width: 768px)': {
-      gridTemplateColumns: '1fr'
-    }
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fill, minmax(350px, 1fr))",
+    gap: "25px",
+    "@media (max-width: 768px)": {
+      gridTemplateColumns: "1fr",
+    },
   },
   card: {
-    padding: '25px',
-    borderRadius: '15px',
-    backgroundColor: 'white',
-    border: '1px solid rgba(42, 43, 106, 0.1)',
-    boxShadow: '0 5px 20px rgba(0, 0, 0, 0.05)',
-    transition: 'all 0.3s ease',
-    textDecoration: 'none',
-    color: 'inherit',
-    cursor: 'pointer',
-    '&:hover': {
-      transform: 'translateY(-5px)',
-      boxShadow: '0 15px 40px rgba(0, 0, 0, 0.1)',
-      borderColor: '#FFC614'
-    }
+    padding: "25px",
+    borderRadius: "15px",
+    backgroundColor: "white",
+    border: "1px solid rgba(42, 43, 106, 0.1)",
+    boxShadow: "0 5px 20px rgba(0, 0, 0, 0.05)",
+    transition: "all 0.3s ease",
+    textDecoration: "none",
+    color: "inherit",
+    cursor: "pointer",
+    "&:hover": {
+      transform: "translateY(-5px)",
+      boxShadow: "0 15px 40px rgba(0, 0, 0, 0.1)",
+      borderColor: "#FFC614",
+    },
   },
   cardIcon: {
-    fontSize: '2.5rem',
-    color: '#FFC614',
-    marginBottom: '15px'
+    fontSize: "2.5rem",
+    color: "#FFC614",
+    marginBottom: "15px",
   },
   cardTitle: {
-    fontSize: '1.3rem',
-    fontWeight: '700',
-    color: '#2A2B6A',
-    marginBottom: '10px'
+    fontSize: "1.3rem",
+    fontWeight: "700",
+    color: "#2A2B6A",
+    marginBottom: "10px",
   },
   cardDescription: {
-    color: '#666',
-    lineHeight: '1.6',
-    fontSize: '0.95rem'
+    color: "#666",
+    lineHeight: "1.6",
+    fontSize: "0.95rem",
   },
   cardPath: {
-    fontSize: '0.85rem',
-    color: '#999',
-    fontFamily: 'monospace',
-    backgroundColor: '#f8f9fa',
-    padding: '5px 10px',
-    borderRadius: '5px',
-    marginTop: '10px'
-  }
+    fontSize: "0.85rem",
+    color: "#999",
+    fontFamily: "monospace",
+    backgroundColor: "#f8f9fa",
+    padding: "5px 10px",
+    borderRadius: "5px",
+    marginTop: "10px",
+  },
 });
 
 const SitemapPage = () => {
@@ -201,7 +215,7 @@ const SitemapPage = () => {
   const [sitemapStatus, setSitemapStatus] = useState({
     lastGenerated: null,
     urlCount: 0,
-    isHealthy: false
+    isHealthy: false,
   });
 
   // ADDED: Check sitemap health on component mount
@@ -211,24 +225,25 @@ const SitemapPage = () => {
 
   const checkSitemapHealth = async () => {
     try {
-      const response = await fetch('/sitemap.xml');
-      const isHealthy = response.ok && response.headers.get('content-type')?.includes('xml');
-      
+      const response = await fetch("/sitemap.xml");
+      const isHealthy =
+        response.ok && response.headers.get("content-type")?.includes("xml");
+
       if (isHealthy) {
         const text = await response.text();
         const urlCount = (text.match(/<url>/g) || []).length;
-        
+
         setSitemapStatus({
-          lastGenerated: new Date().toISOString().split('T')[0],
+          lastGenerated: new Date().toISOString().split("T")[0],
           urlCount,
-          isHealthy: true
+          isHealthy: true,
         });
       } else {
-        setSitemapStatus(prev => ({ ...prev, isHealthy: false }));
+        setSitemapStatus((prev) => ({ ...prev, isHealthy: false }));
       }
     } catch (error) {
-      console.error('Error checking sitemap health:', error);
-      setSitemapStatus(prev => ({ ...prev, isHealthy: false }));
+      console.error("Error checking sitemap health:", error);
+      setSitemapStatus((prev) => ({ ...prev, isHealthy: false }));
     }
   };
 
@@ -238,123 +253,124 @@ const SitemapPage = () => {
 
   const sitePages = [
     {
-      category: 'Main Pages',
+      category: "Main Pages",
       icon: <Home />,
       pages: [
         {
-          title: 'Homepage',
-          path: '/',
-          description: 'Main landing page with program overview and latest updates',
+          title: "Homepage",
+          path: "/",
+          description:
+            "Main landing page with program overview and latest updates",
           icon: <Home />,
-          status: 'active'
+          status: "active",
         },
         {
-          title: 'About Us',
-          path: '/about',
-          description: 'Learn about our mission, vision, and team',
+          title: "About Us",
+          path: "/about",
+          description: "Learn about our mission, vision, and team",
           icon: <Info />,
-          status: 'active'
+          status: "active",
         },
         {
-          title: 'Contact Us',
-          path: '/contact',
-          description: 'Get in touch with our team for inquiries and support',
+          title: "Contact Us",
+          path: "/contact",
+          description: "Get in touch with our team for inquiries and support",
           icon: <Mail />,
-          status: 'active'
+          status: "active",
         },
         {
-          title: 'Campus',
-          path: '/campus',
-          description: 'Explore our campus facilities and learning environment',
+          title: "Campus",
+          path: "/campus",
+          description: "Explore our campus facilities and learning environment",
           icon: <Building />,
-          status: 'active'
-        }
-      ]
+          status: "active",
+        },
+      ],
     },
     {
-      category: 'Programs & Courses',
+      category: "Programs & Courses",
       icon: <GraduationCap />,
       pages: [
         {
-          title: 'Full Stack Development',
-          path: '/fullstack',
-          description: 'Comprehensive full-stack development program',
+          title: "Full Stack Development",
+          path: "/fullstack",
+          description: "Comprehensive full-stack development program",
           icon: <Code />,
-          status: 'active'
+          status: "active",
         },
         {
-          title: 'Data Science',
-          path: '/datascience',
-          description: 'Advanced data science and analytics program',
+          title: "Data Science",
+          path: "/datascience",
+          description: "Advanced data science and analytics program",
           icon: <Database />,
-          status: 'active'
+          status: "active",
         },
         {
-          title: 'Virtual Placement - Full Stack',
-          path: '/virtual-placement-fullstack',
-          description: 'Virtual placement program for full-stack developers',
+          title: "Virtual Placement - Full Stack",
+          path: "/virtual-placement-fullstack",
+          description: "Virtual placement program for full-stack developers",
           icon: <Code />,
-          status: 'active'
+          status: "active",
         },
         {
-          title: 'Virtual Placement - Data Science',
-          path: '/virtual-placement-datascience',
-          description: 'Virtual placement program for data scientists',
+          title: "Virtual Placement - Data Science",
+          path: "/virtual-placement-datascience",
+          description: "Virtual placement program for data scientists",
           icon: <Database />,
-          status: 'active'
-        }
-      ]
+          status: "active",
+        },
+      ],
     },
     {
-      category: 'Registration & Assessment',
+      category: "Registration & Assessment",
       icon: <Users />,
       pages: [
         {
-          title: 'Registration',
-          path: '/register',
-          description: 'Sign up for courses and programs',
+          title: "Registration",
+          path: "/register",
+          description: "Sign up for courses and programs",
           icon: <Users />,
-          status: 'active'
+          status: "active",
         },
         {
-          title: 'Pre-Screening Test',
-          path: '/pre-screening-test',
-          description: 'Assessment to evaluate your current skills',
+          title: "Pre-Screening Test",
+          path: "/pre-screening-test",
+          description: "Assessment to evaluate your current skills",
           icon: <ClipboardCheck />,
-          status: 'active'
-        }
-      ]
+          status: "active",
+        },
+      ],
     },
     {
-      category: 'Content & Resources',
+      category: "Content & Resources",
       icon: <BookOpen />,
       pages: [
         {
-          title: 'Blog',
-          path: '/blog',
-          description: 'Latest articles, tutorials, and industry insights',
+          title: "Blog",
+          path: "/blog",
+          description: "Latest articles, tutorials, and industry insights",
           icon: <BookOpen />,
-          status: 'active'
+          status: "active",
         },
         {
-          title: 'Blog Article',
-          path: '/blog/mern-stack-development-guide',
-          description: 'Example blog post with detailed content',
+          title: "Blog Article",
+          path: "/blog/mern-stack-development-guide",
+          description: "Example blog post with detailed content",
           icon: <FileText />,
-          status: 'active'
-        }
-      ]
+          status: "active",
+        },
+      ],
     },
     {
-      category: 'Products & Tools',
+      category: "Products & Tools",
       icon: <ShoppingCart />,
       pages: [
         {
-          title: 'Giga Resume Builder',
-          path: '/giga-resume-builder',
-          description: 'Professional resume building tool',
+          title: "Giga Resume Builder",
+          path: "/giga-resume-builder",
+          description: "Professional resume building tool",
           icon: <FileText />,
-          status: 'active'
+          status: "active",
         },
         // {
         //   title: 'Cart',
@@ -370,49 +386,49 @@ const SitemapPage = () => {
         //   icon: <CreditCard />,
         //   status: 'active'
         // }
-      ]
+      ],
     },
     {
-      category: 'Legal & Information',
+      category: "Legal & Information",
       icon: <FileText />,
       pages: [
         {
-          title: 'Privacy Policy',
-          path: '/privacy-policy',
-          description: 'How we protect and handle your personal data',
+          title: "Privacy Policy",
+          path: "/privacy-policy",
+          description: "How we protect and handle your personal data",
           icon: <FileText />,
-          status: 'active'
+          status: "active",
         },
         {
-          title: 'Terms and Conditions',
-          path: '/terms-and-conditions',
-          description: 'Terms of service and usage guidelines',
+          title: "Terms and Conditions",
+          path: "/terms-and-conditions",
+          description: "Terms of service and usage guidelines",
           icon: <FileText />,
-          status: 'active'
+          status: "active",
         },
         {
-          title: 'Sitemap',
-          path: '/sitemap',
-          description: 'Complete overview of all website pages',
+          title: "Sitemap",
+          path: "/sitemap",
+          description: "Complete overview of all website pages",
           icon: <Map />,
-          status: 'active'
-        }
-      ]
-    }
+          status: "active",
+        },
+      ],
+    },
   ];
 
   return (
     <div className={classes.container}>
       {/* ADDED: SEO meta tags */}
       <title>Sitemap - Gigaversity | Complete Website Structure</title>
-      
+
       <div className={classes.backgroundPattern}></div>
       <div className={classes.content}>
         <div className={classes.header}>
           <h1 className={classes.title}>Website Sitemap</h1>
           <p className={classes.subtitle}>
-            Complete overview of all pages and sections on Gigaversity. 
-            Navigate easily through our educational content and resources.
+            Complete overview of all pages and sections on Gigaversity. Navigate
+            easily through our educational content and resources.
           </p>
         </div>
 
@@ -430,7 +446,8 @@ const SitemapPage = () => {
                 <AlertCircle className={classes.statusIconWarning} size={24} />
               )}
               <div>
-                <strong>Health Status:</strong> {sitemapStatus.isHealthy ? 'Healthy' : 'Needs Attention'}
+                <strong>Health Status:</strong>{" "}
+                {sitemapStatus.isHealthy ? "Healthy" : "Needs Attention"}
               </div>
             </div>
             <div className={classes.statusItem}>
@@ -442,7 +459,8 @@ const SitemapPage = () => {
             <div className={classes.statusItem}>
               <CheckCircle className={classes.statusIconSuccess} size={24} />
               <div>
-                <strong>Last Updated:</strong> {sitemapStatus.lastGenerated || 'Loading...'}
+                <strong>Last Updated:</strong>{" "}
+                {sitemapStatus.lastGenerated || "Loading..."}
               </div>
             </div>
           </div>
@@ -455,10 +473,10 @@ const SitemapPage = () => {
             XML Sitemaps for Search Engines
           </h2>
           <div className={classes.xmlLinks}>
-            <a 
-              href="/sitemap.xml" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="/sitemap.xml"
+              target="_blank"
+              rel="noopener noreferrer"
               className={classes.xmlLink}
             >
               <span>
@@ -468,10 +486,10 @@ const SitemapPage = () => {
               </span>
               <ExternalLink size={20} />
             </a>
-            <a 
-              href="/robots.txt" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="/robots.txt"
+              target="_blank"
+              rel="noopener noreferrer"
               className={classes.xmlLink}
             >
               <span>
@@ -488,7 +506,9 @@ const SitemapPage = () => {
         {sitePages.map((section, index) => (
           <div key={index} className={classes.section}>
             <h2 className={classes.sectionTitle}>
-              {React.cloneElement(section.icon, { className: classes.sectionIcon })}
+              {React.cloneElement(section.icon, {
+                className: classes.sectionIcon,
+              })}
               {section.category}
             </h2>
             <div className={classes.grid}>
@@ -498,7 +518,9 @@ const SitemapPage = () => {
                   className={classes.card}
                   onClick={() => handleCardClick(page.path)}
                 >
-                  {React.cloneElement(page.icon, { className: classes.cardIcon })}
+                  {React.cloneElement(page.icon, {
+                    className: classes.cardIcon,
+                  })}
                   <h3 className={classes.cardTitle}>{page.title}</h3>
                   <p className={classes.cardDescription}>{page.description}</p>
                   <div className={classes.cardPath}>{page.path}</div>

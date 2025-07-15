@@ -621,6 +621,7 @@ const ResumeBuilderSection = () => {
                   transition: 'opacity 0.8s ease, transform 0.8s ease',
                   transitionDelay: '0.9s',
                 }}
+                title="Create a job-ready resume tailored for tech roles"
               >
                 Build Your FREE Resume Now
               </Button>

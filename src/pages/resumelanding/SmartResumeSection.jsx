@@ -344,6 +344,7 @@ const SmartResumeSection = ({ handleCTAClick }) => {
             onClick={() => window.location.href = 'https://resume.gigaversity.in/'}
             // onClick={handleClick}
             endIcon={<LaunchIcon className={classes.ctaIcon} />}
+            title="Sign up to begin building your job-ready resume using Giga Resume Builder"
           >
             Start Building Your Future Now
           </Button>

@@ -514,6 +514,7 @@ const HeroSection = () => {
               <Button 
                 className={classes.applyButton}
                 onClick={handleApplyClick}
+                title="Share your details to start your learning journey with Gigaversity"
               >
                 Apply Now
               </Button>

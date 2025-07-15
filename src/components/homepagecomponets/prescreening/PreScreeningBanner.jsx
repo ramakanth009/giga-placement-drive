@@ -542,6 +542,7 @@ const PreScreeningBanner = () => {
             className={classes.applyButton}
             onClick={handleApplyNow}
             endIcon={<ArrowForwardIcon className={classes.buttonArrow} />}
+            title="Check your job readiness with our skill evaluation test"
           >
             Evaluate Your Readiness
           </Button>

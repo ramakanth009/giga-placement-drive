@@ -837,7 +837,12 @@ const useStyles = makeStyles({
   },
 });
 
-const ProgramFee = ({ totalFee, onApplyClick }) => {
+const ProgramFee = ({ 
+  totalFee, 
+  onApplyClick,
+  scholarshipButtonTitle = "",
+  expertButtonTitle = "",
+  investmentButtonTitle = "" }) => {
   const classes = useStyles();
   
   const monthlyFee = Math.round(parseInt(totalFee.replace(/,/g, '')) / 24);
@@ -959,6 +964,7 @@ const ProgramFee = ({ totalFee, onApplyClick }) => {
               className={classes.scholarshipButton}
               startIcon={<ScholarshipIcon />}
               onClick={handleScholarshipClick}
+              title={scholarshipButtonTitle}
             >
               Apply for Scholarship
             </Button>
@@ -967,6 +973,7 @@ const ProgramFee = ({ totalFee, onApplyClick }) => {
               className={classes.scholarshipButton}
               startIcon={<ScholarshipIcon />}
               onClick={handleExpertClick}
+              title={expertButtonTitle}
             >
               Talk to our expert today
             </Button>
@@ -999,6 +1006,7 @@ const ProgramFee = ({ totalFee, onApplyClick }) => {
             variant="contained" 
             className={classes.applyButton}
             onClick={handleCareerInvestmentClick}
+            title={investmentButtonTitle}
           >
             Start Your Career Investment
           </Button>

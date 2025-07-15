@@ -308,6 +308,48 @@ const OtherPrograms = () => {
     }
   };
 
+  // Helper function to generate title attributes for different buttons
+  const getButtonTitles = (program) => {
+    const titles = {
+      1: {
+        view: "Learn more about our Full Stack Development program",
+        love: `Show love for ${program.title}`,
+        comment: `Share your thoughts about ${program.title}`
+      },
+      2: {
+        view: "Explore curriculum and opportunities in our Data Science program",
+        love: `Show love for ${program.title}`,
+        comment: `Share your thoughts about ${program.title}`
+      },
+      3: {
+        view: "Explore Virtual Placement Drive in Full Stack - Job-specific training with 15+ weekly openings",
+        love: `Show love for ${program.title}`,
+        comment: `Share your thoughts about ${program.title}`
+      },
+      4: {
+        view: "Kickstart your career with the upcoming Data Science Virtual Placement Drive",
+        love: `Show love for ${program.title}`,
+        comment: `Share your thoughts about ${program.title}`
+      },
+      5: {
+        view: "Master Internship in Full Stack - Launching soon with real product development and industry standards",
+        love: `Show love for ${program.title}`,
+        comment: `Share your thoughts about ${program.title}`
+      },
+      6: {
+        view: "Master Internship in Data Science - Launching soon with production-ready ML models and AI systems",
+        love: `Show love for ${program.title}`,
+        comment: `Share your thoughts about ${program.title}`
+      }
+    };
+    
+    return titles[program.id] || {
+      view: `Explore ${program.title}`,
+      love: `Show love for ${program.title}`,
+      comment: `Share your thoughts about ${program.title}`
+    };
+  };
+
   const programs = [
     {
       id: 1,
@@ -493,19 +535,25 @@ const OtherPrograms = () => {
               }}
               onSwiper={swiper => { swiperRef.current = swiper; }}
             >
-              {filteredPrograms.map((program) => (
-                <SwiperSlide key={program.id}>
-                  <ProgramCard
-                    program={program}
-                    onLoveClick={handleLove}
-                    onCommentClick={handleCommentOpen}
-                    onViewProgram={handleViewProgram}
-                    launchingSoon={program.id === 3 || program.id === 4}
-                    onCardHover={handleCardHover}
-                    onCardLeave={handleCardLeave}
-                  />
-                </SwiperSlide>
-              ))}
+              {filteredPrograms.map((program) => {
+                const buttonTitles = getButtonTitles(program);
+                return (
+                  <SwiperSlide key={program.id}>
+                    <ProgramCard
+                      program={program}
+                      onLoveClick={handleLove}
+                      onCommentClick={handleCommentOpen}
+                      onViewProgram={handleViewProgram}
+                      launchingSoon={program.id === 5 || program.id === 6}
+                      onCardHover={handleCardHover}
+                      onCardLeave={handleCardLeave}
+                      viewButtonTitle={buttonTitles.view}
+                      loveButtonTitle={buttonTitles.love}
+                      commentButtonTitle={buttonTitles.comment}
+                    />
+                  </SwiperSlide>
+                );
+              })}
             </Swiper>
           </Box>
         </Box>
@@ -540,7 +588,11 @@ const OtherPrograms = () => {
           />
         </DialogContent>
         <DialogActions sx={{ padding: '16px 24px' }}>
-          <Button onClick={handleCommentClose} sx={{ color: '#666' }}>
+          <Button 
+            onClick={handleCommentClose} 
+            sx={{ color: '#666' }}
+            title="Cancel sharing your comment"
+          >
             Cancel
           </Button>
           <Button 
@@ -549,6 +601,7 @@ const OtherPrograms = () => {
             variant="contained"
             startIcon={<SendIcon />}
             disabled={!comment.trim()}
+            title="Share your comment about this program"
           >
             Share
           </Button>

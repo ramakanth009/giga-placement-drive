@@ -29,6 +29,8 @@ const FullStackLearningPath = () => {
       placementStats={fullStackTimelineData.placementStats}
       curriculumType="fullstack"
       popupVariant="fullstack"
+      applyButtonTitle="Register your interest in the Full Stack Development track"
+      curriculumButtonTitle="Download the detailed Full Stack Program curriculum in PDF"
     />
   );
 };

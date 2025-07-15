@@ -819,6 +819,7 @@ const PlacementPortalSection = () => {
               className={classes.scheduleButton}
               aria-label="Schedule Demo"
               onClick={() => setIsPopupOpen(true)}
+              title="Book your demo to access Gigaversity's exclusive hiring partner network"
             >
               Schedule now
             </Button>

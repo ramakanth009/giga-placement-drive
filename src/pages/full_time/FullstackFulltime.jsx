@@ -32,7 +32,7 @@ const FullstackFulltime = () => {
         <FullStackCaseStudies />
         <FullStackCertificates />
         <FullStackProgramFee />
-        <TestimonialComponent />
+        <TestimonialComponent submitButtonTitle="Post your genuine review and get featured on our platform" />
         <FullFullStackFullTimeFaq />
     </div>
   )

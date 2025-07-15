@@ -224,7 +224,10 @@ const ProgramCard = ({
   onViewProgram,
   launchingSoon,
   onCardHover,
-  onCardLeave
+  onCardLeave,
+  viewButtonTitle = "",
+  loveButtonTitle = "",
+  commentButtonTitle = ""
 }) => {
   const classes = useStyles();
 
@@ -258,6 +261,7 @@ const ProgramCard = ({
               endIcon={<LaunchIcon />}
               onClick={handleButtonClick}
               disabled={isLaunchingSoon}
+              title={viewButtonTitle}
             >
               {isLaunchingSoon ? 'Launching soon' : 'View Details'}
             </Button>
@@ -295,6 +299,8 @@ const ProgramCard = ({
           <EnhancedEngagementSection 
             onLoveClick={() => onLoveClick(program.id)}
             onCommentClick={() => onCommentClick(program.id)}
+            loveButtonTitle={loveButtonTitle}
+            commentButtonTitle={commentButtonTitle}
           />
           
           <Box className={classes.engagementContainer}>
@@ -305,6 +311,7 @@ const ProgramCard = ({
                 startIcon={<Box className={classes.enrollIcon} />}
                 onClick={handleButtonClick}
                 disabled={isLaunchingSoon}
+                title={viewButtonTitle}
               >
                 {isLaunchingSoon ? 'Launching soon' : 'view details'}
               </Button>

@@ -370,6 +370,8 @@ const HeroSection = ({
   heroImageAlt = "Program visualization",
   applyButtonText = "Apply Now",
   brochureButtonText = "Book A Demo",
+  applyButtonTitle = "",
+  brochureButtonTitle = "",
   onApplyClick,
   onBrochureClick,
   decorElements = []
@@ -477,6 +479,7 @@ const HeroSection = ({
               variant="contained" 
               className={classes.applyButton}
               onClick={onApplyClick}
+              title={applyButtonTitle}
             >
               {applyButtonText}
             </Button>
@@ -484,6 +487,7 @@ const HeroSection = ({
               variant="outlined" 
               className={classes.brochureButton}
               onClick={onBrochureClick}
+              title={brochureButtonTitle}
             >
               {brochureButtonText}
             </Button>
@@ -514,5 +518,5 @@ const HeroSection = ({
     </Box>
   );
 };
-
+ 
 export default HeroSection;

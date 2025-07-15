@@ -1373,9 +1373,11 @@ const LearningPathTimeline = ({
   subtitle, 
   phases, 
   placementStats,
-  curriculumType = 'fullstack', // New prop to identify curriculum type
+  curriculumType = "",
   onApply, 
-  popupVariant 
+  popupVariant,
+  applyButtonTitle = "",
+  curriculumButtonTitle = ""
 }) => {
   const classes = useStyles();
   const [activePhase, setActivePhase] = useState(1);
@@ -1801,6 +1803,7 @@ const LearningPathTimeline = ({
               variant="contained"
               className={classes.applyButton}
               onClick={handleApplyNow}
+              title={applyButtonTitle}
             >
               Apply Now
             </Button>
@@ -1808,6 +1811,7 @@ const LearningPathTimeline = ({
               variant="outlined"
               className={classes.curriculumButton}
               onClick={handleDownloadCurriculum}
+              title={curriculumButtonTitle}
             >
               <DownloadIcon />
               Download Curriculum

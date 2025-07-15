@@ -53,6 +53,10 @@ const FullStackHero = () => {
         subtitle="Build Your Own Product and Launch Your Tech Startup Within a Year"
         heroImage={fullStackHeroImage}
         heroImageAlt="Showcasing Frontend and Backend Code and analytics and Dashboards"
+        applyButtonText="Apply Now"
+        brochureButtonText="Book A Demo"
+        applyButtonTitle="Submit your details to apply for the Full Stack Development Program"
+        brochureButtonTitle="Book a live demo to understand the Full Stack curriculum and offerings"
         onApplyClick={handleApplyClick}
         onBrochureClick={handleBrochureClick}
         decorElements={decorElements}
@@ -65,5 +69,5 @@ const FullStackHero = () => {
     </>
   );
 };
-
+ 
 export default FullStackHero;

@@ -32,7 +32,7 @@ const DatascienceFulltime = () => {
       <DataScienceCaseStudies />
       <DatascienceCertificates />
       <DataScienceProgramFee />
-      <TestimonialComponent />
+      <TestimonialComponent  submitButtonTitle="Share your real experience and get featured on our testimonials section"/>
       <DataScienceFullTimeFaq />
     </div>
   );

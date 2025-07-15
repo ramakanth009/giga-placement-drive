@@ -1828,6 +1828,7 @@ const ContactFormLayout = ({ onSubmit, isSubmitting = false }) => {
                     variant="contained"
                     className={classes.submitButton}
                     disabled={isLoading || isSubmitting}
+                    title="Fill in your information to connect with the Gigaversity team"
                     endIcon={
                       isLoading ? (
                         <CircularProgress size={16} color="inherit" />

@@ -767,7 +767,7 @@ const useStyles = makeStyles({
   },
 });
 
-const TestimonialComponent = () => {
+const TestimonialComponent = ({ submitButtonTitle = "" }) => {
   const classes = useStyles();
   const [formData, setFormData] = useState({
     name: '',
@@ -940,6 +940,7 @@ const TestimonialComponent = () => {
                       className={classes.submitButton}
                       disabled={loading}
                       startIcon={<SendIcon />}
+                      title={submitButtonTitle}
                     >
                       {loading ? 'Submitting...' : 'Submit Review'}
                     </Button>

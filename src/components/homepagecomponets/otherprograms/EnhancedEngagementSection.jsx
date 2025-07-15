@@ -222,7 +222,9 @@ const useStyles = makeStyles({
 const EnhancedEngagementSection = ({ 
   programId = 'fullstack', // Default to fullstack, can be 'fullstack', 'datascience', or 'placement'
   onLoveClick, 
-  onCommentClick 
+  onCommentClick,
+  loveButtonTitle = "",
+  commentButtonTitle = ""
 }) => {
   const classes = useStyles();
   const [loved, setLoved] = useState(false);
@@ -330,6 +332,7 @@ const EnhancedEngagementSection = ({
             onClick={handleLoveClick}
             disabled={isSubmittingLike}
             disableRipple
+            title={loveButtonTitle}
           >
             {loved ? (
               <FavoriteIcon className={classes.actionIcon} />
@@ -343,6 +346,7 @@ const EnhancedEngagementSection = ({
             className={`${classes.actionButton} ${classes.commentButton}`}
             onClick={handleCommentClick}
             disableRipple
+            title={commentButtonTitle}
           >
             <CommentIcon className={classes.actionIcon} />
             Comment
@@ -385,6 +389,7 @@ const EnhancedEngagementSection = ({
             variant="outlined"
             className={classes.cancelButton}
             disabled={isSubmittingComment}
+            title="Cancel comment submission"
           >
             Cancel
           </Button>
@@ -394,6 +399,7 @@ const EnhancedEngagementSection = ({
             className={classes.submitCommentButton}
             disabled={!comment.trim() || isSubmittingComment}
             startIcon={<SendIcon />}
+            title="Submit your comment about this program"
           >
             {isSubmittingComment ? 'Submitting...' : 'Submit Comment'}
           </Button>

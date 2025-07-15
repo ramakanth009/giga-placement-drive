@@ -725,6 +725,7 @@ const PodcastShowcaseSection = () => {
                           variant="contained"
                           className={classes.submitButton}
                           disabled={!question.trim() || submitted || isSubmitting}
+                          title="Send your question to get featured in the upcoming Gigaversity Podcast episode"
                           sx={{
                             minWidth: 0,
                             width: 36,

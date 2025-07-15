@@ -941,6 +941,7 @@ const HeroSection = ({ handleCTAClick }) => {
               className={classes.primaryCTA}
               onClick={() => window.location.href = 'https://resume.gigaversity.in/'}
               startIcon={<PlayArrowRounded />}
+              title="Create a professional resume with Giga Resume Builder in minutes"
             >
               Create Resume Now
             </Button>
