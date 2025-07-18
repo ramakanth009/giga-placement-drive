@@ -31,7 +31,7 @@ export const advancedSeoData = {
       "name": "Gigaversity",
       "description": "India's Premier Tech Education Platform",
       "url": "https://gigaversity.in",
-      "logo": "https://gigaversity.in/assets/logo.png",
+      "logo": "https://gigaversity.in/assets/GIGAVERSITY_LOGO.png",
       "foundingDate": "2020",
       "address": {
         "@type": "PostalAddress",
@@ -75,7 +75,8 @@ export const advancedSeoData = {
         ]
       }
     },
-    ogImage: "https://gigaversity.in/assets/og-homepage.jpg",
+    // ogImage: "https://gigaversity.in/assets/og-homepage.jpg",
+    ogImage: "https://gigaversity.in/assets/GIGAVERSITY_LOGO.png",
     breadcrumbs: [
       { name: "Home", url: "https://gigaversity.in/" }
     ]
@@ -153,7 +154,9 @@ export const advancedSeoData = {
         }
       ]
     },
-    ogImage: "https://gigaversity.in/assets/og-fullstack.jpg",
+    // ogImage: "https://gigaversity.in/assets/og-fullstack.jpg",
+    ogImage: "https://gigaversity.in/assets/GIGAVERSITY_LOGO.png",
+
     breadcrumbs: [
       { name: "Home", url: "https://gigaversity.in/" },
       { name: "Full Stack Development", url: "https://gigaversity.in/fullstack" }
@@ -195,7 +198,8 @@ export const advancedSeoData = {
         "name": "Gigaversity"
       }
     },
-    ogImage: "https://gigaversity.in/assets/og-fullstack-virtual-placement.jpg",
+    // ogImage: "https://gigaversity.in/assets/og-fullstack-virtual-placement.jpg",
+    ogImage: "https://gigaversity.in/assets/GIGAVERSITY_LOGO.png",
     breadcrumbs: [
       { name: "Home", url: "https://gigaversity.in/" },
       { name: "Full Stack Development", url: "https://gigaversity.in/fullstack" },
@@ -275,7 +279,8 @@ export const advancedSeoData = {
         }
       ]
     },
-    ogImage: "https://gigaversity.in/assets/og-datascience.jpg",
+    // ogImage: "https://gigaversity.in/assets/og-datascience.jpg",
+    ogImage: "https://gigaversity.in/assets/GIGAVERSITY_LOGO.png",
     breadcrumbs: [
       { name: "Home", url: "https://gigaversity.in/" },
       { name: "Data Science", url: "https://gigaversity.in/datascience" }
@@ -317,7 +322,8 @@ export const advancedSeoData = {
         "name": "Gigaversity"
       }
     },
-    ogImage: "https://gigaversity.in/assets/og-datascience-virtual-placement.jpg",
+    // ogImage: "https://gigaversity.in/assets/og-datascience-virtual-placement.jpg",
+    ogImage: "https://gigaversity.in/assets/GIGAVERSITY_LOGO.png",
     breadcrumbs: [
       { name: "Home", url: "https://gigaversity.in/" },
       { name: "Data Science", url: "https://gigaversity.in/datascience" },
@@ -356,7 +362,8 @@ export const advancedSeoData = {
         "priceCurrency": "INR"
       }
     },
-    ogImage: "https://gigaversity.in/assets/og-resume-builder.jpg",
+    // ogImage: "https://gigaversity.in/assets/og-resume-builder.jpg",
+    ogImage: "https://gigaversity.in/assets/GIGAVERSITY_LOGO.png",
     breadcrumbs: [
       { name: "Home", url: "https://gigaversity.in/" },
       { name: "Resume Builder", url: "https://gigaversity.in/products" }
@@ -388,7 +395,8 @@ export const advancedSeoData = {
       "name": "About Gigaversity",
       "description": "About Gigaversity, our mission, vision, and team."
     },
-    ogImage: "https://gigaversity.in/assets/og-aboutus.jpg",
+    // ogImage: "https://gigaversity.in/assets/og-aboutus.jpg",
+    ogImage: "https://gigaversity.in/assets/GIGAVERSITY_LOGO.png",
     breadcrumbs: [
       { name: "Home", url: "https://gigaversity.in/" },
       { name: "About Us", url: "https://gigaversity.in/aboutus" }
@@ -420,7 +428,8 @@ export const advancedSeoData = {
       "name": "Contact Gigaversity",
       "description": "Contact Gigaversity for support, queries, or partnership opportunities."
     },
-    ogImage: "https://gigaversity.in/assets/og-contactus.jpg",
+    // ogImage: "https://gigaversity.in/assets/og-contactus.jpg",
+    ogImage: "https://gigaversity.in/assets/GIGAVERSITY_LOGO.png",
     breadcrumbs: [
       { name: "Home", url: "https://gigaversity.in/" },
       { name: "Contact Us", url: "https://gigaversity.in/contactus" }
@@ -452,7 +461,8 @@ export const advancedSeoData = {
       "name": "Gigaversity Campus",
       "description": "Gigaversity campus, infrastructure, and facilities."
     },
-    ogImage: "https://gigaversity.in/assets/og-campus.jpg",
+    // ogImage: "https://gigaversity.in/assets/og-campus.jpg",
+    ogImage: "https://gigaversity.in/assets/GIGAVERSITY_LOGO.png",
     breadcrumbs: [
       { name: "Home", url: "https://gigaversity.in/" },
       { name: "Campus", url: "https://gigaversity.in/campus" }
@@ -488,7 +498,8 @@ export const advancedSeoData = {
       "description": "Tech insights, tutorials, and career advice from Gigaversity.",
       "url": "https://gigaversity.in/blog"
     },
-    ogImage: "https://gigaversity.in/assets/og-blog.jpg",
+    // ogImage: "https://gigaversity.in/assets/og-blog.jpg",
+    ogImage: "https://gigaversity.in/assets/GIGAVERSITY_LOGO.png",
     breadcrumbs: [
       { name: "Home", url: "https://gigaversity.in/" },
       { name: "Blog", url: "https://gigaversity.in/blog" }
@@ -527,7 +538,7 @@ export const advancedSeoData = {
           "name": "Gigaversity",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://gigaversity.in/assets/logo.png"
+            "url": "https://gigaversity.in/assets/GIGAVERSITY_LOGO.png"
           }
         },
         "datePublished": blogPost.date,
@@ -544,7 +555,8 @@ export const advancedSeoData = {
         section: blogPost.categories[0],
         tags: blogPost.tags
       },
-      ogImage: blogPost.image,
+      // ogImage: blogPost.image,
+      ogImage: "https://gigaversity.in/assets/GIGAVERSITY_LOGO.png",
       breadcrumbs: [
         { name: "Home", url: "https://gigaversity.in/" },
         { name: "Blog", url: "https://gigaversity.in/blog" },
