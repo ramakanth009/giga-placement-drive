@@ -6,7 +6,7 @@
 export const advancedSeoData = {
   homepage: {
     title: "Gigaversity: Product-Based Full-Stack & Data Science Courses",
-    description: "Gigaversity is India’s first product-based learning platform offering full-stack and data science courses. Build real startup products with hands-on training.",
+    description: "Gigaversity is India's first product-based learning platform offering full-stack and data science courses. Build real startup products with hands-on training.",
     keywords: "Gigaversity, Gigaversity Full-Stack Development Program,Gigaversity Data Science Program, Startup incubator program for students, Real-world project building",
     canonicalUrl: "https://gigaversity.in/",
     // hiddenKeywords: [
@@ -106,37 +106,52 @@ export const advancedSeoData = {
     structuredData: {
       "@context": "https://schema.org",
       "@type": "Course",
-      "name": "Full Stack Development Course",
-      "description": "Complete MERN Stack Development Course with Job Guarantee",
+      "name": "Full Stack Development Program",
+      "description": "Learn full stack web development from front-end to back-end with hands-on projects and expert guidance. Available in both online and offline modes.",
       "provider": {
-        "@type": "EducationalOrganization",
+        "@type": "Organization",
         "name": "Gigaversity",
-        "url": "https://gigaversity.in"
+        "sameAs": "https://gigaversity.in"
       },
-      "courseCode": "FSD-2025",
-      "hasCourseInstance": {
-        "@type": "CourseInstance",
-        "courseMode": "online",
-        "courseworkDuration": "P6M",
-        "instructor": {
-          "@type": "Person",
-          "name": "Expert Full Stack Instructors"
-        }
-      },
-      "educationalCredentialAwarded": "Full Stack Development Certificate",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "reviewCount": "1250",
-        "bestRating": "5"
-      },
+      "courseCode": "FS-2025",
+      "educationalCredentialAwarded": "Product Certification in Full Stack",
       "offers": {
         "@type": "Offer",
-        "price": "199",
+        "price": "125000",
         "priceCurrency": "INR",
         "availability": "https://schema.org/InStock",
-        "validFrom": "2025-01-01"
-      }
+        "url": "https://gigaversity.in/fullstack"
+      },
+      "hasCourseInstance": [
+        {
+          "@type": "CourseInstance",
+          "courseMode": "online",
+          "startDate": "2025-08-12",
+          "endDate": "2026-05-12",
+          "location": {
+            "@type": "Place",
+            "name": "Online"
+          }
+        },
+        {
+          "@type": "CourseInstance",
+          "courseMode": "offline",
+          "startDate": "2025-08-12",
+          "endDate": "2026-05-12",
+          "location": {
+            "@type": "Place",
+            "name": "Gigaversity Campus Hyderabad",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Hitech City, Madhapur",
+              "addressLocality": "Hyderabad",
+              "addressRegion": "Telangana",
+              "postalCode": "500081",
+              "addressCountry": "IN"
+            }
+          }
+        }
+      ]
     },
     ogImage: "https://gigaversity.in/assets/og-fullstack.jpg",
     breadcrumbs: [
@@ -190,7 +205,7 @@ export const advancedSeoData = {
 
   datascience: {
     title: "Gigaversity 9 Month Data Science Course with Real-World Projects",
-    description: "Join India’s leading 9-month Data Science program. Learn from experts, build real startup projects, and become job-ready with hands-on industry experience.",
+    description: "Join India's leading 9-month Data Science program. Learn from experts, build real startup projects, and become job-ready with hands-on industry experience.",
     keywords: "Data Science Program, Data science course, Data Science Projects, Data science program for freshers, Industry-ready data science course, Career in Data Science, Data science jobs",
     canonicalUrl: "https://gigaversity.in/datascience",
     // hiddenKeywords: [
@@ -213,37 +228,52 @@ export const advancedSeoData = {
     structuredData: {
       "@context": "https://schema.org",
       "@type": "Course",
-      "name": "Data Science Course",
-      "description": "Comprehensive Data Science and Machine Learning Course",
+      "name": "Data Science",
+      "description": "Master the fundamentals and advanced topics in Data Science through hands-on projects and real-world applications. Available in both online and offline modes.",
       "provider": {
-        "@type": "EducationalOrganization",
+        "@type": "Organization",
         "name": "Gigaversity",
-        "url": "https://gigaversity.in"
+        "sameAs": "https://gigaversity.in"
       },
       "courseCode": "DS-2025",
-      "hasCourseInstance": {
-        "@type": "CourseInstance",
-        "courseMode": "online",
-        "courseworkDuration": "P6M",
-        "instructor": {
-          "@type": "Person",
-          "name": "Expert Data Science Instructors"
-        }
-      },
-      "educationalCredentialAwarded": "Data Science Certificate",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "980",
-        "bestRating": "5"
-      },
+      "educationalCredentialAwarded": "Product Certification in Data Science",
       "offers": {
         "@type": "Offer",
-        "price": "199",
+        "price": "150000",
         "priceCurrency": "INR",
         "availability": "https://schema.org/InStock",
-        "validFrom": "2025-01-01"
-      }
+        "url": "https://gigaversity.in/datascience"
+      },
+      "hasCourseInstance": [
+        {
+          "@type": "CourseInstance",
+          "courseMode": "online",
+          "startDate": "2025-08-10",
+          "endDate": "2026-05-10",
+          "location": {
+            "@type": "Place",
+            "name": "Online"
+          }
+        },
+        {
+          "@type": "CourseInstance",
+          "courseMode": "offline",
+          "startDate": "2025-08-10",
+          "endDate": "2026-05-10",
+          "location": {
+            "@type": "Place",
+            "name": "Gigaversity Campus Hyderabad",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Hitech City, Madhapur",
+              "addressLocality": "Hyderabad",
+              "addressRegion": "Telangana",
+              "postalCode": "500081",
+              "addressCountry": "IN"
+            }
+          }
+        }
+      ]
     },
     ogImage: "https://gigaversity.in/assets/og-datascience.jpg",
     breadcrumbs: [
@@ -334,7 +364,7 @@ export const advancedSeoData = {
   },
 
   aboutus: {
-    title: "Gigaversity: India’s 1st Product-Based Learning Platform",
+    title: "Gigaversity: India's 1st Product-Based Learning Platform",
     description: "Gigaversity empowers Indian students with hands-on tech skills. Our 9-month Full-Stack & Data Science programs build real projects and industry-ready skills.",
     keywords: "product-based learning, Skill Development Platform India, About gigaversity, Our mission, Our vision, Meet the team ",
     canonicalUrl: "https://gigaversity.in/aboutus",
