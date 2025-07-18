@@ -178,17 +178,17 @@ import SearchRoutingHandler from "./components/SearchRoutingHandler";
 
 // Lazy loaded components
 const Homepage = React.lazy(() => import("./pages/homepage/Homepage"));
-const Fullstack = React.lazy(() => import("./pages/fullstack/Fullstack"));
-const PreScreeningTest = React.lazy(() => import('./components/homepagecomponets/prescreeningtest/PreScreeningTest'));
-const DataScience = React.lazy(() => import("./pages/datascience/DataScience"));
 const FullstackFulltime = React.lazy(() => import('./pages/full_time/FullstackFulltime'));
 const DatascienceFulltime = React.lazy(() => import('./pages/full_time/DatascienceFulltime'));
-const NotFound = React.lazy(() => import('./pages/notfound/NotFound'));
+const PreScreeningTest = React.lazy(() => import('./components/homepagecomponets/prescreeningtest/PreScreeningTest'));
 const Productspage = React.lazy(() => import('./pages/products/Products'));
+const CampusPage = React.lazy(() => import('./pages/campus/CampusPage'));
 const ContactUs = React.lazy(() => import("./pages/contactus/ContactUs"));
 const AboutUs = React.lazy(() => import("./pages/aboutus/AboutUs"));
 const Blog = React.lazy(() => import('./pages/blog/Blog'));
-const CampusPage = React.lazy(() => import('./pages/campus/CampusPage'));
+const Fullstack = React.lazy(() => import("./pages/fullstack/Fullstack"));
+const DataScience = React.lazy(() => import("./pages/datascience/DataScience"));
+const NotFound = React.lazy(() => import('./pages/notfound/NotFound'));
 const BlogDetailPage = React.lazy(() => import('./components/blog/blogdetail/BlogDetailPage'));
 const PrivacyPolicy = React.lazy(() => import("./pages/privacypolicy/PrivacyPolicy"));
 const TermsAndConditions = React.lazy(() => import("./pages/termsandconditions/TermsAndConditions"));

@@ -39,12 +39,12 @@ export const advancedSeoData = {
         "addressRegion": "Karnataka",
         "addressLocality": "Bangalore"
       },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+91-XXXXXXXXXX",
-        "contactType": "customer service",
-        "availableLanguage": ["English", "Hindi"]
-      },
+      // "contactPoint": {
+      //   "@type": "ContactPoint",
+      //   "telephone": "+91-XXXXXXXXXX",
+      //   "contactType": "customer service",
+      //   "availableLanguage": ["English", "Hindi"]
+      // },
       "sameAs": [
         "https://linkedin.com/company/gigaversity",
         "https://twitter.com/gigaversity",
