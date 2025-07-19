@@ -11,7 +11,7 @@ const useStyles = makeStyles({
     borderRadius: '24px !important',
     boxShadow: '0px 6px 25px rgba(0, 0, 0, 0.06) !important',
     padding: '24px',
-    width: '400px',
+    width: '430px',
     height: '560px',
     position: 'relative',
     transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -370,7 +370,7 @@ const useStyles = makeStyles({
     fontWeight: 'bold !important',
     color: '#4A4A4A !important',
     marginTop: '40px !important',
-    marginBottom: '25px !important',
+    // marginBottom: '25px !important',
     transition: 'all 0.3s ease-in-out',
     display: 'inline-block',
     position: 'relative',
@@ -389,7 +389,7 @@ const useStyles = makeStyles({
     '@media (max-width: 1200px)': {
       fontSize: '26px !important',
       marginTop: '38px !important',
-      marginBottom: '23px !important',
+      // marginBottom: '23px !important',
       '&:after': {
         bottom: '-7px',
       },
@@ -397,7 +397,7 @@ const useStyles = makeStyles({
     '@media (max-width: 960px)': {
       fontSize: '24px !important',
       marginTop: '35px !important',
-      marginBottom: '20px !important',
+      // marginBottom: '20px !important',
       '&:after': {
         height: '2px',
         bottom: '-6px',
@@ -406,7 +406,7 @@ const useStyles = makeStyles({
     '@media (max-width: 600px)': {
       fontSize: '22px !important',
       marginTop: '32px !important',
-      marginBottom: '18px !important',
+      // marginBottom: '18px !important',
       '&:after': {
         bottom: '-5px',
       },
@@ -414,7 +414,7 @@ const useStyles = makeStyles({
     '@media (max-width: 480px)': {
       fontSize: '20px !important',
       marginTop: '30px !important',
-      marginBottom: '16px !important',
+      // marginBottom: '16px !important',
       '&:after': {
         bottom: '-4px',
       },
@@ -422,7 +422,7 @@ const useStyles = makeStyles({
     '@media (max-width: 375px)': {
       fontSize: '18px !important',
       marginTop: '28px !important',
-      marginBottom: '14px !important',
+      // marginBottom: '14px !important',
       '&:after': {
         height: '1px',
         bottom: '-3px',
@@ -456,27 +456,27 @@ const useStyles = makeStyles({
       fontSize: '20px !important',
     },
   },
-  bulletList: {
-    padding: 0,
-    listStyleType: 'none',
-    overflow: 'hidden',
-    maxHeight: '320px',
-    '@media (max-width: 1200px)': {
-      maxHeight: '305px',
-    },
-    '@media (max-width: 960px)': {
-      maxHeight: '290px',
-    },
-    '@media (max-width: 600px)': {
-      maxHeight: '275px',
-    },
-    '@media (max-width: 480px)': {
-      maxHeight: '260px',
-    },
-    '@media (max-width: 375px)': {
-      maxHeight: '245px',
-    },
+bulletList: {
+  padding: 0,
+  listStyleType: 'none',
+  overflow: 'hidden',
+  maxHeight: '400px',
+  '@media (max-width: 1200px)': {
+    maxHeight: '380px',
   },
+  '@media (max-width: 960px)': {
+    maxHeight: '360px',
+  },
+  '@media (max-width: 600px)': {
+    maxHeight: '340px',
+  },
+  '@media (max-width: 480px)': {
+    maxHeight: '320px',
+  },
+  '@media (max-width: 375px)': {
+    maxHeight: '300px',
+  },
+},
   bulletItem: {
     display: 'flex',
     alignItems: 'flex-start',
@@ -503,83 +503,83 @@ const useStyles = makeStyles({
   bulletIcon: {
     minWidth: '28px',
     color: '#4A63E7',
-    marginTop: '4px',
+    // marginTop: '4px',
     marginRight: '10px',
     fontSize: '20px !important',
     transition: 'transform 0.3s ease',
     '@media (max-width: 1200px)': {
       fontSize: '19px !important',
       minWidth: '26px',
-      marginRight: '9px',
-      marginTop: '3px',
+      // marginRight: '9px',
+      // marginTop: '3px',
     },
     '@media (max-width: 960px)': {
       fontSize: '18px !important',
-      minWidth: '24px',
-      marginRight: '8px',
+      // minWidth: '24px',
+      // marginRight: '8px',
     },
     '@media (max-width: 600px)': {
       fontSize: '17px !important',
       minWidth: '22px',
-      marginRight: '7px',
-      marginTop: '2px',
+      // marginRight: '7px',
+      // marginTop: '2px',
     },
     '@media (max-width: 480px)': {
       fontSize: '16px !important',
       minWidth: '20px',
-      marginRight: '6px',
+      // marginRight: '6px',
     },
     '@media (max-width: 375px)': {
       fontSize: '15px !important',
       minWidth: '18px',
-      marginRight: '5px',
-      marginTop: '1px',
+      // marginRight: '5px',
+      // marginTop: '1px',
     },
   },
-  bulletText: {
-    fontSize: '17px !important',
-    color: '#666666 !important',
-    transition: 'all 0.3s ease-in-out',
-    margin: '0 !important',
-    lineHeight: '1.5 !important',
-    '@media (max-width: 1200px)': {
-      fontSize: '16px !important',
-    },
-    '@media (max-width: 960px)': {
-      fontSize: '15px !important',
-      lineHeight: '1.4 !important',
-    },
-    '@media (max-width: 600px)': {
-      fontSize: '14px !important',
-    },
-    '@media (max-width: 480px)': {
-      fontSize: '13px !important',
-      lineHeight: '1.3 !important',
-    },
-    '@media (max-width: 375px)': {
-      fontSize: '12px !important',
-    },
+bulletText: {
+  fontSize: '11px',
+  color: '#666666',
+  transition: 'all 0.3s ease-in-out',
+  margin: '0',
+  // lineHeight: '1.3',
+  '@media (max-width: 1200px)': {
+    fontSize: '10px',
   },
-  bulletTextScaled: {
-    fontSize: '19px !important',
-    color: '#4A4A4A !important',
-    fontWeight: '500 !important',
-    '@media (max-width: 1200px)': {
-      fontSize: '18px !important',
-    },
-    '@media (max-width: 960px)': {
-      fontSize: '17px !important',
-    },
-    '@media (max-width: 600px)': {
-      fontSize: '16px !important',
-    },
-    '@media (max-width: 480px)': {
-      fontSize: '15px !important',
-    },
-    '@media (max-width: 375px)': {
-      fontSize: '14px !important',
-    },
+  '@media (max-width: 960px)': {
+    fontSize: '9px',
+    lineHeight: '1.2',
   },
+  '@media (max-width: 600px)': {
+    fontSize: '8px',
+  },
+  '@media (max-width: 480px)': {
+    fontSize: '7px',
+    lineHeight: '1.1',
+  },
+  '@media (max-width: 375px)': {
+    fontSize: '6px',
+  },
+},
+bulletTextScaled: {
+  fontSize: '12px !important',
+  color: '#4A4A4A',
+  fontWeight: '500',
+  '@media (max-width: 1200px)': {
+    fontSize: '11px !important',
+  },
+  '@media (max-width: 960px)': {
+    fontSize: '10px !important',
+  },
+  '@media (max-width: 600px)': {
+    fontSize: '9px !important',
+  },
+  '@media (max-width: 480px)': {
+    fontSize: '8px !important',
+  },
+  '@media (max-width: 375px)': {
+    fontSize: '7px !important',
+  },
+},
   footer: {
     position: 'absolute',
     bottom: '24px',
