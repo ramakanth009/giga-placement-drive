@@ -686,7 +686,7 @@ const techTools = [
     icon: <CodeIcon />
   },
   {
-    name: 'Node.js',
+    name: 'NodeJS',
     label: 'Node.js Runtime',
     description: 'Backend development with Node.js and Express.js',
     icon: <LanguageIcon />

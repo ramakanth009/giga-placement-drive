@@ -273,10 +273,16 @@ const OtherPrograms = () => {
     // Navigate to specific program pages
     switch(programId) {
       case 1:
-        navigate('/fulltime/fullstack');
+        navigate('/fullstack');
         break;
       case 2:
-        navigate('/fulltime/datascience');
+        navigate('/datascience');
+        break;
+        case 3:
+        navigate('/virtual-placement-fullstack');
+        break;
+      case 4:
+        navigate('/virtual-placement-datascience');
         break;
       case 5:
         // Master Internship Full Stack - launching soon
@@ -284,12 +290,7 @@ const OtherPrograms = () => {
       case 6:
         // Master Internship Data Science - launching soon
         break;
-      case 3:
-        navigate('/fullstack');
-        break;
-      case 4:
-        navigate('/datascience');
-        break;
+      
       default:
         // fallback
         alert('Launching soon');

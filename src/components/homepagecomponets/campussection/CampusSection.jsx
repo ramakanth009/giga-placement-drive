@@ -1363,13 +1363,13 @@ const CampusSection = () => {
         </Box>
 
         <Box className={classes.ctaContainer}>
-          <Button
+          {/* <Button
             variant="contained"
             className={classes.ctaButton}
             onClick={handleCTAClick}
           >
             Explore Our Campus
-          </Button>
+          </Button> */}
         </Box>
       </Container>
     </Box>

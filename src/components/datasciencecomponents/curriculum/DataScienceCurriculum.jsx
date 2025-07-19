@@ -7,7 +7,7 @@ import {
   Storage as DataEngineerIcon,
   Psychology as MLEngineerIcon
 } from "@mui/icons-material";
-
+ 
 const DataScienceCurriculum = () => {
   // Define weeks data with appropriate icons
   const weeks = [

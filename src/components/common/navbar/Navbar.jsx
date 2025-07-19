@@ -440,42 +440,6 @@ const Navbar = () => {
             Home
           </MenuItem>
           
-          <MenuItem
-            onClick={toggleMobileVirtualPlacement}
-            className={classes.menuItem}
-          >
-            <Box className={classes.dropdownText}>
-              Virtual Placement
-              <KeyboardArrowDownIcon
-                className={classes.dropdownIcon}
-                style={{
-                  transform: mobileVirtualPlacementOpen
-                    ? "rotate(180deg)"
-                    : "rotate(0deg)",
-                }}
-              />
-            </Box>
-          </MenuItem> 
-          {mobileVirtualPlacementOpen && (
-            <Box className={classes.mobileSubmenu}>
-              <MenuItem
-                onClick={() => handleNavLinkClick()}
-                className={classes.mobileSubmenuItem}
-                component={Link}
-                to="/virtual-placement-fullstack"
-              >
-                Full Stack
-              </MenuItem> 
-              <MenuItem
-                onClick={() => handleNavLinkClick()}
-                className={classes.mobileSubmenuItem}
-                component={Link}
-                to="/virtual-placement-datascience"
-              >
-                Data Science
-              </MenuItem>
-            </Box>
-          )}
           
           <MenuItem
             onClick={toggleMobileFullTime}
@@ -513,7 +477,43 @@ const Navbar = () => {
               </MenuItem>
             </Box>
           )}
-
+<MenuItem
+            onClick={toggleMobileVirtualPlacement}
+            className={classes.menuItem}
+          >
+            <Box className={classes.dropdownText}>
+              Virtual Placement
+              <KeyboardArrowDownIcon
+                className={classes.dropdownIcon}
+                style={{
+                  transform: mobileVirtualPlacementOpen
+                    ? "rotate(180deg)"
+                    : "rotate(0deg)",
+                }}
+              />
+            </Box>
+          </MenuItem> 
+          {mobileVirtualPlacementOpen && (
+            <Box className={classes.mobileSubmenu}>
+              <MenuItem
+                onClick={() => handleNavLinkClick()}
+                className={classes.mobileSubmenuItem}
+                component={Link}
+                to="/virtual-placement-fullstack"
+              >
+                Full Stack
+              </MenuItem> 
+              <MenuItem
+                onClick={() => handleNavLinkClick()}
+                className={classes.mobileSubmenuItem}
+                component={Link}
+                to="/virtual-placement-datascience"
+              >
+                Data Science
+              </MenuItem>
+            </Box>
+          )}
+          
           <MenuItem
             onClick={() => handleNavLinkClick()}
             className={classes.menuItem}

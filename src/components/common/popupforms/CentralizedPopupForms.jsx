@@ -341,6 +341,7 @@ const useStyles = makeStyles({
       transition: 'all 0.2s ease',
       fontSize: '0.9rem',
       boxShadow: '0 1.5px 6px rgba(42, 43, 106, 0.07)',
+      minHeight: 48, // Fixed height for consistency
       '& fieldset': {
         borderColor: '#e0e0e0',
         borderWidth: 1,
@@ -363,29 +364,38 @@ const useStyles = makeStyles({
       fontSize: '0.9rem',
       fontWeight: 500,
       color: '#666666',
+      // Fixed label positioning
+      transform: 'translate(14px, 16px) scale(1)',
+      '&.MuiInputLabel-shrink': {
+        transform: 'translate(14px, -6px) scale(0.75)',
+      },
       '&.Mui-focused': {
         color: '#2A2B6A',
       }
     },
     '& .MuiOutlinedInput-input': {
-      padding: '10px 12px',
+      padding: '14px 12px', // Adjusted padding for better centering
       fontSize: '0.9rem',
       color: '#2A2B6A',
       fontWeight: 500,
-      lineHeight: 1.2,
-      display: 'flex',
-      alignItems: 'center',
+      lineHeight: 1.4, // Better line height
+      height: 'auto', // Auto height for proper alignment
     },
     '@media (max-width: 1200px)': {
       '& .MuiOutlinedInput-root': {
         fontSize: '0.88rem',
         borderRadius: 7,
+        minHeight: 46,
       },
       '& .MuiInputLabel-root': {
         fontSize: '0.88rem',
+        transform: 'translate(13px, 15px) scale(1)',
+        '&.MuiInputLabel-shrink': {
+          transform: 'translate(13px, -6px) scale(0.75)',
+        },
       },
       '& .MuiOutlinedInput-input': {
-        padding: '9px 11px',
+        padding: '13px 11px',
         fontSize: '0.88rem',
       }
     },
@@ -393,12 +403,17 @@ const useStyles = makeStyles({
       '& .MuiOutlinedInput-root': {
         fontSize: '0.85rem',
         borderRadius: 6,
+        minHeight: 44,
       },
       '& .MuiInputLabel-root': {
         fontSize: '0.85rem',
+        transform: 'translate(12px, 14px) scale(1)',
+        '&.MuiInputLabel-shrink': {
+          transform: 'translate(12px, -6px) scale(0.75)',
+        },
       },
       '& .MuiOutlinedInput-input': {
-        padding: '8px 10px',
+        padding: '12px 10px',
         fontSize: '0.85rem',
       }
     },
@@ -406,12 +421,17 @@ const useStyles = makeStyles({
       '& .MuiOutlinedInput-root': {
         fontSize: '0.8rem',
         borderRadius: 6,
+        minHeight: 42,
       },
       '& .MuiInputLabel-root': {
         fontSize: '0.8rem',
+        transform: 'translate(12px, 13px) scale(1)',
+        '&.MuiInputLabel-shrink': {
+          transform: 'translate(12px, -6px) scale(0.75)',
+        },
       },
       '& .MuiOutlinedInput-input': {
-        padding: '8px 10px',
+        padding: '11px 10px',
         fontSize: '0.8rem',
       }
     },
@@ -419,12 +439,17 @@ const useStyles = makeStyles({
       '& .MuiOutlinedInput-root': {
         fontSize: '0.75rem',
         borderRadius: 5,
+        minHeight: 40,
       },
       '& .MuiInputLabel-root': {
         fontSize: '0.75rem',
+        transform: 'translate(11px, 12px) scale(1)',
+        '&.MuiInputLabel-shrink': {
+          transform: 'translate(11px, -6px) scale(0.75)',
+        },
       },
       '& .MuiOutlinedInput-input': {
-        padding: '7px 9px',
+        padding: '10px 9px',
         fontSize: '0.75rem',
       }
     },
@@ -432,12 +457,17 @@ const useStyles = makeStyles({
       '& .MuiOutlinedInput-root': {
         fontSize: '0.7rem',
         borderRadius: 4,
+        minHeight: 38,
       },
       '& .MuiInputLabel-root': {
         fontSize: '0.7rem',
+        transform: 'translate(10px, 11px) scale(1)',
+        '&.MuiInputLabel-shrink': {
+          transform: 'translate(10px, -6px) scale(0.75)',
+        },
       },
       '& .MuiOutlinedInput-input': {
-        padding: '6px 8px',
+        padding: '9px 8px',
         fontSize: '0.7rem',
       }
     }
@@ -449,6 +479,7 @@ const useStyles = makeStyles({
       transition: 'all 0.2s ease',
       fontSize: '0.9rem',
       boxShadow: '0 1.5px 6px rgba(42, 43, 106, 0.07)',
+      minHeight: 48, // Fixed height for consistency
       '& fieldset': {
         borderColor: '#e0e0e0',
         borderWidth: 1,
@@ -468,15 +499,23 @@ const useStyles = makeStyles({
       }
     },
     '& .MuiSelect-select': {
-      padding: '10px 12px',
+      padding: '14px 12px', // Adjusted padding for better centering
       fontSize: '0.9rem',
       color: '#2A2B6A',
       fontWeight: 500,
+      minHeight: 'auto', // Auto height for proper alignment
+      display: 'flex',
+      alignItems: 'center',
     },
     '& .MuiInputLabel-root': {
       fontSize: '0.9rem',
       fontWeight: 500,
       color: '#666666',
+      // Fixed label positioning
+      transform: 'translate(14px, 16px) scale(1)',
+      '&.MuiInputLabel-shrink': {
+        transform: 'translate(14px, -6px) scale(0.75)',
+      },
       '&.Mui-focused': {
         color: '#2A2B6A',
       }
@@ -485,65 +524,90 @@ const useStyles = makeStyles({
       '& .MuiOutlinedInput-root': {
         fontSize: '0.88rem',
         borderRadius: 7,
+        minHeight: 46,
       },
       '& .MuiSelect-select': {
-        padding: '9px 11px',
+        padding: '13px 11px',
         fontSize: '0.88rem',
       },
       '& .MuiInputLabel-root': {
         fontSize: '0.88rem',
+        transform: 'translate(13px, 15px) scale(1)',
+        '&.MuiInputLabel-shrink': {
+          transform: 'translate(13px, -6px) scale(0.75)',
+        },
       }
     },
     '@media (max-width: 960px)': {
       '& .MuiOutlinedInput-root': {
         fontSize: '0.85rem',
         borderRadius: 6,
+        minHeight: 44,
       },
       '& .MuiSelect-select': {
-        padding: '8px 10px',
+        padding: '12px 10px',
         fontSize: '0.85rem',
       },
       '& .MuiInputLabel-root': {
         fontSize: '0.85rem',
+        transform: 'translate(12px, 14px) scale(1)',
+        '&.MuiInputLabel-shrink': {
+          transform: 'translate(12px, -6px) scale(0.75)',
+        },
       }
     },
     '@media (max-width: 600px)': {
       '& .MuiOutlinedInput-root': {
         fontSize: '0.8rem',
         borderRadius: 6,
+        minHeight: 42,
       },
       '& .MuiSelect-select': {
-        padding: '8px 10px',
+        padding: '11px 10px',
         fontSize: '0.8rem',
       },
       '& .MuiInputLabel-root': {
         fontSize: '0.8rem',
+        transform: 'translate(12px, 13px) scale(1)',
+        '&.MuiInputLabel-shrink': {
+          transform: 'translate(12px, -6px) scale(0.75)',
+        },
       }
     },
     '@media (max-width: 480px)': {
       '& .MuiOutlinedInput-root': {
         fontSize: '0.75rem',
         borderRadius: 5,
+        minHeight: 40,
       },
       '& .MuiSelect-select': {
-        padding: '7px 9px',
+        padding: '10px 9px',
         fontSize: '0.75rem',
       },
       '& .MuiInputLabel-root': {
         fontSize: '0.75rem',
+        transform: 'translate(11px, 12px) scale(1)',
+        '&.MuiInputLabel-shrink': {
+          transform: 'translate(11px, -6px) scale(0.75)',
+        },
       }
     },
     '@media (max-width: 375px)': {
       '& .MuiOutlinedInput-root': {
         fontSize: '0.7rem',
         borderRadius: 4,
+        minHeight: 38,
       },
       '& .MuiSelect-select': {
-        padding: '6px 8px',
+        padding: '9px 8px',
         fontSize: '0.7rem',
       },
       '& .MuiInputLabel-root': {
         fontSize: '0.7rem',
+        transform: 'translate(10px, 11px) scale(1)',
+        '&.MuiInputLabel-shrink': {
+          transform: 'translate(10px, -6px) scale(0.75)',
+        },
       }
     }
   },

@@ -419,7 +419,8 @@ const PreScreeningBanner = () => {
 
   const targetAudienceWithIcons = [
     {
-      text: "People who got Cheated by backdoor IT jobs with fake offers and false placement promises",
+      // text: "People who got Cheated by backdoor IT jobs with fake offers and false placement promises",
+      text: "Empowering aspiring IT professionals to rebuild their careers through genuine opportunities and trusted support after setbacks from fraudulent placements.",
       icon: WarningAmberIcon
     },
     {

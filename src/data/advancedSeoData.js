@@ -163,49 +163,7 @@ export const advancedSeoData = {
     ]
   },
 
-  "virtual-placement-fullstack": {
-    title: "Full Stack Virtual Placement Drive | Remote MERN Stack Jobs | Gigaversity",
-    description: "Participate in Gigaversity's Full Stack Virtual Placement Drive. Get access to remote MERN stack developer jobs, online hiring, and virtual placement opportunities.",
-    keywords: "fullstack virtual placement, virtual placement drive for full stack, remote full stack developer jobs, online placement for MERN stack, virtual hiring for web developers",
-    canonicalUrl: "https://gigaversity.in/fullstack/virtual-placement",
-    // hiddenKeywords: [
-    //   "fullstack virtual placement",
-    //   "virtual placement drive for full stack",
-    //   "remote full stack developer jobs",
-    //   "online placement for MERN stack",
-    //   "virtual hiring for web developers"
-    // ],
-    searchTerms: [
-      "fullstack virtual placement",
-      "virtual placement drive for full stack",
-      "remote full stack developer jobs",
-      "online placement for MERN stack",
-      "virtual hiring for web developers"
-    ],
-    structuredData: {
-      "@context": "https://schema.org",
-      "@type": "Event",
-      "name": "Full Stack Virtual Placement Drive",
-      "description": "Virtual placement drive for full stack developers (MERN stack) at Gigaversity.",
-      "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
-      "eventStatus": "https://schema.org/EventScheduled",
-      "location": {
-        "@type": "VirtualLocation",
-        "url": "https://gigaversity.in/fullstack/virtual-placement"
-      },
-      "organizer": {
-        "@type": "Organization",
-        "name": "Gigaversity"
-      }
-    },
-    // ogImage: "https://gigaversity.in/assets/og-fullstack-virtual-placement.jpg",
-    ogImage: "https://gigaversity.in/assets/GIGAVERSITY_LOGO.png",
-    breadcrumbs: [
-      { name: "Home", url: "https://gigaversity.in/" },
-      { name: "Full Stack Development", url: "https://gigaversity.in/fullstack" },
-      { name: "Virtual Placement", url: "https://gigaversity.in/fullstack/virtual-placement" }
-    ]
-  },
+
 
   datascience: {
     title: "Gigaversity 9 Month Data Science Course with Real-World Projects",
@@ -287,49 +245,82 @@ export const advancedSeoData = {
     ]
   },
 
-  "virtual-placement-datascience": {
-    title: "Data Science Virtual Placement Drive | Remote Data Scientist Jobs | Gigaversity",
-    description: "Join Gigaversity's Data Science Virtual Placement Drive. Access remote data scientist jobs, online ML engineer placements, and virtual hiring for data analysts.",
-    keywords: "data science virtual placement, virtual placement drive for data science, remote data scientist jobs, online placement for ML engineers, virtual hiring for data analysts",
-    canonicalUrl: "https://gigaversity.in/datascience/virtual-placement",
-    // hiddenKeywords: [
-    //   "data science virtual placement",
-    //   "virtual placement drive for data science",
-    //   "remote data scientist jobs",
-    //   "online placement for ML engineers",
-    //   "virtual hiring for data analysts"
-    // ],
-    searchTerms: [
-      "data science virtual placement",
-      "virtual placement drive for data science",
-      "remote data scientist jobs",
-      "online placement for ML engineers",
-      "virtual hiring for data analysts"
-    ],
-    structuredData: {
-      "@context": "https://schema.org",
-      "@type": "Event",
-      "name": "Data Science Virtual Placement Drive",
-      "description": "Virtual placement drive for data science and ML engineers at Gigaversity.",
-      "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
-      "eventStatus": "https://schema.org/EventScheduled",
-      "location": {
-        "@type": "VirtualLocation",
-        "url": "https://gigaversity.in/datascience/virtual-placement"
-      },
-      "organizer": {
-        "@type": "Organization",
-        "name": "Gigaversity"
-      }
+    
+"virtual-placement-fullstack": {
+  title: "Virtual Full Stack Development Placement | Live Job Opportunities",
+  description: "Join our virtual placement drive for full stack developers. Access real job opportunities, interview preparation, and direct company connections for full stack roles.",
+  keywords: "virtual placement full stack, full stack developer jobs, virtual job placement, full stack development jobs, remote full stack opportunities, virtual internship full stack",
+  canonicalUrl: "https://gigaversity.in/fullstack",
+  searchTerms: [
+    "virtual placement full stack developer",
+    "full stack developer remote jobs",
+    "virtual internship opportunities",
+    "full stack placement program",
+    "online full stack job placement"
+  ],
+  structuredData: {
+    "@context": "https://schema.org",
+    "@type": "Course", 
+    "name": "Virtual Full Stack Development Placement",
+    "description": "Virtual placement program connecting full stack developers with real job opportunities and career advancement.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Gigaversity",
+      "url": "https://gigaversity.in"
     },
-    // ogImage: "https://gigaversity.in/assets/og-datascience-virtual-placement.jpg",
-    ogImage: "https://gigaversity.in/assets/GIGAVERSITY_LOGO.png",
-    breadcrumbs: [
-      { name: "Home", url: "https://gigaversity.in/" },
-      { name: "Data Science", url: "https://gigaversity.in/datascience" },
-      { name: "Virtual Placement", url: "https://gigaversity.in/datascience/virtual-placement" }
+    "courseMode": "online",
+    "educationalLevel": "Intermediate to Advanced",
+    "teaches": [
+      "Job Interview Skills",
+      "Resume Building", 
+      "Technical Interview Preparation",
+      "Industry Networking"
     ]
   },
+  ogImage: "https://gigaversity.in/assets/GIGAVERSITY_LOGO.png",
+  breadcrumbs: [
+    { name: "Home", url: "https://gigaversity.in/" },
+    { name: "Full Stack Placement", url: "https://gigaversity.in/fullstack" }
+  ]
+},
+
+"virtual-placement-datascience": {
+  title: "Virtual Data Science Placement | Real Job Opportunities & Career Growth",
+  description: "Connect with top companies through our virtual data science placement program. Get direct access to data scientist positions and advance your career with expert guidance.",
+  keywords: "virtual placement data science, data scientist jobs, virtual job placement, data science careers, remote data science opportunities, virtual internship data science",
+  canonicalUrl: "https://gigaversity.in/datascience",
+  searchTerms: [
+    "virtual placement data scientist",
+    "data science remote jobs",
+    "virtual data science internship",
+    "data science placement program", 
+    "online data science job placement"
+  ],
+  structuredData: {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Virtual Data Science Placement",
+    "description": "Virtual placement program connecting data science professionals with leading companies and career opportunities.",
+    "provider": {
+      "@type": "Organization", 
+      "name": "Gigaversity",
+      "url": "https://gigaversity.in"
+    },
+    "courseMode": "online",
+    "educationalLevel": "Intermediate to Advanced",
+    "teaches": [
+      "Data Science Interview Preparation",
+      "Portfolio Development",
+      "Technical Assessment Skills", 
+      "Industry Networking"
+    ]
+  },
+  ogImage: "https://gigaversity.in/assets/GIGAVERSITY_LOGO.png",
+  breadcrumbs: [
+    { name: "Home", url: "https://gigaversity.in/" },
+    { name: "Data Science Placement", url: "https://gigaversity.in/datascience" }
+  ]
+},
 
   products: {
     title: "Resume Builder - Create Professional Resumes Online | Gigaversity",

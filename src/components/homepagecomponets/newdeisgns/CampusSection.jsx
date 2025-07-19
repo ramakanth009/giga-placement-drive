@@ -261,14 +261,14 @@ const CampusSection = () => {
         </Box>
 
         <Box className={classes.ctaContainer}>
-          <Button
+          {/* <Button
             variant="contained"
             className={classes.ctaButton}
             onClick={handleCTAClick}
             title="Take a virtual tour of the Gigaversity campus and resources"
           >
             Explore Our Campus
-          </Button>
+          </Button> */}
         </Box>
       </Container>
     </Box>

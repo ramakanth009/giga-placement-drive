@@ -12,7 +12,7 @@ const useStyles = makeStyles({
     boxShadow: '0px 6px 25px rgba(0, 0, 0, 0.06) !important',
     padding: '24px',
     width: '400px',
-    height: '520px',
+    height: '560px',
     position: 'relative',
     transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
     marginRight: '24px',
@@ -30,7 +30,7 @@ const useStyles = makeStyles({
       borderRadius: '22px !important',
       padding: '22px',
       width: '380px',
-      height: '500px',
+      height: '560px',
       marginRight: '22px',
       marginTop: '23px',
       '&:hover': {

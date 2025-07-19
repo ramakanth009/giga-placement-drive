@@ -348,27 +348,27 @@ const useStyles = makeStyles({
   },
   sliderContainer: {
     position: 'relative',
-    paddingTop: '50px',
-    paddingBottom: '40px',
+    // paddingTop: '50px',
+    // paddingBottom: '40px',
     '@media (max-width: 1200px)': {
-      paddingTop: '45px',
-      paddingBottom: '35px',
+      // paddingTop: '45px',
+      // paddingBottom: '35px',
     },
     '@media (max-width: 960px)': {
-      paddingTop: '40px',
-      paddingBottom: '30px',
+      // paddingTop: '40px',
+      // paddingBottom: '30px',
     },
     '@media (max-width: 600px)': {
-      paddingTop: '35px',
-      paddingBottom: '25px',
+      // paddingTop: '35px',
+      // paddingBottom: '25px',
     },
     '@media (max-width: 480px)': {
-      paddingTop: '30px',
-      paddingBottom: '20px',
+      // paddingTop: '30px',
+      // paddingBottom: '20px',
     },
     '@media (max-width: 375px)': {
-      paddingTop: '25px',
-      paddingBottom: '15px',
+      // paddingTop: '25px',
+      // paddingBottom: '15px',
     },
   },
   sliderTrack: {

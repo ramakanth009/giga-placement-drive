@@ -348,13 +348,13 @@ const FeatureItem = ({ feature, index }) => {
         <Typography variant="body1" className={classes.featureDescription}>
           {feature.description}
         </Typography>
-        <Button 
+        {/* <Button 
           variant="contained"
           className={classes.learnMoreBtn}
           endIcon={<ArrowForwardIcon />}
         >
           Learn more
-        </Button>
+        </Button> */}
       </Box>
     </Box>
   );
