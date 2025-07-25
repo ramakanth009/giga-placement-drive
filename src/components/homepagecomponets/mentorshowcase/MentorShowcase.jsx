@@ -476,14 +476,6 @@ const MentorShowcase = () => {
     },
     {
       id: 2,
-      name: "Hemanth Sai Ram",
-      title: "Senior Software Engineer & Tech Lead (5+ Years)",
-      expertise: "Full Stack",
-      image: hemanthImg,
-      altText: "Trainer at Gigaversity, Hemanth Sai Ram"
-    },
-    {
-      id: 3,
       name: "Jay Shankar Reddy",
       title: "Full Stack Developer at Virtusa (5+ Years)",
       expertise: "Full Stack",
@@ -491,15 +483,7 @@ const MentorShowcase = () => {
       altText: "Trainer at Gigaversity, Jay Shankar Reddy"
     },
     {
-      id: 4,
-      name: "Laxman Eadala",
-      title: "Full Stack Developer at Reliance (6+ Years)",
-      expertise: "Full Stack",
-      image: laxmanImg,
-      altText: "Trainer at Gigaversity, Laxman Eadala"
-    },
-    {
-      id: 5,
+      id: 3,
       name: "Vinod Kumar",
       title: "Engineer II at Masimo & TA at NYIT Vancouver",
       expertise: "Full Stack",
@@ -507,12 +491,28 @@ const MentorShowcase = () => {
       altText: "Trainer at Gigaversity, Vinod Kumar"
     },
     {
-      id: 6,
+      id: 4,
       name: "Jaideep Maganti",
       title: "Career Development & Industry Relations Coach",
       expertise: "Leadership",
       image: jaideepImg,
       altText: "Trainer at Gigaversity, Jaideep Maganti"
+    },
+    {
+      id: 5,
+      name: "Hemanth Sai Ram",
+      title: "Senior Software Engineer & Tech Lead (5+ Years)",
+      expertise: "Full Stack",
+      image: hemanthImg,
+      altText: "Trainer at Gigaversity, Hemanth Sai Ram"
+    },
+        {
+      id: 6,
+      name: "Laxman Eadala",
+      title: "Full Stack Developer at Reliance (6+ Years)",
+      expertise: "Full Stack",
+      image: laxmanImg,
+      altText: "Trainer at Gigaversity, Laxman Eadala"
     },
     {
       id: 7,

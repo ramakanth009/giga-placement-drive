@@ -957,7 +957,7 @@ const ProgramFee = ({
           {/* New Scholarship Section */}
           <Box className={classes.scholarshipSection}>
             <Typography className={classes.scholarshipText}>
-              Need financial support? Apply for scholarships with coverage of up to 60% of the program fee.
+              Need financial support? Apply for scholarships with coverage of up to 100% of the program fee.
             </Typography>
             <Button 
               variant="contained" 

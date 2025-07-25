@@ -537,49 +537,99 @@ bulletList: {
     },
   },
 bulletText: {
-  fontSize: '11px',
+  fontSize: '16px !important', // Start larger on desktop
   color: '#666666',
   transition: 'all 0.3s ease-in-out',
   margin: '0',
-  // lineHeight: '1.3',
+  lineHeight: '1.4',
   '@media (max-width: 1200px)': {
-    fontSize: '10px',
+    fontSize: '15px !important',
   },
   '@media (max-width: 960px)': {
-    fontSize: '9px',
-    lineHeight: '1.2',
+    fontSize: '14px !important',
+    lineHeight: '1.3',
   },
   '@media (max-width: 600px)': {
-    fontSize: '8px',
+    fontSize: '13px !important',
   },
   '@media (max-width: 480px)': {
-    fontSize: '7px',
-    lineHeight: '1.1',
+    fontSize: '12px !important',
+    lineHeight: '1.2',
   },
   '@media (max-width: 375px)': {
-    fontSize: '6px',
+    fontSize: '11px !important', // Still readable on smallest screens
   },
 },
 bulletTextScaled: {
-  fontSize: '12px !important',
+  fontSize: '18px !important', // Larger scaled text for desktop
   color: '#4A4A4A',
   fontWeight: '500',
   '@media (max-width: 1200px)': {
-    fontSize: '11px !important',
+    fontSize: '17px !important',
   },
   '@media (max-width: 960px)': {
-    fontSize: '10px !important',
+    fontSize: '16px !important',
   },
   '@media (max-width: 600px)': {
-    fontSize: '9px !important',
+    fontSize: '15px !important',
   },
   '@media (max-width: 480px)': {
-    fontSize: '8px !important',
+    fontSize: '14px !important',
   },
   '@media (max-width: 375px)': {
-    fontSize: '7px !important',
+    fontSize: '13px !important',
   },
 },
+
+// Also consider fixing other text elements if needed:
+difficultyLabel: {
+  fontSize: '16px !important', // Increased from 15px
+  color: '#999999 !important',
+  marginRight: '12px !important',
+  fontWeight: '500 !important',
+  '@media (max-width: 1200px)': {
+    fontSize: '15px !important',
+  },
+  '@media (max-width: 960px)': {
+    fontSize: '14px !important',
+  },
+  '@media (max-width: 600px)': {
+    fontSize: '13px !important',
+  },
+  '@media (max-width: 480px)': {
+    fontSize: '12px !important',
+  },
+  '@media (max-width: 375px)': {
+    fontSize: '11px !important',
+  },
+},
+duration: {
+  display: 'flex',
+  alignItems: 'center',
+  color: '#999999',
+  fontSize: '16px', // Increased from 15px
+  fontWeight: '500',
+  transition: 'color 0.3s ease',
+  '&:hover': {
+    color: '#4A63E7',
+  },
+  '@media (max-width: 1200px)': {
+    fontSize: '15px',
+  },
+  '@media (max-width: 960px)': {
+    fontSize: '14px',
+  },
+  '@media (max-width: 600px)': {
+    fontSize: '13px',
+  },
+  '@media (max-width: 480px)': {
+    fontSize: '12px',
+  },
+  '@media (max-width: 375px)': {
+    fontSize: '11px',
+  },
+},
+
   footer: {
     position: 'absolute',
     bottom: '24px',

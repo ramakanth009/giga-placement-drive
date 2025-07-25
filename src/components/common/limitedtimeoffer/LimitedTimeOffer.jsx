@@ -1092,7 +1092,10 @@ const CountdownTimer = () => {
       <Typography className={classes.timerText}>
         <TimerIcon /> Limited time offer expires in:
       </Typography>
-      <Box className={classes.timerContainer}>
+      <Typography className={classes.timerText}>
+         Coming Soon . . .
+      </Typography>
+      {/* <Box className={classes.timerContainer}>
         <Box className={classes.timerBox}>
           <Typography className={classes.timerValue}>{formatNumber(timeLeft.days)}</Typography>
           <Typography className={classes.timerLabel}>Days</Typography>
@@ -1109,7 +1112,7 @@ const CountdownTimer = () => {
           <Typography className={classes.timerValue}>{formatNumber(timeLeft.seconds)}</Typography>
           <Typography className={classes.timerLabel}>Seconds</Typography>
         </Box>
-      </Box>
+      </Box> */}
     </Box>
   );
 };
@@ -1210,7 +1213,7 @@ const LimitedTimeOffer = () => {
               variant="contained" 
               className={classes.applyButton}
               onClick={() => {
-                navigate('/cart');
+                // navigate('/cart');
                 window.scrollTo({ top: 0, behavior: 'smooth' }); // Ensure scroll to top
               }}
             >

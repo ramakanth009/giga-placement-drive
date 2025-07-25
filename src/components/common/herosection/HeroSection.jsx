@@ -392,7 +392,7 @@ const HeroSection = ({
               variant="contained" 
               className={classes.joinButton} 
               component={Link} 
-              to="/cart"
+              // to="/cart"
             >
               Launching Soon
             </Button>

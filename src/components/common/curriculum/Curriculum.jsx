@@ -891,13 +891,13 @@ const Curriculum = ({ title, subtitle, weeks, skills, domain = 'fullstack' }) =>
         </Box>
 
         <Box className={classes.exploreButtonContainer}>
-          <Button 
+          {/* <Button 
             variant="contained" 
             className={classes.exploreButton}
             endIcon={<ArrowForwardIcon />}
           >
             Explore Full Curriculum
-          </Button>
+          </Button> */}
         </Box>
       </Box>
     </Box>

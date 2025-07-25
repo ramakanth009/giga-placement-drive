@@ -815,7 +815,7 @@ const Curriculum = ({
                   difficulty={card.difficulty}
                   duration={card.duration}
                   icon={card.icon}
-                  isScaled={isCardInCoreSkills(index)}
+                  // isScaled={isCardInCoreSkills(index)}
                   isActive={visibleCategoryId === card.id}
                   isInactive={visibleCategoryId !== card.id}
                   onClick={() => handleChipClick(card.id)}

@@ -8,7 +8,7 @@ const Hero = () => {
   const features = [
     "Code with AI\n400+ Job Opportunities",
     "30-Day Expert Training",
-    "₹199 Limited Offer"
+    "₹_ _ 9 Limited Offer"
   ];
 
   return (
