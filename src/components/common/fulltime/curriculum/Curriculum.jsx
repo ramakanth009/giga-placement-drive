@@ -1,10 +1,19 @@
-// Enhanced Curriculum Component with comprehensive responsiveness
+// Enhanced Curriculum Component with download button and popup integration
 import React, { useRef, useState, useEffect } from 'react';
-import { Box, Typography, Container, Chip } from '@mui/material';
+import { Box, Typography, Container, Chip, Button } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import DownloadIcon from '@mui/icons-material/Download';
 import CurriculumCard from './CurriculumCard';
+import CentralizedPopupForms from '../../../common/popupforms/CentralizedPopupForms';
 
 const useStyles = makeStyles({
+  '@keyframes shake': {
+    '0%': { transform: 'translate(0, 0) rotate(0deg)' },
+    '25%': { transform: 'translate(5px, 5px) rotate(5deg)' },
+    '50%': { transform: 'translate(0, 0) rotate(0deg)' },
+    '75%': { transform: 'translate(-5px, 5px) rotate(-5deg)' },
+    '100%': { transform: 'translate(0, 0) rotate(0deg)' },
+  },
   section: {
     padding: '100px 0',
     position: 'relative',
@@ -348,27 +357,15 @@ const useStyles = makeStyles({
   },
   sliderContainer: {
     position: 'relative',
-    // paddingTop: '50px',
-    // paddingBottom: '40px',
     '@media (max-width: 1200px)': {
-      // paddingTop: '45px',
-      // paddingBottom: '35px',
     },
     '@media (max-width: 960px)': {
-      // paddingTop: '40px',
-      // paddingBottom: '30px',
     },
     '@media (max-width: 600px)': {
-      // paddingTop: '35px',
-      // paddingBottom: '25px',
     },
     '@media (max-width: 480px)': {
-      // paddingTop: '30px',
-      // paddingBottom: '20px',
     },
     '@media (max-width: 375px)': {
-      // paddingTop: '25px',
-      // paddingBottom: '15px',
     },
   },
   sliderTrack: {
@@ -630,6 +627,90 @@ const useStyles = makeStyles({
       },
     },
   },
+  downloadButtonContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: '50px',
+    '@media (max-width: 1200px)': {
+      marginTop: '45px',
+    },
+    '@media (max-width: 960px)': {
+      marginTop: '40px',
+    },
+    '@media (max-width: 600px)': {
+      marginTop: '35px',
+    },
+    '@media (max-width: 480px)': {
+      marginTop: '30px',
+    },
+    '@media (max-width: 375px)': {
+      marginTop: '25px',
+    },
+  },
+  downloadButton: {
+    background: 'linear-gradient(135deg, #4A63E7 0%, #8B5CF6 100%) !important',
+    color: 'white !important',
+    padding: '16px 32px !important',
+    borderRadius: '50px !important',
+    fontSize: '1rem !important',
+    fontWeight: 'bold !important',
+    textTransform: 'none !important',
+    boxShadow: '0 8px 25px rgba(74, 99, 231, 0.4) !important',
+    transition: 'all 0.3s ease !important',
+    animation: '$shake 1s ease-in-out infinite',
+    '&:hover': {
+      transform: 'translateY(-3px) scale(1.05) !important',
+      boxShadow: '0 12px 35px rgba(74, 99, 231, 0.5) !important',
+      animation: 'none !important',
+    },
+    '&:active': {
+      transform: 'translateY(-1px) scale(1.02) !important',
+    },
+    '@media (max-width: 1200px)': {
+      padding: '14px 28px !important',
+      fontSize: '0.95rem !important',
+    },
+    '@media (max-width: 960px)': {
+      padding: '12px 24px !important',
+      fontSize: '0.9rem !important',
+    },
+    '@media (max-width: 600px)': {
+      padding: '10px 20px !important',
+      fontSize: '0.85rem !important',
+    },
+    '@media (max-width: 480px)': {
+      padding: '8px 16px !important',
+      fontSize: '0.8rem !important',
+    },
+    '@media (max-width: 375px)': {
+      padding: '6px 14px !important',
+      fontSize: '0.75rem !important',
+    },
+  },
+  downloadIcon: {
+    marginRight: '8px !important',
+    fontSize: '1.2rem !important',
+    '@media (max-width: 1200px)': {
+      fontSize: '1.1rem !important',
+      marginRight: '7px !important',
+    },
+    '@media (max-width: 960px)': {
+      fontSize: '1rem !important',
+      marginRight: '6px !important',
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '0.9rem !important',
+      marginRight: '5px !important',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: '0.8rem !important',
+      marginRight: '4px !important',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.7rem !important',
+      marginRight: '3px !important',
+    },
+  },
 });
 
 const Curriculum = ({ 
@@ -646,6 +727,7 @@ const Curriculum = ({
   const [visibleCategoryId, setVisibleCategoryId] = useState(null);
   const [autoPlay, setAutoPlay] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
   
   // Extract cards data from curriculum data
   const [cardsData, setCardsData] = useState([]);
@@ -723,6 +805,14 @@ const Curriculum = ({
       setAutoPlay(false);
       setTimeout(() => setAutoPlay(true), 6000);
     }
+  };
+
+  const handleDownloadClick = () => {
+    setShowPopup(true);
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
   };
 
   // Calculate transform for slider
@@ -815,7 +905,6 @@ const Curriculum = ({
                   difficulty={card.difficulty}
                   duration={card.duration}
                   icon={card.icon}
-                  // isScaled={isCardInCoreSkills(index)}
                   isActive={visibleCategoryId === card.id}
                   isInactive={visibleCategoryId !== card.id}
                   onClick={() => handleChipClick(card.id)}
@@ -834,7 +923,29 @@ const Curriculum = ({
             />
           ))}
         </Box>
+
+        {/* Download Button */}
+        <Box className={classes.downloadButtonContainer}>
+          <Button
+            className={classes.downloadButton}
+            onClick={handleDownloadClick}
+            startIcon={<DownloadIcon className={classes.downloadIcon} />}
+          >
+            Download Curriculum
+          </Button>
+        </Box>
       </Container>
+
+      {/* Popup Form */}
+      {showPopup && (
+        <CentralizedPopupForms
+          open={showPopup}
+          onClose={handleClosePopup}
+          formType="download" // You can specify the form type
+          title="Download Curriculum"
+          subtitle="Enter your details to download the curriculum"
+        />
+      )}
     </Box>
   );
 };
