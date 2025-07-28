@@ -8,80 +8,123 @@ const FaqHomepage = () => {
     {
       id: 'panel1',
       number: '1',
-      question: 'What is Gigaversity and how is it different from other tech institutes?',
-      answer: 'Gigaversity is India’s premier in-campus tech ecosystem combining advanced labs, real product building, personalized mentorship, and startup funding support—all designed to turn students into industry-ready professionals.',
+      question: 'How is Gigaversity different from other EdTech platforms?',
+      answer: 'Combines product-based learning, AI-driven assessments, startup funding, 150+ hiring partners, and job portal for career success.',
     },
     {
       id: 'panel2',
       number: '2',
-      question: 'What is the duration of the Gigaversity tech programs?',
-      answer: 'Gigaversity offers a structured 12-month program—9 months of hands-on learning and product development, followed by 3 months of Career Readiness Training (CRT) including internships and job preparation.',
+      question: 'What does product-based learning mean at Gigaversity?',
+      answer: 'Learn by building real products like CRMs, e-commerce, and OTT apps, gaining portfolio-ready skills employers value.',
     },
     {
       id: 'panel3',
       number: '3',
-      question: 'Is Gigaversity a residential or campus-based program?',
-      answer: `Yes, Gigaversity is an in-campus, immersive learning experience, where students live, learn, and build products in a real tech ecosystem with state-of-the-art infrastructure.`
+      question: 'Does Gigaversity offer offline or online classes?',
+      answer: `Both. Attend live online sessions or study at our Madhapur, Hyderabad campus with mentors.`
     },
     {
       id: 'panel4',
       number: '4',
-      question: 'Will I get startup funding support at Gigaversity?',
-      answer: 'Absolutely! At Gigaversity, selected students receive up to ₹1 Lakh in funding to build, scale, and launch their tech startup idea from within the campus.',
+      question: 'What programs does Gigaversity offer?',
+      answer: 'Full-time Data Science, Full Stack Development, and Master Internship programs with product-building experience.',
     },
     {
       id: 'panel5',
       number: '5',
-      question: 'What kind of projects will I work on at Gigaversity?',
-      answer: 'You’ll work on tech incubated, real-world products inside our Product Chamber—ranging from E-Commerce platforms to AI-based applications, using industry-standard tools and agile practices.',
+      question: 'What is the duration of the Data Science program?',
+      answer: '8 months core learning plus CRT: resume, portfolio, communication, interview prep, mock interviews, career mentorship.',
     },
     
     {
       id: 'panel6',
       number: '6',
-      question: 'What is the structure of the 12-month learning journey at Gigaversity?',
-      answer: `The journey includes 4 phases
-              1. Foundation Phase (Months 1–3)
-              2. Specialization Phase (Months 4–6)
-              3. Product Building Phase (Months 7–9)
-              4. Career Launch Phase (Months 10–12)
-`,
+      question: 'What is the duration of the Full Stack Development program?',
+      answer: `8 months core learning plus CRT: resume building, portfolio, communication skills, and mock interview training.`,
     },
     {
       id: 'panel7',
       number: '7',
-      question: 'What is the Career Readiness Training (CRT) at Gigaversity?',
-      answer: 'CRT is a 3-month training module that prepares you for tech careers with mock interviews, internship matching, resume optimization, and communication skill building.',
+      question: 'What is the learning structure at Gigaversity?',
+      answer: ' Four phases: Foundation (1–3), Specialization (4–6), Product Building (7–9), Career Launch (10–12 months). (kept short)',
     },
     {
       id: 'panel8',
       number: '8',
-      question: 'Does Gigaversity offer support for launching my startup idea?',
-      answer: 'Yes. Through Startup Studio and Venture Hall, you get expert mentorship, product feedback, and access to startup pitching opportunities with VCs and investors.',
+      question: 'What do the L1 and L2 tests mean at Gigaversity?',
+      answer: 'L1: AI aptitude test for career mapping. L2: Core skills test for product phase selection.',
     },
     {
       id: 'panel9',
       number: '9',
-      question: 'How does Gigaversity support job placement?',
-      answer: 'Gigaversity provides access to a smart placement portal, 1000+ verified job openings, employer-facing skill assessments, and exclusive hiring drives with over 300 partners.',
+      question: 'How many hiring partners does Gigaversity have?',
+      answer: 'Over 150+ trusted hiring partners across tech and IT sectors, ensuring multiple job opportunities.',
     },
     {
       id: 'panel10',
       number: '10',
-      question: 'What makes Gigaversity ideal for career switchers or those with gaps?',
-      answer: 'Gigaversity is designed for career restarters, graduates with gaps, and professionals seeking tech transitions—offering personalized pathways to re-enter the tech world confidently.',
+      question: 'What is the Gigaversity Job Portal?',
+      answer: ' Career platform to apply jobs, build resumes, access 15+ curated job opportunities during training.',
     },
     {
       id: 'panel11',
       number: '11',
-      question: 'How are students mentored at Gigaversity?',
-      answer: 'You’ll receive 1:1 mentorship from startup founders, CTOs, and domain experts at the Mentor Hub, guiding you through every phase of your learning and product development.',
+      question: 'For how long will I have access to the Job Portal?',
+      answer: '6 months extra access after course completion for job applications and career resources.',
     },
     {
       id: 'panel12',
       number: '12',
-      question: 'Who should apply to Gigaversity?',
-      answer: 'Anyone passionate about building a tech career—freshers, working professionals, those misled by fake job promises, or anyone looking for hands-on, funded, in-campus learning.',
+      question: 'What is the Gigaversity Pre-Screener Test?',
+      answer: 'Helps career restarters, non-tech professionals, gap candidates, and fresh learners choose the right program easily.',
+    },
+    {
+      id: 'panel13',
+      number: '13',
+      question: 'Does Gigaversity include AI in its programs?',
+      answer: 'Yes, AI tools, automation, and machine learning are integrated alongside core training.',
+    },
+    {
+      id: 'panel14',
+      number: '14',
+      question: 'Does Gigaversity provide startup funding to students?',
+      answer: 'Yes, up to ₹1 lakh funding to build, prototype, and launch validated student startups.',
+    },
+    {
+      id: 'panel15',
+      number: '15',
+      question: 'How can I apply for the Gigaversity Startup Program?',
+      answer: 'Submit idea → Experts validate → Get prototyping, product-building help, mentorship, and up to ₹1 lakh funding.',
+    },
+    {
+      id: 'panel16',
+      number: '16',
+      question: 'Will I receive job support after completing my course?',
+      answer: 'Yes, 6 months of job portal access, mock interviews, mentorship, and referrals.',
+    },
+    {
+      id: 'panel17',
+      number: '17',
+      question: 'What is the eligibility criteria for enrolling?',
+      answer: 'Minimum 12th pass with basic AI tool knowledge. Coding experience not required.',
+    },
+    {
+      id: 'panel18',
+      number: '18',
+      question: 'If I don’t know coding, can I still join?',
+      answer: 'Yes, a beginner-friendly program teaching coding from scratch with step-by-step guidance.',
+    },
+    {
+      id: 'panel19',
+      number: '19',
+      question: 'How many real-world projects will I work on?',
+      answer: 'Build 3–5 major products, including CRMs, e-commerce, OTT, and AI-driven tools for your portfolio.',
+    },
+    {
+      id: 'panel20',
+      number: '20',
+      question: 'What job roles can I apply for after Gigaversity?',
+      answer: 'Data Analyst, Data Scientist, Full Stack Developer, AI Specialist, or Product Developer.',
     },
   ];
 
@@ -89,7 +132,7 @@ const FaqHomepage = () => {
     <Faq 
       faqData={faqData}
       title={<>FAQ<span>'s</span></>}
-      subtitle="Commonly asked questions about our Virtual Placement Drive program"
+      subtitle="Commonly asked questions about our program"
     />
   );
 };

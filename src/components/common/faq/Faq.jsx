@@ -731,7 +731,7 @@ const Faq = ({ faqData, title, subtitle }) => {
           </Typography>
           
           <Typography variant="body1" className={classes.subtitle}>
-            {subtitle || 'Commonly asked questions about our Virtual Placement Drive Program'}
+            {subtitle || 'Commonly asked questions about our Program'}
           </Typography>
           
           <Box className={classes.searchContainer}>

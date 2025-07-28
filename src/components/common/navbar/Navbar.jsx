@@ -880,7 +880,6 @@ const useStyles = makeStyles({
       backgroundColor: "rgba(42, 43, 106, 0.05)",
       transform: "scale(1.05)",
     },
-    
     // Pseudo-element for underline
     "&::before": {
       content: '""',
@@ -895,7 +894,6 @@ const useStyles = makeStyles({
       transition: "all 0.3s ease-in-out",
       transitionDelay: "0s",
     },
-    
     // Pseudo-element for alternative text
     "&::after": {
       content: "attr(data-alt-text)",

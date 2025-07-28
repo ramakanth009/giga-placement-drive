@@ -6,7 +6,8 @@ import DataScienceAIToolkit from "../../components/fulltime/datascience/aitoolki
 import DataScienceIndustryFacts from "../../components/fulltime/datascience/industryfacts/DataScienceIndustryFacts";
 import DataScienceCaseStudies from "../../components/fulltime/datascience/dataSciencecasestudies/DataScienceCaseStudies";
 import DataScienceProgramFee from "../../components/fulltime/datascience/programfee/DataScienceProgramFee";
-import DatascienceCertificates from "../../components/common/fulltime/fulltimeCertificates/FulltimeCertificates";
+import DataSciencewhatyouget from '../../components/common/fulltime/programfee/WhatYouGet'
+import DatascienceCertificates from "../../components/fulltime/datascience/certificationsection/DatascienceFulltimeCertifications";
 import DataScienceProjectsSection from "../../components/datasciencecomponents/certificationsection/DataScienceCertificationsSection";
 // import DataScienceTechnologyKit from '../../components/fulltime/datascience/technologykit/DataScienceTechnologyKit'
 import DataScienceCurriculum from "../../components/fulltime/datascience/curriculum/DataScienceCurriculum";
@@ -32,6 +33,7 @@ const DatascienceFulltime = () => {
       <DataScienceCaseStudies />
       <DatascienceCertificates />
       <DataScienceProgramFee />
+      <DataSciencewhatyouget />
       <TestimonialComponent  submitButtonTitle="Share your real experience and get featured on our testimonials section"/>
       <DataScienceFullTimeFaq />
     </div>

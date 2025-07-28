@@ -6,8 +6,9 @@ import FullStackProgramHighlights from '../../components/fulltime/fullstack/prog
 import Fullstackcurriculam from '../../components/fulltime/fullstack/curriculum/FullStackCurriculum'
 import FullStackProjectSection from '../../components/fulltime/fullstack/projectssection/FullStackProjectsSection'
 import FullStackCaseStudies from '../../components/fulltime/fullstack/fullStackcasestudies/FullStackCaseStudies'
-import FullStackCertificates from '../../components/fullstackcomponents/certificationsection/FullStackCertificationsSection';
+import FullStackCertificates from '../../components/fulltime/fullstack/certificationsection/FullStackFulltimeCertifications';
 import FullStackProgramFee from '../../components/fulltime/fullstack/programfee/FullStackProgramFee'
+import FullStackwhatyouget from '../../components/common/fulltime/programfee/WhatYouGet'
 import TestimonialComponent from '../../components/common/testimonialcomponent/TestimonialComponent'
 // import FullStackSkillsMaster from '../../components/fulltime/fullstack/skillsmaster/FullStackSkillsMaster'
 import FullStackAIToolkit from '../../components/fulltime/fullstack/aitoolkit/FullStackAIToolkit'
@@ -32,6 +33,7 @@ const FullstackFulltime = () => {
         <FullStackCaseStudies />
         <FullStackCertificates />
         <FullStackProgramFee />
+        <FullStackwhatyouget />
         <TestimonialComponent submitButtonTitle="Post your genuine review and get featured on our platform" />
         <FullFullStackFullTimeFaq />
     </div>
